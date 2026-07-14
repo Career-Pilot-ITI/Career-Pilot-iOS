@@ -26,6 +26,17 @@
 		D9C187A430065C2B00BFF8E9 /* RepoImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187A330065C2B00BFF8E9 /* RepoImp.swift */; };
 		D9C187A630065C3700BFF8E9 /* TestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187A530065C3600BFF8E9 /* TestModels.swift */; };
 		D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187A930065C8700BFF8E9 /* AuthViewModel.swift */; };
+		D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187AE300660D100BFF8E9 /* APIEndpoint.swift */; };
+		D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187B23006618500BFF8E9 /* DIContainer.swift */; };
+		D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187B73006623F00BFF8E9 /* NetworkService.swift */; };
+		D9C187BB300662F000BFF8E9 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187BA300662F000BFF8E9 /* HTTPMethod.swift */; };
+		D9C187BE300663F200BFF8E9 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187BD300663F200BFF8E9 /* NetworkError.swift */; };
+		D9C187C230066A3500BFF8E9 /* ShardComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187C130066A3500BFF8E9 /* ShardComponents.swift */; };
+		D9C187C430066A4000BFF8E9 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187C330066A4000BFF8E9 /* Storage.swift */; };
+		D9C187C630066A4800BFF8E9 /* Routin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187C530066A4800BFF8E9 /* Routin.swift */; };
+		D9C187C830066A4F00BFF8E9 /* Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187C730066A4F00BFF8E9 /* Ex.swift */; };
+		D9C187CD30066B1F00BFF8E9 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187CC30066B1F00BFF8E9 /* util.swift */; };
+		D9C187CF30066B2800BFF8E9 /* style.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187CE30066B2800BFF8E9 /* style.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +79,17 @@
 		D9C187A330065C2B00BFF8E9 /* RepoImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoImp.swift; sourceTree = "<group>"; };
 		D9C187A530065C3600BFF8E9 /* TestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModels.swift; sourceTree = "<group>"; };
 		D9C187A930065C8700BFF8E9 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		D9C187AE300660D100BFF8E9 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		D9C187B23006618500BFF8E9 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		D9C187B73006623F00BFF8E9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		D9C187BA300662F000BFF8E9 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		D9C187BD300663F200BFF8E9 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		D9C187C130066A3500BFF8E9 /* ShardComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShardComponents.swift; sourceTree = "<group>"; };
+		D9C187C330066A4000BFF8E9 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		D9C187C530066A4800BFF8E9 /* Routin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routin.swift; sourceTree = "<group>"; };
+		D9C187C730066A4F00BFF8E9 /* Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ex.swift; sourceTree = "<group>"; };
+		D9C187CC30066B1F00BFF8E9 /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
+		D9C187CE30066B2800BFF8E9 /* style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = style.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,12 +140,8 @@
 		D93938E03004064400CF4372 /* Career-Pilot-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				D9C187AB30065F6800BFF8E9 /* Core */,
 				D9C1878430065A4800BFF8E9 /* Modules */,
-				D93938E13004064400CF4372 /* Career_Pilot_iOSApp.swift */,
-				D93938E33004064400CF4372 /* ContentView.swift */,
-				D93938E53004064600CF4372 /* Assets.xcassets */,
-				D93938EA3004064600CF4372 /* Persistence.swift */,
-				D93938EC3004064600CF4372 /* Career_Pilot_iOS.xcdatamodeld */,
 				D93938E73004064600CF4372 /* Preview Content */,
 			);
 			path = "Career-Pilot-iOS";
@@ -283,6 +301,109 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D9C187AB30065F6800BFF8E9 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D9C187D030066BC900BFF8E9 /* App */,
+				D9C187B13006610A00BFF8E9 /* Di */,
+				D9C187CB30066AE100BFF8E9 /* Util */,
+				D9C187CA30066AD800BFF8E9 /* Style */,
+				D9C187B0300660D500BFF8E9 /* Components */,
+				D9C187AC3006604600BFF8E9 /* Network */,
+				D9C187AD3006609300BFF8E9 /* Storage */,
+				D9C187B53006619C00BFF8E9 /* Routing */,
+				D9C187B43006618B00BFF8E9 /* Extension */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		D9C187AC3006604600BFF8E9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D9C187BD300663F200BFF8E9 /* NetworkError.swift */,
+				D9C187B9300662E000BFF8E9 /* EndPoint */,
+				D9C187B73006623F00BFF8E9 /* NetworkService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		D9C187AD3006609300BFF8E9 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				D93938EC3004064600CF4372 /* Career_Pilot_iOS.xcdatamodeld */,
+				D93938EA3004064600CF4372 /* Persistence.swift */,
+				D9C187C330066A4000BFF8E9 /* Storage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		D9C187B0300660D500BFF8E9 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D9C187C130066A3500BFF8E9 /* ShardComponents.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D9C187B13006610A00BFF8E9 /* Di */ = {
+			isa = PBXGroup;
+			children = (
+				D9C187B23006618500BFF8E9 /* DIContainer.swift */,
+			);
+			path = Di;
+			sourceTree = "<group>";
+		};
+		D9C187B43006618B00BFF8E9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D9C187C730066A4F00BFF8E9 /* Ex.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		D9C187B53006619C00BFF8E9 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				D9C187C530066A4800BFF8E9 /* Routin.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
+		D9C187B9300662E000BFF8E9 /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				D9C187AE300660D100BFF8E9 /* APIEndpoint.swift */,
+				D9C187BA300662F000BFF8E9 /* HTTPMethod.swift */,
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		D9C187CA30066AD800BFF8E9 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				D9C187CE30066B2800BFF8E9 /* style.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+		D9C187CB30066AE100BFF8E9 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D9C187CC30066B1F00BFF8E9 /* util.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		D9C187D030066BC900BFF8E9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D93938E13004064400CF4372 /* Career_Pilot_iOSApp.swift */,
+				D93938E33004064400CF4372 /* ContentView.swift */,
+				D93938E53004064600CF4372 /* Assets.xcassets */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -414,17 +535,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9C187A630065C3700BFF8E9 /* TestModels.swift in Sources */,
+				D9C187C830066A4F00BFF8E9 /* Ex.swift in Sources */,
 				D93938EE3004064600CF4372 /* Career_Pilot_iOS.xcdatamodeld in Sources */,
+				D9C187CD30066B1F00BFF8E9 /* util.swift in Sources */,
 				D93938EB3004064600CF4372 /* Persistence.swift in Sources */,
 				D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */,
 				D9C187A230065C2200BFF8E9 /* RemoteDataSource.swift in Sources */,
+				D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */,
 				D9C1879530065AFC00BFF8E9 /* UseCases.swift in Sources */,
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
+				D9C187C430066A4000BFF8E9 /* Storage.swift in Sources */,
+				D9C187BE300663F200BFF8E9 /* NetworkError.swift in Sources */,
 				D9C187A030065BA700BFF8E9 /* TestLocalDataSource.swift in Sources */,
 				D9C1879730065B0400BFF8E9 /* Entity.swift in Sources */,
 				D93938E23004064400CF4372 /* Career_Pilot_iOSApp.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
+				D9C187C630066A4800BFF8E9 /* Routin.swift in Sources */,
 				D9C1879E30065B9800BFF8E9 /* TestDao.swift in Sources */,
+				D9C187CF30066B2800BFF8E9 /* style.swift in Sources */,
+				D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */,
+				D9C187BB300662F000BFF8E9 /* HTTPMethod.swift in Sources */,
+				D9C187C230066A3500BFF8E9 /* ShardComponents.swift in Sources */,
+				D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */,
 				D9C187A430065C2B00BFF8E9 /* RepoImp.swift in Sources */,
 				D9C1878A30065AA400BFF8E9 /* AuthView.swift in Sources */,
 			);
