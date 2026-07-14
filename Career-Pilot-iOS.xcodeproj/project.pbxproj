@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		616C4407300665680038B060 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616C4406300665680038B060 /* Colors.swift */; };
+		616C4409300669910038B060 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616C4408300669910038B060 /* Font.swift */; };
+		616C440B30066DDF0038B060 /* Spaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616C440A30066DDF0038B060 /* Spaces.swift */; };
+		616C440D30066F560038B060 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616C440C30066F560038B060 /* Round.swift */; };
 		D93938E23004064400CF4372 /* Career_Pilot_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93938E13004064400CF4372 /* Career_Pilot_iOSApp.swift */; };
 		D93938E43004064400CF4372 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93938E33004064400CF4372 /* ContentView.swift */; };
 		D93938E63004064600CF4372 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93938E53004064600CF4372 /* Assets.xcassets */; };
@@ -36,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		616C4406300665680038B060 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		616C4408300669910038B060 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		616C440A30066DDF0038B060 /* Spaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spaces.swift; sourceTree = "<group>"; };
+		616C440C30066F560038B060 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career-Pilot-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93938E13004064400CF4372 /* Career_Pilot_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career_Pilot_iOSApp.swift; sourceTree = "<group>"; };
 		D93938E33004064400CF4372 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +83,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		616C44053006655A0038B060 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				616C4406300665680038B060 /* Colors.swift */,
+				616C4408300669910038B060 /* Font.swift */,
+				616C440A30066DDF0038B060 /* Spaces.swift */,
+				616C440C30066F560038B060 /* Round.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		D93938D53004064400CF4372 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +117,7 @@
 		D93938E03004064400CF4372 /* Career-Pilot-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				616C44053006655A0038B060 /* Core */,
 				D93938E13004064400CF4372 /* Career_Pilot_iOSApp.swift */,
 				D93938E33004064400CF4372 /* ContentView.swift */,
 				D93938E53004064600CF4372 /* Assets.xcassets */,
@@ -263,9 +283,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				616C440B30066DDF0038B060 /* Spaces.swift in Sources */,
 				D93938EE3004064600CF4372 /* Career_Pilot_iOS.xcdatamodeld in Sources */,
+				616C4407300665680038B060 /* Colors.swift in Sources */,
+				616C4409300669910038B060 /* Font.swift in Sources */,
 				D93938EB3004064600CF4372 /* Persistence.swift in Sources */,
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
+				616C440D30066F560038B060 /* Round.swift in Sources */,
 				D93938E23004064400CF4372 /* Career_Pilot_iOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
