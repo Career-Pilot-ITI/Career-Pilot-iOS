@@ -52,7 +52,11 @@ extension Color {
    static let activeColour = Color("Amber")
    static let primaryTeal = Color("Teal")
    static let primaryTealLight = Color("TealLight")
-    
+   static let otpBackground    = darkBackGround
+   static let otpBoxEmpty      = Color("NavyMid")
+   static let otpBoxFilled     = activeColour
+   static let otpAccent        = primaryTeal
+   static let otpSecondaryText = gray400    
   }
 
 
