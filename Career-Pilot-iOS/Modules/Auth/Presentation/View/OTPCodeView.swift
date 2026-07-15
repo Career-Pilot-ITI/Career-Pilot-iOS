@@ -14,9 +14,9 @@ struct OTPCodeView: View {
     var phoneNumber: String = ""
     var onComplete: (String) -> Void = { _ in }
     var onResend: () -> Void = {}
-
+    
     @FocusState private var isFocused: Bool
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             ZStack {
@@ -29,7 +29,7 @@ struct OTPCodeView: View {
                     .onChange(of: code) { newValue in
                         filterAndClamp(newValue)
                     }
-
+                
                 HStack(spacing: 10) {
                     ForEach(0..<length, id: \.self) { index in
                         OTPBoxView(character: character(at: index),
@@ -45,14 +45,14 @@ struct OTPCodeView: View {
             isFocused = true
         }
     }
-
-
+    
+    
     private func character(at index: Int) -> String {
         guard index < code.count else { return "" }
         let charIndex = code.index(code.startIndex, offsetBy: index)
         return String(code[charIndex])
     }
-
+    
     private func filterAndClamp(_ newValue: String) {
         let filtered = newValue.filter { $0.isNumber }
         let clamped = String(filtered.prefix(length))
@@ -66,43 +66,31 @@ struct OTPCodeView: View {
     }
 }
 
-
-private struct OTPPreviewContainer: View {
-    @State private var code = "11111"
+private struct OTPPreviewWrapper: View {
+    let code: String
+    
     var body: some View {
         ZStack {
             Color.otpBackground.ignoresSafeArea()
             VStack(alignment: .leading, spacing: 24) {
-                OTPCodeView(
-                    code: $code,
-                    length: 6,
-                    phoneNumber: "+20 101 234 5678",
-                    onComplete: { finished in
-                        print("Completed code: \(finished)")
-                    },
-                    onResend: {
-                        print("Resend tapped")
-                    }
-                )
+                OTPCodeView(code: .constant(code), length: 6, phoneNumber: "+20 101 234 5678")
             }
             .padding(.horizontal, 24)
         }
-    }
-}
-
-
-#Preview("Filled state") {
-    OTPPreviewContainer()
         .preferredColorScheme(.dark)
-}
- 
-#Preview("Empty state") {
-    ZStack {
-        Color.otpBackground.ignoresSafeArea()
-        VStack(alignment: .leading, spacing: 24) {
-            OTPCodeView(code: .constant(""), length: 6, phoneNumber: "+20 101 234 5678")
-        }
-        .padding(.horizontal, 24)
     }
-    .preferredColorScheme(.dark)
+}
+
+struct FilledState_PreviewContainer: PreviewProvider {
+    static var previews: some View {
+        OTPPreviewWrapper(code: "123456")
+            .previewDisplayName("Filled state")
+    }
+}	
+
+struct EmptyState_PreviewContainer: PreviewProvider {
+    static var previews: some View {
+        OTPPreviewWrapper(code: "")
+            .previewDisplayName("Empty state")
+    }
 }

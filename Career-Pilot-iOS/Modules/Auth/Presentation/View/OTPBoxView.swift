@@ -30,6 +30,9 @@ struct OTPBoxView: View {
     }
 }
 
-#Preview {
-    OTPBoxView(character: "", isActive: true)
+struct OTPBoxViewPreview : PreviewProvider {
+    static var previews: some View {
+        OTPBoxView(character: "", isActive: true)
+            .previewDisplayName("OTP Box")
+    }
 }
