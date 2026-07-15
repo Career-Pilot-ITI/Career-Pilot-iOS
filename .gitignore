@@ -192,3 +192,5 @@ keys/*
 *.xcuserdatad/
 *.xcuserstate
 *.pbxuser
+.DS_Store
+*.pbxuser
