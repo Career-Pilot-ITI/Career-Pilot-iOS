@@ -20,6 +20,6 @@ extension Font{
     static let body = Font.system(size: 14 , weight: .medium)
     static let label = Font.system(size: 12 , weight: .medium)
     static let chip = Font.system(size: 12 , weight: .medium)
-    static let  buttonLabel = Font.system(size: 14 , weight: .medium  )
+    static let  buttonLabel = Font.system(size: 14 , weight: .semibold  )
     
 }
