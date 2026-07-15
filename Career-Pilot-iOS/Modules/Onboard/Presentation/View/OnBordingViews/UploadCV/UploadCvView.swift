@@ -22,12 +22,14 @@ struct UploadCvView: View {
             }
             .padding(.bottom, 30)
             
-            Text("Skip for now →")
-                .font(.bodySmall)
-                .foregroundColor(.gray400)
-                .onTapGesture {
-                    vm.skipAll()
-                }
+            if !vm.isUploaded{
+                Text("Skip for now →")
+                    .font(.bodySmall)
+                    .foregroundColor(.gray400)
+                    .onTapGesture {
+                        vm.skipAll()
+                    }                
+            }
             
             Spacer()
         }

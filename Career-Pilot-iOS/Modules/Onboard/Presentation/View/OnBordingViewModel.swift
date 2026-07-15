@@ -17,7 +17,7 @@ enum OnBordingScreenStates{
 
 @MainActor
 class OnBordingViewModel: ObservableObject{
-    @Published var currentView: OnBordingViews = .ProfileView
+    @Published var currentView: OnBordingViews = .ChooseTrackView
     @Published var screenState: OnBordingScreenStates = .idel
     @Published var navToHomeScreen: Bool = false
     
