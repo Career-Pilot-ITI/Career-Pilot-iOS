@@ -188,3 +188,9 @@ keys/*
 *.config
 # End of https://www.gitignore.io/api/xcode,swift,macos,objective-c,fastlane
 *.xcconfig
+
+# avoid uploud userDate files
+*.xcuserdatad/
+*.xcuserstate
+*.pbxuser
+.DS_Store

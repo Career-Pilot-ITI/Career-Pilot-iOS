@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41AC14EB3007626A00502158 /* OTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EA3007626A00502158 /* OTPCodeView.swift */; };
+		41AC14ED3007631C00502158 /* OTPBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EC3007631C00502158 /* OTPBoxView.swift */; };
+		41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EE30076D5500502158 /* CustomSearchTextField.swift */; };
 		CE8AFF18300712FC0064CC6C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF15300712FC0064CC6C /* Font.swift */; };
 		CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF14300712FC0064CC6C /* Colors.swift */; };
 		CE8AFF1D300718670064CC6C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1C300718670064CC6C /* Round.swift */; };
@@ -17,6 +20,14 @@
 		CECC20E83007DB4D00DC450D /* WaveformBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E73007DB4D00DC450D /* WaveformBars.swift */; };
 		CECC20EA3007DB5E00DC450D /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E93007DB5E00DC450D /* ShakeEffect.swift */; };
 		CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20EB3007DD1D00DC450D /* WaitingStateComponents.swift */; };
+		CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF21300726660064CC6C /* PhoneTextField.swift */; };
+		CECC20D03007AD1200DC450D /* PhoneFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20CF3007AD1200DC450D /* PhoneFieldState.swift */; };
+		CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20D13007AD2800DC450D /* PhoneValidator.swift */; };
+		CECC20D43007AD3A00DC450D /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20D33007AD3A00DC450D /* CountryCode.swift */; };
+		CECC20D63007AD4E00DC450D /* CountryPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20D53007AD4E00DC450D /* CountryPickerSheet.swift */; };
+		CECC20D83007B60900DC450D /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20D73007B60900DC450D /* AppStrings.swift */; };
+		CECC20DA3007BE6800DC450D /* PhoneFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20D93007BE6800DC450D /* PhoneFieldViewModel.swift */; };
+		CECC20DD3007C59F00DC450D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CECC20DB3007C59F00DC450D /* Localizable.strings */; };
 		D93938E23004064400CF4372 /* Career_Pilot_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93938E13004064400CF4372 /* Career_Pilot_iOSApp.swift */; };
 		D93938E43004064400CF4372 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93938E33004064400CF4372 /* ContentView.swift */; };
 		D93938E63004064600CF4372 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93938E53004064600CF4372 /* Assets.xcassets */; };
@@ -41,10 +52,9 @@
 		D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187B73006623F00BFF8E9 /* NetworkService.swift */; };
 		D9C187BB300662F000BFF8E9 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187BA300662F000BFF8E9 /* HTTPMethod.swift */; };
 		D9C187BE300663F200BFF8E9 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187BD300663F200BFF8E9 /* NetworkError.swift */; };
-		D9C187C230066A3500BFF8E9 /* ShardComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187C130066A3500BFF8E9 /* ShardComponents.swift */; };
 		D9C187C430066A4000BFF8E9 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187C330066A4000BFF8E9 /* Storage.swift */; };
 		D9C187C630066A4800BFF8E9 /* Routin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187C530066A4800BFF8E9 /* Routin.swift */; };
-		D9C187C830066A4F00BFF8E9 /* Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187C730066A4F00BFF8E9 /* Ex.swift */; };
+		D9C187C830066A4F00BFF8E9 /* Colors+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187C730066A4F00BFF8E9 /* Colors+Extension.swift */; };
 		D9C187CF30066B2800BFF8E9 /* style.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187CE30066B2800BFF8E9 /* style.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +76,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41AC14EA3007626A00502158 /* OTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPCodeView.swift; sourceTree = "<group>"; };
+		41AC14EC3007631C00502158 /* OTPBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPBoxView.swift; sourceTree = "<group>"; };
+		41AC14EE30076D5500502158 /* CustomSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchTextField.swift; sourceTree = "<group>"; };
 		CE8AFF14300712FC0064CC6C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CE8AFF15300712FC0064CC6C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		CE8AFF1C300718670064CC6C /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
@@ -76,6 +89,14 @@
 		CECC20E73007DB4D00DC450D /* WaveformBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformBars.swift; sourceTree = "<group>"; };
 		CECC20E93007DB5E00DC450D /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 		CECC20EB3007DD1D00DC450D /* WaitingStateComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingStateComponents.swift; sourceTree = "<group>"; };
+		CE8AFF21300726660064CC6C /* PhoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTextField.swift; sourceTree = "<group>"; };
+		CECC20CF3007AD1200DC450D /* PhoneFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFieldState.swift; sourceTree = "<group>"; };
+		CECC20D13007AD2800DC450D /* PhoneValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneValidator.swift; sourceTree = "<group>"; };
+		CECC20D33007AD3A00DC450D /* CountryCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
+		CECC20D53007AD4E00DC450D /* CountryPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerSheet.swift; sourceTree = "<group>"; };
+		CECC20D73007B60900DC450D /* AppStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
+		CECC20D93007BE6800DC450D /* PhoneFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFieldViewModel.swift; sourceTree = "<group>"; };
+		CECC20DC3007C59F00DC450D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career-Pilot-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93938E13004064400CF4372 /* Career_Pilot_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career_Pilot_iOSApp.swift; sourceTree = "<group>"; };
 		D93938E33004064400CF4372 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,10 +124,9 @@
 		D9C187B73006623F00BFF8E9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D9C187BA300662F000BFF8E9 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		D9C187BD300663F200BFF8E9 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		D9C187C130066A3500BFF8E9 /* ShardComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShardComponents.swift; sourceTree = "<group>"; };
 		D9C187C330066A4000BFF8E9 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		D9C187C530066A4800BFF8E9 /* Routin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routin.swift; sourceTree = "<group>"; };
-		D9C187C730066A4F00BFF8E9 /* Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ex.swift; sourceTree = "<group>"; };
+		D9C187C730066A4F00BFF8E9 /* Colors+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Extension.swift"; sourceTree = "<group>"; };
 		D9C187CC30066B1F00BFF8E9 /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		D9C187CE30066B2800BFF8E9 /* style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = style.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,6 +167,19 @@
 				CECC20EB3007DD1D00DC450D /* WaitingStateComponents.swift */,
 			);
 			path = WaitingState;
+      sourceTree = "<group>";
+		};
+		CECC20CE3007ACE100DC450D /* PhoneField */ = {
+			isa = PBXGroup;
+			children = (
+				CE8AFF21300726660064CC6C /* PhoneTextField.swift */,
+				CECC20CF3007AD1200DC450D /* PhoneFieldState.swift */,
+				CECC20D13007AD2800DC450D /* PhoneValidator.swift */,
+				CECC20D33007AD3A00DC450D /* CountryCode.swift */,
+				CECC20D53007AD4E00DC450D /* CountryPickerSheet.swift */,
+				CECC20D93007BE6800DC450D /* PhoneFieldViewModel.swift */,
+			);
+			path = PhoneField;
 			sourceTree = "<group>";
 		};
 		D93938D53004064400CF4372 = {
@@ -329,6 +362,8 @@
 			isa = PBXGroup;
 			children = (
 				D9C1878930065AA400BFF8E9 /* AuthView.swift */,
+				41AC14EA3007626A00502158 /* OTPCodeView.swift */,
+				41AC14EC3007631C00502158 /* OTPBoxView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -373,7 +408,8 @@
 			isa = PBXGroup;
 			children = (
 				CECC20E03007DAFF00DC450D /* WaitingState */,
-				D9C187C130066A3500BFF8E9 /* ShardComponents.swift */,
+				CECC20CE3007ACE100DC450D /* PhoneField */,
+				41AC14EE30076D5500502158 /* CustomSearchTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -389,7 +425,7 @@
 		D9C187B43006618B00BFF8E9 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				D9C187C730066A4F00BFF8E9 /* Ex.swift */,
+				D9C187C730066A4F00BFF8E9 /* Colors+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -419,6 +455,8 @@
 				CE8AFF15300712FC0064CC6C /* Font.swift */,
 				CE8AFF1C300718670064CC6C /* Round.swift */,
 				CE8AFF1E3007187D0064CC6C /* Spaces.swift */,
+				CECC20D73007B60900DC450D /* AppStrings.swift */,
+				CECC20DB3007C59F00DC450D /* Localizable.strings */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -546,6 +584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D93938E93004064600CF4372 /* Preview Assets.xcassets in Resources */,
+				CECC20DD3007C59F00DC450D /* Localizable.strings in Resources */,
 				D93938E63004064600CF4372 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,15 +611,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9C187A630065C3700BFF8E9 /* TestModels.swift in Sources */,
+				CECC20DA3007BE6800DC450D /* PhoneFieldViewModel.swift in Sources */,
 				CE8AFF18300712FC0064CC6C /* Font.swift in Sources */,
 				CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */,
-				D9C187C830066A4F00BFF8E9 /* Ex.swift in Sources */,
+				D9C187C830066A4F00BFF8E9 /* Colors+Extension.swift in Sources */,
 				D93938EE3004064600CF4372 /* Career_Pilot_iOS.xcdatamodeld in Sources */,
 				D93938EB3004064600CF4372 /* Persistence.swift in Sources */,
+				41AC14ED3007631C00502158 /* OTPBoxView.swift in Sources */,
 				D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */,
+				CECC20D03007AD1200DC450D /* PhoneFieldState.swift in Sources */,
+				41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */,
 				D9C187A230065C2200BFF8E9 /* RemoteDataSource.swift in Sources */,
 				D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */,
+				CECC20D83007B60900DC450D /* AppStrings.swift in Sources */,
 				D9C1879530065AFC00BFF8E9 /* UseCases.swift in Sources */,
+				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
+				CECC20D63007AD4E00DC450D /* CountryPickerSheet.swift in Sources */,
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
 				D9C187C430066A4000BFF8E9 /* Storage.swift in Sources */,
 				D9C187BE300663F200BFF8E9 /* NetworkError.swift in Sources */,
@@ -595,15 +641,17 @@
 				CECC20E43007DB2C00DC450D /* WaitingStateView.swift in Sources */,
 				D9C187C630066A4800BFF8E9 /* Routin.swift in Sources */,
 				D9C1879E30065B9800BFF8E9 /* TestDao.swift in Sources */,
+				41AC14EB3007626A00502158 /* OTPCodeView.swift in Sources */,
 				CE8AFF1D300718670064CC6C /* Round.swift in Sources */,
 				D9C187CF30066B2800BFF8E9 /* style.swift in Sources */,
 				D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */,
 				D9C187BB300662F000BFF8E9 /* HTTPMethod.swift in Sources */,
 				CECC20E83007DB4D00DC450D /* WaveformBars.swift in Sources */,
 				CECC20EA3007DB5E00DC450D /* ShakeEffect.swift in Sources */,
-				D9C187C230066A3500BFF8E9 /* ShardComponents.swift in Sources */,
+				CECC20D43007AD3A00DC450D /* CountryCode.swift in Sources */,
 				D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */,
 				D9C187A430065C2B00BFF8E9 /* RepoImp.swift in Sources */,
+				CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */,
 				D9C1878A30065AA400BFF8E9 /* AuthView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -639,6 +687,17 @@
 			targetProxy = D93938FE3004064600CF4372 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CECC20DB3007C59F00DC450D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CECC20DC3007C59F00DC450D /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D93939053004064600CF4372 /* Debug */ = {
