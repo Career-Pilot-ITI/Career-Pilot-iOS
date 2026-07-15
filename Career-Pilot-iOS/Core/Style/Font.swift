@@ -24,6 +24,6 @@ extension Font{
     static let labelApp = Font.system(size: 12 , weight: .medium)
     static let labelAppSemiBold = Font.system(size: 12 , weight: .semibold)
     static let chip = Font.system(size: 12 , weight: .medium)
-    static let  buttonLabel = Font.system(size: 14 , weight: .medium  )
+    static let  buttonLabel = Font.system(size: 14 , weight: .semibold  )
     
 }
