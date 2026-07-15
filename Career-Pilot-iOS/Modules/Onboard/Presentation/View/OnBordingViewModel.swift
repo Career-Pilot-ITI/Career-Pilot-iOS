@@ -20,7 +20,16 @@ class OnBordingViewModel: ObservableObject{
     @Published var currentView: OnBordingViews = .ProfileView
     @Published var screenState: OnBordingScreenStates = .idel
     @Published var navToHomeScreen: Bool = false
+    
+    //For UploadCV View
+    @Published var isUploaded: Bool = false
+    @Published var cvTitle: String = "Cv Name"
+    @Published var cvSize: Double = 0.0
+    
+    //For Profie View
     @Published var userData: UserData = UserData(email: "", title: "", experienceLevel: "", skills: ["C++"], firstName: "", lastName: "")
+    
+    //For Bottom Button
     var buttonTitle: String {
         switch currentView{
         case.ProfileView:
@@ -39,6 +48,16 @@ class OnBordingViewModel: ObservableObject{
 
         case .UploadCvView, .ChooseTrackView:
             return true
+        }
+    }
+    
+    //MARK: For Uploding CV
+    func uploadCV(){
+        print("Uploading cv")
+        screenState = .loading
+        Task{
+            try? await Task.sleep(for:.nanoseconds(2000000000))
+            screenState = .idel
         }
     }
     
@@ -72,5 +91,4 @@ class OnBordingViewModel: ObservableObject{
     func isScreenIncludedToDrawAColor(index: Int) -> Bool{
         return index <= currentView.rawValue
     }
-    
 }

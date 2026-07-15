@@ -41,6 +41,7 @@
 		D935DFCF300789EF009DF855 /* CvUploadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFCE300789EF009DF855 /* CvUploadingView.swift */; };
 		D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFF930080448009DF855 /* OnBordingView.swift */; };
 		D935DFFC3008045A009DF855 /* OnBordingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFFB3008045A009DF855 /* OnBordingViewModel.swift */; };
+		D935DFFF30082AA9009DF855 /* UploadCvView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFFE30082AA9009DF855 /* UploadCvView.swift */; };
 		D93938E23004064400CF4372 /* Career_Pilot_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93938E13004064400CF4372 /* Career_Pilot_iOSApp.swift */; };
 		D93938E43004064400CF4372 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93938E33004064400CF4372 /* ContentView.swift */; };
 		D93938E93004064600CF4372 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93938E83004064600CF4372 /* Preview Assets.xcassets */; };
@@ -122,6 +123,7 @@
 		D935DFCE300789EF009DF855 /* CvUploadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvUploadingView.swift; sourceTree = "<group>"; };
 		D935DFF930080448009DF855 /* OnBordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingView.swift; sourceTree = "<group>"; };
 		D935DFFB3008045A009DF855 /* OnBordingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnBordingViewModel.swift; path = "Career-Pilot-iOS/Modules/Onboard/Presentation/View/OnBordingViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		D935DFFE30082AA9009DF855 /* UploadCvView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadCvView.swift; sourceTree = "<group>"; };
 		D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career-Pilot-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93938E13004064400CF4372 /* Career_Pilot_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career_Pilot_iOSApp.swift; sourceTree = "<group>"; };
 		D93938E33004064400CF4372 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -233,13 +235,13 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		61D8F2E4300750E60088F170 /* profile */ = {
+		61D8F2E4300750E60088F170 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				61D8F30130077F070088F170 /* MainView */,
 				61D8F30030077EEC0088F170 /* Components */,
 			);
-			path = profile;
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		61D8F30030077EEC0088F170 /* Components */ = {
@@ -314,9 +316,18 @@
 		D935DFF730080430009DF855 /* OnBordingViews */ = {
 			isa = PBXGroup;
 			children = (
-				61D8F2E4300750E60088F170 /* profile */,
+				D935DFFD30082A8B009DF855 /* UploadCV */,
+				61D8F2E4300750E60088F170 /* Profile */,
 			);
 			path = OnBordingViews;
+			sourceTree = "<group>";
+		};
+		D935DFFD30082A8B009DF855 /* UploadCV */ = {
+			isa = PBXGroup;
+			children = (
+				D935DFFE30082AA9009DF855 /* UploadCvView.swift */,
+			);
+			path = UploadCV;
 			sourceTree = "<group>";
 		};
 		D93938D53004064400CF4372 = {
@@ -756,6 +767,7 @@
 				CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */,
 				D9C187C830066A4F00BFF8E9 /* Colors+Extension.swift in Sources */,
 				61D8F303300780C50088F170 /* FreeSessionBanner.swift in Sources */,
+				D935DFFF30082AA9009DF855 /* UploadCvView.swift in Sources */,
 				61D8F2F6300760680088F170 /* ProfileForm.swift in Sources */,
 				D935DFCB30078012009DF855 /* CustomButton.swift in Sources */,
 				D93938EE3004064600CF4372 /* Career_Pilot_iOS.xcdatamodeld in Sources */,

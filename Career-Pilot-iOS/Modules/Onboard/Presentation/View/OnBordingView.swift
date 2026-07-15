@@ -14,6 +14,7 @@ struct OnBordingView: View {
         VStack(alignment: .center, spacing: 14){
             //Top Part
             topView
+            Spacer()
             
             //OnBording Content
             switch vm.screenState{
@@ -81,11 +82,12 @@ struct OnBordingIdelState: View{
             case.ChooseTrackView:
                 Text("ChoseTreack")
             case.UploadCvView:
-                Text("UploadCv")
+                UploadCvView(vm: vm)
             case.ProfileView:
                 profile(userData: $vm.userData)
             }
         }
+        .padding(.bottom, 20)
     }
 }
 
