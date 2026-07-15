@@ -8,27 +8,50 @@
 import SwiftUI
 
 struct profile: View {
+    @State private var userData = UserData(
+        email: "eyad@gmail.com",
+        title: "developer",
+        experienceLevel: "Senior",
+        skills: ["C++", "C"],
+        firstName: "Eyad",
+        lastName: "Waleed"
+    )
+
+    private var isFormValid: Bool {
+        !userData.fullName.trimmingCharacters(in: .whitespaces).isEmpty &&
+        !userData.email.trimmingCharacters(in: .whitespaces).isEmpty &&
+        !userData.title.trimmingCharacters(in: .whitespaces).isEmpty &&
+        !userData.experienceLevel.trimmingCharacters(in: .whitespaces).isEmpty
+    }
 
     var body: some View {
-        
-        VStack(spacing: 24){
+        VStack(spacing: 24) {
             HeaderView()
-            ProfileForm(userData: UserData(email: "eyad@gmail.com", title: "developer", experienceLevel: "Senior", skills: ["C++" , "C"], firstName: "Eyad", lastName: "Waleed")).background(
-                RoundedRectangle(cornerRadius: Radius.lg)
-                    .fill(Color.white)
-            )
-            .shadow(
-                color: Color.black.opacity(0.08),
-                radius: 12,
-                x: 0,
-                y: 4
-            )
-            
+
+            ProfileForm(userData: $userData)
+                .background(
+                    RoundedRectangle(cornerRadius: Radius.lg)
+                        .fill(Color.white)
+                )
+                .shadow(
+                    color: Color.black.opacity(0.08),
+                    radius: 12,
+                    x: 0,
+                    y: 4
+                )
+
             FreeSessionBanner()
-            Spacer()
-            
-        }.padding(.horizontal , Spacing.xl).background(Color.gray100)
-        
+
+            CustomButton(buttonTitle: "Start Practising") {
+
+            }
+            .disabled(!isFormValid)
+            .opacity(isFormValid ? 1.0 : 0.5)
+
+
+        }
+        .padding(.horizontal, Spacing.xl)
+        .background(Color.gray100)
     }
 }
 

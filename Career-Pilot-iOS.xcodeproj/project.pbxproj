@@ -498,10 +498,6 @@
 		D9C187CA30066AD800BFF8E9 /* Style */ = {
 			isa = PBXGroup;
 			children = (
-				61D8F2E93007514E0088F170 /* Colors.swift */,
-				61D8F2E83007514E0088F170 /* Font.swift */,
-				61D8F2E73007514E0088F170 /* Round.swift */,
-				61D8F2EA3007514E0088F170 /* Spaces.swift */,
 				D9C187CE30066B2800BFF8E9 /* style.swift */,
 				CE8AFF14300712FC0064CC6C /* Colors.swift */,
 				CE8AFF15300712FC0064CC6C /* Font.swift */,
@@ -674,7 +670,6 @@
 				D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */,
 				D9C1879530065AFC00BFF8E9 /* UseCases.swift in Sources */,
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
-				61D8F2EB3007514E0088F170 /* Round.swift in Sources */,
 				61D8F2F8300761200088F170 /* CustomProfileTextField.swift in Sources */,
 				D9C187C430066A4000BFF8E9 /* Storage.swift in Sources */,
 				D9C187BE300663F200BFF8E9 /* NetworkError.swift in Sources */,
@@ -685,7 +680,6 @@
 				D93938E23004064400CF4372 /* Career_Pilot_iOSApp.swift in Sources */,
 				61D8F2FC300779ED0088F170 /* Flowlayout.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
-				61D8F2ED3007514E0088F170 /* Colors.swift in Sources */,
 				D9C187C630066A4800BFF8E9 /* Routin.swift in Sources */,
 				61D8F2FF30077A410088F170 /* UserData.swift in Sources */,
 				D9C1879E30065B9800BFF8E9 /* TestDao.swift in Sources */,
@@ -695,9 +689,7 @@
 				D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */,
 				D9C187BB300662F000BFF8E9 /* HTTPMethod.swift in Sources */,
 				D9C187C230066A3500BFF8E9 /* ShardComponents.swift in Sources */,
-				61D8F2EE3007514E0088F170 /* Spaces.swift in Sources */,
 				61D8F2F03007523E0088F170 /* HeaderView.swift in Sources */,
-				61D8F2EC3007514E0088F170 /* Font.swift in Sources */,
 				D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */,
 				D9C187A430065C2B00BFF8E9 /* RepoImp.swift in Sources */,
 				D9C1878A30065AA400BFF8E9 /* AuthView.swift in Sources */,
