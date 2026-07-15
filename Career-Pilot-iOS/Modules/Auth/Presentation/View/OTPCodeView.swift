@@ -71,7 +71,7 @@ private struct OTPPreviewWrapper: View {
     
     var body: some View {
         ZStack {
-            Color.otpBackground.ignoresSafeArea()
+            AppColors.OTPField.otpBackground.ignoresSafeArea()
             VStack(alignment: .leading, spacing: 24) {
                 OTPCodeView(code: .constant(code), length: 6, phoneNumber: "+20 101 234 5678")
             }
