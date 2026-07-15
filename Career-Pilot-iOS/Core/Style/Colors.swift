@@ -20,6 +20,7 @@ extension Color {
    static let activeColour = Color("Amber")
    static let primaryTeal = Color("Teal")
    static let primaryTealLight = Color("TealLight")
+   static let primaryNavy = Color("PrimaryNavy")
     
 
     

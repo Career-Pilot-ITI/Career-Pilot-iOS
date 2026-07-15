@@ -1,0 +1,51 @@
+//
+//  ProfileForm.swift
+//  Career-Pilot-iOS
+//
+//  Created by Eyad waleed on 15/07/2026.
+//
+
+import SwiftUI
+
+struct ProfileForm: View {
+    @Binding var userData: UserData
+    let extraCount = 8
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            CustomProfileTextField(icon: "PersonIcon", title: "Full Name", text: $userData.fullName)
+            Divider().background(Color.gray400).frame(height: 4)
+
+            CustomProfileTextField(icon: "email", title: "Email", text: $userData.email)
+            Divider().background(Color.gray400).frame(height: 4)
+
+            CustomProfileTextField(icon: "tittle", title: "CURRENT ROLE / TITTLE", text: $userData.title)
+            Divider().background(Color.gray400).frame(height: 4)
+
+            CustomProfileTextField(icon: "ExperinceLevel", title: "EXPERIENCE LEVEL", text: $userData.experienceLevel)
+
+            Spacer().frame(height: Spacing.lg)
+            Text("SKILLS DETECTED").font(.labelAppSemiBold).foregroundColor(.gray400)
+
+            SkillDetection(skills: userData.skills, extraCount: extraCount)
+        }
+        .padding([.vertical, .horizontal], Spacing.xl)
+        .foregroundColor(.lightBackGround)
+    }
+
+    @ViewBuilder
+    private func SkillDetection(skills: [String], extraCount: Int) -> some View {
+        FlowLayout(spacing: 8) {
+            ForEach(skills, id: \.self) { skill in
+                SkillTag(text: skill)
+            }
+            SkillTag(text: "+\(extraCount) more", isMuted: true)
+        }
+    }
+}
+
+//struct ProfileForm_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileForm(userData: .constant(UserData(email: "eyad@gmail.com", title: "Developer", experienceLevel: "Junior", skills: ["React", "Node.js", "TypeScript", "Python", "AWS", "System Design"], firstName: "Eyad", lastName: "Waleed")))
+//    }
+//}
