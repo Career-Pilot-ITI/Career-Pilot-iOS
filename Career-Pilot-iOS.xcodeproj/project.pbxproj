@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41AC14EB3007626A00502158 /* OTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EA3007626A00502158 /* OTPCodeView.swift */; };
+		41AC14ED3007631C00502158 /* OTPBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EC3007631C00502158 /* OTPBoxView.swift */; };
 		CE8AFF18300712FC0064CC6C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF15300712FC0064CC6C /* Font.swift */; };
 		CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF14300712FC0064CC6C /* Colors.swift */; };
 		CE8AFF1D300718670064CC6C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1C300718670064CC6C /* Round.swift */; };
@@ -60,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41AC14EA3007626A00502158 /* OTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPCodeView.swift; sourceTree = "<group>"; };
+		41AC14EC3007631C00502158 /* OTPBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPBoxView.swift; sourceTree = "<group>"; };
 		CE8AFF14300712FC0064CC6C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CE8AFF15300712FC0064CC6C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		CE8AFF1C300718670064CC6C /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
@@ -304,6 +308,8 @@
 			isa = PBXGroup;
 			children = (
 				D9C1878930065AA400BFF8E9 /* AuthView.swift */,
+				41AC14EA3007626A00502158 /* OTPCodeView.swift */,
+				41AC14EC3007631C00502158 /* OTPBoxView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -551,6 +557,7 @@
 				D9C187C830066A4F00BFF8E9 /* Ex.swift in Sources */,
 				D93938EE3004064600CF4372 /* Career_Pilot_iOS.xcdatamodeld in Sources */,
 				D93938EB3004064600CF4372 /* Persistence.swift in Sources */,
+				41AC14ED3007631C00502158 /* OTPBoxView.swift in Sources */,
 				D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */,
 				D9C187A230065C2200BFF8E9 /* RemoteDataSource.swift in Sources */,
 				D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */,
@@ -565,6 +572,7 @@
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
 				D9C187C630066A4800BFF8E9 /* Routin.swift in Sources */,
 				D9C1879E30065B9800BFF8E9 /* TestDao.swift in Sources */,
+				41AC14EB3007626A00502158 /* OTPCodeView.swift in Sources */,
 				CE8AFF1D300718670064CC6C /* Round.swift in Sources */,
 				D9C187CF30066B2800BFF8E9 /* style.swift in Sources */,
 				D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */,
