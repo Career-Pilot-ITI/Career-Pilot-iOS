@@ -20,11 +20,11 @@ extension Color {
    static let activeColour = Color("Amber")
    static let primaryTeal = Color("Teal")
    static let primaryTealLight = Color("TealLight")
-   static let otpBackground   = Color(red: 0.06, green: 0.09, blue: 0.16)
-   static let otpBoxEmpty     = Color(red: 0.14, green: 0.16, blue: 0.30)
-   static let otpBoxFilled    = Color(red: 0.94, green: 0.42, blue: 0.24)
-   static let otpAccent       = Color(red: 0.20, green: 0.85, blue: 0.65)
-   static let otpSecondaryText = Color.white.opacity(0.55)
+    static let otpBackground    = darkBackGround
+    static let otpBoxEmpty      = Color("NavyMid")
+    static let otpBoxFilled     = activeColour
+    static let otpAccent        = primaryTeal
+    static let otpSecondaryText = gray400
 
     
   }
