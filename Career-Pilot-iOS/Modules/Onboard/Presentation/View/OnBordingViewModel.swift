@@ -19,11 +19,30 @@ enum OnBordingScreenStates{
 class OnBordingViewModel: ObservableObject{
     @Published var currentView: OnBordingViews = .ProfileView
     @Published var screenState: OnBordingScreenStates = .idel
-    @Published var buttonTitle: String = "Continue"
     @Published var navToHomeScreen: Bool = false
-    @Published var userData: UserData = UserData(email: "", title: "", experienceLevel: "", skills: [], firstName: "", lastName: "")
+    @Published var userData: UserData = UserData(email: "", title: "", experienceLevel: "", skills: ["C++"], firstName: "", lastName: "")
+    var buttonTitle: String {
+        switch currentView{
+        case.ProfileView:
+            return "Start Practising"
+        default:
+            return "Continue"
+        }
+    }
+    var isButtonEnabeld: Bool {
+        switch currentView {
+        case .ProfileView:
+            return !userData.fullName.trimmingCharacters(in: .whitespaces).isEmpty &&
+                   !userData.email.trimmingCharacters(in: .whitespaces).isEmpty &&
+                   !userData.title.trimmingCharacters(in: .whitespaces).isEmpty &&
+                   !userData.experienceLevel.trimmingCharacters(in: .whitespaces).isEmpty
+
+        case .UploadCvView, .ChooseTrackView:
+            return true
+        }
+    }
     
-    
+
     func navToNext(){
         switch currentView{
         case.ChooseTrackView:

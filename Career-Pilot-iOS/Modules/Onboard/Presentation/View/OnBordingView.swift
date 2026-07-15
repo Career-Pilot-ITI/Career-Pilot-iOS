@@ -12,7 +12,6 @@ struct OnBordingView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 14){
-            
             //Top Part
             topView
             
@@ -26,19 +25,28 @@ struct OnBordingView: View {
                 OnBordingErrorState()
             }
             
-            Spacer()
-            
             //Bottom Part
+            Spacer()
             CustomButton(buttonTitle: vm.buttonTitle){
-                //VM . next
+                print("Clicked")
+                vm.navToNext()
             }
+            .disabled(!vm.isButtonEnabeld)
+            .opacity(vm.isButtonEnabeld ? 1.0 : 0.5)
         }
     }
     
+    //MARK: Top Screen Part
     private var topView: some View{
         HStack(spacing: 8){
             VStack{
-                BackButton()
+                if vm.currentView.rawValue != 0 {
+                    BackButton()
+                        .onTapGesture {
+                            vm.backByStep()
+                        }
+                }
+                
                 drawDotts
             }
             
@@ -63,15 +71,6 @@ struct OnBordingView: View {
     }
 }
 
-struct BackButton: View{
-    var body: some View{
-        HStack(spacing: 8){
-            Image(systemName: "arrow.left")
-            Text("Back")
-        }
-    }
-}
-
 //Idal state
 struct OnBordingIdelState: View{
     @ObservedObject var vm: OnBordingViewModel
@@ -84,7 +83,7 @@ struct OnBordingIdelState: View{
             case.UploadCvView:
                 Text("UploadCv")
             case.ProfileView:
-                profile(userData: vm.userData)
+                profile(userData: $vm.userData)
             }
         }
     }
@@ -94,6 +93,15 @@ struct OnBordingIdelState: View{
 struct OnBordingErrorState: View{
     var body: some View{
         Text("Error state")
+    }
+}
+
+struct BackButton: View{
+    var body: some View{
+        HStack(spacing: 8){
+            Image(systemName: "arrow.left")
+            Text("Back")
+        }
     }
 }
 
