@@ -8,15 +8,8 @@
 import SwiftUI
 
 struct profile: View {
-    @State private var userData = UserData(
-        email: "eyad@gmail.com",
-        title: "developer",
-        experienceLevel: "Senior",
-        skills: ["C++", "C"],
-        firstName: "Eyad",
-        lastName: "Waleed"
-    )
-
+    @State var userData: UserData
+    
     private var isFormValid: Bool {
         !userData.fullName.trimmingCharacters(in: .whitespaces).isEmpty &&
         !userData.email.trimmingCharacters(in: .whitespaces).isEmpty &&
@@ -57,6 +50,14 @@ struct profile: View {
 
 struct profile_Previews: PreviewProvider {
     static var previews: some View {
-        profile()
+        var userData =  UserData(
+            email: "eyad@gmail.com",
+            title: "developer",
+            experienceLevel: "Senior",
+            skills: ["C++", "C"],
+            firstName: "Eyad",
+            lastName: "Waleed"
+        )
+        ProfileForm(userData: .constant(userData))
     }
 }
