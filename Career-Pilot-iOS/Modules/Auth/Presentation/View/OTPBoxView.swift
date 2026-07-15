@@ -15,7 +15,7 @@ struct OTPBoxView: View {
 
     var body: some View {
         RoundedRectangle(cornerRadius: 12, style: .continuous)
-            .fill(isFilled ? Color.otpBoxFilled : Color.otpBoxEmpty)
+            .fill(isFilled ? AppColors.OTPField.otpBoxFilled : AppColors.OTPField.otpBoxEmpty)
             .frame(width: 48, height: 52)
             .overlay(
                 RoundedRectangle(cornerRadius: 12, style: .continuous)
