@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		41AC14EB3007626A00502158 /* OTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EA3007626A00502158 /* OTPCodeView.swift */; };
 		41AC14ED3007631C00502158 /* OTPBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EC3007631C00502158 /* OTPBoxView.swift */; };
+		41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EE30076D5500502158 /* CustomSearchTextField.swift */; };
 		CE8AFF18300712FC0064CC6C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF15300712FC0064CC6C /* Font.swift */; };
 		CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF14300712FC0064CC6C /* Colors.swift */; };
 		CE8AFF1D300718670064CC6C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1C300718670064CC6C /* Round.swift */; };
@@ -37,7 +38,6 @@
 		D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187B73006623F00BFF8E9 /* NetworkService.swift */; };
 		D9C187BB300662F000BFF8E9 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187BA300662F000BFF8E9 /* HTTPMethod.swift */; };
 		D9C187BE300663F200BFF8E9 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187BD300663F200BFF8E9 /* NetworkError.swift */; };
-		D9C187C230066A3500BFF8E9 /* ShardComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187C130066A3500BFF8E9 /* ShardComponents.swift */; };
 		D9C187C430066A4000BFF8E9 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187C330066A4000BFF8E9 /* Storage.swift */; };
 		D9C187C630066A4800BFF8E9 /* Routin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187C530066A4800BFF8E9 /* Routin.swift */; };
 		D9C187C830066A4F00BFF8E9 /* Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187C730066A4F00BFF8E9 /* Ex.swift */; };
@@ -64,6 +64,7 @@
 /* Begin PBXFileReference section */
 		41AC14EA3007626A00502158 /* OTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPCodeView.swift; sourceTree = "<group>"; };
 		41AC14EC3007631C00502158 /* OTPBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPBoxView.swift; sourceTree = "<group>"; };
+		41AC14EE30076D5500502158 /* CustomSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchTextField.swift; sourceTree = "<group>"; };
 		CE8AFF14300712FC0064CC6C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CE8AFF15300712FC0064CC6C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		CE8AFF1C300718670064CC6C /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 		D9C187B73006623F00BFF8E9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D9C187BA300662F000BFF8E9 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		D9C187BD300663F200BFF8E9 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		D9C187C130066A3500BFF8E9 /* ShardComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShardComponents.swift; sourceTree = "<group>"; };
 		D9C187C330066A4000BFF8E9 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		D9C187C530066A4800BFF8E9 /* Routin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routin.swift; sourceTree = "<group>"; };
 		D9C187C730066A4F00BFF8E9 /* Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ex.swift; sourceTree = "<group>"; };
@@ -353,7 +353,7 @@
 		D9C187B0300660D500BFF8E9 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				D9C187C130066A3500BFF8E9 /* ShardComponents.swift */,
+				41AC14EE30076D5500502158 /* CustomSearchTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -559,6 +559,7 @@
 				D93938EB3004064600CF4372 /* Persistence.swift in Sources */,
 				41AC14ED3007631C00502158 /* OTPBoxView.swift in Sources */,
 				D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */,
+				41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */,
 				D9C187A230065C2200BFF8E9 /* RemoteDataSource.swift in Sources */,
 				D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */,
 				D9C1879530065AFC00BFF8E9 /* UseCases.swift in Sources */,
@@ -577,7 +578,6 @@
 				D9C187CF30066B2800BFF8E9 /* style.swift in Sources */,
 				D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */,
 				D9C187BB300662F000BFF8E9 /* HTTPMethod.swift in Sources */,
-				D9C187C230066A3500BFF8E9 /* ShardComponents.swift in Sources */,
 				D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */,
 				D9C187A430065C2B00BFF8E9 /* RepoImp.swift in Sources */,
 				D9C1878A30065AA400BFF8E9 /* AuthView.swift in Sources */,
