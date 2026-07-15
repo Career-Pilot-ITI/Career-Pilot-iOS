@@ -77,26 +77,26 @@ struct FailureWaitingScreen: View {
     }
 }
 
-#Preview("Payment") {
-    SuccessPaymentScreen()
-}
-
-#Preview("Calling") {
-    CallingWaitingScreen()
-}
-
-#Preview("Uploading") {
-    UploadingWaitingScreen()
-}
-
-#Preview("Listening") {
-    ListeningWaitingScreen()
-}
-
-#Preview("Recording") {
-    RecordingWaitingScreen()
-}
-
-#Preview("Failure") {
-    FailureWaitingScreen()
-}
+//#Preview("Payment") {
+//    SuccessPaymentScreen()
+//}
+//
+//#Preview("Calling") {
+//    CallingWaitingScreen()
+//}
+//
+//#Preview("Uploading") {
+//    UploadingWaitingScreen()
+//}
+//
+//#Preview("Listening") {
+//    ListeningWaitingScreen()
+//}
+//
+//#Preview("Recording") {
+//    RecordingWaitingScreen()
+//}
+//
+//#Preview("Failure") {
+//    FailureWaitingScreen()
+//}
