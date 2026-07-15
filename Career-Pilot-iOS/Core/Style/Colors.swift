@@ -37,6 +37,14 @@ enum AppColors {
         static let iconInvalid = AppColors.error
         static let iconDefault = AppColors.secondaryText
     }
+    
+    enum OTPField {
+        static let otpBackground    = Color.darkBackGround
+        static let otpBoxEmpty      = Color("NavyMid")
+        static let otpBoxFilled     = Color.activeColour
+        static let otpAccent        = Color.primaryTeal
+        static let otpSecondaryText = Color.gray400
+    }
 }
 
 extension Color {
@@ -52,37 +60,9 @@ extension Color {
    static let activeColour = Color("Amber")
    static let primaryTeal = Color("Teal")
    static let primaryTealLight = Color("TealLight")
-   static let otpBackground    = darkBackGround
-   static let otpBoxEmpty      = Color("NavyMid")
-   static let otpBoxFilled     = activeColour
-   static let otpAccent        = primaryTeal
-   static let otpSecondaryText = gray400    
   }
 
 
-extension Color {
-    
-    /// create color from a hexa
-    init(hex: String) {
-        let cleaned = hex.trimmingCharacters(in: .whitespacesAndNewlines)
-            .replacingOccurrences(of: "#", with: "")
-        var rgb: UInt64 = 0
-        Scanner(string: cleaned).scanHexInt64(&rgb)
 
-        let r = Double((rgb & 0xFF0000) >> 16) / 255
-        let g = Double((rgb & 0x00FF00) >> 8) / 255
-        let b = Double(rgb & 0x0000FF) / 255
-
-        self.init(red: r, green: g, blue: b)
-    }
-
-    init(_ name: String, bundle: Bundle?, fallback: Color) {
-        if UIColor(named: name, in: bundle, compatibleWith: nil) != nil {
-            self = Color(name, bundle: bundle)
-        } else {
-            self = fallback
-        }
-    }
-}
 
 
