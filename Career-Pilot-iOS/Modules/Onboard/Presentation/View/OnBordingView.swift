@@ -29,11 +29,10 @@ struct OnBordingView: View {
                 
                 //Bottom Part
                 Spacer()
-                CustomButton(buttonTitle: vm.buttonTitle){
+                CustomButton(isButtonEnabeld: vm.isButtonEnabeld, buttonTitle: vm.buttonTitle){
                     print("Clicked")
                     vm.navToNext()
                 }
-                .disabled(!vm.isButtonEnabeld)
                 .opacity(vm.isButtonEnabeld ? 1.0 : 0.5)
             }
             .navigationDestination(isPresented: $vm.navToHomeScreen){

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CustomButton: View {
     //Properties
+    @State var isButtonEnabeld: Bool = true
     var showArrow: Bool = true
     var buttonTitle: String
     
@@ -32,6 +33,7 @@ struct CustomButton: View {
                     }
                 }
             }
+            .disabled(isButtonEnabeld)
             .onTapGesture(perform: onClick)
     }
 }
