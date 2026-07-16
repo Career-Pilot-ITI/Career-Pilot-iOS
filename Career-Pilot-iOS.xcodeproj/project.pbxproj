@@ -10,6 +10,12 @@
 		41AC14EB3007626A00502158 /* OTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EA3007626A00502158 /* OTPCodeView.swift */; };
 		41AC14ED3007631C00502158 /* OTPBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EC3007631C00502158 /* OTPBoxView.swift */; };
 		41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EE30076D5500502158 /* CustomSearchTextField.swift */; };
+		41C6A2363008008D0035EFBF /* SendingOTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A2353008008D0035EFBF /* SendingOTPCodeView.swift */; };
+		41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A237300804650035EFBF /* SoundWaveView.swift */; };
+		41C6A23A30080AE10035EFBF /* SuccessOTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A23930080AE10035EFBF /* SuccessOTPCodeView.swift */; };
+		41C6A23C30080BDA0035EFBF /* OTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A23B30080BDA0035EFBF /* OTPView.swift */; };
+		41C6A23E30083FDB0035EFBF /* PhoneEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A23D30083FDB0035EFBF /* PhoneEntryView.swift */; };
+		41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A23F3008609C0035EFBF /* AppRoute.swift */; };
 		61D8F2E6300750FC0088F170 /* profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8F2E5300750FC0088F170 /* profile.swift */; };
 		61D8F2F03007523E0088F170 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8F2EF3007523E0088F170 /* HeaderView.swift */; };
 		61D8F2F23007543A0088F170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61D8F2F13007543A0088F170 /* Assets.xcassets */; };
@@ -99,6 +105,12 @@
 		41AC14EA3007626A00502158 /* OTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPCodeView.swift; sourceTree = "<group>"; };
 		41AC14EC3007631C00502158 /* OTPBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPBoxView.swift; sourceTree = "<group>"; };
 		41AC14EE30076D5500502158 /* CustomSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchTextField.swift; sourceTree = "<group>"; };
+		41C6A2353008008D0035EFBF /* SendingOTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingOTPCodeView.swift; sourceTree = "<group>"; };
+		41C6A237300804650035EFBF /* SoundWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundWaveView.swift; sourceTree = "<group>"; };
+		41C6A23930080AE10035EFBF /* SuccessOTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessOTPCodeView.swift; sourceTree = "<group>"; };
+		41C6A23B30080BDA0035EFBF /* OTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPView.swift; sourceTree = "<group>"; };
+		41C6A23D30083FDB0035EFBF /* PhoneEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneEntryView.swift; sourceTree = "<group>"; };
+		41C6A23F3008609C0035EFBF /* AppRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoute.swift; sourceTree = "<group>"; };
 		61D8F2E5300750FC0088F170 /* profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profile.swift; sourceTree = "<group>"; };
 		61D8F2EF3007523E0088F170 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		61D8F2F13007543A0088F170 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Career-Pilot-iOS/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
@@ -196,6 +208,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41C6A2343007FFCF0035EFBF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				41AC14EA3007626A00502158 /* OTPCodeView.swift */,
+				41AC14EC3007631C00502158 /* OTPBoxView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		61D8F2DE300750AF0088F170 /* Onboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,9 +463,9 @@
 		D9C1878530065A5900BFF8E9 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				D9C1878830065A9700BFF8E9 /* Presentation */,
-				D9C1878730065A6B00BFF8E9 /* Domain */,
 				D9C1878630065A6400BFF8E9 /* Data */,
+				D9C1878730065A6B00BFF8E9 /* Domain */,
+				D9C1878830065A9700BFF8E9 /* Presentation */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -472,8 +493,8 @@
 		D9C1878830065A9700BFF8E9 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				D9C187A730065C6F00BFF8E9 /* ViewModels */,
 				D9C187A830065C7300BFF8E9 /* View */,
-				D9C187A730065C6F00BFF8E9 /* VM */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -544,20 +565,22 @@
 			path = RepoImp;
 			sourceTree = "<group>";
 		};
-		D9C187A730065C6F00BFF8E9 /* VM */ = {
+		D9C187A730065C6F00BFF8E9 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				D9C187A930065C8700BFF8E9 /* AuthViewModel.swift */,
 			);
-			path = VM;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		D9C187A830065C7300BFF8E9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D9C1878930065AA400BFF8E9 /* AuthView.swift */,
-				41AC14EA3007626A00502158 /* OTPCodeView.swift */,
-				41AC14EC3007631C00502158 /* OTPBoxView.swift */,
+				41C6A2343007FFCF0035EFBF /* Components */,
+				41C6A2353008008D0035EFBF /* SendingOTPCodeView.swift */,
+				41C6A23930080AE10035EFBF /* SuccessOTPCodeView.swift */,
+				41C6A23B30080BDA0035EFBF /* OTPView.swift */,
+				41C6A23D30083FDB0035EFBF /* PhoneEntryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -606,6 +629,7 @@
 				41AC14EE30076D5500502158 /* CustomSearchTextField.swift */,
 				D935DFCA30078012009DF855 /* CustomButton.swift */,
 				D935DFCE300789EF009DF855 /* CvUploadingView.swift */,
+				41C6A237300804650035EFBF /* SoundWaveView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -630,6 +654,7 @@
 			isa = PBXGroup;
 			children = (
 				D9C187C530066A4800BFF8E9 /* Routin.swift */,
+				41C6A23F3008609C0035EFBF /* AppRoute.swift */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
@@ -811,6 +836,8 @@
 				CE8AFF18300712FC0064CC6C /* Font.swift in Sources */,
 				CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */,
 				D9C187C830066A4F00BFF8E9 /* Colors+Extension.swift in Sources */,
+				41C6A23A30080AE10035EFBF /* SuccessOTPCodeView.swift in Sources */,
+				41C6A23E30083FDB0035EFBF /* PhoneEntryView.swift in Sources */,
 				61D8F303300780C50088F170 /* FreeSessionBanner.swift in Sources */,
 				D935DFFF30082AA9009DF855 /* UploadCvView.swift in Sources */,
 				D98A79733008DB2F00DFDC6B /* ChoseTrackView.swift in Sources */,
@@ -819,6 +846,7 @@
 				D935DFCB30078012009DF855 /* CustomButton.swift in Sources */,
 				D93938EE3004064600CF4372 /* Career_Pilot_iOS.xcdatamodeld in Sources */,
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
+				41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */,
 				D93938EB3004064600CF4372 /* Persistence.swift in Sources */,
 				41AC14ED3007631C00502158 /* OTPBoxView.swift in Sources */,
 				D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */,
@@ -836,6 +864,8 @@
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
 				61D8F2F8300761200088F170 /* CustomProfileTextField.swift in Sources */,
 				D9C187C430066A4000BFF8E9 /* Storage.swift in Sources */,
+				41C6A2363008008D0035EFBF /* SendingOTPCodeView.swift in Sources */,
+				41C6A23C30080BDA0035EFBF /* OTPView.swift in Sources */,
 				D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */,
 				D9C187BE300663F200BFF8E9 /* NetworkError.swift in Sources */,
 				D9C187A030065BA700BFF8E9 /* TestLocalDataSource.swift in Sources */,
@@ -843,6 +873,7 @@
 				CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */,
 				61D8F2FA300778520088F170 /* SkillTag.swift in Sources */,
 				CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */,
+				41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */,
 				D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */,
 				D9C1879730065B0400BFF8E9 /* Entity.swift in Sources */,
 				CECC20E23007DB1B00DC450D /* WaitingIndicatorState.swift in Sources */,
@@ -868,7 +899,6 @@
 				D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */,
 				D9C187A430065C2B00BFF8E9 /* RepoImp.swift in Sources */,
 				CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */,
-				D9C1878A30065AA400BFF8E9 /* AuthView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

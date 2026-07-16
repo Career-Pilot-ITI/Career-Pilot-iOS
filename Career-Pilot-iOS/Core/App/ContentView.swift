@@ -10,13 +10,31 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    
-    
-    @State var flag: Bool = true
+    @StateObject private var coordiantor = AppCoordinator()
     
     var body: some View {
-        //        Text("Hello world..")
-        OnBordingView()
+        NavigationStack(path: $coordiantor.path) {
+            PhoneEntryView()
+                .navigationDestination(for: AppRoute.self) { route in
+                    destination(for:route)
+                }
+        }
+        .environmentObject(coordiantor)
     }
+    
+    @ViewBuilder
+        private func destination(for route: AppRoute) -> some View {
+            switch route {
+            case .phoneEntryScreen:
+                PhoneEntryView()
+            case .sendingOTPScreen:
+                SendingOTPCodeView(phoneNumber: "01012355385")
+            case .otpScreen:
+                OTPView()
+            case .successOTPScreen:
+                SuccessOTPCodeView()
+            }
+        }
+    
 }
 

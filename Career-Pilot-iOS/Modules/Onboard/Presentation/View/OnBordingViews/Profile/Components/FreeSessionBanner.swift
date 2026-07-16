@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FreeSessionBanner: View {
     var body: some View {
-        HStack(spacing: Spacing.sm) {
+        HStack(spacing: Spacing.s8) {
             Image("sparkles")
                 .foregroundColor(.activeColour)
                 .font(.system(size: 16, weight: .semibold))
@@ -20,14 +20,14 @@ struct FreeSessionBanner: View {
 
             Spacer()
         }
-        .padding(.horizontal, Spacing.lg)
-        .padding(.vertical, Spacing.lg)
+        .padding(.horizontal, Spacing.s16)
+        .padding(.vertical, Spacing.s16)
         .background(
-            RoundedRectangle(cornerRadius: Radius.lg)
+            RoundedRectangle(cornerRadius: Radius.r12)
                 .fill(Color.activeColour.opacity(0.08))
         )
         .overlay(
-            RoundedRectangle(cornerRadius: Radius.lg)
+            RoundedRectangle(cornerRadius: Radius.r12)
                 .stroke(Color.activeColour.opacity(0.25), lineWidth: 1)
         )
     }
