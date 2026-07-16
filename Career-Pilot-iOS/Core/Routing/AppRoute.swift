@@ -9,11 +9,16 @@ import Foundation
 import SwiftUI
 
 enum AppRoute : Hashable {
+    // MARK : Auth
     case phoneEntryScreen
     case sendingOTPScreen
     case otpScreen
     case successOTPScreen
+    
+    // MARK : Onboarding
+    case onboardingScreen(vm : OnBordingViewModel)
 }
+
 
 final class AppCoordinator : ObservableObject {
     @Published var path = NavigationPath()

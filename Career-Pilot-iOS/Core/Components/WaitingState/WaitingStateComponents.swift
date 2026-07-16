@@ -100,7 +100,7 @@ struct SuccessPaymentScreen_Previews: PreviewProvider {
 
 struct CallingWaitingScreen_Previews: PreviewProvider {
     static var previews: some View {
-        CallingWaitingScreen()
+        CallingWaitingScreen(phoneNumber: "")
             .previewDisplayName("Calling")
     }
 }

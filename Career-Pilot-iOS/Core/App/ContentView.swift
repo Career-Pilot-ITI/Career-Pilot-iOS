@@ -33,6 +33,8 @@ struct ContentView: View {
                 OTPView()
             case .successOTPScreen:
                 SuccessOTPCodeView()
+            case .onboardingScreen(let vm):
+                OnBordingView(vm: vm)
             }
         }
     
