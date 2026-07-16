@@ -8,21 +8,9 @@
 import SwiftUI
 
 struct profile: View {
-    @State private var userData = UserData(
-        email: "eyad@gmail.com",
-        title: "developer",
-        experienceLevel: "Senior",
-        skills: ["C++", "C"],
-        firstName: "Eyad",
-        lastName: "Waleed"
-    )
+    @Binding var userData: UserData
+    
 
-    private var isFormValid: Bool {
-        !userData.fullName.trimmingCharacters(in: .whitespaces).isEmpty &&
-        !userData.email.trimmingCharacters(in: .whitespaces).isEmpty &&
-        !userData.title.trimmingCharacters(in: .whitespaces).isEmpty &&
-        !userData.experienceLevel.trimmingCharacters(in: .whitespaces).isEmpty
-    }
 
     var body: some View {
         VStack(spacing: 24) {
@@ -41,14 +29,6 @@ struct profile: View {
                 )
 
             FreeSessionBanner()
-
-            CustomButton(buttonTitle: "Start Practising") {
-
-            }
-            .disabled(!isFormValid)
-            .opacity(isFormValid ? 1.0 : 0.5)
-
-
         }
         .padding(.horizontal, Spacing.xl)
         .background(Color.gray100)
@@ -57,6 +37,14 @@ struct profile: View {
 
 struct profile_Previews: PreviewProvider {
     static var previews: some View {
-        profile()
+        let userData =  UserData(
+            email: "eyad@gmail.com",
+            title: "developer",
+            experienceLevel: "Senior",
+            skills: ["C++", "C"],
+            firstName: "Eyad",
+            lastName: "Waleed"
+        )
+        ProfileForm(userData: .constant(userData))
     }
 }

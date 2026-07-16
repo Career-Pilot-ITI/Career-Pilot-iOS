@@ -23,12 +23,6 @@
 		CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF14300712FC0064CC6C /* Colors.swift */; };
 		CE8AFF1D300718670064CC6C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1C300718670064CC6C /* Round.swift */; };
 		CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1E3007187D0064CC6C /* Spaces.swift */; };
-		CECC20E23007DB1B00DC450D /* WaitingIndicatorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E13007DB1B00DC450D /* WaitingIndicatorState.swift */; };
-		CECC20E43007DB2C00DC450D /* WaitingStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E33007DB2C00DC450D /* WaitingStateView.swift */; };
-		CECC20E63007DB3D00DC450D /* PulsingIconBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E53007DB3D00DC450D /* PulsingIconBadge.swift */; };
-		CECC20E83007DB4D00DC450D /* WaveformBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E73007DB4D00DC450D /* WaveformBars.swift */; };
-		CECC20EA3007DB5E00DC450D /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E93007DB5E00DC450D /* ShakeEffect.swift */; };
-		CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20EB3007DD1D00DC450D /* WaitingStateComponents.swift */; };
 		CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF21300726660064CC6C /* PhoneTextField.swift */; };
 		CECC20D03007AD1200DC450D /* PhoneFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20CF3007AD1200DC450D /* PhoneFieldState.swift */; };
 		CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20D13007AD2800DC450D /* PhoneValidator.swift */; };
@@ -37,8 +31,17 @@
 		CECC20D83007B60900DC450D /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20D73007B60900DC450D /* AppStrings.swift */; };
 		CECC20DA3007BE6800DC450D /* PhoneFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20D93007BE6800DC450D /* PhoneFieldViewModel.swift */; };
 		CECC20DD3007C59F00DC450D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CECC20DB3007C59F00DC450D /* Localizable.strings */; };
+		CECC20E23007DB1B00DC450D /* WaitingIndicatorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E13007DB1B00DC450D /* WaitingIndicatorState.swift */; };
+		CECC20E43007DB2C00DC450D /* WaitingStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E33007DB2C00DC450D /* WaitingStateView.swift */; };
+		CECC20E63007DB3D00DC450D /* PulsingIconBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E53007DB3D00DC450D /* PulsingIconBadge.swift */; };
+		CECC20E83007DB4D00DC450D /* WaveformBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E73007DB4D00DC450D /* WaveformBars.swift */; };
+		CECC20EA3007DB5E00DC450D /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E93007DB5E00DC450D /* ShakeEffect.swift */; };
+		CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20EB3007DD1D00DC450D /* WaitingStateComponents.swift */; };
 		D935DFCB30078012009DF855 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFCA30078012009DF855 /* CustomButton.swift */; };
 		D935DFCF300789EF009DF855 /* CvUploadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFCE300789EF009DF855 /* CvUploadingView.swift */; };
+		D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFF930080448009DF855 /* OnBordingView.swift */; };
+		D935DFFC3008045A009DF855 /* OnBordingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFFB3008045A009DF855 /* OnBordingViewModel.swift */; };
+		D935DFFF30082AA9009DF855 /* UploadCvView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFFE30082AA9009DF855 /* UploadCvView.swift */; };
 		D93938E23004064400CF4372 /* Career_Pilot_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93938E13004064400CF4372 /* Career_Pilot_iOSApp.swift */; };
 		D93938E43004064400CF4372 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93938E33004064400CF4372 /* ContentView.swift */; };
 		D93938E93004064600CF4372 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93938E83004064600CF4372 /* Preview Assets.xcassets */; };
@@ -47,6 +50,13 @@
 		D93938F83004064600CF4372 /* Career_Pilot_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93938F73004064600CF4372 /* Career_Pilot_iOSTests.swift */; };
 		D93939023004064600CF4372 /* Career_Pilot_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93939013004064600CF4372 /* Career_Pilot_iOSUITests.swift */; };
 		D93939043004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93939033004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift */; };
+		D98A79703008D9A300DFDC6B /* CvViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A796F3008D9A300DFDC6B /* CvViewInfo.swift */; };
+		D98A79733008DB2F00DFDC6B /* ChoseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79723008DB2F00DFDC6B /* ChoseTrackView.swift */; };
+		D98A79753008DFD800DFDC6B /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79743008DFD800DFDC6B /* Track.swift */; };
+		D98A79773008E19900DFDC6B /* TrackChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79763008E19900DFDC6B /* TrackChip.swift */; };
+		D98A79793008EB9200DFDC6B /* ChoseTrackViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79783008EB9200DFDC6B /* ChoseTrackViewInfo.swift */; };
+		D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A797C300903BF00DFDC6B /* UploadeCvErrors.swift */; };
+		D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */; };
 		D9C1878A30065AA400BFF8E9 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1878930065AA400BFF8E9 /* AuthView.swift */; };
 		D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879230065AF100BFF8E9 /* Repo.swift */; };
 		D9C1879530065AFC00BFF8E9 /* UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879430065AFC00BFF8E9 /* UseCases.swift */; };
@@ -102,12 +112,6 @@
 		CE8AFF15300712FC0064CC6C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		CE8AFF1C300718670064CC6C /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		CE8AFF1E3007187D0064CC6C /* Spaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spaces.swift; sourceTree = "<group>"; };
-		CECC20E13007DB1B00DC450D /* WaitingIndicatorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingIndicatorState.swift; sourceTree = "<group>"; };
-		CECC20E33007DB2C00DC450D /* WaitingStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingStateView.swift; sourceTree = "<group>"; };
-		CECC20E53007DB3D00DC450D /* PulsingIconBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingIconBadge.swift; sourceTree = "<group>"; };
-		CECC20E73007DB4D00DC450D /* WaveformBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformBars.swift; sourceTree = "<group>"; };
-		CECC20E93007DB5E00DC450D /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
-		CECC20EB3007DD1D00DC450D /* WaitingStateComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingStateComponents.swift; sourceTree = "<group>"; };
 		CE8AFF21300726660064CC6C /* PhoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTextField.swift; sourceTree = "<group>"; };
 		CECC20CF3007AD1200DC450D /* PhoneFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFieldState.swift; sourceTree = "<group>"; };
 		CECC20D13007AD2800DC450D /* PhoneValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneValidator.swift; sourceTree = "<group>"; };
@@ -116,8 +120,17 @@
 		CECC20D73007B60900DC450D /* AppStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
 		CECC20D93007BE6800DC450D /* PhoneFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFieldViewModel.swift; sourceTree = "<group>"; };
 		CECC20DC3007C59F00DC450D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CECC20E13007DB1B00DC450D /* WaitingIndicatorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingIndicatorState.swift; sourceTree = "<group>"; };
+		CECC20E33007DB2C00DC450D /* WaitingStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingStateView.swift; sourceTree = "<group>"; };
+		CECC20E53007DB3D00DC450D /* PulsingIconBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingIconBadge.swift; sourceTree = "<group>"; };
+		CECC20E73007DB4D00DC450D /* WaveformBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformBars.swift; sourceTree = "<group>"; };
+		CECC20E93007DB5E00DC450D /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
+		CECC20EB3007DD1D00DC450D /* WaitingStateComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingStateComponents.swift; sourceTree = "<group>"; };
 		D935DFCA30078012009DF855 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		D935DFCE300789EF009DF855 /* CvUploadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvUploadingView.swift; sourceTree = "<group>"; };
+		D935DFF930080448009DF855 /* OnBordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingView.swift; sourceTree = "<group>"; };
+		D935DFFB3008045A009DF855 /* OnBordingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnBordingViewModel.swift; path = "Career-Pilot-iOS/Modules/Onboard/Presentation/View/OnBordingViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		D935DFFE30082AA9009DF855 /* UploadCvView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadCvView.swift; sourceTree = "<group>"; };
 		D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career-Pilot-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93938E13004064400CF4372 /* Career_Pilot_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career_Pilot_iOSApp.swift; sourceTree = "<group>"; };
 		D93938E33004064400CF4372 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -129,6 +142,13 @@
 		D93938FD3004064600CF4372 /* Career-Pilot-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Career-Pilot-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93939013004064600CF4372 /* Career_Pilot_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career_Pilot_iOSUITests.swift; sourceTree = "<group>"; };
 		D93939033004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career_Pilot_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D98A796F3008D9A300DFDC6B /* CvViewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvViewInfo.swift; sourceTree = "<group>"; };
+		D98A79723008DB2F00DFDC6B /* ChoseTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseTrackView.swift; sourceTree = "<group>"; };
+		D98A79743008DFD800DFDC6B /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		D98A79763008E19900DFDC6B /* TrackChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackChip.swift; sourceTree = "<group>"; };
+		D98A79783008EB9200DFDC6B /* ChoseTrackViewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseTrackViewInfo.swift; sourceTree = "<group>"; };
+		D98A797C300903BF00DFDC6B /* UploadeCvErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadeCvErrors.swift; sourceTree = "<group>"; };
+		D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingErrorState.swift; sourceTree = "<group>"; };
 		D9C1878930065AA400BFF8E9 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		D9C1879230065AF100BFF8E9 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		D9C1879430065AFC00BFF8E9 /* UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCases.swift; sourceTree = "<group>"; };
@@ -176,38 +196,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CECC20E03007DAFF00DC450D /* WaitingState */ = {
-			isa = PBXGroup;
-			children = (
-				CECC20E13007DB1B00DC450D /* WaitingIndicatorState.swift */,
-				CECC20E33007DB2C00DC450D /* WaitingStateView.swift */,
-				CECC20E53007DB3D00DC450D /* PulsingIconBadge.swift */,
-				CECC20E73007DB4D00DC450D /* WaveformBars.swift */,
-				CECC20E93007DB5E00DC450D /* ShakeEffect.swift */,
-				CECC20EB3007DD1D00DC450D /* WaitingStateComponents.swift */,
-			);
-			path = WaitingState;
-      sourceTree = "<group>";
-		};
-		CECC20CE3007ACE100DC450D /* PhoneField */ = {
-			isa = PBXGroup;
-			children = (
-				CE8AFF21300726660064CC6C /* PhoneTextField.swift */,
-				CECC20CF3007AD1200DC450D /* PhoneFieldState.swift */,
-				CECC20D13007AD2800DC450D /* PhoneValidator.swift */,
-				CECC20D33007AD3A00DC450D /* CountryCode.swift */,
-				CECC20D53007AD4E00DC450D /* CountryPickerSheet.swift */,
-				CECC20D93007BE6800DC450D /* PhoneFieldViewModel.swift */,
-			);
-			path = PhoneField;
-      sourceTree = "<group>";
-		};
 		61D8F2DE300750AF0088F170 /* Onboard */ = {
 			isa = PBXGroup;
 			children = (
-				61D8F2E1300750C70088F170 /* Data */,
-				61D8F2E0300750BE0088F170 /* Domain */,
 				61D8F2DF300750B70088F170 /* Presentation */,
+				61D8F2E0300750BE0088F170 /* Domain */,
+				61D8F2E1300750C70088F170 /* Data */,
 			);
 			path = Onboard;
 			sourceTree = "<group>";
@@ -215,8 +209,8 @@
 		61D8F2DF300750B70088F170 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				61D8F2E3300750D70088F170 /* ViewModel */,
 				61D8F2E2300750D00088F170 /* View */,
+				61D8F2E3300750D70088F170 /* ViewModel */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -224,6 +218,9 @@
 		61D8F2E0300750BE0088F170 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				D935DFF43008020B009DF855 /* Entities */,
+				D935DFF330080203009DF855 /* UseCases */,
+				D935DFF2300801FB009DF855 /* Repo */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -238,8 +235,9 @@
 		61D8F2E2300750D00088F170 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				61D8F2FD30077A2D0088F170 /* Model */,
-				61D8F2E4300750E60088F170 /* profile */,
+				D935DFF930080448009DF855 /* OnBordingView.swift */,
+				D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */,
+				D935DFF730080430009DF855 /* OnBordingViews */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -247,25 +245,18 @@
 		61D8F2E3300750D70088F170 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D935DFFB3008045A009DF855 /* OnBordingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		61D8F2E4300750E60088F170 /* profile */ = {
+		61D8F2E4300750E60088F170 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				61D8F30130077F070088F170 /* MainView */,
 				61D8F30030077EEC0088F170 /* Components */,
 			);
-			path = profile;
-			sourceTree = "<group>";
-		};
-		61D8F2FD30077A2D0088F170 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				61D8F2FE30077A410088F170 /* UserData.swift */,
-			);
-			path = Model;
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		61D8F30030077EEC0088F170 /* Components */ = {
@@ -287,6 +278,74 @@
 				61D8F2F5300760680088F170 /* ProfileForm.swift */,
 			);
 			path = MainView;
+			sourceTree = "<group>";
+		};
+		CECC20CE3007ACE100DC450D /* PhoneField */ = {
+			isa = PBXGroup;
+			children = (
+				CE8AFF21300726660064CC6C /* PhoneTextField.swift */,
+				CECC20CF3007AD1200DC450D /* PhoneFieldState.swift */,
+				CECC20D13007AD2800DC450D /* PhoneValidator.swift */,
+				CECC20D33007AD3A00DC450D /* CountryCode.swift */,
+				CECC20D53007AD4E00DC450D /* CountryPickerSheet.swift */,
+				CECC20D93007BE6800DC450D /* PhoneFieldViewModel.swift */,
+			);
+			path = PhoneField;
+			sourceTree = "<group>";
+		};
+		CECC20E03007DAFF00DC450D /* WaitingState */ = {
+			isa = PBXGroup;
+			children = (
+				CECC20E13007DB1B00DC450D /* WaitingIndicatorState.swift */,
+				CECC20E33007DB2C00DC450D /* WaitingStateView.swift */,
+				CECC20E53007DB3D00DC450D /* PulsingIconBadge.swift */,
+				CECC20E73007DB4D00DC450D /* WaveformBars.swift */,
+				CECC20E93007DB5E00DC450D /* ShakeEffect.swift */,
+				CECC20EB3007DD1D00DC450D /* WaitingStateComponents.swift */,
+			);
+			path = WaitingState;
+			sourceTree = "<group>";
+		};
+		D935DFF2300801FB009DF855 /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		D935DFF330080203009DF855 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		D935DFF43008020B009DF855 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				D98A797B300903AE00DFDC6B /* UploadeCV */,
+				D98A797A3008EBA200DFDC6B /* SelectedTrack */,
+				61D8F2FE30077A410088F170 /* UserData.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		D935DFF730080430009DF855 /* OnBordingViews */ = {
+			isa = PBXGroup;
+			children = (
+				D98A79713008DB1100DFDC6B /* ChoseTrack */,
+				D935DFFD30082A8B009DF855 /* UploadCV */,
+				61D8F2E4300750E60088F170 /* Profile */,
+			);
+			path = OnBordingViews;
+			sourceTree = "<group>";
+		};
+		D935DFFD30082A8B009DF855 /* UploadCV */ = {
+			isa = PBXGroup;
+			children = (
+				D935DFFE30082AA9009DF855 /* UploadCvView.swift */,
+			);
+			path = UploadCV;
 			sourceTree = "<group>";
 		};
 		D93938D53004064400CF4372 = {
@@ -342,6 +401,33 @@
 				D93939033004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift */,
 			);
 			path = "Career-Pilot-iOSUITests";
+			sourceTree = "<group>";
+		};
+		D98A79713008DB1100DFDC6B /* ChoseTrack */ = {
+			isa = PBXGroup;
+			children = (
+				D98A79723008DB2F00DFDC6B /* ChoseTrackView.swift */,
+				D98A79763008E19900DFDC6B /* TrackChip.swift */,
+			);
+			path = ChoseTrack;
+			sourceTree = "<group>";
+		};
+		D98A797A3008EBA200DFDC6B /* SelectedTrack */ = {
+			isa = PBXGroup;
+			children = (
+				D98A79743008DFD800DFDC6B /* Track.swift */,
+				D98A79783008EB9200DFDC6B /* ChoseTrackViewInfo.swift */,
+			);
+			path = SelectedTrack;
+			sourceTree = "<group>";
+		};
+		D98A797B300903AE00DFDC6B /* UploadeCV */ = {
+			isa = PBXGroup;
+			children = (
+				D98A796F3008D9A300DFDC6B /* CvViewInfo.swift */,
+				D98A797C300903BF00DFDC6B /* UploadeCvErrors.swift */,
+			);
+			path = UploadeCV;
 			sourceTree = "<group>";
 		};
 		D9C1878430065A4800BFF8E9 /* Modules */ = {
@@ -726,16 +812,22 @@
 				CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */,
 				D9C187C830066A4F00BFF8E9 /* Colors+Extension.swift in Sources */,
 				61D8F303300780C50088F170 /* FreeSessionBanner.swift in Sources */,
+				D935DFFF30082AA9009DF855 /* UploadCvView.swift in Sources */,
+				D98A79733008DB2F00DFDC6B /* ChoseTrackView.swift in Sources */,
 				61D8F2F6300760680088F170 /* ProfileForm.swift in Sources */,
+				D98A79793008EB9200DFDC6B /* ChoseTrackViewInfo.swift in Sources */,
 				D935DFCB30078012009DF855 /* CustomButton.swift in Sources */,
 				D93938EE3004064600CF4372 /* Career_Pilot_iOS.xcdatamodeld in Sources */,
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
 				D93938EB3004064600CF4372 /* Persistence.swift in Sources */,
 				41AC14ED3007631C00502158 /* OTPBoxView.swift in Sources */,
 				D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */,
+				D98A79703008D9A300DFDC6B /* CvViewInfo.swift in Sources */,
 				CECC20D03007AD1200DC450D /* PhoneFieldState.swift in Sources */,
 				41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */,
+				D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */,
 				D9C187A230065C2200BFF8E9 /* RemoteDataSource.swift in Sources */,
+				D98A79753008DFD800DFDC6B /* Track.swift in Sources */,
 				D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */,
 				CECC20D83007B60900DC450D /* AppStrings.swift in Sources */,
 				D9C1879530065AFC00BFF8E9 /* UseCases.swift in Sources */,
@@ -744,16 +836,19 @@
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
 				61D8F2F8300761200088F170 /* CustomProfileTextField.swift in Sources */,
 				D9C187C430066A4000BFF8E9 /* Storage.swift in Sources */,
+				D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */,
 				D9C187BE300663F200BFF8E9 /* NetworkError.swift in Sources */,
 				D9C187A030065BA700BFF8E9 /* TestLocalDataSource.swift in Sources */,
 				CECC20E63007DB3D00DC450D /* PulsingIconBadge.swift in Sources */,
 				CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */,
 				61D8F2FA300778520088F170 /* SkillTag.swift in Sources */,
 				CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */,
+				D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */,
 				D9C1879730065B0400BFF8E9 /* Entity.swift in Sources */,
 				CECC20E23007DB1B00DC450D /* WaitingIndicatorState.swift in Sources */,
 				D93938E23004064400CF4372 /* Career_Pilot_iOSApp.swift in Sources */,
 				61D8F2FC300779ED0088F170 /* Flowlayout.swift in Sources */,
+				D98A79773008E19900DFDC6B /* TrackChip.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
 				CECC20E43007DB2C00DC450D /* WaitingStateView.swift in Sources */,
 				D9C187C630066A4800BFF8E9 /* Routin.swift in Sources */,
@@ -763,6 +858,7 @@
 				D935DFCF300789EF009DF855 /* CvUploadingView.swift in Sources */,
 				CE8AFF1D300718670064CC6C /* Round.swift in Sources */,
 				D9C187CF30066B2800BFF8E9 /* style.swift in Sources */,
+				D935DFFC3008045A009DF855 /* OnBordingViewModel.swift in Sources */,
 				D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */,
 				D9C187BB300662F000BFF8E9 /* HTTPMethod.swift in Sources */,
 				CECC20E83007DB4D00DC450D /* WaveformBars.swift in Sources */,
