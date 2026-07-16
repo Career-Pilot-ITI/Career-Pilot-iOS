@@ -30,7 +30,7 @@ struct profile: View {
 
             ProfileForm(userData: $userData)
                 .background(
-                    RoundedRectangle(cornerRadius: Radius.lg)
+                    RoundedRectangle(cornerRadius: Radius.r12)
                         .fill(Color.white)
                 )
                 .shadow(
@@ -50,7 +50,7 @@ struct profile: View {
 
 
         }
-        .padding(.horizontal, Spacing.xl)
+        .padding(.horizontal, Spacing.s20)
         .background(Color.gray100)
     }
 }
