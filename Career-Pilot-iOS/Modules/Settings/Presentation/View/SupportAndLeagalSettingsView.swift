@@ -27,10 +27,10 @@ struct SupportAndLeagalSettingsView: View {
                 }
             }
         }
-        .padding(.horizontal, Spacing.xl)
-                .padding(.vertical, Spacing.sm)
+        .padding(.horizontal, Spacing.s32)
+                .padding(.vertical, Spacing.s8)
                 .background(
-                    RoundedRectangle(cornerRadius: Radius.lg)
+                    RoundedRectangle(cornerRadius: Radius.r24)
                         .fill(Color.white)
                 )
               

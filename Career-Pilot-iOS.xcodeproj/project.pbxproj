@@ -7,20 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		41AC14EB3007626A00502158 /* OTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EA3007626A00502158 /* OTPCodeView.swift */; };
-		41AC14ED3007631C00502158 /* OTPBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EC3007631C00502158 /* OTPBoxView.swift */; };
 		41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EE30076D5500502158 /* CustomSearchTextField.swift */; };
-		616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0330080EEC007FC4AF /* SettingsVIew.swift */; };
-		616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0630080FDE007FC4AF /* ProfileCard.swift */; };
-		616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0830081C62007FC4AF /* SettingsCard.swift */; };
-		616CAD0C30081EF4007FC4AF /* AcoountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0B30081EF4007FC4AF /* AcoountSettingsView.swift */; };
-		616CAD0E30082441007FC4AF /* SupportAndLeagalSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0D30082441007FC4AF /* SupportAndLeagalSettingsView.swift */; };
 		41C6A2363008008D0035EFBF /* SendingOTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A2353008008D0035EFBF /* SendingOTPCodeView.swift */; };
 		41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A237300804650035EFBF /* SoundWaveView.swift */; };
 		41C6A23A30080AE10035EFBF /* SuccessOTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A23930080AE10035EFBF /* SuccessOTPCodeView.swift */; };
 		41C6A23C30080BDA0035EFBF /* OTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A23B30080BDA0035EFBF /* OTPView.swift */; };
 		41C6A23E30083FDB0035EFBF /* PhoneEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A23D30083FDB0035EFBF /* PhoneEntryView.swift */; };
 		41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A23F3008609C0035EFBF /* AppRoute.swift */; };
+		616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0330080EEC007FC4AF /* SettingsVIew.swift */; };
+		616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0630080FDE007FC4AF /* ProfileCard.swift */; };
+		616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0830081C62007FC4AF /* SettingsCard.swift */; };
+		616CAD0C30081EF4007FC4AF /* AcoountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0B30081EF4007FC4AF /* AcoountSettingsView.swift */; };
+		616CAD0E30082441007FC4AF /* SupportAndLeagalSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0D30082441007FC4AF /* SupportAndLeagalSettingsView.swift */; };
 		61D8F2E6300750FC0088F170 /* profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8F2E5300750FC0088F170 /* profile.swift */; };
 		61D8F2F03007523E0088F170 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8F2EF3007523E0088F170 /* HeaderView.swift */; };
 		61D8F2F23007543A0088F170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61D8F2F13007543A0088F170 /* Assets.xcassets */; };
@@ -42,12 +40,6 @@
 		CECC20D83007B60900DC450D /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20D73007B60900DC450D /* AppStrings.swift */; };
 		CECC20DA3007BE6800DC450D /* PhoneFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20D93007BE6800DC450D /* PhoneFieldViewModel.swift */; };
 		CECC20DD3007C59F00DC450D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CECC20DB3007C59F00DC450D /* Localizable.strings */; };
-		CECC20E23007DB1B00DC450D /* WaitingIndicatorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E13007DB1B00DC450D /* WaitingIndicatorState.swift */; };
-		CECC20E43007DB2C00DC450D /* WaitingStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E33007DB2C00DC450D /* WaitingStateView.swift */; };
-		CECC20E63007DB3D00DC450D /* PulsingIconBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E53007DB3D00DC450D /* PulsingIconBadge.swift */; };
-		CECC20E83007DB4D00DC450D /* WaveformBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E73007DB4D00DC450D /* WaveformBars.swift */; };
-		CECC20EA3007DB5E00DC450D /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E93007DB5E00DC450D /* ShakeEffect.swift */; };
-		CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20EB3007DD1D00DC450D /* WaitingStateComponents.swift */; };
 		CECC20E23007DB1B00DC450D /* WaitingIndicatorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E13007DB1B00DC450D /* WaitingIndicatorState.swift */; };
 		CECC20E43007DB2C00DC450D /* WaitingStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E33007DB2C00DC450D /* WaitingStateView.swift */; };
 		CECC20E63007DB3D00DC450D /* PulsingIconBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E53007DB3D00DC450D /* PulsingIconBadge.swift */; };
@@ -111,20 +103,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		41AC14EA3007626A00502158 /* OTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPCodeView.swift; sourceTree = "<group>"; };
-		41AC14EC3007631C00502158 /* OTPBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPBoxView.swift; sourceTree = "<group>"; };
 		41AC14EE30076D5500502158 /* CustomSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchTextField.swift; sourceTree = "<group>"; };
-		616CAD0330080EEC007FC4AF /* SettingsVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVIew.swift; sourceTree = "<group>"; };
-		616CAD0630080FDE007FC4AF /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
-		616CAD0830081C62007FC4AF /* SettingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCard.swift; sourceTree = "<group>"; };
-		616CAD0B30081EF4007FC4AF /* AcoountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcoountSettingsView.swift; sourceTree = "<group>"; };
-		616CAD0D30082441007FC4AF /* SupportAndLeagalSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportAndLeagalSettingsView.swift; sourceTree = "<group>"; };
 		41C6A2353008008D0035EFBF /* SendingOTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingOTPCodeView.swift; sourceTree = "<group>"; };
 		41C6A237300804650035EFBF /* SoundWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundWaveView.swift; sourceTree = "<group>"; };
 		41C6A23930080AE10035EFBF /* SuccessOTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessOTPCodeView.swift; sourceTree = "<group>"; };
 		41C6A23B30080BDA0035EFBF /* OTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPView.swift; sourceTree = "<group>"; };
 		41C6A23D30083FDB0035EFBF /* PhoneEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneEntryView.swift; sourceTree = "<group>"; };
 		41C6A23F3008609C0035EFBF /* AppRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoute.swift; sourceTree = "<group>"; };
+		616CAD0330080EEC007FC4AF /* SettingsVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVIew.swift; sourceTree = "<group>"; };
+		616CAD0630080FDE007FC4AF /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
+		616CAD0830081C62007FC4AF /* SettingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCard.swift; sourceTree = "<group>"; };
+		616CAD0B30081EF4007FC4AF /* AcoountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcoountSettingsView.swift; sourceTree = "<group>"; };
+		616CAD0D30082441007FC4AF /* SupportAndLeagalSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportAndLeagalSettingsView.swift; sourceTree = "<group>"; };
 		61D8F2E5300750FC0088F170 /* profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profile.swift; sourceTree = "<group>"; };
 		61D8F2EF3007523E0088F170 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		61D8F2F13007543A0088F170 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Career-Pilot-iOS/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
@@ -146,12 +136,6 @@
 		CECC20D73007B60900DC450D /* AppStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
 		CECC20D93007BE6800DC450D /* PhoneFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFieldViewModel.swift; sourceTree = "<group>"; };
 		CECC20DC3007C59F00DC450D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		CECC20E13007DB1B00DC450D /* WaitingIndicatorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingIndicatorState.swift; sourceTree = "<group>"; };
-		CECC20E33007DB2C00DC450D /* WaitingStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingStateView.swift; sourceTree = "<group>"; };
-		CECC20E53007DB3D00DC450D /* PulsingIconBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingIconBadge.swift; sourceTree = "<group>"; };
-		CECC20E73007DB4D00DC450D /* WaveformBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformBars.swift; sourceTree = "<group>"; };
-		CECC20E93007DB5E00DC450D /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
-		CECC20EB3007DD1D00DC450D /* WaitingStateComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingStateComponents.swift; sourceTree = "<group>"; };
 		CECC20E13007DB1B00DC450D /* WaitingIndicatorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingIndicatorState.swift; sourceTree = "<group>"; };
 		CECC20E33007DB2C00DC450D /* WaitingStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingStateView.swift; sourceTree = "<group>"; };
 		CECC20E53007DB3D00DC450D /* PulsingIconBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingIconBadge.swift; sourceTree = "<group>"; };
@@ -227,7 +211,6 @@
 
 /* Begin PBXGroup section */
 		616CACFD30080EB3007FC4AF /* Settings */ = {
-		41C6A2343007FFCF0035EFBF /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				616CAD0030080ECD007FC4AF /* Presentation */,
@@ -268,8 +251,6 @@
 				616CAD0830081C62007FC4AF /* SettingsCard.swift */,
 				616CAD0B30081EF4007FC4AF /* AcoountSettingsView.swift */,
 				616CAD0D30082441007FC4AF /* SupportAndLeagalSettingsView.swift */,
-				41AC14EA3007626A00502158 /* OTPCodeView.swift */,
-				41AC14EC3007631C00502158 /* OTPBoxView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -279,8 +260,6 @@
 			children = (
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-			path = Components;
 			sourceTree = "<group>";
 		};
 		61D8F2DE300750AF0088F170 /* Onboard */ = {
@@ -643,7 +622,6 @@
 		D9C187A830065C7300BFF8E9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				41C6A2343007FFCF0035EFBF /* Components */,
 				41C6A2353008008D0035EFBF /* SendingOTPCodeView.swift */,
 				41C6A23930080AE10035EFBF /* SuccessOTPCodeView.swift */,
 				41C6A23B30080BDA0035EFBF /* OTPView.swift */,
@@ -915,7 +893,6 @@
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
 				41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */,
 				D93938EB3004064600CF4372 /* Persistence.swift in Sources */,
-				41AC14ED3007631C00502158 /* OTPBoxView.swift in Sources */,
 				D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */,
 				D98A79703008D9A300DFDC6B /* CvViewInfo.swift in Sources */,
 				CECC20D03007AD1200DC450D /* PhoneFieldState.swift in Sources */,
@@ -954,7 +931,6 @@
 				CECC20E43007DB2C00DC450D /* WaitingStateView.swift in Sources */,
 				61D8F2FF30077A410088F170 /* UserData.swift in Sources */,
 				D9C1879E30065B9800BFF8E9 /* TestDao.swift in Sources */,
-				41AC14EB3007626A00502158 /* OTPCodeView.swift in Sources */,
 				D935DFCF300789EF009DF855 /* CvUploadingView.swift in Sources */,
 				CE8AFF1D300718670064CC6C /* Round.swift in Sources */,
 				D9C187CF30066B2800BFF8E9 /* style.swift in Sources */,
