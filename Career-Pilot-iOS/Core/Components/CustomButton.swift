@@ -8,7 +8,7 @@
 import SwiftUI
 struct CustomButton: View {
 
-    var isButtonEnabeld: Bool
+    var isButtonEnabeld: Bool = true
     var showArrow = true
     var buttonTitle: String
     var onClick: () -> Void

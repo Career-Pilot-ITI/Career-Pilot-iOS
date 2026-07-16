@@ -77,26 +77,44 @@ struct FailureWaitingScreen: View {
     }
 }
 
-//#Preview("Payment") {
-//    SuccessPaymentScreen()
-//}
-//
-//#Preview("Calling") {
-//    CallingWaitingScreen()
-//}
-//
-//#Preview("Uploading") {
-//    UploadingWaitingScreen()
-//}
-//
-//#Preview("Listening") {
-//    ListeningWaitingScreen()
-//}
-//
-//#Preview("Recording") {
-//    RecordingWaitingScreen()
-//}
-//
-//#Preview("Failure") {
-//    FailureWaitingScreen()
-//}
+struct SuccessPaymentScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        SuccessPaymentScreen()
+            .previewDisplayName("Payment")
+    }
+}
+
+struct CallingWaitingScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        CallingWaitingScreen()
+            .previewDisplayName("Calling")
+    }
+}
+
+struct UploadingWaitingScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        UploadingWaitingScreen()
+            .previewDisplayName("Uploading")
+    }
+}
+
+struct ListeningWaitingScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        ListeningWaitingScreen()
+            .previewDisplayName("Listening")
+    }
+}
+
+struct RecordingWaitingScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        RecordingWaitingScreen()
+            .previewDisplayName("Recording")
+    }
+}
+
+struct FailureWaitingScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        FailureWaitingScreen()
+            .previewDisplayName("Failure")
+    }
+}
