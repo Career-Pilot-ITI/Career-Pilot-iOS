@@ -12,7 +12,7 @@ enum OnBordingViews: Int, Hashable, CaseIterable{
 }
 
 enum OnBordingScreenStates{
-    case idel, loading, error(Error)
+    case idel, loading, error(UploadCVErrors)
 }
 
 @MainActor
@@ -62,7 +62,7 @@ class OnBordingViewModel: ObservableObject{
             extractCvInfo(url: cvURL)
             cvViewInfo.isUploaded = true
         case.failure(let error):
-            screenState = .error(error)
+            screenState = .error(error as! UploadCVErrors)
         }
     }
     
@@ -76,7 +76,7 @@ class OnBordingViewModel: ObservableObject{
             cvViewInfo.cvSize = fileSizeInMB
             print(cvViewInfo.cvTitle ?? "nooo")
         }catch{
-            screenState = .error(error)
+            screenState = .error(error as! UploadCVErrors)
         }
     }
     

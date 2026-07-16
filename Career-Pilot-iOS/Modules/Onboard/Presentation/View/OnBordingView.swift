@@ -24,7 +24,7 @@ struct OnBordingView: View {
                 case.loading:
                     ProgressView()
                 case.error(let error):
-                    OnBordingErrorState(error: error.localizedDescription)
+                    OnBoardingErrorState(vm: vm, errorMessage: error.description)
                 }
                 
                 //Bottom Part
@@ -33,7 +33,6 @@ struct OnBordingView: View {
                     print("Clicked")
                     vm.navToNext()
                 }
-                .opacity(vm.isButtonEnabeld ? 1.0 : 0.5)
             }
             .navigationDestination(isPresented: $vm.navToHomeScreen){
                 Text("2na Home Screen")
@@ -92,14 +91,6 @@ struct OnBordingIdelState: View{
             }
         }
         .padding(.bottom, 20)
-    }
-}
-
-//Error state
-struct OnBordingErrorState: View{
-    var error: String
-    var body: some View{
-        Text(error)
     }
 }
 

@@ -55,6 +55,8 @@
 		D98A79753008DFD800DFDC6B /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79743008DFD800DFDC6B /* Track.swift */; };
 		D98A79773008E19900DFDC6B /* TrackChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79763008E19900DFDC6B /* TrackChip.swift */; };
 		D98A79793008EB9200DFDC6B /* ChoseTrackViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79783008EB9200DFDC6B /* ChoseTrackViewInfo.swift */; };
+		D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A797C300903BF00DFDC6B /* UploadeCvErrors.swift */; };
+		D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */; };
 		D9C1878A30065AA400BFF8E9 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1878930065AA400BFF8E9 /* AuthView.swift */; };
 		D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879230065AF100BFF8E9 /* Repo.swift */; };
 		D9C1879530065AFC00BFF8E9 /* UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879430065AFC00BFF8E9 /* UseCases.swift */; };
@@ -145,6 +147,8 @@
 		D98A79743008DFD800DFDC6B /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		D98A79763008E19900DFDC6B /* TrackChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackChip.swift; sourceTree = "<group>"; };
 		D98A79783008EB9200DFDC6B /* ChoseTrackViewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseTrackViewInfo.swift; sourceTree = "<group>"; };
+		D98A797C300903BF00DFDC6B /* UploadeCvErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadeCvErrors.swift; sourceTree = "<group>"; };
+		D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingErrorState.swift; sourceTree = "<group>"; };
 		D9C1878930065AA400BFF8E9 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		D9C1879230065AF100BFF8E9 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		D9C1879430065AFC00BFF8E9 /* UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCases.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				D935DFF930080448009DF855 /* OnBordingView.swift */,
+				D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */,
 				D935DFF730080430009DF855 /* OnBordingViews */,
 			);
 			path = View;
@@ -318,8 +323,8 @@
 		D935DFF43008020B009DF855 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				D98A797B300903AE00DFDC6B /* UploadeCV */,
 				D98A797A3008EBA200DFDC6B /* SelectedTrack */,
-				D98A796F3008D9A300DFDC6B /* CvViewInfo.swift */,
 				61D8F2FE30077A410088F170 /* UserData.swift */,
 			);
 			path = Entities;
@@ -414,6 +419,15 @@
 				D98A79783008EB9200DFDC6B /* ChoseTrackViewInfo.swift */,
 			);
 			path = SelectedTrack;
+			sourceTree = "<group>";
+		};
+		D98A797B300903AE00DFDC6B /* UploadeCV */ = {
+			isa = PBXGroup;
+			children = (
+				D98A796F3008D9A300DFDC6B /* CvViewInfo.swift */,
+				D98A797C300903BF00DFDC6B /* UploadeCvErrors.swift */,
+			);
+			path = UploadeCV;
 			sourceTree = "<group>";
 		};
 		D9C1878430065A4800BFF8E9 /* Modules */ = {
@@ -822,12 +836,14 @@
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
 				61D8F2F8300761200088F170 /* CustomProfileTextField.swift in Sources */,
 				D9C187C430066A4000BFF8E9 /* Storage.swift in Sources */,
+				D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */,
 				D9C187BE300663F200BFF8E9 /* NetworkError.swift in Sources */,
 				D9C187A030065BA700BFF8E9 /* TestLocalDataSource.swift in Sources */,
 				CECC20E63007DB3D00DC450D /* PulsingIconBadge.swift in Sources */,
 				CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */,
 				61D8F2FA300778520088F170 /* SkillTag.swift in Sources */,
 				CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */,
+				D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */,
 				D9C1879730065B0400BFF8E9 /* Entity.swift in Sources */,
 				CECC20E23007DB1B00DC450D /* WaitingIndicatorState.swift in Sources */,
 				D93938E23004064400CF4372 /* Career_Pilot_iOSApp.swift in Sources */,
