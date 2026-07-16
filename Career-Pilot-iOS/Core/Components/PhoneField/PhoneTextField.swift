@@ -95,12 +95,12 @@ struct PhoneTextField: View {
     }
 }
 
-
-#Preview {
-    ZStack {
-        Color.darkBackGround.ignoresSafeArea()
-        
-        PhoneTextField(viewModel: PhoneFieldViewModel(selectedCountry: CountryCode.defaultList[0]))
-            .padding(.horizontal, 16)
-    }
-}
+//
+//#Preview {
+//    ZStack {
+//        Color.darkBackGround.ignoresSafeArea()
+//        
+//        PhoneTextField(viewModel: PhoneFieldViewModel(selectedCountry: CountryCode.defaultList[0]))
+//            .padding(.horizontal, 16)
+//    }
+//}

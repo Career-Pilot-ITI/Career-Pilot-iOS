@@ -36,7 +36,7 @@ struct SuccessOTPCodeView: View {
         }
     }
 }
-
-#Preview {
-    SuccessOTPCodeView()
-}
+//
+//#Preview {
+//    SuccessOTPCodeView()
+//}

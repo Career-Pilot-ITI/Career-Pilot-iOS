@@ -91,6 +91,6 @@ struct PhoneEntryView: View {
         }
     }
 }
-#Preview {
-    PhoneEntryView()
-}
+//#Preview {
+//    PhoneEntryView()
+//}
