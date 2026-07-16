@@ -19,17 +19,17 @@ struct TrackChip: View {
             .padding(.vertical, 10)
             .background(
                 Capsule()
-                    .fill(isSelected ? .indigo : .white)
+                    .fill(isSelected ? Color.primaryNavy : .white)
             )
             .overlay(
                 Capsule()
-                    .stroke(Color.gray.opacity(0.3))
+                    .stroke(Color.gray.opacity(0.6))
             )
             .foregroundStyle(isSelected ? .white : .black)
     }
 }
 struct TrackChip_Previews: PreviewProvider {
     static var previews: some View {
-        TrackChip(title: "Testing", isSelected: true)
+        TrackChip(title: "Testing", isSelected: false)
     }
 }

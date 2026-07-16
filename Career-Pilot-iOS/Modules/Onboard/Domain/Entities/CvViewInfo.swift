@@ -9,6 +9,7 @@ import Foundation
 
 struct CvViewInfo{
     var isUploaded: Bool
-    var cvTitle: String
-    var cvSize: Double 
+    var cvTitle: String?
+    var cvSize: Double?
+    var selectedCV: URL?
 }

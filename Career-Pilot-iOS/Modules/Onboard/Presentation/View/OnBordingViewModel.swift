@@ -12,7 +12,7 @@ enum OnBordingViews: Int, Hashable, CaseIterable{
 }
 
 enum OnBordingScreenStates{
-    case idel, loading, error
+    case idel, loading, error(Error)
 }
 
 @MainActor
@@ -25,7 +25,7 @@ class OnBordingViewModel: ObservableObject{
     @Published var selectedTrackInfo: SelectedTrackViewInfo = SelectedTrackViewInfo()
     
     //For UploadCV View
-    @Published var cvViewInfo: CvViewInfo = CvViewInfo(isUploaded: true, cvTitle: "Cv Name", cvSize: 0.0)
+    @Published var cvViewInfo: CvViewInfo = CvViewInfo(isUploaded: false)
     
     //For Profie View
     @Published var userData: UserData = UserData(email: "", title: "", experienceLevel: "", skills: ["C++"], firstName: "", lastName: "")
@@ -55,11 +55,37 @@ class OnBordingViewModel: ObservableObject{
     }
     
     //MARK: For Uploding CV
+    func onCvResult(result: Result<URL,Error>){
+        switch result{
+        case.success(let cvURL):
+            cvViewInfo.selectedCV = cvURL
+            extractCvInfo(url: cvURL)
+            cvViewInfo.isUploaded = true
+        case.failure(let error):
+            screenState = .error(error)
+        }
+    }
+    
+    private func extractCvInfo(url: URL){
+        do{
+            let values = try url.resourceValues(forKeys: [.nameKey, .fileSizeKey])
+            
+            cvViewInfo.cvTitle = values.name
+            let fileSizeInBytes = Double(values.fileSize ?? 0)
+            let fileSizeInMB = fileSizeInBytes / (1024 * 1024)
+            cvViewInfo.cvSize = fileSizeInMB
+            print(cvViewInfo.cvTitle ?? "nooo")
+        }catch{
+            screenState = .error(error)
+        }
+    }
+    
     func uploadCV(){
         print("Uploading cv")
         screenState = .loading
         Task{
             try? await Task.sleep(for:.nanoseconds(2000000000))
+            cvViewInfo.isUploaded = true
             screenState = .idel
         }
     }

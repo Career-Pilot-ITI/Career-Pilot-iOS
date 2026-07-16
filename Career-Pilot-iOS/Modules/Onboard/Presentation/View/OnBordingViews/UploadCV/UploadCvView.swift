@@ -9,16 +9,17 @@ import SwiftUI
 
 struct UploadCvView: View {
     @StateObject var vm: OnBordingViewModel
+    @State var isImporterPresented: Bool = false
     
     var body: some View {
         VStack(spacing: 35){
             topView
             
             CvUploadingView(didUpload: vm.cvViewInfo.isUploaded,
-                            baseSentance: vm.cvViewInfo.isUploaded ? "\(vm.cvViewInfo.cvTitle)" : "Tap to upload your CV",
-                            subSentanceOne: vm.cvViewInfo.isUploaded ? "Size: \(vm.cvViewInfo.cvSize)" : "PDF or DOC · Max 10 MB")
+                            baseSentance: vm.cvViewInfo.isUploaded ? "\(vm.cvViewInfo.cvTitle ?? "No Name For The Cv")" : "Tap to upload your CV",
+                            subSentanceOne: vm.cvViewInfo.isUploaded ? "Size: \(String(format: "%.2f MB",vm.cvViewInfo.cvSize ?? 0.0))" : "PDF or DOC · Max 10 MB")
             .onTapGesture {
-                vm.uploadCV()
+                isImporterPresented = true
             }
             .padding(.bottom, 30)
             
@@ -32,6 +33,9 @@ struct UploadCvView: View {
             }
             
             Spacer()
+        }
+        .fileImporter(isPresented: $isImporterPresented, allowedContentTypes: [.pdf,.plainText,.rtf]){ result in
+            vm.onCvResult(result: result)
         }
     }
     

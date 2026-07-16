@@ -22,8 +22,8 @@ struct OnBordingView: View {
                 OnBordingIdelState(vm: vm)
             case.loading:
                 ProgressView()
-            case.error:
-                OnBordingErrorState()
+            case.error(let error):
+                OnBordingErrorState(error: error.localizedDescription)
             }
             
             //Bottom Part
@@ -93,8 +93,9 @@ struct OnBordingIdelState: View{
 
 //Error state
 struct OnBordingErrorState: View{
+    var error: String
     var body: some View{
-        Text("Error state")
+        Text(error)
     }
 }
 
