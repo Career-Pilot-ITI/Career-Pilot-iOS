@@ -31,6 +31,8 @@
 		CE12F3C830094FB50083D66D /* OTPBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C530094FB50083D66D /* OTPBoxView.swift */; };
 		CE12F3C930094FB50083D66D /* OTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C630094FB50083D66D /* OTPCodeView.swift */; };
 		CE12F3C030093CE40083D66D /* SessionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3BF30093CE40083D66D /* SessionData.swift */; };
+		CE12F3C230093ED30083D66D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C130093ED30083D66D /* HomeViewModel.swift */; };
+		CE12F3C4300940CE0083D66D /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C3300940CE0083D66D /* Shimmer.swift */; };
 		CE8AFF18300712FC0064CC6C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF15300712FC0064CC6C /* Font.swift */; };
 		CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF14300712FC0064CC6C /* Colors.swift */; };
 		CE8AFF1D300718670064CC6C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1C300718670064CC6C /* Round.swift */; };
@@ -55,7 +57,6 @@
 		CECC20E83007DB4D00DC450D /* WaveformBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E73007DB4D00DC450D /* WaveformBars.swift */; };
 		CECC20EA3007DB5E00DC450D /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E93007DB5E00DC450D /* ShakeEffect.swift */; };
 		CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20EB3007DD1D00DC450D /* WaitingStateComponents.swift */; };
-		CEE62A7E30090B1F0071F076 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A7D30090B1F0071F076 /* TabItem.swift */; };
 		CEE62A80300910840071F076 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A7F300910840071F076 /* HomeView.swift */; };
 		CEE62A83300910E90071F076 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A82300910E90071F076 /* CustomNavigationBar.swift */; };
 		CEE62A8530091A6B0071F076 /* Image+AppIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A8430091A6B0071F076 /* Image+AppIcons.swift */; };
@@ -148,6 +149,8 @@
 		CE12F3C530094FB50083D66D /* OTPBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPBoxView.swift; sourceTree = "<group>"; };
 		CE12F3C630094FB50083D66D /* OTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPCodeView.swift; sourceTree = "<group>"; };
 		CE12F3BF30093CE40083D66D /* SessionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionData.swift; sourceTree = "<group>"; };
+		CE12F3C130093ED30083D66D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		CE12F3C3300940CE0083D66D /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		CE8AFF14300712FC0064CC6C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CE8AFF15300712FC0064CC6C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		CE8AFF1C300718670064CC6C /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
@@ -172,7 +175,6 @@
 		CECC20E73007DB4D00DC450D /* WaveformBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformBars.swift; sourceTree = "<group>"; };
 		CECC20E93007DB5E00DC450D /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 		CECC20EB3007DD1D00DC450D /* WaitingStateComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingStateComponents.swift; sourceTree = "<group>"; };
-		CEE62A7D30090B1F0071F076 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		CEE62A7F300910840071F076 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CEE62A82300910E90071F076 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		CEE62A8430091A6B0071F076 /* Image+AppIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+AppIcons.swift"; sourceTree = "<group>"; };
@@ -491,30 +493,6 @@
 			path = WaitingState;
 			sourceTree = "<group>";
 		};
-		CEE62A7A300909180071F076 /* NavBar */ = {
-			isa = PBXGroup;
-			children = (
-				CEE62A7C30090B0D0071F076 /* view */,
-				CEE62A7B30090B050071F076 /* Model */,
-			);
-			path = NavBar;
-			sourceTree = "<group>";
-		};
-		CEE62A7B30090B050071F076 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				CEE62A7D30090B1F0071F076 /* TabItem.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		CEE62A7C30090B0D0071F076 /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
 		CEE62A81300910D50071F076 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +583,7 @@
 		CEFA6F8230085B8400A89A83 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CE12F3C130093ED30083D66D /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -878,13 +857,13 @@
 		D9C187B0300660D500BFF8E9 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				CEE62A7A300909180071F076 /* NavBar */,
 				CECC20E03007DAFF00DC450D /* WaitingState */,
 				CECC20CE3007ACE100DC450D /* PhoneField */,
 				41AC14EE30076D5500502158 /* CustomSearchTextField.swift */,
 				D935DFCA30078012009DF855 /* CustomButton.swift */,
 				D935DFCE300789EF009DF855 /* CvUploadingView.swift */,
 				41C6A237300804650035EFBF /* SoundWaveView.swift */,
+				CE12F3C3300940CE0083D66D /* Shimmer.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1112,10 +1091,10 @@
 				CECC20D03007AD1200DC450D /* PhoneFieldState.swift in Sources */,
 				41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */,
 				D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */,
+				CE12F3C230093ED30083D66D /* HomeViewModel.swift in Sources */,
 				D9C187A230065C2200BFF8E9 /* RemoteDataSource.swift in Sources */,
 				D98A79753008DFD800DFDC6B /* Track.swift in Sources */,
 				CEE62A97300929960071F076 /* PracticeCard.swift in Sources */,
-				CEE62A7E30090B1F0071F076 /* TabItem.swift in Sources */,
 				D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */,
 				CECC20D83007B60900DC450D /* AppStrings.swift in Sources */,
 				CE12F3C030093CE40083D66D /* SessionData.swift in Sources */,
@@ -1144,6 +1123,7 @@
 				D9C1879730065B0400BFF8E9 /* Entity.swift in Sources */,
 				616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */,
 				CECC20E23007DB1B00DC450D /* WaitingIndicatorState.swift in Sources */,
+				CE12F3C4300940CE0083D66D /* Shimmer.swift in Sources */,
 				D93938E23004064400CF4372 /* Career_Pilot_iOSApp.swift in Sources */,
 				61D8F2FC300779ED0088F170 /* Flowlayout.swift in Sources */,
 				D98A79773008E19900DFDC6B /* TrackChip.swift in Sources */,
