@@ -12,10 +12,11 @@ struct WaitingStateView: View {
 
     var actionTitle: String?
     var action: (() -> Void)?
+    var phoneNumber: String?
 
     var body: some View {
 
-        VStack(spacing: 28) {
+        VStack(spacing: 16) {
 
             PulsingIconBadge(
                 icon: icon,
@@ -31,10 +32,18 @@ struct WaitingStateView: View {
 
                 if let subtitle {
 
-                    Text(subtitle)
-                        .font(.subheadline)
-                        .foregroundStyle(.white.opacity(0.65))
-                        .multilineTextAlignment(.center)
+                    VStack(spacing: Spacing.s8) {
+                        Text(subtitle)
+                            .font(.subheadline)
+                            .foregroundStyle(.white.opacity(0.65))
+                            .multilineTextAlignment(.center)
+                        if let phoneNumber {
+                            Text(phoneNumber)
+                                .font(Font.bodyAppSemiBold)
+                                .foregroundStyle(.white)
+                                .multilineTextAlignment(.center)
+                        }
+                    }
                 }
             }
 
@@ -50,13 +59,5 @@ struct WaitingStateView: View {
             }
         }
         .padding()
-        .frame(maxWidth: .infinity,
-               maxHeight: .infinity)
-        .background(
-            Color(red: 0.06,
-                  green: 0.08,
-                  blue: 0.14)
-                .ignoresSafeArea()
-        )
     }
 }

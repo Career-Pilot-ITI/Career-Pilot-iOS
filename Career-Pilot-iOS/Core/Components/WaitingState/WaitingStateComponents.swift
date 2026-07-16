@@ -19,13 +19,27 @@ struct SuccessPaymentScreen: View {
     }
 }
 
+struct SuccessOTPScreen: View {
+    var body: some View {
+        WaitingStateView(
+            icon: "checkmark.circle.fill",
+            tint: .green,
+            state: .success,
+            title: "You're in!",
+            subtitle: "Setting up your coaching session…"
+        )
+    }
+}
+
 struct CallingWaitingScreen: View {
+    let phoneNumber: String
     var body: some View {
         WaitingStateView(
             icon: "phone.fill",
             state: .loading,
-            title: "Calling...",
-            subtitle: "Please wait while we connect you"
+            title: "Sending your code…",
+            subtitle: "We're sending a 6-digit OTP to",
+            phoneNumber: phoneNumber
         )
     }
 }
@@ -77,3 +91,44 @@ struct FailureWaitingScreen: View {
     }
 }
 
+struct SuccessPaymentScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        SuccessPaymentScreen()
+            .previewDisplayName("Payment")
+    }
+}
+
+struct CallingWaitingScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        CallingWaitingScreen(phoneNumber: "")
+            .previewDisplayName("Calling")
+    }
+}
+
+struct UploadingWaitingScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        UploadingWaitingScreen()
+            .previewDisplayName("Uploading")
+    }
+}
+
+struct ListeningWaitingScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        ListeningWaitingScreen()
+            .previewDisplayName("Listening")
+    }
+}
+
+struct RecordingWaitingScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        RecordingWaitingScreen()
+            .previewDisplayName("Recording")
+    }
+}
+
+struct FailureWaitingScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        FailureWaitingScreen()
+            .previewDisplayName("Failure")
+    }
+}

@@ -14,9 +14,9 @@ struct HeaderView: View {
                 Image("check")
                 Text("Ready to go!").font(.cardTitleSmallerBolded).foregroundColor(.activeColour)
             }
-            Spacer().frame(height: Spacing.sm)
+            Spacer().frame(height: Spacing.s8)
             Text("Your profile is set up").font(.pageTitleSmaller).foregroundColor(.primaryNavy)
-            Spacer().frame(height: Spacing.xs)
+            Spacer().frame(height: Spacing.s4)
             Text("Here's what we found. You  can always update this later.").font(.bodyApp).foregroundColor(.gray600)
         }
       

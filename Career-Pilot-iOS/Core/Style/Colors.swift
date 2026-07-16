@@ -30,7 +30,7 @@ enum AppColors {
         static let borderInvalid = AppColors.error
         static let borderDisabled = Color.gray.opacity(0.2)
 
-        static let background = Color(.systemBackground)
+        static let background = Color("NavyMid")
         static let backgroundDisabled = Color.gray.opacity(0.06)
 
         static let iconValid = AppColors.success

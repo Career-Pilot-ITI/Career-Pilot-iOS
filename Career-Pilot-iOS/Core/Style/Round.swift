@@ -7,10 +7,12 @@
 
 import Foundation
 enum Radius {
-    static let sm: CGFloat = 6
-    static let md: CGFloat = 10
-    static let lg: CGFloat = 12
-    static let card: CGFloat = 16
-    static let xl: CGFloat = 20
+    static let r6: CGFloat = 6
+    static let r10: CGFloat = 10
+    static let r12: CGFloat = 12
+    static let r14: CGFloat = 14
+    static let r16: CGFloat = 16
+    static let r20: CGFloat = 20
+    static let r24: CGFloat = 24
     static let pill: CGFloat = 9999   // fully rounded — use .clipShape(Capsule()) instead in practice
 }

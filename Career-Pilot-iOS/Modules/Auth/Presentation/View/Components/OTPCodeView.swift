@@ -12,11 +12,15 @@ struct OTPCodeView: View {
     @Binding var code: String
     var length: Int = 6
     var phoneNumber: String = ""
+    var resendInterval: Int = 60
     var onComplete: (String) -> Void = { _ in }
     var onResend: () -> Void = {}
-    
+
     @FocusState private var isFocused: Bool
-    
+    @State private var secondsRemaining: Int = 0
+
+    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             ZStack {
@@ -29,7 +33,7 @@ struct OTPCodeView: View {
                     .onChange(of: code) { newValue in
                         filterAndClamp(newValue)
                     }
-                
+
                 HStack(spacing: 10) {
                     ForEach(0..<length, id: \.self) { index in
                         OTPBoxView(character: character(at: index),
@@ -40,19 +44,35 @@ struct OTPCodeView: View {
                 .onTapGesture { isFocused = true }
             }
             .padding(.top, 8)
+
+            HStack {
+                resendText
+                Spacer()
+                Button(action: handleResendTap) {
+                    Text("Resend")
+                        .font(.subheadline)
+                        .foregroundColor(secondsRemaining > 0 ? AppColors.OTPField.otpSecondaryText.opacity(0.5) : .white)
+                }
+                .disabled(secondsRemaining > 0)
+            }
+            .padding(.top, 18)
         }
         .onAppear {
             isFocused = true
+            startTimer()
+        }
+        .onReceive(timer) { _ in
+            guard secondsRemaining > 0 else { return }
+            secondsRemaining -= 1
         }
     }
-    
-    
+
     private func character(at index: Int) -> String {
         guard index < code.count else { return "" }
         let charIndex = code.index(code.startIndex, offsetBy: index)
         return String(code[charIndex])
     }
-    
+
     private func filterAndClamp(_ newValue: String) {
         let filtered = newValue.filter { $0.isNumber }
         let clamped = String(filtered.prefix(length))
@@ -64,11 +84,46 @@ struct OTPCodeView: View {
             onComplete(clamped)
         }
     }
+
+    private func startTimer() {
+        secondsRemaining = resendInterval
+    }
+
+    private func handleResendTap() {
+        guard secondsRemaining == 0 else { return }
+        code = ""
+        isFocused = true
+        startTimer()
+        onResend()
+    }
+
+    private var resendText: some View {
+        Group {
+            if secondsRemaining > 0 {
+                (Text("Resend in ")
+                    .foregroundColor(AppColors.OTPField.otpSecondaryText)
+                 +
+                 Text(timeString(secondsRemaining))
+                    .foregroundColor(AppColors.OTPField.otpAccent)
+                )
+                .font(.subheadline)
+            } else {
+                Text(" ")
+                    .font(.subheadline)
+            }
+        }
+    }
+
+    private func timeString(_ seconds: Int) -> String {
+        let m = seconds / 60
+        let s = seconds % 60
+        return String(format: "%d:%02d", m, s)
+    }
 }
 
 private struct OTPPreviewWrapper: View {
     let code: String
-    
+
     var body: some View {
         ZStack {
             AppColors.OTPField.otpBackground.ignoresSafeArea()
@@ -86,7 +141,7 @@ struct FilledState_PreviewContainer: PreviewProvider {
         OTPPreviewWrapper(code: "123456")
             .previewDisplayName("Filled state")
     }
-}	
+}
 
 struct EmptyState_PreviewContainer: PreviewProvider {
     static var previews: some View {
