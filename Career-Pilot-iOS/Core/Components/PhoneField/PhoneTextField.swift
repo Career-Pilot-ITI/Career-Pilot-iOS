@@ -26,7 +26,7 @@ struct PhoneTextField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("PHONE NUMBER")
-                .font(Font.labelAppBold)
+                .font(.size12Bold)
                 .foregroundColor(Color.gray400)
                 .padding(.leading, 4)
             
@@ -45,7 +45,7 @@ struct PhoneTextField: View {
                     set: { viewModel.updatePhone($0) }
                 ), prompt: Text(placeholder)
                     .foregroundColor(Color.gray400)
-                    .font(Font.cardTitleSmallerRegular)
+                    .font(.size16Regular)
                 )
                 .foregroundStyle(.white)
                 .keyboardType(.numberPad)
@@ -84,7 +84,7 @@ struct PhoneTextField: View {
             HStack(spacing: 8) {
                 Text(viewModel.selectedCountry.flag)
                 Text(viewModel.selectedCountry.dialCode)
-                    .font(Font.bodyAppSemiBold)
+                    .font(.size14Semibold)
                     .foregroundStyle(.white)
                 Image(systemName: "chevron.down").font(.caption2)
                     .foregroundColor(Color.gray400)

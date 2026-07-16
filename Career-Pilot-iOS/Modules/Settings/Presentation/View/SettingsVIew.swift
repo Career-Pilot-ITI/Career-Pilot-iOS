@@ -11,22 +11,22 @@ struct SettingsVIew: View {
     var body: some View {
         VStack(alignment: .leading){
             Group{
-                Text("Settings").font(.sectionTitle).foregroundColor(.primaryNavy)
+                Text("Settings").font(.size22Semibold).foregroundColor(.primaryNavy)
                 ProfileCard()
             }
             Group{
                 Spacer().frame(height: Spacing.s12)
-                Text("ACCOUNT").font(.labelAppSemiBold).foregroundColor(.gray400)
+                Text("ACCOUNT").font(.size12Semibold).foregroundColor(.gray400)
                 Spacer().frame(height: Spacing.s4)
                 AccountSettingsView()
                 Spacer().frame(height: Spacing.s32)
-                Text("Support & Legal").font(.labelAppSemiBold).foregroundColor(.gray400)
+                Text("Support & Legal").font(.size12Semibold).foregroundColor(.gray400)
                 Spacer().frame(height: Spacing.s4)
                SupportAndLeagalSettingsView()
             }
     
             Spacer().frame(height: Spacing.s32)
-            Text("Danger Zone").font(.labelAppSemiBold).foregroundColor(.gray400)
+            Text("Danger Zone").font(.size12Semibold).foregroundColor(.gray400)
             Spacer().frame(height: Spacing.s4)
            
                        HStack(spacing: 12) {
@@ -40,7 +40,7 @@ struct SettingsVIew: View {
                            
                            VStack(alignment: .leading, spacing: 2) {
                                Text("Request Data Deletion")
-                                   .font(.bodyApp.bold())
+                                   .font(.size14Medium)
                                    .foregroundColor(.errorColour)
                                Text("Permanently delete account & data")
                                    .font(.caption)
@@ -69,7 +69,7 @@ struct SettingsVIew: View {
                                Image(systemName: "rectangle.portrait.and.arrow.right")
                                    .foregroundColor(.errorColour)
                                Text("Sign Out")
-                                   .font(.bodyApp.bold())
+                                   .font(.size14Medium)
                                    .foregroundColor(.errorColour)
                            }
                            Spacer()

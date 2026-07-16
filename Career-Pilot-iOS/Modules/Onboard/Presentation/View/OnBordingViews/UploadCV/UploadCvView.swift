@@ -25,7 +25,7 @@ struct UploadCvView: View {
             
             if !vm.cvViewInfo.isUploaded{
                 Text("Skip for now →")
-                    .font(.bodySmall)
+                    .font(.size13Medium)
                     .foregroundColor(.gray400)
                     .onTapGesture {
                         vm.skipAll()
