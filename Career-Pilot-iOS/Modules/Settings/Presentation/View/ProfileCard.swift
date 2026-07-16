@@ -20,9 +20,9 @@ struct ProfileCard: View {
             Image(systemName: "pencil").frame(width: 18 , height: 18).foregroundColor(.gray400)
             
         }.frame(maxWidth: .infinity) 
-            .padding([.vertical, .horizontal], Spacing.xl)
+            .padding([.vertical, .horizontal], Spacing.s12)
             .background(
-                RoundedRectangle(cornerRadius: Radius.lg)
+                RoundedRectangle(cornerRadius: Radius.r12)
                     .fill(Color.white)
             )
     }

@@ -28,6 +28,8 @@
 		61D8F2FC300779ED0088F170 /* Flowlayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8F2FB300779ED0088F170 /* Flowlayout.swift */; };
 		61D8F2FF30077A410088F170 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8F2FE30077A410088F170 /* UserData.swift */; };
 		61D8F303300780C50088F170 /* FreeSessionBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8F302300780C50088F170 /* FreeSessionBanner.swift */; };
+		CE12F3C830094FB50083D66D /* OTPBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C530094FB50083D66D /* OTPBoxView.swift */; };
+		CE12F3C930094FB50083D66D /* OTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C630094FB50083D66D /* OTPCodeView.swift */; };
 		CE8AFF18300712FC0064CC6C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF15300712FC0064CC6C /* Font.swift */; };
 		CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF14300712FC0064CC6C /* Colors.swift */; };
 		CE8AFF1D300718670064CC6C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1C300718670064CC6C /* Round.swift */; };
@@ -124,6 +126,8 @@
 		61D8F2FB300779ED0088F170 /* Flowlayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flowlayout.swift; sourceTree = "<group>"; };
 		61D8F2FE30077A410088F170 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		61D8F302300780C50088F170 /* FreeSessionBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeSessionBanner.swift; sourceTree = "<group>"; };
+		CE12F3C530094FB50083D66D /* OTPBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPBoxView.swift; sourceTree = "<group>"; };
+		CE12F3C630094FB50083D66D /* OTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPCodeView.swift; sourceTree = "<group>"; };
 		CE8AFF14300712FC0064CC6C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CE8AFF15300712FC0064CC6C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		CE8AFF1C300718670064CC6C /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
@@ -344,6 +348,15 @@
 				61D8F2F5300760680088F170 /* ProfileForm.swift */,
 			);
 			path = MainView;
+			sourceTree = "<group>";
+		};
+		CE12F3C730094FB50083D66D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CE12F3C530094FB50083D66D /* OTPBoxView.swift */,
+				CE12F3C630094FB50083D66D /* OTPCodeView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		CECC20CE3007ACE100DC450D /* PhoneField */ = {
@@ -626,6 +639,7 @@
 				41C6A23930080AE10035EFBF /* SuccessOTPCodeView.swift */,
 				41C6A23B30080BDA0035EFBF /* OTPView.swift */,
 				41C6A23D30083FDB0035EFBF /* PhoneEntryView.swift */,
+				CE12F3C730094FB50083D66D /* Components */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -932,6 +946,8 @@
 				61D8F2FF30077A410088F170 /* UserData.swift in Sources */,
 				D9C1879E30065B9800BFF8E9 /* TestDao.swift in Sources */,
 				D935DFCF300789EF009DF855 /* CvUploadingView.swift in Sources */,
+				CE12F3C830094FB50083D66D /* OTPBoxView.swift in Sources */,
+				CE12F3C930094FB50083D66D /* OTPCodeView.swift in Sources */,
 				CE8AFF1D300718670064CC6C /* Round.swift in Sources */,
 				D9C187CF30066B2800BFF8E9 /* style.swift in Sources */,
 				D935DFFC3008045A009DF855 /* OnBordingViewModel.swift in Sources */,

@@ -37,7 +37,7 @@ struct SettingsCard: View {
             .foregroundColor(.primaryNavy)
             .frame(width: 44, height: 44)
             .background(
-                RoundedRectangle(cornerRadius: Radius.lg )
+                RoundedRectangle(cornerRadius: Radius.r12)
                     .fill(Color.primaryNavy.opacity(0.06))
             )
     }
