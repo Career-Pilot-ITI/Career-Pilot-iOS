@@ -16,7 +16,7 @@ enum OnBordingScreenStates{
 }
 
 @MainActor
-class OnBordingViewModel: ObservableObject{
+class OnBordingViewModel: ObservableObject {
     @Published var currentView: OnBordingViews = .ChooseTrackView
     @Published var screenState: OnBordingScreenStates = .idel
     @Published var navToHomeScreen: Bool = false
@@ -133,5 +133,16 @@ class OnBordingViewModel: ObservableObject{
     //MARK: For Marking the dots with the correct color
     func isScreenIncludedToDrawAColor(index: Int) -> Bool{
         return index <= currentView.rawValue
+    }
+}
+
+
+extension OnBordingViewModel: Hashable {
+    nonisolated static func == (lhs: OnBordingViewModel, rhs: OnBordingViewModel) -> Bool {
+        lhs === rhs
+    }
+    
+    nonisolated func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
     }
 }

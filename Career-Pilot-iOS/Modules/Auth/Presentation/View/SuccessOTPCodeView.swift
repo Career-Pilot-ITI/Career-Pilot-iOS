@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct SuccessOTPCodeView: View {
+    @EnvironmentObject var coordinator: AppCoordinator
+    
+    @State private var navigationTask: Task<Void, Never>?
+    
     var body: some View {
         ZStack {
             Color.darkBackGround.ignoresSafeArea()
@@ -19,6 +23,16 @@ struct SuccessOTPCodeView: View {
                 Spacer()
             }
             .padding(.bottom, 40)
+        }
+        .onAppear {
+            navigationTask = Task  {
+                try? await Task.sleep(for: .seconds(5))
+                guard !Task.isCancelled else { return }
+                coordinator.push(.onboardingScreen(vm: OnBordingViewModel()))
+            }
+        }
+        .onDisappear {
+                    navigationTask?.cancel()
         }
     }
 }
