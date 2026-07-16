@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomSearchTextField: View {
     @Binding var text: String
-    let placeholder: String = "Search tracks…"
+    let placeholder: String
     
     @FocusState var isFocused : Bool
     

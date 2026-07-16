@@ -21,10 +21,11 @@ class OnBordingViewModel: ObservableObject{
     @Published var screenState: OnBordingScreenStates = .idel
     @Published var navToHomeScreen: Bool = false
     
+    //For ChooseTrack View
+    @Published var selectedTrackInfo: SelectedTrackViewInfo = SelectedTrackViewInfo()
+    
     //For UploadCV View
-    @Published var isUploaded: Bool = false
-    @Published var cvTitle: String = "Cv Name"
-    @Published var cvSize: Double = 0.0
+    @Published var cvViewInfo: CvViewInfo = CvViewInfo(isUploaded: true, cvTitle: "Cv Name", cvSize: 0.0)
     
     //For Profie View
     @Published var userData: UserData = UserData(email: "", title: "", experienceLevel: "", skills: ["C++"], firstName: "", lastName: "")
@@ -42,12 +43,14 @@ class OnBordingViewModel: ObservableObject{
         switch currentView {
         case .ProfileView:
             return !userData.fullName.trimmingCharacters(in: .whitespaces).isEmpty &&
-                   !userData.email.trimmingCharacters(in: .whitespaces).isEmpty &&
-                   !userData.title.trimmingCharacters(in: .whitespaces).isEmpty &&
-                   !userData.experienceLevel.trimmingCharacters(in: .whitespaces).isEmpty
-
-        case .UploadCvView, .ChooseTrackView:
-            return true
+            !userData.email.trimmingCharacters(in: .whitespaces).isEmpty &&
+            !userData.title.trimmingCharacters(in: .whitespaces).isEmpty &&
+            !userData.experienceLevel.trimmingCharacters(in: .whitespaces).isEmpty
+            
+        case.ChooseTrackView:
+            return selectedTrackInfo.selectedTrack != nil
+        case .UploadCvView:
+            return cvViewInfo.isUploaded
         }
     }
     
@@ -61,7 +64,21 @@ class OnBordingViewModel: ObservableObject{
         }
     }
     
-
+    //MARK: For ChoseTrack
+    func filterTrackes(query: String){
+        
+        //With empty text filed case
+        if query.isEmpty{
+            selectedTrackInfo.filteredTracks = tracks
+            return
+        }
+        
+        selectedTrackInfo.filteredTracks = tracks.filter { track in
+            track.title.localizedCaseInsensitiveContains(query)
+        }
+    }
+    
+    //MARK: For Navigation
     func navToNext(){
         switch currentView{
         case.ChooseTrackView:
@@ -83,11 +100,11 @@ class OnBordingViewModel: ObservableObject{
             currentView = .UploadCvView
         }
     }
-    
     func skipAll(){
         currentView = .ProfileView
     }
     
+    //MARK: For Marking the dots with the correct color
     func isScreenIncludedToDrawAColor(index: Int) -> Bool{
         return index <= currentView.rawValue
     }

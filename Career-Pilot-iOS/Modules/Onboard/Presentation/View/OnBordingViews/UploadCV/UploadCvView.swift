@@ -14,15 +14,15 @@ struct UploadCvView: View {
         VStack(spacing: 35){
             topView
             
-            CvUploadingView(didUpload: vm.isUploaded,
-                            baseSentance: vm.isUploaded ? "\(vm.cvTitle)" : "Tap to upload your CV",
-                            subSentanceOne: vm.isUploaded ? "Size: \(vm.cvSize)" : "PDF or DOC · Max 10 MB")
+            CvUploadingView(didUpload: vm.cvViewInfo.isUploaded,
+                            baseSentance: vm.cvViewInfo.isUploaded ? "\(vm.cvViewInfo.cvTitle)" : "Tap to upload your CV",
+                            subSentanceOne: vm.cvViewInfo.isUploaded ? "Size: \(vm.cvViewInfo.cvSize)" : "PDF or DOC · Max 10 MB")
             .onTapGesture {
                 vm.uploadCV()
             }
             .padding(.bottom, 30)
             
-            if !vm.isUploaded{
+            if !vm.cvViewInfo.isUploaded{
                 Text("Skip for now →")
                     .font(.bodySmall)
                     .foregroundColor(.gray400)

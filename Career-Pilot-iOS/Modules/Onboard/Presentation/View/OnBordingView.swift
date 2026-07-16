@@ -80,7 +80,7 @@ struct OnBordingIdelState: View{
         ScrollView{
             switch vm.currentView{
             case.ChooseTrackView:
-                Text("ChoseTreack")
+                ChoseTrackView(vm: vm)
             case.UploadCvView:
                 UploadCvView(vm: vm)
             case.ProfileView:
