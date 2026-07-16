@@ -21,9 +21,10 @@ struct CustomButton: View {
 
                 if showArrow {
                     Image(systemName: "arrow.right")
+
                 }
             }
-            .font(.buttonLabel)
+            .font(.caption)
             .foregroundStyle(Color.gray100)
             .frame(width: 350, height: 52)
             .background(Color.activeColour)

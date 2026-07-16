@@ -15,7 +15,7 @@ struct FreeSessionBanner: View {
                 .font(.system(size: 16, weight: .semibold))
 
             Text("Your first session is on us — no card needed!")
-                .font(.bodySmallSemiBold)
+                .font(.size13Semibold)
                 .foregroundColor(.activeColour)
 
             Spacer()
