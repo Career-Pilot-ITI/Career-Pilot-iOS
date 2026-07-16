@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomSearchTextField: View {
     @Binding var text: String
-    let placeholder: String = "Search tracks…"
+    let placeholder: String
     
     @FocusState var isFocused : Bool
     
@@ -54,18 +54,18 @@ struct CustomSearchTextField: View {
     }
 }
 
-#Preview {
-    struct PreviewContainer: View {
-        @State private var query = ""
-        var body: some View {
-            VStack {
-                Spacer()
-                CustomSearchTextField(text: $query)
-                Spacer()
-            }
-            .padding(.horizontal, 20)
-            .padding(.top, 40)
-        }
-    }
-    return PreviewContainer()
-}
+//#Preview {
+//    struct PreviewContainer: View {
+//        @State private var query = ""
+//        var body: some View {
+//            VStack {
+//                Spacer()
+//                CustomSearchTextField(text: $query)
+//                Spacer()
+//            }
+//            .padding(.horizontal, 20)
+//            .padding(.top, 40)
+//        }
+//    }
+//    return PreviewContainer()
+//}

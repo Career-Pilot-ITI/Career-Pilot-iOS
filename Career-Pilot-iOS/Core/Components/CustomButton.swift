@@ -6,39 +6,37 @@
 //
 
 import SwiftUI
-
 struct CustomButton: View {
-    //Properties
-    var showArrow: Bool = true
+
+    var isButtonEnabeld: Bool = true
+    var showArrow = true
     var buttonTitle: String
-    
-    //Actions
     var onClick: () -> Void
-    
-    
+
     var body: some View {
-        RoundedRectangle(cornerRadius: Spacing.s16)
-            .frame(width: 350, height: 52)
-            .foregroundColor(.activeColour)
-            .overlay{
-                HStack{
-                    Text(buttonTitle)
-                        .font(.buttonLabel)
-                        .foregroundColor(.gray100)
-                        
-                    if showArrow{
-                        Image(systemName: "arrow.right")
-                            .foregroundColor(.gray100)                        
-                    }
+        Button(action: onClick) {
+
+            HStack {
+                Text(buttonTitle)
+
+                if showArrow {
+                    Image(systemName: "arrow.right")
                 }
             }
-            .onTapGesture(perform: onClick)
+            .font(.buttonLabel)
+            .foregroundStyle(Color.gray100)
+            .frame(width: 350, height: 52)
+            .background(Color.activeColour)
+            .clipShape(Capsule())
+        }
+        .disabled(!isButtonEnabeld)
+        .opacity(isButtonEnabeld ? 1 : 0.5)
     }
 }
 
 struct CustomButton_Previews: PreviewProvider {
     static var previews: some View {
-        CustomButton(buttonTitle: "Continue"){
+        CustomButton(isButtonEnabeld: true, buttonTitle: "Continue"){
             print("Clicked")
         }
     }

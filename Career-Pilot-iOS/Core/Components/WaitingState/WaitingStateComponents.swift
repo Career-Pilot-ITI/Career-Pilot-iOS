@@ -91,26 +91,44 @@ struct FailureWaitingScreen: View {
     }
 }
 
-#Preview("Payment") {
-    SuccessPaymentScreen()
+struct SuccessPaymentScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        SuccessPaymentScreen()
+            .previewDisplayName("Payment")
+    }
 }
 
-#Preview("Calling") {
-    CallingWaitingScreen(phoneNumber: "+20 101 234 5678")
+struct CallingWaitingScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        CallingWaitingScreen()
+            .previewDisplayName("Calling")
+    }
 }
 
-#Preview("Uploading") {
-    UploadingWaitingScreen()
+struct UploadingWaitingScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        UploadingWaitingScreen()
+            .previewDisplayName("Uploading")
+    }
 }
 
-#Preview("Listening") {
-    ListeningWaitingScreen()
+struct ListeningWaitingScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        ListeningWaitingScreen()
+            .previewDisplayName("Listening")
+    }
 }
 
-#Preview("Recording") {
-    RecordingWaitingScreen()
+struct RecordingWaitingScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        RecordingWaitingScreen()
+            .previewDisplayName("Recording")
+    }
 }
 
-#Preview("Failure") {
-    FailureWaitingScreen()
+struct FailureWaitingScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        FailureWaitingScreen()
+            .previewDisplayName("Failure")
+    }
 }
