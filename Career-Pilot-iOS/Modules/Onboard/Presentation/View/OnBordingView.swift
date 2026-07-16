@@ -11,29 +11,34 @@ struct OnBordingView: View {
     @StateObject var vm: OnBordingViewModel = OnBordingViewModel()
     
     var body: some View {
-        VStack(alignment: .center, spacing: 14){
-            //Top Part
-            topView
-            Spacer()
-            
-            //OnBording Content
-            switch vm.screenState{
-            case.idel:
-                OnBordingIdelState(vm: vm)
-            case.loading:
-                ProgressView()
-            case.error(let error):
-                OnBordingErrorState(error: error.localizedDescription)
+        NavigationStack{
+            VStack(alignment: .center, spacing: 14){
+                //Top Part
+                topView
+                Spacer()
+                
+                //OnBording Content
+                switch vm.screenState{
+                case.idel:
+                    OnBordingIdelState(vm: vm)
+                case.loading:
+                    ProgressView()
+                case.error(let error):
+                    OnBordingErrorState(error: error.localizedDescription)
+                }
+                
+                //Bottom Part
+                Spacer()
+                CustomButton(buttonTitle: vm.buttonTitle){
+                    print("Clicked")
+                    vm.navToNext()
+                }
+                .disabled(!vm.isButtonEnabeld)
+                .opacity(vm.isButtonEnabeld ? 1.0 : 0.5)
             }
-            
-            //Bottom Part
-            Spacer()
-            CustomButton(buttonTitle: vm.buttonTitle){
-                print("Clicked")
-                vm.navToNext()
+            .navigationDestination(isPresented: $vm.navToHomeScreen){
+                Text("2na Home Screen")
             }
-            .disabled(!vm.isButtonEnabeld)
-            .opacity(vm.isButtonEnabeld ? 1.0 : 0.5)
         }
     }
     
