@@ -24,15 +24,15 @@ struct OTPView: View {
             VStack(alignment: .leading) {
                 Text("Enter your code")
                     .foregroundStyle(.white)
-                    .font(Font.pageTitle)
+                    .font(.size26Semibold)
                     .padding(.bottom,8)
                 HStack{
                     Text("Sent to")
                         .foregroundStyle(.white)
-                        .font(Font.bodyAppRegular)
+                        .font(.size14Regular)
                     Text("+20 101 234 5678")
                         .foregroundStyle(.white)
-                        .font(Font.bodyAppRegular)
+                        .font(.size14Regular)
                 }
                 .padding(.bottom,36)
                 

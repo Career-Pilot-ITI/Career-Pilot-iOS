@@ -12,9 +12,9 @@ struct ProfileCard: View {
         HStack(spacing:16){
             Image("colorfulIcon")
             VStack (alignment:.leading){
-                Text("Sarah Chen").font(.cardTitleSmallerBolded).foregroundColor(.primaryNavy)
+                Text("Sarah Chen").font(.size16Bold).foregroundColor(.primaryNavy)
                 Text("sarah.chen@example.com")
-                    .font(.bodySmall).foregroundColor(Color.gray400)
+                    .font(.size13Medium).foregroundColor(Color.gray400)
             }
             Spacer()
             Image(systemName: "pencil").frame(width: 18 , height: 18).foregroundColor(.gray400)
