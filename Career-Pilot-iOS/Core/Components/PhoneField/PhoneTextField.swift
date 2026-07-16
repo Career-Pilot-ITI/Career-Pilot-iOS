@@ -24,28 +24,38 @@ struct PhoneTextField: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 8) {
             Text("PHONE NUMBER")
-                .font(.system(size: 12, weight: .bold))
-                .foregroundColor(AppColors.secondaryText)
+                .font(Font.labelAppBold)
+                .foregroundColor(Color.gray400)
                 .padding(.leading, 4)
             
             HStack(spacing: 8) {
                 countrySelectionButton
-                Divider().frame(height: 20)
+                    .padding(.all , 16)
+                
+               
+                Divider()
+                    .frame(width:2,height: 59)
+                    .background(Color.gray400)
+               
                 
                 TextField(placeholder, text: Binding(
                     get: { viewModel.formatNumber() },
                     set: { viewModel.updatePhone($0) }
-                ))
+                ), prompt: Text(placeholder)
+                    .foregroundColor(Color.gray400)
+                    .font(Font.cardTitleSmallerRegular)
+                )
+                .foregroundStyle(.white)
                 .keyboardType(.numberPad)
                 .focused($isFieldFocused)
                 .disabled(isDisabled || isLoading)
+                .padding(.all , 16)
                 
                 trailingIcon
             }
-            .padding(12)
-            .background(RoundedRectangle(cornerRadius: 10).fill(isDisabled ? AppColors.PhoneField.backgroundDisabled : AppColors.PhoneField.background))
+            .background(RoundedRectangle(cornerRadius: 16).fill(isDisabled ? AppColors.PhoneField.backgroundDisabled : AppColors.PhoneField.background))
             .overlay(RoundedRectangle(cornerRadius: 10).stroke(currentState.borderColor, lineWidth: currentState.borderWidth))
             
             if currentState == .invalid && !isFieldFocused {
@@ -71,13 +81,26 @@ struct PhoneTextField: View {
     
     private var countrySelectionButton: some View {
         Button { showCountryPicker = true } label: {
-            HStack(spacing: 4) {
+            HStack(spacing: 8) {
                 Text(viewModel.selectedCountry.flag)
                 Text(viewModel.selectedCountry.dialCode)
+                    .font(Font.bodyAppSemiBold)
+                    .foregroundStyle(.white)
                 Image(systemName: "chevron.down").font(.caption2)
+                    .foregroundColor(Color.gray400)
             }
             .foregroundColor(isDisabled ? AppColors.secondaryText.opacity(0.5) : AppColors.primaryText)
         }
         .disabled(isDisabled || isLoading)
+    }
+}
+
+
+#Preview {
+    ZStack {
+        Color.darkBackGround.ignoresSafeArea()
+        
+        PhoneTextField(viewModel: PhoneFieldViewModel(selectedCountry: CountryCode.defaultList[0]))
+            .padding(.horizontal, 16)
     }
 }

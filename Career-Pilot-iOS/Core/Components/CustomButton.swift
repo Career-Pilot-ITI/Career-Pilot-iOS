@@ -17,7 +17,7 @@ struct CustomButton: View {
     
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 25)
+        RoundedRectangle(cornerRadius: Spacing.s16)
             .frame(width: 350, height: 52)
             .foregroundColor(.activeColour)
             .overlay{
