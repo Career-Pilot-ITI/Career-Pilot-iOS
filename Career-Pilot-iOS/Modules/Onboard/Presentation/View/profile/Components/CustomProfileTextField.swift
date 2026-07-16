@@ -39,7 +39,7 @@ struct CustomProfileTextField: View {
                    }
                    .animation(.easeOut(duration: 0.2), value: shouldFloat)
             
-        }.padding(.vertical,Spacing.md)
+        }.padding(.vertical,Spacing.s12)
     }
    @ViewBuilder
     private func customIcon(icon: String) -> some View {
@@ -47,7 +47,7 @@ struct CustomProfileTextField: View {
             .foregroundColor(.primaryNavy)
             .frame(width: 44, height: 44)
             .background(
-                RoundedRectangle(cornerRadius: Radius.lg )
+                RoundedRectangle(cornerRadius: Radius.r12 )
                     .fill(Color.primaryNavy.opacity(0.06))
             )
     }

@@ -40,12 +40,12 @@ struct CustomSearchTextField: View {
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
         .background {
-            RoundedRectangle(cornerRadius: Radius.card, style: .continuous)
+            RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)
                 .fill(.white)
                 .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 3)
         }
         .overlay {
-            RoundedRectangle(cornerRadius: Radius.card, style: .continuous)
+            RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)
                 .stroke(Color.black.opacity(isFocused ? 0.12 : 0), lineWidth: 1.5)
         }
         .animation(.easeIn(duration: 0.2), value: isFocused)
