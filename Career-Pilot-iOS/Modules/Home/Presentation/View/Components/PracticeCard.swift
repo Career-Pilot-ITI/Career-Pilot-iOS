@@ -35,6 +35,6 @@ struct PracticeCard: View {
     }
 }
 
-#Preview {
-    PracticeCard(category: "SOFTWARE ENGINEERING")
-}
+//#Preview {
+//    PracticeCard(category: "SOFTWARE ENGINEERING")
+//}

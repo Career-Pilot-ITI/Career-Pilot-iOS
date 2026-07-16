@@ -51,6 +51,6 @@ struct SubscriptionCard: View {
         .cornerRadius(16)
     }
 }
-#Preview {
-    SubscriptionCard(usedSessions: 1.0, totalSessions: 3.0)
-}
+//#Preview {
+//    SubscriptionCard(usedSessions: 1.0, totalSessions: 3.0)
+//}

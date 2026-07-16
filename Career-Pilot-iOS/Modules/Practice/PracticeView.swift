@@ -13,6 +13,6 @@ struct PracticeView: View {
     }
 }
 
-#Preview {
-    PracticeView()
-}
+//#Preview {
+//    PracticeView()
+//}

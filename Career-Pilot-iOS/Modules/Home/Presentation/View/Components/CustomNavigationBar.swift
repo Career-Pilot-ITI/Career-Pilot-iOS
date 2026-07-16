@@ -57,6 +57,6 @@ struct CustomNavigationBar: View {
     }
 }
 
-#Preview {
-    CustomNavigationBar(userName: "Ahmed El-Sayyad Mohamed", userScore: 247)
-}
+//#Preview {
+//    CustomNavigationBar(userName: "Ahmed El-Sayyad Mohamed", userScore: 247)
+//}
