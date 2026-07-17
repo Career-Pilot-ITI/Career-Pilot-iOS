@@ -8,5 +8,5 @@
 import Foundation
 
 struct CvUplodingApiResponse: Decodable{
-    
+    let profile: UserProfileDTO
 }

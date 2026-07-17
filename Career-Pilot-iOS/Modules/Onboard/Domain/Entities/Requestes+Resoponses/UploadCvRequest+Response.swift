@@ -12,5 +12,5 @@ struct UploadCvRequest{
 }
 
 struct UploadCvResponse{
-    var message: String
+    var userData: UserData
 }

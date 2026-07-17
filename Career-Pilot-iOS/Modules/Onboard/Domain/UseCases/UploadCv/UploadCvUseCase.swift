@@ -16,10 +16,16 @@ protocol UseCase{
 
 class UploadCvUseCase: UseCase{
 
+    var userDataRepo: UserDataRepo
+    
+    init(userDataRepo: UserDataRepo){
+        self.userDataRepo = userDataRepo
+    }
+    
     typealias Input = UploadCvRequest
     typealias Output = UploadCvResponse
     
     func excute(input: UploadCvRequest) async throws -> UploadCvResponse {
-        return UploadCvResponse(message: "Done")
+        return try await userDataRepo.uploadUserCV(uploadCVRequest: input)
     }
 }

@@ -45,6 +45,9 @@ enum UserDataEndPointes: APIEndpoint{
             
             return try? JSONSerialization.data(withJSONObject: jsonParameters, options: [])
         }
-        
+    }
+    
+    var headers: [String: String] {
+        ["Content-Type": "application/json"]
     }
 }

@@ -28,6 +28,6 @@ struct OnBordingIdelState: View{
 
 struct OnBordingIdelState_Previews: PreviewProvider {
     static var previews: some View {
-        OnBordingIdelState(vm: OnBordingViewModel())
+        OnBordingIdelState(vm: OnBordingViewModel(uploadCvUseCase: UploadCvUseCase(userDataRepo: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService())))))
     }
 }

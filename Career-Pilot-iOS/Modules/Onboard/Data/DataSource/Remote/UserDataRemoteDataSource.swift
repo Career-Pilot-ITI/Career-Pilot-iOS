@@ -21,7 +21,7 @@ class UserDataRemoteDataSourceImp: UserDataRemoteDataSource{
     
     
     func uploadCv(cvURL: URL) async throws -> CvUplodingApiResponse {
-        let cvAsData = try Data(contentsOf: cvURL) //HAVE to map the error
+        let cvAsData = try Data(contentsOf: cvURL)
         
         let uplodingCvEndPoint: UserDataEndPointes = .uploadFile(file: cvAsData, fileType: .CVs)
         
