@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
+
 
 struct UploadCvView: View {
     @StateObject var vm: OnBordingViewModel
     @State var isImporterPresented: Bool = false
+    
+    //A custom type for .docx
+    var docxType = UTType(filenameExtension: "docx")!
     
     var body: some View {
         VStack(spacing: 35){
@@ -34,7 +39,7 @@ struct UploadCvView: View {
             
             Spacer()
         }
-        .fileImporter(isPresented: $isImporterPresented, allowedContentTypes: [.pdf,.plainText,.rtf]){ result in
+        .fileImporter(isPresented: $isImporterPresented, allowedContentTypes: [.pdf,docxType]){ result in
             vm.onCvResult(result: result)
         }
     }
@@ -51,6 +56,7 @@ struct UploadCvView: View {
 
 struct UploadCvView_Previews: PreviewProvider {
     static var previews: some View {
+        
         UploadCvView(vm: OnBordingViewModel())
     }
 }

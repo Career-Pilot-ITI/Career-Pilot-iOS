@@ -58,15 +58,14 @@ class OnBordingViewModel: ObservableObject {
     func onCvResult(result: Result<URL,Error>){
         switch result{
         case.success(let cvURL):
-            onSuccsesUplodingCV(cvURL: cvURL)
+            didSelectCV(cvURL: cvURL)
         case.failure(let error):
             screenState = .error(error as! UploadCVErrors)
         }
     }
     
-    private func onSuccsesUplodingCV(cvURL: URL){
+    private func didSelectCV(cvURL: URL){
         //For UplodingCV View
-        cvViewInfo.selectedCV = cvURL
         extractName_SizeOfTheCv(cvUrl: cvURL)
         cvViewInfo.isUploaded = true
         //UserData
