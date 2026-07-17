@@ -10,6 +10,7 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @StateObject private var toastManager = ToastManager()
     @StateObject private var coordiantor = AppCoordinator()
     
     var body: some View {
@@ -20,6 +21,8 @@ struct ContentView: View {
                 }
         }
         .environmentObject(coordiantor)
+        .environmentObject(ToastManager.shared)
+        .toast(ToastManager.shared)
     }
     
     @ViewBuilder

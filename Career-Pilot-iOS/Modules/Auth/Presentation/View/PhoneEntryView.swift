@@ -9,6 +9,14 @@ import SwiftUI
 
 struct PhoneEntryView: View {
     @EnvironmentObject var coordinator: AppCoordinator
+    @EnvironmentObject var toastManager: ToastManager
+    @StateObject private var phoneFieldViewModel = PhoneFieldViewModel(selectedCountry: CountryCode.defaultList[0])
+    @StateObject private var authViewModel = AuthViewModel(
+        useCase: SendOTPUseCase(
+            repository: AuthRemoteDataSource()
+        ),
+        toastManager: .shared
+    )
     
     var body: some View {
         ZStack {
@@ -64,14 +72,25 @@ struct PhoneEntryView: View {
                 .padding(.bottom,36)
                 
                 VStack() {
-                    PhoneTextField(viewModel: PhoneFieldViewModel(selectedCountry: CountryCode.defaultList[0]))
+                    PhoneTextField(viewModel: phoneFieldViewModel)
                         .padding(.bottom, 16)
                     
                     
                     CustomButton(showArrow: true, buttonTitle: "Continue") {
-                        // handle navigation here after user enters phone number
-                        coordinator.push(.sendingOTPScreen)
+                        guard phoneFieldViewModel.canProceed else {
+                            phoneFieldViewModel.markAsEditedIfNeeded() 
+                            return
+                        }
+
+                        Task {
+                            let success = await authViewModel.sendOTP(for: phoneFieldViewModel.rawPhoneNumber())
+                            if success {
+                                coordinator.push(.sendingOTPScreen)
+                            }
+                        }
                     }
+                    .disabled(!phoneFieldViewModel.canProceed)
+                    .opacity(phoneFieldViewModel.canProceed ? 1 : 0.5)
                     .padding(.bottom, 20)
                     
                     HStack(spacing:2) {

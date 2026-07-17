@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol AuthRepositoryProtocol {
+    func sendOTP(for phoneNumber: String) async throws
+}
