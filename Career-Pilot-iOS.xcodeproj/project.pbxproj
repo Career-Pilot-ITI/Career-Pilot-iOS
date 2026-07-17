@@ -14,6 +14,12 @@
 		41C6A23C30080BDA0035EFBF /* OTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A23B30080BDA0035EFBF /* OTPView.swift */; };
 		41C6A23E30083FDB0035EFBF /* PhoneEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A23D30083FDB0035EFBF /* PhoneEntryView.swift */; };
 		41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A23F3008609C0035EFBF /* AppRoute.swift */; };
+		41D69D29300A7BEF00294D94 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D25300A7BEF00294D94 /* User.swift */; };
+		41D69D2A300A7BEF00294D94 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D26300A7BEF00294D94 /* UserProfile.swift */; };
+		41D69D31300A7C0700294D94 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D2B300A7C0600294D94 /* UserDTO.swift */; };
+		41D69D32300A7C0700294D94 /* UserProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D2C300A7C0600294D94 /* UserProfileDTO.swift */; };
+		41D69D33300A7C0700294D94 /* UserDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D2E300A7C0700294D94 /* UserDTO+Mapping.swift */; };
+		41D69D34300A7C0700294D94 /* UserProfileDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D2F300A7C0700294D94 /* UserProfileDTO+Mapping.swift */; };
 		616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0330080EEC007FC4AF /* SettingsVIew.swift */; };
 		616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0630080FDE007FC4AF /* ProfileCard.swift */; };
 		616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0830081C62007FC4AF /* SettingsCard.swift */; };
@@ -127,6 +133,12 @@
 		41C6A23B30080BDA0035EFBF /* OTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPView.swift; sourceTree = "<group>"; };
 		41C6A23D30083FDB0035EFBF /* PhoneEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneEntryView.swift; sourceTree = "<group>"; };
 		41C6A23F3008609C0035EFBF /* AppRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoute.swift; sourceTree = "<group>"; };
+		41D69D25300A7BEF00294D94 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		41D69D26300A7BEF00294D94 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		41D69D2B300A7C0600294D94 /* UserDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		41D69D2C300A7C0600294D94 /* UserProfileDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileDTO.swift; sourceTree = "<group>"; };
+		41D69D2E300A7C0700294D94 /* UserDTO+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDTO+Mapping.swift"; sourceTree = "<group>"; };
+		41D69D2F300A7C0700294D94 /* UserProfileDTO+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserProfileDTO+Mapping.swift"; sourceTree = "<group>"; };
 		616CAD0330080EEC007FC4AF /* SettingsVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVIew.swift; sourceTree = "<group>"; };
 		616CAD0630080FDE007FC4AF /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
 		616CAD0830081C62007FC4AF /* SettingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCard.swift; sourceTree = "<group>"; };
@@ -244,6 +256,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41D69D27300A7BEF00294D94 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				41D69D25300A7BEF00294D94 /* User.swift */,
+				41D69D26300A7BEF00294D94 /* UserProfile.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		41D69D28300A7BEF00294D94 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				41D69D27300A7BEF00294D94 /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		41D69D2D300A7C0600294D94 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				41D69D2B300A7C0600294D94 /* UserDTO.swift */,
+				41D69D2C300A7C0600294D94 /* UserProfileDTO.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		41D69D30300A7C0700294D94 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				41D69D2E300A7C0700294D94 /* UserDTO+Mapping.swift */,
+				41D69D2F300A7C0700294D94 /* UserProfileDTO+Mapping.swift */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
 		616CACFD30080EB3007FC4AF /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -794,6 +841,7 @@
 		D9C187AB30065F6800BFF8E9 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				41D69D28300A7BEF00294D94 /* Domain */,
 				D9C187D030066BC900BFF8E9 /* App */,
 				D9C187B13006610A00BFF8E9 /* Di */,
 				D9C187CB30066AE100BFF8E9 /* Util */,
@@ -810,6 +858,8 @@
 		D9C187AC3006604600BFF8E9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				41D69D2D300A7C0600294D94 /* DTOs */,
+				41D69D30300A7C0700294D94 /* Mappers */,
 				D9C187BD300663F200BFF8E9 /* NetworkError.swift */,
 				D9C187B9300662E000BFF8E9 /* EndPoint */,
 				D9C187B73006623F00BFF8E9 /* NetworkService.swift */,
@@ -1040,6 +1090,7 @@
 			files = (
 				D9C187A630065C3700BFF8E9 /* TestModels.swift in Sources */,
 				CECC20DA3007BE6800DC450D /* PhoneFieldViewModel.swift in Sources */,
+				41D69D32300A7C0700294D94 /* UserProfileDTO.swift in Sources */,
 				CE8AFF18300712FC0064CC6C /* Font.swift in Sources */,
 				CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */,
 				D9C187C830066A4F00BFF8E9 /* Colors+Extension.swift in Sources */,
@@ -1054,12 +1105,14 @@
 				D935DFCB30078012009DF855 /* CustomButton.swift in Sources */,
 				616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */,
 				D93938EE3004064600CF4372 /* Career_Pilot_iOS.xcdatamodeld in Sources */,
+				41D69D33300A7C0700294D94 /* UserDTO+Mapping.swift in Sources */,
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
 				41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */,
 				D93938EB3004064600CF4372 /* Persistence.swift in Sources */,
 				CEE62A8730091FD10071F076 /* MainTabBarView.swift in Sources */,
 				D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */,
 				D98A79703008D9A300DFDC6B /* CvViewInfo.swift in Sources */,
+				41D69D2A300A7BEF00294D94 /* UserProfile.swift in Sources */,
 				CECC20D03007AD1200DC450D /* PhoneFieldState.swift in Sources */,
 				41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */,
 				D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */,
@@ -1102,6 +1155,7 @@
 				D98A79773008E19900DFDC6B /* TrackChip.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
 				616CAD0C30081EF4007FC4AF /* AcoountSettingsView.swift in Sources */,
+				41D69D34300A7C0700294D94 /* UserProfileDTO+Mapping.swift in Sources */,
 				CECC20E43007DB2C00DC450D /* WaitingStateView.swift in Sources */,
 				CEE62A80300910840071F076 /* HomeView.swift in Sources */,
 				CEE62A8530091A6B0071F076 /* Image+AppIcons.swift in Sources */,
@@ -1114,6 +1168,8 @@
 				CE8AFF1D300718670064CC6C /* Round.swift in Sources */,
 				D9C187CF30066B2800BFF8E9 /* style.swift in Sources */,
 				D935DFFC3008045A009DF855 /* OnBordingViewModel.swift in Sources */,
+				41D69D29300A7BEF00294D94 /* User.swift in Sources */,
+				41D69D31300A7C0700294D94 /* UserDTO.swift in Sources */,
 				D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */,
 				616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */,
 				D9C187BB300662F000BFF8E9 /* HTTPMethod.swift in Sources */,
