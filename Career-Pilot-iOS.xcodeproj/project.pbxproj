@@ -92,6 +92,10 @@
 		D9A2857D300A5E0300ABB5BD /* UploadCvReques+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2857C300A5E0300ABB5BD /* UploadCvReques+Response.swift */; };
 		D9A2857F300A604D00ABB5BD /* UserDataRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2857E300A604D00ABB5BD /* UserDataRepo.swift */; };
 		D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */; };
+		D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28583300A6CC300ABB5BD /* UserDataRepoImp.swift */; };
+		D9A28588300A82CE00ABB5BD /* UserDataRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */; };
+		D9A2858B300A834A00ABB5BD /* CvUplodingApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2858A300A834A00ABB5BD /* CvUplodingApiResponse.swift */; };
+		D9A2858E300A859E00ABB5BD /* UserDataMappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2858D300A859E00ABB5BD /* UserDataMappers.swift */; };
 		D9C09B10300A2B32008C1E58 /* OnBordingIdelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */; };
 		D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879230065AF100BFF8E9 /* Repo.swift */; };
 		D9C1879530065AFC00BFF8E9 /* UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879430065AFC00BFF8E9 /* UseCases.swift */; };
@@ -218,6 +222,10 @@
 		D9A2857C300A5E0300ABB5BD /* UploadCvReques+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UploadCvReques+Response.swift"; sourceTree = "<group>"; };
 		D9A2857E300A604D00ABB5BD /* UserDataRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataRepo.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UserDataRepo.swift"; sourceTree = SOURCE_ROOT; };
 		D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataEndPoint.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UserDataEndPoint.swift"; sourceTree = SOURCE_ROOT; };
+		D9A28583300A6CC300ABB5BD /* UserDataRepoImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepoImp.swift; sourceTree = "<group>"; };
+		D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRemoteDataSource.swift; sourceTree = "<group>"; };
+		D9A2858A300A834A00ABB5BD /* CvUplodingApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvUplodingApiResponse.swift; sourceTree = "<group>"; };
+		D9A2858D300A859E00ABB5BD /* UserDataMappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataMappers.swift; sourceTree = "<group>"; };
 		D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingIdelState.swift; sourceTree = "<group>"; };
 		D9C1879230065AF100BFF8E9 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		D9C1879430065AFC00BFF8E9 /* UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCases.swift; sourceTree = "<group>"; };
@@ -384,6 +392,10 @@
 			isa = PBXGroup;
 			children = (
 				D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */,
+				D9A28589300A833300ABB5BD /* DTOs */,
+				D9A2858C300A857600ABB5BD /* Mappers */,
+				D9A28585300A82AF00ABB5BD /* DataSource */,
+				D9A28582300A6CAD00ABB5BD /* RepoImp */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -707,6 +719,46 @@
 				D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */,
 			);
 			path = UploadCv;
+			sourceTree = "<group>";
+		};
+		D9A28582300A6CAD00ABB5BD /* RepoImp */ = {
+			isa = PBXGroup;
+			children = (
+				D9A28583300A6CC300ABB5BD /* UserDataRepoImp.swift */,
+			);
+			path = RepoImp;
+			sourceTree = "<group>";
+		};
+		D9A28585300A82AF00ABB5BD /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				D9A28586300A82BB00ABB5BD /* Remote */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		D9A28586300A82BB00ABB5BD /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		D9A28589300A833300ABB5BD /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				D9A2858A300A834A00ABB5BD /* CvUplodingApiResponse.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		D9A2858C300A857600ABB5BD /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				D9A2858D300A859E00ABB5BD /* UserDataMappers.swift */,
+			);
+			path = Mappers;
 			sourceTree = "<group>";
 		};
 		D9C09B0E300A2B1C008C1E58 /* OnBordingStates */ = {
@@ -1155,6 +1207,7 @@
 				61D8F2F8300761200088F170 /* CustomProfileTextField.swift in Sources */,
 				D9C187C430066A4000BFF8E9 /* Storage.swift in Sources */,
 				D9C09B10300A2B32008C1E58 /* OnBordingIdelState.swift in Sources */,
+				D9A2858E300A859E00ABB5BD /* UserDataMappers.swift in Sources */,
 				41C6A2363008008D0035EFBF /* SendingOTPCodeView.swift in Sources */,
 				41C6A23C30080BDA0035EFBF /* OTPView.swift in Sources */,
 				D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */,
@@ -1168,6 +1221,7 @@
 				CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */,
 				41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */,
 				D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */,
+				D9A2858B300A834A00ABB5BD /* CvUplodingApiResponse.swift in Sources */,
 				D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */,
 				D9C1879730065B0400BFF8E9 /* Entity.swift in Sources */,
 				616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */,
@@ -1176,6 +1230,7 @@
 				D93938E23004064400CF4372 /* Career_Pilot_iOSApp.swift in Sources */,
 				61D8F2FC300779ED0088F170 /* Flowlayout.swift in Sources */,
 				D98A79773008E19900DFDC6B /* TrackChip.swift in Sources */,
+				D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
 				D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */,
 				616CAD0C30081EF4007FC4AF /* AcoountSettingsView.swift in Sources */,
@@ -1204,6 +1259,7 @@
 				D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */,
 				D9C187A430065C2B00BFF8E9 /* RepoImp.swift in Sources */,
 				CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */,
+				D9A28588300A82CE00ABB5BD /* UserDataRemoteDataSource.swift in Sources */,
 				CEE62A933009296E0071F076 /* SubscriptionCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
