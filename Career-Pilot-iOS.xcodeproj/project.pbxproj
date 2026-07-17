@@ -88,6 +88,9 @@
 		D98A79793008EB9200DFDC6B /* ChoseTrackViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79783008EB9200DFDC6B /* ChoseTrackViewInfo.swift */; };
 		D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A797C300903BF00DFDC6B /* UploadeCvErrors.swift */; };
 		D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */; };
+		D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */; };
+		D9A2857D300A5E0300ABB5BD /* UploadCvReques+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2857C300A5E0300ABB5BD /* UploadCvReques+Response.swift */; };
+		D9A2857F300A604D00ABB5BD /* UserDataRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2857E300A604D00ABB5BD /* UserDataRepo.swift */; };
 		D9C09B10300A2B32008C1E58 /* OnBordingIdelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */; };
 		D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879230065AF100BFF8E9 /* Repo.swift */; };
 		D9C1879530065AFC00BFF8E9 /* UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879430065AFC00BFF8E9 /* UseCases.swift */; };
@@ -210,6 +213,9 @@
 		D98A79783008EB9200DFDC6B /* ChoseTrackViewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseTrackViewInfo.swift; sourceTree = "<group>"; };
 		D98A797C300903BF00DFDC6B /* UploadeCvErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadeCvErrors.swift; sourceTree = "<group>"; };
 		D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingErrorState.swift; sourceTree = "<group>"; };
+		D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UploadCvUseCase.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UploadCvUseCase.swift"; sourceTree = SOURCE_ROOT; };
+		D9A2857C300A5E0300ABB5BD /* UploadCvReques+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UploadCvReques+Response.swift"; sourceTree = "<group>"; };
+		D9A2857E300A604D00ABB5BD /* UserDataRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataRepo.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UserDataRepo.swift"; sourceTree = SOURCE_ROOT; };
 		D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingIdelState.swift; sourceTree = "<group>"; };
 		D9C1879230065AF100BFF8E9 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		D9C1879430065AFC00BFF8E9 /* UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCases.swift; sourceTree = "<group>"; };
@@ -568,6 +574,7 @@
 		D935DFF2300801FB009DF855 /* Repo */ = {
 			isa = PBXGroup;
 			children = (
+				D9A2857E300A604D00ABB5BD /* UserDataRepo.swift */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -575,6 +582,7 @@
 		D935DFF330080203009DF855 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				D9A2857B300A5DEA00ABB5BD /* UploadCv */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -687,6 +695,15 @@
 				D98A797C300903BF00DFDC6B /* UploadeCvErrors.swift */,
 			);
 			path = UploadeCV;
+			sourceTree = "<group>";
+		};
+		D9A2857B300A5DEA00ABB5BD /* UploadCv */ = {
+			isa = PBXGroup;
+			children = (
+				D9A2857C300A5E0300ABB5BD /* UploadCvReques+Response.swift */,
+				D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */,
+			);
+			path = UploadCv;
 			sourceTree = "<group>";
 		};
 		D9C09B0E300A2B1C008C1E58 /* OnBordingStates */ = {
@@ -1110,11 +1127,13 @@
 				41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */,
 				D93938EB3004064600CF4372 /* Persistence.swift in Sources */,
 				CEE62A8730091FD10071F076 /* MainTabBarView.swift in Sources */,
+				D9A2857F300A604D00ABB5BD /* UserDataRepo.swift in Sources */,
 				D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */,
 				D98A79703008D9A300DFDC6B /* CvViewInfo.swift in Sources */,
 				41D69D2A300A7BEF00294D94 /* UserProfile.swift in Sources */,
 				CECC20D03007AD1200DC450D /* PhoneFieldState.swift in Sources */,
 				41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */,
+				D9A2857D300A5E0300ABB5BD /* UploadCvReques+Response.swift in Sources */,
 				D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */,
 				CE12F3C230093ED30083D66D /* HomeViewModel.swift in Sources */,
 				D9C187A230065C2200BFF8E9 /* RemoteDataSource.swift in Sources */,
@@ -1146,6 +1165,7 @@
 				CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */,
 				41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */,
 				D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */,
+				D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */,
 				D9C1879730065B0400BFF8E9 /* Entity.swift in Sources */,
 				616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */,
 				CECC20E23007DB1B00DC450D /* WaitingIndicatorState.swift in Sources */,
