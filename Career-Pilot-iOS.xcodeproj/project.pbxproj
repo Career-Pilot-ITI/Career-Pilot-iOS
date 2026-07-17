@@ -94,6 +94,7 @@
 		D9A28588300A82CE00ABB5BD /* UserDataRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */; };
 		D9A2858B300A834A00ABB5BD /* CvUplodingApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2858A300A834A00ABB5BD /* CvUplodingApiResponse.swift */; };
 		D9A2858E300A859E00ABB5BD /* CvUplodingApiResponse+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2858D300A859E00ABB5BD /* CvUplodingApiResponse+Mapping.swift */; };
+		D9A28597300ADA2F00ABB5BD /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28596300ADA2F00ABB5BD /* DAO.swift */; };
 		D9C09B10300A2B32008C1E58 /* OnBordingIdelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */; };
 		D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879230065AF100BFF8E9 /* Repo.swift */; };
 		D9C1879530065AFC00BFF8E9 /* UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879430065AFC00BFF8E9 /* UseCases.swift */; };
@@ -222,6 +223,7 @@
 		D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRemoteDataSource.swift; sourceTree = "<group>"; };
 		D9A2858A300A834A00ABB5BD /* CvUplodingApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvUplodingApiResponse.swift; sourceTree = "<group>"; };
 		D9A2858D300A859E00ABB5BD /* CvUplodingApiResponse+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CvUplodingApiResponse+Mapping.swift"; sourceTree = "<group>"; };
+		D9A28596300ADA2F00ABB5BD /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 		D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingIdelState.swift; sourceTree = "<group>"; };
 		D9C1879230065AF100BFF8E9 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		D9C1879430065AFC00BFF8E9 /* UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCases.swift; sourceTree = "<group>"; };
@@ -753,6 +755,16 @@
 			path = Generic;
 			sourceTree = "<group>";
 		};
+		D9A28595300AD8F500ABB5BD /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				D93938EC3004064600CF4372 /* Career_Pilot_iOS.xcdatamodeld */,
+				D93938EA3004064600CF4372 /* Persistence.swift */,
+				D9A28596300ADA2F00ABB5BD /* DAO.swift */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
 		D9C09B0E300A2B1C008C1E58 /* OnBordingStates */ = {
 			isa = PBXGroup;
 			children = (
@@ -936,8 +948,7 @@
 		D9C187AD3006609300BFF8E9 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				D93938EC3004064600CF4372 /* Career_Pilot_iOS.xcdatamodeld */,
-				D93938EA3004064600CF4372 /* Persistence.swift */,
+				D9A28595300AD8F500ABB5BD /* Generic */,
 				D9C187C330066A4000BFF8E9 /* Storage.swift */,
 			);
 			path = Storage;
@@ -1178,6 +1189,7 @@
 				CEE62A8730091FD10071F076 /* MainTabBarView.swift in Sources */,
 				D9A2857F300A604D00ABB5BD /* UserDataRepo.swift in Sources */,
 				D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */,
+				D9A28597300ADA2F00ABB5BD /* DAO.swift in Sources */,
 				D98A79703008D9A300DFDC6B /* CvViewInfo.swift in Sources */,
 				CECC20D03007AD1200DC450D /* PhoneFieldState.swift in Sources */,
 				41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */,
