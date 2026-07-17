@@ -34,7 +34,7 @@ struct OnBordingView: View {
             }
         }
         .navigationDestination(isPresented: $vm.navToHomeScreen){
-            Text("2na Home Screen")
+            MainTabBarView()
         }
     }
     

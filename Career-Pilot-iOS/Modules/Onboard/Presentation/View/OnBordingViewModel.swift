@@ -58,35 +58,31 @@ class OnBordingViewModel: ObservableObject {
     func onCvResult(result: Result<URL,Error>){
         switch result{
         case.success(let cvURL):
-            cvViewInfo.selectedCV = cvURL
-            extractCvInfo(url: cvURL)
-            cvViewInfo.isUploaded = true
+            onSuccsesUplodingCV(cvURL: cvURL)
         case.failure(let error):
             screenState = .error(error as! UploadCVErrors)
         }
     }
     
-    private func extractCvInfo(url: URL){
+    private func onSuccsesUplodingCV(cvURL: URL){
+        //For UplodingCV View
+        cvViewInfo.selectedCV = cvURL
+        extractName_SizeOfTheCv(cvUrl: cvURL)
+        cvViewInfo.isUploaded = true
+        //UserData
+        userData.cv = cvURL
+    }
+    
+    private func extractName_SizeOfTheCv(cvUrl: URL){
         do{
-            let values = try url.resourceValues(forKeys: [.nameKey, .fileSizeKey])
+            let values = try cvUrl.resourceValues(forKeys: [.nameKey, .fileSizeKey])
             
             cvViewInfo.cvTitle = values.name
             let fileSizeInBytes = Double(values.fileSize ?? 0)
             let fileSizeInMB = fileSizeInBytes / (1024 * 1024)
             cvViewInfo.cvSize = fileSizeInMB
-            print(cvViewInfo.cvTitle ?? "nooo")
         }catch{
             screenState = .error(error as! UploadCVErrors)
-        }
-    }
-    
-    func uploadCV(){
-        print("Uploading cv")
-        screenState = .loading
-        Task{
-            try? await Task.sleep(for:.nanoseconds(2000000000))
-            cvViewInfo.isUploaded = true
-            screenState = .idel
         }
     }
     
@@ -103,6 +99,12 @@ class OnBordingViewModel: ObservableObject {
             track.title.localizedCaseInsensitiveContains(query)
         }
     }
+    
+    func selectThisTrack(track: Track){
+        selectedTrackInfo.selectedTrack = track
+        userData.selectedTrack = track
+    }
+    
     
     //MARK: For Navigation
     func navToNext(){
