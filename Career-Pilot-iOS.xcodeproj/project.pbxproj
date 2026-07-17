@@ -220,8 +220,8 @@
 		D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingErrorState.swift; sourceTree = "<group>"; };
 		D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UploadCvUseCase.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UploadCvUseCase.swift"; sourceTree = SOURCE_ROOT; };
 		D9A2857C300A5E0300ABB5BD /* UploadCvRequest+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UploadCvRequest+Response.swift"; sourceTree = "<group>"; };
-		D9A2857E300A604D00ABB5BD /* UserDataRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataRepo.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UserDataRepo.swift"; sourceTree = SOURCE_ROOT; };
-		D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataEndPoint.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UserDataEndPoint.swift"; sourceTree = SOURCE_ROOT; };
+		D9A2857E300A604D00ABB5BD /* UserDataRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataRepo.swift; path = "Career-Pilot-iOS/Core/Domain/Repo/UserDataRepo.swift"; sourceTree = SOURCE_ROOT; };
+		D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataEndPoint.swift; path = "Career-Pilot-iOS/Core/Network/EndPoint/UserData/UserDataEndPoint.swift"; sourceTree = SOURCE_ROOT; };
 		D9A28583300A6CC300ABB5BD /* UserDataRepoImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepoImp.swift; sourceTree = "<group>"; };
 		D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRemoteDataSource.swift; sourceTree = "<group>"; };
 		D9A2858A300A834A00ABB5BD /* CvUplodingApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvUplodingApiResponse.swift; sourceTree = "<group>"; };
@@ -275,8 +275,7 @@
 		41D69D27300A7BEF00294D94 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				41D69D25300A7BEF00294D94 /* User.swift */,
-				41D69D26300A7BEF00294D94 /* UserProfile.swift */,
+				61D8F2FE30077A410088F170 /* UserData.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -285,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				41D69D27300A7BEF00294D94 /* Entities */,
+				D9A28590300AB8D500ABB5BD /* Repo */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -292,8 +292,9 @@
 		41D69D2D300A7C0600294D94 /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
-				41D69D2B300A7C0600294D94 /* UserDTO.swift */,
-				41D69D2C300A7C0600294D94 /* UserProfileDTO.swift */,
+				D9A28593300ABDB600ABB5BD /* UserData */,
+				41D69D25300A7BEF00294D94 /* User.swift */,
+				41D69D26300A7BEF00294D94 /* UserProfile.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -303,6 +304,7 @@
 			children = (
 				41D69D2E300A7C0700294D94 /* UserDTO+Mapping.swift */,
 				41D69D2F300A7C0700294D94 /* UserProfileDTO+Mapping.swift */,
+				D9A2858D300A859E00ABB5BD /* CvUplodingApiResponse+Mapping.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -364,7 +366,6 @@
 			children = (
 				61D8F2DF300750B70088F170 /* Presentation */,
 				61D8F2E0300750BE0088F170 /* Domain */,
-				61D8F2E1300750C70088F170 /* Data */,
 			);
 			path = Onboard;
 			sourceTree = "<group>";
@@ -383,21 +384,8 @@
 			children = (
 				D935DFF43008020B009DF855 /* Entities */,
 				D935DFF330080203009DF855 /* UseCases */,
-				D935DFF2300801FB009DF855 /* Repo */,
 			);
 			path = Domain;
-			sourceTree = "<group>";
-		};
-		61D8F2E1300750C70088F170 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */,
-				D9A28589300A833300ABB5BD /* DTOs */,
-				D9A2858C300A857600ABB5BD /* Mappers */,
-				D9A28585300A82AF00ABB5BD /* DataSource */,
-				D9A28582300A6CAD00ABB5BD /* RepoImp */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		61D8F2E2300750D00088F170 /* View */ = {
@@ -586,14 +574,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		D935DFF2300801FB009DF855 /* Repo */ = {
-			isa = PBXGroup;
-			children = (
-				D9A2857E300A604D00ABB5BD /* UserDataRepo.swift */,
-			);
-			path = Repo;
-			sourceTree = "<group>";
-		};
 		D935DFF330080203009DF855 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,7 +585,6 @@
 		D935DFF43008020B009DF855 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				61D8F2FE30077A410088F170 /* UserData.swift */,
 				D9A2858F300A98BB00ABB5BD /* Requestes+Resoponses */,
 				D98A797B300903AE00DFDC6B /* UploadeCV */,
 				D98A797A3008EBA200DFDC6B /* SelectedTrack */,
@@ -729,44 +708,55 @@
 			path = RepoImp;
 			sourceTree = "<group>";
 		};
-		D9A28585300A82AF00ABB5BD /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				D9A28586300A82BB00ABB5BD /* Remote */,
-			);
-			path = DataSource;
-			sourceTree = "<group>";
-		};
-		D9A28586300A82BB00ABB5BD /* Remote */ = {
-			isa = PBXGroup;
-			children = (
-				D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */,
-			);
-			path = Remote;
-			sourceTree = "<group>";
-		};
-		D9A28589300A833300ABB5BD /* DTOs */ = {
-			isa = PBXGroup;
-			children = (
-				D9A2858A300A834A00ABB5BD /* CvUplodingApiResponse.swift */,
-			);
-			path = DTOs;
-			sourceTree = "<group>";
-		};
-		D9A2858C300A857600ABB5BD /* Mappers */ = {
-			isa = PBXGroup;
-			children = (
-				D9A2858D300A859E00ABB5BD /* CvUplodingApiResponse+Mapping.swift */,
-			);
-			path = Mappers;
-			sourceTree = "<group>";
-		};
 		D9A2858F300A98BB00ABB5BD /* Requestes+Resoponses */ = {
 			isa = PBXGroup;
 			children = (
 				D9A2857C300A5E0300ABB5BD /* UploadCvRequest+Response.swift */,
 			);
 			path = "Requestes+Resoponses";
+			sourceTree = "<group>";
+		};
+		D9A28590300AB8D500ABB5BD /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+				D9A2857E300A604D00ABB5BD /* UserDataRepo.swift */,
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		D9A28591300ABD6100ABB5BD /* DataSourc */ = {
+			isa = PBXGroup;
+			children = (
+				D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */,
+			);
+			path = DataSourc;
+			sourceTree = "<group>";
+		};
+		D9A28592300ABD8B00ABB5BD /* UserData */ = {
+			isa = PBXGroup;
+			children = (
+				D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */,
+			);
+			path = UserData;
+			sourceTree = "<group>";
+		};
+		D9A28593300ABDB600ABB5BD /* UserData */ = {
+			isa = PBXGroup;
+			children = (
+				41D69D2B300A7C0600294D94 /* UserDTO.swift */,
+				41D69D2C300A7C0600294D94 /* UserProfileDTO.swift */,
+				D9A2858A300A834A00ABB5BD /* CvUplodingApiResponse.swift */,
+			);
+			path = UserData;
+			sourceTree = "<group>";
+		};
+		D9A28594300ABE2F00ABB5BD /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				D9C187AE300660D100BFF8E9 /* APIEndpoint.swift */,
+				D9C187BA300662F000BFF8E9 /* HTTPMethod.swift */,
+			);
+			path = Generic;
 			sourceTree = "<group>";
 		};
 		D9C09B0E300A2B1C008C1E58 /* OnBordingStates */ = {
@@ -938,11 +928,13 @@
 		D9C187AC3006604600BFF8E9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				41D69D2D300A7C0600294D94 /* DTOs */,
-				41D69D30300A7C0700294D94 /* Mappers */,
 				D9C187BD300663F200BFF8E9 /* NetworkError.swift */,
-				D9C187B9300662E000BFF8E9 /* EndPoint */,
 				D9C187B73006623F00BFF8E9 /* NetworkService.swift */,
+				D9C187B9300662E000BFF8E9 /* EndPoint */,
+				41D69D2D300A7C0600294D94 /* DTOs */,
+				D9A28591300ABD6100ABB5BD /* DataSourc */,
+				41D69D30300A7C0700294D94 /* Mappers */,
+				D9A28582300A6CAD00ABB5BD /* RepoImp */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -999,8 +991,8 @@
 		D9C187B9300662E000BFF8E9 /* EndPoint */ = {
 			isa = PBXGroup;
 			children = (
-				D9C187AE300660D100BFF8E9 /* APIEndpoint.swift */,
-				D9C187BA300662F000BFF8E9 /* HTTPMethod.swift */,
+				D9A28594300ABE2F00ABB5BD /* Generic */,
+				D9A28592300ABD8B00ABB5BD /* UserData */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
