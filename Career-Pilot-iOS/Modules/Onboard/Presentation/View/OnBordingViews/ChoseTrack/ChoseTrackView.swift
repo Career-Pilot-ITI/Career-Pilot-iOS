@@ -28,7 +28,7 @@ struct ChoseTrackView: View {
                         isSelected: vm.selectedTrackInfo.selectedTrack?.id  == track.id
                     )
                     .onTapGesture {
-                        vm.selectedTrackInfo.selectedTrack = track
+                        vm.selectThisTrack(track: track)
                     }
                 }
             }
