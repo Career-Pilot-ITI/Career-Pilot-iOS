@@ -34,7 +34,7 @@ class OnBordingViewModel: ObservableObject {
     @Published var selectedTrackInfo: SelectedTrackViewInfo = SelectedTrackViewInfo()
     
     //For UploadCV View
-    @Published var cvViewInfo: CvViewInfo = CvViewInfo(isUploaded: false)
+    @Published var cvViewInfo: CvViewInfo = CvViewInfo(isSelected: false)
     
     //For Profie View
     @Published var userData: UserData = UserData(email: "", title: "", experienceLevel: "", skills: ["C++"], firstName: "", lastName: "")
@@ -69,7 +69,7 @@ class OnBordingViewModel: ObservableObject {
         case.ChooseTrackView:
             return selectedTrackInfo.selectedTrack != nil
         case .UploadCvView:
-            return cvViewInfo.isUploaded
+            return cvViewInfo.isSelected
         }
     }
     
@@ -86,7 +86,7 @@ class OnBordingViewModel: ObservableObject {
     private func didSelectCV(cvURL: URL){
         //For UplodingCV View
         extractName_SizeOfTheCv(cvUrl: cvURL)
-        cvViewInfo.isUploaded = true
+        cvViewInfo.isSelected = true
         //UserData
         userData.cv = cvURL
     }
@@ -104,6 +104,11 @@ class OnBordingViewModel: ObservableObject {
         }catch{
             screenState = .error(error.localizedDescription)
         }
+    }
+    
+    func didRemoveSelectedCV(){
+        userData.cv = nil
+        cvViewInfo.isSelected = false
     }
     
     //MARK: For ChoseTrack
