@@ -20,6 +20,6 @@ class UploadCvUseCase: UseCase{
     typealias Output = UploadCvResponse
     
     func excute(input: UploadCvRequest) async throws -> UploadCvResponse {
-        <#code#>
+        return UploadCvResponse(message: "Done")
     }
 }

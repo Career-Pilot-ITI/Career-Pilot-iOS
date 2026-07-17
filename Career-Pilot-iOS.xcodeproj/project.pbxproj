@@ -91,6 +91,7 @@
 		D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */; };
 		D9A2857D300A5E0300ABB5BD /* UploadCvReques+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2857C300A5E0300ABB5BD /* UploadCvReques+Response.swift */; };
 		D9A2857F300A604D00ABB5BD /* UserDataRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2857E300A604D00ABB5BD /* UserDataRepo.swift */; };
+		D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */; };
 		D9C09B10300A2B32008C1E58 /* OnBordingIdelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */; };
 		D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879230065AF100BFF8E9 /* Repo.swift */; };
 		D9C1879530065AFC00BFF8E9 /* UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879430065AFC00BFF8E9 /* UseCases.swift */; };
@@ -216,6 +217,7 @@
 		D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UploadCvUseCase.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UploadCvUseCase.swift"; sourceTree = SOURCE_ROOT; };
 		D9A2857C300A5E0300ABB5BD /* UploadCvReques+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UploadCvReques+Response.swift"; sourceTree = "<group>"; };
 		D9A2857E300A604D00ABB5BD /* UserDataRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataRepo.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UserDataRepo.swift"; sourceTree = SOURCE_ROOT; };
+		D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataEndPoint.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UserDataEndPoint.swift"; sourceTree = SOURCE_ROOT; };
 		D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingIdelState.swift; sourceTree = "<group>"; };
 		D9C1879230065AF100BFF8E9 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		D9C1879430065AFC00BFF8E9 /* UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCases.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 		61D8F2E1300750C70088F170 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1174,6 +1177,7 @@
 				61D8F2FC300779ED0088F170 /* Flowlayout.swift in Sources */,
 				D98A79773008E19900DFDC6B /* TrackChip.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
+				D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */,
 				616CAD0C30081EF4007FC4AF /* AcoountSettingsView.swift in Sources */,
 				41D69D34300A7C0700294D94 /* UserProfileDTO+Mapping.swift in Sources */,
 				CECC20E43007DB2C00DC450D /* WaitingStateView.swift in Sources */,
