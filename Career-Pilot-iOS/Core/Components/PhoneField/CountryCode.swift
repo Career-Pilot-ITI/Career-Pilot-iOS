@@ -12,12 +12,11 @@ struct CountryCode: Identifiable, Equatable {
     let flag: String
     let dialCode: String
     let name: String
-    let minLength: Int
     let maxLength: Int
 
     static let defaultList: [CountryCode] = [
-        CountryCode(flag: "🇪🇬", dialCode: "+20", name: "Egypt", minLength: 7, maxLength: 10),
-        CountryCode(flag: "🇺🇸", dialCode: "+1", name: "United States", minLength: 10, maxLength: 10)
+        CountryCode(flag: "🇪🇬", dialCode: "+20", name: "Egypt", maxLength: 10),
+        CountryCode(flag: "🇺🇸", dialCode: "+1", name: "United States" , maxLength: 10)
     ]
 }
 //struct CountryCode: Identifiable, Equatable {

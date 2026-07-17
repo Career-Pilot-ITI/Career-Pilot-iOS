@@ -21,6 +21,10 @@ class PhoneFieldViewModel: ObservableObject {
         PhoneValidator.isValid(number: phoneNumber, for: selectedCountry)
     }
     
+    var canProceed: Bool {
+        !phoneNumber.isEmpty && isValid
+    }
+    
     func formatNumber() -> String {
         PhoneValidator.format(phoneNumber)
     }
@@ -29,5 +33,15 @@ class PhoneFieldViewModel: ObservableObject {
         let digits = newValue.filter(\.isNumber)
         phoneNumber = String(digits.prefix(selectedCountry.maxLength))
         hasBeenEdited = true
+    }
+    
+    func rawPhoneNumber() -> String {
+        return selectedCountry.dialCode + phoneNumber
+    }
+    
+    func markAsEditedIfNeeded() {
+        if !hasBeenEdited {
+            hasBeenEdited = true
+        }
     }
 }
