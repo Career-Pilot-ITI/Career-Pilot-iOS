@@ -14,8 +14,6 @@
 		41C6A23C30080BDA0035EFBF /* OTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A23B30080BDA0035EFBF /* OTPView.swift */; };
 		41C6A23E30083FDB0035EFBF /* PhoneEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A23D30083FDB0035EFBF /* PhoneEntryView.swift */; };
 		41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A23F3008609C0035EFBF /* AppRoute.swift */; };
-		41D69D29300A7BEF00294D94 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D25300A7BEF00294D94 /* User.swift */; };
-		41D69D2A300A7BEF00294D94 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D26300A7BEF00294D94 /* UserProfile.swift */; };
 		41D69D31300A7C0700294D94 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D2B300A7C0600294D94 /* UserDTO.swift */; };
 		41D69D32300A7C0700294D94 /* UserProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D2C300A7C0600294D94 /* UserProfileDTO.swift */; };
 		41D69D33300A7C0700294D94 /* UserDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D2E300A7C0700294D94 /* UserDTO+Mapping.swift */; };
@@ -141,8 +139,6 @@
 		41C6A23B30080BDA0035EFBF /* OTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPView.swift; sourceTree = "<group>"; };
 		41C6A23D30083FDB0035EFBF /* PhoneEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneEntryView.swift; sourceTree = "<group>"; };
 		41C6A23F3008609C0035EFBF /* AppRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoute.swift; sourceTree = "<group>"; };
-		41D69D25300A7BEF00294D94 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		41D69D26300A7BEF00294D94 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		41D69D2B300A7C0600294D94 /* UserDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		41D69D2C300A7C0600294D94 /* UserProfileDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileDTO.swift; sourceTree = "<group>"; };
 		41D69D2E300A7C0700294D94 /* UserDTO+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDTO+Mapping.swift"; sourceTree = "<group>"; };
@@ -293,8 +289,6 @@
 			isa = PBXGroup;
 			children = (
 				D9A28593300ABDB600ABB5BD /* UserData */,
-				41D69D25300A7BEF00294D94 /* User.swift */,
-				41D69D26300A7BEF00294D94 /* UserProfile.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -1185,7 +1179,6 @@
 				D9A2857F300A604D00ABB5BD /* UserDataRepo.swift in Sources */,
 				D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */,
 				D98A79703008D9A300DFDC6B /* CvViewInfo.swift in Sources */,
-				41D69D2A300A7BEF00294D94 /* UserProfile.swift in Sources */,
 				CECC20D03007AD1200DC450D /* PhoneFieldState.swift in Sources */,
 				41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */,
 				D9A2857D300A5E0300ABB5BD /* UploadCvRequest+Response.swift in Sources */,
@@ -1247,7 +1240,6 @@
 				CE8AFF1D300718670064CC6C /* Round.swift in Sources */,
 				D9C187CF30066B2800BFF8E9 /* style.swift in Sources */,
 				D935DFFC3008045A009DF855 /* OnBordingViewModel.swift in Sources */,
-				41D69D29300A7BEF00294D94 /* User.swift in Sources */,
 				41D69D31300A7C0700294D94 /* UserDTO.swift in Sources */,
 				D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */,
 				616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */,
