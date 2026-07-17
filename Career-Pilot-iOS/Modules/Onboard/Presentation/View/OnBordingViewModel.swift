@@ -114,8 +114,13 @@ class OnBordingViewModel: ObservableObject {
         case.UploadCvView:
             currentView = .ProfileView
         case.ProfileView:
-            navToHomeScreen = true
+            onNavToHomeScreen()
         }
+    }
+    
+    private func onNavToHomeScreen(){
+        navToHomeScreen = true
+        print(userData)
     }
     
     func backByStep(){
