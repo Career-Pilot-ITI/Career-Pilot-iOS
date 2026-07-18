@@ -7,13 +7,13 @@
 
 import Foundation
 
-extension CvUplodingApiResponse{
+extension CvUplodingResponseDTO{
     func toDomain() -> UploadCvResponse{
-        let components = self.profile.displayName.components(separatedBy: " ")
+        let components = displayName.components(separatedBy: " ")
         let firstName = components.first ?? ""
         let lastName = components.dropFirst().joined(separator: " ")
         
-        let userData = UserData(email: profile.email, title: profile.currentJobTitle ?? "Job Title", experienceLevel: profile.experienceLevel ?? "No Level", skills: profile.skills ?? [""], firstName: firstName, lastName: lastName)
+        let userData = UserData(email: email, title: currentJobTitle ?? "Job Title", experienceLevel: experienceLevel ?? "No Level", skills: skills ?? [""], firstName: firstName, lastName: lastName)
         
         return UploadCvResponse(userData: userData)
     }

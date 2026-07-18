@@ -8,7 +8,7 @@
 import Foundation
 
 protocol UserDataRemoteDataSource{
-    func uploadCv(cvURL: URL) async throws -> CvUplodingApiResponse
+    func uploadCv(cvURL: URL) async throws -> CvUplodingResponseDTO
 }
 
 class UserDataRemoteDataSourceImp: UserDataRemoteDataSource{
@@ -20,10 +20,8 @@ class UserDataRemoteDataSourceImp: UserDataRemoteDataSource{
     }
     
     
-    func uploadCv(cvURL: URL) async throws -> CvUplodingApiResponse {
-        let cvAsData = try Data(contentsOf: cvURL)
-        
-        let uplodingCvEndPoint: UserDataEndPointes = .uploadFile(file: cvAsData, fileType: .CVs)
+    func uploadCv(cvURL: URL) async throws -> CvUplodingResponseDTO {
+        let uplodingCvEndPoint: UserDataEndPointes = .analyseCv(cvURL: cvURL)
         
         return try await networkService.request(uplodingCvEndPoint)
     }
