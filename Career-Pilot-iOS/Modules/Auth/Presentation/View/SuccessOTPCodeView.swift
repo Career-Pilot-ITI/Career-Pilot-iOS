@@ -24,6 +24,7 @@ struct SuccessOTPCodeView: View {
             }
             .padding(.bottom, 40)
         }
+        .navigationBarBackButtonHidden(true)
         .onAppear {
             navigationTask = Task  {
                 try? await Task.sleep(for: .seconds(5))
@@ -32,7 +33,7 @@ struct SuccessOTPCodeView: View {
             }
         }
         .onDisappear {
-                    navigationTask?.cancel()
+                navigationTask?.cancel()
         }
     }
 }
