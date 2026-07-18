@@ -9,6 +9,7 @@ import Foundation
 
 enum AuthEndPoint : APIEndpoint {
     case sendOTP(phoneNumber: String)
+    case verifyOTP(phoneNumber: String ,code: String)
     
     var baseURL: String {
         "http://192.168.84.1:8080"
@@ -18,12 +19,14 @@ enum AuthEndPoint : APIEndpoint {
         switch self {
         case .sendOTP:
             return "/api/v1/otp/send"
+        case .verifyOTP:
+            return "/api/v1/otp/verify"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-            case .sendOTP:
+        case .sendOTP, .verifyOTP:
                 .post
         }
     }
@@ -32,6 +35,8 @@ enum AuthEndPoint : APIEndpoint {
         switch self {
         case .sendOTP(let phoneNumber):
             return Self.encode(SendOTPRequest(phoneNumber: phoneNumber))
+        case .verifyOTP(let phoneNumber, let code):
+            return Self.encode(VerifyOTPRequest(phoneNumber: phoneNumber,code: code))
         }
     }
     
@@ -42,4 +47,9 @@ enum AuthEndPoint : APIEndpoint {
 
 struct SendOTPRequest : Encodable {
     let phoneNumber: String
+}
+
+struct VerifyOTPRequest : Encodable {
+    let phoneNumber: String
+    let code : String
 }

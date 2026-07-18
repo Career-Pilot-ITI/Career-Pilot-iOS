@@ -15,9 +15,9 @@ protocol UseCase {
 }
 
 class SendOTPUseCase : UseCase {
-    private let repository: AuthRemoteDataSourceProtocol
+    private let repository: AuthRepositoryProtocol
     
-    init(repository: AuthRemoteDataSourceProtocol) {
+    init(repository: AuthRepositoryProtocol) {
         self.repository = repository
     }
     

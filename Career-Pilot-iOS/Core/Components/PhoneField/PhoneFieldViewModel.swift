@@ -13,7 +13,7 @@ class PhoneFieldViewModel: ObservableObject {
     @Published var selectedCountry: CountryCode
     @Published var hasBeenEdited: Bool = false
     
-    init(selectedCountry: CountryCode) {
+    init(selectedCountry: CountryCode = CountryCode.defaultList[0]) {
         self.selectedCountry = selectedCountry
     }
     

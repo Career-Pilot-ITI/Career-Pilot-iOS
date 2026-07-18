@@ -11,8 +11,8 @@ import SwiftUI
 enum AppRoute : Hashable {
     // MARK : Auth
     case phoneEntryScreen
-    case sendingOTPScreen
-    case otpScreen
+    case sendingOTPScreen(phoneNumber: String)
+    case otpScreen(phoneNumber: String)
     case successOTPScreen
     
     // MARK : Onboarding
