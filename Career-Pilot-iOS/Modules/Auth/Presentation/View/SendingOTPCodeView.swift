@@ -9,14 +9,17 @@ import SwiftUI
 
 struct SendingOTPCodeView: View {
     @EnvironmentObject var coordinator: AppCoordinator
-    
+    @StateObject private var authViewModel = AuthViewModel(
+        sendUseCase: SendOTPUseCase(repository: AuthRepositoryImpl(remoteDataSource: AuthRemoteDataSource())),
+        verifyUseCase: VerifyOTPUseCase(repository: AuthRepositoryImpl(remoteDataSource: AuthRemoteDataSource())),
+        toastManager: .shared
+    )
     let phoneNumber: String
-    @State private var navigationTask: Task<Void, Never>?
+    @State private var sendOTPTask: Task<Void, Never>?
 
     var body: some View {
         ZStack {
             Color.darkBackGround.ignoresSafeArea()
-
             VStack(spacing: 24) {
                 Spacer()
                 CallingWaitingScreen(phoneNumber: phoneNumber)
@@ -26,14 +29,20 @@ struct SendingOTPCodeView: View {
             .padding(.bottom, 40)
         }
         .onAppear {
-            navigationTask = Task  {
-                try? await Task.sleep(for: .seconds(5))
+            sendOTPTask = Task {
+                let success = await authViewModel.sendOTP(for: phoneNumber)
                 guard !Task.isCancelled else { return }
-                coordinator.push(.otpScreen(phoneNumber: phoneNumber))
+                if success {
+                    coordinator.push(.otpScreen(phoneNumber: phoneNumber))
+                } else {
+                    try? await Task.sleep(for: .seconds(1.5))
+                    guard !Task.isCancelled else { return }
+                    coordinator.pop()
+                }
             }
         }
         .onDisappear {
-                    navigationTask?.cancel()
+            sendOTPTask?.cancel()
         }
     }
 }
