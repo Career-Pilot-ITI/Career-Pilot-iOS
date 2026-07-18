@@ -16,6 +16,9 @@ struct UserData {
     var firstName: String
     var lastName: String
     
+    var cv: URL?
+    var selectedTrack: Track?
+    
     var fullName: String {
         get {
             return "\(firstName) \(lastName)"

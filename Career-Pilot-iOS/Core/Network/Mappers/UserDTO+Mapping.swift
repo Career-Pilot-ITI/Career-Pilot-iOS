@@ -7,6 +7,7 @@
 
 import Foundation
 
+<<<<<<< HEAD
 extension UserDTO {
     func toDomain() -> User {
         User(
@@ -17,3 +18,15 @@ extension UserDTO {
         )
     }
 }
+=======
+//extension UserDTO {
+//    func toDomain() -> UserDTO {
+//        UserDTO(
+//            id: id,
+//            phoneNumber: phoneNumber,
+//            profile: profile.toDomain(),
+//            isNewUser: isNewUser
+//        )
+//    }
+//}
+>>>>>>> develop

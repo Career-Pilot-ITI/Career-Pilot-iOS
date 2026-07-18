@@ -60,6 +60,8 @@
 		CE12F3C4300940CE0083D66D /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C3300940CE0083D66D /* Shimmer.swift */; };
 		CE12F3C830094FB50083D66D /* OTPBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C530094FB50083D66D /* OTPBoxView.swift */; };
 		CE12F3C930094FB50083D66D /* OTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C630094FB50083D66D /* OTPCodeView.swift */; };
+		CE12F3C830094FB50083D66D /* OTPBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C530094FB50083D66D /* OTPBoxView.swift */; };
+		CE12F3C930094FB50083D66D /* OTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C630094FB50083D66D /* OTPCodeView.swift */; };
 		CE8AFF18300712FC0064CC6C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF15300712FC0064CC6C /* Font.swift */; };
 		CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF14300712FC0064CC6C /* Colors.swift */; };
 		CE8AFF1D300718670064CC6C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1C300718670064CC6C /* Round.swift */; };
@@ -111,6 +113,24 @@
 		D9C1879530065AFC00BFF8E9 /* SendOTPUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879430065AFC00BFF8E9 /* SendOTPUseCase.swift */; };
 		D9C187A230065C2200BFF8E9 /* AuthRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187A130065C2200BFF8E9 /* AuthRemoteDataSource.swift */; };
 		D9C187A430065C2B00BFF8E9 /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187A330065C2B00BFF8E9 /* AuthRepositoryImpl.swift */; };
+		D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */; };
+		D9A2857D300A5E0300ABB5BD /* UploadCvRequest+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2857C300A5E0300ABB5BD /* UploadCvRequest+Response.swift */; };
+		D9A2857F300A604D00ABB5BD /* UserDataRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2857E300A604D00ABB5BD /* UserDataRepo.swift */; };
+		D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */; };
+		D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28583300A6CC300ABB5BD /* UserDataRepoImp.swift */; };
+		D9A28588300A82CE00ABB5BD /* UserDataRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */; };
+		D9A2858B300A834A00ABB5BD /* CvUplodingResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2858A300A834A00ABB5BD /* CvUplodingResponseDTO.swift */; };
+		D9A2858E300A859E00ABB5BD /* CvUplodingApiResponse+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2858D300A859E00ABB5BD /* CvUplodingApiResponse+Mapping.swift */; };
+		D9A28597300ADA2F00ABB5BD /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28596300ADA2F00ABB5BD /* DAO.swift */; };
+		D9C09B10300A2B32008C1E58 /* OnBordingIdelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */; };
+		D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879230065AF100BFF8E9 /* Repo.swift */; };
+		D9C1879530065AFC00BFF8E9 /* UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879430065AFC00BFF8E9 /* UseCases.swift */; };
+		D9C1879730065B0400BFF8E9 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879630065B0400BFF8E9 /* Entity.swift */; };
+		D9C1879E30065B9800BFF8E9 /* TestDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879D30065B9800BFF8E9 /* TestDao.swift */; };
+		D9C187A030065BA700BFF8E9 /* TestLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C1879F30065BA700BFF8E9 /* TestLocalDataSource.swift */; };
+		D9C187A230065C2200BFF8E9 /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187A130065C2200BFF8E9 /* RemoteDataSource.swift */; };
+		D9C187A430065C2B00BFF8E9 /* RepoImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187A330065C2B00BFF8E9 /* RepoImp.swift */; };
+		D9C187A630065C3700BFF8E9 /* TestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187A530065C3600BFF8E9 /* TestModels.swift */; };
 		D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187A930065C8700BFF8E9 /* AuthViewModel.swift */; };
 		D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187AE300660D100BFF8E9 /* APIEndpoint.swift */; };
 		D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187B23006618500BFF8E9 /* DIContainer.swift */; };
@@ -192,6 +212,8 @@
 		CE12F3C3300940CE0083D66D /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		CE12F3C530094FB50083D66D /* OTPBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPBoxView.swift; sourceTree = "<group>"; };
 		CE12F3C630094FB50083D66D /* OTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPCodeView.swift; sourceTree = "<group>"; };
+		CE12F3C530094FB50083D66D /* OTPBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPBoxView.swift; sourceTree = "<group>"; };
+		CE12F3C630094FB50083D66D /* OTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPCodeView.swift; sourceTree = "<group>"; };
 		CE8AFF14300712FC0064CC6C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CE8AFF15300712FC0064CC6C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		CE8AFF1C300718670064CC6C /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
@@ -246,6 +268,24 @@
 		D9C1879430065AFC00BFF8E9 /* SendOTPUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendOTPUseCase.swift; sourceTree = "<group>"; };
 		D9C187A130065C2200BFF8E9 /* AuthRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRemoteDataSource.swift; sourceTree = "<group>"; };
 		D9C187A330065C2B00BFF8E9 /* AuthRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryImpl.swift; sourceTree = "<group>"; };
+		D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UploadCvUseCase.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UploadCvUseCase.swift"; sourceTree = SOURCE_ROOT; };
+		D9A2857C300A5E0300ABB5BD /* UploadCvRequest+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UploadCvRequest+Response.swift"; sourceTree = "<group>"; };
+		D9A2857E300A604D00ABB5BD /* UserDataRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataRepo.swift; path = "Career-Pilot-iOS/Core/Domain/Repo/UserDataRepo.swift"; sourceTree = SOURCE_ROOT; };
+		D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataEndPoint.swift; path = "Career-Pilot-iOS/Core/Network/EndPoint/UserData/UserDataEndPoint.swift"; sourceTree = SOURCE_ROOT; };
+		D9A28583300A6CC300ABB5BD /* UserDataRepoImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepoImp.swift; sourceTree = "<group>"; };
+		D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRemoteDataSource.swift; sourceTree = "<group>"; };
+		D9A2858A300A834A00ABB5BD /* CvUplodingResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvUplodingResponseDTO.swift; sourceTree = "<group>"; };
+		D9A2858D300A859E00ABB5BD /* CvUplodingApiResponse+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CvUplodingApiResponse+Mapping.swift"; sourceTree = "<group>"; };
+		D9A28596300ADA2F00ABB5BD /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
+		D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingIdelState.swift; sourceTree = "<group>"; };
+		D9C1879230065AF100BFF8E9 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
+		D9C1879430065AFC00BFF8E9 /* UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCases.swift; sourceTree = "<group>"; };
+		D9C1879630065B0400BFF8E9 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		D9C1879D30065B9800BFF8E9 /* TestDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDao.swift; sourceTree = "<group>"; };
+		D9C1879F30065BA700BFF8E9 /* TestLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLocalDataSource.swift; sourceTree = "<group>"; };
+		D9C187A130065C2200BFF8E9 /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
+		D9C187A330065C2B00BFF8E9 /* RepoImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoImp.swift; sourceTree = "<group>"; };
+		D9C187A530065C3600BFF8E9 /* TestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModels.swift; sourceTree = "<group>"; };
 		D9C187A930065C8700BFF8E9 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		D9C187AE300660D100BFF8E9 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		D9C187B23006618500BFF8E9 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
@@ -412,7 +452,6 @@
 			children = (
 				61D8F2DF300750B70088F170 /* Presentation */,
 				61D8F2E0300750BE0088F170 /* Domain */,
-				61D8F2E1300750C70088F170 /* Data */,
 			);
 			path = Onboard;
 			sourceTree = "<group>";
@@ -431,23 +470,15 @@
 			children = (
 				D935DFF43008020B009DF855 /* Entities */,
 				D935DFF330080203009DF855 /* UseCases */,
-				D935DFF2300801FB009DF855 /* Repo */,
 			);
 			path = Domain;
-			sourceTree = "<group>";
-		};
-		61D8F2E1300750C70088F170 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		61D8F2E2300750D00088F170 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				D935DFF930080448009DF855 /* OnBordingView.swift */,
-				D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */,
+				D9C09B0E300A2B1C008C1E58 /* OnBordingStates */,
 				D935DFF730080430009DF855 /* OnBordingViews */,
 			);
 			path = View;
@@ -726,6 +757,14 @@
 			path = "Career-Pilot-iOSUITests";
 			sourceTree = "<group>";
 		};
+		D981A41A300B97EF00BA8752 /* CV */ = {
+			isa = PBXGroup;
+			children = (
+				D9A2858A300A834A00ABB5BD /* CvUplodingResponseDTO.swift */,
+			);
+			path = CV;
+			sourceTree = "<group>";
+		};
 		D98A79713008DB1100DFDC6B /* ChoseTrack */ = {
 			isa = PBXGroup;
 			children = (
@@ -738,8 +777,8 @@
 		D98A797A3008EBA200DFDC6B /* SelectedTrack */ = {
 			isa = PBXGroup;
 			children = (
-				D98A79743008DFD800DFDC6B /* Track.swift */,
 				D98A79783008EB9200DFDC6B /* ChoseTrackViewInfo.swift */,
+				D98A79743008DFD800DFDC6B /* Track.swift */,
 			);
 			path = SelectedTrack;
 			sourceTree = "<group>";
@@ -751,6 +790,92 @@
 				D98A797C300903BF00DFDC6B /* UploadeCvErrors.swift */,
 			);
 			path = UploadeCV;
+			sourceTree = "<group>";
+		};
+		D9A2857B300A5DEA00ABB5BD /* UploadCv */ = {
+			isa = PBXGroup;
+			children = (
+				D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */,
+			);
+			path = UploadCv;
+			sourceTree = "<group>";
+		};
+		D9A28582300A6CAD00ABB5BD /* RepoImp */ = {
+			isa = PBXGroup;
+			children = (
+				D9A28583300A6CC300ABB5BD /* UserDataRepoImp.swift */,
+			);
+			path = RepoImp;
+			sourceTree = "<group>";
+		};
+		D9A2858F300A98BB00ABB5BD /* Requestes+Resoponses */ = {
+			isa = PBXGroup;
+			children = (
+				D9A2857C300A5E0300ABB5BD /* UploadCvRequest+Response.swift */,
+			);
+			path = "Requestes+Resoponses";
+			sourceTree = "<group>";
+		};
+		D9A28590300AB8D500ABB5BD /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+				D9A2857E300A604D00ABB5BD /* UserDataRepo.swift */,
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		D9A28591300ABD6100ABB5BD /* DataSourc */ = {
+			isa = PBXGroup;
+			children = (
+				D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */,
+			);
+			path = DataSourc;
+			sourceTree = "<group>";
+		};
+		D9A28592300ABD8B00ABB5BD /* UserData */ = {
+			isa = PBXGroup;
+			children = (
+				D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */,
+			);
+			path = UserData;
+			sourceTree = "<group>";
+		};
+		D9A28593300ABDB600ABB5BD /* UserData */ = {
+			isa = PBXGroup;
+			children = (
+				D981A41A300B97EF00BA8752 /* CV */,
+				41D69D2B300A7C0600294D94 /* UserDTO.swift */,
+				41D69D2C300A7C0600294D94 /* UserProfileDTO.swift */,
+			);
+			path = UserData;
+			sourceTree = "<group>";
+		};
+		D9A28594300ABE2F00ABB5BD /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				D9C187AE300660D100BFF8E9 /* APIEndpoint.swift */,
+				D9C187BA300662F000BFF8E9 /* HTTPMethod.swift */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
+		D9A28595300AD8F500ABB5BD /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				D93938EC3004064600CF4372 /* Career_Pilot_iOS.xcdatamodeld */,
+				D93938EA3004064600CF4372 /* Persistence.swift */,
+				D9A28596300ADA2F00ABB5BD /* DAO.swift */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
+		D9C09B0E300A2B1C008C1E58 /* OnBordingStates */ = {
+			isa = PBXGroup;
+			children = (
+				D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */,
+				D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */,
+			);
+			path = OnBordingStates;
 			sourceTree = "<group>";
 		};
 		D9C1878430065A4800BFF8E9 /* Modules */ = {
@@ -902,6 +1027,7 @@
 		D9C187AB30065F6800BFF8E9 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				41D69D28300A7BEF00294D94 /* Domain */,
 				41D69D21300A77C500294D94 /* Domain */,
 				D9C187D030066BC900BFF8E9 /* App */,
 				D9C187B13006610A00BFF8E9 /* Di */,
@@ -919,11 +1045,17 @@
 		D9C187AC3006604600BFF8E9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				D9C187BD300663F200BFF8E9 /* NetworkError.swift */,
 				41D69D0E300A6C6200294D94 /* Mappers */,
 				D9C1879830065B5500BFF8E9 /* DTOs */,
 				D9C187B9300662E000BFF8E9 /* EndPoint */,
 				D9C187BD300663F200BFF8E9 /* NetworkError.swift */,
 				D9C187B73006623F00BFF8E9 /* NetworkService.swift */,
+				D9C187B9300662E000BFF8E9 /* EndPoint */,
+				41D69D2D300A7C0600294D94 /* DTOs */,
+				D9A28591300ABD6100ABB5BD /* DataSourc */,
+				41D69D30300A7C0700294D94 /* Mappers */,
+				D9A28582300A6CAD00ABB5BD /* RepoImp */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -982,8 +1114,8 @@
 		D9C187B9300662E000BFF8E9 /* EndPoint */ = {
 			isa = PBXGroup;
 			children = (
-				D9C187AE300660D100BFF8E9 /* APIEndpoint.swift */,
-				D9C187BA300662F000BFF8E9 /* HTTPMethod.swift */,
+				D9A28594300ABE2F00ABB5BD /* Generic */,
+				D9A28592300ABD8B00ABB5BD /* UserData */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -1153,6 +1285,7 @@
 			files = (
 				41D69D63300B553F00294D94 /* Career_Pilot_iOS.xcdatamodeld in Sources */,
 				CECC20DA3007BE6800DC450D /* PhoneFieldViewModel.swift in Sources */,
+				41D69D32300A7C0700294D94 /* UserProfileDTO.swift in Sources */,
 				CE8AFF18300712FC0064CC6C /* Font.swift in Sources */,
 				CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */,
 				D9C187C830066A4F00BFF8E9 /* Colors+Extension.swift in Sources */,
@@ -1169,6 +1302,7 @@
 				D935DFCB30078012009DF855 /* CustomButton.swift in Sources */,
 				41D69D0B300A6A6600294D94 /* UserDTO.swift in Sources */,
 				616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */,
+				41D69D33300A7C0700294D94 /* UserDTO+Mapping.swift in Sources */,
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
 				41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */,
 				41D69D0D300A6AA400294D94 /* UserProfileDTO.swift in Sources */,
@@ -1182,6 +1316,7 @@
 				CECC20D03007AD1200DC450D /* PhoneFieldState.swift in Sources */,
 				41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */,
 				41CE20E8300A5506005DC31F /* ToastView.swift in Sources */,
+				D9A2857D300A5E0300ABB5BD /* UploadCvRequest+Response.swift in Sources */,
 				D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */,
 				CE12F3C230093ED30083D66D /* HomeViewModel.swift in Sources */,
 				D9C187A230065C2200BFF8E9 /* AuthRemoteDataSource.swift in Sources */,
@@ -1203,6 +1338,9 @@
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
 				616CAD0E30082441007FC4AF /* SupportAndLeagalSettingsView.swift in Sources */,
 				61D8F2F8300761200088F170 /* CustomProfileTextField.swift in Sources */,
+				D9C187C430066A4000BFF8E9 /* Storage.swift in Sources */,
+				D9C09B10300A2B32008C1E58 /* OnBordingIdelState.swift in Sources */,
+				D9A2858E300A859E00ABB5BD /* CvUplodingApiResponse+Mapping.swift in Sources */,
 				41C6A2363008008D0035EFBF /* SendingOTPCodeView.swift in Sources */,
 				41D69D12300A6CB100294D94 /* VerifyOTPResult.swift in Sources */,
 				41C6A23C30080BDA0035EFBF /* OTPView.swift in Sources */,
@@ -1218,20 +1356,27 @@
 				CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */,
 				41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */,
 				D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */,
+				D9A2858B300A834A00ABB5BD /* CvUplodingResponseDTO.swift in Sources */,
+				D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */,
+				D9C1879730065B0400BFF8E9 /* Entity.swift in Sources */,
 				616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */,
 				CECC20E23007DB1B00DC450D /* WaitingIndicatorState.swift in Sources */,
 				CE12F3C4300940CE0083D66D /* Shimmer.swift in Sources */,
 				D93938E23004064400CF4372 /* Career_Pilot_iOSApp.swift in Sources */,
 				61D8F2FC300779ED0088F170 /* Flowlayout.swift in Sources */,
 				D98A79773008E19900DFDC6B /* TrackChip.swift in Sources */,
+				D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */,
 				41D69D16300A6CF100294D94 /* User.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
+				D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */,
 				616CAD0C30081EF4007FC4AF /* AcoountSettingsView.swift in Sources */,
+				41D69D34300A7C0700294D94 /* UserProfileDTO+Mapping.swift in Sources */,
 				CECC20E43007DB2C00DC450D /* WaitingStateView.swift in Sources */,
 				41D69D52300B4D5B00294D94 /* Persistence.swift in Sources */,
 				CEE62A80300910840071F076 /* HomeView.swift in Sources */,
 				CEE62A8530091A6B0071F076 /* Image+AppIcons.swift in Sources */,
 				61D8F2FF30077A410088F170 /* UserData.swift in Sources */,
+				D9C1879E30065B9800BFF8E9 /* TestDao.swift in Sources */,
 				CEE62A8B3009201C0071F076 /* ReportsView.swift in Sources */,
 				D935DFCF300789EF009DF855 /* CvUploadingView.swift in Sources */,
 				CE12F3C830094FB50083D66D /* OTPBoxView.swift in Sources */,
@@ -1239,6 +1384,7 @@
 				CE8AFF1D300718670064CC6C /* Round.swift in Sources */,
 				D9C187CF30066B2800BFF8E9 /* style.swift in Sources */,
 				D935DFFC3008045A009DF855 /* OnBordingViewModel.swift in Sources */,
+				41D69D31300A7C0700294D94 /* UserDTO.swift in Sources */,
 				D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */,
 				616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */,
 				41D69D50300B4A2200294D94 /* LoadSessionUseCase.swift in Sources */,
@@ -1256,6 +1402,7 @@
 				41D69D07300A69E200294D94 /* VerifyOTPResponseDTO.swift in Sources */,
 				41D69D1E300A6DD000294D94 /* UserDTO+Mapping.swift in Sources */,
 				CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */,
+				D9A28588300A82CE00ABB5BD /* UserDataRemoteDataSource.swift in Sources */,
 				CEE62A933009296E0071F076 /* SubscriptionCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
