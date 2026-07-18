@@ -18,7 +18,7 @@ extension UserEntity {
         }
         return User(
             id: Int(id),
-            phoneNumber: phoneNumber,
+            phoneNumber: phoneNumber ?? "",
             profile: profileEntity.toDomain(),
             isNewUser: isNewUser
         )
@@ -27,21 +27,31 @@ extension UserEntity {
 
 extension UserProfileEntity {
     func toDomain() -> UserProfile {
-        UserProfile(
+        let avatar: URL? = avatarUrl.flatMap { URL(string: $0) }
+        let cv: URL? = cvUrl.flatMap { URL(string: $0) }
+        let years: Int? = yearsOfExperience == 0 ? nil : Int(yearsOfExperience)
+
+        let skillsSet: Set<SkillEntity> = (skills as? Set<SkillEntity>) ?? []
+        let skillList: [String] = skillsSet.map { $0.value ?? "" }
+
+        let companiesSet: Set<TargetCompanyEntity> = (targetCompanies as? Set<TargetCompanyEntity>) ?? []
+        let companyList: [String] = companiesSet.map { $0.value ?? "" }
+
+        return UserProfile(
             displayName: displayName ?? "",
-            username: username,
+            username: username ?? "",
             email: email ?? "",
-            avatarUrl: avatarUrl.flatMap(URL.init(string:)),
+            avatarUrl: avatar,
             gender: gender,
             dateOfBirth: dateOfBirth,
             targetRole: targetRole,
             industry: industry,
             experienceLevel: experienceLevel,
             currentJobTitle: currentJobTitle,
-            yearsOfExperience: yearsOfExperience == 0 ? nil : Int(yearsOfExperience),
-            cvUrl: cvUrl.flatMap(URL.init(string:)),
-            skills: (skills as? Set<SkillEntity>)?.map(\.value) ?? [],
-            targetCompanies: (targetCompanies as? Set<TargetCompanyEntity>)?.map(\.value) ?? [],
+            yearsOfExperience: years,
+            cvUrl: cv,
+            skills: skillList,
+            targetCompanies: companyList,
             educationLevel: educationLevel,
             timezone: timezone,
             termsAccepted: termsAccepted,
@@ -52,4 +62,3 @@ extension UserProfileEntity {
         )
     }
 }
-

@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4124ABAA300B65F100090969 /* UserEntity+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4124ABA6300B65EF00090969 /* UserEntity+Mapping.swift */; };
-		4124ABAC300B65F100090969 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4124ABA8300B65EF00090969 /* UserEntity.swift */; };
-		4124ABAD300B65F100090969 /* UserProfileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4124ABA9300B65F000090969 /* UserProfileEntity.swift */; };
-		4124ABAF300B665100090969 /* SkillAndTargetCompanyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4124ABAE300B665000090969 /* SkillAndTargetCompanyEntity.swift */; };
+		41A7F6F8300BBB2A00FBE8EB /* LampGlitchModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7F6F7300BBB2A00FBE8EB /* LampGlitchModifier.swift */; };
+		41A7F6FB300BBDA000FBE8EB /* UserEntity+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7F6F9300BBDA000FBE8EB /* UserEntity+Mapping.swift */; };
 		41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EE30076D5500502158 /* CustomSearchTextField.swift */; };
 		41C38365300A2849005D4BB9 /* AuthEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C38364300A2849005D4BB9 /* AuthEndPoint.swift */; };
 		41C6A2363008008D0035EFBF /* SendingOTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A2353008008D0035EFBF /* SendingOTPCodeView.swift */; };
@@ -141,10 +139,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4124ABA6300B65EF00090969 /* UserEntity+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+Mapping.swift"; sourceTree = "<group>"; };
-		4124ABA8300B65EF00090969 /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
-		4124ABA9300B65F000090969 /* UserProfileEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEntity.swift; sourceTree = "<group>"; };
-		4124ABAE300B665000090969 /* SkillAndTargetCompanyEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillAndTargetCompanyEntity.swift; sourceTree = "<group>"; };
+		41A7F6F7300BBB2A00FBE8EB /* LampGlitchModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampGlitchModifier.swift; sourceTree = "<group>"; };
+		41A7F6F9300BBDA000FBE8EB /* UserEntity+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+Mapping.swift"; sourceTree = "<group>"; };
 		41AC14EE30076D5500502158 /* CustomSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchTextField.swift; sourceTree = "<group>"; };
 		41C38364300A2849005D4BB9 /* AuthEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndPoint.swift; sourceTree = "<group>"; };
 		41C6A2353008008D0035EFBF /* SendingOTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingOTPCodeView.swift; sourceTree = "<group>"; };
@@ -286,13 +282,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4124ABA5300B65B800090969 /* Entities */ = {
+		41A7F6FA300BBDA000FBE8EB /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				4124ABAE300B665000090969 /* SkillAndTargetCompanyEntity.swift */,
-				4124ABA8300B65EF00090969 /* UserEntity.swift */,
-				4124ABA6300B65EF00090969 /* UserEntity+Mapping.swift */,
-				4124ABA9300B65F000090969 /* UserProfileEntity.swift */,
+				41A7F6F9300BBDA000FBE8EB /* UserEntity+Mapping.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -354,7 +347,7 @@
 		41D69D3C300B458900294D94 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				4124ABA5300B65B800090969 /* Entities */,
+				41A7F6FA300BBDA000FBE8EB /* Entities */,
 				41D69D51300B4D5B00294D94 /* Persistence.swift */,
 				41D69D60300B54DE00294D94 /* Career_Pilot_iOS.xcdatamodeld */,
 				41D69D3A300B456A00294D94 /* CoreDataManager.swift */,
@@ -956,6 +949,7 @@
 				CE12F3C3300940CE0083D66D /* Shimmer.swift */,
 				41CE20E5300A54A4005DC31F /* ToastManager.swift */,
 				41CE20E7300A5506005DC31F /* ToastView.swift */,
+				41A7F6F7300BBB2A00FBE8EB /* LampGlitchModifier.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1179,7 +1173,7 @@
 				41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */,
 				41D69D0D300A6AA400294D94 /* UserProfileDTO.swift in Sources */,
 				CEE62A8730091FD10071F076 /* MainTabBarView.swift in Sources */,
-				4124ABAC300B65F100090969 /* UserEntity.swift in Sources */,
+				41A7F6FB300BBDA000FBE8EB /* UserEntity+Mapping.swift in Sources */,
 				41D69D4E300B4A0F00294D94 /* ClearSessionUseCase.swift in Sources */,
 				41D69D39300B445000294D94 /* AuthTokenStore.swift in Sources */,
 				D9C1879330065AF100BFF8E9 /* AuthRepositoryProtocol.swift in Sources */,
@@ -1195,6 +1189,7 @@
 				D98A79753008DFD800DFDC6B /* Track.swift in Sources */,
 				CEE62A97300929960071F076 /* PracticeCard.swift in Sources */,
 				D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */,
+				41A7F6F8300BBB2A00FBE8EB /* LampGlitchModifier.swift in Sources */,
 				CECC20D83007B60900DC450D /* AppStrings.swift in Sources */,
 				CE12F3C030093CE40083D66D /* SessionData.swift in Sources */,
 				41D69D1C300A6DB400294D94 /* VerifyOTPResponseDTO+Mapping.swift in Sources */,
@@ -1203,7 +1198,6 @@
 				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
 				CECC20D63007AD4E00DC450D /* CountryPickerSheet.swift in Sources */,
 				41D69D20300A6E1200294D94 /* VerifyOTPRequestDTO.swift in Sources */,
-				4124ABAA300B65F100090969 /* UserEntity+Mapping.swift in Sources */,
 				CEE62A99300929A70071F076 /* SessionRow.swift in Sources */,
 				41D69D3B300B456A00294D94 /* CoreDataManager.swift in Sources */,
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
@@ -1212,7 +1206,6 @@
 				41C6A2363008008D0035EFBF /* SendingOTPCodeView.swift in Sources */,
 				41D69D12300A6CB100294D94 /* VerifyOTPResult.swift in Sources */,
 				41C6A23C30080BDA0035EFBF /* OTPView.swift in Sources */,
-				4124ABAF300B665100090969 /* SkillAndTargetCompanyEntity.swift in Sources */,
 				D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */,
 				D9C187BE300663F200BFF8E9 /* NetworkError.swift in Sources */,
 				CEE62A8D3009202F0071F076 /* SettingsView.swift in Sources */,
@@ -1233,7 +1226,6 @@
 				D98A79773008E19900DFDC6B /* TrackChip.swift in Sources */,
 				41D69D16300A6CF100294D94 /* User.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
-				4124ABAD300B65F100090969 /* UserProfileEntity.swift in Sources */,
 				616CAD0C30081EF4007FC4AF /* AcoountSettingsView.swift in Sources */,
 				CECC20E43007DB2C00DC450D /* WaitingStateView.swift in Sources */,
 				41D69D52300B4D5B00294D94 /* Persistence.swift in Sources */,
