@@ -92,7 +92,7 @@
 		D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */; };
 		D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28583300A6CC300ABB5BD /* UserDataRepoImp.swift */; };
 		D9A28588300A82CE00ABB5BD /* UserDataRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */; };
-		D9A2858B300A834A00ABB5BD /* CvUplodingApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2858A300A834A00ABB5BD /* CvUplodingApiResponse.swift */; };
+		D9A2858B300A834A00ABB5BD /* CvUplodingResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2858A300A834A00ABB5BD /* CvUplodingResponseDTO.swift */; };
 		D9A2858E300A859E00ABB5BD /* CvUplodingApiResponse+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2858D300A859E00ABB5BD /* CvUplodingApiResponse+Mapping.swift */; };
 		D9A28597300ADA2F00ABB5BD /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28596300ADA2F00ABB5BD /* DAO.swift */; };
 		D9C09B10300A2B32008C1E58 /* OnBordingIdelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */; };
@@ -221,7 +221,7 @@
 		D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataEndPoint.swift; path = "Career-Pilot-iOS/Core/Network/EndPoint/UserData/UserDataEndPoint.swift"; sourceTree = SOURCE_ROOT; };
 		D9A28583300A6CC300ABB5BD /* UserDataRepoImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepoImp.swift; sourceTree = "<group>"; };
 		D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRemoteDataSource.swift; sourceTree = "<group>"; };
-		D9A2858A300A834A00ABB5BD /* CvUplodingApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvUplodingApiResponse.swift; sourceTree = "<group>"; };
+		D9A2858A300A834A00ABB5BD /* CvUplodingResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvUplodingResponseDTO.swift; sourceTree = "<group>"; };
 		D9A2858D300A859E00ABB5BD /* CvUplodingApiResponse+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CvUplodingApiResponse+Mapping.swift"; sourceTree = "<group>"; };
 		D9A28596300ADA2F00ABB5BD /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 		D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingIdelState.swift; sourceTree = "<group>"; };
@@ -661,6 +661,14 @@
 			path = "Career-Pilot-iOSUITests";
 			sourceTree = "<group>";
 		};
+		D981A41A300B97EF00BA8752 /* CV */ = {
+			isa = PBXGroup;
+			children = (
+				D9A2858A300A834A00ABB5BD /* CvUplodingResponseDTO.swift */,
+			);
+			path = CV;
+			sourceTree = "<group>";
+		};
 		D98A79713008DB1100DFDC6B /* ChoseTrack */ = {
 			isa = PBXGroup;
 			children = (
@@ -739,9 +747,9 @@
 		D9A28593300ABDB600ABB5BD /* UserData */ = {
 			isa = PBXGroup;
 			children = (
+				D981A41A300B97EF00BA8752 /* CV */,
 				41D69D2B300A7C0600294D94 /* UserDTO.swift */,
 				41D69D2C300A7C0600294D94 /* UserProfileDTO.swift */,
-				D9A2858A300A834A00ABB5BD /* CvUplodingApiResponse.swift */,
 			);
 			path = UserData;
 			sourceTree = "<group>";
@@ -1226,7 +1234,7 @@
 				CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */,
 				41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */,
 				D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */,
-				D9A2858B300A834A00ABB5BD /* CvUplodingApiResponse.swift in Sources */,
+				D9A2858B300A834A00ABB5BD /* CvUplodingResponseDTO.swift in Sources */,
 				D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */,
 				D9C1879730065B0400BFF8E9 /* Entity.swift in Sources */,
 				616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */,
