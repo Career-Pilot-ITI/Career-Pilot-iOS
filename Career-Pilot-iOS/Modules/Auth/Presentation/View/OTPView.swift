@@ -72,6 +72,7 @@ struct OTPView: View {
             .padding(.top, 32)
             .padding(.horizontal, Spacing.s24)
         }
+        .navigationBarBackButtonHidden(true)
     }
 
     private func verifyEnteredCode() {

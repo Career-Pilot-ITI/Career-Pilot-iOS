@@ -28,6 +28,7 @@ struct SendingOTPCodeView: View {
             }
             .padding(.bottom, 40)
         }
+        .navigationBarBackButtonHidden(true)
         .onAppear {
             sendOTPTask = Task {
                 let success = await authViewModel.sendOTP(for: phoneNumber)
@@ -44,6 +45,7 @@ struct SendingOTPCodeView: View {
         .onDisappear {
             sendOTPTask?.cancel()
         }
+        
     }
 }
 
