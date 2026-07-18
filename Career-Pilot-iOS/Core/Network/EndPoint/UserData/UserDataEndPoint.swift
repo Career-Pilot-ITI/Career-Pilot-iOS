@@ -19,7 +19,7 @@ enum UserDataEndPointes: APIEndpoint {
     private static let boundary = "Boundary-\(UUID().uuidString)"
 
     var baseURL: String {
-        return "https://career-pilot-iti.github.io/Career-Pilot-Backend/"
+        "http://192.168.84.1:8080"
     }
 
     var path: String {
@@ -38,7 +38,8 @@ enum UserDataEndPointes: APIEndpoint {
     var headers: [String: String] {
         return [
             "Content-Type": "multipart/form-data; boundary=\(Self.boundary)",
-            "accept": "application/json"
+            "accept": "application/json",
+            "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWQiOjEsInN1YiI6InVzZXJfODUwNDQwIiwiaWF0IjoxNzg0Mzk5NTg3LCJleHAiOjE3ODQ0MDMxODd9.Cv5L9oPM9f4YyguuNSzm6hTBaSo9OLYZVym1-X5mxMU"
         ]
     }
 

@@ -7,8 +7,7 @@
 
 import Foundation
 
-protocol NetworkService {
-    func request<T: Decodable>(_ endpoint: APIEndpoint) async throws ->  T where T: Decodable
+	    func request<T: Decodable>(_ endpoint: APIEndpoint) async throws ->  T where T: Decodable
     func request(_ endpoint: APIEndpoint) async throws // For post
 }
 
@@ -46,9 +45,10 @@ final class URLSessionNetworkService: NetworkService {
         urlRequest.httpBody = endpoint.body
         endpoint.headers.forEach { urlRequest.setValue($1, forHTTPHeaderField: $0) }
         
+        
         do {
             let (data, response) = try await session.data(for: urlRequest)
-            
+            print("Respoonse: \(response)")
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw NetworkError.unknown(URLError(.badServerResponse))
             }
@@ -56,13 +56,16 @@ final class URLSessionNetworkService: NetworkService {
             guard (200...299).contains(httpResponse.statusCode) else {
                 throw NetworkError.serverError(statusCode: httpResponse.statusCode, data: data)
             }
-            
+            print("1Response data : \(data)" )
             return data
         } catch let error as NetworkError {
+            print("2Response data : \(error)" )
             throw error
         } catch let urlError as URLError where urlError.code == .notConnectedToInternet {
+            print("3Response data : \(urlError)" )
             throw NetworkError.noInternet
         } catch {
+            print("4Response data : \(error)" )
             throw NetworkError.unknown(error)
         }
     }
