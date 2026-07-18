@@ -8,9 +8,9 @@
 import Foundation
 
 struct UserProfileDTO: Decodable {
-    let displayName: String
-    let username: String
-    let email: String
+    let displayName: String?
+    let username: String?
+    let email: String?
     let avatarUrl: String?
     let gender: String?
     let dateOfBirth: String?

@@ -8,16 +8,29 @@
 import Foundation
 
 extension UserProfileDTO {
-    func toDomain() -> UserData {
-        let nameParts = displayName.split(separator: " ", maxSplits: 1)
-
-        return UserData(
-            email: email,
-            title: currentJobTitle ?? "",
-            experienceLevel: experienceLevel ?? "",
+    func toDomain() -> UserProfile {
+        UserProfile(
+            displayName: displayName ?? "",
+            username: username ?? "",
+            email: email ?? "",
+            avatarUrl: avatarUrl.flatMap(URL.init(string:)),
+            gender: gender,
+            dateOfBirth: dateOfBirth.flatMap(DateFormatter.apiDateOnly.date(from:)),
+            targetRole: targetRole,
+            industry: industry,
+            experienceLevel: experienceLevel,
+            currentJobTitle: currentJobTitle,
+            yearsOfExperience: yearsOfExperience,
+            cvUrl: cvUrl.flatMap(URL.init(string:)),
             skills: skills ?? [],
-            firstName: nameParts.first.map(String.init) ?? "",
-            lastName: nameParts.count > 1 ? String(nameParts[1]) : ""
+            targetCompanies: targetCompanies ?? [],
+            educationLevel: educationLevel,
+            timezone: timezone,
+            termsAccepted: termsAccepted ?? false,
+            subscriptionTier: subscriptionTier,
+            coinBalance: coinBalance ?? 0,
+            onboardingCompleted: onboardingCompleted ?? false,
+            trackName: trackName
         )
     }
 }

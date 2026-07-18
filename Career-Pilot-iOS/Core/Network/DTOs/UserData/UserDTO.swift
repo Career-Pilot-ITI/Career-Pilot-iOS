@@ -11,5 +11,5 @@ struct UserDTO : Decodable {
     let id: Int
     let phoneNumber: String
     let profile: UserProfileDTO
-    let isNewUser: Bool
+    let newUser: Bool
 }

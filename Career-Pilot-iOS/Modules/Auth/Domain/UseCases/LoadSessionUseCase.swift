@@ -14,7 +14,7 @@ final class LoadSessionUseCase: UseCase {
         self.repository = repository
     }
 
-    /// No meaningful input — pass `()`.
+    
     func execute(_ input: Void) async throws -> VerifyOTPResult? {
         try await repository.loadSession()
     }
