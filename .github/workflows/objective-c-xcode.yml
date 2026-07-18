@@ -1,30 +1,60 @@
 name: Xcode - Build and Analyze
-
 on:
   push:
     branches: [ "develop" ]
   pull_request:
     branches: [ "develop" ]
-
 jobs:
   build:
     name: Build and analyse default scheme using xcodebuild command
     runs-on: macos-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Set Default Scheme
         run: |
           scheme_list=$(xcodebuild -list -json | tr -d "\n")
-          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
+          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['schemes'][0]")
           echo $default | cat >default
           echo Using default scheme: $default
-      - name: Build
+
+      - name: Build and Analyze
         env:
           scheme: ${{ 'default' }}
         run: |
           if [ $scheme = default ]; then scheme=$(cat default); fi
-          if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
+
+          if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then
+            filetype_parameter="workspace"
+            file_to_build="`ls -A | grep -i \\.xcworkspace\$`"
+          else
+            filetype_parameter="project"
+            file_to_build="`ls -A | grep -i \\.xcodeproj\$`"
+          fi
           file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild clean build analyze -scheme "$scheme" -"$filetype_parameter" "$file_to_build" | xcpretty && exit ${PIPESTATUS[0]}
+
+          echo "Scheme: $scheme"
+          echo "File to build: $file_to_build ($filetype_parameter)"
+
+          set -o pipefail && xcodebuild clean build analyze \
+            -scheme "$scheme" \
+            -"$filetype_parameter" "$file_to_build" \
+            -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
+            CODE_SIGNING_ALLOWED=NO \
+            2>&1 | tee raw_build.log | xcpretty
+          exit_code=${PIPESTATUS[0]}
+
+          if [ $exit_code -ne 0 ]; then
+            echo "----- BUILD FAILED: last 300 lines of raw log -----"
+            tail -n 300 raw_build.log
+          fi
+
+          exit $exit_code
+
+      - name: Upload raw build log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw-build-log
+          path: raw_build.log
