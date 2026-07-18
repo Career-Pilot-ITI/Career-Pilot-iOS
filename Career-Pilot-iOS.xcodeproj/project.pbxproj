@@ -56,7 +56,6 @@
 		CECC20EA3007DB5E00DC450D /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20E93007DB5E00DC450D /* ShakeEffect.swift */; };
 		CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20EB3007DD1D00DC450D /* WaitingStateComponents.swift */; };
 		CED18895300B096300B15B81 /* Userdefaultsmanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED18894300B096300B15B81 /* Userdefaultsmanager.swift */; };
-		CED18897300B0A9400B15B81 /* Userdefaultsmanager+examples.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED18896300B0A9400B15B81 /* Userdefaultsmanager+examples.swift */; };
 		CEE62A80300910840071F076 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A7F300910840071F076 /* HomeView.swift */; };
 		CEE62A83300910E90071F076 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A82300910E90071F076 /* CustomNavigationBar.swift */; };
 		CEE62A8530091A6B0071F076 /* Image+AppIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A8430091A6B0071F076 /* Image+AppIcons.swift */; };
@@ -184,7 +183,6 @@
 		CECC20E93007DB5E00DC450D /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 		CECC20EB3007DD1D00DC450D /* WaitingStateComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingStateComponents.swift; sourceTree = "<group>"; };
 		CED18894300B096300B15B81 /* Userdefaultsmanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userdefaultsmanager.swift; sourceTree = "<group>"; };
-		CED18896300B0A9400B15B81 /* Userdefaultsmanager+examples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Userdefaultsmanager+examples.swift"; sourceTree = "<group>"; };
 		CEE62A7F300910840071F076 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CEE62A82300910E90071F076 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		CEE62A8430091A6B0071F076 /* Image+AppIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+AppIcons.swift"; sourceTree = "<group>"; };
@@ -475,7 +473,6 @@
 			isa = PBXGroup;
 			children = (
 				CED18894300B096300B15B81 /* Userdefaultsmanager.swift */,
-				CED18896300B0A9400B15B81 /* Userdefaultsmanager+examples.swift */,
 			);
 			path = Userdefaultsmanager;
 			sourceTree = "<group>";
@@ -1194,7 +1191,6 @@
 				61D8F2F6300760680088F170 /* ProfileForm.swift in Sources */,
 				D98A79793008EB9200DFDC6B /* ChoseTrackViewInfo.swift in Sources */,
 				D935DFCB30078012009DF855 /* CustomButton.swift in Sources */,
-				CED18897300B0A9400B15B81 /* Userdefaultsmanager+examples.swift in Sources */,
 				616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */,
 				D93938EE3004064600CF4372 /* Career_Pilot_iOS.xcdatamodeld in Sources */,
 				41D69D33300A7C0700294D94 /* UserDTO+Mapping.swift in Sources */,
