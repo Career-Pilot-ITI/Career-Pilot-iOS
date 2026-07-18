@@ -18,6 +18,10 @@
 		41D69D32300A7C0700294D94 /* UserProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D2C300A7C0600294D94 /* UserProfileDTO.swift */; };
 		41D69D33300A7C0700294D94 /* UserDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D2E300A7C0700294D94 /* UserDTO+Mapping.swift */; };
 		41D69D34300A7C0700294D94 /* UserProfileDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D2F300A7C0700294D94 /* UserProfileDTO+Mapping.swift */; };
+		6165A1E1300B0F800085E3FD /* CoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1E0300B0F800085E3FD /* CoinView.swift */; };
+		6165A1E3300B10C90085E3FD /* CoinTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1E2300B10C90085E3FD /* CoinTopView.swift */; };
+		6165A1E5300B11F60085E3FD /* CoinsTypeVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1E4300B11F60085E3FD /* CoinsTypeVIew.swift */; };
+		6165A1E7300B220D0085E3FD /* CoinsValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1E6300B220D0085E3FD /* CoinsValueView.swift */; };
 		616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0330080EEC007FC4AF /* SettingsVIew.swift */; };
 		616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0630080FDE007FC4AF /* ProfileCard.swift */; };
 		616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0830081C62007FC4AF /* SettingsCard.swift */; };
@@ -144,6 +148,10 @@
 		41D69D2C300A7C0600294D94 /* UserProfileDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileDTO.swift; sourceTree = "<group>"; };
 		41D69D2E300A7C0700294D94 /* UserDTO+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDTO+Mapping.swift"; sourceTree = "<group>"; };
 		41D69D2F300A7C0700294D94 /* UserProfileDTO+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserProfileDTO+Mapping.swift"; sourceTree = "<group>"; };
+		6165A1E0300B0F800085E3FD /* CoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinView.swift; sourceTree = "<group>"; };
+		6165A1E2300B10C90085E3FD /* CoinTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinTopView.swift; sourceTree = "<group>"; };
+		6165A1E4300B11F60085E3FD /* CoinsTypeVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsTypeVIew.swift; sourceTree = "<group>"; };
+		6165A1E6300B220D0085E3FD /* CoinsValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsValueView.swift; sourceTree = "<group>"; };
 		616CAD0330080EEC007FC4AF /* SettingsVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVIew.swift; sourceTree = "<group>"; };
 		616CAD0630080FDE007FC4AF /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
 		616CAD0830081C62007FC4AF /* SettingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCard.swift; sourceTree = "<group>"; };
@@ -305,11 +313,33 @@
 			path = Mappers;
 			sourceTree = "<group>";
 		};
+		6165A1DE300B0F3F0085E3FD /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				616CAD0330080EEC007FC4AF /* SettingsVIew.swift */,
+				616CAD0630080FDE007FC4AF /* ProfileCard.swift */,
+				616CAD0830081C62007FC4AF /* SettingsCard.swift */,
+				616CAD0B30081EF4007FC4AF /* AcoountSettingsView.swift */,
+				616CAD0D30082441007FC4AF /* SupportAndLeagalSettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		6165A1DF300B0F570085E3FD /* Coin */ = {
+			isa = PBXGroup;
+			children = (
+				6165A1E0300B0F800085E3FD /* CoinView.swift */,
+				6165A1E2300B10C90085E3FD /* CoinTopView.swift */,
+				6165A1E4300B11F60085E3FD /* CoinsTypeVIew.swift */,
+				6165A1E6300B220D0085E3FD /* CoinsValueView.swift */,
+			);
+			path = Coin;
+			sourceTree = "<group>";
+		};
 		616CACFD30080EB3007FC4AF /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				616CAD0030080ECD007FC4AF /* Presentation */,
-				616CACFF30080EC7007FC4AF /* Data */,
 				616CACFE30080EBC007FC4AF /* Domain */,
 			);
 			path = Settings;
@@ -322,17 +352,9 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		616CACFF30080EC7007FC4AF /* Data */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
 		616CAD0030080ECD007FC4AF /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				616CAD0230080EDD007FC4AF /* ViewModel */,
 				616CAD0130080ED6007FC4AF /* View */,
 			);
 			path = Presentation;
@@ -341,20 +363,10 @@
 		616CAD0130080ED6007FC4AF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				616CAD0330080EEC007FC4AF /* SettingsVIew.swift */,
-				616CAD0630080FDE007FC4AF /* ProfileCard.swift */,
-				616CAD0830081C62007FC4AF /* SettingsCard.swift */,
-				616CAD0B30081EF4007FC4AF /* AcoountSettingsView.swift */,
-				616CAD0D30082441007FC4AF /* SupportAndLeagalSettingsView.swift */,
+				6165A1DF300B0F570085E3FD /* Coin */,
+				6165A1DE300B0F3F0085E3FD /* Settings */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		616CAD0230080EDD007FC4AF /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		61D8F2DE300750AF0088F170 /* Onboard */ = {
@@ -1206,6 +1218,7 @@
 				CEE62A83300910E90071F076 /* CustomNavigationBar.swift in Sources */,
 				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
 				CECC20D63007AD4E00DC450D /* CountryPickerSheet.swift in Sources */,
+				6165A1E3300B10C90085E3FD /* CoinTopView.swift in Sources */,
 				CEE62A99300929A70071F076 /* SessionRow.swift in Sources */,
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
 				616CAD0E30082441007FC4AF /* SupportAndLeagalSettingsView.swift in Sources */,
@@ -1222,6 +1235,7 @@
 				D9C187A030065BA700BFF8E9 /* TestLocalDataSource.swift in Sources */,
 				CECC20E63007DB3D00DC450D /* PulsingIconBadge.swift in Sources */,
 				CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */,
+				6165A1E5300B11F60085E3FD /* CoinsTypeVIew.swift in Sources */,
 				61D8F2FA300778520088F170 /* SkillTag.swift in Sources */,
 				CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */,
 				41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */,
@@ -1262,7 +1276,9 @@
 				61D8F2F03007523E0088F170 /* HeaderView.swift in Sources */,
 				D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */,
 				D9C187A430065C2B00BFF8E9 /* RepoImp.swift in Sources */,
+				6165A1E7300B220D0085E3FD /* CoinsValueView.swift in Sources */,
 				CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */,
+				6165A1E1300B0F800085E3FD /* CoinView.swift in Sources */,
 				D9A28588300A82CE00ABB5BD /* UserDataRemoteDataSource.swift in Sources */,
 				CEE62A933009296E0071F076 /* SubscriptionCard.swift in Sources */,
 			);
