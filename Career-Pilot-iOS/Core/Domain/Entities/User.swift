@@ -8,8 +8,8 @@
 import Foundation
 
 struct User: Equatable {
-    let id: Int?
-    let phoneNumber: String?
-    let profile: UserProfile?
-    let isNewUser: Bool?
+    let id: Int
+    let phoneNumber: String
+    let profile: UserProfile
+    let isNewUser: Bool
 }

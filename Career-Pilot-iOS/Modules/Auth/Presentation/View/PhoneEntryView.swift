@@ -10,10 +10,7 @@ import SwiftUI
 struct PhoneEntryView: View {
     @EnvironmentObject var coordinator: AppCoordinator
     @EnvironmentObject var toastManager: ToastManager
-    @StateObject private var phoneFieldViewModel = PhoneFieldViewModel(selectedCountry: CountryCode.defaultList[0])
-    @StateObject private var authViewModel = AuthViewModel(
-        sendUseCase: SendOTPUseCase(repository: AuthRepositoryImpl(remoteDataSource: AuthRemoteDataSource())), verifyUseCase: VerifyOTPUseCase(repository: AuthRepositoryImpl(remoteDataSource: AuthRemoteDataSource())), toastManager: .shared
-    )
+    @StateObject private var phoneFieldViewModel = PhoneFieldViewModel()
     
     var body: some View {
         ZStack {
@@ -75,17 +72,12 @@ struct PhoneEntryView: View {
                     
                     CustomButton(showArrow: true, buttonTitle: "Continue") {
                         guard phoneFieldViewModel.canProceed else {
-                            phoneFieldViewModel.markAsEditedIfNeeded() 
+                            phoneFieldViewModel.markAsEditedIfNeeded()
                             return
                         }
 
-                        Task {
-                            let phoneNumber = phoneFieldViewModel.rawPhoneNumber()
-                            let success = await authViewModel.sendOTP(for: phoneNumber)
-                            if success {
-                                coordinator.push(.sendingOTPScreen(phoneNumber: phoneNumber))
-                            }
-                        }
+                        let phoneNumber = phoneFieldViewModel.rawPhoneNumber()
+                        coordinator.push(.sendingOTPScreen(phoneNumber: phoneNumber))
                     }
                     .disabled(!phoneFieldViewModel.canProceed)
                     .opacity(phoneFieldViewModel.canProceed ? 1 : 0.5)
