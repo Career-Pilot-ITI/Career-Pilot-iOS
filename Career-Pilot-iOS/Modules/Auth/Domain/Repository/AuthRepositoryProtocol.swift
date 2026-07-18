@@ -10,4 +10,6 @@ import Foundation
 protocol AuthRepositoryProtocol {
     func sendOTP(for phoneNumber: String) async throws
     func verifyOTP(for phoneNumber: String, with code: String) async throws -> VerifyOTPResult
+    func loadSession() async throws -> VerifyOTPResult?
+    func clearSession() async throws
 }
