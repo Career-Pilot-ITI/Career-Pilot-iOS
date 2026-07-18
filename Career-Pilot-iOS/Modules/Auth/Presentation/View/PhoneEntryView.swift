@@ -12,10 +12,7 @@ struct PhoneEntryView: View {
     @EnvironmentObject var toastManager: ToastManager
     @StateObject private var phoneFieldViewModel = PhoneFieldViewModel(selectedCountry: CountryCode.defaultList[0])
     @StateObject private var authViewModel = AuthViewModel(
-        useCase: SendOTPUseCase(
-            repository: AuthRemoteDataSource()
-        ),
-        toastManager: .shared
+        sendUseCase: SendOTPUseCase(repository: AuthRepositoryImpl(remoteDataSource: AuthRemoteDataSource())), verifyUseCase: VerifyOTPUseCase(repository: AuthRepositoryImpl(remoteDataSource: AuthRemoteDataSource())), toastManager: .shared
     )
     
     var body: some View {
@@ -83,9 +80,10 @@ struct PhoneEntryView: View {
                         }
 
                         Task {
-                            let success = await authViewModel.sendOTP(for: phoneFieldViewModel.rawPhoneNumber())
+                            let phoneNumber = phoneFieldViewModel.rawPhoneNumber()
+                            let success = await authViewModel.sendOTP(for: phoneNumber)
                             if success {
-                                coordinator.push(.sendingOTPScreen)
+                                coordinator.push(.sendingOTPScreen(phoneNumber: phoneNumber))
                             }
                         }
                     }

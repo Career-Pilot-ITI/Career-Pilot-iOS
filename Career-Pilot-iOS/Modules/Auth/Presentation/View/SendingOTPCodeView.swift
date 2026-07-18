@@ -29,7 +29,7 @@ struct SendingOTPCodeView: View {
             navigationTask = Task  {
                 try? await Task.sleep(for: .seconds(5))
                 guard !Task.isCancelled else { return }
-                coordinator.push(.otpScreen)
+                coordinator.push(.otpScreen(phoneNumber: phoneNumber))
             }
         }
         .onDisappear {

@@ -8,14 +8,16 @@
 import Foundation
 @MainActor
 class AuthViewModel: ObservableObject {
-    private let useCase: SendOTPUseCase
+    private let sendUseCase: SendOTPUseCase
+    private let verifyUseCase : VerifyOTPUseCase
     private let toastManager: ToastManager
     
     @Published var isLoading = false
     @Published var errorMessage: String?
     
-    init(useCase: SendOTPUseCase, toastManager: ToastManager) {
-        self.useCase = useCase
+    init(sendUseCase: SendOTPUseCase, verifyUseCase : VerifyOTPUseCase, toastManager: ToastManager) {
+        self.sendUseCase = sendUseCase
+        self.verifyUseCase = verifyUseCase
         self.toastManager = toastManager
     }
     
@@ -29,9 +31,23 @@ class AuthViewModel: ObservableObject {
         isLoading = true
         defer { isLoading = false }
         do {
-            try await useCase.execute(phoneNumber)
+            try await sendUseCase.execute(phoneNumber)
             return true
         } catch {
+            toastManager.show(error.localizedDescription, type: .error)
+            return false
+        }
+    }
+    
+    @discardableResult
+    func verifyOTP(_ verifyOtpInput: VerifyOTPInput) async -> Bool {
+        isLoading = true
+        defer { isLoading = false }
+        
+        do {
+            let response = try await verifyUseCase.execute(verifyOtpInput)
+            return true
+        } catch(let error) {
             toastManager.show(error.localizedDescription, type: .error)
             return false
         }

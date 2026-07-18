@@ -30,10 +30,17 @@ struct ContentView: View {
             switch route {
             case .phoneEntryScreen:
                 PhoneEntryView()
-            case .sendingOTPScreen:
-                SendingOTPCodeView(phoneNumber: "01012355385")
-            case .otpScreen:
-                OTPView()
+            case .sendingOTPScreen(let phoneNumber):
+                SendingOTPCodeView(phoneNumber: phoneNumber)
+            case .otpScreen(let phoneNumber):
+                OTPView(
+                        phoneNumber: phoneNumber,
+                        viewModel: AuthViewModel(
+                            sendUseCase: SendOTPUseCase(repository: AuthRepositoryImpl(remoteDataSource: AuthRemoteDataSource())),
+                            verifyUseCase: VerifyOTPUseCase(repository: AuthRepositoryImpl(remoteDataSource: AuthRemoteDataSource())),
+                            toastManager: .shared
+                        )
+                    )
             case .successOTPScreen:
                 SuccessOTPCodeView()
             case .onboardingScreen(let vm):

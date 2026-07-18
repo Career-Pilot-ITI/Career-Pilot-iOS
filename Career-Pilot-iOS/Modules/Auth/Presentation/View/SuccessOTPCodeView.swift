@@ -32,7 +32,7 @@ struct SuccessOTPCodeView: View {
             }
         }
         .onDisappear {
-                    navigationTask?.cancel()
+                navigationTask?.cancel()
         }
     }
 }
