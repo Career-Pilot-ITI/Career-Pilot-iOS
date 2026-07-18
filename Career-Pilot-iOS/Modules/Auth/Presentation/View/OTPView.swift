@@ -52,18 +52,9 @@ struct OTPView: View {
                         Task { await viewModel.sendOTP(for: phoneNumber) }
                     }
                     .disabled(viewModel.isLoading)
+                    .lampGlitch(isActive: viewModel.isLoading)
                     .opacity(viewModel.isLoading ? 0.35 : 1)
-
-                    if viewModel.isLoading {
-                        HStack(spacing: 10) {
-                            ProgressView()
-                                .tint(.white)
-                            Text("Verifying…")
-                                .font(.size14Regular)
-                                .foregroundStyle(.white)
-                        }
-                        .transition(.opacity.combined(with: .scale(scale: 0.9)))
-                    }
+ 
                 }
                 .animation(.easeInOut(duration: 0.2), value: viewModel.isLoading)
 

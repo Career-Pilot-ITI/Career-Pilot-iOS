@@ -11,6 +11,7 @@
 		4124ABAC300B65F100090969 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4124ABA8300B65EF00090969 /* UserEntity.swift */; };
 		4124ABAD300B65F100090969 /* UserProfileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4124ABA9300B65F000090969 /* UserProfileEntity.swift */; };
 		4124ABAF300B665100090969 /* SkillAndTargetCompanyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4124ABAE300B665000090969 /* SkillAndTargetCompanyEntity.swift */; };
+		41A7F6F8300BBB2A00FBE8EB /* LampGlitchModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7F6F7300BBB2A00FBE8EB /* LampGlitchModifier.swift */; };
 		41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EE30076D5500502158 /* CustomSearchTextField.swift */; };
 		41C38365300A2849005D4BB9 /* AuthEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C38364300A2849005D4BB9 /* AuthEndPoint.swift */; };
 		41C6A2363008008D0035EFBF /* SendingOTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A2353008008D0035EFBF /* SendingOTPCodeView.swift */; };
@@ -145,6 +146,7 @@
 		4124ABA8300B65EF00090969 /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		4124ABA9300B65F000090969 /* UserProfileEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEntity.swift; sourceTree = "<group>"; };
 		4124ABAE300B665000090969 /* SkillAndTargetCompanyEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillAndTargetCompanyEntity.swift; sourceTree = "<group>"; };
+		41A7F6F7300BBB2A00FBE8EB /* LampGlitchModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampGlitchModifier.swift; sourceTree = "<group>"; };
 		41AC14EE30076D5500502158 /* CustomSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchTextField.swift; sourceTree = "<group>"; };
 		41C38364300A2849005D4BB9 /* AuthEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndPoint.swift; sourceTree = "<group>"; };
 		41C6A2353008008D0035EFBF /* SendingOTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingOTPCodeView.swift; sourceTree = "<group>"; };
@@ -956,6 +958,7 @@
 				CE12F3C3300940CE0083D66D /* Shimmer.swift */,
 				41CE20E5300A54A4005DC31F /* ToastManager.swift */,
 				41CE20E7300A5506005DC31F /* ToastView.swift */,
+				41A7F6F7300BBB2A00FBE8EB /* LampGlitchModifier.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1195,6 +1198,7 @@
 				D98A79753008DFD800DFDC6B /* Track.swift in Sources */,
 				CEE62A97300929960071F076 /* PracticeCard.swift in Sources */,
 				D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */,
+				41A7F6F8300BBB2A00FBE8EB /* LampGlitchModifier.swift in Sources */,
 				CECC20D83007B60900DC450D /* AppStrings.swift in Sources */,
 				CE12F3C030093CE40083D66D /* SessionData.swift in Sources */,
 				41D69D1C300A6DB400294D94 /* VerifyOTPResponseDTO+Mapping.swift in Sources */,
