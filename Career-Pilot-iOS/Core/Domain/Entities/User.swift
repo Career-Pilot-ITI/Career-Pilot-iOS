@@ -1,5 +1,5 @@
 //
-//  UserDTO.swift
+//  User.swift
 //  Career-Pilot-iOS
 //
 //  Created by Moaz on 17/07/2026.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct UserDTO : Decodable {
+struct User: Equatable {
     let id: Int
     let phoneNumber: String
-    let profile: UserProfileDTO
-    let newUser: Bool
+    let profile: UserProfile
+    let isNewUser: Bool
 }

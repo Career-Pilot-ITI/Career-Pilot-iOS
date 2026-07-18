@@ -165,7 +165,7 @@ class OnBordingViewModel: ObservableObject {
     }
     
     private func uploadUserCv(userCV: URL) async throws {
-        let cvResponse = try await self.uploadCvUseCase.excute(input: UploadCvRequest(cv: userCV))
+        let cvResponse = try await self.uploadCvUseCase.execute(UploadCvRequest(cv: userCV))
         userData = cvResponse.userData
         print(cvResponse.userData)
     }

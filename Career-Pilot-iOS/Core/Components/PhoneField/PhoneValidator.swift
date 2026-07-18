@@ -11,9 +11,8 @@ struct PhoneValidator {
     
     static func isValid(number: String, for country: CountryCode) -> Bool {
         let digits = number.filter(\.isNumber)
-        return digits.count >= country.minLength && digits.count <= country.maxLength
+        return digits.count == country.maxLength
     }
-    
     
     static func format(_ raw: String) -> String {
         let digits = raw.filter(\.isNumber)
