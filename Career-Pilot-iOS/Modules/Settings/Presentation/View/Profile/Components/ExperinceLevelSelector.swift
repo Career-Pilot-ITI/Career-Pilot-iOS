@@ -1,0 +1,48 @@
+//
+//  ExprinceLevelSelector.swift
+//  Career-Pilot-iOS
+//
+//  Created by Eyad waleed on 17/07/2026.
+//
+
+import SwiftUI
+
+struct ExperienceLevelSelector: View {
+    let options = ["Junior", "Mid-Level", "Senior"]
+    @Binding var selected: String
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: "chart.bar.fill")
+                .foregroundColor(.primaryNavy)
+                .frame(width: 44, height: 44)
+                .background(
+                    RoundedRectangle(cornerRadius: Radius.lg)
+                        .fill(Color.primaryNavy.opacity(0.06))
+                )
+            
+            VStack(alignment: .leading, spacing: 8) {
+                Text("EXPERIENCE LEVEL")
+                    .font(.caption.bold())
+                    .foregroundColor(.gray400)
+                
+                HStack(spacing: 8) {
+                    ForEach(options, id: \.self) { option in
+                        Text(option)
+                            .font(.chip.bold())
+                            .foregroundColor(selected == option ? .white : .gray400)
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 10)
+                            .background(
+                                Capsule()
+                                    .fill(selected == option ? Color.primaryNavy : Color.gray100)
+                            )
+                            .onTapGesture {
+                                selected = option
+                            }
+                    }
+                }
+            }
+        }
+    }
+}

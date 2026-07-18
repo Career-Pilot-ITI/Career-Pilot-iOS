@@ -20,7 +20,7 @@ struct SettingsProfileTopView: View {
                 Text("Save").foregroundColor(.gray200)
                 
             }
-        }
+        }.background(Color.gray100)
         
         
     }
