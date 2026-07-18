@@ -18,6 +18,10 @@
 		41D69D32300A7C0700294D94 /* UserProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D2C300A7C0600294D94 /* UserProfileDTO.swift */; };
 		41D69D33300A7C0700294D94 /* UserDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D2E300A7C0700294D94 /* UserDTO+Mapping.swift */; };
 		41D69D34300A7C0700294D94 /* UserProfileDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D2F300A7C0700294D94 /* UserProfileDTO+Mapping.swift */; };
+		6165A1EC300B409C0085E3FD /* CheckOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1EB300B409C0085E3FD /* CheckOutView.swift */; };
+		6165A1EE300B40D90085E3FD /* CheckOutTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1ED300B40D90085E3FD /* CheckOutTopView.swift */; };
+		6165A1F0300B42BB0085E3FD /* TotalPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1EF300B42BB0085E3FD /* TotalPaymentView.swift */; };
+		6165A1F2300B48980085E3FD /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1F1300B48980085E3FD /* PaymentMethod.swift */; };
 		616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0330080EEC007FC4AF /* SettingsVIew.swift */; };
 		616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0630080FDE007FC4AF /* ProfileCard.swift */; };
 		616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0830081C62007FC4AF /* SettingsCard.swift */; };
@@ -144,6 +148,10 @@
 		41D69D2C300A7C0600294D94 /* UserProfileDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileDTO.swift; sourceTree = "<group>"; };
 		41D69D2E300A7C0700294D94 /* UserDTO+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDTO+Mapping.swift"; sourceTree = "<group>"; };
 		41D69D2F300A7C0700294D94 /* UserProfileDTO+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserProfileDTO+Mapping.swift"; sourceTree = "<group>"; };
+		6165A1EB300B409C0085E3FD /* CheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutView.swift; sourceTree = "<group>"; };
+		6165A1ED300B40D90085E3FD /* CheckOutTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutTopView.swift; sourceTree = "<group>"; };
+		6165A1EF300B42BB0085E3FD /* TotalPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalPaymentView.swift; sourceTree = "<group>"; };
+		6165A1F1300B48980085E3FD /* PaymentMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		616CAD0330080EEC007FC4AF /* SettingsVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVIew.swift; sourceTree = "<group>"; };
 		616CAD0630080FDE007FC4AF /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
 		616CAD0830081C62007FC4AF /* SettingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCard.swift; sourceTree = "<group>"; };
@@ -303,6 +311,33 @@
 				D9A2858D300A859E00ABB5BD /* CvUplodingApiResponse+Mapping.swift */,
 			);
 			path = Mappers;
+			sourceTree = "<group>";
+		};
+		6165A1E8300B406D0085E3FD /* CheckOut */ = {
+			isa = PBXGroup;
+			children = (
+				6165A1EA300B407C0085E3FD /* ViewModel */,
+				6165A1E9300B40770085E3FD /* View */,
+			);
+			path = CheckOut;
+			sourceTree = "<group>";
+		};
+		6165A1E9300B40770085E3FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6165A1EB300B409C0085E3FD /* CheckOutView.swift */,
+				6165A1ED300B40D90085E3FD /* CheckOutTopView.swift */,
+				6165A1EF300B42BB0085E3FD /* TotalPaymentView.swift */,
+				6165A1F1300B48980085E3FD /* PaymentMethod.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6165A1EA300B407C0085E3FD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		616CACFD30080EB3007FC4AF /* Settings */ = {
@@ -777,6 +812,7 @@
 		D9C1878430065A4800BFF8E9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				6165A1E8300B406D0085E3FD /* CheckOut */,
 				616CACFD30080EB3007FC4AF /* Settings */,
 				CEE62A91300921810071F076 /* Settings */,
 				CEE62A90300921720071F076 /* Reports */,
@@ -1207,6 +1243,7 @@
 				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
 				CECC20D63007AD4E00DC450D /* CountryPickerSheet.swift in Sources */,
 				CEE62A99300929A70071F076 /* SessionRow.swift in Sources */,
+				6165A1EE300B40D90085E3FD /* CheckOutTopView.swift in Sources */,
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
 				616CAD0E30082441007FC4AF /* SupportAndLeagalSettingsView.swift in Sources */,
 				61D8F2F8300761200088F170 /* CustomProfileTextField.swift in Sources */,
@@ -1238,12 +1275,15 @@
 				D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
 				D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */,
+				6165A1EC300B409C0085E3FD /* CheckOutView.swift in Sources */,
 				616CAD0C30081EF4007FC4AF /* AcoountSettingsView.swift in Sources */,
 				41D69D34300A7C0700294D94 /* UserProfileDTO+Mapping.swift in Sources */,
+				6165A1F2300B48980085E3FD /* PaymentMethod.swift in Sources */,
 				CECC20E43007DB2C00DC450D /* WaitingStateView.swift in Sources */,
 				CEE62A80300910840071F076 /* HomeView.swift in Sources */,
 				CEE62A8530091A6B0071F076 /* Image+AppIcons.swift in Sources */,
 				61D8F2FF30077A410088F170 /* UserData.swift in Sources */,
+				6165A1F0300B42BB0085E3FD /* TotalPaymentView.swift in Sources */,
 				D9C1879E30065B9800BFF8E9 /* TestDao.swift in Sources */,
 				CEE62A8B3009201C0071F076 /* ReportsView.swift in Sources */,
 				D935DFCF300789EF009DF855 /* CvUploadingView.swift in Sources */,
