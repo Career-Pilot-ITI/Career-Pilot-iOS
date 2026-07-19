@@ -13,6 +13,7 @@ extension Font {
     static let size32Semibold       = Font.system(size: 32, weight: .semibold)
     static let size26Semibold       = Font.system(size: 26, weight: .semibold)
     static let size24Semibold       = Font.system(size: 24, weight: .semibold)
+    static let size22Bold       = Font.system(size: 22, weight: .bold)
     static let size22Semibold       = Font.system(size: 22, weight: .semibold)
     static let size20Semibold       = Font.system(size: 20, weight: .semibold)
     static let size18Bold           = Font.system(size: 18, weight: .bold)
