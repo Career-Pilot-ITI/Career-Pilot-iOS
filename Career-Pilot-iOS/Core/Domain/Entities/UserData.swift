@@ -6,22 +6,35 @@
 //
 
 import Foundation
+import UIKit
 
 struct UserData {
     var email: String
     var title: String
     var experienceLevel: String
-    var skills: [String]
-    
+    var skills: [String]?
+    var profileImageData : Data?
     var firstName: String
     var lastName: String
-    
     var cv: URL?
     var selectedTrack: Track?
-    
+    var profileImage: UIImage? {
+          get {
+              guard let data = profileImageData else { return nil }
+              return UIImage(data: data)
+          }
+          set {
+              profileImageData = newValue?.jpegData(compressionQuality: 0.8)
+          }
+      }
     var fullName: String {
         get {
-            return "\(firstName) \(lastName)"
+            if(firstName.isEmpty && lastName.isEmpty){
+                return ""
+            }
+            else{
+                return "\(firstName) \(lastName)"
+            }
         }
         set(newValue) {
             let components = newValue.components(separatedBy: " ")

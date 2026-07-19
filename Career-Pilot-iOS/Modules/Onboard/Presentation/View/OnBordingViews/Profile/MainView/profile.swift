@@ -13,38 +13,47 @@ struct profile: View {
 
 
     var body: some View {
-        VStack(spacing: 24) {
-            HeaderView()
+        ScrollView{
+            VStack(spacing: 24) {
+                HeaderView()
 
-            ProfileForm(userData: $userData)
-                .background(
-                    RoundedRectangle(cornerRadius: Radius.r12)
-                        .fill(Color.white)
-                )
-                .shadow(
-                    color: Color.black.opacity(0.08),
-                    radius: 12,
-                    x: 0,
-                    y: 4
-                )
+                ProfileForm(userData: $userData)
+                    .background(
+                        RoundedRectangle(cornerRadius: Radius.r12)
+                            .fill(Color.white)
+                    )
+                    .shadow(
+                        color: Color.black.opacity(0.08),
+                        radius: 12,
+                        x: 0,
+                        y: 4
+                    )
 
-            FreeSessionBanner()
+                FreeSessionBanner()
+                
+            }
+            .padding(.horizontal, Spacing.s20)
         }
-        .padding(.horizontal, Spacing.s20)
         .background(Color.gray100)
     }
 }
-
 struct profile_Previews: PreviewProvider {
     static var previews: some View {
-        let userData =  UserData(
+        PreviewWrapper()
+    }
+    
+    struct PreviewWrapper: View {
+        @State private var userData = UserData(
             email: "eyad@gmail.com",
             title: "developer",
             experienceLevel: "Senior",
-            skills: ["C++", "C"],
+            skills: [],
             firstName: "Eyad",
             lastName: "Waleed"
         )
-        ProfileForm(userData: .constant(userData))
+        
+        var body: some View {
+            profile(userData: $userData)
+        }
     }
 }
