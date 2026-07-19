@@ -12,6 +12,9 @@
 		41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EE30076D5500502158 /* CustomSearchTextField.swift */; };
 		41BC771C300D0EA300E89C3F /* QuestionBreakDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC771B300D0EA300E89C3F /* QuestionBreakDownView.swift */; };
 		41BC771E300D119A00E89C3F /* CoachingSuggestionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC771D300D119A00E89C3F /* CoachingSuggestionItemView.swift */; };
+		41BC7720300D126E00E89C3F /* ImpactBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC771F300D126E00E89C3F /* ImpactBadge.swift */; };
+		41BC7722300D146900E89C3F /* SuggestionIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC7721300D146900E89C3F /* SuggestionIconView.swift */; };
+		41BC7724300D173100E89C3F /* CoachingSuggestionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC7723300D173100E89C3F /* CoachingSuggestionsListView.swift */; };
 		41BE1A63300BEF510033D1B5 /* CvUplodingResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A5E300BEF510033D1B5 /* CvUplodingResponseDTO.swift */; };
 		41BE1A64300BEF510033D1B5 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A60300BEF510033D1B5 /* UserDTO.swift */; };
 		41BE1A65300BEF510033D1B5 /* UserProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A61300BEF510033D1B5 /* UserProfileDTO.swift */; };
@@ -168,6 +171,9 @@
 		41AC14EE30076D5500502158 /* CustomSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchTextField.swift; sourceTree = "<group>"; };
 		41BC771B300D0EA300E89C3F /* QuestionBreakDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBreakDownView.swift; sourceTree = "<group>"; };
 		41BC771D300D119A00E89C3F /* CoachingSuggestionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachingSuggestionItemView.swift; sourceTree = "<group>"; };
+		41BC771F300D126E00E89C3F /* ImpactBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactBadge.swift; sourceTree = "<group>"; };
+		41BC7721300D146900E89C3F /* SuggestionIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionIconView.swift; sourceTree = "<group>"; };
+		41BC7723300D173100E89C3F /* CoachingSuggestionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachingSuggestionsListView.swift; sourceTree = "<group>"; };
 		41BE1A5E300BEF510033D1B5 /* CvUplodingResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvUplodingResponseDTO.swift; sourceTree = "<group>"; };
 		41BE1A60300BEF510033D1B5 /* UserDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		41BE1A61300BEF510033D1B5 /* UserProfileDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileDTO.swift; sourceTree = "<group>"; };
@@ -379,6 +385,9 @@
 			children = (
 				41BC771B300D0EA300E89C3F /* QuestionBreakDownView.swift */,
 				41BC771D300D119A00E89C3F /* CoachingSuggestionItemView.swift */,
+				41BC771F300D126E00E89C3F /* ImpactBadge.swift */,
+				41BC7721300D146900E89C3F /* SuggestionIconView.swift */,
+				41BC7723300D173100E89C3F /* CoachingSuggestionsListView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1380,6 +1389,7 @@
 				6182BB53300C67BB001157B8 /* ImagePicker.swift in Sources */,
 				CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */,
 				D9C187C830066A4F00BFF8E9 /* Colors+Extension.swift in Sources */,
+				41BC7722300D146900E89C3F /* SuggestionIconView.swift in Sources */,
 				41C6A23A30080AE10035EFBF /* SuccessOTPCodeView.swift in Sources */,
 				41D69D18300A6D0100294D94 /* AuthTokens.swift in Sources */,
 				41C6A23E30083FDB0035EFBF /* PhoneEntryView.swift in Sources */,
@@ -1414,6 +1424,7 @@
 				D9B614F0300CFA1000552F85 /* DIContainer+DataSources.swift in Sources */,
 				D98A79753008DFD800DFDC6B /* Track.swift in Sources */,
 				D9B614E8300CF49400552F85 /* DIContainer+Repositories.swift in Sources */,
+				41BC7720300D126E00E89C3F /* ImpactBadge.swift in Sources */,
 				CEE62A97300929960071F076 /* PracticeCard.swift in Sources */,
 				41BE1A76300BF4000033D1B5 /* SendOTPUseCase.swift in Sources */,
 				D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */,
@@ -1434,6 +1445,7 @@
 				616CAD0E30082441007FC4AF /* SupportAndLeagalSettingsView.swift in Sources */,
 				CED18895300B096300B15B81 /* Userdefaultsmanager.swift in Sources */,
 				61D8F2F8300761200088F170 /* CustomProfileTextField.swift in Sources */,
+				41BC7724300D173100E89C3F /* CoachingSuggestionsListView.swift in Sources */,
 				6182BB5B300C72F7001157B8 /* SkillsInputView.swift in Sources */,
 				41BE1A63300BEF510033D1B5 /* CvUplodingResponseDTO.swift in Sources */,
 				41BE1A6C300BF00B0033D1B5 /* UserProfileDTO+Mapping.swift in Sources */,
