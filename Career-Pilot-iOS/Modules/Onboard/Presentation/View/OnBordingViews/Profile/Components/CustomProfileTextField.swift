@@ -12,7 +12,7 @@ struct CustomProfileTextField: View {
     @FocusState private var isFocused: Bool
     
     private var shouldFloat: Bool {
-        isFocused || !text.isEmpty
+        isFocused || !text.trimmingCharacters(in: .whitespaces).isEmpty
     }
     var body: some View {
         HStack(spacing:12){

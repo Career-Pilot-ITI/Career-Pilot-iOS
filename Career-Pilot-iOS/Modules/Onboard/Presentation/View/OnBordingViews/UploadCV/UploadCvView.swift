@@ -34,6 +34,7 @@ struct UploadCvView: View {
                     .foregroundColor(.gray400)
                     .onTapGesture {
                         vm.skipAll()
+                        
                     }                
             }else{
                 Text("Remove Selected CV")

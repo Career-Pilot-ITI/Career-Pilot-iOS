@@ -12,22 +12,36 @@ struct ProfileForm: View {
     let extraCount = 8
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            CustomProfileTextField(icon: "PersonIcon", title: "Full Name", text: $userData.fullName)
-            Divider().background(Color.gray400).frame(height: 4)
+        VStack( spacing: 14) {
+            Group{
+                ProfilePhoto(image:$userData.profileImage )
+                Text("Tap to add a profile photo").font(.size12Medium).foregroundColor(.gray400)
+                Divider().background(Color.gray400).frame(height: 4)
+               
+            }.frame(width: .infinity , alignment: .center)
+       
+            Group{
+                CustomProfileTextField(icon: "PersonIcon", title: "Full Name", text: $userData.fullName)
+                Divider().background(Color.gray400).frame(height: 4)
 
-            CustomProfileTextField(icon: "email", title: "Email", text: $userData.email)
-            Divider().background(Color.gray400).frame(height: 4)
+                CustomProfileTextField(icon: "email", title: "Email", text: $userData.email)
+                Divider().background(Color.gray400).frame(height: 4)
 
-            CustomProfileTextField(icon: "tittle", title: "CURRENT ROLE / TITTLE", text: $userData.title)
-            Divider().background(Color.gray400).frame(height: 4)
+                CustomProfileTextField(icon: "tittle", title: "CURRENT ROLE / TITTLE", text: $userData.title)
+                Divider().background(Color.gray400).frame(height: 4)
 
-            CustomProfileTextField(icon: "ExperinceLevel", title: "EXPERIENCE LEVEL", text: $userData.experienceLevel)
+                CustomProfileTextField(icon: "ExperinceLevel", title: "EXPERIENCE LEVEL", text: $userData.experienceLevel)
 
-            Spacer().frame(height: Spacing.s20)
-            Text("SKILLS DETECTED").font(.size14Semibold).foregroundColor(.gray400)
-
-            SkillDetection(skills: userData.skills, extraCount: extraCount)
+                Spacer().frame(height: Spacing.s20)
+            }
+            Text("SKILLS DETECTED").font(.size14Semibold).foregroundColor(.gray400).frame(maxWidth: .infinity , alignment: .leading)
+            if(userData.cv == nil){
+                SkillsInputView(selectedSkills: $userData.skills)
+            }
+            else {
+                SkillDetection(skills: userData.skills, extraCount: extraCount)
+            }
+  
         }
         .padding([.vertical, .horizontal], Spacing.s20)
         .foregroundColor(.lightBackGround)

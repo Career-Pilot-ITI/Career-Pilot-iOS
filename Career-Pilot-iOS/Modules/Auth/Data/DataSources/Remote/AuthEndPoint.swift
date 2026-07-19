@@ -27,8 +27,9 @@ enum AuthEndPoint : APIEndpoint {
     var method: HTTPMethod {
         switch self {
         case .sendOTP, .verifyOTP:
-                .post
+                HTTPMethod.post
         }
+        return HTTPMethod.post 
     }
     
     var body: Data? {
