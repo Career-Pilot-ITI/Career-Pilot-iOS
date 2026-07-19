@@ -8,17 +8,21 @@
 import Foundation
 import Swinject
 
+@MainActor
 final class DIContainer{
     static let shared: DIContainer = DIContainer()
     let container = Container()
     
     private init(){
-        
         registerAll()
     }
     
     private func registerAll(){
-        
+        registerViewModels()
+        registerUseCases()
+        registerRepositories()
+        registerDataSources()
+        registerServices()
     }
 }
 

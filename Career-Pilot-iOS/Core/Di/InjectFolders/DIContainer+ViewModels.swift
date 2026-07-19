@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+@MainActor
+extension DIContainer{
+    func registerViewModels(){
+        
+        //OnBordingViewModel
+        container.register(OnBordingViewModel.self){r in
+            OnBordingViewModel(uploadCvUseCase: r.resolve(UploadCvUseCase.self)!)
+        }
+        
+    }
+}

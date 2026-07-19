@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+extension DIContainer{
+    func registerServices(){
+        
+        //NetworkService
+        container.register(NetworkService.self){ _ in
+            URLSessionNetworkService()
+        }
+
+    }
+}

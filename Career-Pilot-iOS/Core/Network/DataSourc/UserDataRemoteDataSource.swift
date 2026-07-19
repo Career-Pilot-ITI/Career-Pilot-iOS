@@ -15,7 +15,7 @@ class UserDataRemoteDataSourceImp: UserDataRemoteDataSource{
     
     private let networkService: NetworkService
     
-    init(networkService: NetworkService = URLSessionNetworkService()) {
+    init(networkService: NetworkService) {
         self.networkService = networkService
     }
     

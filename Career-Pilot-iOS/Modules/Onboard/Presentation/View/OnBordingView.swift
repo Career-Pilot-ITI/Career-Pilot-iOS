@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnBordingView: View {
-    @StateObject var vm: OnBordingViewModel = OnBordingViewModel(uploadCvUseCase: UploadCvUseCase(userDataRepo: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService()))))
+    @StateObject var vm: OnBordingViewModel = DIContainer.shared.container.resolve(OnBordingViewModel.self)!
     
     var body: some View {
         VStack(alignment: .center, spacing: 14){

@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+
+extension DIContainer{
+    func registerRepositories(){
+        
+        //UserDataRepo
+        container.register(UserDataRepo.self){r in
+            UserDataRepoImp(remoteDataSource: r.resolve(UserDataRemoteDataSource.self)!)
+        }
+
+    }
+}

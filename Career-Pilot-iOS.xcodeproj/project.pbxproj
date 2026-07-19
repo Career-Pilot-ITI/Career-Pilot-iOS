@@ -131,6 +131,7 @@
 		D9B614EA300CF4A100552F85 /* DIContainer+UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614E9300CF4A100552F85 /* DIContainer+UseCases.swift */; };
 		D9B614EC300CF50000552F85 /* DIContainer+ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614EB300CF50000552F85 /* DIContainer+ViewModels.swift */; };
 		D9B614EE300CF50D00552F85 /* DIContainer+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614ED300CF50D00552F85 /* DIContainer+Services.swift */; };
+		D9B614F0300CFA1000552F85 /* DIContainer+DataSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614EF300CFA1000552F85 /* DIContainer+DataSources.swift */; };
 		D9C09B10300A2B32008C1E58 /* OnBordingIdelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */; };
 		D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187A930065C8700BFF8E9 /* AuthViewModel.swift */; };
 		D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187AE300660D100BFF8E9 /* APIEndpoint.swift */; };
@@ -289,6 +290,7 @@
 		D9B614E9300CF4A100552F85 /* DIContainer+UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+UseCases.swift"; sourceTree = "<group>"; };
 		D9B614EB300CF50000552F85 /* DIContainer+ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+ViewModels.swift"; sourceTree = "<group>"; };
 		D9B614ED300CF50D00552F85 /* DIContainer+Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+Services.swift"; sourceTree = "<group>"; };
+		D9B614EF300CFA1000552F85 /* DIContainer+DataSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+DataSources.swift"; sourceTree = "<group>"; };
 		D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingIdelState.swift; sourceTree = "<group>"; };
 		D9C1879630065B0400BFF8E9 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		D9C1879D30065B9800BFF8E9 /* TestDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDao.swift; sourceTree = "<group>"; };
@@ -899,9 +901,10 @@
 		D9B614E6300CF3D700552F85 /* InjectFolders */ = {
 			isa = PBXGroup;
 			children = (
-				D9B614E7300CF49400552F85 /* DIContainer+Repositories.swift */,
-				D9B614E9300CF4A100552F85 /* DIContainer+UseCases.swift */,
 				D9B614EB300CF50000552F85 /* DIContainer+ViewModels.swift */,
+				D9B614E9300CF4A100552F85 /* DIContainer+UseCases.swift */,
+				D9B614E7300CF49400552F85 /* DIContainer+Repositories.swift */,
+				D9B614EF300CFA1000552F85 /* DIContainer+DataSources.swift */,
 				D9B614ED300CF50D00552F85 /* DIContainer+Services.swift */,
 			);
 			path = InjectFolders;
@@ -1362,6 +1365,7 @@
 				D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */,
 				CE12F3C230093ED30083D66D /* HomeViewModel.swift in Sources */,
 				41CE20E6300A54A4005DC31F /* ToastManager.swift in Sources */,
+				D9B614F0300CFA1000552F85 /* DIContainer+DataSources.swift in Sources */,
 				D98A79753008DFD800DFDC6B /* Track.swift in Sources */,
 				D9B614E8300CF49400552F85 /* DIContainer+Repositories.swift in Sources */,
 				CEE62A97300929960071F076 /* PracticeCard.swift in Sources */,

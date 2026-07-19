@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+extension DIContainer{
+    func registerUseCases(){
+        
+        //UploadCvUseCase
+        container.register(UploadCvUseCase.self){r in
+            UploadCvUseCase(userDataRepo: r.resolve(UserDataRepo.self)!)
+        }
+
+    }
+}
