@@ -36,6 +36,9 @@ struct OnBordingView: View {
         .navigationDestination(isPresented: $vm.navToHomeScreen){
             MainTabBarView()
         }
+        .task {
+            vm.onApper()
+        }
     }
 }
 

@@ -33,8 +33,7 @@ struct UploadCvView: View {
                     .font(.size13Medium)
                     .foregroundColor(.gray400)
                     .onTapGesture {
-                        vm.skipAll()
-                        
+                        vm.skipAll()  
                     }                
             }else{
                 Text("Remove Selected CV")
@@ -65,6 +64,6 @@ struct UploadCvView: View {
 struct UploadCvView_Previews: PreviewProvider {
     static var previews: some View {
         
-        UploadCvView(vm: OnBordingViewModel(uploadCvUseCase: UploadCvUseCase(userDataRepo: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService())))))
+        UploadCvView(vm: DIContainer.shared.container.resolve(OnBordingViewModel.self)!)
     }
 }

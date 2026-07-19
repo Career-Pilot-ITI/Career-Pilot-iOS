@@ -34,8 +34,15 @@ struct OnBoardingErrorState: View {
             }
             
             CustomButton(isButtonEnabeld: true,buttonTitle: "Try Again"){
-                vm.screenState = .idel
+                vm.onTryAgin()
             }
+            
+            Text("Move Next →")
+                .font(.size13Medium)
+                .foregroundColor(.gray400)
+                .onTapGesture {
+                    vm.navToNext()
+                }
 
             Spacer()
         }
@@ -46,6 +53,6 @@ struct OnBoardingErrorState: View {
 struct OnBordingErrorState_Previews: PreviewProvider {
     static var previews: some View {
         
-        OnBoardingErrorState(vm: OnBordingViewModel(uploadCvUseCase: UploadCvUseCase(userDataRepo: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService())))), errorMessage: "It is an error")
+        OnBoardingErrorState(vm: DIContainer.shared.container.resolve(OnBordingViewModel.self)! , errorMessage: "It is an error")
     }
 }

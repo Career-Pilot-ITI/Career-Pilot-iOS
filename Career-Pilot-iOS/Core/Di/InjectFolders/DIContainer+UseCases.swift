@@ -10,9 +10,15 @@ import Foundation
 extension DIContainer{
     func registerUseCases(){
         
-        //UploadCvUseCase
+        //MARK: OnBording
+        
+        //1) UploadCvUseCase
         container.register(UploadCvUseCase.self){r in
             UploadCvUseCase(userDataRepo: r.resolve(UserDataRepo.self)!)
+        }
+        //2) GetAllTrackesUseCase
+        container.register(GetAllTrackesUseCase.self) {r in
+            GetAllTrackesUseCase(onBordingRepo: r.resolve(OnBordingRepo.self)!)
         }
 
     }

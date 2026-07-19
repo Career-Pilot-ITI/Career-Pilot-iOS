@@ -16,10 +16,10 @@ struct ContentView: View {
     var body: some View {
         NavigationStack(path: $coordiantor.path) {
             OnBordingView()
-//            PhoneEntryView()
-//                .navigationDestination(for: AppRoute.self) { route in
-//                    destination(for:route)
-//                }
+            //            PhoneEntryView()
+            //                .navigationDestination(for: AppRoute.self) { route in
+            //                    destination(for:route)
+            //                }
         }
         .environmentObject(coordiantor)
         .environmentObject(ToastManager.shared)
@@ -27,26 +27,26 @@ struct ContentView: View {
     }
     
     @ViewBuilder
-        private func destination(for route: AppRoute) -> some View {
-            switch route {
-            case .phoneEntryScreen:
-                PhoneEntryView()
-            case .sendingOTPScreen(let phoneNumber):
-                SendingOTPCodeView(phoneNumber: phoneNumber)
-            case .otpScreen(let phoneNumber):
-                OTPView(
-                        phoneNumber: phoneNumber,
-                        viewModel: AuthViewModel(
-                            sendUseCase: SendOTPUseCase(repository: AuthRepositoryImpl(remoteDataSource: AuthRemoteDataSource())),
-                            verifyUseCase: VerifyOTPUseCase(repository: AuthRepositoryImpl(remoteDataSource: AuthRemoteDataSource())),
-                            toastManager: .shared
-                        )
-                    )
-            case .successOTPScreen:
-                SuccessOTPCodeView()
-            case .onboardingScreen(let vm):
-                OnBordingView(vm: vm)
-            }
+    private func destination(for route: AppRoute) -> some View {
+        switch route {
+        case .phoneEntryScreen:
+            PhoneEntryView()
+        case .sendingOTPScreen(let phoneNumber):
+            SendingOTPCodeView(phoneNumber: phoneNumber)
+        case .otpScreen(let phoneNumber):
+            OTPView(
+                phoneNumber: phoneNumber,
+                viewModel: AuthViewModel(
+                    sendUseCase: SendOTPUseCase(repository: AuthRepositoryImpl(remoteDataSource: AuthRemoteDataSource())),
+                    verifyUseCase: VerifyOTPUseCase(repository: AuthRepositoryImpl(remoteDataSource: AuthRemoteDataSource())),
+                    toastManager: .shared
+                )
+            )
+        case .successOTPScreen:
+            SuccessOTPCodeView()
+        case .onboardingScreen(let vm):
+            OnBordingView(vm: vm)
         }
+    }
     
 }

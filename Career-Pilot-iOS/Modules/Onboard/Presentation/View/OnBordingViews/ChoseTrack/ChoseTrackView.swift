@@ -21,6 +21,30 @@ struct ChoseTrackView: View {
             
             CustomSearchTextField(text: $textFieldInput,placeholder: "Search tracks…")
             
+            if vm.selectedTrackInfo.traks.isEmpty {
+                VStack(spacing: 16) {
+                    Text("No tracks available")
+                        .font(.headline)
+
+                    Text("We couldn't load any tracks right now.")
+                        .font(.size13Medium)
+                        .foregroundColor(.gray400)
+                        .multilineTextAlignment(.center)
+
+                    Button("Try Again") {
+                        vm.getAllTracks()
+                    }
+                    .font(.size13Medium)
+
+                    Button("Skip for now →") {
+                        vm.navToNext()
+                    }
+                    .font(.size13Medium)
+                    .foregroundColor(.gray400)
+                }
+                .padding(.vertical, 24)
+            }
+            
             FlowLayout {
                 ForEach(vm.selectedTrackInfo.filteredTracks) { track in
                     TrackChip(
@@ -42,6 +66,6 @@ struct ChoseTrackView: View {
 
 struct ChoseTrackView_Previews: PreviewProvider {
     static var previews: some View {
-        ChoseTrackView(vm:OnBordingViewModel(uploadCvUseCase: UploadCvUseCase(userDataRepo: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService())))))
+        ChoseTrackView(vm: DIContainer.shared.container.resolve(OnBordingViewModel.self)!)
     }
 }
