@@ -20,13 +20,14 @@
 		41D69D34300A7C0700294D94 /* UserProfileDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D2F300A7C0700294D94 /* UserProfileDTO+Mapping.swift */; };
 		6165A1EC300B409C0085E3FD /* CheckOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1EB300B409C0085E3FD /* CheckOutView.swift */; };
 		6165A1EE300B40D90085E3FD /* CheckOutTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1ED300B40D90085E3FD /* CheckOutTopView.swift */; };
-		6165A1F0300B42BB0085E3FD /* TotalPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1EF300B42BB0085E3FD /* TotalPaymentView.swift */; };
+		6165A1F0300B42BB0085E3FD /* CoinPackCheckOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1EF300B42BB0085E3FD /* CoinPackCheckOutView.swift */; };
 		6165A1F2300B48980085E3FD /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1F1300B48980085E3FD /* PaymentMethod.swift */; };
 		616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0330080EEC007FC4AF /* SettingsVIew.swift */; };
 		616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0630080FDE007FC4AF /* ProfileCard.swift */; };
 		616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0830081C62007FC4AF /* SettingsCard.swift */; };
 		616CAD0C30081EF4007FC4AF /* AcoountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0B30081EF4007FC4AF /* AcoountSettingsView.swift */; };
 		616CAD0E30082441007FC4AF /* SupportAndLeagalSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0D30082441007FC4AF /* SupportAndLeagalSettingsView.swift */; };
+		61AD45A6300D608D00B70AFA /* SubscribtionCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AD45A5300D608D00B70AFA /* SubscribtionCheckoutView.swift */; };
 		61D8F2E6300750FC0088F170 /* profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8F2E5300750FC0088F170 /* profile.swift */; };
 		61D8F2F03007523E0088F170 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8F2EF3007523E0088F170 /* HeaderView.swift */; };
 		61D8F2F23007543A0088F170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61D8F2F13007543A0088F170 /* Assets.xcassets */; };
@@ -150,13 +151,14 @@
 		41D69D2F300A7C0700294D94 /* UserProfileDTO+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserProfileDTO+Mapping.swift"; sourceTree = "<group>"; };
 		6165A1EB300B409C0085E3FD /* CheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutView.swift; sourceTree = "<group>"; };
 		6165A1ED300B40D90085E3FD /* CheckOutTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutTopView.swift; sourceTree = "<group>"; };
-		6165A1EF300B42BB0085E3FD /* TotalPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalPaymentView.swift; sourceTree = "<group>"; };
+		6165A1EF300B42BB0085E3FD /* CoinPackCheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPackCheckOutView.swift; sourceTree = "<group>"; };
 		6165A1F1300B48980085E3FD /* PaymentMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		616CAD0330080EEC007FC4AF /* SettingsVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVIew.swift; sourceTree = "<group>"; };
 		616CAD0630080FDE007FC4AF /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
 		616CAD0830081C62007FC4AF /* SettingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCard.swift; sourceTree = "<group>"; };
 		616CAD0B30081EF4007FC4AF /* AcoountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcoountSettingsView.swift; sourceTree = "<group>"; };
 		616CAD0D30082441007FC4AF /* SupportAndLeagalSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportAndLeagalSettingsView.swift; sourceTree = "<group>"; };
+		61AD45A5300D608D00B70AFA /* SubscribtionCheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribtionCheckoutView.swift; sourceTree = "<group>"; };
 		61D8F2E5300750FC0088F170 /* profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profile.swift; sourceTree = "<group>"; };
 		61D8F2EF3007523E0088F170 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		61D8F2F13007543A0088F170 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Career-Pilot-iOS/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
@@ -327,8 +329,9 @@
 			children = (
 				6165A1EB300B409C0085E3FD /* CheckOutView.swift */,
 				6165A1ED300B40D90085E3FD /* CheckOutTopView.swift */,
-				6165A1EF300B42BB0085E3FD /* TotalPaymentView.swift */,
+				6165A1EF300B42BB0085E3FD /* CoinPackCheckOutView.swift */,
 				6165A1F1300B48980085E3FD /* PaymentMethod.swift */,
+				61AD45A5300D608D00B70AFA /* SubscribtionCheckoutView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1222,6 +1225,7 @@
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
 				41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */,
 				D93938EB3004064600CF4372 /* Persistence.swift in Sources */,
+				61AD45A6300D608D00B70AFA /* SubscribtionCheckoutView.swift in Sources */,
 				CEE62A8730091FD10071F076 /* MainTabBarView.swift in Sources */,
 				D9A2857F300A604D00ABB5BD /* UserDataRepo.swift in Sources */,
 				D9C1879330065AF100BFF8E9 /* Repo.swift in Sources */,
@@ -1283,7 +1287,7 @@
 				CEE62A80300910840071F076 /* HomeView.swift in Sources */,
 				CEE62A8530091A6B0071F076 /* Image+AppIcons.swift in Sources */,
 				61D8F2FF30077A410088F170 /* UserData.swift in Sources */,
-				6165A1F0300B42BB0085E3FD /* TotalPaymentView.swift in Sources */,
+				6165A1F0300B42BB0085E3FD /* CoinPackCheckOutView.swift in Sources */,
 				D9C1879E30065B9800BFF8E9 /* TestDao.swift in Sources */,
 				CEE62A8B3009201C0071F076 /* ReportsView.swift in Sources */,
 				D935DFCF300789EF009DF855 /* CvUploadingView.swift in Sources */,

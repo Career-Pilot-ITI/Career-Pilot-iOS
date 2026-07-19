@@ -9,10 +9,10 @@ import SwiftUI
 
 struct CheckOutTopView: View {
     var body: some View {
-        VStack(){
-            Text("Checkout").font(.size24Semibold.bold()).foregroundColor(.primaryNavy)
+        VStack(alignment: .leading){
+            Text("Checkout").font(.size24Semibold).foregroundColor(.primaryNavy).frame(maxWidth: .infinity ,  alignment : .leading)
             Spacer().frame(height: Spacing.s4 )
-            Text("Complete your upgrade to Plus.").font(.size14Medium).foregroundColor(.gray600)
+            Text("Review your purchase before proceeding.").font(.size14Medium).foregroundColor(.gray600)
         }
     }
 }
