@@ -12,7 +12,7 @@ struct UserData {
     var email: String
     var title: String
     var experienceLevel: String
-    var skills: [String]?
+    var skills: [String]
     var profileImageData : Data?
     var firstName: String
     var lastName: String

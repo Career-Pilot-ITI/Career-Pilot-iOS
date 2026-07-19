@@ -7,13 +7,13 @@
 
 import SwiftUI
 struct SkillsInputView: View {
-    @Binding var selectedSkills: [String]?
+    @Binding var selectedSkills: [String]
     @State private var newSkillText: String = ""
     
     let suggestedSkills: [String] = ["React" , "Flutter" , "Mobile Development" , "Python" , "Git" , "System design" , "Docker"]
     private var skills: Binding<[String]> {
         Binding(
-            get: { selectedSkills ?? [] },
+            get: { selectedSkills },
             set: { selectedSkills = $0 }
         )
     }

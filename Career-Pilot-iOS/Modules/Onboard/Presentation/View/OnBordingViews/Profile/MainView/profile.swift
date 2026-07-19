@@ -37,23 +37,23 @@ struct profile: View {
         .background(Color.gray100)
     }
 }
-struct profile_Previews: PreviewProvider {
-    static var previews: some View {
-        PreviewWrapper()
-    }
-    
-    struct PreviewWrapper: View {
-        @State private var userData = UserData(
-            email: "eyad@gmail.com",
-            title: "developer",
-            experienceLevel: "Senior",
-            skills: [],
-            firstName: "Eyad",
-            lastName: "Waleed"
-        )
-        
-        var body: some View {
-            profile(userData: $userData)
-        }
-    }
-}
+//struct profile_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PreviewWrapper()
+//    }
+//    
+//    struct PreviewWrapper: View {
+//        @State private var userData = UserData(
+//            email: "eyad@gmail.com",
+//            title: "developer",
+//            experienceLevel: "Senior",
+//            skills: [],
+//            firstName: "Eyad",
+//            lastName: "Waleed"
+//        )
+//        
+//        var body: some View {
+//            profile(userData: $userData)
+//        }
+//    }
+//}

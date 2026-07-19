@@ -39,7 +39,7 @@ struct ProfileForm: View {
                 SkillsInputView(selectedSkills: $userData.skills)
             }
             else {
-                SkillDetection(skills: userData.skills!, extraCount: extraCount)
+                SkillDetection(skills: userData.skills, extraCount: extraCount)
             }
   
         }
@@ -58,8 +58,8 @@ struct ProfileForm: View {
     }
 }
 
-struct ProfileForm_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileForm(userData: .constant(UserData(email: "eyad@gmail.com", title: "Developer", experienceLevel: "Junior", skills: ["React", "Node.js", "TypeScript", "Python", "AWS", "System Design"], firstName: "Eyad", lastName: "Waleed")))
-    }
-}
+//struct ProfileForm_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileForm(userData: .constant(UserData(email: "eyad@gmail.com", title: "Developer", experienceLevel: "Junior", skills: ["React", "Node.js", "TypeScript", "Python", "AWS", "System Design"], firstName: "Eyad", lastName: "Waleed")))
+//    }
+//}
