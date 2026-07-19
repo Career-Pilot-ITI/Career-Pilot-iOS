@@ -29,7 +29,7 @@ struct SuccessOTPCodeView: View {
             navigationTask = Task  {
                 try? await Task.sleep(for: .seconds(5))
                 guard !Task.isCancelled else { return }
-                coordinator.push(.onboardingScreen(vm: OnBordingViewModel(uploadCvUseCase: UploadCvUseCase(userDataRepo: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService()))))))
+                coordinator.push(.onboardingScreen(vm: DIContainer.shared.container.resolve(OnBordingViewModel.self)!))
             }
         }
         .onDisappear {

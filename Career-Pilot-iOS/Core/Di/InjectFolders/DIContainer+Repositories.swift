@@ -15,6 +15,11 @@ extension DIContainer{
         container.register(UserDataRepo.self){r in
             UserDataRepoImp(remoteDataSource: r.resolve(UserDataRemoteDataSource.self)!)
         }
+        
+        //OnBordingRepo
+        container.register(OnBordingRepo.self) { r in
+            OnBordingRepoImp(remote: r.resolve(OnBordingRemoteDataSource.self)!)
+        }
 
     }
 }

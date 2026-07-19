@@ -8,7 +8,7 @@
 import Foundation
 
 struct SelectedTrackViewInfo{
-    var filteredTracks: [Track] = tracks
+    var filteredTracks: [Track] = [Track]()
     var selectedTrack: Track?
 }
 

@@ -65,6 +65,6 @@ struct UploadCvView: View {
 struct UploadCvView_Previews: PreviewProvider {
     static var previews: some View {
         
-        UploadCvView(vm: OnBordingViewModel(uploadCvUseCase: UploadCvUseCase(userDataRepo: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService())))))
+        UploadCvView(vm: DIContainer.shared.container.resolve(OnBordingViewModel.self)!)
     }
 }

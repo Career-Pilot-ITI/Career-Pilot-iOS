@@ -46,6 +46,6 @@ struct OnBoardingErrorState: View {
 struct OnBordingErrorState_Previews: PreviewProvider {
     static var previews: some View {
         
-        OnBoardingErrorState(vm: OnBordingViewModel(uploadCvUseCase: UploadCvUseCase(userDataRepo: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService())))), errorMessage: "It is an error")
+        OnBoardingErrorState(vm: DIContainer.shared.container.resolve(OnBordingViewModel.self)! , errorMessage: "It is an error")
     }
 }

@@ -11,9 +11,14 @@ extension DIContainer{
     
     func registerDataSources(){
         
-        //UserDataRemoteDataSource
+        //UserData
         container.register(UserDataRemoteDataSource.self){r in
             UserDataRemoteDataSourceImp(networkService: r.resolve(NetworkService.self)!)
+        }
+        
+        //OnBording
+        container.register(OnBordingRemoteDataSource.self) { r in
+            OnBordingRemoteDataSourceImp(apiService: r.resolve(NetworkService.self)!)
         }
     }
 }

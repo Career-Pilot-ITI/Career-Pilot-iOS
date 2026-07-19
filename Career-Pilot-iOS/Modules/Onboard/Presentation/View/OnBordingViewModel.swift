@@ -41,9 +41,11 @@ class OnBordingViewModel: ObservableObject {
     
     //UseCases
     var uploadCvUseCase: UploadCvUseCase
+    var getAllTracksUseCase: GetAllTrackesUseCase
     
-    init(uploadCvUseCase: UploadCvUseCase) {
+    init(uploadCvUseCase: UploadCvUseCase, getAllTracksUseCase: GetAllTrackesUseCase) {
         self.uploadCvUseCase = uploadCvUseCase
+        self.getAllTracksUseCase = getAllTracksUseCase
     }
     
     //For Bottom Button
@@ -70,6 +72,19 @@ class OnBordingViewModel: ObservableObject {
             return selectedTrackInfo.selectedTrack != nil
         case .UploadCvView:
             return cvViewInfo.isSelected
+        }
+    }
+    
+    //MARK: OnAppers
+    func onApper(){
+        Task{
+            do{
+                screenState = .loading
+                selectedTrackInfo.filteredTracks = try await getAllTracksUseCase.execute(())
+                screenState = .idel
+            }catch{
+                screenState = .error(error.localizedDescription)
+            }
         }
     }
     
