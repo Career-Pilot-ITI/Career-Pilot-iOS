@@ -34,8 +34,15 @@ struct OnBoardingErrorState: View {
             }
             
             CustomButton(isButtonEnabeld: true,buttonTitle: "Try Again"){
-                vm.screenState = .idel
+                vm.onTryAgin()
             }
+            
+            Text("Move Next →")
+                .font(.size13Medium)
+                .foregroundColor(.gray400)
+                .onTapGesture {
+                    vm.navToNext()
+                }
 
             Spacer()
         }
