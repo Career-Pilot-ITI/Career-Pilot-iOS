@@ -6,5 +6,19 @@
 //
 
 import Foundation
+import Swinject
 
+final class DIContainer{
+    static let shared: DIContainer = DIContainer()
+    let container = Container()
+    
+    private init(){
+        
+        registerAll()
+    }
+    
+    private func registerAll(){
+        
+    }
+}
 
