@@ -21,6 +21,7 @@ extension Font {
     static let size16Medium         = Font.system(size: 16, weight: .medium)
     static let size16Bold           = Font.system(size: 16, weight: .bold)
     static let size16SemiBold           = Font.system(size: 16, weight: .semibold)
+    static let size15Bold         = Font.system(size: 15, weight: .bold)
     static let size15Medium         = Font.system(size: 15, weight: .medium)
     static let size13Medium         = Font.system(size: 13, weight: .medium)
     static let size13Regular       = Font.system(size: 13, weight: .regular)
@@ -33,4 +34,5 @@ extension Font {
     static let size12Regular        = Font.system(size: 12, weight: .regular)
     static let size12Semibold       = Font.system(size: 12, weight: .semibold)
     static let size12Bold           = Font.system(size: 12, weight: .bold)
+    static let size11Bold           = Font.system(size: 11, weight: .bold)
 }

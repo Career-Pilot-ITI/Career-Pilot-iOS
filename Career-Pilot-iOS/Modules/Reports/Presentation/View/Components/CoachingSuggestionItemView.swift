@@ -19,6 +19,8 @@ struct CoachingSuggestionItemView: View {
                         .foregroundStyle(Color.primaryNavy)
                     
                     ImpactBadge(level: suggestion.badgeLevel)
+                    
+                    Spacer()
                 }
                 
                 Text(suggestion.description)
@@ -47,5 +49,4 @@ struct CoachingSuggestionItemView: View {
         }
         .padding(.horizontal, 24)
     }
-    
 }

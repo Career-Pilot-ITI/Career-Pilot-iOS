@@ -19,14 +19,10 @@ struct CoachingSuggestionsListView: View {
     let suggestions: [CoachingSuggestion]
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: Spacing.s12) {
-                ForEach(suggestions) { suggestion in
-                    CoachingSuggestionItemView(suggestion: suggestion)
-                }
+        VStack(spacing: Spacing.s12) {
+            ForEach(suggestions) { suggestion in
+                CoachingSuggestionItemView(suggestion: suggestion)
             }
-            .padding(.horizontal, 24)
-            .padding(.vertical, 16)
         }
         .background(Color.lightBackGround)
     }

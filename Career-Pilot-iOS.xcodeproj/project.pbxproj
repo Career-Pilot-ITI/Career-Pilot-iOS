@@ -15,6 +15,14 @@
 		41BC7720300D126E00E89C3F /* ImpactBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC771F300D126E00E89C3F /* ImpactBadge.swift */; };
 		41BC7722300D146900E89C3F /* SuggestionIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC7721300D146900E89C3F /* SuggestionIconView.swift */; };
 		41BC7724300D173100E89C3F /* CoachingSuggestionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC7723300D173100E89C3F /* CoachingSuggestionsListView.swift */; };
+		41BC7726300D18CA00E89C3F /* RadarShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC7725300D18CA00E89C3F /* RadarShape.swift */; };
+		41BC7728300D18DC00E89C3F /* RadarGridShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC7727300D18DC00E89C3F /* RadarGridShape.swift */; };
+		41BC772A300D18F000E89C3F /* PerformanceRadarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC7729300D18F000E89C3F /* PerformanceRadarChart.swift */; };
+		41BC772C300D197900E89C3F /* PerformanceBreakdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC772B300D197900E89C3F /* PerformanceBreakdownView.swift */; };
+		41BC772E300D19A100E89C3F /* RadarMetricChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC772D300D19A100E89C3F /* RadarMetricChip.swift */; };
+		41BC7730300D1C5300E89C3F /* RadarMetricsLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC772F300D1C5300E89C3F /* RadarMetricsLegend.swift */; };
+		41BC7732300D31C900E89C3F /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC7731300D31C900E89C3F /* SessionView.swift */; };
+		41BC7734300D347E00E89C3F /* SessionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC7733300D347E00E89C3F /* SessionHistoryView.swift */; };
 		41BE1A63300BEF510033D1B5 /* CvUplodingResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A5E300BEF510033D1B5 /* CvUplodingResponseDTO.swift */; };
 		41BE1A64300BEF510033D1B5 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A60300BEF510033D1B5 /* UserDTO.swift */; };
 		41BE1A65300BEF510033D1B5 /* UserProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A61300BEF510033D1B5 /* UserProfileDTO.swift */; };
@@ -174,6 +182,14 @@
 		41BC771F300D126E00E89C3F /* ImpactBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactBadge.swift; sourceTree = "<group>"; };
 		41BC7721300D146900E89C3F /* SuggestionIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionIconView.swift; sourceTree = "<group>"; };
 		41BC7723300D173100E89C3F /* CoachingSuggestionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachingSuggestionsListView.swift; sourceTree = "<group>"; };
+		41BC7725300D18CA00E89C3F /* RadarShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarShape.swift; sourceTree = "<group>"; };
+		41BC7727300D18DC00E89C3F /* RadarGridShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarGridShape.swift; sourceTree = "<group>"; };
+		41BC7729300D18F000E89C3F /* PerformanceRadarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceRadarChart.swift; sourceTree = "<group>"; };
+		41BC772B300D197900E89C3F /* PerformanceBreakdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceBreakdownView.swift; sourceTree = "<group>"; };
+		41BC772D300D19A100E89C3F /* RadarMetricChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarMetricChip.swift; sourceTree = "<group>"; };
+		41BC772F300D1C5300E89C3F /* RadarMetricsLegend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarMetricsLegend.swift; sourceTree = "<group>"; };
+		41BC7731300D31C900E89C3F /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
+		41BC7733300D347E00E89C3F /* SessionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHistoryView.swift; sourceTree = "<group>"; };
 		41BE1A5E300BEF510033D1B5 /* CvUplodingResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvUplodingResponseDTO.swift; sourceTree = "<group>"; };
 		41BE1A60300BEF510033D1B5 /* UserDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		41BE1A61300BEF510033D1B5 /* UserProfileDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileDTO.swift; sourceTree = "<group>"; };
@@ -376,6 +392,8 @@
 			children = (
 				41BC771A300D0E8B00E89C3F /* Components */,
 				CEE62A8A3009201C0071F076 /* ReportsView.swift */,
+				41BC7731300D31C900E89C3F /* SessionView.swift */,
+				41BC7733300D347E00E89C3F /* SessionHistoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -388,6 +406,12 @@
 				41BC771F300D126E00E89C3F /* ImpactBadge.swift */,
 				41BC7721300D146900E89C3F /* SuggestionIconView.swift */,
 				41BC7723300D173100E89C3F /* CoachingSuggestionsListView.swift */,
+				41BC7725300D18CA00E89C3F /* RadarShape.swift */,
+				41BC7727300D18DC00E89C3F /* RadarGridShape.swift */,
+				41BC7729300D18F000E89C3F /* PerformanceRadarChart.swift */,
+				41BC772B300D197900E89C3F /* PerformanceBreakdownView.swift */,
+				41BC772D300D19A100E89C3F /* RadarMetricChip.swift */,
+				41BC772F300D1C5300E89C3F /* RadarMetricsLegend.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1401,10 +1425,12 @@
 				41BE1A68300BEF820033D1B5 /* CvUplodingApiResponse+Mapping.swift in Sources */,
 				61D8F2F6300760680088F170 /* ProfileForm.swift in Sources */,
 				D98A79793008EB9200DFDC6B /* ChoseTrackViewInfo.swift in Sources */,
+				41BC7728300D18DC00E89C3F /* RadarGridShape.swift in Sources */,
 				D935DFCB30078012009DF855 /* CustomButton.swift in Sources */,
 				616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */,
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
 				41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */,
+				41BC772E300D19A100E89C3F /* RadarMetricChip.swift in Sources */,
 				41BE1A71300BF0950033D1B5 /* UserDataRepo.swift in Sources */,
 				CEE62A8730091FD10071F076 /* MainTabBarView.swift in Sources */,
 				41A7F6FB300BBDA000FBE8EB /* UserEntity+Mapping.swift in Sources */,
@@ -1420,18 +1446,22 @@
 				41BE1A78300BF42E0033D1B5 /* AuthRemoteDataSource.swift in Sources */,
 				D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */,
 				CE12F3C230093ED30083D66D /* HomeViewModel.swift in Sources */,
+				41BC7726300D18CA00E89C3F /* RadarShape.swift in Sources */,
 				41CE20E6300A54A4005DC31F /* ToastManager.swift in Sources */,
 				D9B614F0300CFA1000552F85 /* DIContainer+DataSources.swift in Sources */,
 				D98A79753008DFD800DFDC6B /* Track.swift in Sources */,
 				D9B614E8300CF49400552F85 /* DIContainer+Repositories.swift in Sources */,
+				41BC772C300D197900E89C3F /* PerformanceBreakdownView.swift in Sources */,
 				41BC7720300D126E00E89C3F /* ImpactBadge.swift in Sources */,
 				CEE62A97300929960071F076 /* PracticeCard.swift in Sources */,
 				41BE1A76300BF4000033D1B5 /* SendOTPUseCase.swift in Sources */,
 				D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */,
+				41BC7730300D1C5300E89C3F /* RadarMetricsLegend.swift in Sources */,
 				41A7F6F8300BBB2A00FBE8EB /* LampGlitchModifier.swift in Sources */,
 				CECC20D83007B60900DC450D /* AppStrings.swift in Sources */,
 				CE12F3C030093CE40083D66D /* SessionData.swift in Sources */,
 				41D69D1C300A6DB400294D94 /* VerifyOTPResponseDTO+Mapping.swift in Sources */,
+				41BC7732300D31C900E89C3F /* SessionView.swift in Sources */,
 				CEE62A83300910E90071F076 /* CustomNavigationBar.swift in Sources */,
 				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
 				CECC20D63007AD4E00DC450D /* CountryPickerSheet.swift in Sources */,
@@ -1466,12 +1496,14 @@
 				61D8F2FA300778520088F170 /* SkillTag.swift in Sources */,
 				41C38365300A2849005D4BB9 /* AuthEndPoint.swift in Sources */,
 				CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */,
+				41BC7734300D347E00E89C3F /* SessionHistoryView.swift in Sources */,
 				41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */,
 				D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */,
 				D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */,
 				616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */,
 				CECC20E23007DB1B00DC450D /* WaitingIndicatorState.swift in Sources */,
 				CE12F3C4300940CE0083D66D /* Shimmer.swift in Sources */,
+				41BC772A300D18F000E89C3F /* PerformanceRadarChart.swift in Sources */,
 				D93938E23004064400CF4372 /* Career_Pilot_iOSApp.swift in Sources */,
 				61D8F2FC300779ED0088F170 /* Flowlayout.swift in Sources */,
 				D98A79773008E19900DFDC6B /* TrackChip.swift in Sources */,
