@@ -25,6 +25,13 @@
 		41BC7734300D347E00E89C3F /* SessionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC7733300D347E00E89C3F /* SessionHistoryView.swift */; };
 		41BC7736300D34AC00E89C3F /* SessionHistroyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC7735300D34AC00E89C3F /* SessionHistroyItem.swift */; };
 		41BC773A300D3A9500E89C3F /* SessionHistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC7739300D3A9500E89C3F /* SessionHistoryListView.swift */; };
+		41BC773C300D3C6000E89C3F /* QuestionTabSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC773B300D3C6000E89C3F /* QuestionTabSelector.swift */; };
+		41BC773E300D3CD800E89C3F /* QuestionPromptCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC773D300D3CD800E89C3F /* QuestionPromptCard.swift */; };
+		41BC7740300D3D1800E89C3F /* StatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC773F300D3D1800E89C3F /* StatCard.swift */; };
+		41BC7742300D3D5900E89C3F /* QuestionStatsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC7741300D3D5900E89C3F /* QuestionStatsRow.swift */; };
+		41BC7744300D3DA600E89C3F /* CoachFeedbackCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC7743300D3DA600E89C3F /* CoachFeedbackCard.swift */; };
+		41BC7746300D3DCD00E89C3F /* TranscriptSnippetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC7745300D3DCD00E89C3F /* TranscriptSnippetCard.swift */; };
+		41BC774A300D3E5F00E89C3F /* QuestionBreakdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC7749300D3E5F00E89C3F /* QuestionBreakdownView.swift */; };
 		41BE1A63300BEF510033D1B5 /* CvUplodingResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A5E300BEF510033D1B5 /* CvUplodingResponseDTO.swift */; };
 		41BE1A64300BEF510033D1B5 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A60300BEF510033D1B5 /* UserDTO.swift */; };
 		41BE1A65300BEF510033D1B5 /* UserProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A61300BEF510033D1B5 /* UserProfileDTO.swift */; };
@@ -194,6 +201,13 @@
 		41BC7733300D347E00E89C3F /* SessionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHistoryView.swift; sourceTree = "<group>"; };
 		41BC7735300D34AC00E89C3F /* SessionHistroyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHistroyItem.swift; sourceTree = "<group>"; };
 		41BC7739300D3A9500E89C3F /* SessionHistoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHistoryListView.swift; sourceTree = "<group>"; };
+		41BC773B300D3C6000E89C3F /* QuestionTabSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTabSelector.swift; sourceTree = "<group>"; };
+		41BC773D300D3CD800E89C3F /* QuestionPromptCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPromptCard.swift; sourceTree = "<group>"; };
+		41BC773F300D3D1800E89C3F /* StatCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCard.swift; sourceTree = "<group>"; };
+		41BC7741300D3D5900E89C3F /* QuestionStatsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionStatsRow.swift; sourceTree = "<group>"; };
+		41BC7743300D3DA600E89C3F /* CoachFeedbackCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachFeedbackCard.swift; sourceTree = "<group>"; };
+		41BC7745300D3DCD00E89C3F /* TranscriptSnippetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptSnippetCard.swift; sourceTree = "<group>"; };
+		41BC7749300D3E5F00E89C3F /* QuestionBreakdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBreakdownView.swift; sourceTree = "<group>"; };
 		41BE1A5E300BEF510033D1B5 /* CvUplodingResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvUplodingResponseDTO.swift; sourceTree = "<group>"; };
 		41BE1A60300BEF510033D1B5 /* UserDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		41BE1A61300BEF510033D1B5 /* UserProfileDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileDTO.swift; sourceTree = "<group>"; };
@@ -398,6 +412,7 @@
 				CEE62A8A3009201C0071F076 /* ReportsView.swift */,
 				41BC7731300D31C900E89C3F /* SessionView.swift */,
 				41BC7733300D347E00E89C3F /* SessionHistoryView.swift */,
+				41BC7749300D3E5F00E89C3F /* QuestionBreakdownView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -418,6 +433,12 @@
 				41BC772F300D1C5300E89C3F /* RadarMetricsLegend.swift */,
 				41BC7735300D34AC00E89C3F /* SessionHistroyItem.swift */,
 				41BC7739300D3A9500E89C3F /* SessionHistoryListView.swift */,
+				41BC773B300D3C6000E89C3F /* QuestionTabSelector.swift */,
+				41BC773D300D3CD800E89C3F /* QuestionPromptCard.swift */,
+				41BC773F300D3D1800E89C3F /* StatCard.swift */,
+				41BC7741300D3D5900E89C3F /* QuestionStatsRow.swift */,
+				41BC7743300D3DA600E89C3F /* CoachFeedbackCard.swift */,
+				41BC7745300D3DCD00E89C3F /* TranscriptSnippetCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1415,6 +1436,7 @@
 			files = (
 				41D69D63300B553F00294D94 /* Career_Pilot_iOS.xcdatamodeld in Sources */,
 				CECC20DA3007BE6800DC450D /* PhoneFieldViewModel.swift in Sources */,
+				41BC774A300D3E5F00E89C3F /* QuestionBreakdownView.swift in Sources */,
 				CE8AFF18300712FC0064CC6C /* Font.swift in Sources */,
 				6182BB53300C67BB001157B8 /* ImagePicker.swift in Sources */,
 				CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */,
@@ -1431,6 +1453,7 @@
 				41BE1A68300BEF820033D1B5 /* CvUplodingApiResponse+Mapping.swift in Sources */,
 				61D8F2F6300760680088F170 /* ProfileForm.swift in Sources */,
 				D98A79793008EB9200DFDC6B /* ChoseTrackViewInfo.swift in Sources */,
+				41BC7740300D3D1800E89C3F /* StatCard.swift in Sources */,
 				41BC7728300D18DC00E89C3F /* RadarGridShape.swift in Sources */,
 				D935DFCB30078012009DF855 /* CustomButton.swift in Sources */,
 				616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */,
@@ -1452,6 +1475,7 @@
 				41BE1A78300BF42E0033D1B5 /* AuthRemoteDataSource.swift in Sources */,
 				D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */,
 				CE12F3C230093ED30083D66D /* HomeViewModel.swift in Sources */,
+				41BC773E300D3CD800E89C3F /* QuestionPromptCard.swift in Sources */,
 				41BC7726300D18CA00E89C3F /* RadarShape.swift in Sources */,
 				41CE20E6300A54A4005DC31F /* ToastManager.swift in Sources */,
 				D9B614F0300CFA1000552F85 /* DIContainer+DataSources.swift in Sources */,
@@ -1467,6 +1491,7 @@
 				CECC20D83007B60900DC450D /* AppStrings.swift in Sources */,
 				CE12F3C030093CE40083D66D /* SessionData.swift in Sources */,
 				41D69D1C300A6DB400294D94 /* VerifyOTPResponseDTO+Mapping.swift in Sources */,
+				41BC7742300D3D5900E89C3F /* QuestionStatsRow.swift in Sources */,
 				41BC7732300D31C900E89C3F /* SessionView.swift in Sources */,
 				CEE62A83300910E90071F076 /* CustomNavigationBar.swift in Sources */,
 				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
@@ -1542,6 +1567,7 @@
 				CECC20E83007DB4D00DC450D /* WaveformBars.swift in Sources */,
 				41D69D37300B43FF00294D94 /* KeychainManager.swift in Sources */,
 				CECC20EA3007DB5E00DC450D /* ShakeEffect.swift in Sources */,
+				41BC773C300D3C6000E89C3F /* QuestionTabSelector.swift in Sources */,
 				CECC20D43007AD3A00DC450D /* CountryCode.swift in Sources */,
 				41BC7736300D34AC00E89C3F /* SessionHistroyItem.swift in Sources */,
 				61D8F2F03007523E0088F170 /* HeaderView.swift in Sources */,
@@ -1549,6 +1575,8 @@
 				6182BB59300C70A1001157B8 /* SuggestedSkill.swift in Sources */,
 				41D69D10300A6C7A00294D94 /* AuthTokensDTO+Mapping.swift in Sources */,
 				D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */,
+				41BC7744300D3DA600E89C3F /* CoachFeedbackCard.swift in Sources */,
+				41BC7746300D3DCD00E89C3F /* TranscriptSnippetCard.swift in Sources */,
 				41D69D40300B45C500294D94 /* CoreDataUserLocalDataSource.swift in Sources */,
 				41D69D07300A69E200294D94 /* VerifyOTPResponseDTO.swift in Sources */,
 				CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */,
