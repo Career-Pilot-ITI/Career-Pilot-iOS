@@ -15,11 +15,12 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack(path: $coordiantor.path) {
-            OnBordingView()
-            //            PhoneEntryView()
-            //                .navigationDestination(for: AppRoute.self) { route in
-            //                    destination(for:route)
-            //                }
+//            OnBordingView()
+//            //            PhoneEntryView()
+//            //                .navigationDestination(for: AppRoute.self) { route in
+//            //                    destination(for:route)
+//            //                }
+//            PracticeSessionView()
         }
         .environmentObject(coordiantor)
         .environmentObject(ToastManager.shared)
