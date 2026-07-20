@@ -14,8 +14,8 @@ class AuthRepositoryImpl: AuthRepositoryProtocol {
     
     init(
         remoteDataSource: AuthRemoteDataSourceProtocol,
-        tokenStore: AuthTokenStoring = KeychainAuthTokenStore(keychain: KeychainManager()),
-        userLocalDataSource: UserLocalDataSourceProtocol = CoreDataUserLocalDataSource(coreDataManager: CoreDataManager())
+        tokenStore: AuthTokenStoring,
+        userLocalDataSource: UserLocalDataSourceProtocol 
     ) {
         self.remoteDataSource = remoteDataSource
         self.tokenStore = tokenStore
