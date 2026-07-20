@@ -13,7 +13,7 @@ extension DIContainer{
         
         //OnBordingViewModel
         container.register(OnBordingViewModel.self){r in
-            OnBordingViewModel(uploadCvUseCase: r.resolve(UploadCvUseCase.self)!)
+            OnBordingViewModel(appState: r.resolve(AppState.self)!, uploadCvUseCase: r.resolve(UploadCvUseCase.self)!)
         }
         
     }

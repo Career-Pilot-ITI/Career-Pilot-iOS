@@ -14,6 +14,10 @@ extension DIContainer{
         container.register(NetworkService.self){ _ in
             URLSessionNetworkService()
         }
+        
+        container.register(AppState.self) { _ in
+            AppState()
+        }
 
     }
 }
