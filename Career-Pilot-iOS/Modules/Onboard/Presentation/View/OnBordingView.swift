@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnBordingView: View {
+    @EnvironmentObject var appState: AppState
     @StateObject var vm: OnBordingViewModel = DIContainer.shared.container.resolve(OnBordingViewModel.self)!
     
     var body: some View {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RadarMetric: Identifiable {
+struct RadarMetric: Identifiable, Hashable {
     let id = UUID()
     let label: String
     let value: Double // 0...100

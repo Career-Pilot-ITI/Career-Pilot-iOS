@@ -16,6 +16,7 @@ struct SessionView: View {
             
             ScrollView {
                 VStack(spacing: Spacing.s16) {
+                    OverallScoreCardView(score: 95, performanceLabel: "Strong Performance", percentileText: "Top 28% of users this week")
                     PerformanceBreakdownView(metrics: metrics)
                     QuestionBreakDownView()
                     
@@ -27,6 +28,7 @@ struct SessionView: View {
                             CoachingSuggestionsListView(suggestions: suggesions)
                         }
                 }
+                .padding(.top, 16)
             }
             .scrollIndicators(.hidden)
             .padding(.horizontal, 24)

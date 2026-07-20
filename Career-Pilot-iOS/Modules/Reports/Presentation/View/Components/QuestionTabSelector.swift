@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct QuestionReview: Identifiable {
+struct QuestionReview: Identifiable, Hashable {
     let id = UUID()
     let questionNumber: Int
     let questionText: String

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Session : Identifiable {
+struct Session : Identifiable, Hashable {
     let id = UUID()
     let title: String
     let score: Double

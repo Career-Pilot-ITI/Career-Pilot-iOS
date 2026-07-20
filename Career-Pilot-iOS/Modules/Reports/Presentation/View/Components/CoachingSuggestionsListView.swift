@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CoachingSuggestion: Identifiable {
+struct CoachingSuggestion: Identifiable, Hashable {
     let id = UUID()
     let icon: String
     let text: String
