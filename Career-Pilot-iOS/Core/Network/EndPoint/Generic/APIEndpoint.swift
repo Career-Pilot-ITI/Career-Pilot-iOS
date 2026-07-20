@@ -15,9 +15,11 @@ protocol APIEndpoint {
     var queryParameters: [URLQueryItem]? { get }
     var body: Data? { get }
     var headers: [String: String] { get }
+    var requiresAuthentication: Bool { get }
 }
 
 extension APIEndpoint {
+    var requiresAuthentication: Bool { false }
     var queryParameters: [URLQueryItem]? { nil }
     var body: Data? { nil }
     var headers: [String: String] { [:] }
