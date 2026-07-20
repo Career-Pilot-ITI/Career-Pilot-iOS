@@ -42,10 +42,15 @@ class OnBordingViewModel: ObservableObject {
     //UseCases
     var uploadCvUseCase: UploadCvUseCase
     var getAllTracksUseCase: GetAllTrackesUseCase
-    
-    init(uploadCvUseCase: UploadCvUseCase, getAllTracksUseCase: GetAllTrackesUseCase) {
+    var updateProfileUseCase: UpdateProfileUseCase
+
+    init(uploadCvUseCase: UploadCvUseCase,
+         getAllTracksUseCase: GetAllTrackesUseCase,
+         updateProfileUseCase: UpdateProfileUseCase) {
+        
         self.uploadCvUseCase = uploadCvUseCase
         self.getAllTracksUseCase = getAllTracksUseCase
+        self.updateProfileUseCase = updateProfileUseCase
     }
     
     //For Bottom Button
@@ -205,8 +210,29 @@ class OnBordingViewModel: ObservableObject {
     }
     
     private func onNavToHomeScreen(){
-        navToHomeScreen = true
-        print(userData)
+        Task {
+            do {
+                screenState = .loading
+                
+                // 1. Convert UI model → Domain model
+                let profile = userData.toUserProfile()
+                
+                // 2. Create use case request
+                let request = UpdateProfileRequest(profile: profile)
+                
+                // 3. PATCH /api/v1/profile with Bearer token
+                try await updateProfileUseCase.execute(request)
+                
+                // 4. Success → navigate to home
+                screenState = .idel
+                navToHomeScreen = true
+                
+            } catch let error as NetworkError {
+                screenState = .error(error.localizedDescription)
+            } catch {
+                screenState = .error(error.localizedDescription)
+            }
+        }
     }
     
     func backByStep(){

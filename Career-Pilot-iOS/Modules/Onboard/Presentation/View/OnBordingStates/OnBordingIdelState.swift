@@ -19,7 +19,7 @@ struct OnBordingIdelState: View{
             case.UploadCvView:
                 UploadCvView(vm: vm)
             case.ProfileView:
-                profile(userData: $vm.userData)
+                profile(vm: vm)
             }
         }
         .padding(.bottom, 20)

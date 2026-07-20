@@ -37,7 +37,6 @@ struct CustomProfileTextField: View {
                     .frame(width: 210, height: 1)
                            .background(isFocused ? Color.activeColour : Color.gray400)
                    }
-                   .animation(.easeOut(duration: 0.2), value: shouldFloat)
             
         }.padding(.vertical,Spacing.s12)
     }

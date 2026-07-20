@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChoseTrackView: View {
-    @StateObject var vm: OnBordingViewModel
+    @ObservedObject var vm: OnBordingViewModel
     @State private var textFieldInput: String = ""
     
     

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnBordingView: View {
-    @StateObject var vm: OnBordingViewModel = DIContainer.shared.container.resolve(OnBordingViewModel.self)!
+    @StateObject var vm: OnBordingViewModel = DIContainer.shared.container.resolve(OnBordingViewModel.self)!  
     
     var body: some View {
         VStack(alignment: .center, spacing: 14){
@@ -32,8 +32,10 @@ struct OnBordingView: View {
                 print("Clicked")
                 vm.navToNext()
             }
-        }
-        .navigationDestination(isPresented: $vm.navToHomeScreen){
+        }.ignoresSafeArea(.keyboard)
+          .toolbar(.hidden, for: .navigationBar)
+          .navigationBarTitleDisplayMode(.inline)
+          .navigationDestination(isPresented: $vm.navToHomeScreen){
             MainTabBarView()
         }
         .task {
@@ -43,7 +45,7 @@ struct OnBordingView: View {
 }
 
 private struct OnBordingTopPart: View {
-    @StateObject var vm: OnBordingViewModel
+    @ObservedObject var vm: OnBordingViewModel
     
     var body: some View {
         HStack(spacing: 8){

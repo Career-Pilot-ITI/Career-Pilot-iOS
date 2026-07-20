@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct profile: View {
-    @Binding var userData: UserData
-    
-
+    @ObservedObject var vm: OnBordingViewModel  
 
     var body: some View {
         ScrollView{
             VStack(spacing: 24) {
                 HeaderView()
 
-                ProfileForm(userData: $userData)
+                ProfileForm(userData: $vm.userData)
                     .background(
                         RoundedRectangle(cornerRadius: Radius.r12)
                             .fill(Color.white)
@@ -35,6 +33,8 @@ struct profile: View {
             .padding(.horizontal, Spacing.s20)
         }
         .background(Color.gray100)
+        .ignoresSafeArea(.keyboard)  
+
     }
 }
 //struct profile_Previews: PreviewProvider {

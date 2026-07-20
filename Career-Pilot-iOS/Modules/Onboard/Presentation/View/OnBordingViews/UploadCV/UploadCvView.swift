@@ -10,7 +10,7 @@ import UniformTypeIdentifiers
 
 
 struct UploadCvView: View {
-    @StateObject var vm: OnBordingViewModel
+    @ObservedObject var vm: OnBordingViewModel
     @State var isImporterPresented: Bool = false
     
     //A custom type for .docx
