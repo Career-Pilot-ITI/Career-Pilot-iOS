@@ -14,5 +14,5 @@ struct TrackDTO: Decodable {
     let name: String
     let description: String
     let isActive: Bool
-    let createdAt: Date
+    let createdAt: String
 }
