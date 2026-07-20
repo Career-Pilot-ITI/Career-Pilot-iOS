@@ -20,6 +20,10 @@ struct AITurnView: View {
                 .font(.caption)
             Text(vm.currentQuestionText)
                 .padding()
+            
+            CustomButton(buttonTitle: "Start Answering"){
+                vm.startAnswering()
+            }
         }
     }
 }

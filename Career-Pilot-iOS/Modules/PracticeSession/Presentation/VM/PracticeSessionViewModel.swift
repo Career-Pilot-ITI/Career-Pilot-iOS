@@ -131,8 +131,16 @@ final class PracticeSessionViewModel: ObservableObject {
     
     //MARK: Click On Start Answering
     func startAnswering() {
-        guard let currentSession = session,
-              validationService.canStartRecording(session: currentSession) else {
+        print("Current Session \(session?.status)")
+        guard let currentSession = session else {
+            screenState = .error("Can Not Answering This Q Now")
+            return
+        }
+        
+        session?.status = .waitingForAnswer
+        
+        guard validationService.canStartRecording(session: currentSession) else {
+            screenState = .error("Can Not Answering This Q Now")
             return
         }
 

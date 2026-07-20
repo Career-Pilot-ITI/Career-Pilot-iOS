@@ -164,6 +164,8 @@
 		D9B614FD300D1D5700552F85 /* OnBordingRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614FC300D1D5700552F85 /* OnBordingRemoteDataSource.swift */; };
 		D9B614FF300D1D7C00552F85 /* TrackDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614FE300D1D7C00552F85 /* TrackDTO.swift */; };
 		D9B61505300D1F2C00552F85 /* GetAllTracks+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B61504300D1F2C00552F85 /* GetAllTracks+Mapping.swift */; };
+		D9BA3474300ED4BF0058D6E6 /* PracticeSessionViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BA3473300ED4BF0058D6E6 /* PracticeSessionViewModelFactory.swift */; };
+		D9BA3476300ED5040058D6E6 /* Stubinterviewrepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BA3475300ED5040058D6E6 /* Stubinterviewrepository.swift */; };
 		D9C09B10300A2B32008C1E58 /* OnBordingIdelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */; };
 		D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187A930065C8700BFF8E9 /* AuthViewModel.swift */; };
 		D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187AE300660D100BFF8E9 /* APIEndpoint.swift */; };
@@ -355,6 +357,8 @@
 		D9B614FC300D1D5700552F85 /* OnBordingRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingRemoteDataSource.swift; sourceTree = "<group>"; };
 		D9B614FE300D1D7C00552F85 /* TrackDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDTO.swift; sourceTree = "<group>"; };
 		D9B61504300D1F2C00552F85 /* GetAllTracks+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GetAllTracks+Mapping.swift"; sourceTree = "<group>"; };
+		D9BA3473300ED4BF0058D6E6 /* PracticeSessionViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeSessionViewModelFactory.swift; sourceTree = "<group>"; };
+		D9BA3475300ED5040058D6E6 /* Stubinterviewrepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stubinterviewrepository.swift; sourceTree = "<group>"; };
 		D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingIdelState.swift; sourceTree = "<group>"; };
 		D9C1879630065B0400BFF8E9 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		D9C1879D30065B9800BFF8E9 /* TestDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDao.swift; sourceTree = "<group>"; };
@@ -949,6 +953,7 @@
 		D95C3B8E300E48DD0042785F /* VM */ = {
 			isa = PBXGroup;
 			children = (
+				D9BA3472300ED4B80058D6E6 /* Factory */,
 				D95C3BC3300E7B6E0042785F /* PracticeSessionViewModel.swift */,
 				D95C3BAC300E4A2A0042785F /* InterviewProgressService.swift */,
 			);
@@ -1009,6 +1014,7 @@
 		D95C3B9A300E496E0042785F /* RepoImp */ = {
 			isa = PBXGroup;
 			children = (
+				D9BA3475300ED5040058D6E6 /* Stubinterviewrepository.swift */,
 			);
 			path = RepoImp;
 			sourceTree = "<group>";
@@ -1180,6 +1186,14 @@
 				D9B61504300D1F2C00552F85 /* GetAllTracks+Mapping.swift */,
 			);
 			path = Mappers;
+			sourceTree = "<group>";
+		};
+		D9BA3472300ED4B80058D6E6 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				D9BA3473300ED4BF0058D6E6 /* PracticeSessionViewModelFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		D9C09B0E300A2B1C008C1E58 /* OnBordingStates */ = {
@@ -1684,6 +1698,7 @@
 				41C6A2363008008D0035EFBF /* SendingOTPCodeView.swift in Sources */,
 				41D69D12300A6CB100294D94 /* VerifyOTPResult.swift in Sources */,
 				6182BB55300C67DF001157B8 /* PhotoPicker.swift in Sources */,
+				D9BA3474300ED4BF0058D6E6 /* PracticeSessionViewModelFactory.swift in Sources */,
 				D9B614EC300CF50000552F85 /* DIContainer+ViewModels.swift in Sources */,
 				41C6A23C30080BDA0035EFBF /* OTPView.swift in Sources */,
 				D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */,
@@ -1717,6 +1732,7 @@
 				D95C3B99300E495C0042785F /* SessionEndPointes.swift in Sources */,
 				D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */,
 				616CAD0C30081EF4007FC4AF /* AcoountSettingsView.swift in Sources */,
+				D9BA3476300ED5040058D6E6 /* Stubinterviewrepository.swift in Sources */,
 				41BE1A7A300BF43E0033D1B5 /* AuthRepositoryImpl.swift in Sources */,
 				D95C3B9E300E49BF0042785F /* AudioRecordingService.swift in Sources */,
 				D9B61505300D1F2C00552F85 /* GetAllTracks+Mapping.swift in Sources */,

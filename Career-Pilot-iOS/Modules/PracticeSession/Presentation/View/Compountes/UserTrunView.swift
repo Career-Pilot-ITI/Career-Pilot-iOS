@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct UserTrunView: View {
-    @ObservedObject var vm: PracticeSessionViewModel
+    @ObservedObject var vm: PracticeSessionViewModel = PracticeSessionViewModelFactory.makeStub()
+
     let silenceWarning: SilenceWarning?
 
     var body: some View {
