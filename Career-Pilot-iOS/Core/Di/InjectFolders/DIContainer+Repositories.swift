@@ -16,6 +16,14 @@ extension DIContainer{
             UserDataRepoImp(remoteDataSource: r.resolve(UserDataRemoteDataSource.self)!)
         }
         
+        // AuthRepo
+        container.register(AuthRepositoryProtocol.self) { r in
+            AuthRepositoryImpl(
+                remoteDataSource: r.resolve(AuthRemoteDataSourceProtocol.self)!,
+                tokenStore: r.resolve(AuthTokenStoring.self)!, 
+                userLocalDataSource: r.resolve(UserLocalDataSourceProtocol.self)!
+            )
+        }
         //OnBordingRepo
         container.register(OnBordingRepo.self) { r in
             OnBordingRepoImp(remote: r.resolve(OnBordingRemoteDataSource.self)!)

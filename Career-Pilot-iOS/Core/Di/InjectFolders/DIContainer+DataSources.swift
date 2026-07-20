@@ -11,14 +11,27 @@ extension DIContainer{
     
     func registerDataSources(){
         
+        //AuthRemoteDataSource
+        container.register(AuthRemoteDataSourceProtocol.self) { r in
+            AuthRemoteDataSource()
+        }
+        // Local Data Source — uses shared CoreDataManager
+        container.register(UserLocalDataSourceProtocol.self) { r in
+            CoreDataUserLocalDataSource(
+                coreDataManager: r.resolve(CoreDataManager.self)!
+            )
+        }.inObjectScope(.container)
+        
         //UserData
-        container.register(UserDataRemoteDataSource.self){r in
-            UserDataRemoteDataSourceImp(networkService: r.resolve(NetworkService.self)!)
+        container.register(UserDataRemoteDataSource.self) { r in
+            UserDataRemoteDataSourceImp(networkService: r.resolve(NetworkService.self, name: "base")!)
         }
         
         //OnBording
         container.register(OnBordingRemoteDataSource.self) { r in
-            OnBordingRemoteDataSourceImp(apiService: r.resolve(NetworkService.self)!)
+            OnBordingRemoteDataSourceImp(
+                apiService: r.resolve(NetworkService.self, name: "authenticated")!
+            )
         }
     }
 }
