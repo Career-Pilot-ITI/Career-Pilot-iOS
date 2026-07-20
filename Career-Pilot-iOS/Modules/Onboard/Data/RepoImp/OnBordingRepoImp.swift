@@ -21,4 +21,9 @@ class OnBordingRepoImp: OnBordingRepo{
             trackDTO.toDomain()
         }
     }
+    
+    func updateProfile(profile: UserProfile) async throws {
+        let dto = profile.toDTO()
+        try await remote.updateProfile(profile: dto)
+    }
 }
