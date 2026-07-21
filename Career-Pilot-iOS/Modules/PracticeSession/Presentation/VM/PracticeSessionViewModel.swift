@@ -131,13 +131,15 @@ final class PracticeSessionViewModel: ObservableObject {
         
         Task{
             do {
-                //                try await Task.sleep(nanoseconds: 5000000000)
-                try speechService.speak(text: question.text)
+                try await speechService.speak(text: question.text)
                 beginWaitingForAnswer()
-            } catch {
-                //                try await Task.sleep(nanoseconds: 5000000000)
-                print("Ai Can not Speak Now")
-                
+            }catch let speechError as SpeechPlaybackError{
+                print("AI Can't Speak due: \(speechError.localizedDescription)")
+                try await Task.sleep(nanoseconds: 3000000000)
+                beginWaitingForAnswer()
+            }catch {
+                print("Ai Can't Speak Now")
+                try await Task.sleep(nanoseconds: 3000000000)
                 beginWaitingForAnswer()
             }
         }
@@ -200,6 +202,7 @@ final class PracticeSessionViewModel: ObservableObject {
     
     
     private func beginWaitingForAnswer() {
+        //        speechService.stop()
         session?.status = .waitingForAnswer
         screenState = .waitingForAnswer
     }

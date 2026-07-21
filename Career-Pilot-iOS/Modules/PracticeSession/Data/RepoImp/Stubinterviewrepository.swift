@@ -57,7 +57,7 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
 //       askedCount = (stubQuestions.firstIndex { $0.hashValue.description == questionId } ?? 0) + 1
 
         print("Asked Q is \(askedCount)")
-        throw InterviewError.questionLimitReached
+//        throw InterviewError.questionLimitReached
         
         if askedCount >= 3 {
             return .interviewCompleted(try Self.stubFeedback())
@@ -108,7 +108,7 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
     }
 
     private static func stubFeedback() throws -> InterviewFeedback {
-        throw InterviewError.networkUnavailable
+//        throw InterviewError.networkUnavailable
         InterviewFeedback(
             overallScore: 8.2,
             communicationScore: 8.5,
