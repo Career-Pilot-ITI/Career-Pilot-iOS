@@ -21,20 +21,17 @@ class OnBordingRemoteDataSourceImp: OnBordingRemoteDataSource{
         self.apiService = apiService
     }
     
-    func getAllTraks()  async throws -> [TrackDTO] {
+    func getAllTraks() async throws -> [TrackDTO] {
         let endPoint = OnBordingEndPointes.getAllTrackes
-        
-        return try await apiService.request(endPoint)
+        do {
+            return try await apiService.request(endPoint)
+        } catch {
+            print("Actual error: \(error)")
+            throw error
+        }
     }
     
-//    func updateUserProfile(updateProfileDTO: UpdateProfileDTO) async throws -> UpdateProfileDTO {
-//        let endPoint = OnBordingEndPointes.updateUserProfile(updateProfileDTO: updateProfileDTO)
-//        
-//        let updatedProfile: UpdateProfileDTO = try await apiService.request(endPoint)
-//        
-//        return updatedProfile
-//    }
-  
+
     func updateUserProfile(updateProfileDTO: UpdateProfileDTO) async throws -> UpdateProfileDTO {
             let endPoint = OnBordingEndPointes.updateUserProfile(updateProfileDTO: updateProfileDTO)
             

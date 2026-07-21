@@ -12,7 +12,7 @@ enum AuthEndPoint : APIEndpoint {
     case verifyOTP(phoneNumber: String ,code: String)
     
     var baseURL: String {
-        "http://192.168.1.8:8080"
+        "https://a32c-102-188-63-78.ngrok-free.app"
     }
     
     var path: String {

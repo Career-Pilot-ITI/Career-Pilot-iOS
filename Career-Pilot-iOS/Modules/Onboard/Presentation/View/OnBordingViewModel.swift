@@ -29,6 +29,7 @@ class OnBordingViewModel: ObservableObject {
     @Published var currentView: OnBordingViews = .ChooseTrackView
     @Published var screenState: OnBordingScreenStates = .idel
     @Published var navToHomeScreen: Bool = false
+    @Published var emailErrorMessage: String? = nil
     
     //For ChooseTrack View
     @Published var selectedTrackInfo: SelectedTrackViewInfo = SelectedTrackViewInfo()
@@ -239,7 +240,7 @@ class OnBordingViewModel: ObservableObject {
   
     private func onNavToHomeScreen() {
         print("🚀 === START UPDATE PROFILE DEBUG ===")
-        
+        emailErrorMessage = nil
         Task {
             do {
                 screenState = .loading
@@ -251,7 +252,6 @@ class OnBordingViewModel: ObservableObject {
                     isNewUser: false
                 )
                 
-                // 1. فحص الـ DTO والـ JSON المرسل
                 let userDTO = currentUser.toDTO()
                 let encoder = JSONEncoder()
                 encoder.outputFormatting = .prettyPrinted
@@ -261,7 +261,6 @@ class OnBordingViewModel: ObservableObject {
                     print("🟢 1. Outgoing JSON Body:\n\(jsonString)")
                 }
                 
-                // 2. تنفيذ الطلب
                 print("🟡 2. Sending PATCH request to server...")
                 let updatedUser = try await updateProfileUseCase.execute(currentUser)
                 
@@ -269,7 +268,18 @@ class OnBordingViewModel: ObservableObject {
                 screenState = .idel
                 navToHomeScreen = true
                 
-            } catch let networkError as NetworkError {
+            }catch let useCaseError as UseCaseError {
+                // Handle custom use case errors like invalid email
+                screenState = .idel
+                switch useCaseError {
+                case .invalidEmail:
+                    emailErrorMessage = "Please enter a valid email address."
+                    
+                    currentView = .ProfileView
+                }
+                
+            }
+               catch let networkError as NetworkError {
                 print("🔴 NETWORK ERROR: \(networkError)")
                 print("🔴 Description: \(networkError.errorDescription ?? "No description")")
                 screenState = .error(networkError.errorDescription ?? "Network Error")

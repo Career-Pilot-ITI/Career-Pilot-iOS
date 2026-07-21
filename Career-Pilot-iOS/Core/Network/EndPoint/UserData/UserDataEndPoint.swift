@@ -19,7 +19,7 @@ enum UserDataEndPointes: APIEndpoint {
     private static let boundary = "Boundary-\(UUID().uuidString)"
 
     var baseURL: String {
-        return "https://career-pilot-iti.github.io/Career-Pilot-Backend/"
+        return "https://a32c-102-188-63-78.ngrok-free.app/swagger-ui/index.html"
     }
 
     var path: String {

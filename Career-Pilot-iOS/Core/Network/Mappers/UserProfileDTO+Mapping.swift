@@ -33,7 +33,7 @@ extension UserProfileDTO {
             coinBalance: coinBalance ?? 0,
             onboardingCompleted: onboardingCompleted ?? false,
             trackName: trackName,
-            trackId: 0,
+            trackId: 0
         )
     }
 }

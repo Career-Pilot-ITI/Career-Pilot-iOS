@@ -17,7 +17,9 @@ class OnBordingRepoImp: OnBordingRepo{
     }
     
     func getAllTracks() async throws -> [Track] {
-        return try await remoteDataSource.getAllTraks().map{ trackDTO in
+        var tracks = try await remoteDataSource.getAllTraks()
+        print("\(tracks.count)")
+        return tracks.map{ trackDTO in
             trackDTO.toDomain()
         }
     }
