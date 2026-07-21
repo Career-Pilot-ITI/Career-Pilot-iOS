@@ -3,8 +3,8 @@ import Foundation
 struct SubmitAnswerRequest{
     let session: InterviewSession
     let audioReference: AudioReference
-    let transcript: String
     let duration: TimeInterval
+    var transcript: String? = nil
     
 }
 
@@ -16,11 +16,14 @@ protocol SubmitAnswerUseCaseProtocol {
 actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
     private let repository: InterviewRepository
     private let validationService: InterviewValidationServicing
+    private let speechRecognitionService: SpeechRecognitionService
     private var isSubmitting = false
     
-    init(repository: InterviewRepository, validationService: InterviewValidationServicing) {
+    
+    init(repository: InterviewRepository, validationService: InterviewValidationServicing, speechRecognitionService: SpeechRecognitionService) {
         self.repository = repository
         self.validationService = validationService
+        self.speechRecognitionService = speechRecognitionService
     }
     
     func execute(submitAnsRequest: SubmitAnswerRequest) async throws -> InterviewSession {
@@ -41,14 +44,16 @@ actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
         isSubmitting = true
         defer { isSubmitting = false }
         
+        var updatedSubmitAnsRequest: SubmitAnswerRequest = submitAnsRequest
+        
+        switch submitAnsRequest.audioReference{
+        case.remoteURL(let url),.localFile(let url):
+            updatedSubmitAnsRequest.transcript = try await speechRecognitionService.transcribe(audioAt: url)
+        }
+        
         let outcome: SubmitAnswerOutcome
         do {
-            outcome = try await repository.submitAnswer(
-                sessionId: submitAnsRequest.session.id,
-                questionId: question.id,
-                audioReference: submitAnsRequest.audioReference,
-                duration: submitAnsRequest.duration
-            )
+            outcome = try await repository.submitAnswer(submitAnswerRequest: updatedSubmitAnsRequest)
         } catch {
             throw InterviewError.map(error)
         }

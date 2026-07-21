@@ -1,1 +1,50 @@
+//
+//  InterviewRepositoryImp.swift
+//  Career-Pilot-iOS
+//
+//  Created by Mohamed Magdy on 21/07/2026.
+//
 
+import Foundation
+
+final class InterviewRepositoryImp: InterviewRepository {
+
+    private let remoteDataSource: InterviewSessionRemoteDataSource
+
+    init(remoteDataSource: InterviewSessionRemoteDataSource) {
+        self.remoteDataSource = remoteDataSource
+    }
+
+    func startInterview(configuration: InterviewConfiguration) async throws -> InterviewSession {
+        let sessionDTO = try await remoteDataSource.startInterview(configuration: configuration)
+        return sessionDTO.toDomain(configuration: configuration)
+    }
+
+    func submitAnswer(submitAnswerRequest: SubmitAnswerRequest) async throws -> SubmitAnswerOutcome {
+        
+        let responseDTO = try await remoteDataSource.submitAnswer(submitAnswerRequest: submitAnswerRequest)
+
+        // If the server handed back a next question, the session continues.
+        if let nextQuestionDTO = responseDTO.nextQuestion {
+            return .nextQuestion(nextQuestionDTO.toDomain())
+        }
+
+        let finishRequest = FinishInterviewRequest(sessionID: submitAnswerRequest.session.id)
+        let feedbackDTO = try await remoteDataSource.finishInterview(finishInterviewRequest: finishRequest)
+        return .interviewCompleted(feedbackDTO.toDomain())
+    }
+
+    func resumeInterview(sessionId: String) async throws -> InterviewSession {
+        let sessionDTO = try await remoteDataSource.resumeInterview(sessionId: sessionId)
+        return sessionDTO.toDomain()
+    }
+
+    func finishInterview(finishInterviewRequest: FinishInterviewRequest) async throws -> InterviewFeedback {
+        let feedbackDTO = try await remoteDataSource.finishInterview(finishInterviewRequest: finishInterviewRequest)
+        return feedbackDTO.toDomain()
+    }
+
+    func cancelInterview(sessionId: String) async throws {
+        try await remoteDataSource.cancelInterview(sessionId: sessionId)
+    }
+}

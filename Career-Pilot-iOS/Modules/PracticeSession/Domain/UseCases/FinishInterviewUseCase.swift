@@ -17,7 +17,7 @@ final class FinishInterviewUseCase: FinishInterviewUseCaseProtocol {
 
     func execute(finishInterviewRequest: FinishInterviewRequest) async throws -> InterviewFeedback {
         do {
-            return try await repository.finishInterview(sessionId: finishInterviewRequest.sessionID)
+            return try await repository.finishInterview(finishInterviewRequest: finishInterviewRequest)
         } catch {
             throw InterviewError.map(error)
         }

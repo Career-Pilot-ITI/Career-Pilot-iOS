@@ -13,6 +13,7 @@ enum PracticeSessionViewModelFactory {
     @MainActor static func makeStub() -> PracticeSessionViewModel {
         let repository = StubInterviewRepository()
         let validationService = InterviewValidationService()
+        let speechRecognitionService = SpeechRecognitionService()
         let progressService = InterviewProgressService()
 
         let configuration = InterviewConfiguration(
@@ -26,7 +27,7 @@ enum PracticeSessionViewModelFactory {
         return PracticeSessionViewModel(
             configuration: configuration,
             startUseCase: StartInterviewUseCase(repository: repository),
-            submitUseCase: SubmitAnswerUseCase(repository: repository, validationService: validationService),
+            submitUseCase: SubmitAnswerUseCase(repository: repository, validationService: validationService, speechRecognitionService: speechRecognitionService),
             resumeUseCase: ResumeInterviewUseCase(repository: repository),
             finishUseCase: FinishInterviewUseCase(repository: repository),
             cancelUseCase: CancelInterviewUseCase(repository: repository),

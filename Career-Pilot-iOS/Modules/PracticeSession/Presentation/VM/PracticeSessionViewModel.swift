@@ -248,11 +248,8 @@ final class PracticeSessionViewModel: ObservableObject {
         
         Task {
             do {
-                let updatedSession = try await submitUseCase.execute(
-                    session: currentSession,
-                    audioReference: .localFile(result.fileURL),
-                    duration: result.duration
-                )
+                let submitRequest = SubmitAnswerRequest(session: currentSession, audioReference: .localFile(result.fileURL), duration: result.duration)
+                let updatedSession = try await submitUseCase.execute(submitAnsRequest: submitRequest)
                 session = updatedSession
                 if updatedSession.status == .completed {
                     print("Session Done")
@@ -272,7 +269,7 @@ final class PracticeSessionViewModel: ObservableObject {
         guard let sessionId = session?.id else { return }
         screenState = .submittingAnswer
         do {
-            let finalFeedback = try await finishUseCase.execute(sessionId: sessionId)
+            let finalFeedback = try await finishUseCase.execute(finishInterviewRequest: FinishInterviewRequest(sessionID: sessionId))
             session?.feedback = finalFeedback
             session?.status = .completed
             screenState = .completed
