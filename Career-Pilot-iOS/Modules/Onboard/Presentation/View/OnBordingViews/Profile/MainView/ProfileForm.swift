@@ -25,7 +25,7 @@ struct ProfileForm: View {
             CustomProfileTextField(icon: "ExperinceLevel", title: "EXPERIENCE LEVEL", text: $userData.experienceLevel)
 
             Spacer().frame(height: Spacing.s20)
-            Text("SKILLS DETECTED").font(.size14Semibold).foregroundColor(.gray400)
+            Text("SKILLS DETECTED").font(.labelAppSemiBold).foregroundColor(.gray400)
 
             SkillDetection(skills: userData.skills, extraCount: extraCount)
         }

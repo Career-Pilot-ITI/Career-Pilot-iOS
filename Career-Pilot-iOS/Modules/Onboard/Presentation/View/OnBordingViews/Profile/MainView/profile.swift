@@ -35,16 +35,16 @@ struct profile: View {
     }
 }
 
-//struct profile_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let userData =  UserData(
-//            email: "eyad@gmail.com",
-//            title: "developer",
-//            experienceLevel: "Senior",
-//            skills: ["C++", "C"],
-//            firstName: "Eyad",
-//            lastName: "Waleed"
-//        )
-//        ProfileForm(userData: .constant(userData))
-//    }
-//}
+struct profile_Previews: PreviewProvider {
+    static var previews: some View {
+        let userData =  UserData(
+            email: "eyad@gmail.com",
+            title: "developer",
+            experienceLevel: "Senior",
+            skills: ["C++", "C"],
+            firstName: "Eyad",
+            lastName: "Waleed"
+        )
+        ProfileForm(userData: .constant(userData))
+    }
+}

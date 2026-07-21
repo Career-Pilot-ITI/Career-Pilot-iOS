@@ -39,7 +39,7 @@ struct WaitingStateView: View {
                             .multilineTextAlignment(.center)
                         if let phoneNumber {
                             Text(phoneNumber)
-                                .font(.size14Semibold)
+                                .font(Font.bodyAppSemiBold)
                                 .foregroundStyle(.white)
                                 .multilineTextAlignment(.center)
                         }

@@ -12,13 +12,12 @@ struct HeaderView: View {
         VStack (alignment:.leading){
             HStack(spacing: 12){
                 Image("check")
-                Text("Ready to go!").font(.size16Bold).foregroundColor(.activeColour)
+                Text("Ready to go!").font(.cardTitleSmallerBolded).foregroundColor(.activeColour)
             }
-
             Spacer().frame(height: Spacing.s8)
-            Text("Your profile is set up").font(.size24Semibold).foregroundColor(.primaryNavy)
+            Text("Your profile is set up").font(.pageTitleSmaller).foregroundColor(.primaryNavy)
             Spacer().frame(height: Spacing.s4)
-            Text("Here's what we found. You  can always update this later.").font(.size14Medium).foregroundColor(.gray600)
+            Text("Here's what we found. You  can always update this later.").font(.bodyApp).foregroundColor(.gray600)
         }
       
     }

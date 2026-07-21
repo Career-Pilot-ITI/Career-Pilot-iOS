@@ -14,8 +14,6 @@ enum UploadCVErrors: Error{
         switch self{
         case.CanNotUploadCv:
             return "Can Not Uplad This Cv"
-        default:
-            return "Some Thing Wrong Try Againg.."
         }
     }
 }

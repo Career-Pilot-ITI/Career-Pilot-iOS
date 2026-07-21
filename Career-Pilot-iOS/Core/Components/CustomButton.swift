@@ -21,16 +21,13 @@ struct CustomButton: View {
 
                 if showArrow {
                     Image(systemName: "arrow.right")
-
                 }
             }
-            .font(.size14Semibold)
-            .foregroundStyle(isButtonEnabeld ? Color.gray100 : Color.primaryNavy)
+            .font(.buttonLabel)
+            .foregroundStyle(Color.gray100)
             .frame(width: 350, height: 52)
-            .background{
-                RoundedRectangle(cornerRadius: Radius.r16)
-                    .fill(Color.activeColour)
-            }
+            .background(Color.activeColour)
+            .clipShape(Capsule())
         }
         .disabled(!isButtonEnabeld)
         .opacity(isButtonEnabeld ? 1 : 0.5)

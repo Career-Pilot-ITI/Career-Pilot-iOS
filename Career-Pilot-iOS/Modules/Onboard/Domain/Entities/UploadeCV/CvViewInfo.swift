@@ -7,9 +7,9 @@
 
 import Foundation
 
-//This just for cvUploding view
 struct CvViewInfo{
-    var isSelected: Bool
+    var isUploaded: Bool
     var cvTitle: String?
     var cvSize: Double?
+    var selectedCV: URL?
 }

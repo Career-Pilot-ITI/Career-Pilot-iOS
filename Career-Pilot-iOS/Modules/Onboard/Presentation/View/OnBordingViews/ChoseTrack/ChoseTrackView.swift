@@ -28,7 +28,7 @@ struct ChoseTrackView: View {
                         isSelected: vm.selectedTrackInfo.selectedTrack?.id  == track.id
                     )
                     .onTapGesture {
-                        vm.selectThisTrack(track: track)
+                        vm.selectedTrackInfo.selectedTrack = track
                     }
                 }
             }
@@ -42,6 +42,6 @@ struct ChoseTrackView: View {
 
 struct ChoseTrackView_Previews: PreviewProvider {
     static var previews: some View {
-        ChoseTrackView(vm:OnBordingViewModel(uploadCvUseCase: UploadCvUseCase(userDataRepo: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService())))))
+        ChoseTrackView(vm: OnBordingViewModel())
     }
 }

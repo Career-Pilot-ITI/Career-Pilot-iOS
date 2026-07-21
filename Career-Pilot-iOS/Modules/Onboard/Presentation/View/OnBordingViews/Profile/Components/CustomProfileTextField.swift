@@ -24,11 +24,11 @@ struct CustomProfileTextField: View {
                                .foregroundColor(.gray600)
                            
                            TextField("", text: $text)
-                               .font(.size13Semibold).foregroundColor(.primaryNavy)
+                               .font(.bodyAppSemiBold).foregroundColor(.primaryNavy)
                                .focused($isFocused)
                        } else {
                            TextField(title.uppercased(), text: $text)
-                               .font(.size14Medium)
+                               .font(.bodyApp)
                                .foregroundColor(.gray400)
                                .focused($isFocused).frame(width: 210)
                        }

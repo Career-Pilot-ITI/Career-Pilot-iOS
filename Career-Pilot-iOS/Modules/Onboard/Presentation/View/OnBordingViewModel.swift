@@ -12,16 +12,7 @@ enum OnBordingViews: Int, Hashable, CaseIterable{
 }
 
 enum OnBordingScreenStates{
-    case idel, loading, error(String)
-    
-    var isError: Bool{
-        switch self{
-        case.error(_):
-            return true
-        default:
-            return false
-        }
-    }
+    case idel, loading, error(UploadCVErrors)
 }
 
 @MainActor
@@ -34,17 +25,10 @@ class OnBordingViewModel: ObservableObject {
     @Published var selectedTrackInfo: SelectedTrackViewInfo = SelectedTrackViewInfo()
     
     //For UploadCV View
-    @Published var cvViewInfo: CvViewInfo = CvViewInfo(isSelected: false)
+    @Published var cvViewInfo: CvViewInfo = CvViewInfo(isUploaded: false)
     
     //For Profie View
     @Published var userData: UserData = UserData(email: "", title: "", experienceLevel: "", skills: ["C++"], firstName: "", lastName: "")
-    
-    //UseCases
-    var uploadCvUseCase: UploadCvUseCase
-    
-    init(uploadCvUseCase: UploadCvUseCase) {
-        self.uploadCvUseCase = uploadCvUseCase
-    }
     
     //For Bottom Button
     var buttonTitle: String {
@@ -56,9 +40,6 @@ class OnBordingViewModel: ObservableObject {
         }
     }
     var isButtonEnabeld: Bool {
-        if screenState.isError{
-            return false
-        }
         switch currentView {
         case .ProfileView:
             return !userData.fullName.trimmingCharacters(in: .whitespaces).isEmpty &&
@@ -69,7 +50,7 @@ class OnBordingViewModel: ObservableObject {
         case.ChooseTrackView:
             return selectedTrackInfo.selectedTrack != nil
         case .UploadCvView:
-            return cvViewInfo.isSelected
+            return cvViewInfo.isUploaded
         }
     }
     
@@ -77,38 +58,36 @@ class OnBordingViewModel: ObservableObject {
     func onCvResult(result: Result<URL,Error>){
         switch result{
         case.success(let cvURL):
-            didSelectCV(cvURL: cvURL)
-        case.failure(_):
-            screenState = .error(UploadCVErrors.CanNotUploadCv.description)
+            cvViewInfo.selectedCV = cvURL
+            extractCvInfo(url: cvURL)
+            cvViewInfo.isUploaded = true
+        case.failure(let error):
+            screenState = .error(error as! UploadCVErrors)
         }
     }
     
-    private func didSelectCV(cvURL: URL){
-        //For UplodingCV View
-        extractName_SizeOfTheCv(cvUrl: cvURL)
-        cvViewInfo.isSelected = true
-        //UserData
-        userData.cv = cvURL
-    }
-    
-    private func extractName_SizeOfTheCv(cvUrl: URL){
+    private func extractCvInfo(url: URL){
         do{
-            let values = try cvUrl.resourceValues(forKeys: [.nameKey, .fileSizeKey])
+            let values = try url.resourceValues(forKeys: [.nameKey, .fileSizeKey])
             
             cvViewInfo.cvTitle = values.name
             let fileSizeInBytes = Double(values.fileSize ?? 0)
             let fileSizeInMB = fileSizeInBytes / (1024 * 1024)
             cvViewInfo.cvSize = fileSizeInMB
-        }catch let cvError as UploadCVErrors{
-            screenState = .error(cvError.description)
+            print(cvViewInfo.cvTitle ?? "nooo")
         }catch{
-            screenState = .error(error.localizedDescription)
+            screenState = .error(error as! UploadCVErrors)
         }
     }
     
-    func didRemoveSelectedCV(){
-        userData.cv = nil
-        cvViewInfo.isSelected = false
+    func uploadCV(){
+        print("Uploading cv")
+        screenState = .loading
+        Task{
+            try? await Task.sleep(for:.nanoseconds(2000000000))
+            cvViewInfo.isUploaded = true
+            screenState = .idel
+        }
     }
     
     //MARK: For ChoseTrack
@@ -125,54 +104,16 @@ class OnBordingViewModel: ObservableObject {
         }
     }
     
-    func selectThisTrack(track: Track){
-        selectedTrackInfo.selectedTrack = track
-        userData.selectedTrack = track
-    }
-    
-    
     //MARK: For Navigation
     func navToNext(){
         switch currentView{
         case.ChooseTrackView:
             currentView = .UploadCvView
         case.UploadCvView:
-            onNavToProvileView()
-        case.ProfileView:
-            onNavToHomeScreen()
-        }
-    }
-    
-    private func onNavToProvileView(){
-        guard let userCV = userData.cv else{
-            //If the user skip uploading the cv
             currentView = .ProfileView
-            return
+        case.ProfileView:
+            navToHomeScreen = true
         }
-        
-        Task{
-            do{
-                try await uploadUserCv(userCV: userCV)
-                currentView = .ProfileView
-                
-            }catch let cvError as UploadCVErrors{
-                screenState = .error(cvError.description)
-            }catch{
-                print(error.localizedDescription)
-                screenState = .error(error.localizedDescription)
-            }
-        }
-    }
-    
-    private func uploadUserCv(userCV: URL) async throws {
-        let cvResponse = try await self.uploadCvUseCase.excute(input: UploadCvRequest(cv: userCV))
-        userData = cvResponse.userData
-        print(cvResponse.userData)
-    }
-    
-    private func onNavToHomeScreen(){
-        navToHomeScreen = true
-        print(userData)
     }
     
     func backByStep(){
@@ -186,7 +127,7 @@ class OnBordingViewModel: ObservableObject {
         }
     }
     func skipAll(){
-        onNavToProvileView()
+        currentView = .ProfileView
     }
     
     //MARK: For Marking the dots with the correct color

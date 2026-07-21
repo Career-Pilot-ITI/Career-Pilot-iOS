@@ -56,7 +56,6 @@ extension Color {
    static let gray200 = Color("Gray200")
    static let gray400 = Color("Gray400")
    static let gray600 = Color("Gray600")
-   static let primary = Color(hex: "FF7A45")
    static let primaryYellow = Color("Yellow")
    static let activeColour = Color("Amber")
    static let primaryTeal = Color("Teal")
