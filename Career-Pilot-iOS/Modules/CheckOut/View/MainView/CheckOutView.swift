@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-enum CheckoutItem {
+enum CheckoutItem : Hashable {
     case subscription(plan: String, monthlyPrice: String, billingCycle: String, total: String)
     case coinPack(name: String, pricePerPack: String, coinsIncluded: String, total: String)
 }
@@ -54,20 +54,20 @@ struct CheckOutView: View {
     }
 }
 
-struct CheckOutView_Previews: PreviewProvider {
-    static var previews: some View {
-        CheckOutView(checkoutItem: .subscription(
-            plan: "Pro Monthly",
-            monthlyPrice: "200",
-            billingCycle: "Monthly",
-            total: "200"
-        ))
-        
-        CheckOutView(checkoutItem: .coinPack(
-            name: "500 Coins",
-            pricePerPack: "119",
-            coinsIncluded: "500",
-            total: "119"
-        ))
-    }
-}
+//struct CheckOutView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CheckOutView(checkoutItem: .subscription(
+//            plan: "Pro Monthly",
+//            monthlyPrice: "200",
+//            billingCycle: "Monthly",
+//            total: "200"
+//        ))
+//
+//        CheckOutView(checkoutItem: .coinPack(
+//            name: "500 Coins",
+//            pricePerPack: "119",
+//            coinsIncluded: "500",
+//            total: "119"
+//    ))
+//    }
+//}

@@ -70,7 +70,7 @@ struct PhoneEntryView: View {
                     
                     CustomButton(showArrow: true, buttonTitle: "Continue") {
                         // handle navigation here after user enters phone number
-                        coordinator.push(.sendingOTPScreen)
+                        coordinator.push(.subscribtion)
                     }
                     .padding(.bottom, 20)
                     
