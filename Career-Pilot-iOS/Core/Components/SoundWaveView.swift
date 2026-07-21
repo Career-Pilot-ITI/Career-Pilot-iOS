@@ -52,11 +52,11 @@ struct SoundWaveView: View {
     }
 }
  
-#Preview {
-    ZStack {
-        AppColors.OTPField.otpBackground.ignoresSafeArea()
-        SoundWaveView()
-    }
-}
+//#Preview {
+//    ZStack {
+//        AppColors.OTPField.otpBackground.ignoresSafeArea()
+//        SoundWaveView()
+//    }
+//}
 
 

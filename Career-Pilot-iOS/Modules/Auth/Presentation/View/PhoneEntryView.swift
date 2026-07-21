@@ -46,7 +46,7 @@ struct PhoneEntryView: View {
                         }
                     
                     Text("CareerPilot")
-                        .font(Font.cardTitleBold)
+                        .font(.size18Bold)
                         .foregroundColor(.white)
                 }
                 .padding(.top,24)
@@ -54,11 +54,11 @@ struct PhoneEntryView: View {
                 
                 VStack(alignment: .leading,spacing: Spacing.s8) {
                     Text("Your AI Interview Coach Awaits")
-                        .font(Font.screenTitleBold)
+                        .font(.size32Bold)
                         .foregroundColor(.white)
                     
                     Text("Practice realistic interviews, get instant feedback, and land your dream role.")
-                        .font(Font.bodyAppRegular)
+                        .font(.size14Regular)
                         .foregroundColor(Color.gray400)
                 }
                 .padding(.bottom,36)
@@ -76,11 +76,11 @@ struct PhoneEntryView: View {
                     
                     HStack(spacing:2) {
                         Text("By continuing you agree to our")
-                            .font(Font.labelAppRegular)
+                            .font(.size12Regular)
                             .foregroundColor(Color.gray600)
                         
                         Text("Terms of Service")
-                            .font(Font.labelAppRegular)
+                            .font(.size12Regular)
                             .foregroundColor(Color.activeColour)
                     }
                 }
@@ -91,6 +91,6 @@ struct PhoneEntryView: View {
         }
     }
 }
-#Preview {
-    PhoneEntryView()
-}
+//#Preview {
+//    PhoneEntryView()
+//}

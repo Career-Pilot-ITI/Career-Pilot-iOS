@@ -11,36 +11,36 @@ struct SettingsVIew: View {
     var body: some View {
         VStack(alignment: .leading){
             Group{
-                Text("Settings").font(.sectionTitle).foregroundColor(.primaryNavy)
+                Text("Settings").font(.size22Semibold).foregroundColor(.primaryNavy)
                 ProfileCard()
             }
             Group{
-                Spacer().frame(height: Spacing.xl2)
-                Text("ACCOUNT").font(.labelAppSemiBold).foregroundColor(.gray400)
-                Spacer().frame(height: Spacing.xs)
+                Spacer().frame(height: Spacing.s12)
+                Text("ACCOUNT").font(.size12Semibold).foregroundColor(.gray400)
+                Spacer().frame(height: Spacing.s4)
                 AccountSettingsView()
-                Spacer().frame(height: Spacing.xl)
-                Text("Support & Legal").font(.labelAppSemiBold).foregroundColor(.gray400)
-                Spacer().frame(height: Spacing.xs)
+                Spacer().frame(height: Spacing.s32)
+                Text("Support & Legal").font(.size12Semibold).foregroundColor(.gray400)
+                Spacer().frame(height: Spacing.s4)
                SupportAndLeagalSettingsView()
             }
     
-            Spacer().frame(height: Spacing.xl)
-            Text("Danger Zone").font(.labelAppSemiBold).foregroundColor(.gray400)
-            Spacer().frame(height: Spacing.xs)
+            Spacer().frame(height: Spacing.s32)
+            Text("Danger Zone").font(.size12Semibold).foregroundColor(.gray400)
+            Spacer().frame(height: Spacing.s4)
            
                        HStack(spacing: 12) {
                            Image(systemName: "trash.fill")
                                .foregroundColor(.errorColour)
                                .frame(width: 44, height: 44)
                                .background(
-                                   RoundedRectangle(cornerRadius: Radius.lg)
+                                RoundedRectangle(cornerRadius: Radius.r20)
                                        .fill(Color.errorColour.opacity(0.08))
                                )
                            
                            VStack(alignment: .leading, spacing: 2) {
                                Text("Request Data Deletion")
-                                   .font(.bodyApp.bold())
+                                   .font(.size14Medium)
                                    .foregroundColor(.errorColour)
                                Text("Permanently delete account & data")
                                    .font(.caption)
@@ -53,14 +53,14 @@ struct SettingsVIew: View {
                                .foregroundColor(.gray400)
                                .font(.caption.bold())
                        }
-                       .padding(.horizontal, Spacing.xl)
-                       .padding(.vertical, Spacing.sm)
+                       .padding(.horizontal, Spacing.s20)
+                       .padding(.vertical, Spacing.s8)
                        .background(
-                           RoundedRectangle(cornerRadius: Radius.lg)
+                        RoundedRectangle(cornerRadius: Radius.r12)
                                .fill(Color.white)
                        )
                        
-                       Spacer().frame(height: Spacing.sm)
+            Spacer().frame(height: Spacing.s8)
                        
 
                        HStack {
@@ -69,20 +69,20 @@ struct SettingsVIew: View {
                                Image(systemName: "rectangle.portrait.and.arrow.right")
                                    .foregroundColor(.errorColour)
                                Text("Sign Out")
-                                   .font(.bodyApp.bold())
+                                   .font(.size14Medium)
                                    .foregroundColor(.errorColour)
                            }
                            Spacer()
                        }
-                       .padding(.vertical, Spacing.md)
+                       .padding(.vertical, Spacing.s12)
                        .background(
-                           RoundedRectangle(cornerRadius: Radius.lg)
+                        RoundedRectangle(cornerRadius: Radius.r12)
                                .fill(Color.errorColour.opacity(0.08))
                        )
 
             
-        }.padding(.vertical, Spacing.lg)
-            .padding(.horizontal, Spacing.xl).background(Color.gray100)
+        }.padding(.vertical, Spacing.s24)
+            .padding(.horizontal, Spacing.s32).background(Color.gray100)
 
 
     }

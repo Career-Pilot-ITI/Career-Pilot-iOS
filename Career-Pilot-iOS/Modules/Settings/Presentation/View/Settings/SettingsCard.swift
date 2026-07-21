@@ -17,7 +17,7 @@ struct SettingsCard: View {
             CustomIcon(icon: leadingIcon )
             VStack(alignment: .leading, spacing: 2) {
                 Text(title)
-                    .font(.bodyApp.bold())
+                    .font(.size32Bold)
                     .foregroundColor(.primaryNavy)
                 if !subtitle.isEmpty {
                     Text(subtitle)
@@ -37,7 +37,7 @@ struct SettingsCard: View {
             .foregroundColor(.primaryNavy)
             .frame(width: 44, height: 44)
             .background(
-                RoundedRectangle(cornerRadius: Radius.lg )
+                RoundedRectangle(cornerRadius: Radius.r12)
                     .fill(Color.primaryNavy.opacity(0.06))
             )
     }

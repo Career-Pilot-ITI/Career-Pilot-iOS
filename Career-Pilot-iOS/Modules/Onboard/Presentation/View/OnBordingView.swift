@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct OnBordingView: View {
-    @StateObject var vm: OnBordingViewModel = OnBordingViewModel()
+    @StateObject var vm: OnBordingViewModel = OnBordingViewModel(uploadCvUseCase: UploadCvUseCase(userDataRepo: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService()))))
     
     var body: some View {
         VStack(alignment: .center, spacing: 14){
             //Top Part
-            topView
+            OnBordingTopPart(vm: vm)
             Spacer()
             
             //OnBording Content
@@ -34,12 +34,15 @@ struct OnBordingView: View {
             }
         }
         .navigationDestination(isPresented: $vm.navToHomeScreen){
-            Text("2na Home Screen")
+            MainTabBarView()
         }
     }
+}
+
+private struct OnBordingTopPart: View {
+    @StateObject var vm: OnBordingViewModel
     
-    //MARK: Top Screen Part
-    private var topView: some View{
+    var body: some View {
         HStack(spacing: 8){
             VStack{
                 if vm.currentView.rawValue != 0 {
@@ -48,7 +51,6 @@ struct OnBordingView: View {
                             vm.backByStep()
                         }
                 }
-                
                 drawDotts
             }
             
@@ -60,6 +62,7 @@ struct OnBordingView: View {
         .padding()
     }
     
+    //MARK: the above dotts to define the numbers of the completed views
     private var drawDotts: some View{
         HStack(spacing: 4){
             ForEach(0..<OnBordingViews.allCases.count, id: \.self){ index in
@@ -70,25 +73,6 @@ struct OnBordingView: View {
                 
             }
         }
-    }
-}
-
-//Idal state
-struct OnBordingIdelState: View{
-    @ObservedObject var vm: OnBordingViewModel
-    
-    var body: some View{
-        ScrollView{
-            switch vm.currentView{
-            case.ChooseTrackView:
-                ChoseTrackView(vm: vm)
-            case.UploadCvView:
-                UploadCvView(vm: vm)
-            case.ProfileView:
-                profile(userData: $vm.userData)
-            }
-        }
-        .padding(.bottom, 20)
     }
 }
 
