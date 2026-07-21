@@ -40,8 +40,8 @@ struct ChoseTrackView: View {
     }
 }
 
-struct ChoseTrackView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChoseTrackView(vm:OnBordingViewModel(uploadCvUseCase: UploadCvUseCase(userDataRepo: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService())))))
-    }
-}
+//struct ChoseTrackView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChoseTrackView(vm:OnBordingViewModel(uploadCvUseCase: UploadCvUseCase(userDataRepo: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService())))))
+//    }
+//}

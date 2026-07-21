@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SendingOTPCodeView: View {
-    @EnvironmentObject var coordinator: AppCoordinator
+    @EnvironmentObject var coordinator: AppCoordinator<AuthRoute>
     @StateObject private var authViewModel = AuthViewModel(
         sendUseCase: SendOTPUseCase(repository: AuthRepositoryImpl(remoteDataSource: AuthRemoteDataSource())),
         verifyUseCase: VerifyOTPUseCase(repository: AuthRepositoryImpl(remoteDataSource: AuthRemoteDataSource())),
@@ -52,6 +52,6 @@ struct SendingOTPCodeView: View {
 struct SendingOTPCodeView_Previews: PreviewProvider {
     static var previews: some View {
         SendingOTPCodeView(phoneNumber: "+201012345678")
-            .environmentObject(AppCoordinator())
+            .environmentObject(AppCoordinator<AuthRoute>())
     }
 }

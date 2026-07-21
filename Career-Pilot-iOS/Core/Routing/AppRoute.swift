@@ -8,32 +8,22 @@
 import Foundation
 import SwiftUI
 
-enum AppRoute : Hashable {
-    // MARK : Auth
+enum AuthRoute: Hashable {
     case phoneEntryScreen
     case sendingOTPScreen(phoneNumber: String)
     case otpScreen(phoneNumber: String)
     case successOTPScreen
-    
-    // MARK : Onboarding
-    case onboardingScreen(vm : OnBordingViewModel)
+    case onboardingScreen(vm: OnBordingViewModel)
+}
+
+enum HomeRoute: Hashable {
+    case sessionDetail(metrics: [RadarMetric], suggestions: [CoachingSuggestion])
 }
 
 
-final class AppCoordinator : ObservableObject {
-    @Published var path = NavigationPath()
-        
-    func push(_ route : AppRoute) {
-        path.append(route)
-    }
-    
-    func pop() {
-        guard !path.isEmpty else {return}
-        path.removeLast()
-    }
-    
-    func popToRoot() {
-        path.removeLast(path.count)
-        
-    }
+
+enum ReportsRoute: Hashable {
+    case sessionDetail(metrics: [RadarMetric], suggestions: [CoachingSuggestion])
+    case sessionHistory(sessionCount: Int, sessionAvgScore: Double, sessions: [Session])
+    case questionBreakdown(questions: [QuestionReview])
 }
