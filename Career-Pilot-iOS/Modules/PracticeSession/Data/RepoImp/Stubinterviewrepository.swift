@@ -43,33 +43,6 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
         )
     }
 
-    func submitAnswer(
-        sessionId: String,
-        questionId: String,
-        audioReference: AudioReference,
-        duration: TimeInterval
-    ) async throws -> SubmitAnswerOutcome {
-        try await simulateDelay()
-        askedCount += 1
-        // Figure out how many questions have already been asked by finding the
-        // matching stub question's index, so the stub can decide whether to hand
-        // back another question or wrap up. A real backend would track this server-side.
-//       askedCount = (stubQuestions.firstIndex { $0.hashValue.description == questionId } ?? 0) + 1
-
-        print("Asked Q is \(askedCount)")
-//        throw InterviewError.questionLimitReached
-        
-        if askedCount >= 3 {
-            return .interviewCompleted(try Self.stubFeedback())
-        }
-
-        let nextQuestion = InterviewQuestion(
-            id: UUID().uuidString,
-            text: stubQuestions[askedCount % stubQuestions.count],
-            order: askedCount
-        )
-        return .nextQuestion(nextQuestion)
-    }
 
     func resumeInterview(sessionId: String) async throws -> InterviewSession {
         try await simulateDelay()
@@ -117,5 +90,36 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
             weaknesses: ["Could go deeper on trade-offs"],
             recommendations: ["Practice quantifying impact with numbers"]
         )
+    }
+    
+    
+    //MARK: Submit Answer
+    func submitAnswer(
+        sessionId: String,
+        questionId: String,
+        audioReference: AudioReference,
+        duration: TimeInterval
+    ) async throws -> SubmitAnswerOutcome {
+        
+        /// Tasks
+        /// convert to text
+        /// make sure if it is the last q -> complete Not -> cont
+        
+        try await simulateDelay()
+        askedCount += 1
+
+        print("Asked Q is \(askedCount)")
+//        throw InterviewError.questionLimitReached
+        
+        if askedCount >= 3 {
+            return .interviewCompleted(try Self.stubFeedback())
+        }
+
+        let nextQuestion = InterviewQuestion(
+            id: UUID().uuidString,
+            text: stubQuestions[askedCount % stubQuestions.count],
+            order: askedCount
+        )
+        return .nextQuestion(nextQuestion)
     }
 }

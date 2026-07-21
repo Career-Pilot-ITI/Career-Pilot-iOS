@@ -28,7 +28,11 @@ final class PracticeSessionViewModel: ObservableObject {
     
     @Published private(set) var session: InterviewSession?
     @Published private(set) var screenState: PracticeSessionScreenState = .loading
-    @Published private(set) var elapsedRecordingTime: TimeInterval = 0 // Time Session
+    
+    @Published private(set) var elapsedRecordingTime: TimeInterval = 0 // record Time
+    @Published private(set) var elapsedSessionTime: TimeInterval = 0 // record Time
+    private var elapsedTimer: Timer?
+    private var elapsedSessionTimer: Timer?
     
     var currentQuestionText: String {
         session?.currentQuestion?.text ?? ""
@@ -64,7 +68,7 @@ final class PracticeSessionViewModel: ObservableObject {
     
     private let silenceThreshold: Float = 0.08 // Audio level
     
-    private var elapsedTimer: Timer?
+
     
     init(
         configuration: InterviewConfiguration,
@@ -109,6 +113,8 @@ final class PracticeSessionViewModel: ObservableObject {
     
     // MARK: - Lifecycle
     func start() async {
+        startSessionTimer()
+        
         screenState = .loading
         do {
             let newSession = try await startUseCase.execute(configuration: configuration)
@@ -219,6 +225,8 @@ final class PracticeSessionViewModel: ObservableObject {
         let result: AudioRecordingResult
         do {
             result = try recordingService.stopRecording()
+            print("AudioURL: \(result.fileURL)")
+            print("AudioDuration: \(result.duration)")
         } catch {
             let message = (error as? AudioRecordingError)?.localizedDescription
             ?? InterviewError.map(error).localizedDescription
@@ -250,6 +258,7 @@ final class PracticeSessionViewModel: ObservableObject {
     }
     
     private func finish() async {
+        stopSessionTimer()
         guard let sessionId = session?.id else { return }
         screenState = .submittingAnswer
         do {
@@ -289,7 +298,6 @@ final class PracticeSessionViewModel: ObservableObject {
     }
     
     // MARK: - Elapsed time display
-    
     private func startElapsedTimer() {
         elapsedTimer?.invalidate()
         elapsedTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
@@ -299,10 +307,25 @@ final class PracticeSessionViewModel: ObservableObject {
             }
         }
     }
-    
+
+    private func startSessionTimer() {
+        elapsedSessionTimer?.invalidate()
+        elapsedSessionTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            Task { @MainActor in
+                self.elapsedSessionTime += 1
+            }
+        }
+    }
+
     private func stopElapsedTimer() {
         elapsedTimer?.invalidate()
         elapsedTimer = nil
+    }
+
+    private func stopSessionTimer() {
+        elapsedSessionTimer?.invalidate()
+        elapsedSessionTimer = nil
     }
 }
 

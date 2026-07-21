@@ -13,10 +13,7 @@ struct RecordingView: View {
 
     var body: some View {
         VStack(spacing: Spacing.s24) {
-            SessionHeader(
-                questionNumber: vm.currentQuestionNumber,
-                totalQuestions: vm.totalQuestions
-            )
+            SessionHeader(vm: vm)
 
             if let silenceWarning {
                 SilenceWarningBanner(remainingSeconds: silenceWarning.remainingSeconds) {

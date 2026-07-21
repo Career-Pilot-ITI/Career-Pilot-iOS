@@ -12,9 +12,7 @@ struct AITurnView: View {
 
     var body: some View {
         VStack(spacing: Spacing.s32) {
-            SessionHeader(
-                questionNumber: vm.currentQuestionNumber,
-                totalQuestions: vm.totalQuestions){
+            SessionHeader(vm: vm){
                     
                 }
 

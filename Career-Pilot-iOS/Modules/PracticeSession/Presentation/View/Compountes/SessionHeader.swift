@@ -9,13 +9,13 @@ import SwiftUI
 
 
 struct SessionHeader: View {
-    let questionNumber: Int
-    let totalQuestions: Int
+
+    @StateObject var vm: PracticeSessionViewModel
     var onEndTapped: (() -> Void)? = nil
 
     var body: some View {
         HStack {
-            Text("Q \(questionNumber)/\(totalQuestions)")
+            Text("Q \(vm.currentQuestionNumber)/\(vm.totalQuestions)")
                 .font(.size13Semibold)
                 .foregroundStyle(Color.gray400)
                 .padding(.horizontal, Spacing.s12)
@@ -25,6 +25,11 @@ struct SessionHeader: View {
                 }
 
             Spacer()
+            
+            Text("\(elapsedTimeText)")
+                .foregroundColor(Color.gray100)
+            
+            Spacer()
 
             if let onEndTapped {
                 Button("End", action: onEndTapped)
@@ -32,6 +37,12 @@ struct SessionHeader: View {
                     .foregroundStyle(Color.errorColour)
             }
         }
+    }
+    
+    private var elapsedTimeText: String {
+        let minutes = Int(vm.elapsedSessionTime) / 60
+        let seconds = Int(vm.elapsedSessionTime) % 60
+        return String(format: "%02d:%02d", minutes, seconds)
     }
 }
 
@@ -57,4 +68,6 @@ struct QuestionCard: View {
                 .fill(Color.primaryNavy)
         }
     }
+    
+    
 }
