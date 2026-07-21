@@ -12,7 +12,7 @@ import Foundation
 /// once the APIEndpoint shapes are confirmed — nothing else in the app needs to change,
 /// since everything upstream only knows about the InterviewRepository protocol.
 final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
-    
+
     private var askedCount = 0
 
     private let simulatedNetworkDelay: UInt64 = 500_000_000 // 0.5s, in nanoseconds
@@ -43,7 +43,6 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
         )
     }
 
-
     func resumeInterview(sessionId: String) async throws -> InterviewSession {
         try await simulateDelay()
 
@@ -67,7 +66,7 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
         )
     }
 
-    func finishInterview(sessionId: String) async throws -> InterviewFeedback {
+    func finishInterview(finishInterviewRequest: FinishInterviewRequest) async throws -> InterviewFeedback {
         try await simulateDelay()
         return try Self.stubFeedback()
     }
@@ -81,7 +80,6 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
     }
 
     private static func stubFeedback() throws -> InterviewFeedback {
-
         InterviewFeedback(
             overallScore: 8.2,
             communicationScore: 8.5,
@@ -91,38 +89,31 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
             recommendations: ["Practice quantifying impact with numbers"]
         )
     }
-    
-    
-    //MARK: Submit Answer
-    func submitAnswer(
-        sessionId: String,
-        questionId: String,
-        audioReference: AudioReference,
-        duration: TimeInterval
-    ) async throws -> SubmitAnswerOutcome {
-        
+
+    // MARK: Submit Answer
+    func submitAnswer(submitAnswerRequest: SubmitAnswerRequest) async throws -> SubmitAnswerOutcome {
+
         /// Tasks
         /// convert to text
         /// make sure if it is the last q -> complete Not -> cont
         ///
-         
-        let speechServcie = SpeechRecognitionService()
+
+        let speechService = SpeechRecognitionService()
         var audioAsText: String = "No text yes"
-        
-        switch audioReference{
-        case.localFile(let url),.remoteURL(let url):
-            audioAsText = try await speechServcie.transcribe(audioAt: url)
+
+        switch submitAnswerRequest.audioReference {
+        case .localFile(let url), .remoteURL(let url):
+            audioAsText = try await speechService.transcribe(audioAt: url)
         }
-        
+
         print("Audio As Text: \(audioAsText)")
-        
-        
+
         try await simulateDelay()
         askedCount += 1
 
         print("Asked Q is \(askedCount)")
 //        throw InterviewError.questionLimitReached
-        
+
         if askedCount >= 3 {
             return .interviewCompleted(try Self.stubFeedback())
         }

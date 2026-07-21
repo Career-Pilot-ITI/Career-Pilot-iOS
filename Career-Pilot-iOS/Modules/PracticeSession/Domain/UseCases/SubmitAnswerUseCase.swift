@@ -3,6 +3,7 @@ import Foundation
 struct SubmitAnswerRequest{
     let session: InterviewSession
     let audioReference: AudioReference
+    let transcript: String
     let duration: TimeInterval
     
 }

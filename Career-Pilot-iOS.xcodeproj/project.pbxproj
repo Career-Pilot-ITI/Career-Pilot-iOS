@@ -111,6 +111,8 @@
 		D92853EA301004B800F8CAC2 /* InterviewRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853E9301004B800F8CAC2 /* InterviewRepositoryImp.swift */; };
 		D92853ED3010064B00F8CAC2 /* SessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853EC3010064B00F8CAC2 /* SessionDTO.swift */; };
 		D92853EF301006E900F8CAC2 /* FeedbackReportDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853EE301006E900F8CAC2 /* FeedbackReportDTO.swift */; };
+		D92853F230100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853F130100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift */; };
+		D92853F43010137300F8CAC2 /* SubmitAnswerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853F33010137300F8CAC2 /* SubmitAnswerResponseDTO.swift */; };
 		D935DFCB30078012009DF855 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFCA30078012009DF855 /* CustomButton.swift */; };
 		D935DFCF300789EF009DF855 /* CvUploadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFCE300789EF009DF855 /* CvUploadingView.swift */; };
 		D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFF930080448009DF855 /* OnBordingView.swift */; };
@@ -122,7 +124,7 @@
 		D93938F83004064600CF4372 /* Career_Pilot_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93938F73004064600CF4372 /* Career_Pilot_iOSTests.swift */; };
 		D93939023004064600CF4372 /* Career_Pilot_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93939013004064600CF4372 /* Career_Pilot_iOSUITests.swift */; };
 		D93939043004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93939033004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift */; };
-		D95C3B99300E495C0042785F /* PracticSessionEndPointes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3B98300E495C0042785F /* PracticSessionEndPointes.swift */; };
+		D95C3B99300E495C0042785F /* InterviewSessionEndPointes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3B98300E495C0042785F /* InterviewSessionEndPointes.swift */; };
 		D95C3B9E300E49BF0042785F /* AudioRecordingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3B9D300E49BF0042785F /* AudioRecordingService.swift */; };
 		D95C3BA0300E49D20042785F /* CancelInterviewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3B9F300E49D20042785F /* CancelInterviewUseCase.swift */; };
 		D95C3BA2300E49E10042785F /* FinishInterviewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BA1300E49E10042785F /* FinishInterviewUseCase.swift */; };
@@ -306,6 +308,8 @@
 		D92853E9301004B800F8CAC2 /* InterviewRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewRepositoryImp.swift; sourceTree = "<group>"; };
 		D92853EC3010064B00F8CAC2 /* SessionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDTO.swift; sourceTree = "<group>"; };
 		D92853EE301006E900F8CAC2 /* FeedbackReportDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackReportDTO.swift; sourceTree = "<group>"; };
+		D92853F130100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewSessionRemoteDataSource.swift; sourceTree = "<group>"; };
+		D92853F33010137300F8CAC2 /* SubmitAnswerResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitAnswerResponseDTO.swift; sourceTree = "<group>"; };
 		D935DFCA30078012009DF855 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		D935DFCE300789EF009DF855 /* CvUploadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvUploadingView.swift; sourceTree = "<group>"; };
 		D935DFF930080448009DF855 /* OnBordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingView.swift; sourceTree = "<group>"; };
@@ -320,7 +324,7 @@
 		D93938FD3004064600CF4372 /* Career-Pilot-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Career-Pilot-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93939013004064600CF4372 /* Career_Pilot_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career_Pilot_iOSUITests.swift; sourceTree = "<group>"; };
 		D93939033004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career_Pilot_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		D95C3B98300E495C0042785F /* PracticSessionEndPointes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticSessionEndPointes.swift; sourceTree = "<group>"; };
+		D95C3B98300E495C0042785F /* InterviewSessionEndPointes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewSessionEndPointes.swift; sourceTree = "<group>"; };
 		D95C3B9D300E49BF0042785F /* AudioRecordingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecordingService.swift; sourceTree = "<group>"; };
 		D95C3B9F300E49D20042785F /* CancelInterviewUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelInterviewUseCase.swift; sourceTree = "<group>"; };
 		D95C3BA1300E49E10042785F /* FinishInterviewUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishInterviewUseCase.swift; sourceTree = "<group>"; };
@@ -836,6 +840,7 @@
 			children = (
 				D92853EC3010064B00F8CAC2 /* SessionDTO.swift */,
 				D92853EE301006E900F8CAC2 /* FeedbackReportDTO.swift */,
+				D92853F33010137300F8CAC2 /* SubmitAnswerResponseDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -945,7 +950,7 @@
 		D95C3B8B300E48CF0042785F /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				D95C3B98300E495C0042785F /* PracticSessionEndPointes.swift */,
+				D95C3B98300E495C0042785F /* InterviewSessionEndPointes.swift */,
 				D92853EB3010050600F8CAC2 /* DTOs */,
 				D95C3B9B300E49740042785F /* DataSources */,
 				D95C3B9A300E496E0042785F /* RepoImp */,
@@ -1039,6 +1044,7 @@
 		D95C3B9B300E49740042785F /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
+				D92853F130100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -1657,6 +1663,7 @@
 				61D8F2F6300760680088F170 /* ProfileForm.swift in Sources */,
 				D98A79793008EB9200DFDC6B /* ChoseTrackViewInfo.swift in Sources */,
 				D935DFCB30078012009DF855 /* CustomButton.swift in Sources */,
+				D92853F230100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift in Sources */,
 				616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */,
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
 				41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */,
@@ -1685,6 +1692,7 @@
 				D9B614E8300CF49400552F85 /* DIContainer+Repositories.swift in Sources */,
 				CEE62A97300929960071F076 /* PracticeCard.swift in Sources */,
 				41BE1A76300BF4000033D1B5 /* SendOTPUseCase.swift in Sources */,
+				D92853F43010137300F8CAC2 /* SubmitAnswerResponseDTO.swift in Sources */,
 				D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */,
 				D92853EA301004B800F8CAC2 /* InterviewRepositoryImp.swift in Sources */,
 				D95C3BC9300EA1650042785F /* AITurnView.swift in Sources */,
@@ -1754,7 +1762,7 @@
 				D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */,
 				41D69D16300A6CF100294D94 /* User.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
-				D95C3B99300E495C0042785F /* PracticSessionEndPointes.swift in Sources */,
+				D95C3B99300E495C0042785F /* InterviewSessionEndPointes.swift in Sources */,
 				D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */,
 				616CAD0C30081EF4007FC4AF /* AcoountSettingsView.swift in Sources */,
 				D9BA3476300ED5040058D6E6 /* Fake.swift in Sources */,
