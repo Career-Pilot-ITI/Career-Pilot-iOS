@@ -14,7 +14,7 @@ struct SessionHeader: View {
     var onEndTapped: (() -> Void)? = nil
 
     var body: some View {
-        HStack {
+        HStack() {
             Text("Q \(vm.currentQuestionNumber)/\(vm.totalQuestions)")
                 .font(.size13Semibold)
                 .foregroundStyle(Color.gray400)
@@ -23,19 +23,20 @@ struct SessionHeader: View {
                 .background {
                     Capsule().fill(Color.gray600.opacity(0.3))
                 }
-
+            
             Spacer()
             
             Text("\(elapsedTimeText)")
                 .foregroundColor(Color.gray100)
             
             Spacer()
+            
+            Button("End", action: onEndTapped ?? {})
+                .font(.size13Semibold)
+                .foregroundStyle(Color.errorColour)
+                .disabled(onEndTapped == nil)
 
-            if let onEndTapped {
-                Button("End", action: onEndTapped)
-                    .font(.size13Semibold)
-                    .foregroundStyle(Color.errorColour)
-            }
+            
         }
     }
     

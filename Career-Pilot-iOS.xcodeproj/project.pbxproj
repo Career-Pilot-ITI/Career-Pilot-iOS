@@ -144,6 +144,7 @@
 		D95C3BCB300EA1800042785F /* WaitingForAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCA300EA1800042785F /* WaitingForAnswerView.swift */; };
 		D95C3BCD300EA1A20042785F /* UserTrunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCC300EA1A20042785F /* UserTrunView.swift */; };
 		D95C3BCF300EA1C00042785F /* SubmitingAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCE300EA1C00042785F /* SubmitingAnswerView.swift */; };
+		D9868B41300FD22600B84CD6 /* SpeechRecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9868B40300FD22600B84CD6 /* SpeechRecognitionService.swift */; };
 		D98A79703008D9A300DFDC6B /* CvViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A796F3008D9A300DFDC6B /* CvViewInfo.swift */; };
 		D98A79733008DB2F00DFDC6B /* ChoseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79723008DB2F00DFDC6B /* ChoseTrackView.swift */; };
 		D98A79753008DFD800DFDC6B /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79743008DFD800DFDC6B /* Track.swift */; };
@@ -338,6 +339,7 @@
 		D95C3BCA300EA1800042785F /* WaitingForAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForAnswerView.swift; sourceTree = "<group>"; };
 		D95C3BCC300EA1A20042785F /* UserTrunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTrunView.swift; sourceTree = "<group>"; };
 		D95C3BCE300EA1C00042785F /* SubmitingAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitingAnswerView.swift; sourceTree = "<group>"; };
+		D9868B40300FD22600B84CD6 /* SpeechRecognitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionService.swift; sourceTree = "<group>"; };
 		D98A796F3008D9A300DFDC6B /* CvViewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvViewInfo.swift; sourceTree = "<group>"; };
 		D98A79723008DB2F00DFDC6B /* ChoseTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseTrackView.swift; sourceTree = "<group>"; };
 		D98A79743008DFD800DFDC6B /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
@@ -1038,6 +1040,7 @@
 				D95C3BBB300E4AC60042785F /* SilenceDetectionService.swift */,
 				D95C3BBA300E4AC60042785F /* SpeechPlaybackService.swift */,
 				D95C3B9D300E49BF0042785F /* AudioRecordingService.swift */,
+				D9868B40300FD22600B84CD6 /* SpeechRecognitionService.swift */,
 			);
 			name = Services;
 			path = ../Data/Services;
@@ -1634,6 +1637,7 @@
 				41C6A23A30080AE10035EFBF /* SuccessOTPCodeView.swift in Sources */,
 				41D69D18300A6D0100294D94 /* AuthTokens.swift in Sources */,
 				41C6A23E30083FDB0035EFBF /* PhoneEntryView.swift in Sources */,
+				D9868B41300FD22600B84CD6 /* SpeechRecognitionService.swift in Sources */,
 				D95C3BBC300E4AC60042785F /* SpeechPlaybackService.swift in Sources */,
 				CEE62A95300929830071F076 /* ProgressCard.swift in Sources */,
 				61D8F303300780C50088F170 /* FreeSessionBanner.swift in Sources */,
@@ -1958,6 +1962,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app need the camera to allow u take a photo";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses the microphone to record your interview answers.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to transcribe your interview answers.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1985,6 +1991,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app need the camera to allow u take a photo";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses the microphone to record your interview answers.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to transcribe your interview answers.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

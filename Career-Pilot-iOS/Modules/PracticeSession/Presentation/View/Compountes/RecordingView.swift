@@ -13,7 +13,11 @@ struct RecordingView: View {
 
     var body: some View {
         VStack(spacing: Spacing.s24) {
-            SessionHeader(vm: vm)
+            SessionHeader(vm: vm){
+                Task{
+                    await vm.finish()
+                }
+            }
 
             if let silenceWarning {
                 SilenceWarningBanner(remainingSeconds: silenceWarning.remainingSeconds) {

@@ -68,7 +68,7 @@ final class PracticeSessionViewModel: ObservableObject {
     
     private let silenceThreshold: Float = 0.08 // Audio level
     
-
+    
     
     init(
         configuration: InterviewConfiguration,
@@ -102,12 +102,22 @@ final class PracticeSessionViewModel: ObservableObject {
     }
     
     //MARK: OnError
-    func onError(error: InterviewError) async{
-        switch error{
-        case .questionLimitReached, .interviewTimeExpired:
-            await finish()
-        case .networkUnavailable, .repositoryError(_), .unknown(_), .invalidState(_, _),.sessionNotFound:
-            await resumeAfterNetworkDrop()
+    func onError(error: Error) async{
+        
+        if let interviewError = error as? InterviewError{
+            switch interviewError{
+            case .questionLimitReached, .interviewTimeExpired:
+                await finish()
+            case .networkUnavailable, .repositoryError(_), .unknown(_), .invalidState(_, _),.sessionNotFound:
+                await resumeAfterNetworkDrop()
+            }
+        }else if let peechRecognitionError = error as? SpeechRecognitionError{
+            switch peechRecognitionError{
+                
+            case .authorizationDenied,.recognizerUnavailable,.noSpeechDetected, .transcriptionFailed(_):
+                await resumeAfterNetworkDrop()
+            }
+            
         }
     }
     
@@ -257,7 +267,7 @@ final class PracticeSessionViewModel: ObservableObject {
         }
     }
     
-    private func finish() async {
+    func finish() async {
         stopSessionTimer()
         guard let sessionId = session?.id else { return }
         screenState = .submittingAnswer
@@ -307,7 +317,7 @@ final class PracticeSessionViewModel: ObservableObject {
             }
         }
     }
-
+    
     private func startSessionTimer() {
         elapsedSessionTimer?.invalidate()
         elapsedSessionTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
@@ -317,12 +327,12 @@ final class PracticeSessionViewModel: ObservableObject {
             }
         }
     }
-
+    
     private func stopElapsedTimer() {
         elapsedTimer?.invalidate()
         elapsedTimer = nil
     }
-
+    
     private func stopSessionTimer() {
         elapsedSessionTimer?.invalidate()
         elapsedSessionTimer = nil

@@ -1,0 +1,99 @@
+//
+//  SpeechRecognitionService.swift
+//  Career-Pilot-iOS
+//
+//  Created by Mohamed Magdy on 21/07/2026.
+//
+
+import Foundation
+import Speech
+
+enum SpeechRecognitionError: Error, LocalizedError {
+    case recognizerUnavailable
+    case authorizationDenied
+    case noSpeechDetected
+    case transcriptionFailed(String)
+
+    var errorDescription: String? {
+        switch self {
+        case .recognizerUnavailable:
+            return "Speech recognizer is unavailable."
+
+        case .authorizationDenied:
+            return "Speech recognition permission was denied."
+
+        case .noSpeechDetected:
+            return "No speech could be recognized."
+
+        case .transcriptionFailed(let reason):
+            return "Transcription failed: \(reason)"
+        }
+    }
+}
+
+
+protocol SpeechRecognitionServicing {
+    func transcribe(audioAt url: URL) async throws -> String
+}
+
+
+final class SpeechRecognitionService: SpeechRecognitionServicing {
+    
+
+    func requestPermission() async throws {
+        let status = await withCheckedContinuation { continuation in
+            SFSpeechRecognizer.requestAuthorization { status in
+                continuation.resume(returning: status)
+            }
+        }
+
+        guard status == .authorized else {
+            throw SpeechRecognitionError.authorizationDenied
+        }
+    }
+
+    func transcribe(audioAt url: URL) async throws -> String {
+
+        try  await requestPermission()
+
+        guard let recognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US")) else {
+            throw SpeechRecognitionError.recognizerUnavailable
+        }
+
+        let request = SFSpeechURLRecognitionRequest(url: url)
+
+        print("Start trascribe")
+        return try await withCheckedThrowingContinuation { continuation in
+
+            recognizer.recognitionTask(with: request) { result, error in
+
+                if let error {
+                    print("Can't transcribe due: \(error.localizedDescription)")
+                    print("Speech:", SFSpeechRecognizer.authorizationStatus())
+                    AVAudioSession.sharedInstance().requestRecordPermission { granted in
+                        print("Mic:", granted)
+                    }
+                    print(FileManager.default.fileExists(atPath: url.path))
+                    print(url)
+                    continuation.resume(throwing: SpeechRecognitionError.noSpeechDetected)
+                    let asset = AVURLAsset(url: url)
+
+                    Task {
+                        let duration = try await asset.load(.duration)
+                        print(duration.seconds)
+                    }
+                    return
+                }
+
+                guard let result else {
+                    return
+                }
+
+                if result.isFinal {
+                    print("result \(result.bestTranscription.formattedString)")
+                    continuation.resume(returning: result.bestTranscription.formattedString)
+                }
+            }
+        }
+    }
+}

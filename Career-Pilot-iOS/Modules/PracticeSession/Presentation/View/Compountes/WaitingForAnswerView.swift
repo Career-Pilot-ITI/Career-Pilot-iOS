@@ -12,7 +12,11 @@ struct WaitingForAnswerView: View {
 
     var body: some View {
         VStack(spacing: Spacing.s32) {
-            SessionHeader(vm: vm)
+            SessionHeader(vm: vm){
+                Task{
+                    await vm.finish()
+                }
+            }
 
             Spacer()
 

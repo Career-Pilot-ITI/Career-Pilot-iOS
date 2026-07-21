@@ -81,7 +81,7 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
     }
 
     private static func stubFeedback() throws -> InterviewFeedback {
-//        throw InterviewError.networkUnavailable
+
         InterviewFeedback(
             overallScore: 8.2,
             communicationScore: 8.5,
@@ -104,6 +104,18 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
         /// Tasks
         /// convert to text
         /// make sure if it is the last q -> complete Not -> cont
+        ///
+         
+        let speechServcie = SpeechRecognitionService()
+        var audioAsText: String = "No text yes"
+        
+        switch audioReference{
+        case.localFile(let url),.remoteURL(let url):
+            audioAsText = try await speechServcie.transcribe(audioAt: url)
+        }
+        
+        print("Audio As Text: \(audioAsText)")
+        
         
         try await simulateDelay()
         askedCount += 1
