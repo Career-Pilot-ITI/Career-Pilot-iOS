@@ -12,6 +12,8 @@ struct UserProfileDTO: Codable {
     let username: String?
     let email: String?
     let avatarUrl: String?
+    let avatarFileId: Int?
+    let cvFileId: Int?
     let gender: String?
     let dateOfBirth: String?
     let targetRole: String?

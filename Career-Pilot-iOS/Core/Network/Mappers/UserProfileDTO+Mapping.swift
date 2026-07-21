@@ -14,6 +14,8 @@ extension UserProfileDTO {
             username: username ?? "",
             email: email ?? "",
             avatarUrl: avatarUrl.flatMap(URL.init(string:)),
+            avatarFileId: avatarFileId ?? 0,
+            cvFileId: cvFileId ?? 0,
             gender: gender,
             dateOfBirth: dateOfBirth.flatMap(DateFormatter.apiDateOnly.date(from:)),
             targetRole: targetRole,
@@ -30,7 +32,8 @@ extension UserProfileDTO {
             subscriptionTier: subscriptionTier,
             coinBalance: coinBalance ?? 0,
             onboardingCompleted: onboardingCompleted ?? false,
-            trackName: trackName
+            trackName: trackName,
+            trackId: 0,
         )
     }
 }

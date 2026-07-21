@@ -23,6 +23,10 @@ final class AuthTokenProvider: TokenProviding {
             throw NetworkError.unauthorized
         }
         
+        print("------------------------------------------")
+        print("🔑 [TOKENS]: \(tokens)")
+        print("------------------------------------------")
+        
         let isExpired = tokens.expiresIn <= 60
         
         if isExpired {

@@ -38,27 +38,30 @@ extension UserProfileEntity {
         let companyList: [String] = companiesSet.map { $0.value ?? "" }
 
         return UserProfile(
-            displayName: displayName ?? "",
-            username: username ?? "",
-            email: email ?? "",
-            avatarUrl: avatar,
-            gender: gender,
-            dateOfBirth: dateOfBirth,
-            targetRole: targetRole,
-            industry: industry,
-            experienceLevel: experienceLevel,
-            currentJobTitle: currentJobTitle,
-            yearsOfExperience: years,
-            cvUrl: cv,
-            skills: skillList,
-            targetCompanies: companyList,
-            educationLevel: educationLevel,
-            timezone: timezone,
-            termsAccepted: termsAccepted,
-            subscriptionTier: subscriptionTier,
-            coinBalance: Int(coinBalance),
-            onboardingCompleted: onboardingCompleted,
-            trackName: trackName
-        )
+                displayName: displayName ?? "",
+                username: username ?? "",
+                email: email ?? "",
+                avatarUrl: avatar,
+                avatarFileId: 0,
+                cvFileId: 0,
+                gender: gender,
+                dateOfBirth: dateOfBirth,
+                targetRole: targetRole,
+                industry: industry,
+                experienceLevel: experienceLevel,
+                currentJobTitle: currentJobTitle,
+                yearsOfExperience: Int(yearsOfExperience),
+                cvUrl: cv,
+                skills: skillList,
+                targetCompanies: companyList,
+                educationLevel: educationLevel,
+                timezone: timezone,
+                termsAccepted: termsAccepted,
+                subscriptionTier: subscriptionTier,
+                coinBalance: Int(coinBalance),
+                onboardingCompleted: onboardingCompleted,
+                trackName: trackName ?? "",
+                trackId: 0
+            )
     }
 }

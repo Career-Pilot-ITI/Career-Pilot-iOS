@@ -1,19 +1,21 @@
 //
-//    UserProfile+Mapping.swift
-//  Career-Pilot-iOS
+//   UserProfile+Mapping.swift
+//   Career-Pilot-iOS
 //
-//  Created by Ahmed El-Sayyad Mohamed on 20/07/2026.
+//   Created by Ahmed El-Sayyad Mohamed on 20/07/2026.
 //
 
 import Foundation
 
 extension UserProfile {
-    func toDTO() -> UserProfileDTO {
-        UserProfileDTO(
-            displayName: self.displayName,
+    func toUpdateDTO(currentPassword: String? = nil, newPassword: String? = nil, avatarFileId: Int? = nil, cvFileId: Int? = nil) -> UpdateProfileDTO {
+        UpdateProfileDTO(
             username: self.username,
             email: self.email,
-            avatarUrl: self.avatarUrl?.absoluteString,
+            currentPassword: currentPassword,
+            newPassword: newPassword,
+            displayName: self.displayName,
+            avatarFileId: avatarFileId,
             gender: self.gender,
             dateOfBirth: self.dateOfBirth?.iso8601String,
             targetRole: self.targetRole,
@@ -21,16 +23,15 @@ extension UserProfile {
             experienceLevel: self.experienceLevel,
             currentJobTitle: self.currentJobTitle,
             yearsOfExperience: self.yearsOfExperience,
-            cvUrl: self.cvUrl?.absoluteString,
+            cvFileId: cvFileId,
             skills: self.skills,
             targetCompanies: self.targetCompanies,
             educationLevel: self.educationLevel,
             timezone: self.timezone,
             termsAccepted: self.termsAccepted,
-            subscriptionTier: self.subscriptionTier,
-            coinBalance: self.coinBalance,
             onboardingCompleted: self.onboardingCompleted,
-            trackName: self.trackName
+            subscriptionTier: self.subscriptionTier,
+            trackId: self.trackId
         )
     }
 }

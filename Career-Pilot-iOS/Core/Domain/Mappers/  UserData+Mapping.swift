@@ -13,8 +13,9 @@ extension UserData {
             displayName: self.fullName,
             username: self.email.components(separatedBy: "@").first ?? "",
             email: self.email,
-            avatarUrl: nil,  // UIImage needs separate upload, not PATCH
-            gender: nil,
+            avatarUrl: nil,
+            avatarFileId: self.avatarFileId,
+            cvFileId: nil, gender: self.gender,
             dateOfBirth: nil,
             targetRole: self.selectedTrack?.title,
             industry: nil,
@@ -30,7 +31,8 @@ extension UserData {
             subscriptionTier: nil,
             coinBalance: nil,
             onboardingCompleted: true,
-            trackName: self.selectedTrack?.title
+            trackName: self.selectedTrack?.title,
+            trackId: 1
         )
     }
 }

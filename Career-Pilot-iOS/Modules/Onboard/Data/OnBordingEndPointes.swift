@@ -11,7 +11,7 @@ import Foundation
 enum OnBordingEndPointes: APIEndpoint{
 
     case getAllTrackes
-    case updateProfile(profile: UserProfileDTO)
+    case updateUserProfile(updateProfileDTO: UpdateProfileDTO)
     
     var baseURL: String{
         "http://192.168.1.8:8080"
@@ -21,17 +21,16 @@ enum OnBordingEndPointes: APIEndpoint{
         switch self {
         case.getAllTrackes:
             return "api/v1/tracks"
-        case.updateProfile:
+        case.updateUserProfile:
             return "api/v1/profile"
         }
     }
-    
-    
+
     var method: HTTPMethod{
         switch self{
         case.getAllTrackes:
             return.get
-        case.updateProfile:
+        case.updateUserProfile:
             return.patch
         }
     }
@@ -39,15 +38,19 @@ enum OnBordingEndPointes: APIEndpoint{
     var body: Data? {
            switch self {
            case .getAllTrackes: return nil
-           case .updateProfile(let profile): return Self.encode(profile)
+           case .updateUserProfile(let updateProfileDTO): return Self.encode(updateProfileDTO)
            }
        }
     
     var requiresAuthentication: Bool {
             switch self {
             case .getAllTrackes:  return false
-            case .updateProfile:  return true
+            case .updateUserProfile:  return true
             }
         }
+    
+    var headers: [String: String] {
+        ["Content-Type": "application/json"]
+    }
     
 }
