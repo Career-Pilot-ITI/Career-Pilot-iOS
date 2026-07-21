@@ -1,7 +1,11 @@
 import Foundation
 
+struct FinishInterviewRequest{
+    let sessionID: String
+}
+
 protocol FinishInterviewUseCaseProtocol {
-    func execute(sessionId: String) async throws -> InterviewFeedback
+    func execute(finishInterviewRequest: FinishInterviewRequest) async throws -> InterviewFeedback
 }
 
 final class FinishInterviewUseCase: FinishInterviewUseCaseProtocol {
@@ -11,9 +15,9 @@ final class FinishInterviewUseCase: FinishInterviewUseCaseProtocol {
         self.repository = repository
     }
 
-    func execute(sessionId: String) async throws -> InterviewFeedback {
+    func execute(finishInterviewRequest: FinishInterviewRequest) async throws -> InterviewFeedback {
         do {
-            return try await repository.finishInterview(sessionId: sessionId)
+            return try await repository.finishInterview(sessionId: finishInterviewRequest.sessionID)
         } catch {
             throw InterviewError.map(error)
         }

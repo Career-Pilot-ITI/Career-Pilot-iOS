@@ -108,6 +108,9 @@
 		D920C24D300EFEC800AB7317 /* SessionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920C24C300EFEC800AB7317 /* SessionHeader.swift */; };
 		D920C24F300EFEE200AB7317 /* StatusScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920C24E300EFEE200AB7317 /* StatusScreens.swift */; };
 		D920C251300F001800AB7317 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920C250300F001800AB7317 /* LoadingView.swift */; };
+		D92853EA301004B800F8CAC2 /* InterviewRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853E9301004B800F8CAC2 /* InterviewRepositoryImp.swift */; };
+		D92853ED3010064B00F8CAC2 /* SessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853EC3010064B00F8CAC2 /* SessionDTO.swift */; };
+		D92853EF301006E900F8CAC2 /* FeedbackReportDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853EE301006E900F8CAC2 /* FeedbackReportDTO.swift */; };
 		D935DFCB30078012009DF855 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFCA30078012009DF855 /* CustomButton.swift */; };
 		D935DFCF300789EF009DF855 /* CvUploadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFCE300789EF009DF855 /* CvUploadingView.swift */; };
 		D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFF930080448009DF855 /* OnBordingView.swift */; };
@@ -119,7 +122,7 @@
 		D93938F83004064600CF4372 /* Career_Pilot_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93938F73004064600CF4372 /* Career_Pilot_iOSTests.swift */; };
 		D93939023004064600CF4372 /* Career_Pilot_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93939013004064600CF4372 /* Career_Pilot_iOSUITests.swift */; };
 		D93939043004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93939033004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift */; };
-		D95C3B99300E495C0042785F /* SessionEndPointes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3B98300E495C0042785F /* SessionEndPointes.swift */; };
+		D95C3B99300E495C0042785F /* PracticSessionEndPointes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3B98300E495C0042785F /* PracticSessionEndPointes.swift */; };
 		D95C3B9E300E49BF0042785F /* AudioRecordingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3B9D300E49BF0042785F /* AudioRecordingService.swift */; };
 		D95C3BA0300E49D20042785F /* CancelInterviewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3B9F300E49D20042785F /* CancelInterviewUseCase.swift */; };
 		D95C3BA2300E49E10042785F /* FinishInterviewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BA1300E49E10042785F /* FinishInterviewUseCase.swift */; };
@@ -170,7 +173,7 @@
 		D9B614FF300D1D7C00552F85 /* TrackDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614FE300D1D7C00552F85 /* TrackDTO.swift */; };
 		D9B61505300D1F2C00552F85 /* GetAllTracks+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B61504300D1F2C00552F85 /* GetAllTracks+Mapping.swift */; };
 		D9BA3474300ED4BF0058D6E6 /* PracticeSessionViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BA3473300ED4BF0058D6E6 /* PracticeSessionViewModelFactory.swift */; };
-		D9BA3476300ED5040058D6E6 /* Stubinterviewrepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BA3475300ED5040058D6E6 /* Stubinterviewrepository.swift */; };
+		D9BA3476300ED5040058D6E6 /* Fake.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BA3475300ED5040058D6E6 /* Fake.swift */; };
 		D9C09B10300A2B32008C1E58 /* OnBordingIdelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */; };
 		D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187A930065C8700BFF8E9 /* AuthViewModel.swift */; };
 		D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187AE300660D100BFF8E9 /* APIEndpoint.swift */; };
@@ -300,6 +303,9 @@
 		D920C24C300EFEC800AB7317 /* SessionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHeader.swift; sourceTree = "<group>"; };
 		D920C24E300EFEE200AB7317 /* StatusScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusScreens.swift; sourceTree = "<group>"; };
 		D920C250300F001800AB7317 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		D92853E9301004B800F8CAC2 /* InterviewRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewRepositoryImp.swift; sourceTree = "<group>"; };
+		D92853EC3010064B00F8CAC2 /* SessionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDTO.swift; sourceTree = "<group>"; };
+		D92853EE301006E900F8CAC2 /* FeedbackReportDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackReportDTO.swift; sourceTree = "<group>"; };
 		D935DFCA30078012009DF855 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		D935DFCE300789EF009DF855 /* CvUploadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvUploadingView.swift; sourceTree = "<group>"; };
 		D935DFF930080448009DF855 /* OnBordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingView.swift; sourceTree = "<group>"; };
@@ -314,7 +320,7 @@
 		D93938FD3004064600CF4372 /* Career-Pilot-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Career-Pilot-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93939013004064600CF4372 /* Career_Pilot_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career_Pilot_iOSUITests.swift; sourceTree = "<group>"; };
 		D93939033004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career_Pilot_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		D95C3B98300E495C0042785F /* SessionEndPointes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionEndPointes.swift; sourceTree = "<group>"; };
+		D95C3B98300E495C0042785F /* PracticSessionEndPointes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticSessionEndPointes.swift; sourceTree = "<group>"; };
 		D95C3B9D300E49BF0042785F /* AudioRecordingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecordingService.swift; sourceTree = "<group>"; };
 		D95C3B9F300E49D20042785F /* CancelInterviewUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelInterviewUseCase.swift; sourceTree = "<group>"; };
 		D95C3BA1300E49E10042785F /* FinishInterviewUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishInterviewUseCase.swift; sourceTree = "<group>"; };
@@ -367,7 +373,7 @@
 		D9B614FE300D1D7C00552F85 /* TrackDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDTO.swift; sourceTree = "<group>"; };
 		D9B61504300D1F2C00552F85 /* GetAllTracks+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GetAllTracks+Mapping.swift"; sourceTree = "<group>"; };
 		D9BA3473300ED4BF0058D6E6 /* PracticeSessionViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeSessionViewModelFactory.swift; sourceTree = "<group>"; };
-		D9BA3475300ED5040058D6E6 /* Stubinterviewrepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stubinterviewrepository.swift; sourceTree = "<group>"; };
+		D9BA3475300ED5040058D6E6 /* Fake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fake.swift; sourceTree = "<group>"; };
 		D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingIdelState.swift; sourceTree = "<group>"; };
 		D9C1879630065B0400BFF8E9 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		D9C1879D30065B9800BFF8E9 /* TestDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDao.swift; sourceTree = "<group>"; };
@@ -825,6 +831,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D92853EB3010050600F8CAC2 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				D92853EC3010064B00F8CAC2 /* SessionDTO.swift */,
+				D92853EE301006E900F8CAC2 /* FeedbackReportDTO.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
 		D935DFF330080203009DF855 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
@@ -930,7 +945,8 @@
 		D95C3B8B300E48CF0042785F /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				D95C3B93300E48FF0042785F /* Util */,
+				D95C3B98300E495C0042785F /* PracticSessionEndPointes.swift */,
+				D92853EB3010050600F8CAC2 /* DTOs */,
 				D95C3B9B300E49740042785F /* DataSources */,
 				D95C3B9A300E496E0042785F /* RepoImp */,
 			);
@@ -1011,18 +1027,11 @@
 			path = Entites;
 			sourceTree = "<group>";
 		};
-		D95C3B93300E48FF0042785F /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				D95C3B98300E495C0042785F /* SessionEndPointes.swift */,
-			);
-			path = Util;
-			sourceTree = "<group>";
-		};
 		D95C3B9A300E496E0042785F /* RepoImp */ = {
 			isa = PBXGroup;
 			children = (
-				D9BA3475300ED5040058D6E6 /* Stubinterviewrepository.swift */,
+				D9BA3475300ED5040058D6E6 /* Fake.swift */,
+				D92853E9301004B800F8CAC2 /* InterviewRepositoryImp.swift */,
 			);
 			path = RepoImp;
 			sourceTree = "<group>";
@@ -1677,6 +1686,7 @@
 				CEE62A97300929960071F076 /* PracticeCard.swift in Sources */,
 				41BE1A76300BF4000033D1B5 /* SendOTPUseCase.swift in Sources */,
 				D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */,
+				D92853EA301004B800F8CAC2 /* InterviewRepositoryImp.swift in Sources */,
 				D95C3BC9300EA1650042785F /* AITurnView.swift in Sources */,
 				41A7F6F8300BBB2A00FBE8EB /* LampGlitchModifier.swift in Sources */,
 				D9B614F6300D1B8E00552F85 /* GetAllTrackesUseCase.swift in Sources */,
@@ -1723,6 +1733,7 @@
 				CEE62A89300920070071F076 /* PracticeView.swift in Sources */,
 				CECC20E63007DB3D00DC450D /* PulsingIconBadge.swift in Sources */,
 				CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */,
+				D92853ED3010064B00F8CAC2 /* SessionDTO.swift in Sources */,
 				D95C3BB7300E4A5E0042785F /* InterviewValidationService.swift in Sources */,
 				61D8F2FA300778520088F170 /* SkillTag.swift in Sources */,
 				41C38365300A2849005D4BB9 /* AuthEndPoint.swift in Sources */,
@@ -1743,10 +1754,10 @@
 				D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */,
 				41D69D16300A6CF100294D94 /* User.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
-				D95C3B99300E495C0042785F /* SessionEndPointes.swift in Sources */,
+				D95C3B99300E495C0042785F /* PracticSessionEndPointes.swift in Sources */,
 				D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */,
 				616CAD0C30081EF4007FC4AF /* AcoountSettingsView.swift in Sources */,
-				D9BA3476300ED5040058D6E6 /* Stubinterviewrepository.swift in Sources */,
+				D9BA3476300ED5040058D6E6 /* Fake.swift in Sources */,
 				41BE1A7A300BF43E0033D1B5 /* AuthRepositoryImpl.swift in Sources */,
 				D95C3B9E300E49BF0042785F /* AudioRecordingService.swift in Sources */,
 				D9B61505300D1F2C00552F85 /* GetAllTracks+Mapping.swift in Sources */,
@@ -1755,6 +1766,7 @@
 				CEE62A80300910840071F076 /* HomeView.swift in Sources */,
 				CEE62A8530091A6B0071F076 /* Image+AppIcons.swift in Sources */,
 				D95C3BB3300E4A4C0042785F /* InterviewSession.swift in Sources */,
+				D92853EF301006E900F8CAC2 /* FeedbackReportDTO.swift in Sources */,
 				CEE62A8B3009201C0071F076 /* ReportsView.swift in Sources */,
 				D9B614EE300CF50D00552F85 /* DIContainer+Services.swift in Sources */,
 				D935DFCF300789EF009DF855 /* CvUploadingView.swift in Sources */,
