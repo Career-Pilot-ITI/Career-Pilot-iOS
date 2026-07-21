@@ -157,6 +157,13 @@
 		D9B614EC300CF50000552F85 /* DIContainer+ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614EB300CF50000552F85 /* DIContainer+ViewModels.swift */; };
 		D9B614EE300CF50D00552F85 /* DIContainer+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614ED300CF50D00552F85 /* DIContainer+Services.swift */; };
 		D9B614F0300CFA1000552F85 /* DIContainer+DataSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614EF300CFA1000552F85 /* DIContainer+DataSources.swift */; };
+		D9B614F3300D1AB400552F85 /* OnBordingEndPointes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614F2300D1AB400552F85 /* OnBordingEndPointes.swift */; };
+		D9B614F6300D1B8E00552F85 /* GetAllTrackesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614F5300D1B8E00552F85 /* GetAllTrackesUseCase.swift */; };
+		D9B614F9300D1CF700552F85 /* OnBordingRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614F8300D1CF700552F85 /* OnBordingRepo.swift */; };
+		D9B614FB300D1D2400552F85 /* OnBordingRepoImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614FA300D1D2400552F85 /* OnBordingRepoImp.swift */; };
+		D9B614FD300D1D5700552F85 /* OnBordingRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614FC300D1D5700552F85 /* OnBordingRemoteDataSource.swift */; };
+		D9B614FF300D1D7C00552F85 /* TrackDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614FE300D1D7C00552F85 /* TrackDTO.swift */; };
+		D9B61505300D1F2C00552F85 /* GetAllTracks+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B61504300D1F2C00552F85 /* GetAllTracks+Mapping.swift */; };
 		D9C09B10300A2B32008C1E58 /* OnBordingIdelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */; };
 		D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187A930065C8700BFF8E9 /* AuthViewModel.swift */; };
 		D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187AE300660D100BFF8E9 /* APIEndpoint.swift */; };
@@ -341,6 +348,13 @@
 		D9B614EB300CF50000552F85 /* DIContainer+ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+ViewModels.swift"; sourceTree = "<group>"; };
 		D9B614ED300CF50D00552F85 /* DIContainer+Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+Services.swift"; sourceTree = "<group>"; };
 		D9B614EF300CFA1000552F85 /* DIContainer+DataSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+DataSources.swift"; sourceTree = "<group>"; };
+		D9B614F2300D1AB400552F85 /* OnBordingEndPointes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingEndPointes.swift; sourceTree = "<group>"; };
+		D9B614F5300D1B8E00552F85 /* GetAllTrackesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllTrackesUseCase.swift; sourceTree = "<group>"; };
+		D9B614F8300D1CF700552F85 /* OnBordingRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingRepo.swift; sourceTree = "<group>"; };
+		D9B614FA300D1D2400552F85 /* OnBordingRepoImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingRepoImp.swift; sourceTree = "<group>"; };
+		D9B614FC300D1D5700552F85 /* OnBordingRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingRemoteDataSource.swift; sourceTree = "<group>"; };
+		D9B614FE300D1D7C00552F85 /* TrackDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDTO.swift; sourceTree = "<group>"; };
+		D9B61504300D1F2C00552F85 /* GetAllTracks+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GetAllTracks+Mapping.swift"; sourceTree = "<group>"; };
 		D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingIdelState.swift; sourceTree = "<group>"; };
 		D9C1879630065B0400BFF8E9 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		D9C1879D30065B9800BFF8E9 /* TestDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDao.swift; sourceTree = "<group>"; };
@@ -638,6 +652,7 @@
 			children = (
 				61D8F2DF300750B70088F170 /* Presentation */,
 				61D8F2E0300750BE0088F170 /* Domain */,
+				D9B614F1300D1A9D00552F85 /* Data */,
 			);
 			path = Onboard;
 			sourceTree = "<group>";
@@ -656,6 +671,7 @@
 			children = (
 				D935DFF43008020B009DF855 /* Entities */,
 				D935DFF330080203009DF855 /* UseCases */,
+				D9B614F7300D1CD800552F85 /* Repo */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -863,6 +879,7 @@
 		D935DFF330080203009DF855 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				D9B614F5300D1B8E00552F85 /* GetAllTrackesUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1021,6 +1038,58 @@
 				D9B614ED300CF50D00552F85 /* DIContainer+Services.swift */,
 			);
 			path = InjectFolders;
+			sourceTree = "<group>";
+		};
+		D9B614F1300D1A9D00552F85 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D9B614F2300D1AB400552F85 /* OnBordingEndPointes.swift */,
+				D9B61500300D1DA100552F85 /* DTOs */,
+				D9B61503300D1EEC00552F85 /* Mappers */,
+				D9B61502300D1DAB00552F85 /* DataSource */,
+				D9B61501300D1DA500552F85 /* RepoImp */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D9B614F7300D1CD800552F85 /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+				D9B614F8300D1CF700552F85 /* OnBordingRepo.swift */,
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		D9B61500300D1DA100552F85 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				D9B614FE300D1D7C00552F85 /* TrackDTO.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		D9B61501300D1DA500552F85 /* RepoImp */ = {
+			isa = PBXGroup;
+			children = (
+				D9B614FA300D1D2400552F85 /* OnBordingRepoImp.swift */,
+			);
+			path = RepoImp;
+			sourceTree = "<group>";
+		};
+		D9B61502300D1DAB00552F85 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				D9B614FC300D1D5700552F85 /* OnBordingRemoteDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		D9B61503300D1EEC00552F85 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				D9B61504300D1F2C00552F85 /* GetAllTracks+Mapping.swift */,
+			);
+			path = Mappers;
 			sourceTree = "<group>";
 		};
 		D9C09B0E300A2B1C008C1E58 /* OnBordingStates */ = {
@@ -1478,6 +1547,7 @@
 				D98A79703008D9A300DFDC6B /* CvViewInfo.swift in Sources */,
 				41D69D05300A674800294D94 /* VerifyOTPUseCase.swift in Sources */,
 				CECC20D03007AD1200DC450D /* PhoneFieldState.swift in Sources */,
+				D9B614F9300D1CF700552F85 /* OnBordingRepo.swift in Sources */,
 				41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */,
 				41BE1A6E300BF0810033D1B5 /* UserData.swift in Sources */,
 				41CE20E8300A5506005DC31F /* ToastView.swift in Sources */,
@@ -1497,6 +1567,7 @@
 				D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */,
 				41BC7730300D1C5300E89C3F /* RadarMetricsLegend.swift in Sources */,
 				41A7F6F8300BBB2A00FBE8EB /* LampGlitchModifier.swift in Sources */,
+				D9B614F6300D1B8E00552F85 /* GetAllTrackesUseCase.swift in Sources */,
 				CECC20D83007B60900DC450D /* AppStrings.swift in Sources */,
 				CE12F3C030093CE40083D66D /* SessionData.swift in Sources */,
 				41D69D1C300A6DB400294D94 /* VerifyOTPResponseDTO+Mapping.swift in Sources */,
@@ -1541,6 +1612,7 @@
 				41BC7734300D347E00E89C3F /* SessionHistoryView.swift in Sources */,
 				41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */,
 				D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */,
+				D9B614FD300D1D5700552F85 /* OnBordingRemoteDataSource.swift in Sources */,
 				D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */,
 				616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */,
 				CECC20E23007DB1B00DC450D /* WaitingIndicatorState.swift in Sources */,
@@ -1556,6 +1628,7 @@
 				D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */,
 				616CAD0C30081EF4007FC4AF /* AcoountSettingsView.swift in Sources */,
 				41BE1A7A300BF43E0033D1B5 /* AuthRepositoryImpl.swift in Sources */,
+				D9B61505300D1F2C00552F85 /* GetAllTracks+Mapping.swift in Sources */,
 				CECC20E43007DB2C00DC450D /* WaitingStateView.swift in Sources */,
 				41D69D52300B4D5B00294D94 /* Persistence.swift in Sources */,
 				CEE62A80300910840071F076 /* HomeView.swift in Sources */,
@@ -1569,12 +1642,15 @@
 				CE8AFF1D300718670064CC6C /* Round.swift in Sources */,
 				D9C187CF30066B2800BFF8E9 /* style.swift in Sources */,
 				D935DFFC3008045A009DF855 /* OnBordingViewModel.swift in Sources */,
+				D9B614FF300D1D7C00552F85 /* TrackDTO.swift in Sources */,
 				D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */,
 				D9B614EA300CF4A100552F85 /* DIContainer+UseCases.swift in Sources */,
 				616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */,
 				6182BB4F300C519B001157B8 /* ProfilePhoto.swift in Sources */,
 				41D69D50300B4A2200294D94 /* LoadSessionUseCase.swift in Sources */,
+				D9B614F3300D1AB400552F85 /* OnBordingEndPointes.swift in Sources */,
 				D9C187BB300662F000BFF8E9 /* HTTPMethod.swift in Sources */,
+				D9B614FB300D1D2400552F85 /* OnBordingRepoImp.swift in Sources */,
 				CECC20E83007DB4D00DC450D /* WaveformBars.swift in Sources */,
 				41D69D37300B43FF00294D94 /* KeychainManager.swift in Sources */,
 				CECC20EA3007DB5E00DC450D /* ShakeEffect.swift in Sources */,

@@ -10,10 +10,11 @@ import Foundation
 @MainActor
 extension DIContainer{
     func registerViewModels(){
-        
+    
         //OnBordingViewModel
         container.register(OnBordingViewModel.self){r in
-            OnBordingViewModel(appState: r.resolve(AppState.self)!, uploadCvUseCase: r.resolve(UploadCvUseCase.self)!)
+            OnBordingViewModel(appState: r.resolve(AppState.self)!, uploadCvUseCase: r.resolve(UploadCvUseCase.self)!,
+                               getAllTracksUseCase: r.resolve(GetAllTrackesUseCase.self)!)
         }
         
     }

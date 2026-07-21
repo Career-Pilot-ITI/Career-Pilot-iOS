@@ -34,7 +34,7 @@ struct OnBoardingErrorState: View {
             }
             
             CustomButton(isButtonEnabeld: true,buttonTitle: "Try Again"){
-                vm.screenState = .idel
+                vm.onTryAgin()
             }
 
             Spacer()

@@ -28,7 +28,7 @@ enum OnBordingScreenStates{
 class OnBordingViewModel: ObservableObject {
     private var appState: AppState
     @Published var currentView: OnBordingViews = .ChooseTrackView
-    @Published var screenState: OnBordingScreenStates = .idel
+    @Published var screenState: OnBordingScreenStates = .loading
     @Published var navToHomeScreen: Bool = false
     
     //For ChooseTrack View
@@ -42,10 +42,12 @@ class OnBordingViewModel: ObservableObject {
     
     //UseCases
     var uploadCvUseCase: UploadCvUseCase
+    var getAllTracksUseCase: GetAllTrackesUseCase
     
-    init(appState: AppState, uploadCvUseCase: UploadCvUseCase) {
+    init(appState: AppState, uploadCvUseCase: UploadCvUseCase, getAllTracksUseCase: GetAllTrackesUseCase) {
         self.appState = appState
         self.uploadCvUseCase = uploadCvUseCase
+        self.getAllTracksUseCase = getAllTracksUseCase
     }
     
     //For Bottom Button
@@ -74,6 +76,24 @@ class OnBordingViewModel: ObservableObject {
             return cvViewInfo.isSelected
         }
     }
+    
+    //MARK: OnAppers
+    func onApper(){
+        getAllTracks()
+    }
+    
+    func onTryAgin(){
+        switch currentView {
+        case .ChooseTrackView:
+            getAllTracks()
+        case .UploadCvView:
+            screenState = .idel
+        case .ProfileView:
+            screenState = .idel
+        }
+    }
+    
+
     
     //MARK: For Uploding CV
     func onCvResult(result: Result<URL,Error>){
@@ -114,15 +134,29 @@ class OnBordingViewModel: ObservableObject {
     }
     
     //MARK: For ChoseTrack
+    func getAllTracks() {
+        
+        Task{
+            do{
+                screenState = .loading
+                selectedTrackInfo.traks = try await getAllTracksUseCase.execute(())
+                selectedTrackInfo.filteredTracks = selectedTrackInfo.traks
+                screenState = .idel
+            }catch{
+                screenState = .idel
+            }
+        }
+    }
+    
     func filterTrackes(query: String){
         
         //With empty text filed case
         if query.isEmpty{
-            selectedTrackInfo.filteredTracks = tracks
+            selectedTrackInfo.filteredTracks = selectedTrackInfo.traks
             return
         }
         
-        selectedTrackInfo.filteredTracks = tracks.filter { track in
+        selectedTrackInfo.filteredTracks = selectedTrackInfo.traks.filter { track in
             track.title.localizedCaseInsensitiveContains(query)
         }
     }
@@ -135,6 +169,7 @@ class OnBordingViewModel: ObservableObject {
     
     //MARK: For Navigation
     func navToNext(){
+        screenState = .idel
         switch currentView{
         case.ChooseTrackView:
             currentView = .UploadCvView
@@ -154,6 +189,7 @@ class OnBordingViewModel: ObservableObject {
         
         Task{
             do{
+                screenState = .loading
                 try await uploadUserCv(userCV: userCV)
                 currentView = .ProfileView
                 
