@@ -57,6 +57,10 @@
 		6165A1E3300B10C90085E3FD /* CoinTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1E2300B10C90085E3FD /* CoinTopView.swift */; };
 		6165A1E5300B11F60085E3FD /* CoinsTypeVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1E4300B11F60085E3FD /* CoinsTypeVIew.swift */; };
 		6165A1E7300B220D0085E3FD /* CoinsValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1E6300B220D0085E3FD /* CoinsValueView.swift */; };
+		6165A1EC300B409C0085E3FD /* CheckOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1EB300B409C0085E3FD /* CheckOutView.swift */; };
+		6165A1EE300B40D90085E3FD /* CheckOutTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1ED300B40D90085E3FD /* CheckOutTopView.swift */; };
+		6165A1F0300B42BB0085E3FD /* CoinPackCheckOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1EF300B42BB0085E3FD /* CoinPackCheckOutView.swift */; };
+		6165A1F2300B48980085E3FD /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1F1300B48980085E3FD /* PaymentMethod.swift */; };
 		616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0330080EEC007FC4AF /* SettingsVIew.swift */; };
 		616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0630080FDE007FC4AF /* ProfileCard.swift */; };
 		616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0830081C62007FC4AF /* SettingsCard.swift */; };
@@ -68,6 +72,8 @@
 		6182BB57300C7033001157B8 /* SelectedSkillChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6182BB56300C7033001157B8 /* SelectedSkillChip.swift */; };
 		6182BB59300C70A1001157B8 /* SuggestedSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6182BB58300C70A1001157B8 /* SuggestedSkill.swift */; };
 		6182BB5B300C72F7001157B8 /* SkillsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6182BB5A300C72F7001157B8 /* SkillsInputView.swift */; };
+		617DF223300DF5F80046297B /* SubscribtionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DF222300DF5F80046297B /* SubscribtionView.swift */; };
+		61AD45A6300D608D00B70AFA /* SubscribtionCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AD45A5300D608D00B70AFA /* SubscribtionCheckoutView.swift */; };
 		61D8F2E6300750FC0088F170 /* profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8F2E5300750FC0088F170 /* profile.swift */; };
 		61D8F2F03007523E0088F170 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8F2EF3007523E0088F170 /* HeaderView.swift */; };
 		61D8F2F23007543A0088F170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61D8F2F13007543A0088F170 /* Assets.xcassets */; };
@@ -235,6 +241,10 @@
 		6165A1E2300B10C90085E3FD /* CoinTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinTopView.swift; sourceTree = "<group>"; };
 		6165A1E4300B11F60085E3FD /* CoinsTypeVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsTypeVIew.swift; sourceTree = "<group>"; };
 		6165A1E6300B220D0085E3FD /* CoinsValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsValueView.swift; sourceTree = "<group>"; };
+		6165A1EB300B409C0085E3FD /* CheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutView.swift; sourceTree = "<group>"; };
+		6165A1ED300B40D90085E3FD /* CheckOutTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutTopView.swift; sourceTree = "<group>"; };
+		6165A1EF300B42BB0085E3FD /* CoinPackCheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPackCheckOutView.swift; sourceTree = "<group>"; };
+		6165A1F1300B48980085E3FD /* PaymentMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		616CAD0330080EEC007FC4AF /* SettingsVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVIew.swift; sourceTree = "<group>"; };
 		616CAD0630080FDE007FC4AF /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
 		616CAD0830081C62007FC4AF /* SettingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCard.swift; sourceTree = "<group>"; };
@@ -246,6 +256,8 @@
 		6182BB56300C7033001157B8 /* SelectedSkillChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedSkillChip.swift; sourceTree = "<group>"; };
 		6182BB58300C70A1001157B8 /* SuggestedSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedSkill.swift; sourceTree = "<group>"; };
 		6182BB5A300C72F7001157B8 /* SkillsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsInputView.swift; sourceTree = "<group>"; };
+		617DF222300DF5F80046297B /* SubscribtionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribtionView.swift; sourceTree = "<group>"; };
+		61AD45A5300D608D00B70AFA /* SubscribtionCheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribtionCheckoutView.swift; sourceTree = "<group>"; };
 		61D8F2E5300750FC0088F170 /* profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profile.swift; sourceTree = "<group>"; };
 		61D8F2EF3007523E0088F170 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		61D8F2F13007543A0088F170 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Career-Pilot-iOS/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
@@ -484,6 +496,31 @@
 			path = Mappers;
 			sourceTree = "<group>";
 		};
+		6165A1E8300B406D0085E3FD /* CheckOut */ = {
+			isa = PBXGroup;
+			children = (
+				6165A1EA300B407C0085E3FD /* ViewModel */,
+				6165A1E9300B40770085E3FD /* View */,
+			);
+			path = CheckOut;
+			sourceTree = "<group>";
+		};
+		6165A1E9300B40770085E3FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				617DF21E300DF59D0046297B /* MainView */,
+				617DF21D300DF5200046297B /* Components */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6165A1EA300B407C0085E3FD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		41D69D35300B42D000294D94 /* KeyChain */ = {
 			isa = PBXGroup;
 			children = (
@@ -590,6 +627,49 @@
 				6182BB54300C67DF001157B8 /* PhotoPicker.swift */,
 			);
 			path = UiKitWrappers;
+			sourceTree = "<group>";
+		};
+		617DF21D300DF5200046297B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				61AD45A5300D608D00B70AFA /* SubscribtionCheckoutView.swift */,
+				6165A1EF300B42BB0085E3FD /* CoinPackCheckOutView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		617DF21E300DF59D0046297B /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				6165A1EB300B409C0085E3FD /* CheckOutView.swift */,
+				6165A1ED300B40D90085E3FD /* CheckOutTopView.swift */,
+				6165A1F1300B48980085E3FD /* PaymentMethod.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		617DF21F300DF5BC0046297B /* Subscribtion */ = {
+			isa = PBXGroup;
+			children = (
+				617DF221300DF5E00046297B /* View */,
+				617DF220300DF5D20046297B /* ViewModel */,
+			);
+			path = Subscribtion;
+			sourceTree = "<group>";
+		};
+		617DF220300DF5D20046297B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		617DF221300DF5E00046297B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				617DF222300DF5F80046297B /* SubscribtionView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		61D8F2DE300750AF0088F170 /* Onboard */ = {
@@ -1079,6 +1159,8 @@
 		D9C1878430065A4800BFF8E9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				617DF21F300DF5BC0046297B /* Subscribtion */,
+				6165A1E8300B406D0085E3FD /* CheckOut */,
 				616CACFD30080EB3007FC4AF /* Settings */,
 				CEE62A91300921810071F076 /* Settings */,
 				CEE62A90300921720071F076 /* Reports */,
@@ -1489,6 +1571,7 @@
 			files = (
 				41D69D63300B553F00294D94 /* Career_Pilot_iOS.xcdatamodeld in Sources */,
 				CECC20DA3007BE6800DC450D /* PhoneFieldViewModel.swift in Sources */,
+				617DF223300DF5F80046297B /* SubscribtionView.swift in Sources */,
 				CE8AFF18300712FC0064CC6C /* Font.swift in Sources */,
 				6182BB53300C67BB001157B8 /* ImagePicker.swift in Sources */,
 				CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */,
@@ -1517,6 +1600,7 @@
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
 				41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */,
 				41BE1A71300BF0950033D1B5 /* UserDataRepo.swift in Sources */,
+				61AD45A6300D608D00B70AFA /* SubscribtionCheckoutView.swift in Sources */,
 				CEE62A8730091FD10071F076 /* MainTabBarView.swift in Sources */,
 				41A7F6FB300BBDA000FBE8EB /* UserEntity+Mapping.swift in Sources */,
 				41BE1A65300BEF510033D1B5 /* UserProfileDTO.swift in Sources */,
@@ -1554,6 +1638,7 @@
 				6165A1E3300B10C90085E3FD /* CoinTopView.swift in Sources */,
 				CEE62A99300929A70071F076 /* SessionRow.swift in Sources */,
 				41D69D3B300B456A00294D94 /* CoreDataManager.swift in Sources */,
+				6165A1EE300B40D90085E3FD /* CheckOutTopView.swift in Sources */,
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
 				616CAD0E30082441007FC4AF /* SupportAndLeagalSettingsView.swift in Sources */,
 				CED18895300B096300B15B81 /* Userdefaultsmanager.swift in Sources */,
@@ -1595,13 +1680,18 @@
 				41D69D16300A6CF100294D94 /* User.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
 				D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */,
+				6165A1EC300B409C0085E3FD /* CheckOutView.swift in Sources */,
 				616CAD0C30081EF4007FC4AF /* AcoountSettingsView.swift in Sources */,
 				41BE1A7A300BF43E0033D1B5 /* AuthRepositoryImpl.swift in Sources */,
 				D9B61505300D1F2C00552F85 /* GetAllTracks+Mapping.swift in Sources */,
+				6165A1F2300B48980085E3FD /* PaymentMethod.swift in Sources */,
 				CECC20E43007DB2C00DC450D /* WaitingStateView.swift in Sources */,
 				41D69D52300B4D5B00294D94 /* Persistence.swift in Sources */,
 				CEE62A80300910840071F076 /* HomeView.swift in Sources */,
 				CEE62A8530091A6B0071F076 /* Image+AppIcons.swift in Sources */,
+				61D8F2FF30077A410088F170 /* UserData.swift in Sources */,
+				6165A1F0300B42BB0085E3FD /* CoinPackCheckOutView.swift in Sources */,
+				D9C1879E30065B9800BFF8E9 /* TestDao.swift in Sources */,
 				CEE62A8B3009201C0071F076 /* ReportsView.swift in Sources */,
 				CECCDA3B300F52C30068620D /* User+Mapping.swift in Sources */,
 				D9B614EE300CF50D00552F85 /* DIContainer+Services.swift in Sources */,

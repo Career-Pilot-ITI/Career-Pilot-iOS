@@ -42,6 +42,10 @@ struct ContentView: View {
             SuccessOTPCodeView()
         case .onboardingScreen(let vm):
             OnBordingView(vm: vm)
+            case .checkout(let item ):
+                CheckOutView(checkoutItem: item)
+            case .subscribtion :
+                ChoosePlanView()
         }
     }
     

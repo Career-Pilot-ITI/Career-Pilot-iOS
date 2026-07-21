@@ -88,8 +88,8 @@ struct SettingsVIew: View {
     }
 }
 
-struct SettingsVIew_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsVIew()
-    }
-}
+//struct SettingsVIew_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SettingsVIew()
+//    }
+//}

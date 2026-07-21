@@ -17,6 +17,9 @@ enum AppRoute : Hashable {
     
     // MARK : Onboarding
     case onboardingScreen(vm : OnBordingViewModel)
+    // MARK : Checkout
+    case checkout(item :CheckoutItem)
+    case subscribtion
 }
 
 
