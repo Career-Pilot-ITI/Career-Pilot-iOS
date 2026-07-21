@@ -26,6 +26,7 @@ enum OnBordingScreenStates{
 
 @MainActor
 class OnBordingViewModel: ObservableObject {
+    private var appState: AppState
     @Published var currentView: OnBordingViews = .ChooseTrackView
     @Published var screenState: OnBordingScreenStates = .loading
     @Published var navToHomeScreen: Bool = false
@@ -43,7 +44,8 @@ class OnBordingViewModel: ObservableObject {
     var uploadCvUseCase: UploadCvUseCase
     var getAllTracksUseCase: GetAllTrackesUseCase
     
-    init(uploadCvUseCase: UploadCvUseCase, getAllTracksUseCase: GetAllTrackesUseCase) {
+    init(appState: AppState, uploadCvUseCase: UploadCvUseCase, getAllTracksUseCase: GetAllTrackesUseCase) {
+        self.appState = appState
         self.uploadCvUseCase = uploadCvUseCase
         self.getAllTracksUseCase = getAllTracksUseCase
     }
@@ -208,6 +210,7 @@ class OnBordingViewModel: ObservableObject {
     
     private func onNavToHomeScreen(){
         navToHomeScreen = true
+        appState.markOnboardingSeen()
         print(userData)
     }
     

@@ -10,6 +10,7 @@ enum Radius {
     static let r6: CGFloat = 6
     static let r10: CGFloat = 10
     static let r12: CGFloat = 12
+    static let r13: CGFloat = 13
     static let r14: CGFloat = 14
     static let r16: CGFloat = 16
     static let r20: CGFloat = 20

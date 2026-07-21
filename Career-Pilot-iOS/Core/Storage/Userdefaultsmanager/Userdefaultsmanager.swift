@@ -19,7 +19,7 @@ final class UserDefaultsManager: UserDefaultsStorage {
     static let shared = UserDefaultsManager()
     private let defaults: UserDefaults
     
-    init(defaults: UserDefaults = .standard) {
+    private init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
     }
     
