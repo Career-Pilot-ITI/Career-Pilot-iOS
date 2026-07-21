@@ -39,6 +39,7 @@ final class URLSessionNetworkService: NetworkService {
     @discardableResult
     private func performRequest(_ endpoint: APIEndpoint) async throws -> Data {
         guard let url = endpoint.url else {
+            print("❌ [Request] Invalid URL for endpoint Url: \(endpoint.url)\n\n\n")
             print("❌ [Request] Invalid URL for endpoint: \(endpoint)")
             throw NetworkError.invalidURL
         }

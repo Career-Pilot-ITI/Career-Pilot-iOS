@@ -11,27 +11,24 @@ import Foundation
 enum OnBordingEndPointes: APIEndpoint{
 
     case getAllTrackes
-    case updateUserProfile(updateProfileDTO: UpdateProfileDTO)
+    case updateUserProfile(updateProfileDTO: UpdateProfileRequestDTO)
     
-    var baseURL: String{
-        "http://192.168.1.8:8080"
-    }
     
     var path: String{
         switch self {
         case.getAllTrackes:
-            return "api/v1/tracks"
+            return "/api/v1/tracks"
         case.updateUserProfile:
-            return "api/v1/profile"
+            return "/api/v1/profile"
         }
     }
 
     var method: HTTPMethod{
         switch self{
         case.getAllTrackes:
-            return.get
+            return .get
         case.updateUserProfile:
-            return.patch
+            return .patch
         }
     }
     

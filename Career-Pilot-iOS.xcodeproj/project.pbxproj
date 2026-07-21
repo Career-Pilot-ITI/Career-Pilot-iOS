@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41833E4730101E9B0055D990 /* UpdateProfileRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41833E4630101E9B0055D990 /* UpdateProfileRequestDTO.swift */; };
+		41A5CEDF300FFE990095B0D3 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 41A5CEDE300FFE990095B0D3 /* Swinject */; };
+		41A5CEE130100DF80095B0D3 /* SkillDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5CEE030100DF80095B0D3 /* SkillDTO.swift */; };
+		41A5CEE330100E120095B0D3 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5CEE230100E120095B0D3 /* Skill.swift */; };
 		41A7F6F8300BBB2A00FBE8EB /* LampGlitchModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7F6F7300BBB2A00FBE8EB /* LampGlitchModifier.swift */; };
 		41A7F6FB300BBDA000FBE8EB /* UserEntity+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7F6F9300BBDA000FBE8EB /* UserEntity+Mapping.swift */; };
 		41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EE30076D5500502158 /* CustomSearchTextField.swift */; };
@@ -100,7 +104,7 @@
 		CECCDA2F300F1E460068620D /* UploadCvUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA2D300F1E460068620D /* UploadCvUseCase.swift */; };
 		CECCDA30300F1E460068620D /* UpdateProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA2C300F1E460068620D /* UpdateProfileUseCase.swift */; };
 		CECCDA32300F1F830068620D /*   UserProfile+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA31300F1F830068620D /*   UserProfile+Mapping.swift */; };
-		CECCDA35300F20200068620D /*   UserData+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA33300F20200068620D /*   UserData+Mapping.swift */; };
+		CECCDA35300F20200068620D /* UserData+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA33300F20200068620D /* UserData+Mapping.swift */; };
 		CECCDA3B300F52C30068620D /* User+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA3A300F52C30068620D /* User+Mapping.swift */; };
 		CECCDA3D300F5E230068620D /* UpdateProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA3C300F5E230068620D /* UpdateProfileDTO.swift */; };
 		CECCDA3F300F68D50068620D /* UpdateProfileDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA3E300F68D50068620D /* UpdateProfileDTO+Mapping.swift */; };
@@ -138,7 +142,6 @@
 		D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */; };
 		D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28583300A6CC300ABB5BD /* UserDataRepoImp.swift */; };
 		D9A28588300A82CE00ABB5BD /* UserDataRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */; };
-		D9B614E5300CF39E00552F85 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = D9B614E4300CF39E00552F85 /* Swinject */; };
 		D9B614E8300CF49400552F85 /* DIContainer+Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614E7300CF49400552F85 /* DIContainer+Repositories.swift */; };
 		D9B614EA300CF4A100552F85 /* DIContainer+UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614E9300CF4A100552F85 /* DIContainer+UseCases.swift */; };
 		D9B614EC300CF50000552F85 /* DIContainer+ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614EB300CF50000552F85 /* DIContainer+ViewModels.swift */; };
@@ -178,6 +181,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41833E4630101E9B0055D990 /* UpdateProfileRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileRequestDTO.swift; sourceTree = "<group>"; };
+		41A5CEE030100DF80095B0D3 /* SkillDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDTO.swift; sourceTree = "<group>"; };
+		41A5CEE230100E120095B0D3 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		41A7F6F7300BBB2A00FBE8EB /* LampGlitchModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampGlitchModifier.swift; sourceTree = "<group>"; };
 		41A7F6F9300BBDA000FBE8EB /* UserEntity+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+Mapping.swift"; sourceTree = "<group>"; };
 		41AC14EE30076D5500502158 /* CustomSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchTextField.swift; sourceTree = "<group>"; };
@@ -271,7 +277,7 @@
 		CECCDA2C300F1E460068620D /* UpdateProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileUseCase.swift; sourceTree = "<group>"; };
 		CECCDA2D300F1E460068620D /* UploadCvUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadCvUseCase.swift; sourceTree = "<group>"; };
 		CECCDA31300F1F830068620D /*   UserProfile+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "  UserProfile+Mapping.swift"; sourceTree = "<group>"; };
-		CECCDA33300F20200068620D /*   UserData+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "  UserData+Mapping.swift"; sourceTree = "<group>"; };
+		CECCDA33300F20200068620D /* UserData+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+Mapping.swift"; sourceTree = "<group>"; };
 		CECCDA3A300F52C30068620D /* User+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Mapping.swift"; sourceTree = "<group>"; };
 		CECCDA3C300F5E230068620D /* UpdateProfileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileDTO.swift; sourceTree = "<group>"; };
 		CECCDA3E300F68D50068620D /* UpdateProfileDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateProfileDTO+Mapping.swift"; sourceTree = "<group>"; };
@@ -344,7 +350,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9B614E5300CF39E00552F85 /* Swinject in Frameworks */,
+				41A5CEDF300FFE990095B0D3 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +406,7 @@
 				41BE1A5F300BEF510033D1B5 /* CV */,
 				41BE1A60300BEF510033D1B5 /* UserDTO.swift */,
 				41BE1A61300BEF510033D1B5 /* UserProfileDTO.swift */,
+				41A5CEE030100DF80095B0D3 /* SkillDTO.swift */,
 			);
 			path = UserData;
 			sourceTree = "<group>";
@@ -698,7 +705,7 @@
 		CECCDA34300F20200068620D /* Mappers */ = {
 			isa = PBXGroup;
 			children = (
-				CECCDA33300F20200068620D /*   UserData+Mapping.swift */,
+				CECCDA33300F20200068620D /* UserData+Mapping.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -1005,6 +1012,7 @@
 			children = (
 				D9B614FE300D1D7C00552F85 /* TrackDTO.swift */,
 				CECCDA3C300F5E230068620D /* UpdateProfileDTO.swift */,
+				41833E4630101E9B0055D990 /* UpdateProfileRequestDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -1104,6 +1112,7 @@
 				41BE1A6D300BF0810033D1B5 /* UserData.swift */,
 				41D69D13300A6CCE00294D94 /* UserProfile.swift */,
 				41D69D15300A6CF100294D94 /* User.swift */,
+				41A5CEE230100E120095B0D3 /* Skill.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1331,7 +1340,7 @@
 			);
 			name = "Career-Pilot-iOS";
 			packageProductDependencies = (
-				D9B614E4300CF39E00552F85 /* Swinject */,
+				41A5CEDE300FFE990095B0D3 /* Swinject */,
 			);
 			productName = "Career-Pilot-iOS";
 			productReference = D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */;
@@ -1406,7 +1415,7 @@
 			);
 			mainGroup = D93938D53004064400CF4372;
 			packageReferences = (
-				D9B614E3300CF39E00552F85 /* XCRemoteSwiftPackageReference "swinject" */,
+				41A5CEDD300FFE990095B0D3 /* XCRemoteSwiftPackageReference "swinject" */,
 			);
 			productRefGroup = D93938DF3004064400CF4372 /* Products */;
 			projectDirPath = "";
@@ -1480,6 +1489,7 @@
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
 				41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */,
 				41BE1A71300BF0950033D1B5 /* UserDataRepo.swift in Sources */,
+				41833E4730101E9B0055D990 /* UpdateProfileRequestDTO.swift in Sources */,
 				CEE62A8730091FD10071F076 /* MainTabBarView.swift in Sources */,
 				41A7F6FB300BBDA000FBE8EB /* UserEntity+Mapping.swift in Sources */,
 				41BE1A65300BEF510033D1B5 /* UserProfileDTO.swift in Sources */,
@@ -1504,6 +1514,7 @@
 				41BE1A76300BF4000033D1B5 /* SendOTPUseCase.swift in Sources */,
 				41A7F6F8300BBB2A00FBE8EB /* LampGlitchModifier.swift in Sources */,
 				D9B614F6300D1B8E00552F85 /* GetAllTrackesUseCase.swift in Sources */,
+				41A5CEE330100E120095B0D3 /* Skill.swift in Sources */,
 				CECC20D83007B60900DC450D /* AppStrings.swift in Sources */,
 				CE12F3C030093CE40083D66D /* SessionData.swift in Sources */,
 				41D69D1C300A6DB400294D94 /* VerifyOTPResponseDTO+Mapping.swift in Sources */,
@@ -1515,6 +1526,7 @@
 				41BE1A64300BEF510033D1B5 /* UserDTO.swift in Sources */,
 				CEE62A99300929A70071F076 /* SessionRow.swift in Sources */,
 				41D69D3B300B456A00294D94 /* CoreDataManager.swift in Sources */,
+				41A5CEE130100DF80095B0D3 /* SkillDTO.swift in Sources */,
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
 				616CAD0E30082441007FC4AF /* SupportAndLeagalSettingsView.swift in Sources */,
 				CED18895300B096300B15B81 /* Userdefaultsmanager.swift in Sources */,
@@ -1536,7 +1548,7 @@
 				CECCDA3D300F5E230068620D /* UpdateProfileDTO.swift in Sources */,
 				CECC20E63007DB3D00DC450D /* PulsingIconBadge.swift in Sources */,
 				CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */,
-				CECCDA35300F20200068620D /*   UserData+Mapping.swift in Sources */,
+				CECCDA35300F20200068620D /* UserData+Mapping.swift in Sources */,
 				61D8F2FA300778520088F170 /* SkillTag.swift in Sources */,
 				41C38365300A2849005D4BB9 /* AuthEndPoint.swift in Sources */,
 				CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */,
@@ -1924,20 +1936,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D9B614E3300CF39E00552F85 /* XCRemoteSwiftPackageReference "swinject" */ = {
+		41A5CEDD300FFE990095B0D3 /* XCRemoteSwiftPackageReference "swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/swinject/swinject";
 			requirement = {
-				kind = exactVersion;
-				version = 2.8.4;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D9B614E4300CF39E00552F85 /* Swinject */ = {
+		41A5CEDE300FFE990095B0D3 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D9B614E3300CF39E00552F85 /* XCRemoteSwiftPackageReference "swinject" */;
+			package = 41A5CEDD300FFE990095B0D3 /* XCRemoteSwiftPackageReference "swinject" */;
 			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */

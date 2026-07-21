@@ -24,7 +24,7 @@ extension UserProfile {
             currentJobTitle: self.currentJobTitle,
             yearsOfExperience: self.yearsOfExperience,
             cvFileId: cvFileId,
-            skills: self.skills,
+            skills: (self.skills ?? []).map { $0.toDTO() },
             targetCompanies: self.targetCompanies,
             educationLevel: self.educationLevel,
             timezone: self.timezone,

@@ -9,6 +9,21 @@ import SwiftUI
 
 struct ProfileForm: View {
     @Binding var userData: UserData
+    private var skillNamesBinding: Binding<[String]> {
+        Binding(
+            get: { userData.skills.map { $0.skillName } },
+            set: { newNames in
+                userData.skills = newNames
+                    .filter { !$0.trimmingCharacters(in: .whitespaces).isEmpty }
+                    .map { name in
+                        if let existing = userData.skills.first(where: { $0.skillName == name }) {
+                            return existing
+                        }
+                        return Skill(skillName: name, category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: "")
+                    }
+            }
+        )
+    }
     let extraCount = 8
 
     var body: some View {
@@ -35,11 +50,10 @@ struct ProfileForm: View {
                 Spacer().frame(height: Spacing.s20)
             }
             Text("SKILLS DETECTED").font(.size14Semibold).foregroundColor(.gray400).frame(maxWidth: .infinity , alignment: .leading)
-            if(userData.cv == nil){
-                SkillsInputView(selectedSkills: $userData.skills)
-            }
-            else {
-                SkillDetection(skills: userData.skills, extraCount: extraCount)
+            if userData.cv == nil {
+                SkillsInputView(selectedSkills: skillNamesBinding)
+            } else {
+                SkillDetection(skills: userData.skills.map { $0.skillName }, extraCount: extraCount)
             }
   
         }
