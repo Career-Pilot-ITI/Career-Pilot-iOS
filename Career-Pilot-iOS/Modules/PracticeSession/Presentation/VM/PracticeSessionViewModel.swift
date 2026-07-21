@@ -16,7 +16,7 @@ enum PracticeSessionScreenState: Equatable {
     case submittingAnswer
     case reconnecting
     case completed
-    case error(String)
+    case error(InterviewError)
 }
 
 struct SilenceWarning: Equatable {
@@ -25,30 +25,30 @@ struct SilenceWarning: Equatable {
 
 @MainActor
 final class PracticeSessionViewModel: ObservableObject {
-
+    
     @Published private(set) var session: InterviewSession?
     @Published private(set) var screenState: PracticeSessionScreenState = .loading
     @Published private(set) var elapsedRecordingTime: TimeInterval = 0 // Time Session
-
+    
     var currentQuestionText: String {
         session?.currentQuestion?.text ?? ""
     }
-
+    
     var currentQuestionNumber: Int {
         guard let session = session else { return 0 }
         return progressService.currentQuestionNumber(session: session)
     }
-
+    
     var totalQuestions: Int {
         session?.configuration.maxQuestions ?? 0
     }
-
+    
     var feedback: InterviewFeedback? {
         session?.feedback
     }
-
+    
     private let configuration: InterviewConfiguration
-
+    
     private let startUseCase: StartInterviewUseCaseProtocol
     private let submitUseCase: SubmitAnswerUseCaseProtocol
     private let resumeUseCase: ResumeInterviewUseCaseProtocol
@@ -56,16 +56,16 @@ final class PracticeSessionViewModel: ObservableObject {
     private let cancelUseCase: CancelInterviewUseCaseProtocol
     private let validationService: InterviewValidationServicing
     private let progressService: InterviewProgressServicing
-
+    
     private let recordingService: AudioRecordingServicing
     private let silenceService: SilenceDetectionServicing
     private let speechService: SpeechPlaybackServicing
-
-
+    
+    
     private let silenceThreshold: Float = 0.08 // Audio level
-
+    
     private var elapsedTimer: Timer?
-
+    
     init(
         configuration: InterviewConfiguration,
         startUseCase: StartInterviewUseCaseProtocol,
@@ -90,13 +90,23 @@ final class PracticeSessionViewModel: ObservableObject {
         self.recordingService = recordingService
         self.silenceService = silenceService
         self.speechService = speechService
-
+        
         // Assigned last, after every stored property is set, so `self` is fully valid.
         self.recordingService.delegate = self
         self.silenceService.delegate = self
         self.speechService.delegate = self
     }
-
+    
+    //MARK: OnError
+    func onError(error: InterviewError) async{
+        switch error{
+        case .questionLimitReached, .interviewTimeExpired:
+            await finish()
+        case .networkUnavailable, .repositoryError(_), .unknown(_), .invalidState(_, _),.sessionNotFound:
+            await resumeAfterNetworkDrop()
+        }
+    }
+    
     // MARK: - Lifecycle
     func start() async {
         screenState = .loading
@@ -105,49 +115,51 @@ final class PracticeSessionViewModel: ObservableObject {
             session = newSession
             beginAITurn(question: newSession.currentQuestion)
         } catch {
-            screenState = .error(InterviewError.map(error).localizedDescription)
+            screenState = .error(InterviewError.map(error))
         }
     }
     
     //MARK: Begin With AI
     private func beginAITurn(question: InterviewQuestion?) {
         guard let question = question else {
-            Task { await finish() }
+            Task {
+                await finish() }
             return
         }
+        print("Ai Turn")
         screenState = .aiTurn
-        do {
-            try speechService.speak(text: question.text)
-            //Need to make
-//            screenState = .waitingForAnswer
-//            session?.status = .waitingForAnswer
-            //And the text is alerady on the view
-        } catch {
-            // AI voice failing shouldn't block the interview — the question text is
-            // already visible, so just let the user answer.
-            beginWaitingForAnswer()
+        
+        Task{
+            do {
+                //                try await Task.sleep(nanoseconds: 5000000000)
+                try speechService.speak(text: question.text)
+                beginWaitingForAnswer()
+            } catch {
+                //                try await Task.sleep(nanoseconds: 5000000000)
+                print("Ai Can not Speak Now")
+                
+                beginWaitingForAnswer()
+            }
         }
     }
     
     //MARK: Click On Start Answering
     func startAnswering() {
-        print("Current Session \(session?.status)")
+        print("Current Session \(session?.status ?? .cancelled)")
         guard let currentSession = session else {
-            screenState = .error("Can Not Answering This Q Now")
+            screenState = .error(InterviewError.unknown("Can Not Answering This Q Now"))
             return
         }
-        
-        session?.status = .waitingForAnswer
         
         guard validationService.canStartRecording(session: currentSession) else {
-            screenState = .error("Can Not Answering This Q Now")
+            screenState = .error(InterviewError.unknown("Can Not Answering This Q Now"))
             return
         }
-
+        
         session?.status = .recording
         screenState = .recording(silenceWarning: nil) // send to the ui the remaing number but if the silcen start
         elapsedRecordingTime = 0
-
+        
         do {
             try recordingService.startRecording()
             try silenceService.startMonitoring(
@@ -157,15 +169,15 @@ final class PracticeSessionViewModel: ObservableObject {
             startElapsedTimer()
         } catch {
             let message = (error as? AudioRecordingError)?.localizedDescription
-                ?? InterviewError.map(error).localizedDescription
-            screenState = .error(message)
+            ?? InterviewError.map(error).localizedDescription
+            screenState = .error(InterviewError.unknown(message))
         }
     }
-
+    
     func submitAnswerManually() {
         finishRecordingAndSubmit()
     }
-
+    
     
     func resumeAfterNetworkDrop() async {
         guard let sessionId = session?.id else { return }
@@ -176,43 +188,43 @@ final class PracticeSessionViewModel: ObservableObject {
             session = restored
             resumeUIState(for: restored)
         } catch {
-            screenState = .error(InterviewError.map(error).localizedDescription)
+            screenState = .error(InterviewError.map(error))
         }
     }
-
+    
     func cancel() async {
         stopEverythingForReconnect()
         guard let sessionId = session?.id else { return }
         try? await cancelUseCase.execute(sessionId: sessionId)
     }
-
-
+    
+    
     private func beginWaitingForAnswer() {
         session?.status = .waitingForAnswer
         screenState = .waitingForAnswer
     }
-
+    
     private func finishRecordingAndSubmit() {
         guard let currentSession = session,
               validationService.canSubmitAnswer(session: currentSession) else {
             return
         }
-
+        
         stopElapsedTimer()
         silenceService.stopMonitoring()
-
+        
         let result: AudioRecordingResult
         do {
             result = try recordingService.stopRecording()
         } catch {
             let message = (error as? AudioRecordingError)?.localizedDescription
-                ?? InterviewError.map(error).localizedDescription
-            screenState = .error(message)
+            ?? InterviewError.map(error).localizedDescription
+            screenState = .error(InterviewError.unknown(message))
             return
         }
-
+        
         screenState = .submittingAnswer
-
+        
         Task {
             do {
                 let updatedSession = try await submitUseCase.execute(
@@ -222,16 +234,18 @@ final class PracticeSessionViewModel: ObservableObject {
                 )
                 session = updatedSession
                 if updatedSession.status == .completed {
+                    print("Session Done")
                     screenState = .completed
                 } else {
+                    print("New Q")
                     beginAITurn(question: updatedSession.currentQuestion)
                 }
             } catch {
-                screenState = .error(InterviewError.map(error).localizedDescription)
+                screenState = .error(InterviewError.map(error))
             }
         }
     }
-
+    
     private func finish() async {
         guard let sessionId = session?.id else { return }
         screenState = .submittingAnswer
@@ -241,10 +255,10 @@ final class PracticeSessionViewModel: ObservableObject {
             session?.status = .completed
             screenState = .completed
         } catch {
-            screenState = .error(InterviewError.map(error).localizedDescription)
+            screenState = .error(InterviewError.map(error))
         }
     }
-
+    
     private func resumeUIState(for session: InterviewSession) {
         switch session.status {
         case .aiAsking:
@@ -261,7 +275,7 @@ final class PracticeSessionViewModel: ObservableObject {
             beginAITurn(question: session.currentQuestion)
         }
     }
-
+    
     private func stopEverythingForReconnect() {
         stopElapsedTimer()
         silenceService.stopMonitoring()
@@ -270,9 +284,9 @@ final class PracticeSessionViewModel: ObservableObject {
             _ = try? recordingService.stopRecording()
         }
     }
-
+    
     // MARK: - Elapsed time display
-
+    
     private func startElapsedTimer() {
         elapsedTimer?.invalidate()
         elapsedTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
@@ -282,7 +296,7 @@ final class PracticeSessionViewModel: ObservableObject {
             }
         }
     }
-
+    
     private func stopElapsedTimer() {
         elapsedTimer?.invalidate()
         elapsedTimer = nil
@@ -297,10 +311,10 @@ extension PracticeSessionViewModel: AudioRecordingServiceDelegate {
             self.silenceService.processLevel(level)
         }
     }
-
+    
     nonisolated func audioRecordingService(_ service: AudioRecordingService, didFailWithError error: AudioRecordingError) {
         Task { @MainActor in
-            self.screenState = .error(error.localizedDescription)
+            self.screenState = .error(InterviewError.unknown(error.localizedDescription))
         }
     }
 }
@@ -313,19 +327,19 @@ extension PracticeSessionViewModel: SilenceDetectionServiceDelegate {
             self.screenState = .recording(silenceWarning: SilenceWarning(remainingSeconds: 0))
         }
     }
-
+    
     nonisolated func silenceDetectionServiceDidResumeSpeech(_ service: SilenceDetectionService) {
         Task { @MainActor in
             self.screenState = .recording(silenceWarning: nil)
         }
     }
-
+    
     nonisolated func silenceDetectionService(_ service: SilenceDetectionService, didUpdateCountdown remaining: TimeInterval) {
         Task { @MainActor in
             self.screenState = .recording(silenceWarning: SilenceWarning(remainingSeconds: Int(remaining.rounded(.up))))
         }
     }
-
+    
     /// The auto-submit trigger — same destination as the manual "Submit Answering" tap.
     nonisolated func silenceDetectionServiceDidTimeout(_ service: SilenceDetectionService) {
         Task { @MainActor in
@@ -342,13 +356,13 @@ extension PracticeSessionViewModel: SpeechPlaybackServiceDelegate {
             self.screenState = .aiTurn
         }
     }
-
+    
     nonisolated func speechPlaybackServiceDidFinish(_ service: SpeechPlaybackService) {
         Task { @MainActor in
             self.beginWaitingForAnswer()
         }
     }
-
+    
     nonisolated func speechPlaybackService(_ service: SpeechPlaybackService, didFailWithError error: SpeechPlaybackError) {
         Task { @MainActor in
             // Same fallback as a throw from speak(): let the user answer even if the

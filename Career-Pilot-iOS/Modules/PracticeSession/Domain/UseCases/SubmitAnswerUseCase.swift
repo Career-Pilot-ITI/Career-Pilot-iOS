@@ -28,6 +28,7 @@ actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
             throw InterviewError.invalidState(current: session.status, attempted: "submitAnswer (already in flight)")
         }
         
+        
         //Start to subitting the ans
         isSubmitting = true
         defer { isSubmitting = false }
@@ -52,6 +53,7 @@ actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
             submittedAt: Date()
         )
         updatedSession.answers.append(answer)
+        
 
         switch outcome {
         case .nextQuestion(let nextQuestion):

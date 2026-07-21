@@ -4,40 +4,42 @@
 //
 //  Created by Mohamed Magdy on 20/07/2026.
 //
-    
+
 import SwiftUI
 
 struct PracticeSessionView: View {
-    
-    @StateObject var vm: PracticeSessionViewModel = PracticeSessionViewModelFactory.makeStub()
-
+    @StateObject var vm: PracticeSessionViewModel
 
     var body: some View {
         Group {
             switch vm.screenState {
             case .loading:
-                ProgressView("Starting interview…")
+                LoadingView()
 
             case .aiTurn:
                 AITurnView(vm: vm)
 
             case .waitingForAnswer:
-                WaitingForAnswerView(vm: vm)
+                WaitingForAnswerView(vm: vm) // Probelm with nav to this state
 
             case .recording(let silenceWarning):
-                UserTrunView(vm: vm, silenceWarning: silenceWarning)
+                RecordingView(vm: vm, silenceWarning: silenceWarning)
 
             case .submittingAnswer:
-                SubmitingAnswerView(vm: vm)
+                SubmittingAnswerView()
 
             case .reconnecting:
                 ReconnectingView()
 
             case .completed:
-                Text("Interview complete")
+                SessionCompletedView(feedback: vm.feedback)
 
-            case .error(let message):
-                SesstionErrorView(errorMessage: message)
+            case .error(let error):
+                SessionErrorView(errorMessage: error.localizedDescription){
+                    Task{
+                        await vm.onError(error: error)
+                    }
+                }
             }
         }
         .task {
@@ -46,26 +48,8 @@ struct PracticeSessionView: View {
     }
 }
 
-
-private struct ReconnectingView: View {
-    var body: some View {
-        VStack(spacing: 16) {
-            ProgressView()
-            Text("Reconnecting…")
-        }
-    }
-}
-
-private struct SesstionErrorView: View {
-    let errorMessage: String
-
-    var body: some View {
-        VStack(spacing: 16) {
-            Image(systemName: "exclamationmark.triangle")
-                .font(.system(size: 40))
-            Text(errorMessage)
-                .multilineTextAlignment(.center)
-                .padding()
-        }
+struct PracticeSessionView_Previews: PreviewProvider {
+    static var previews: some View {
+        PracticeSessionView(vm: PracticeSessionViewModelFactory.makeStub())
     }
 }

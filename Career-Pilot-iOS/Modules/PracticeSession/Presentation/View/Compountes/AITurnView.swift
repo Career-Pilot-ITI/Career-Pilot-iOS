@@ -7,30 +7,35 @@
 
 import SwiftUI
 
-
 struct AITurnView: View {
     @ObservedObject var vm: PracticeSessionViewModel
 
     var body: some View {
-        VStack(spacing: 24) {
-            Text("Q\(vm.currentQuestionNumber)/\(vm.totalQuestions)")
-            Image(systemName: "headphones")
-                .font(.system(size: 60))
-            Text("AI COACH SPEAKING")
-                .font(.caption)
-            Text(vm.currentQuestionText)
-                .padding()
-            
-            CustomButton(buttonTitle: "Start Answering"){
-                vm.startAnswering()
-            }
+        VStack(spacing: Spacing.s32) {
+            SessionHeader(
+                questionNumber: vm.currentQuestionNumber,
+                totalQuestions: vm.totalQuestions){
+                    
+                }
+
+            Spacer()
+
+            WaitingStateView(
+                icon: "headphones",
+                tint: .primaryTeal,
+                state: .listening,
+                title: "AI Coach Speaking"
+            )
+
+            SoundWaveView(color: .primaryTeal)
+
+            Spacer()
+
+            QuestionCard(text: vm.currentQuestionText)
         }
+        .padding(.horizontal, Spacing.s20)
+        .padding(.top, Spacing.s16)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.darkBackGround.ignoresSafeArea())
     }
 }
-
-
-//struct AITurnView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AITurnView()
-//    }
-//}

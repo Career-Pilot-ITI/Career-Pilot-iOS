@@ -11,25 +11,32 @@ struct WaitingForAnswerView: View {
     @ObservedObject var vm: PracticeSessionViewModel
 
     var body: some View {
-        VStack(spacing: 24) {
-            Text("Q\(vm.currentQuestionNumber)/\(vm.totalQuestions)")
-            Text("YOUR TURN")
-                .font(.caption)
-            Text(vm.currentQuestionText)
-                .padding()
-            Button {
+        VStack(spacing: Spacing.s32) {
+            SessionHeader(
+                questionNumber: vm.currentQuestionNumber,
+                totalQuestions: vm.totalQuestions
+            )
+
+            Spacer()
+
+            WaitingStateView(
+                icon: "mic.fill",
+                tint: .primary, 
+                state: .success,
+                title: "Your Turn"
+            )
+
+            Spacer()
+
+            QuestionCard(text: vm.currentQuestionText)
+
+            CustomButton(buttonTitle: "Start Answering") {
                 vm.startAnswering()
-            } label: {
-                Label("Start Answering", systemImage: "mic.fill")
             }
-            .buttonStyle(.borderedProminent)
         }
+        .padding(.horizontal, Spacing.s20)
+        .padding(.top, Spacing.s16)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.darkBackGround.ignoresSafeArea())
     }
 }
-
-
-//struct WaitingForAnswerView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        WaitingForAnswerView()
-//    }
-//}

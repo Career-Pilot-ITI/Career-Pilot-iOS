@@ -104,6 +104,10 @@
 		CEE62A95300929830071F076 /* ProgressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A94300929830071F076 /* ProgressCard.swift */; };
 		CEE62A97300929960071F076 /* PracticeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A96300929960071F076 /* PracticeCard.swift */; };
 		CEE62A99300929A70071F076 /* SessionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A98300929A70071F076 /* SessionRow.swift */; };
+		D920C24B300EFEB400AB7317 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920C24A300EFEB400AB7317 /* RecordingView.swift */; };
+		D920C24D300EFEC800AB7317 /* SessionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920C24C300EFEC800AB7317 /* SessionHeader.swift */; };
+		D920C24F300EFEE200AB7317 /* StatusScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920C24E300EFEE200AB7317 /* StatusScreens.swift */; };
+		D920C251300F001800AB7317 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920C250300F001800AB7317 /* LoadingView.swift */; };
 		D935DFCB30078012009DF855 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFCA30078012009DF855 /* CustomButton.swift */; };
 		D935DFCF300789EF009DF855 /* CvUploadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFCE300789EF009DF855 /* CvUploadingView.swift */; };
 		D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFF930080448009DF855 /* OnBordingView.swift */; };
@@ -174,7 +178,6 @@
 		D9C187BB300662F000BFF8E9 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187BA300662F000BFF8E9 /* HTTPMethod.swift */; };
 		D9C187BE300663F200BFF8E9 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187BD300663F200BFF8E9 /* NetworkError.swift */; };
 		D9C187C830066A4F00BFF8E9 /* Colors+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187C730066A4F00BFF8E9 /* Colors+Extension.swift */; };
-		D9C187CF30066B2800BFF8E9 /* style.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187CE30066B2800BFF8E9 /* style.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -292,6 +295,10 @@
 		CEE62A94300929830071F076 /* ProgressCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCard.swift; sourceTree = "<group>"; };
 		CEE62A96300929960071F076 /* PracticeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCard.swift; sourceTree = "<group>"; };
 		CEE62A98300929A70071F076 /* SessionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRow.swift; sourceTree = "<group>"; };
+		D920C24A300EFEB400AB7317 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
+		D920C24C300EFEC800AB7317 /* SessionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHeader.swift; sourceTree = "<group>"; };
+		D920C24E300EFEE200AB7317 /* StatusScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusScreens.swift; sourceTree = "<group>"; };
+		D920C250300F001800AB7317 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D935DFCA30078012009DF855 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		D935DFCE300789EF009DF855 /* CvUploadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvUploadingView.swift; sourceTree = "<group>"; };
 		D935DFF930080448009DF855 /* OnBordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingView.swift; sourceTree = "<group>"; };
@@ -370,7 +377,6 @@
 		D9C187BD300663F200BFF8E9 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		D9C187C730066A4F00BFF8E9 /* Colors+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Extension.swift"; sourceTree = "<group>"; };
 		D9C187CC30066B1F00BFF8E9 /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
-		D9C187CE30066B2800BFF8E9 /* style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = style.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1056,10 +1062,14 @@
 		D95C3BC7300EA14C0042785F /* Compountes */ = {
 			isa = PBXGroup;
 			children = (
+				D920C24C300EFEC800AB7317 /* SessionHeader.swift */,
 				D95C3BC8300EA1650042785F /* AITurnView.swift */,
 				D95C3BCC300EA1A20042785F /* UserTrunView.swift */,
 				D95C3BCA300EA1800042785F /* WaitingForAnswerView.swift */,
 				D95C3BCE300EA1C00042785F /* SubmitingAnswerView.swift */,
+				D920C24A300EFEB400AB7317 /* RecordingView.swift */,
+				D920C24E300EFEE200AB7317 /* StatusScreens.swift */,
+				D920C250300F001800AB7317 /* LoadingView.swift */,
 			);
 			path = Compountes;
 			sourceTree = "<group>";
@@ -1449,7 +1459,6 @@
 		D9C187CA30066AD800BFF8E9 /* Style */ = {
 			isa = PBXGroup;
 			children = (
-				D9C187CE30066B2800BFF8E9 /* style.swift */,
 				CE8AFF14300712FC0064CC6C /* Colors.swift */,
 				CE8AFF15300712FC0064CC6C /* Font.swift */,
 				CE8AFF1C300718670064CC6C /* Round.swift */,
@@ -1706,6 +1715,7 @@
 				D9C187BE300663F200BFF8E9 /* NetworkError.swift in Sources */,
 				CEE62A8D3009202F0071F076 /* SettingsView.swift in Sources */,
 				41D69D14300A6CCE00294D94 /* UserProfile.swift in Sources */,
+				D920C24F300EFEE200AB7317 /* StatusScreens.swift in Sources */,
 				CEE62A89300920070071F076 /* PracticeView.swift in Sources */,
 				CECC20E63007DB3D00DC450D /* PulsingIconBadge.swift in Sources */,
 				CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */,
@@ -1748,12 +1758,13 @@
 				CE12F3C930094FB50083D66D /* OTPCodeView.swift in Sources */,
 				D95C3BB9300E4ABE0042785F /* ResumeInterviewUseCase.swift in Sources */,
 				CE8AFF1D300718670064CC6C /* Round.swift in Sources */,
-				D9C187CF30066B2800BFF8E9 /* style.swift in Sources */,
 				D935DFFC3008045A009DF855 /* OnBordingViewModel.swift in Sources */,
 				D9B614FF300D1D7C00552F85 /* TrackDTO.swift in Sources */,
 				D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */,
+				D920C24B300EFEB400AB7317 /* RecordingView.swift in Sources */,
 				D9B614EA300CF4A100552F85 /* DIContainer+UseCases.swift in Sources */,
 				616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */,
+				D920C24D300EFEC800AB7317 /* SessionHeader.swift in Sources */,
 				6182BB4F300C519B001157B8 /* ProfilePhoto.swift in Sources */,
 				41D69D50300B4A2200294D94 /* LoadSessionUseCase.swift in Sources */,
 				D9B614F3300D1AB400552F85 /* OnBordingEndPointes.swift in Sources */,
@@ -1762,6 +1773,7 @@
 				CECC20E83007DB4D00DC450D /* WaveformBars.swift in Sources */,
 				41D69D37300B43FF00294D94 /* KeychainManager.swift in Sources */,
 				D95C3BAF300E4A320042785F /* InterviewQuestion.swift in Sources */,
+				D920C251300F001800AB7317 /* LoadingView.swift in Sources */,
 				CECC20EA3007DB5E00DC450D /* ShakeEffect.swift in Sources */,
 				CECC20D43007AD3A00DC450D /* CountryCode.swift in Sources */,
 				61D8F2F03007523E0088F170 /* HeaderView.swift in Sources */,

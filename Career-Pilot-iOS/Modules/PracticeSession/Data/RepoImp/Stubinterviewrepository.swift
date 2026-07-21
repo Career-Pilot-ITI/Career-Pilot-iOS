@@ -12,6 +12,8 @@ import Foundation
 /// once the APIEndpoint shapes are confirmed — nothing else in the app needs to change,
 /// since everything upstream only knows about the InterviewRepository protocol.
 final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
+    
+    private var askedCount = 0
 
     private let simulatedNetworkDelay: UInt64 = 500_000_000 // 0.5s, in nanoseconds
     private let stubQuestions: [String] = [
@@ -48,14 +50,17 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
         duration: TimeInterval
     ) async throws -> SubmitAnswerOutcome {
         try await simulateDelay()
-
+        askedCount += 1
         // Figure out how many questions have already been asked by finding the
         // matching stub question's index, so the stub can decide whether to hand
         // back another question or wrap up. A real backend would track this server-side.
-        let askedCount = (stubQuestions.firstIndex { $0.hashValue.description == questionId } ?? 0) + 1
+//       askedCount = (stubQuestions.firstIndex { $0.hashValue.description == questionId } ?? 0) + 1
 
+        print("Asked Q is \(askedCount)")
+        throw InterviewError.questionLimitReached
+        
         if askedCount >= 3 {
-            return .interviewCompleted(Self.stubFeedback())
+            return .interviewCompleted(try Self.stubFeedback())
         }
 
         let nextQuestion = InterviewQuestion(
@@ -91,7 +96,7 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
 
     func finishInterview(sessionId: String) async throws -> InterviewFeedback {
         try await simulateDelay()
-        return Self.stubFeedback()
+        return try Self.stubFeedback()
     }
 
     func cancelInterview(sessionId: String) async throws {
@@ -102,7 +107,8 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
         try await Task.sleep(nanoseconds: simulatedNetworkDelay)
     }
 
-    private static func stubFeedback() -> InterviewFeedback {
+    private static func stubFeedback() throws -> InterviewFeedback {
+        throw InterviewError.networkUnavailable
         InterviewFeedback(
             overallScore: 8.2,
             communicationScore: 8.5,
