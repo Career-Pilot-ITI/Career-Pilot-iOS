@@ -27,7 +27,7 @@ enum OnBordingScreenStates{
 @MainActor
 class OnBordingViewModel: ObservableObject {
     @Published var currentView: OnBordingViews = .ChooseTrackView
-    @Published var screenState: OnBordingScreenStates = .idel
+    @Published var screenState: OnBordingScreenStates = .loading
     @Published var navToHomeScreen: Bool = false
     
     //For ChooseTrack View
@@ -143,6 +143,7 @@ class OnBordingViewModel: ObservableObject {
             do{
                 screenState = .loading
                 selectedTrackInfo.traks = try await getAllTracksUseCase.execute(())
+                selectedTrackInfo.filteredTracks = selectedTrackInfo.traks
                 screenState = .idel
             }catch{
                 screenState = .idel
@@ -191,6 +192,7 @@ class OnBordingViewModel: ObservableObject {
         
         Task{
             do{
+                screenState = .loading
                 try await uploadUserCv(userCV: userCV)
                 currentView = .ProfileView
                 

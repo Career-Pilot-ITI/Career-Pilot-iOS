@@ -18,7 +18,7 @@ struct ProfileForm: View {
                 Text("Tap to add a profile photo").font(.size12Medium).foregroundColor(.gray400)
                 Divider().background(Color.gray400).frame(height: 4)
                
-            }.frame(width: .infinity , alignment: .center)
+            }.frame( alignment: .center)
        
             Group{
                 CustomProfileTextField(icon: "PersonIcon", title: "Full Name", text: $userData.fullName)
