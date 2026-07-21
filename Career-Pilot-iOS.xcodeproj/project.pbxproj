@@ -53,6 +53,10 @@
 		6117C02F300F9FD700CABEC6 /* StringsExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6117C02E300F9FD700CABEC6 /* StringsExtenstion.swift */; };
 		6117C031300FBCF900CABEC6 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6117C030300FBCF900CABEC6 /* Validation.swift */; };
 		6169A7B230103051001FDC39 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169A7B130103051001FDC39 /* UserError.swift */; };
+		6165A1E1300B0F800085E3FD /* CoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1E0300B0F800085E3FD /* CoinView.swift */; };
+		6165A1E3300B10C90085E3FD /* CoinTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1E2300B10C90085E3FD /* CoinTopView.swift */; };
+		6165A1E5300B11F60085E3FD /* CoinsTypeVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1E4300B11F60085E3FD /* CoinsTypeVIew.swift */; };
+		6165A1E7300B220D0085E3FD /* CoinsValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1E6300B220D0085E3FD /* CoinsValueView.swift */; };
 		616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0330080EEC007FC4AF /* SettingsVIew.swift */; };
 		616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0630080FDE007FC4AF /* ProfileCard.swift */; };
 		616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0830081C62007FC4AF /* SettingsCard.swift */; };
@@ -227,6 +231,10 @@
 		6117C02E300F9FD700CABEC6 /* StringsExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsExtenstion.swift; sourceTree = "<group>"; };
 		6117C030300FBCF900CABEC6 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		6169A7B130103051001FDC39 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
+		6165A1E0300B0F800085E3FD /* CoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinView.swift; sourceTree = "<group>"; };
+		6165A1E2300B10C90085E3FD /* CoinTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinTopView.swift; sourceTree = "<group>"; };
+		6165A1E4300B11F60085E3FD /* CoinsTypeVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsTypeVIew.swift; sourceTree = "<group>"; };
+		6165A1E6300B220D0085E3FD /* CoinsValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsValueView.swift; sourceTree = "<group>"; };
 		616CAD0330080EEC007FC4AF /* SettingsVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVIew.swift; sourceTree = "<group>"; };
 		616CAD0630080FDE007FC4AF /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
 		616CAD0830081C62007FC4AF /* SettingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCard.swift; sourceTree = "<group>"; };
@@ -504,11 +512,33 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		6165A1DE300B0F3F0085E3FD /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				616CAD0330080EEC007FC4AF /* SettingsVIew.swift */,
+				616CAD0630080FDE007FC4AF /* ProfileCard.swift */,
+				616CAD0830081C62007FC4AF /* SettingsCard.swift */,
+				616CAD0B30081EF4007FC4AF /* AcoountSettingsView.swift */,
+				616CAD0D30082441007FC4AF /* SupportAndLeagalSettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		6165A1DF300B0F570085E3FD /* Coin */ = {
+			isa = PBXGroup;
+			children = (
+				6165A1E0300B0F800085E3FD /* CoinView.swift */,
+				6165A1E2300B10C90085E3FD /* CoinTopView.swift */,
+				6165A1E4300B11F60085E3FD /* CoinsTypeVIew.swift */,
+				6165A1E6300B220D0085E3FD /* CoinsValueView.swift */,
+			);
+			path = Coin;
+			sourceTree = "<group>";
+		};
 		616CACFD30080EB3007FC4AF /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				616CAD0030080ECD007FC4AF /* Presentation */,
-				616CACFF30080EC7007FC4AF /* Data */,
 				616CACFE30080EBC007FC4AF /* Domain */,
 			);
 			path = Settings;
@@ -521,17 +551,9 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		616CACFF30080EC7007FC4AF /* Data */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
 		616CAD0030080ECD007FC4AF /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				616CAD0230080EDD007FC4AF /* ViewModel */,
 				616CAD0130080ED6007FC4AF /* View */,
 			);
 			path = Presentation;
@@ -540,11 +562,8 @@
 		616CAD0130080ED6007FC4AF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				616CAD0330080EEC007FC4AF /* SettingsVIew.swift */,
-				616CAD0630080FDE007FC4AF /* ProfileCard.swift */,
-				616CAD0830081C62007FC4AF /* SettingsCard.swift */,
-				616CAD0B30081EF4007FC4AF /* AcoountSettingsView.swift */,
-				616CAD0D30082441007FC4AF /* SupportAndLeagalSettingsView.swift */,
+				6165A1DF300B0F570085E3FD /* Coin */,
+				6165A1DE300B0F3F0085E3FD /* Settings */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1532,6 +1551,7 @@
 				41BE1A7C300BF4540033D1B5 /* AuthRepositoryProtocol.swift in Sources */,
 				41D69D20300A6E1200294D94 /* VerifyOTPRequestDTO.swift in Sources */,
 				41BE1A64300BEF510033D1B5 /* UserDTO.swift in Sources */,
+				6165A1E3300B10C90085E3FD /* CoinTopView.swift in Sources */,
 				CEE62A99300929A70071F076 /* SessionRow.swift in Sources */,
 				41D69D3B300B456A00294D94 /* CoreDataManager.swift in Sources */,
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
@@ -1557,6 +1577,7 @@
 				CECC20E63007DB3D00DC450D /* PulsingIconBadge.swift in Sources */,
 				CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */,
 				CECCDA35300F20200068620D /*   UserData+Mapping.swift in Sources */,
+				6165A1E5300B11F60085E3FD /* CoinsTypeVIew.swift in Sources */,
 				61D8F2FA300778520088F170 /* SkillTag.swift in Sources */,
 				41C38365300A2849005D4BB9 /* AuthEndPoint.swift in Sources */,
 				CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */,
@@ -1611,7 +1632,9 @@
 				D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */,
 				41D69D40300B45C500294D94 /* CoreDataUserLocalDataSource.swift in Sources */,
 				41D69D07300A69E200294D94 /* VerifyOTPResponseDTO.swift in Sources */,
+				6165A1E7300B220D0085E3FD /* CoinsValueView.swift in Sources */,
 				CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */,
+				6165A1E1300B0F800085E3FD /* CoinView.swift in Sources */,
 				D9A28588300A82CE00ABB5BD /* UserDataRemoteDataSource.swift in Sources */,
 				6182BB57300C7033001157B8 /* SelectedSkillChip.swift in Sources */,
 				CEE62A933009296E0071F076 /* SubscriptionCard.swift in Sources */,
