@@ -45,7 +45,7 @@ class OnBordingViewModel: ObservableObject {
     var getAllTracksUseCase: GetAllTrackesUseCase
     private let updateProfileUseCase: UpdateProfileUseCase
     
-    init(appState: AppState, uploadCvUseCase: UploadCvUseCase, getAllTracksUseCase: GetAllTrackesUseCas,updateProfileUseCase: UpdateProfileUseCase) {
+    init(appState: AppState, uploadCvUseCase: UploadCvUseCase, getAllTracksUseCase: GetAllTrackesUseCase,updateProfileUseCase: UpdateProfileUseCase) {
         self.appState = appState
         self.uploadCvUseCase = uploadCvUseCase
         self.getAllTracksUseCase = getAllTracksUseCase
