@@ -37,8 +37,8 @@ struct SupportAndLeagalSettingsView: View {
     }
 }
 
-struct SupportAndLeagalSettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SupportAndLeagalSettingsView()
-    }
-}
+//struct SupportAndLeagalSettingsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SupportAndLeagalSettingsView()
+//    }
+//}
