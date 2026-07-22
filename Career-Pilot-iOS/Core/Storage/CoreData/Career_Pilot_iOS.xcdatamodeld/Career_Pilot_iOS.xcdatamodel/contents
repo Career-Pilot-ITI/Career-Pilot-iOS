@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23H124" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="SkillEntity" representedClassName="SkillEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="value" attributeType="String"/>
+        <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="lastAssessedAt" optional="YES" attributeType="String"/>
+        <attribute name="performanceScore" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="skillName" optional="YES" attributeType="String"/>
+        <attribute name="timesAssessed" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserProfileEntity" inverseName="skills" inverseEntity="UserProfileEntity"/>
     </entity>
     <entity name="TargetCompanyEntity" representedClassName="TargetCompanyEntity" syncable="YES" codeGenerationType="class">

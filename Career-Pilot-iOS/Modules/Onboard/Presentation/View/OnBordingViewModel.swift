@@ -38,16 +38,26 @@ class OnBordingViewModel: ObservableObject {
     @Published var cvViewInfo: CvViewInfo = CvViewInfo(isSelected: false)
     
     //For Profie View
-    @Published var userData: UserData = UserData(email: "", title: "", experienceLevel: "", skills: ["C++"], firstName: "", lastName: "")
+    @Published var userData: UserData = UserData(email: "", title: "", experienceLevel: "", skills: [Skill(skillName: "", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: "")], firstName: "", lastName: "")
     
     //UseCases
     var uploadCvUseCase: UploadCvUseCase
     var getAllTracksUseCase: GetAllTrackesUseCase
-    
-    init(appState: AppState, uploadCvUseCase: UploadCvUseCase, getAllTracksUseCase: GetAllTrackesUseCase) {
+    private let updateProfileUseCase: UpdateProfileUseCase
+
+    private let saveUserUseCase: SaveUserUseCase
+
+    init(appState: AppState, 
+         uploadCvUseCase: UploadCvUseCase, 
+         getAllTracksUseCase: GetAllTrackesUseCase,
+         updateProfileUseCase: UpdateProfileUseCase,
+         saveUserUseCase: SaveUserUseCase
+         ) {
         self.appState = appState
         self.uploadCvUseCase = uploadCvUseCase
         self.getAllTracksUseCase = getAllTracksUseCase
+        self.updateProfileUseCase = updateProfileUseCase
+        self.saveUserUseCase = saveUserUseCase
     }
     
     //For Bottom Button
@@ -208,12 +218,37 @@ class OnBordingViewModel: ObservableObject {
         print(cvResponse.userData)
     }
     
-    private func onNavToHomeScreen(){
-        navToHomeScreen = true
-        appState.markOnboardingSeen()
-        print(userData)
-    }
-    
+   private func onNavToHomeScreen() {
+       print("start update")
+       Task {
+           do {
+               screenState = .loading
+               
+               let currentUser = User(
+                   id: 0,
+                   phoneNumber: "",
+                   profile: userData.toUserProfile(),
+                   isNewUser: false
+               )
+               
+               let updatedUser = try await updateProfileUseCase.execute(currentUser)
+               let isSaved = try await saveUserUseCase.save(updatedUser)
+               if isSaved {
+                   print("✅ User added to CoreData successfull")
+               }
+               print("✅ Profile updated successfully for user ID: \(updatedUser.id)")
+               
+               screenState = .idel
+               navToHomeScreen = true
+               appState.markOnboardingSeen()
+           } catch let error as NetworkError {
+               screenState = .error(error.errorDescription ?? error.localizedDescription)
+           } catch {
+               screenState = .error(error.localizedDescription)
+           }
+       }
+   }
+
     func backByStep(){
         switch currentView{
         case.ChooseTrackView:

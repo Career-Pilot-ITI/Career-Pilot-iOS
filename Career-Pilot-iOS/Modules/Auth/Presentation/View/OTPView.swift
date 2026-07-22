@@ -85,11 +85,7 @@ struct OTPView_Previews: PreviewProvider {
     static var previews: some View {
         OTPView(
             phoneNumber: "+20 101 234 5678",
-            viewModel: AuthViewModel(
-                sendUseCase: SendOTPUseCase(repository: AuthRepositoryImpl(remoteDataSource: AuthRemoteDataSource())),
-                verifyUseCase: VerifyOTPUseCase(repository: AuthRepositoryImpl(remoteDataSource: AuthRemoteDataSource())),
-                toastManager: ToastManager()
-            )
+            viewModel: DIContainer.shared.container.resolve(AuthViewModel.self)!
         )
         .environmentObject(AppCoordinator<AuthRoute>())
     }

@@ -1,19 +1,19 @@
 //
-//  UserProfileDTO.swift
+//  UpdateProfileRequestDTO.swift
 //  Career-Pilot-iOS
 //
-//  Created by Moaz on 17/07/2026.
+//  Created by Moaz on 21/07/2026.
 //
 
 import Foundation
 
-struct UserProfileDTO: Decodable {
-    let displayName: String?
+struct UpdateProfileRequestDTO: Encodable {
     let username: String?
     let email: String?
-    let avatarUrl: String?
+    let currentPassword: String?
+    let newPassword: String?
+    let displayName: String?
     let avatarFileId: Int?
-    let cvFileId: Int?
     let gender: String?
     let dateOfBirth: String?
     let targetRole: String?
@@ -21,14 +21,13 @@ struct UserProfileDTO: Decodable {
     let experienceLevel: String?
     let currentJobTitle: String?
     let yearsOfExperience: Int?
-    let cvUrl: String?
-    let skills: [SkillDTO]?
+    let cvFileId: Int?
+    let skills: [String]?          
     let targetCompanies: [String]?
     let educationLevel: String?
     let timezone: String?
     let termsAccepted: Bool?
-    let subscriptionTier: String?
-    let coinBalance: Int?
     let onboardingCompleted: Bool?
-    let trackName: String?
+    let subscriptionTier: String?
+    let trackId: Int?
 }

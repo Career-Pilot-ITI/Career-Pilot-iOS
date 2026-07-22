@@ -9,35 +9,45 @@ import Foundation
 
 
 enum OnBordingEndPointes: APIEndpoint{
-    private static let boundary = "Boundary-\(UUID().uuidString)"
-
 
     case getAllTrackes
+    case updateUserProfile(updateProfileDTO: UpdateProfileRequestDTO)
     
-    var baseURL: String{
-        "https://4a32-196-138-187-117.ngrok-free.app/"
-    }
     
     var path: String{
-        switch self{
+        switch self {
         case.getAllTrackes:
-            return "api/v1/tracks"
+            return "/api/v1/tracks"
+        case.updateUserProfile:
+            return "/api/v1/profile"
         }
     }
-    
+
     var method: HTTPMethod{
         switch self{
         case.getAllTrackes:
-            return.get
+            return .get
+        case.updateUserProfile:
+            return .patch
         }
     }
     
+    var body: Data? {
+           switch self {
+           case .getAllTrackes: return nil
+           case .updateUserProfile(let updateProfileDTO): return Self.encode(updateProfileDTO)
+           }
+       }
+    
+    var requiresAuthentication: Bool {
+            switch self {
+            case .getAllTrackes:  return false
+            case .updateUserProfile:  return true
+            }
+        }
+    
     var headers: [String: String] {
-        return [
-            "Content-Type": "multipart/form-data; boundary=\(Self.boundary)",
-            "accept": "application/json",
-            "Authorization": " Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWQiOjEsInN1YiI6InVzZXJfODU4MzM4IiwiaWF0IjoxNzg0NTQxODIyLCJleHAiOjE3ODQ1NDU0MjJ9.i6FLXunKRul3t9vR-Go2Dm132DfopNAUoDSMPtWpHOs"
-        ]
+        ["Content-Type": "application/json"]
     }
     
 }

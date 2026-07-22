@@ -12,6 +12,8 @@ struct UserProfile: Equatable {
     let username: String
     let email: String
     let avatarUrl: URL?
+    let avatarFileId: Int?
+    let cvFileId: Int?
     let gender: String?
     let dateOfBirth: Date?
     let targetRole: String?
@@ -20,7 +22,7 @@ struct UserProfile: Equatable {
     let currentJobTitle: String?
     let yearsOfExperience: Int?
     let cvUrl: URL?
-    let skills: [String]?
+    let skills: [Skill]?
     let targetCompanies: [String]?
     let educationLevel: String?
     let timezone: String?
@@ -29,4 +31,5 @@ struct UserProfile: Equatable {
     let coinBalance: Int?
     let onboardingCompleted: Bool?
     let trackName: String?
+    let trackId: Int?
 }
