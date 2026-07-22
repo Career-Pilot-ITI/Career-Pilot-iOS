@@ -130,7 +130,6 @@
 		CECCDA29300F1DD80068620D /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA24300F1DD80068620D /* NetworkServiceProtocol.swift */; };
 		CECCDA2A300F1DD80068620D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA23300F1DD80068620D /* NetworkService.swift */; };
 		CECCDA2B300F1DD80068620D /* AuthenticatedNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA21300F1DD80068620D /* AuthenticatedNetworkService.swift */; };
-		CECCDA2F300F1E460068620D /* UploadCvUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA2D300F1E460068620D /* UploadCvUseCase.swift */; };
 		CECCDA30300F1E460068620D /* UpdateProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA2C300F1E460068620D /* UpdateProfileUseCase.swift */; };
 		CECCDA32300F1F830068620D /*   UserProfile+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA31300F1F830068620D /*   UserProfile+Mapping.swift */; };
 		CECCDA35300F20200068620D /* UserData+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA33300F20200068620D /* UserData+Mapping.swift */; };
@@ -160,7 +159,7 @@
 		D93939023004064600CF4372 /* Career_Pilot_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93939013004064600CF4372 /* Career_Pilot_iOSUITests.swift */; };
 		D93939043004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93939033004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift */; };
 		D98A79703008D9A300DFDC6B /* CvViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A796F3008D9A300DFDC6B /* CvViewInfo.swift */; };
-		D98A79733008DB2F00DFDC6B /* ChoseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79723008DB2F00DFDC6B /* ChoseTrackView.swift */; };
+		D98A79733008DB2F00DFDC6B /* ChooseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79723008DB2F00DFDC6B /* ChooseTrackView.swift */; };
 		D98A79753008DFD800DFDC6B /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79743008DFD800DFDC6B /* Track.swift */; };
 		D98A79773008E19900DFDC6B /* TrackChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79763008E19900DFDC6B /* TrackChip.swift */; };
 		D98A79793008EB9200DFDC6B /* ChoseTrackViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79783008EB9200DFDC6B /* ChoseTrackViewInfo.swift */; };
@@ -364,7 +363,7 @@
 		D93939013004064600CF4372 /* Career_Pilot_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career_Pilot_iOSUITests.swift; sourceTree = "<group>"; };
 		D93939033004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career_Pilot_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D98A796F3008D9A300DFDC6B /* CvViewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvViewInfo.swift; sourceTree = "<group>"; };
-		D98A79723008DB2F00DFDC6B /* ChoseTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseTrackView.swift; sourceTree = "<group>"; };
+		D98A79723008DB2F00DFDC6B /* ChooseTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTrackView.swift; sourceTree = "<group>"; };
 		D98A79743008DFD800DFDC6B /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		D98A79763008E19900DFDC6B /* TrackChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackChip.swift; sourceTree = "<group>"; };
 		D98A79783008EB9200DFDC6B /* ChoseTrackViewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseTrackViewInfo.swift; sourceTree = "<group>"; };
@@ -506,6 +505,7 @@
 				D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */,
 				D9C1879630065B0400BFF8E9 /* Entity.swift */,
 				D9C1879D30065B9800BFF8E9 /* TestDao.swift */,
+				CECCDA2D300F1E460068620D /* UploadCvUseCase.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -820,14 +820,6 @@
 			path = NetworkService;
 			sourceTree = "<group>";
 		};
-		CECCDA2E300F1E460068620D /* UploadCv */ = {
-			isa = PBXGroup;
-			children = (
-				CECCDA2D300F1E460068620D /* UploadCvUseCase.swift */,
-			);
-			path = UploadCv;
-			sourceTree = "<group>";
-		};
 		CECCDA34300F20200068620D /* Mappers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1039,7 +1031,7 @@
 		D98A79713008DB1100DFDC6B /* ChoseTrack */ = {
 			isa = PBXGroup;
 			children = (
-				D98A79723008DB2F00DFDC6B /* ChoseTrackView.swift */,
+				D98A79723008DB2F00DFDC6B /* ChooseTrackView.swift */,
 				D98A79763008E19900DFDC6B /* TrackChip.swift */,
 			);
 			path = ChoseTrack;
@@ -1602,9 +1594,8 @@
 				CECCDA29300F1DD80068620D /* NetworkServiceProtocol.swift in Sources */,
 				CECCDA2A300F1DD80068620D /* NetworkService.swift in Sources */,
 				CECCDA2B300F1DD80068620D /* AuthenticatedNetworkService.swift in Sources */,
-				CECCDA2F300F1E460068620D /* UploadCvUseCase.swift in Sources */,
 				CECCDA30300F1E460068620D /* UpdateProfileUseCase.swift in Sources */,
-				D98A79733008DB2F00DFDC6B /* ChoseTrackView.swift in Sources */,
+				D98A79733008DB2F00DFDC6B /* ChooseTrackView.swift in Sources */,
 				41D69D09300A6A0B00294D94 /* AuthTokensDTO.swift in Sources */,
 				41BE1A68300BEF820033D1B5 /* CvUplodingApiResponse+Mapping.swift in Sources */,
 				61D8F2F6300760680088F170 /* ProfileForm.swift in Sources */,
@@ -1683,7 +1674,6 @@
 				41BC773A300D3A9500E89C3F /* SessionHistoryListView.swift in Sources */,
 				41C6A23C30080BDA0035EFBF /* OTPView.swift in Sources */,
 				D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */,
-				D9C187BE300663F200BFF8E9 /* NetworkError.swift in Sources */,
 				41D69D14300A6CCE00294D94 /* UserProfile.swift in Sources */,
 				CEE62A89300920070071F076 /* PracticeView.swift in Sources */,
 				CECCDA3D300F5E230068620D /* UpdateProfileDTO.swift in Sources */,
