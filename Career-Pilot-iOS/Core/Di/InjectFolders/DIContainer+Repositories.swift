@@ -13,7 +13,10 @@ extension DIContainer{
         
         //UserDataRepo
         container.register(UserDataRepo.self){r in
-            UserDataRepoImp(remoteDataSource: r.resolve(UserDataRemoteDataSource.self)!)
+            UserDataRepoImp(
+                    remoteDataSource: r.resolve(UserDataRemoteDataSource.self)!,
+                    localDataSource:r.resolve(UserLocalDataSource.self)!
+            )
         }
         
         // AuthRepo

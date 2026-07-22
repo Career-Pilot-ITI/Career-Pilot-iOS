@@ -44,12 +44,20 @@ class OnBordingViewModel: ObservableObject {
     var uploadCvUseCase: UploadCvUseCase
     var getAllTracksUseCase: GetAllTrackesUseCase
     private let updateProfileUseCase: UpdateProfileUseCase
-    
-    init(appState: AppState, uploadCvUseCase: UploadCvUseCase, getAllTracksUseCase: GetAllTrackesUseCase,updateProfileUseCase: UpdateProfileUseCase) {
+
+    private let saveUserUseCase: SaveUserUseCase
+
+    init(appState: AppState, 
+         uploadCvUseCase: UploadCvUseCase, 
+         getAllTracksUseCase: GetAllTrackesUseCase,
+         updateProfileUseCase: UpdateProfileUseCase,
+         saveUserUseCase: SaveUserUseCase
+         ) {
         self.appState = appState
         self.uploadCvUseCase = uploadCvUseCase
         self.getAllTracksUseCase = getAllTracksUseCase
         self.updateProfileUseCase = updateProfileUseCase
+        self.saveUserUseCase = saveUserUseCase
     }
     
     //For Bottom Button
@@ -224,7 +232,7 @@ class OnBordingViewModel: ObservableObject {
                )
                
                let updatedUser = try await updateProfileUseCase.execute(currentUser)
-               
+               try await saveUserUseCase.execute(updatedUser)
                print("✅ Profile updated successfully for user ID: \(updatedUser.id)")
                
                screenState = .idel

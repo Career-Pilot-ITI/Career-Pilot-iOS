@@ -13,13 +13,14 @@ struct ChoseTrackView: View {
     
     
     var body: some View {
-        VStack(spacing: 12){
+        VStack(alignment:.leading,spacing: 12){
             Text("Choose your Track")
                 .font(.system(size: 24, weight: .bold))
             Text("We'll tailor questions and feedback for your role.")
                 .font(.system(size: 14, weight: .regular))
             
             CustomSearchTextField(text: $textFieldInput,placeholder: "Search tracks…")
+                .padding(.horizontal,)
             
             if vm.selectedTrackInfo.traks.isEmpty {
                 VStack(spacing: 16) {
