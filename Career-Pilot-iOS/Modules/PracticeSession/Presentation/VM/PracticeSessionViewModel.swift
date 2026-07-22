@@ -198,11 +198,11 @@ final class PracticeSessionViewModel: ObservableObject {
     
     
     func resumeAfterNetworkDrop() async {
-        guard let sessionId = session?.id else { return }
+        guard let tempSession = session else { return }
         screenState = .reconnecting
         stopEverythingForReconnect()
         do {
-            let restored = try await resumeUseCase.execute(sessionId: sessionId)
+            let restored = try await resumeUseCase.execute(session: tempSession)
             session = restored
             resumeUIState(for: restored)
         } catch {

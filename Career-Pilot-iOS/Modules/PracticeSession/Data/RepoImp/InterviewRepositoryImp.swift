@@ -34,9 +34,10 @@ final class InterviewRepositoryImp: InterviewRepository {
         return .interviewCompleted(feedbackDTO.toDomain())
     }
 
-    func resumeInterview(sessionId: String) async throws -> InterviewSession {
-        let sessionStateDTO = try await remoteDataSource.resumeInterview(sessionId: sessionId)
-        return sessionStateDTO.toDomain(configuration: <#T##InterviewConfiguration#>, questions: <#T##[InterviewQuestion]#>, answers: <#T##[InterviewAnswer]#>)
+    func resumeInterview(session: InterviewSession) async throws -> InterviewSession {
+        let sessionStateDTO = try await remoteDataSource.resumeInterview(sessionId: session.id)
+        return sessionStateDTO.toDomain(configuration: session.configuration, questions: session
+            .questions, answers: session.answers)
     }
 
     func finishInterview(finishInterviewRequest: FinishInterviewRequest) async throws -> InterviewFeedback {

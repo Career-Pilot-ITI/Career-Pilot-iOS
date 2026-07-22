@@ -1,7 +1,7 @@
 import Foundation
 
 protocol ResumeInterviewUseCaseProtocol {
-    func execute(sessionId: String) async throws -> InterviewSession
+    func execute(session: InterviewSession) async throws -> InterviewSession
 }
 
 final class ResumeInterviewUseCase: ResumeInterviewUseCaseProtocol {
@@ -11,9 +11,9 @@ final class ResumeInterviewUseCase: ResumeInterviewUseCaseProtocol {
         self.repository = repository
     }
 
-    func execute(sessionId: String) async throws -> InterviewSession {
+    func execute(session: InterviewSession) async throws -> InterviewSession {
         do {
-            return try await repository.resumeInterview(sessionId: sessionId)
+            return try await repository.resumeInterview(session: session)
         } catch {
             throw InterviewError.map(error)
         }

@@ -1,6 +1,5 @@
 import Foundation
 
-
 struct InterviewSession: Equatable, Sendable {
     let id: String
     var status: InterviewSessionStatus
