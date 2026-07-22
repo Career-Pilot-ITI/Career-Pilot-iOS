@@ -15,9 +15,9 @@ final class InterviewRepositoryImp: InterviewRepository {
         self.remoteDataSource = remoteDataSource
     }
 
-    func startInterview(startInterviewSessionRequest: StartInterviewSessionRequest) async throws -> InterviewSession {
-        let sessionDTO = try await remoteDataSource.startInterview(startInterviewSessionRequest: startInterviewSessionRequest)
-        return sessionDTO.toDomain(configuration: startInterviewSessionRequest.configuration)
+    func startInterview(startInterviewSessionRequest: StartInterviewSessionRequest) async throws -> NewSession {
+        let newSessionDTO = try await remoteDataSource.startInterview(startInterviewSessionRequest: startInterviewSessionRequest)
+        return newSessionDTO.toDomain()
     }
 
     func submitAnswer(submitAnswerRequest: SubmitAnswerRequest) async throws -> SubmitAnswerOutcome {
@@ -29,15 +29,14 @@ final class InterviewRepositoryImp: InterviewRepository {
             return .nextQuestion(nextQuestionDTO.toDomain())
         }
 
-        let finishRequest = FinishInterviewRequest(sessionID: submitAnswerRequest.session.id)
+        let finishRequest = FinishInterviewRequest(sessionID: submitAnswerRequest.sessionId)
         let feedbackDTO = try await remoteDataSource.finishInterview(finishInterviewRequest: finishRequest)
         return .interviewCompleted(feedbackDTO.toDomain())
     }
 
     func resumeInterview(session: InterviewSession) async throws -> InterviewSession {
         let sessionStateDTO = try await remoteDataSource.resumeInterview(sessionId: session.id)
-        return sessionStateDTO.toDomain(configuration: session.configuration, questions: session
-            .questions, answers: session.answers)
+        return sessionStateDTO.toDomain(configuration: session.configuration)
     }
 
     func finishInterview(finishInterviewRequest: FinishInterviewRequest) async throws -> InterviewFeedback {

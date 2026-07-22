@@ -111,7 +111,6 @@
 		D92853EA301004B800F8CAC2 /* InterviewRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853E9301004B800F8CAC2 /* InterviewRepositoryImp.swift */; };
 		D92853EF301006E900F8CAC2 /* FeedbackReportDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853EE301006E900F8CAC2 /* FeedbackReportDTO.swift */; };
 		D92853F230100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853F130100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift */; };
-		D92853FF301017E100F8CAC2 /* NewSessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853FC301017E100F8CAC2 /* NewSessionDTO.swift */; };
 		D9285400301017E100F8CAC2 /* SubmitAnswerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853FD301017E100F8CAC2 /* SubmitAnswerResponseDTO.swift */; };
 		D92854073010188400F8CAC2 /* FeedbackReportDTOMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92854033010188300F8CAC2 /* FeedbackReportDTOMapping.swift */; };
 		D92854083010188400F8CAC2 /* InterviewQuestionMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92854043010188300F8CAC2 /* InterviewQuestionMapping.swift */; };
@@ -160,10 +159,14 @@
 		D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */; };
 		D999D5A63010E71F00CF606B /* SessionStateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5A53010E71F00CF606B /* SessionStateDTO.swift */; };
 		D999D5A83010ED0E00CF606B /* SessionStateDTOMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */; };
+		D999D5AD301130B300CF606B /* ApiRequestes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5AC301130B300CF606B /* ApiRequestes.swift */; };
 		D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */; };
 		D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */; };
 		D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28583300A6CC300ABB5BD /* UserDataRepoImp.swift */; };
 		D9A28588300A82CE00ABB5BD /* UserDataRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */; };
+		D9B4B1B630117ED4004909ED /* NewSessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4B1B530117ED3004909ED /* NewSessionDTO.swift */; };
+		D9B4B1B83011810E004909ED /* NewSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4B1B73011810E004909ED /* NewSession.swift */; };
+		D9B4B1BA301181FE004909ED /* NewSessionDTOMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4B1B9301181FE004909ED /* NewSessionDTOMapping.swift */; };
 		D9B614E5300CF39E00552F85 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = D9B614E4300CF39E00552F85 /* Swinject */; };
 		D9B614E8300CF49400552F85 /* DIContainer+Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614E7300CF49400552F85 /* DIContainer+Repositories.swift */; };
 		D9B614EA300CF4A100552F85 /* DIContainer+UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614E9300CF4A100552F85 /* DIContainer+UseCases.swift */; };
@@ -311,7 +314,6 @@
 		D92853E9301004B800F8CAC2 /* InterviewRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewRepositoryImp.swift; sourceTree = "<group>"; };
 		D92853EE301006E900F8CAC2 /* FeedbackReportDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackReportDTO.swift; sourceTree = "<group>"; };
 		D92853F130100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewSessionRemoteDataSource.swift; sourceTree = "<group>"; };
-		D92853FC301017E100F8CAC2 /* NewSessionDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSessionDTO.swift; sourceTree = "<group>"; };
 		D92853FD301017E100F8CAC2 /* SubmitAnswerResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitAnswerResponseDTO.swift; sourceTree = "<group>"; };
 		D92854033010188300F8CAC2 /* FeedbackReportDTOMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackReportDTOMapping.swift; sourceTree = "<group>"; };
 		D92854043010188300F8CAC2 /* InterviewQuestionMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewQuestionMapping.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 		D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingErrorState.swift; sourceTree = "<group>"; };
 		D999D5A53010E71F00CF606B /* SessionStateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateDTO.swift; sourceTree = "<group>"; };
 		D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateDTOMapping.swift; sourceTree = "<group>"; };
+		D999D5AC301130B300CF606B /* ApiRequestes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestes.swift; sourceTree = "<group>"; };
 		D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UploadCvUseCase.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UploadCvUseCase.swift"; sourceTree = SOURCE_ROOT; };
 		D9A2857C300A5E0300ABB5BD /* UploadCvRequest+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UploadCvRequest+Response.swift"; sourceTree = "<group>"; };
 		D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataEndPoint.swift; path = "Career-Pilot-iOS/Core/Network/EndPoint/UserData/UserDataEndPoint.swift"; sourceTree = SOURCE_ROOT; };
@@ -370,6 +373,9 @@
 		D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRemoteDataSource.swift; sourceTree = "<group>"; };
 		D9A2858A300A834A00ABB5BD /* CvUplodingResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvUplodingResponseDTO.swift; sourceTree = "<group>"; };
 		D9A2858D300A859E00ABB5BD /* CvUplodingApiResponse+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CvUplodingApiResponse+Mapping.swift"; sourceTree = "<group>"; };
+		D9B4B1B530117ED3004909ED /* NewSessionDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSessionDTO.swift; sourceTree = "<group>"; };
+		D9B4B1B73011810E004909ED /* NewSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSession.swift; sourceTree = "<group>"; };
+		D9B4B1B9301181FE004909ED /* NewSessionDTOMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSessionDTOMapping.swift; sourceTree = "<group>"; };
 		D9B614E7300CF49400552F85 /* DIContainer+Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+Repositories.swift"; sourceTree = "<group>"; };
 		D9B614E9300CF4A100552F85 /* DIContainer+UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+UseCases.swift"; sourceTree = "<group>"; };
 		D9B614EB300CF50000552F85 /* DIContainer+ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+ViewModels.swift"; sourceTree = "<group>"; };
@@ -844,7 +850,7 @@
 		D92853EB3010050600F8CAC2 /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
-				D92853FC301017E100F8CAC2 /* NewSessionDTO.swift */,
+				D9B4B1B530117ED3004909ED /* NewSessionDTO.swift */,
 				D92853FD301017E100F8CAC2 /* SubmitAnswerResponseDTO.swift */,
 				D92853EE301006E900F8CAC2 /* FeedbackReportDTO.swift */,
 				D999D5A53010E71F00CF606B /* SessionStateDTO.swift */,
@@ -859,6 +865,7 @@
 				D92854033010188300F8CAC2 /* FeedbackReportDTOMapping.swift */,
 				D92854043010188300F8CAC2 /* InterviewQuestionMapping.swift */,
 				D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */,
+				D9B4B1B9301181FE004909ED /* NewSessionDTOMapping.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -1028,6 +1035,7 @@
 		D95C3B91300E48F30042785F /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				D999D5AB301130A000CF606B /* Requestes */,
 				D95C3BBF300E4ACF0042785F /* StartInterviewUseCase.swift */,
 				D95C3BBE300E4ACF0042785F /* SubmitAnswerUseCase.swift */,
 				D95C3B9F300E49D20042785F /* CancelInterviewUseCase.swift */,
@@ -1042,6 +1050,7 @@
 			children = (
 				D95C3BA9300E4A0E0042785F /* Errors */,
 				D95C3BB2300E4A4C0042785F /* InterviewSession.swift */,
+				D9B4B1B73011810E004909ED /* NewSession.swift */,
 				D95C3BA5300E49F30042785F /* InterviewConfiguration.swift */,
 				D95C3BB4300E4A520042785F /* InterviewSessionStatus.swift */,
 				D95C3BAA300E4A240042785F /* InterviewFeedback.swift */,
@@ -1134,6 +1143,14 @@
 				D98A797C300903BF00DFDC6B /* UploadeCvErrors.swift */,
 			);
 			path = UploadeCV;
+			sourceTree = "<group>";
+		};
+		D999D5AB301130A000CF606B /* Requestes */ = {
+			isa = PBXGroup;
+			children = (
+				D999D5AC301130B300CF606B /* ApiRequestes.swift */,
+			);
+			path = Requestes;
 			sourceTree = "<group>";
 		};
 		D9A28582300A6CAD00ABB5BD /* RepoImp */ = {
@@ -1671,7 +1688,6 @@
 				41D69D18300A6D0100294D94 /* AuthTokens.swift in Sources */,
 				41C6A23E30083FDB0035EFBF /* PhoneEntryView.swift in Sources */,
 				D9868B41300FD22600B84CD6 /* SpeechRecognitionService.swift in Sources */,
-				D92853FF301017E100F8CAC2 /* NewSessionDTO.swift in Sources */,
 				D95C3BBC300E4AC60042785F /* SpeechPlaybackService.swift in Sources */,
 				CEE62A95300929830071F076 /* ProgressCard.swift in Sources */,
 				61D8F303300780C50088F170 /* FreeSessionBanner.swift in Sources */,
@@ -1682,6 +1698,7 @@
 				61D8F2F6300760680088F170 /* ProfileForm.swift in Sources */,
 				D98A79793008EB9200DFDC6B /* ChoseTrackViewInfo.swift in Sources */,
 				D935DFCB30078012009DF855 /* CustomButton.swift in Sources */,
+				D9B4B1BA301181FE004909ED /* NewSessionDTOMapping.swift in Sources */,
 				D92853F230100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift in Sources */,
 				616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */,
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
@@ -1769,6 +1786,7 @@
 				41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */,
 				D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */,
 				D95C3BCB300EA1800042785F /* WaitingForAnswerView.swift in Sources */,
+				D9B4B1B630117ED4004909ED /* NewSessionDTO.swift in Sources */,
 				D9B614FD300D1D5700552F85 /* OnBordingRemoteDataSource.swift in Sources */,
 				D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */,
 				616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */,
@@ -1800,6 +1818,7 @@
 				D935DFCF300789EF009DF855 /* CvUploadingView.swift in Sources */,
 				CE12F3C830094FB50083D66D /* OTPBoxView.swift in Sources */,
 				CE12F3C930094FB50083D66D /* OTPCodeView.swift in Sources */,
+				D9B4B1B83011810E004909ED /* NewSession.swift in Sources */,
 				D95C3BB9300E4ABE0042785F /* ResumeInterviewUseCase.swift in Sources */,
 				CE8AFF1D300718670064CC6C /* Round.swift in Sources */,
 				D935DFFC3008045A009DF855 /* OnBordingViewModel.swift in Sources */,
@@ -1809,6 +1828,7 @@
 				D9B614EA300CF4A100552F85 /* DIContainer+UseCases.swift in Sources */,
 				616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */,
 				D920C24D300EFEC800AB7317 /* SessionHeader.swift in Sources */,
+				D999D5AD301130B300CF606B /* ApiRequestes.swift in Sources */,
 				6182BB4F300C519B001157B8 /* ProfilePhoto.swift in Sources */,
 				41D69D50300B4A2200294D94 /* LoadSessionUseCase.swift in Sources */,
 				D9285400301017E100F8CAC2 /* SubmitAnswerResponseDTO.swift in Sources */,

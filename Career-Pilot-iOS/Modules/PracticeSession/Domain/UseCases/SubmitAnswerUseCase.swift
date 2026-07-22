@@ -1,23 +1,7 @@
 import Foundation
 
-struct SubmitAnswerRequest: Encodable {
-    let session: InterviewSession
-    var transcript: String?
-    let sessionElapsedSeconds: Int?
-    let durationMs: Int
-    let audioUrlAsString: String
-    let audioUrl: URL
-    let words: [WordTiming]?
-}
-
-struct WordTiming: Encodable {
-    let word: String
-    let startMs: Int
-    let endMs: Int
-}
-
 protocol SubmitAnswerUseCaseProtocol {
-    func execute(submitAnsRequest: SubmitAnswerRequest) async throws -> InterviewSession
+    func execute(session: InterviewSession, submitAnsRequest: SubmitAnswerRequest) async throws -> InterviewSession
 }
 
 
@@ -34,18 +18,18 @@ actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
         self.speechRecognitionService = speechRecognitionService
     }
     
-    func execute(submitAnsRequest: SubmitAnswerRequest) async throws -> InterviewSession {
+    func execute(session: InterviewSession, submitAnsRequest: SubmitAnswerRequest) async throws -> InterviewSession {
         
-        guard let question = submitAnsRequest.session.currentQuestion else {
-            throw InterviewError.sessionNotFound
-        }
+//        guard let question = session. else {
+//            throw InterviewError.sessionNotFound
+//        }
         
-        guard validationService.canSubmitAnswer(session: submitAnsRequest.session) else {
-            throw InterviewError.invalidState(current: submitAnsRequest.session.status, attempted: "submitAnswer")
+        guard validationService.canSubmitAnswer(session: session) else {
+            throw InterviewError.invalidState(current: session.status, attempted: "submitAnswer")
         }
         
         guard !isSubmitting else {
-            throw InterviewError.invalidState(current: submitAnsRequest.session.status, attempted: "submitAnswer (already in flight)")
+            throw InterviewError.invalidState(current: session.status, attempted: "submitAnswer (already in flight)")
         }
         
         
@@ -64,9 +48,9 @@ actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
             throw InterviewError.map(error)
         }
         
-        var updatedSession = submitAnsRequest.session
+        var updatedSession = session
         let answer = InterviewAnswer(
-            questionId: question.id,
+            questionId: submitAnsRequest.questionId,
             audioURL: submitAnsRequest.audioUrl,
             duration: TimeInterval(submitAnsRequest.durationMs * 60),
             submittedAt: Date()

@@ -9,19 +9,16 @@ import Foundation
 
 extension SessionStateDTO {
 
-    func toDomain(
-        configuration: InterviewConfiguration,
-        questions: [InterviewQuestion],
-        answers: [InterviewAnswer]
-    ) -> InterviewSession {
+    func toDomain(configuration: InterviewConfiguration) -> InterviewSession {
 
         InterviewSession(
             id: String(sessionId),
-            status: status.toDomain(),
+            status: status.mapStatusToDomain(),
             currentQuestionIndex: answeredCount,
-            questions: questions,
-            answers: answers,
+            questions: [],
+            answers: [],
             configuration: configuration,
+            currentQuestion: currentQuestion?.toDomain() ?? InterviewQuestion(id: "", text: "", order: 3),
             feedback: nil
         )
     }
@@ -29,7 +26,7 @@ extension SessionStateDTO {
 
 extension String {
 
-    func toDomain() -> InterviewSessionStatus {
+    func mapStatusToDomain() -> InterviewSessionStatus {
         switch self.lowercased() {
         case "pending":
             return .paused

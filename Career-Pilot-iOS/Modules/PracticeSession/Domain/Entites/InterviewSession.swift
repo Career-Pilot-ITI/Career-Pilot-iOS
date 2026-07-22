@@ -1,15 +1,16 @@
 import Foundation
 
-struct InterviewSession: Equatable, Sendable, Encodable {
-    let id: String
+struct InterviewSession: Equatable, Sendable {
+    var id: String
     var status: InterviewSessionStatus
     var currentQuestionIndex: Int
     var questions: [InterviewQuestion]
     var answers: [InterviewAnswer]
-    let configuration: InterviewConfiguration
+    var configuration: InterviewConfiguration
+    var currentQuestion: InterviewQuestion
     var feedback: InterviewFeedback?
-
-    var currentQuestion: InterviewQuestion? {
+    
+    var currentQuestionFromStoredArrat: InterviewQuestion? {
         guard questions.indices.contains(currentQuestionIndex) else { return nil }
         return questions[currentQuestionIndex]
     }
@@ -17,7 +18,7 @@ struct InterviewSession: Equatable, Sendable, Encodable {
 
 
 //MARK: InterviewAnswer
-enum SubmitAnswerOutcome: Equatable, Sendable, Encodable {
+enum SubmitAnswerOutcome: Equatable, Sendable {
     case nextQuestion(InterviewQuestion)
     case interviewCompleted(InterviewFeedback)
 }
@@ -27,7 +28,7 @@ enum SubmitAnswerOutcome: Equatable, Sendable, Encodable {
 //    case remoteURL(URL)
 //}
 
-struct InterviewAnswer: Equatable, Sendable , Encodable{
+struct InterviewAnswer: Equatable, Sendable{
     let questionId: String
     let audioURL: URL
     let duration: TimeInterval
@@ -36,7 +37,7 @@ struct InterviewAnswer: Equatable, Sendable , Encodable{
 
 
 //MARK: InterviewQuestion
-struct InterviewQuestion: Equatable, Identifiable, Sendable , Encodable{
+struct InterviewQuestion: Equatable, Identifiable, Sendable{
     let id: String
     let text: String
     let order: Int

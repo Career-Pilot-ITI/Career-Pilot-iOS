@@ -20,11 +20,11 @@ final class InterviewValidationService: InterviewValidationServicing, Sendable {
     }
 
     func hasReachedQuestionLimit(session: InterviewSession) -> Bool {
-        session.currentQuestionIndex >= session.configuration.maxQuestions
+        session.currentQuestionIndex >= session.configuration.maxQuestions 
     }
 
     func hasInterviewExpired(session: InterviewSession, elapsedTime: TimeInterval) -> Bool {
-        elapsedTime >= session.configuration.maxInterviewDuration
+        elapsedTime >= session.configuration.maxInterviewDuration 
     }
 
     func canResume(session: InterviewSession) -> Bool {

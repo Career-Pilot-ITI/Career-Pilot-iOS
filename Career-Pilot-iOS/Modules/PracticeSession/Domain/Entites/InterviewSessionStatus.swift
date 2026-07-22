@@ -1,6 +1,6 @@
 import Foundation
 
-enum InterviewSessionStatus: String, Equatable, Sendable, Encodable {
+enum InterviewSessionStatus: String, Equatable, Sendable {
     case notStarted
     case aiAsking
     case waitingForAnswer

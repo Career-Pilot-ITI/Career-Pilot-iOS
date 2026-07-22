@@ -1,8 +1,11 @@
 import Foundation
 
-struct FinishInterviewRequest{
+
+//MARK: FinishInterviewRequestDTO
+struct FinishInterviewRequestDTO{
     let sessionID: String
 }
+
 
 protocol FinishInterviewUseCaseProtocol {
     func execute(finishInterviewRequest: FinishInterviewRequest) async throws -> InterviewFeedback

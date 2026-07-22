@@ -35,7 +35,7 @@ final class PracticeSessionViewModel: ObservableObject {
     private var elapsedSessionTimer: Timer?
     
     var currentQuestionText: String {
-        session?.currentQuestion?.text ?? ""
+        session?.currentQuestion.text ?? ""
     }
     
     var currentQuestionNumber: Int {
@@ -127,13 +127,29 @@ final class PracticeSessionViewModel: ObservableObject {
         
         screenState = .loading
         do {
-            let startInterviewSessionRequest = StartInterviewSessionRequest(trackId: 55555555, questionCount: configuration.maxQuestions, durationMinutes: Int(configuration.maxInterviewDuration), configuration: configuration)
+            let startInterviewSessionRequest = StartInterviewSessionRequest(trackId: 555555, questionCount: configuration.maxQuestions, durationMinutes: Int(configuration.maxInterviewDuration))
             let newSession = try await startUseCase.execute(startInterviewSessionRequest: startInterviewSessionRequest)
-            session = newSession
+            fillCurrentSesstionWithNewData(newSession: newSession)
             beginAITurn(question: newSession.currentQuestion)
         } catch {
             screenState = .error(InterviewError.map(error))
         }
+    }
+    
+    private func fillCurrentSesstionWithNewData(newSession: NewSession){
+        
+        session = InterviewSession(id: String(newSession.sessionId), status: .aiAsking, currentQuestionIndex: 0, questions: [newSession.currentQuestion], answers: [], configuration: configuration, currentQuestion: newSession.currentQuestion)
+        
+        guard var tempSession = session else{
+            return
+        }
+        
+        print("newSession: \(newSession)")
+        tempSession.currentQuestion = newSession.currentQuestion
+        tempSession.id = String(newSession.sessionId)
+        tempSession.configuration = configuration
+        
+        
     }
     
     //MARK: Begin With AI
@@ -253,8 +269,10 @@ final class PracticeSessionViewModel: ObservableObject {
                     return
                 }
                 
-                let submitRequest = SubmitAnswerRequest(session: tempSession, transcript: nil, sessionElapsedSeconds: Int(elapsedSessionTime / 60), durationMs: Int(elapsedRecordingTime / 60) , audioUrlAsString: audioURL.fileURL.absoluteString, audioUrl: audioURL.fileURL, words: nil)
-                let updatedSession = try await submitUseCase.execute(submitAnsRequest: submitRequest)
+                let submitRequest = SubmitAnswerRequest(sessionId: tempSession.id, questionId: tempSession.currentQuestion.id, transcript: nil, sessionElapsedSeconds: Int(elapsedSessionTime / 60), durationMs: Int(elapsedRecordingTime / 60) , audioUrlAsString: audioURL.fileURL.absoluteString, audioUrl: audioURL.fileURL, words: nil)
+                
+
+                let updatedSession = try await submitUseCase.execute(session: tempSession, submitAnsRequest: submitRequest)
                 session = updatedSession
                 if updatedSession.status == .completed {
                     print("Session Done")

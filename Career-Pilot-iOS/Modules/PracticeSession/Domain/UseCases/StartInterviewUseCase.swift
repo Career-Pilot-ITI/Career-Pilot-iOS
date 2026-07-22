@@ -1,14 +1,8 @@
 import Foundation
 
-struct StartInterviewSessionRequest: Encodable {
-    let trackId: Int
-    let questionCount: Int
-    let durationMinutes: Int
-    let configuration: InterviewConfiguration
-}
 
 protocol StartInterviewUseCaseProtocol {
-    func execute(startInterviewSessionRequest: StartInterviewSessionRequest) async throws -> InterviewSession
+    func execute(startInterviewSessionRequest: StartInterviewSessionRequest) async throws -> NewSession
 }
 
 final class StartInterviewUseCase: StartInterviewUseCaseProtocol {
@@ -18,7 +12,7 @@ final class StartInterviewUseCase: StartInterviewUseCaseProtocol {
         self.repository = repository
     }
 
-    func execute(startInterviewSessionRequest: StartInterviewSessionRequest) async throws -> InterviewSession {
+    func execute(startInterviewSessionRequest: StartInterviewSessionRequest) async throws -> NewSession {
         do {
             return try await repository.startInterview(startInterviewSessionRequest: startInterviewSessionRequest)
         } catch {

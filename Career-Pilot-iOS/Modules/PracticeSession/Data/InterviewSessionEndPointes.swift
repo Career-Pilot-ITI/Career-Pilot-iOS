@@ -22,7 +22,7 @@ enum InterviewSessionEndPointes: APIEndpoint {
         case .startSession:
             return "/interviews/sessions"
         case .submitAnswer(let submitRequest):
-            return "/interviews/sessions/\(submitRequest.session.id)/answer"
+            return "/interviews/sessions/\(submitRequest.sessionId)/answer"
         case .resumeSession(let sessionId):
             return "/interviews/sessions/\(sessionId)/state"
         case .getFeedback(let sessionId):

@@ -9,6 +9,8 @@ import Foundation
 
 final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
 
+    
+
     private var askedCount = 0
 
     private let simulatedNetworkDelay: UInt64 = 500_000_000 // 0.5s, in nanoseconds
@@ -19,7 +21,7 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
         "Tell me about a project that didn't go as planned. What did you learn?"
     ]
 
-    func startInterview(startInterviewSessionRequest: StartInterviewSessionRequest) async throws -> InterviewSession {
+    func startInterview(startInterviewSessionRequest: StartInterviewSessionRequest) async throws -> NewSession {
         try await simulateDelay()
 
         let firstQuestion = InterviewQuestion(
@@ -27,16 +29,8 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
             text: stubQuestions[0],
             order: 0
         )
+            return NewSession(sessionId: 1, trackName: "Ai", targetDurationMinutes: 10, maxQuestions: 3, startedAt: Date(), currentQuestion: firstQuestion)
 
-        return InterviewSession(
-            id: UUID().uuidString,
-            status: .aiAsking,
-            currentQuestionIndex: 0,
-            questions: [firstQuestion],
-            answers: [],
-            configuration: startInterviewSessionRequest.configuration,
-            feedback: nil
-        )
     }
 
     func resumeInterview(session: InterviewSession) async throws -> InterviewSession {
@@ -57,7 +51,7 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
                 maxInterviewDuration: 1800,
                 silenceTimeout: 5,
                 trackID: 1
-            ),
+            ), currentQuestion: question,
             feedback: nil
         )
     }
