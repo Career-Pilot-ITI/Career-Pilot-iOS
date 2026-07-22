@@ -52,6 +52,11 @@
 		41D69D63300B553F00294D94 /* Career_Pilot_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D60300B54DE00294D94 /* Career_Pilot_iOS.xcdatamodeld */; };
 		6117C02F300F9FD700CABEC6 /* StringsExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6117C02E300F9FD700CABEC6 /* StringsExtenstion.swift */; };
 		6117C031300FBCF900CABEC6 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6117C030300FBCF900CABEC6 /* Validation.swift */; };
+		61642720300A68330090F674 /* ProfileSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6164271F300A68330090F674 /* ProfileSettingsViewModel.swift */; };
+		61642723300A68800090F674 /* GetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61642722300A68800090F674 /* GetUserData.swift */; };
+		61642727300A68DE0090F674 /* ProfileProtocolRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61642726300A68DE0090F674 /* ProfileProtocolRepo.swift */; };
+		6164272A300A69250090F674 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61642729300A69250090F674 /* User.swift */; };
+		6164272C300A71DF0090F674 /* UpdateUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6164272B300A71DF0090F674 /* UpdateUserData.swift */; };
 		6165A1E1300B0F800085E3FD /* CoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1E0300B0F800085E3FD /* CoinView.swift */; };
 		6165A1E3300B10C90085E3FD /* CoinTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1E2300B10C90085E3FD /* CoinTopView.swift */; };
 		6165A1E5300B11F60085E3FD /* CoinsTypeVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1E4300B11F60085E3FD /* CoinsTypeVIew.swift */; };
@@ -61,25 +66,20 @@
 		6165A1F0300B42BB0085E3FD /* CoinPackCheckOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1EF300B42BB0085E3FD /* CoinPackCheckOutView.swift */; };
 		6165A1F2300B48980085E3FD /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165A1F1300B48980085E3FD /* PaymentMethod.swift */; };
 		6169A7B230103051001FDC39 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169A7B130103051001FDC39 /* UserError.swift */; };
-		6162765230098A4600AB14EB /* CustomePhoneProfileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162765130098A4600AB14EB /* CustomePhoneProfileTextField.swift */; };
-		61627654300997C800AB14EB /* ExperinceLevelSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61627653300997C800AB14EB /* ExperinceLevelSelector.swift */; };
-		616276563009991600AB14EB /* TrackSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616276553009991600AB14EB /* TrackSelector.swift */; };
-		6162765A30099C6200AB14EB /* CvResumeSettingsProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162765930099C6200AB14EB /* CvResumeSettingsProfile.swift */; };
-		616403673008F9EF00F677AF /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616403663008F9EF00F677AF /* ProfileScreen.swift */; };
-		616403693008FB8E00F677AF /* SettingsProfileTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616403683008FB8E00F677AF /* SettingsProfileTopView.swift */; };
-		6164036B3009248B00F677AF /* ProfileFormSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6164036A3009248B00F677AF /* ProfileFormSettings.swift */; };
-		6164271A300A59590090F674 /* SkillsDetectedSettingsProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61642719300A59590090F674 /* SkillsDetectedSettingsProfile.swift */; };
-		6164271E300A621B0090F674 /* UserInforrmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6164271D300A621B0090F674 /* UserInforrmation.swift */; };
-		61642720300A68330090F674 /* ProfileSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6164271F300A68330090F674 /* ProfileSettingsViewModel.swift */; };
-		61642723300A68800090F674 /* GetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61642722300A68800090F674 /* GetUserData.swift */; };
-		61642727300A68DE0090F674 /* ProfileProtocolRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61642726300A68DE0090F674 /* ProfileProtocolRepo.swift */; };
-		6164272A300A69250090F674 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61642729300A69250090F674 /* User.swift */; };
-		6164272C300A71DF0090F674 /* UpdateUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6164272B300A71DF0090F674 /* UpdateUserData.swift */; };
-		616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0330080EEC007FC4AF /* SettingsVIew.swift */; };
-		616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0630080FDE007FC4AF /* ProfileCard.swift */; };
-		616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0830081C62007FC4AF /* SettingsCard.swift */; };
-		616CAD0C30081EF4007FC4AF /* AcoountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0B30081EF4007FC4AF /* AcoountSettingsView.swift */; };
-		616CAD0E30082441007FC4AF /* SupportAndLeagalSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616CAD0D30082441007FC4AF /* SupportAndLeagalSettingsView.swift */; };
+		6169A7C6301044E5001FDC39 /* CustomePhoneProfileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169A7B5301044E4001FDC39 /* CustomePhoneProfileTextField.swift */; };
+		6169A7C7301044E5001FDC39 /* ExperinceLevelSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169A7B6301044E4001FDC39 /* ExperinceLevelSelector.swift */; };
+		6169A7C8301044E5001FDC39 /* TrackSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169A7B7301044E4001FDC39 /* TrackSelector.swift */; };
+		6169A7C9301044E5001FDC39 /* UserInforrmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169A7B9301044E4001FDC39 /* UserInforrmation.swift */; };
+		6169A7CA301044E5001FDC39 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169A7BB301044E4001FDC39 /* ProfileScreen.swift */; };
+		6169A7CB301044E5001FDC39 /* CvResumeSettingsProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169A7BC301044E4001FDC39 /* CvResumeSettingsProfile.swift */; };
+		6169A7CC301044E5001FDC39 /* SettingsProfileTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169A7BD301044E4001FDC39 /* SettingsProfileTopView.swift */; };
+		6169A7CD301044E5001FDC39 /* SkillsDetectedSettingsProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169A7BE301044E4001FDC39 /* SkillsDetectedSettingsProfile.swift */; };
+		6169A7CE301044E5001FDC39 /* ProfileFormSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169A7BF301044E4001FDC39 /* ProfileFormSettings.swift */; };
+		6169A7CF301044E5001FDC39 /* SettingsVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169A7C1301044E5001FDC39 /* SettingsVIew.swift */; };
+		6169A7D0301044E5001FDC39 /* AcoountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169A7C2301044E5001FDC39 /* AcoountSettingsView.swift */; };
+		6169A7D1301044E5001FDC39 /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169A7C3301044E5001FDC39 /* ProfileCard.swift */; };
+		6169A7D2301044E5001FDC39 /* SettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169A7C4301044E5001FDC39 /* SettingsCard.swift */; };
+		6169A7D3301044E5001FDC39 /* SupportAndLeagalSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169A7C5301044E5001FDC39 /* SupportAndLeagalSettingsView.swift */; };
 		617DF223300DF5F80046297B /* SubscribtionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DF222300DF5F80046297B /* SubscribtionView.swift */; };
 		6182BB4F300C519B001157B8 /* ProfilePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6182BB4E300C519B001157B8 /* ProfilePhoto.swift */; };
 		6182BB53300C67BB001157B8 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6182BB52300C67BB001157B8 /* ImagePicker.swift */; };
@@ -249,6 +249,11 @@
 		41D69D61300B54DE00294D94 /* Career_Pilot_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Career_Pilot_iOS.xcdatamodel; sourceTree = "<group>"; };
 		6117C02E300F9FD700CABEC6 /* StringsExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsExtenstion.swift; sourceTree = "<group>"; };
 		6117C030300FBCF900CABEC6 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		6164271F300A68330090F674 /* ProfileSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewModel.swift; sourceTree = "<group>"; };
+		61642722300A68800090F674 /* GetUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserData.swift; sourceTree = "<group>"; };
+		61642726300A68DE0090F674 /* ProfileProtocolRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProtocolRepo.swift; sourceTree = "<group>"; };
+		61642729300A69250090F674 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6164272B300A71DF0090F674 /* UpdateUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserData.swift; sourceTree = "<group>"; };
 		6165A1E0300B0F800085E3FD /* CoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinView.swift; sourceTree = "<group>"; };
 		6165A1E2300B10C90085E3FD /* CoinTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinTopView.swift; sourceTree = "<group>"; };
 		6165A1E4300B11F60085E3FD /* CoinsTypeVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsTypeVIew.swift; sourceTree = "<group>"; };
@@ -258,25 +263,20 @@
 		6165A1EF300B42BB0085E3FD /* CoinPackCheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPackCheckOutView.swift; sourceTree = "<group>"; };
 		6165A1F1300B48980085E3FD /* PaymentMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		6169A7B130103051001FDC39 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
-		6162765130098A4600AB14EB /* CustomePhoneProfileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomePhoneProfileTextField.swift; sourceTree = "<group>"; };
-		61627653300997C800AB14EB /* ExperinceLevelSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperinceLevelSelector.swift; sourceTree = "<group>"; };
-		616276553009991600AB14EB /* TrackSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSelector.swift; sourceTree = "<group>"; };
-		6162765930099C6200AB14EB /* CvResumeSettingsProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvResumeSettingsProfile.swift; sourceTree = "<group>"; };
-		616403663008F9EF00F677AF /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
-		616403683008FB8E00F677AF /* SettingsProfileTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProfileTopView.swift; sourceTree = "<group>"; };
-		6164036A3009248B00F677AF /* ProfileFormSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFormSettings.swift; sourceTree = "<group>"; };
-		61642719300A59590090F674 /* SkillsDetectedSettingsProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsDetectedSettingsProfile.swift; sourceTree = "<group>"; };
-		6164271D300A621B0090F674 /* UserInforrmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInforrmation.swift; sourceTree = "<group>"; };
-		6164271F300A68330090F674 /* ProfileSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewModel.swift; sourceTree = "<group>"; };
-		61642722300A68800090F674 /* GetUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserData.swift; sourceTree = "<group>"; };
-		61642726300A68DE0090F674 /* ProfileProtocolRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProtocolRepo.swift; sourceTree = "<group>"; };
-		61642729300A69250090F674 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		6164272B300A71DF0090F674 /* UpdateUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserData.swift; sourceTree = "<group>"; };
-		616CAD0330080EEC007FC4AF /* SettingsVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVIew.swift; sourceTree = "<group>"; };
-		616CAD0630080FDE007FC4AF /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
-		616CAD0830081C62007FC4AF /* SettingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCard.swift; sourceTree = "<group>"; };
-		616CAD0B30081EF4007FC4AF /* AcoountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcoountSettingsView.swift; sourceTree = "<group>"; };
-		616CAD0D30082441007FC4AF /* SupportAndLeagalSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportAndLeagalSettingsView.swift; sourceTree = "<group>"; };
+		6169A7B5301044E4001FDC39 /* CustomePhoneProfileTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomePhoneProfileTextField.swift; sourceTree = "<group>"; };
+		6169A7B6301044E4001FDC39 /* ExperinceLevelSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperinceLevelSelector.swift; sourceTree = "<group>"; };
+		6169A7B7301044E4001FDC39 /* TrackSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackSelector.swift; sourceTree = "<group>"; };
+		6169A7B9301044E4001FDC39 /* UserInforrmation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInforrmation.swift; sourceTree = "<group>"; };
+		6169A7BB301044E4001FDC39 /* ProfileScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		6169A7BC301044E4001FDC39 /* CvResumeSettingsProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvResumeSettingsProfile.swift; sourceTree = "<group>"; };
+		6169A7BD301044E4001FDC39 /* SettingsProfileTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsProfileTopView.swift; sourceTree = "<group>"; };
+		6169A7BE301044E4001FDC39 /* SkillsDetectedSettingsProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillsDetectedSettingsProfile.swift; sourceTree = "<group>"; };
+		6169A7BF301044E4001FDC39 /* ProfileFormSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileFormSettings.swift; sourceTree = "<group>"; };
+		6169A7C1301044E5001FDC39 /* SettingsVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVIew.swift; sourceTree = "<group>"; };
+		6169A7C2301044E5001FDC39 /* AcoountSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcoountSettingsView.swift; sourceTree = "<group>"; };
+		6169A7C3301044E5001FDC39 /* ProfileCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
+		6169A7C4301044E5001FDC39 /* SettingsCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCard.swift; sourceTree = "<group>"; };
+		6169A7C5301044E5001FDC39 /* SupportAndLeagalSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportAndLeagalSettingsView.swift; sourceTree = "<group>"; };
 		617DF222300DF5F80046297B /* SubscribtionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribtionView.swift; sourceTree = "<group>"; };
 		6182BB4E300C519B001157B8 /* ProfilePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhoto.swift; sourceTree = "<group>"; };
 		6182BB52300C67BB001157B8 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -417,81 +417,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6162765730099C1C00AB14EB /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				61627653300997C800AB14EB /* ExperinceLevelSelector.swift */,
-				6162765130098A4600AB14EB /* CustomePhoneProfileTextField.swift */,
-				616276553009991600AB14EB /* TrackSelector.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		616403643008F9B300F677AF /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				616CAD0330080EEC007FC4AF /* SettingsVIew.swift */,
-				616CAD0630080FDE007FC4AF /* ProfileCard.swift */,
-				616CAD0830081C62007FC4AF /* SettingsCard.swift */,
-				616CAD0B30081EF4007FC4AF /* AcoountSettingsView.swift */,
-				616CAD0D30082441007FC4AF /* SupportAndLeagalSettingsView.swift */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		616403653008F9C600F677AF /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				6164271C300A5CA00090F674 /* MainView */,
-				6164271B300A5C7E0090F674 /* Model */,
-				6162765730099C1C00AB14EB /* Components */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		6164271B300A5C7E0090F674 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				6164271D300A621B0090F674 /* UserInforrmation.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		6164271C300A5CA00090F674 /* MainView */ = {
-			isa = PBXGroup;
-			children = (
-				616403663008F9EF00F677AF /* ProfileScreen.swift */,
-				616403683008FB8E00F677AF /* SettingsProfileTopView.swift */,
-				6164036A3009248B00F677AF /* ProfileFormSettings.swift */,
-				6162765930099C6200AB14EB /* CvResumeSettingsProfile.swift */,
-				61642719300A59590090F674 /* SkillsDetectedSettingsProfile.swift */,
-			);
-			path = MainView;
-			sourceTree = "<group>";
-		};
-		61642724300A68A60090F674 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		61642725300A68C80090F674 /* Repo */ = {
-			isa = PBXGroup;
-			children = (
-				61642726300A68DE0090F674 /* ProfileProtocolRepo.swift */,
-			);
-			path = Repo;
-			sourceTree = "<group>";
-		};
-		61642728300A69190090F674 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				61642729300A69250090F674 /* User.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		41A7F6FA300BBDA000FBE8EB /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -622,13 +547,27 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		6165A1DE300B0F3F0085E3FD /* Settings */ = {
+		61642724300A68A60090F674 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				616403653008F9C600F677AF /* Profile */,
-				616403643008F9B300F677AF /* Settings */,
 			);
-			path = Settings;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		61642725300A68C80090F674 /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+				61642726300A68DE0090F674 /* ProfileProtocolRepo.swift */,
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		61642728300A69190090F674 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				61642729300A69250090F674 /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		6165A1DF300B0F570085E3FD /* Coin */ = {
@@ -676,6 +615,58 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		6169A7B3301044E4001FDC39 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				6169A7B4301044E4001FDC39 /* Components */,
+				6169A7B8301044E4001FDC39 /* Model */,
+				6169A7BA301044E4001FDC39 /* MainView */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		6169A7B4301044E4001FDC39 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				6169A7B5301044E4001FDC39 /* CustomePhoneProfileTextField.swift */,
+				6169A7B6301044E4001FDC39 /* ExperinceLevelSelector.swift */,
+				6169A7B7301044E4001FDC39 /* TrackSelector.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		6169A7B8301044E4001FDC39 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6169A7B9301044E4001FDC39 /* UserInforrmation.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6169A7BA301044E4001FDC39 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				6169A7BB301044E4001FDC39 /* ProfileScreen.swift */,
+				6169A7BC301044E4001FDC39 /* CvResumeSettingsProfile.swift */,
+				6169A7BD301044E4001FDC39 /* SettingsProfileTopView.swift */,
+				6169A7BE301044E4001FDC39 /* SkillsDetectedSettingsProfile.swift */,
+				6169A7BF301044E4001FDC39 /* ProfileFormSettings.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		6169A7C0301044E5001FDC39 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6169A7C1301044E5001FDC39 /* SettingsVIew.swift */,
+				6169A7C2301044E5001FDC39 /* AcoountSettingsView.swift */,
+				6169A7C3301044E5001FDC39 /* ProfileCard.swift */,
+				6169A7C4301044E5001FDC39 /* SettingsCard.swift */,
+				6169A7C5301044E5001FDC39 /* SupportAndLeagalSettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		616CACFD30080EB3007FC4AF /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -703,8 +694,9 @@
 		616CAD0130080ED6007FC4AF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6169A7B3301044E4001FDC39 /* Profile */,
+				6169A7C0301044E5001FDC39 /* Settings */,
 				6165A1DF300B0F570085E3FD /* Coin */,
-				6165A1DE300B0F3F0085E3FD /* Settings */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1662,7 +1654,6 @@
 				617DF223300DF5F80046297B /* SubscribtionView.swift in Sources */,
 				CE8AFF18300712FC0064CC6C /* Font.swift in Sources */,
 				6182BB53300C67BB001157B8 /* ImagePicker.swift in Sources */,
-				616403693008FB8E00F677AF /* SettingsProfileTopView.swift in Sources */,
 				CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */,
 				D9C187C830066A4F00BFF8E9 /* Colors+Extension.swift in Sources */,
 				41C6A23A30080AE10035EFBF /* SuccessOTPCodeView.swift in Sources */,
@@ -1684,8 +1675,6 @@
 				61D8F2F6300760680088F170 /* ProfileForm.swift in Sources */,
 				D98A79793008EB9200DFDC6B /* ChoseTrackViewInfo.swift in Sources */,
 				D935DFCB30078012009DF855 /* CustomButton.swift in Sources */,
-				616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */,
-				61627654300997C800AB14EB /* ExperinceLevelSelector.swift in Sources */,
 				6169A7B230103051001FDC39 /* UserError.swift in Sources */,
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
 				41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */,
@@ -1693,7 +1682,6 @@
 				61AD45A6300D608D00B70AFA /* SubscribtionCheckoutView.swift in Sources */,
 				CEE62A8730091FD10071F076 /* MainTabBarView.swift in Sources */,
 				41A7F6FB300BBDA000FBE8EB /* UserEntity+Mapping.swift in Sources */,
-				616403673008F9EF00F677AF /* ProfileScreen.swift in Sources */,
 				41BE1A65300BEF510033D1B5 /* UserProfileDTO.swift in Sources */,
 				41D69D4E300B4A0F00294D94 /* ClearSessionUseCase.swift in Sources */,
 				41D69D39300B445000294D94 /* AuthTokenStore.swift in Sources */,
@@ -1704,9 +1692,12 @@
 				6117C031300FBCF900CABEC6 /* Validation.swift in Sources */,
 				41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */,
 				41BE1A6E300BF0810033D1B5 /* UserData.swift in Sources */,
+				6169A7CA301044E5001FDC39 /* ProfileScreen.swift in Sources */,
 				41CE20E8300A5506005DC31F /* ToastView.swift in Sources */,
 				41BE1A78300BF42E0033D1B5 /* AuthRemoteDataSource.swift in Sources */,
+				6169A7C7301044E5001FDC39 /* ExperinceLevelSelector.swift in Sources */,
 				D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */,
+				6169A7CD301044E5001FDC39 /* SkillsDetectedSettingsProfile.swift in Sources */,
 				CECCDA3F300F68D50068620D /* UpdateProfileDTO+Mapping.swift in Sources */,
 				CE12F3C230093ED30083D66D /* HomeViewModel.swift in Sources */,
 				41CE20E6300A54A4005DC31F /* ToastManager.swift in Sources */,
@@ -1723,6 +1714,7 @@
 				41D69D1C300A6DB400294D94 /* VerifyOTPResponseDTO+Mapping.swift in Sources */,
 				CEE62A83300910E90071F076 /* CustomNavigationBar.swift in Sources */,
 				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
+				6169A7D3301044E5001FDC39 /* SupportAndLeagalSettingsView.swift in Sources */,
 				CECC20D63007AD4E00DC450D /* CountryPickerSheet.swift in Sources */,
 				41BE1A7C300BF4540033D1B5 /* AuthRepositoryProtocol.swift in Sources */,
 				41D69D20300A6E1200294D94 /* VerifyOTPRequestDTO.swift in Sources */,
@@ -1732,8 +1724,8 @@
 				41D69D3B300B456A00294D94 /* CoreDataManager.swift in Sources */,
 				6165A1EE300B40D90085E3FD /* CheckOutTopView.swift in Sources */,
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
-				616CAD0E30082441007FC4AF /* SupportAndLeagalSettingsView.swift in Sources */,
 				CED18895300B096300B15B81 /* Userdefaultsmanager.swift in Sources */,
+				6169A7D2301044E5001FDC39 /* SettingsCard.swift in Sources */,
 				61D8F2F8300761200088F170 /* CustomProfileTextField.swift in Sources */,
 				6182BB5B300C72F7001157B8 /* SkillsInputView.swift in Sources */,
 				41BE1A63300BEF510033D1B5 /* CvUplodingResponseDTO.swift in Sources */,
@@ -1741,18 +1733,17 @@
 				41BE1A74300BF0E30033D1B5 /* UploadCvRequest+Response.swift in Sources */,
 				D9C09B10300A2B32008C1E58 /* OnBordingIdelState.swift in Sources */,
 				41C6A2363008008D0035EFBF /* SendingOTPCodeView.swift in Sources */,
-				6162765A30099C6200AB14EB /* CvResumeSettingsProfile.swift in Sources */,
+				6169A7C6301044E5001FDC39 /* CustomePhoneProfileTextField.swift in Sources */,
+				6169A7D0301044E5001FDC39 /* AcoountSettingsView.swift in Sources */,
 				41D69D12300A6CB100294D94 /* VerifyOTPResult.swift in Sources */,
 				6182BB55300C67DF001157B8 /* PhotoPicker.swift in Sources */,
 				D9B614EC300CF50000552F85 /* DIContainer+ViewModels.swift in Sources */,
 				41C6A23C30080BDA0035EFBF /* OTPView.swift in Sources */,
 				6117C02F300F9FD700CABEC6 /* StringsExtenstion.swift in Sources */,
 				D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */,
-				6164271E300A621B0090F674 /* UserInforrmation.swift in Sources */,
 				41D69D14300A6CCE00294D94 /* UserProfile.swift in Sources */,
 				CEE62A89300920070071F076 /* PracticeView.swift in Sources */,
 				CECCDA3D300F5E230068620D /* UpdateProfileDTO.swift in Sources */,
-				6164271A300A59590090F674 /* SkillsDetectedSettingsProfile.swift in Sources */,
 				6164272C300A71DF0090F674 /* UpdateUserData.swift in Sources */,
 				CECC20E63007DB3D00DC450D /* PulsingIconBadge.swift in Sources */,
 				CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */,
@@ -1765,9 +1756,9 @@
 				D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */,
 				D9B614FD300D1D5700552F85 /* OnBordingRemoteDataSource.swift in Sources */,
 				D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */,
-				616276563009991600AB14EB /* TrackSelector.swift in Sources */,
-				616CAD0430080EEC007FC4AF /* SettingsVIew.swift in Sources */,
+				6169A7C8301044E5001FDC39 /* TrackSelector.swift in Sources */,
 				CECC20E23007DB1B00DC450D /* WaitingIndicatorState.swift in Sources */,
+				6169A7C9301044E5001FDC39 /* UserInforrmation.swift in Sources */,
 				CE12F3C4300940CE0083D66D /* Shimmer.swift in Sources */,
 				D93938E23004064400CF4372 /* Career_Pilot_iOSApp.swift in Sources */,
 				61D8F2FC300779ED0088F170 /* Flowlayout.swift in Sources */,
@@ -1777,9 +1768,9 @@
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
 				D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */,
 				6165A1EC300B409C0085E3FD /* CheckOutView.swift in Sources */,
-				616CAD0C30081EF4007FC4AF /* AcoountSettingsView.swift in Sources */,
 				41BE1A7A300BF43E0033D1B5 /* AuthRepositoryImpl.swift in Sources */,
 				D9B61505300D1F2C00552F85 /* GetAllTracks+Mapping.swift in Sources */,
+				6169A7D1301044E5001FDC39 /* ProfileCard.swift in Sources */,
 				6165A1F2300B48980085E3FD /* PaymentMethod.swift in Sources */,
 				CECC20E43007DB2C00DC450D /* WaitingStateView.swift in Sources */,
 				41D69D52300B4D5B00294D94 /* Persistence.swift in Sources */,
@@ -1793,16 +1784,16 @@
 				D935DFCF300789EF009DF855 /* CvUploadingView.swift in Sources */,
 				CE12F3C830094FB50083D66D /* OTPBoxView.swift in Sources */,
 				CE12F3C930094FB50083D66D /* OTPCodeView.swift in Sources */,
-				6162765230098A4600AB14EB /* CustomePhoneProfileTextField.swift in Sources */,
 				CE8AFF1D300718670064CC6C /* Round.swift in Sources */,
+				6169A7CE301044E5001FDC39 /* ProfileFormSettings.swift in Sources */,
 				D9C187CF30066B2800BFF8E9 /* style.swift in Sources */,
 				D935DFFC3008045A009DF855 /* OnBordingViewModel.swift in Sources */,
+				6169A7CC301044E5001FDC39 /* SettingsProfileTopView.swift in Sources */,
 				D9B614FF300D1D7C00552F85 /* TrackDTO.swift in Sources */,
 				D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */,
 				CECCDA32300F1F830068620D /*   UserProfile+Mapping.swift in Sources */,
 				D9B614EA300CF4A100552F85 /* DIContainer+UseCases.swift in Sources */,
 				61642727300A68DE0090F674 /* ProfileProtocolRepo.swift in Sources */,
-				616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */,
 				6182BB4F300C519B001157B8 /* ProfilePhoto.swift in Sources */,
 				41D69D50300B4A2200294D94 /* LoadSessionUseCase.swift in Sources */,
 				D9B614F3300D1AB400552F85 /* OnBordingEndPointes.swift in Sources */,
@@ -1813,7 +1804,7 @@
 				41D69D37300B43FF00294D94 /* KeychainManager.swift in Sources */,
 				CECC20EA3007DB5E00DC450D /* ShakeEffect.swift in Sources */,
 				CECC20D43007AD3A00DC450D /* CountryCode.swift in Sources */,
-				6164036B3009248B00F677AF /* ProfileFormSettings.swift in Sources */,
+				6169A7CB301044E5001FDC39 /* CvResumeSettingsProfile.swift in Sources */,
 				61D8F2F03007523E0088F170 /* HeaderView.swift in Sources */,
 				41BE1A6B300BF00B0033D1B5 /* UserDTO+Mapping.swift in Sources */,
 				6182BB59300C70A1001157B8 /* SuggestedSkill.swift in Sources */,
@@ -1825,6 +1816,7 @@
 				CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */,
 				6165A1E1300B0F800085E3FD /* CoinView.swift in Sources */,
 				D9A28588300A82CE00ABB5BD /* UserDataRemoteDataSource.swift in Sources */,
+				6169A7CF301044E5001FDC39 /* SettingsVIew.swift in Sources */,
 				6182BB57300C7033001157B8 /* SelectedSkillChip.swift in Sources */,
 				CEE62A933009296E0071F076 /* SubscriptionCard.swift in Sources */,
 			);
