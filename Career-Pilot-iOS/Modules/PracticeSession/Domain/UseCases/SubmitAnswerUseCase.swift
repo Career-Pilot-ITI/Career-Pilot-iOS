@@ -1,12 +1,20 @@
 import Foundation
 
-//struct SubmitAnswerRequest{
-//    let session: InterviewSession
-//    let audioReference: AudioReference
-//    let duration: TimeInterval
-//    var transcript: String? = nil
-//    
-//}
+struct SubmitAnswerRequest: Encodable {
+    let session: InterviewSession
+    var transcript: String?
+    let sessionElapsedSeconds: Int?
+    let durationMs: Int
+    let audioUrlAsString: String
+    let audioUrl: URL
+    let words: [WordTiming]?
+}
+
+struct WordTiming: Encodable {
+    let word: String
+    let startMs: Int
+    let endMs: Int
+}
 
 protocol SubmitAnswerUseCaseProtocol {
     func execute(submitAnsRequest: SubmitAnswerRequest) async throws -> InterviewSession
