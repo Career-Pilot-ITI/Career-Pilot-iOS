@@ -50,6 +50,6 @@ struct PracticeSessionView: View {
 
 struct PracticeSessionView_Previews: PreviewProvider {
     static var previews: some View {
-        PracticeSessionView(vm: PracticeSessionViewModelFactory.makeStub())
+        PracticeSessionView(vm: PracticeSessionViewModelFactory.makeStub(realRepo: false))
     }
 }

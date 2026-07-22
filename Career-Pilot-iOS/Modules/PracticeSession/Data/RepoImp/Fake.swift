@@ -7,10 +7,6 @@
 
 import Foundation
 
-/// Simulates the backend in memory so the whole practice-session flow can run
-/// end-to-end before real endpoints exist. Swap this out for InterviewRepositoryImpl
-/// once the APIEndpoint shapes are confirmed — nothing else in the app needs to change,
-/// since everything upstream only knows about the InterviewRepository protocol.
 final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
 
     private var askedCount = 0

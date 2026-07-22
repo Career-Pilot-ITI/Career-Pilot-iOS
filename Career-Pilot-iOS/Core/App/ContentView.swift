@@ -20,7 +20,7 @@ struct ContentView: View {
 //            //                .navigationDestination(for: AppRoute.self) { route in
 //            //                    destination(for:route)
 //            //                }
-            PracticeSessionView(vm: PracticeSessionViewModelFactory.makeStub())
+            PracticeSessionView(vm: PracticeSessionViewModelFactory.makeStub(realRepo: false))
         }
         .environmentObject(coordiantor)
         .environmentObject(ToastManager.shared)

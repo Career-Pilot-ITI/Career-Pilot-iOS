@@ -10,8 +10,15 @@ import Foundation
 
 enum PracticeSessionViewModelFactory {
 
-    @MainActor static func makeStub() -> PracticeSessionViewModel {
-        let repository = StubInterviewRepository()
+    @MainActor static func makeStub(realRepo: Bool) -> PracticeSessionViewModel {
+        
+        let repository: InterviewRepository
+        
+        if realRepo{
+            repository = InterviewRepositoryImp(remoteDataSource: InterviewSessionRemoteDataSourceImp(apiService: URLSessionNetworkService()))
+        }else{
+            repository = StubInterviewRepository()
+        }
         let validationService = InterviewValidationService()
         let speechRecognitionService = SpeechRecognitionService()
         let progressService = InterviewProgressService()
