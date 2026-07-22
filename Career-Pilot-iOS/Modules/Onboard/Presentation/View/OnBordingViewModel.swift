@@ -232,7 +232,10 @@ class OnBordingViewModel: ObservableObject {
                )
                
                let updatedUser = try await updateProfileUseCase.execute(currentUser)
-               try await saveUserUseCase.execute(updatedUser)
+               let isSaved = try await saveUserUseCase.save(updatedUser)
+               if isSaved {
+                   print("✅ User added to CoreData successfull")
+               }
                print("✅ Profile updated successfully for user ID: \(updatedUser.id)")
                
                screenState = .idel
