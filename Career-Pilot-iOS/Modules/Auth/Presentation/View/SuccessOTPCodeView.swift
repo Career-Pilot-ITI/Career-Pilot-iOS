@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SuccessOTPCodeView: View {
-    @EnvironmentObject var coordinator: AppCoordinator
+    @EnvironmentObject var coordinator: AppCoordinator<AuthRoute>
+    @EnvironmentObject var appState: AppState
     
     @State private var navigationTask: Task<Void, Never>?
     
@@ -30,7 +31,7 @@ struct SuccessOTPCodeView: View {
                 try? await Task.sleep(for: .seconds(5))
                 guard !Task.isCancelled else { return }
                 coordinator.push(.onboardingScreen(vm: DIContainer.shared.container.resolve(OnBordingViewModel.self)!))
-            }
+	            }
         }
         .onDisappear {
                 navigationTask?.cancel()

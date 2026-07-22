@@ -41,6 +41,10 @@ extension DIContainer{
                 tokenProvider: r.resolve(TokenProviding.self)!
             )
         }
+        
+        container.register(AppState.self) { _ in
+            AppState()
+        }
 
     }
 }

@@ -26,6 +26,7 @@ enum OnBordingScreenStates{
 
 @MainActor
 class OnBordingViewModel: ObservableObject {
+    private var appState: AppState
     @Published var currentView: OnBordingViews = .ChooseTrackView
     @Published var screenState: OnBordingScreenStates = .loading
     @Published var navToHomeScreen: Bool = false
@@ -44,10 +45,8 @@ class OnBordingViewModel: ObservableObject {
     var getAllTracksUseCase: GetAllTrackesUseCase
     private let updateProfileUseCase: UpdateProfileUseCase
     
-    init(uploadCvUseCase: UploadCvUseCase,
-         getAllTracksUseCase: GetAllTrackesUseCase,
-         updateProfileUseCase: UpdateProfileUseCase) {
-        
+    init(appState: AppState, uploadCvUseCase: UploadCvUseCase, getAllTracksUseCase: GetAllTrackesUseCas,updateProfileUseCase: UpdateProfileUseCase) {
+        self.appState = appState
         self.uploadCvUseCase = uploadCvUseCase
         self.getAllTracksUseCase = getAllTracksUseCase
         self.updateProfileUseCase = updateProfileUseCase
@@ -211,94 +210,34 @@ class OnBordingViewModel: ObservableObject {
         print(cvResponse.userData)
     }
     
-//    private func onNavToHomeScreen() {
-//        print("start update")
-//        Task {
-//            do {
-//                screenState = .loading
-//                
-//                let currentUser = User(
-//                    id: 0,
-//                    phoneNumber: "",
-//                    profile: userData.toUserProfile(),
-//                    isNewUser: false
-//                )
-//                
-//                let updatedUser = try await updateProfileUseCase.execute(currentUser)
-//                
-//                print("✅ Profile updated successfully for user ID: \(updatedUser.id)")
-//                
-//                screenState = .idel
-//                navToHomeScreen = true
-//                
-//            } catch let error as NetworkError {
-//                screenState = .error(error.errorDescription ?? error.localizedDescription)
-//            } catch {
-//                screenState = .error(error.localizedDescription)
-//            }
-//        }
-//    }
-  
-    private func onNavToHomeScreen() {
-        print("🚀 === START UPDATE PROFILE DEBUG ===")
-        
-        Task {
-            do {
-                screenState = .loading
-                
-                let currentUser = User(
-                    id: 0,
-                    phoneNumber: "",
-                    profile: userData.toUserProfile(),
-                    isNewUser: false
-                )
-                
-                // 1. فحص الـ DTO والـ JSON المرسل
-                let userDTO = currentUser.toDTO()
-                let encoder = JSONEncoder()
-                encoder.outputFormatting = .prettyPrinted
-                let jsonData = try encoder.encode(userDTO)
-                
-                if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    print("🟢 1. Outgoing JSON Body:\n\(jsonString)")
-                }
-                
-                // 2. تنفيذ الطلب
-                print("🟡 2. Sending PATCH request to server...")
-                let updatedUser = try await updateProfileUseCase.execute(currentUser)
-                
-                print("✅ 3. Success! Updated user ID: \(updatedUser.id)")
-                screenState = .idel
-                navToHomeScreen = true
-                
-            } catch let networkError as NetworkError {
-                print("🔴 NETWORK ERROR: \(networkError)")
-                print("🔴 Description: \(networkError.errorDescription ?? "No description")")
-                screenState = .error(networkError.errorDescription ?? "Network Error")
-                
-            } catch let decodingError as DecodingError {
-                print("🔴 DECODING ERROR (مشكلة في مطابقة الـ JSON القادم مع الـ Models): \(decodingError)")
-                switch decodingError {
-                case .typeMismatch(let type, let context):
-                    print("Type '\(type)' mismatch: \(context.debugDescription), codingPath: \(context.codingPath)")
-                case .valueNotFound(let type, let context):
-                    print("Value '\(type)' not found: \(context.debugDescription), codingPath: \(context.codingPath)")
-                case .keyNotFound(let key, let context):
-                    print("Key '\(key)' not found: \(context.debugDescription), codingPath: \(context.codingPath)")
-                case .dataCorrupted(let context):
-                    print("Data corrupted: \(context.debugDescription), codingPath: \(context.codingPath)")
-                @unknown default:
-                    print("Unknown decoding error")
-                }
-                screenState = .error("Data format error")
-                
-            } catch {
-                print("🔴 UNKNOWN ERROR: \(error)")
-                print("🔴 Localized Description: \(error.localizedDescription)")
-                screenState = .error(error.localizedDescription)
-            }
-        }
-    }
+   private func onNavToHomeScreen() {
+       print("start update")
+       Task {
+           do {
+               screenState = .loading
+               
+               let currentUser = User(
+                   id: 0,
+                   phoneNumber: "",
+                   profile: userData.toUserProfile(),
+                   isNewUser: false
+               )
+               
+               let updatedUser = try await updateProfileUseCase.execute(currentUser)
+               
+               print("✅ Profile updated successfully for user ID: \(updatedUser.id)")
+               
+               screenState = .idel
+               navToHomeScreen = true
+               appState.markOnboardingSeen()
+           } catch let error as NetworkError {
+               screenState = .error(error.errorDescription ?? error.localizedDescription)
+           } catch {
+               screenState = .error(error.localizedDescription)
+           }
+       }
+   }
+
     func backByStep(){
         switch currentView{
         case.ChooseTrackView:
