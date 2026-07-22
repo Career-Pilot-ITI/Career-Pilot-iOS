@@ -7,59 +7,70 @@
 
 import SwiftUI
 
-struct ChoseTrackView: View {
+struct ChooseTrackView: View {
     @ObservedObject var vm: OnBordingViewModel
     @State private var textFieldInput: String = ""
     
     
     var body: some View {
-        VStack(alignment:.leading,spacing: 12){
-            Text("Choose your Track")
-                .font(.system(size: 24, weight: .bold))
-            Text("We'll tailor questions and feedback for your role.")
-                .font(.system(size: 14, weight: .regular))
-            
-            CustomSearchTextField(text: $textFieldInput,placeholder: "Search tracks…")
-                .padding(.horizontal,)
-            
-            if vm.selectedTrackInfo.traks.isEmpty {
-                VStack(spacing: 16) {
-                    Text("No tracks available")
-                        .font(.headline)
+        VStack {
+            Spacer()
 
-                    Text("We couldn't load any tracks right now.")
-                        .font(.size13Medium)
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Choose your Track")
+                    .font(.system(size: 24, weight: .bold))
+
+                Text("We'll tailor questions and feedback for your role.")
+                    .font(.system(size: 14, weight: .regular))
+
+                CustomSearchTextField(
+                    text: $textFieldInput,
+                    placeholder: "Search tracks…"
+                )
+
+                if vm.selectedTrackInfo.traks.isEmpty {
+                    VStack(alignment: .center, spacing: 16) {
+                        Text("No tracks available")
+                            .font(.headline)
+
+                        Text("We couldn't load any tracks right now.")
+                            .font(.size13Medium)
+                            .foregroundColor(.gray400)
+                            .multilineTextAlignment(.center)
+
+                        Button("Try Again") {
+                            vm.getAllTracks()
+                        }
+                        .foregroundColor(.primary)
+
+
+                        Button("Skip for now →") {
+                            vm.navToNext()
+                        }
                         .foregroundColor(.gray400)
-                        .multilineTextAlignment(.center)
-
-                    Button("Try Again") {
-                        vm.getAllTracks()
                     }
-                    .font(.size13Medium)
-
-                    Button("Skip for now →") {
-                        vm.navToNext()
-                    }
-                    .font(.size13Medium)
-                    .foregroundColor(.gray400)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 24)
                 }
-                .padding(.vertical, 24)
-            }
-            
-            FlowLayout {
-                ForEach(vm.selectedTrackInfo.filteredTracks) { track in
-                    TrackChip(
-                        title: track.title,
-                        isSelected: vm.selectedTrackInfo.selectedTrack?.id  == track.id
-                    )
-                    .onTapGesture {
-                        vm.selectThisTrack(track: track)
+
+                FlowLayout {
+                    ForEach(vm.selectedTrackInfo.filteredTracks) { track in
+                        TrackChip(
+                            title: track.title,
+                            isSelected: vm.selectedTrackInfo.selectedTrack?.id == track.id
+                        )
+                        .onTapGesture {
+                            vm.selectThisTrack(track: track)
+                        }
                     }
                 }
+                .padding()
             }
-            .padding()
+            .padding(.horizontal, Spacing.s12)
+
+            Spacer()
         }
-        .onChange(of: textFieldInput){ query in
+        .onChange(of: textFieldInput) { query in
             vm.filterTrackes(query: query)
         }
     }
