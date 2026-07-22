@@ -8,7 +8,7 @@
 import Foundation
 
 protocol InterviewSessionRemoteDataSource {
-    func startInterview(configuration: InterviewConfiguration) async throws -> NewSessionDTO
+    func startInterview(startInterviewSessionRequest: StartInterviewSessionRequest) async throws -> NewSessionDTO
     func submitAnswer(submitAnswerRequest: SubmitAnswerRequest) async throws -> SubmitAnswerResponseDTO
     func resumeInterview(sessionId: String) async throws -> SessionStateDTO
     func finishInterview(finishInterviewRequest: FinishInterviewRequest) async throws -> FeedbackReportDTO
@@ -22,8 +22,8 @@ class InterviewSessionRemoteDataSourceImp: InterviewSessionRemoteDataSource {
         self.apiService = apiService
     }
 
-    func startInterview(configuration: InterviewConfiguration) async throws -> NewSessionDTO {
-        let startInterviewEndPoint = InterviewSessionEndPointes.startSession(configuration)
+    func startInterview(startInterviewSessionRequest: StartInterviewSessionRequest) async throws -> NewSessionDTO {
+        let startInterviewEndPoint = InterviewSessionEndPointes.startSession(startInterviewSessionRequest)
         return try await apiService.request(startInterviewEndPoint)
     }
 
@@ -38,13 +38,10 @@ class InterviewSessionRemoteDataSourceImp: InterviewSessionRemoteDataSource {
     }
 
     func finishInterview(finishInterviewRequest: FinishInterviewRequest) async throws -> FeedbackReportDTO {
-        let finishEndPoint = InterviewSessionEndPointes.finishInterview(finishInterviewRequest)
+        let finishEndPoint = InterviewSessionEndPointes.getFeedback(sessionId: finishInterviewRequest.sessionID)
         return try await apiService.request(finishEndPoint)
     }
 
     func cancelInterview(sessionId: String) async throws {
-        let cancelEndPoint = InterviewSessionEndPointes.cancelSession(sessionId: sessionId)
-
-        try await apiService.request(cancelEndPoint)
     }
 }

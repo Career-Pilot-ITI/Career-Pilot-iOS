@@ -1,6 +1,6 @@
 import Foundation
 
-struct InterviewSession: Equatable, Sendable {
+struct InterviewSession: Equatable, Sendable, Encodable {
     let id: String
     var status: InterviewSessionStatus
     var currentQuestionIndex: Int
@@ -17,26 +17,26 @@ struct InterviewSession: Equatable, Sendable {
 
 
 //MARK: InterviewAnswer
-enum SubmitAnswerOutcome: Equatable, Sendable {
+enum SubmitAnswerOutcome: Equatable, Sendable, Encodable {
     case nextQuestion(InterviewQuestion)
     case interviewCompleted(InterviewFeedback)
 }
 
-enum AudioReference: Equatable, Sendable {
-    case localFile(URL)
-    case remoteURL(URL)
-}
+//enum AudioReference: Equatable, Sendable, Encodable {
+//    case localFile(URL)
+//    case remoteURL(URL)
+//}
 
-struct InterviewAnswer: Equatable, Sendable {
+struct InterviewAnswer: Equatable, Sendable , Encodable{
     let questionId: String
-    let audioReference: AudioReference
+    let audioURL: URL
     let duration: TimeInterval
     let submittedAt: Date
 }
 
 
 //MARK: InterviewQuestion
-struct InterviewQuestion: Equatable, Identifiable, Sendable {
+struct InterviewQuestion: Equatable, Identifiable, Sendable , Encodable{
     let id: String
     let text: String
     let order: Int

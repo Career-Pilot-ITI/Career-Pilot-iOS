@@ -160,6 +160,7 @@
 		D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */; };
 		D999D5A63010E71F00CF606B /* SessionStateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5A53010E71F00CF606B /* SessionStateDTO.swift */; };
 		D999D5A83010ED0E00CF606B /* SessionStateDTOMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */; };
+		D999D5AA3010F88500CF606B /* InterviewSessionRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5A93010F88500CF606B /* InterviewSessionRequests.swift */; };
 		D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */; };
 		D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */; };
 		D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28583300A6CC300ABB5BD /* UserDataRepoImp.swift */; };
@@ -363,6 +364,7 @@
 		D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingErrorState.swift; sourceTree = "<group>"; };
 		D999D5A53010E71F00CF606B /* SessionStateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateDTO.swift; sourceTree = "<group>"; };
 		D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateDTOMapping.swift; sourceTree = "<group>"; };
+		D999D5A93010F88500CF606B /* InterviewSessionRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewSessionRequests.swift; sourceTree = "<group>"; };
 		D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UploadCvUseCase.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UploadCvUseCase.swift"; sourceTree = SOURCE_ROOT; };
 		D9A2857C300A5E0300ABB5BD /* UploadCvRequest+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UploadCvRequest+Response.swift"; sourceTree = "<group>"; };
 		D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataEndPoint.swift; path = "Career-Pilot-iOS/Core/Network/EndPoint/UserData/UserDataEndPoint.swift"; sourceTree = SOURCE_ROOT; };
@@ -968,6 +970,7 @@
 		D95C3B8B300E48CF0042785F /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				D999D5A93010F88500CF606B /* InterviewSessionRequests.swift */,
 				D95C3B98300E495C0042785F /* InterviewSessionEndPointes.swift */,
 				D92853EB3010050600F8CAC2 /* DTOs */,
 				D95C3B9B300E49740042785F /* DataSources */,
@@ -1823,6 +1826,7 @@
 				61D8F2F03007523E0088F170 /* HeaderView.swift in Sources */,
 				41BE1A6B300BF00B0033D1B5 /* UserDTO+Mapping.swift in Sources */,
 				6182BB59300C70A1001157B8 /* SuggestedSkill.swift in Sources */,
+				D999D5AA3010F88500CF606B /* InterviewSessionRequests.swift in Sources */,
 				D95C3BAB300E4A240042785F /* InterviewFeedback.swift in Sources */,
 				41D69D10300A6C7A00294D94 /* AuthTokensDTO+Mapping.swift in Sources */,
 				D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */,

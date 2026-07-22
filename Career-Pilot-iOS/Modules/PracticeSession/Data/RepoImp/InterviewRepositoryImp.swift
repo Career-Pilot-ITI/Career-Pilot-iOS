@@ -15,9 +15,9 @@ final class InterviewRepositoryImp: InterviewRepository {
         self.remoteDataSource = remoteDataSource
     }
 
-    func startInterview(configuration: InterviewConfiguration) async throws -> InterviewSession {
-        let sessionDTO = try await remoteDataSource.startInterview(configuration: configuration)
-        return sessionDTO.toDomain(configuration: configuration)
+    func startInterview(startInterviewSessionRequest: StartInterviewSessionRequest) async throws -> InterviewSession {
+        let sessionDTO = try await remoteDataSource.startInterview(startInterviewSessionRequest: startInterviewSessionRequest)
+        return sessionDTO.toDomain(configuration: startInterviewSessionRequest.configuration)
     }
 
     func submitAnswer(submitAnswerRequest: SubmitAnswerRequest) async throws -> SubmitAnswerOutcome {

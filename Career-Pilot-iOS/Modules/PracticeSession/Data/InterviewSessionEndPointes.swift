@@ -8,57 +8,54 @@
 import Foundation
 
 enum InterviewSessionEndPointes: APIEndpoint {
-    case startSession(InterviewConfiguration)
+    case startSession(StartInterviewSessionRequest)
     case submitAnswer(SubmitAnswerRequest)
     case resumeSession(sessionId: String)
-    case finishInterview(FinishInterviewRequest)
-    case cancelSession(sessionId: String)
+    case getFeedback(sessionId: String)
 
     var baseURL: String {
-        return "https://api.careerpilot.app/v1"
+        return "http://localhost:8080/api/v1"
     }
 
     var path: String {
         switch self {
         case .startSession:
-            return "/interview-sessions"
-        case .submitAnswer(let request):
-            return "/interview-sessions/\(request.session.id)/answers"
+            return "/interviews/sessions"
+        case .submitAnswer(let submitRequest):
+            return "/interviews/sessions/\(submitRequest.session.id)/answer"
         case .resumeSession(let sessionId):
-            return "/interview-sessions/\(sessionId)/resume"
-        case .finishInterview(let request):
-            return "/interview-sessions/\(request.sessionID)/finish"
-        case .cancelSession(let sessionId):
-            return "/interview-sessions/\(sessionId)"
+            return "/interviews/sessions/\(sessionId)/state"
+        case .getFeedback(let sessionId):
+            return "/interviews/sessions/\(sessionId)/feedback"
         }
     }
 
     var method: HTTPMethod {
         switch self {
-        case .startSession:
+        case .startSession, .submitAnswer:
             return .post
-        case .submitAnswer:
-            return .post
-        case .resumeSession:
+        case .resumeSession, .getFeedback:
             return .get
-        case .finishInterview:
-            return .post
-        case .cancelSession:
-            return .delete
         }
     }
 
+    var headers: [String: String] {
+        switch self {
+        case .startSession, .submitAnswer:
+            return ["Content-Type": "application/json"]
+        case .resumeSession, .getFeedback:
+            return [:]
+        }
+    }
 
-//    var body: Encodable? {
-//        switch self {
-//        case .startSession(let configuration):
-//            return configuration
-//        case .submitAnswer(let request):
-//            return request
-//        case .resumeSession, .cancelSession:
-//            return nil
-//        case .finishInterview(let request):
-//            return request
-//        }
-//    }
+    var body: Data? {
+        switch self {
+        case .startSession(let request):
+            return Self.encode(request)
+        case .submitAnswer(let request):
+            return Self.encode(request)
+        case .resumeSession, .getFeedback:
+            return nil
+        }
+    }
 }

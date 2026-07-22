@@ -60,9 +60,7 @@ final class SpeechRecognitionService: SpeechRecognitionServicing {
         request.shouldReportPartialResults = false // fewer callback firings to guard against
 
         return try await withCheckedThrowingContinuation { continuation in
-            // The completion handler can fire more than once even with partials off —
-            // a continuation may only ever be resumed once or it's a hard crash, so
-            // this flag makes every path after the first one a no-op.
+
             var didResume = false
             let resumeOnce: (Result<String, Error>) -> Void = { outcome in
                 guard !didResume else { return }

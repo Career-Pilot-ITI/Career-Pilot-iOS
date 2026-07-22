@@ -1,12 +1,12 @@
 import Foundation
 
-struct SubmitAnswerRequest{
-    let session: InterviewSession
-    let audioReference: AudioReference
-    let duration: TimeInterval
-    var transcript: String? = nil
-    
-}
+//struct SubmitAnswerRequest{
+//    let session: InterviewSession
+//    let audioReference: AudioReference
+//    let duration: TimeInterval
+//    var transcript: String? = nil
+//    
+//}
 
 protocol SubmitAnswerUseCaseProtocol {
     func execute(submitAnsRequest: SubmitAnswerRequest) async throws -> InterviewSession
@@ -27,6 +27,7 @@ actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
     }
     
     func execute(submitAnsRequest: SubmitAnswerRequest) async throws -> InterviewSession {
+        
         guard let question = submitAnsRequest.session.currentQuestion else {
             throw InterviewError.sessionNotFound
         }
@@ -46,10 +47,7 @@ actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
         
         var updatedSubmitAnsRequest: SubmitAnswerRequest = submitAnsRequest
         
-        switch submitAnsRequest.audioReference{
-        case.remoteURL(let url),.localFile(let url):
-            updatedSubmitAnsRequest.transcript = try await speechRecognitionService.transcribe(audioAt: url)
-        }
+        updatedSubmitAnsRequest.transcript = try await speechRecognitionService.transcribe(audioAt: submitAnsRequest.audioUrl)
         
         let outcome: SubmitAnswerOutcome
         do {
@@ -61,8 +59,8 @@ actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
         var updatedSession = submitAnsRequest.session
         let answer = InterviewAnswer(
             questionId: question.id,
-            audioReference: submitAnsRequest.audioReference,
-            duration: submitAnsRequest.duration,
+            audioURL: submitAnsRequest.audioUrl,
+            duration: TimeInterval(submitAnsRequest.durationMs * 60),
             submittedAt: Date()
         )
         updatedSession.answers.append(answer)

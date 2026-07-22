@@ -1,7 +1,7 @@
 import Foundation
 
 /// Business rules for a session.
-struct InterviewConfiguration: Equatable, Sendable {
+struct InterviewConfiguration: Equatable, Sendable,Encodable {
     let maxQuestions: Int
     let maxAnswerDuration: TimeInterval
     let maxInterviewDuration: TimeInterval

@@ -127,7 +127,8 @@ final class PracticeSessionViewModel: ObservableObject {
         
         screenState = .loading
         do {
-            let newSession = try await startUseCase.execute(configuration: configuration)
+            let startInterviewSessionRequest = StartInterviewSessionRequest(trackId: 55555555, questionCount: configuration.maxQuestions, durationMinutes: Int(configuration.maxInterviewDuration), configuration: configuration)
+            let newSession = try await startUseCase.execute(startInterviewSessionRequest: startInterviewSessionRequest)
             session = newSession
             beginAITurn(question: newSession.currentQuestion)
         } catch {
@@ -232,11 +233,11 @@ final class PracticeSessionViewModel: ObservableObject {
         stopElapsedTimer()
         silenceService.stopMonitoring()
         
-        let result: AudioRecordingResult
+        let audioURL: AudioRecordingResult
         do {
-            result = try recordingService.stopRecording()
-            print("AudioURL: \(result.fileURL)")
-            print("AudioDuration: \(result.duration)")
+            audioURL = try recordingService.stopRecording()
+            print("AudioURL: \(audioURL.fileURL)")
+            print("AudioDuration: \(audioURL.duration)")
         } catch {
             let message = (error as? AudioRecordingError)?.localizedDescription
             ?? InterviewError.map(error).localizedDescription
@@ -248,7 +249,11 @@ final class PracticeSessionViewModel: ObservableObject {
         
         Task {
             do {
-                let submitRequest = SubmitAnswerRequest(session: currentSession, audioReference: .localFile(result.fileURL), duration: result.duration)
+                guard let tempSession = session else{
+                    return
+                }
+                
+                let submitRequest = SubmitAnswerRequest(session: tempSession, transcript: nil, sessionElapsedSeconds: Int(elapsedSessionTime / 60), durationMs: Int(elapsedRecordingTime / 60) , audioUrlAsString: audioURL.fileURL.absoluteString, audioUrl: audioURL.fileURL, words: nil)
                 let updatedSession = try await submitUseCase.execute(submitAnsRequest: submitRequest)
                 session = updatedSession
                 if updatedSession.status == .completed {

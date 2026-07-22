@@ -23,7 +23,7 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
         "Tell me about a project that didn't go as planned. What did you learn?"
     ]
 
-    func startInterview(configuration: InterviewConfiguration) async throws -> InterviewSession {
+    func startInterview(startInterviewSessionRequest: StartInterviewSessionRequest) async throws -> InterviewSession {
         try await simulateDelay()
 
         let firstQuestion = InterviewQuestion(
@@ -38,7 +38,7 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
             currentQuestionIndex: 0,
             questions: [firstQuestion],
             answers: [],
-            configuration: configuration,
+            configuration: startInterviewSessionRequest.configuration,
             feedback: nil
         )
     }
@@ -132,18 +132,12 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
     // MARK: Submit Answer
     func submitAnswer(submitAnswerRequest: SubmitAnswerRequest) async throws -> SubmitAnswerOutcome {
 
-        /// Tasks
-        /// convert to text
-        /// make sure if it is the last q -> complete Not -> cont
-        ///
 
         let speechService = SpeechRecognitionService()
         var audioAsText: String = "No text yes"
 
-        switch submitAnswerRequest.audioReference {
-        case .localFile(let url), .remoteURL(let url):
-            audioAsText = try await speechService.transcribe(audioAt: url)
-        }
+        audioAsText = try await speechService.transcribe(audioAt: submitAnswerRequest.audioUrl)
+
 
         print("Audio As Text: \(audioAsText)")
 
