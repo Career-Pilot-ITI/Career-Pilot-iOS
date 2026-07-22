@@ -10,7 +10,7 @@ import Foundation
 struct SubmitAnswerResponseDTO: Codable {
     let sessionStatus: String
     let score: ScoreDTO
-    let nextQuestion: NextQuestionDTO?
+    let nextQuestion: QuestionDTO?
 }
 
 struct ScoreDTO: Codable {
@@ -26,7 +26,7 @@ struct ScoreDTO: Codable {
     let createdAt: Date
 }
 
-struct NextQuestionDTO: Codable {
+struct QuestionDTO: Codable {
     let id: Int
     let sessionId: Int
     let questionText: String

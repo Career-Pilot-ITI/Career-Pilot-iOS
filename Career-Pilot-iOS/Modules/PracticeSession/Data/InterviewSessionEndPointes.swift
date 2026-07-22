@@ -15,7 +15,6 @@ enum InterviewSessionEndPointes: APIEndpoint {
     case cancelSession(sessionId: String)
 
     var baseURL: String {
-        
         return "https://api.careerpilot.app/v1"
     }
 

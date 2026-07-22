@@ -5,17 +5,7 @@
 
 import Foundation
 
-extension Question {
-    func toDomain() -> InterviewQuestion {
-        InterviewQuestion(
-            id: String(id),
-            text: questionText,
-            order: questionOrder
-        )
-    }
-}
-
-extension NextQuestionDTO {
+extension QuestionDTO {
     func toDomain() -> InterviewQuestion {
         InterviewQuestion(
             id: String(id),

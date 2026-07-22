@@ -8,9 +8,9 @@
 import Foundation
 
 protocol InterviewSessionRemoteDataSource {
-    func startInterview(configuration: InterviewConfiguration) async throws -> SessionDTO
+    func startInterview(configuration: InterviewConfiguration) async throws -> NewSessionDTO
     func submitAnswer(submitAnswerRequest: SubmitAnswerRequest) async throws -> SubmitAnswerResponseDTO
-    func resumeInterview(sessionId: String) async throws -> SessionDTO
+    func resumeInterview(sessionId: String) async throws -> SessionStateDTO
     func finishInterview(finishInterviewRequest: FinishInterviewRequest) async throws -> FeedbackReportDTO
     func cancelInterview(sessionId: String) async throws
 }
@@ -22,7 +22,7 @@ class InterviewSessionRemoteDataSourceImp: InterviewSessionRemoteDataSource {
         self.apiService = apiService
     }
 
-    func startInterview(configuration: InterviewConfiguration) async throws -> SessionDTO {
+    func startInterview(configuration: InterviewConfiguration) async throws -> NewSessionDTO {
         let startInterviewEndPoint = InterviewSessionEndPointes.startSession(configuration)
         return try await apiService.request(startInterviewEndPoint)
     }
@@ -32,7 +32,7 @@ class InterviewSessionRemoteDataSourceImp: InterviewSessionRemoteDataSource {
         return try await apiService.request(submitAnswerEndPoint)
     }
 
-    func resumeInterview(sessionId: String) async throws -> SessionDTO {
+    func resumeInterview(sessionId: String) async throws -> SessionStateDTO {
         let resumeEndPoint = InterviewSessionEndPointes.resumeSession(sessionId: sessionId)
         return try await apiService.request(resumeEndPoint)
     }

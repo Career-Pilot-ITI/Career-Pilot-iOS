@@ -111,7 +111,7 @@
 		D92853EA301004B800F8CAC2 /* InterviewRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853E9301004B800F8CAC2 /* InterviewRepositoryImp.swift */; };
 		D92853EF301006E900F8CAC2 /* FeedbackReportDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853EE301006E900F8CAC2 /* FeedbackReportDTO.swift */; };
 		D92853F230100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853F130100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift */; };
-		D92853FF301017E100F8CAC2 /* SessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853FC301017E100F8CAC2 /* SessionDTO.swift */; };
+		D92853FF301017E100F8CAC2 /* NewSessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853FC301017E100F8CAC2 /* NewSessionDTO.swift */; };
 		D9285400301017E100F8CAC2 /* SubmitAnswerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853FD301017E100F8CAC2 /* SubmitAnswerResponseDTO.swift */; };
 		D92854073010188400F8CAC2 /* FeedbackReportDTOMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92854033010188300F8CAC2 /* FeedbackReportDTOMapping.swift */; };
 		D92854083010188400F8CAC2 /* InterviewQuestionMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92854043010188300F8CAC2 /* InterviewQuestionMapping.swift */; };
@@ -131,12 +131,10 @@
 		D95C3B9E300E49BF0042785F /* AudioRecordingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3B9D300E49BF0042785F /* AudioRecordingService.swift */; };
 		D95C3BA0300E49D20042785F /* CancelInterviewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3B9F300E49D20042785F /* CancelInterviewUseCase.swift */; };
 		D95C3BA2300E49E10042785F /* FinishInterviewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BA1300E49E10042785F /* FinishInterviewUseCase.swift */; };
-		D95C3BA4300E49EC0042785F /* InterviewAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BA3300E49EB0042785F /* InterviewAnswer.swift */; };
 		D95C3BA6300E49F30042785F /* InterviewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BA5300E49F30042785F /* InterviewConfiguration.swift */; };
 		D95C3BA8300E49FD0042785F /* InterviewError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BA7300E49FD0042785F /* InterviewError.swift */; };
 		D95C3BAB300E4A240042785F /* InterviewFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BAA300E4A240042785F /* InterviewFeedback.swift */; };
 		D95C3BAD300E4A2A0042785F /* InterviewProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BAC300E4A2A0042785F /* InterviewProgressService.swift */; };
-		D95C3BAF300E4A320042785F /* InterviewQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BAE300E4A320042785F /* InterviewQuestion.swift */; };
 		D95C3BB1300E4A460042785F /* InterviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BB0300E4A460042785F /* InterviewRepository.swift */; };
 		D95C3BB3300E4A4C0042785F /* InterviewSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BB2300E4A4C0042785F /* InterviewSession.swift */; };
 		D95C3BB5300E4A520042785F /* InterviewSessionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BB4300E4A520042785F /* InterviewSessionStatus.swift */; };
@@ -160,6 +158,8 @@
 		D98A79793008EB9200DFDC6B /* ChoseTrackViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79783008EB9200DFDC6B /* ChoseTrackViewInfo.swift */; };
 		D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A797C300903BF00DFDC6B /* UploadeCvErrors.swift */; };
 		D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */; };
+		D999D5A63010E71F00CF606B /* SessionStateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5A53010E71F00CF606B /* SessionStateDTO.swift */; };
+		D999D5A83010ED0E00CF606B /* SessionStateDTOMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */; };
 		D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */; };
 		D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */; };
 		D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28583300A6CC300ABB5BD /* UserDataRepoImp.swift */; };
@@ -311,7 +311,7 @@
 		D92853E9301004B800F8CAC2 /* InterviewRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewRepositoryImp.swift; sourceTree = "<group>"; };
 		D92853EE301006E900F8CAC2 /* FeedbackReportDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackReportDTO.swift; sourceTree = "<group>"; };
 		D92853F130100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewSessionRemoteDataSource.swift; sourceTree = "<group>"; };
-		D92853FC301017E100F8CAC2 /* SessionDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDTO.swift; sourceTree = "<group>"; };
+		D92853FC301017E100F8CAC2 /* NewSessionDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSessionDTO.swift; sourceTree = "<group>"; };
 		D92853FD301017E100F8CAC2 /* SubmitAnswerResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitAnswerResponseDTO.swift; sourceTree = "<group>"; };
 		D92854033010188300F8CAC2 /* FeedbackReportDTOMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackReportDTOMapping.swift; sourceTree = "<group>"; };
 		D92854043010188300F8CAC2 /* InterviewQuestionMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewQuestionMapping.swift; sourceTree = "<group>"; };
@@ -334,12 +334,10 @@
 		D95C3B9D300E49BF0042785F /* AudioRecordingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecordingService.swift; sourceTree = "<group>"; };
 		D95C3B9F300E49D20042785F /* CancelInterviewUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelInterviewUseCase.swift; sourceTree = "<group>"; };
 		D95C3BA1300E49E10042785F /* FinishInterviewUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishInterviewUseCase.swift; sourceTree = "<group>"; };
-		D95C3BA3300E49EB0042785F /* InterviewAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewAnswer.swift; sourceTree = "<group>"; };
 		D95C3BA5300E49F30042785F /* InterviewConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewConfiguration.swift; sourceTree = "<group>"; };
 		D95C3BA7300E49FD0042785F /* InterviewError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewError.swift; sourceTree = "<group>"; };
 		D95C3BAA300E4A240042785F /* InterviewFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewFeedback.swift; sourceTree = "<group>"; };
 		D95C3BAC300E4A2A0042785F /* InterviewProgressService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewProgressService.swift; sourceTree = "<group>"; };
-		D95C3BAE300E4A320042785F /* InterviewQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewQuestion.swift; sourceTree = "<group>"; };
 		D95C3BB0300E4A460042785F /* InterviewRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewRepository.swift; sourceTree = "<group>"; };
 		D95C3BB2300E4A4C0042785F /* InterviewSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewSession.swift; sourceTree = "<group>"; };
 		D95C3BB4300E4A520042785F /* InterviewSessionStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewSessionStatus.swift; sourceTree = "<group>"; };
@@ -363,6 +361,8 @@
 		D98A79783008EB9200DFDC6B /* ChoseTrackViewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseTrackViewInfo.swift; sourceTree = "<group>"; };
 		D98A797C300903BF00DFDC6B /* UploadeCvErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadeCvErrors.swift; sourceTree = "<group>"; };
 		D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingErrorState.swift; sourceTree = "<group>"; };
+		D999D5A53010E71F00CF606B /* SessionStateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateDTO.swift; sourceTree = "<group>"; };
+		D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateDTOMapping.swift; sourceTree = "<group>"; };
 		D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UploadCvUseCase.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UploadCvUseCase.swift"; sourceTree = SOURCE_ROOT; };
 		D9A2857C300A5E0300ABB5BD /* UploadCvRequest+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UploadCvRequest+Response.swift"; sourceTree = "<group>"; };
 		D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataEndPoint.swift; path = "Career-Pilot-iOS/Core/Network/EndPoint/UserData/UserDataEndPoint.swift"; sourceTree = SOURCE_ROOT; };
@@ -844,9 +844,10 @@
 		D92853EB3010050600F8CAC2 /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
-				D92853FC301017E100F8CAC2 /* SessionDTO.swift */,
+				D92853FC301017E100F8CAC2 /* NewSessionDTO.swift */,
 				D92853FD301017E100F8CAC2 /* SubmitAnswerResponseDTO.swift */,
 				D92853EE301006E900F8CAC2 /* FeedbackReportDTO.swift */,
+				D999D5A53010E71F00CF606B /* SessionStateDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -854,9 +855,10 @@
 		D92853F53010176200F8CAC2 /* Mappers */ = {
 			isa = PBXGroup;
 			children = (
+				D92854053010188400F8CAC2 /* SessionDTOMapping.swift */,
 				D92854033010188300F8CAC2 /* FeedbackReportDTOMapping.swift */,
 				D92854043010188300F8CAC2 /* InterviewQuestionMapping.swift */,
-				D92854053010188400F8CAC2 /* SessionDTOMapping.swift */,
+				D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -967,9 +969,9 @@
 			isa = PBXGroup;
 			children = (
 				D95C3B98300E495C0042785F /* InterviewSessionEndPointes.swift */,
-				D92853F53010176200F8CAC2 /* Mappers */,
 				D92853EB3010050600F8CAC2 /* DTOs */,
 				D95C3B9B300E49740042785F /* DataSources */,
+				D92853F53010176200F8CAC2 /* Mappers */,
 				D95C3B9A300E496E0042785F /* RepoImp */,
 			);
 			path = Data;
@@ -1039,8 +1041,6 @@
 			isa = PBXGroup;
 			children = (
 				D95C3BA9300E4A0E0042785F /* Errors */,
-				D95C3BA3300E49EB0042785F /* InterviewAnswer.swift */,
-				D95C3BAE300E4A320042785F /* InterviewQuestion.swift */,
 				D95C3BB2300E4A4C0042785F /* InterviewSession.swift */,
 				D95C3BA5300E49F30042785F /* InterviewConfiguration.swift */,
 				D95C3BB4300E4A520042785F /* InterviewSessionStatus.swift */,
@@ -1671,7 +1671,7 @@
 				41D69D18300A6D0100294D94 /* AuthTokens.swift in Sources */,
 				41C6A23E30083FDB0035EFBF /* PhoneEntryView.swift in Sources */,
 				D9868B41300FD22600B84CD6 /* SpeechRecognitionService.swift in Sources */,
-				D92853FF301017E100F8CAC2 /* SessionDTO.swift in Sources */,
+				D92853FF301017E100F8CAC2 /* NewSessionDTO.swift in Sources */,
 				D95C3BBC300E4AC60042785F /* SpeechPlaybackService.swift in Sources */,
 				CEE62A95300929830071F076 /* ProgressCard.swift in Sources */,
 				61D8F303300780C50088F170 /* FreeSessionBanner.swift in Sources */,
@@ -1723,6 +1723,8 @@
 				41D69D1C300A6DB400294D94 /* VerifyOTPResponseDTO+Mapping.swift in Sources */,
 				CEE62A83300910E90071F076 /* CustomNavigationBar.swift in Sources */,
 				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
+				D999D5A83010ED0E00CF606B /* SessionStateDTOMapping.swift in Sources */,
+				D999D5A63010E71F00CF606B /* SessionStateDTO.swift in Sources */,
 				D95C3BB5300E4A520042785F /* InterviewSessionStatus.swift in Sources */,
 				CECC20D63007AD4E00DC450D /* CountryPickerSheet.swift in Sources */,
 				41BE1A7C300BF4540033D1B5 /* AuthRepositoryProtocol.swift in Sources */,
@@ -1735,7 +1737,6 @@
 				616CAD0E30082441007FC4AF /* SupportAndLeagalSettingsView.swift in Sources */,
 				D95C3BC0300E4ACF0042785F /* SubmitAnswerUseCase.swift in Sources */,
 				D95C3BC4300E7B6E0042785F /* PracticeSessionViewModel.swift in Sources */,
-				D95C3BA4300E49EC0042785F /* InterviewAnswer.swift in Sources */,
 				CED18895300B096300B15B81 /* Userdefaultsmanager.swift in Sources */,
 				61D8F2F8300761200088F170 /* CustomProfileTextField.swift in Sources */,
 				6182BB5B300C72F7001157B8 /* SkillsInputView.swift in Sources */,
@@ -1816,7 +1817,6 @@
 				D9B614FB300D1D2400552F85 /* OnBordingRepoImp.swift in Sources */,
 				CECC20E83007DB4D00DC450D /* WaveformBars.swift in Sources */,
 				41D69D37300B43FF00294D94 /* KeychainManager.swift in Sources */,
-				D95C3BAF300E4A320042785F /* InterviewQuestion.swift in Sources */,
 				D920C251300F001800AB7317 /* LoadingView.swift in Sources */,
 				CECC20EA3007DB5E00DC450D /* ShakeEffect.swift in Sources */,
 				CECC20D43007AD3A00DC450D /* CountryCode.swift in Sources */,

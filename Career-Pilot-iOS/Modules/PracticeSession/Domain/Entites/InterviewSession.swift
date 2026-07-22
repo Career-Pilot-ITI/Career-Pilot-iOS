@@ -1,6 +1,6 @@
 import Foundation
 
-/// Aggregate root. Everything in this feature belongs to a session.
+
 struct InterviewSession: Equatable, Sendable {
     let id: String
     var status: InterviewSessionStatus
@@ -15,3 +15,32 @@ struct InterviewSession: Equatable, Sendable {
         return questions[currentQuestionIndex]
     }
 }
+
+
+//MARK: InterviewAnswer
+enum SubmitAnswerOutcome: Equatable, Sendable {
+    case nextQuestion(InterviewQuestion)
+    case interviewCompleted(InterviewFeedback)
+}
+
+enum AudioReference: Equatable, Sendable {
+    case localFile(URL)
+    case remoteURL(URL)
+}
+
+struct InterviewAnswer: Equatable, Sendable {
+    let questionId: String
+    let audioReference: AudioReference
+    let duration: TimeInterval
+    let submittedAt: Date
+}
+
+
+//MARK: InterviewQuestion
+struct InterviewQuestion: Equatable, Identifiable, Sendable {
+    let id: String
+    let text: String
+    let order: Int
+    
+}
+
