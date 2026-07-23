@@ -8,36 +8,38 @@
 import SwiftUI
 
 struct PracticeSessionView: View {
-    @StateObject var vm: PracticeSessionViewModel
+    @StateObject var vm: PracticeSessionViewModel = PracticeSessionViewModelFactory.makeStub(realRepo: false)
 
     var body: some View {
         Group {
-            switch vm.screenState {
-            case .loading:
-                LoadingView()
+            NavigationStack{
+                switch vm.screenState {
+                case .loading:
+                    LoadingView()
 
-            case .aiTurn:
-                AITurnView(vm: vm)
+                case .aiTurn:
+                    AITurnView(vm: vm)
 
-            case .waitingForAnswer:
-                WaitingForAnswerView(vm: vm) // Probelm with nav to this state
+                case .waitingForAnswer:
+                    WaitingForAnswerView(vm: vm) // Probelm with nav to this state
 
-            case .recording(let silenceWarning):
-                RecordingView(vm: vm, silenceWarning: silenceWarning)
+                case .recording(let silenceWarning):
+                    RecordingView(vm: vm, silenceWarning: silenceWarning)
 
-            case .submittingAnswer:
-                SubmittingAnswerView()
+                case .submittingAnswer:
+                    SubmittingAnswerView()
 
-            case .reconnecting:
-                ReconnectingView()
+                case .reconnecting:
+                    ReconnectingView()
 
-            case .completed:
-                SessionCompletedView(feedback: vm.feedback)
+                case .completed:
+                    SessionCompletedView(feedback: vm.feedback)
 
-            case .error(let error):
-                SessionErrorView(errorMessage: error.localizedDescription){
-                    Task{
-                        await vm.onError(error: error)
+                case .error(let error):
+                    SessionErrorView(errorMessage: error.localizedDescription){
+                        Task{
+                            await vm.onError(error: error)
+                        }
                     }
                 }
             }
