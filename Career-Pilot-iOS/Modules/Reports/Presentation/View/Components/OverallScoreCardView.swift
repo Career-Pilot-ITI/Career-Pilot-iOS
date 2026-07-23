@@ -67,14 +67,14 @@ struct OverallScoreCardView: View {
     }
 }
 
-#Preview {
-    ZStack {
-        Color.lightBackGround.ignoresSafeArea()
-        OverallScoreCardView(
-            score: 82,
-            performanceLabel: "Strong Performance",
-            percentileText: "Top 28% of users this week"
-        )
-        .padding(.horizontal, 24)
-    }
-}
+//#Preview {
+//    ZStack {
+//        Color.lightBackGround.ignoresSafeArea()
+//        OverallScoreCardView(
+//            score: 82,
+//            performanceLabel: "Strong Performance",
+//            percentileText: "Top 28% of users this week"
+//        )
+//        .padding(.horizontal, 24)
+//    }
+//}

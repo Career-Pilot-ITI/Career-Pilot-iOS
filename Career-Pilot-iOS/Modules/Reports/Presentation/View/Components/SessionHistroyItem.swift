@@ -21,13 +21,13 @@ struct SessionHistroyItem: View {
     var color : Color {
         switch session.score {
         case 0..<50:
-            Color.red
+            return Color.red
         case 50..<80:
-            Color.primaryYellow
+            return Color.primaryYellow
         case 80...100:
-            Color.successColour
+            return Color.successColour
         default :
-            Color.gray
+            return Color.gray
         }
     }
     var body: some View {
@@ -67,24 +67,24 @@ struct SessionHistroyItem: View {
         }
     }
 }
-
-#Preview {
-    ZStack() {
-        Color.lightBackGround
-        VStack {
-            Spacer()
-            SessionHistroyItem(
-                session: Session(
-                    title: "Behavioral Interview",
-                    score: 82,
-                    noOfQuestions: 5,
-                    perioudTime: "12 min",
-                    date: "Today, 2:14 PM"
-                )
-            )
-            Spacer()
-        }
-        .padding(.horizontal, 24)
-    }
-
-}
+//
+//#Preview {
+//    ZStack() {
+//        Color.lightBackGround
+//        VStack {
+//            Spacer()
+//            SessionHistroyItem(
+//                session: Session(
+//                    title: "Behavioral Interview",
+//                    score: 82,
+//                    noOfQuestions: 5,
+//                    perioudTime: "12 min",
+//                    date: "Today, 2:14 PM"
+//                )
+//            )
+//            Spacer()
+//        }
+//        .padding(.horizontal, 24)
+//    }
+//
+//}

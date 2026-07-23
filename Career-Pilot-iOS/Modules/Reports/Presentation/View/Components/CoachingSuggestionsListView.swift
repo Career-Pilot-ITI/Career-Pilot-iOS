@@ -28,25 +28,25 @@ struct CoachingSuggestionsListView: View {
     }
 }
 
-#Preview {
-    CoachingSuggestionsListView(suggestions: [
-        CoachingSuggestion(
-            icon: "target",
-            text: "Reduce filler words",
-            description: "You used 'um' and 'uh' 14 times. Try pausing silently instead.",
-            badgeLevel: "High impact"
-        ),
-        CoachingSuggestion(
-            icon: "target",
-            text: "Slow down your pace",
-            description: "Your speaking pace was a bit fast in the second half of the answer.",
-            badgeLevel: "Medium impact"
-        ),
-        CoachingSuggestion(
-            icon: "target",
-            text: "Add more structure",
-            description: "Try using a clear beginning, middle, and end for your answers.",
-            badgeLevel: "Low impact"
-        )
-    ])
-}
+//#Preview {
+//    CoachingSuggestionsListView(suggestions: [
+//        CoachingSuggestion(
+//            icon: "target",
+//            text: "Reduce filler words",
+//            description: "You used 'um' and 'uh' 14 times. Try pausing silently instead.",
+//            badgeLevel: "High impact"
+//        ),
+//        CoachingSuggestion(
+//            icon: "target",
+//            text: "Slow down your pace",
+//            description: "Your speaking pace was a bit fast in the second half of the answer.",
+//            badgeLevel: "Medium impact"
+//        ),
+//        CoachingSuggestion(
+//            icon: "target",
+//            text: "Add more structure",
+//            description: "Try using a clear beginning, middle, and end for your answers.",
+//            badgeLevel: "Low impact"
+//        )
+//    ])
+//}

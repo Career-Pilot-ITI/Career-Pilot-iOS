@@ -23,6 +23,6 @@ struct ImpactBadge: View {
     }
 }
 
-#Preview {
-    ImpactBadge(level: "High impact")
-}
+//#Preview {
+//    ImpactBadge(level: "High impact")
+//}
