@@ -45,7 +45,9 @@ struct ContentView: View {
             case .checkout(let item ):
                 CheckOutView(checkoutItem: item)
             case .subscribtion :
-                ChoosePlanView()
+            ChoosePlanView()
+        case .coin:
+            CoinView()
         }
     }
     

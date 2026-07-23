@@ -34,7 +34,7 @@ struct ProfileFormSettings: View {
                 TrackSelector(selected: $trackSelector)
                 
                 
-            }.padding(.vertical, Spacing.xl).padding(.horizontal , Spacing.lg).background(Color.white , in : RoundedRectangle(cornerRadius: Radius.card)).shadow(
+            }.padding(.vertical, Spacing.s20).padding(.horizontal , Spacing.s16).background(Color.white , in : RoundedRectangle(cornerRadius: Radius.r16)).shadow(
                 color: Color.black.opacity(0.08),
                 radius: 12,
                 x: 0,

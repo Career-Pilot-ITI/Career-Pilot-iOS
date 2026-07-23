@@ -17,7 +17,7 @@ struct TrackSelector: View {
                 .foregroundColor(.primaryNavy)
                 .frame(width: 44, height: 44)
                 .background(
-                    RoundedRectangle(cornerRadius: Radius.lg)
+                    RoundedRectangle(cornerRadius: Radius.r12)
                         .fill(Color.primaryNavy.opacity(0.06))
                 )
             
@@ -35,7 +35,7 @@ struct TrackSelector: View {
                 } label: {
                     HStack {
                         Text(selected)
-                            .font(.bodyApp.bold())
+                            .font(.size13Medium.bold())
                             .foregroundColor(.primaryNavy)
                         Spacer()
                         Image(systemName: "chevron.down")

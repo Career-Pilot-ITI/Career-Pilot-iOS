@@ -20,6 +20,7 @@ enum AppRoute : Hashable {
     // MARK : Checkout
     case checkout(item :CheckoutItem)
     case subscribtion
+    case coin
 }
 
 

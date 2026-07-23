@@ -13,17 +13,17 @@ struct ProfileScreen: View {
             ScrollView {
                 VStack (alignment: .leading, spacing : 0){
                     SettingsProfileTopView(){}
-                    Spacer().frame(height: Spacing.lg)
+                    Spacer().frame(height: Spacing.s16)
                     ProfileFormSettings()
-                    Spacer().frame(height: Spacing.lg)
-                    Text("CV/ Resume").font(.labelAppBold).foregroundColor(.gray400)
-                    Spacer().frame(height: Spacing.lg)
+                    Spacer().frame(height: Spacing.s16)
+                    Text("CV/ Resume").font(.size14Semibold).foregroundColor(.gray400)
+                    Spacer().frame(height: Spacing.s16)
                     CvResumeSettingsProfile()
-                    Spacer().frame(height: Spacing.lg)
+                    Spacer().frame(height: Spacing.s16)
                     Spacer()
-                    Text("SkILLS  DETECTED").font(.labelAppBold).foregroundColor(.gray400)
-                }.padding(.horizontal, Spacing.lg)
-                Spacer().frame(height: Spacing.lg)
+                    Text("SkILLS  DETECTED").font(.size14Semibold).foregroundColor(.gray400)
+                }.padding(.horizontal, Spacing.s16)
+                Spacer().frame(height: Spacing.s16)
                 SkillsDetectedSettingsProfile()
                 
                 

@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct CoinView: View {
+    @StateObject var viewModel: CoinViewModel = CoinViewModel(getCoinPacksUseCase: GetCoinsPlans(settingsRepo: SettingsRepoImp(remote: SettingsRemoteImp(apiService: URLSessionNetworkService()))))
     var body: some View {
         VStack(spacing : 0 ){
             CoinTopView()
             Spacer().frame(height: Spacing.s20)
-            CoinsValueView()
+            CoinsValueView(viewModel: viewModel)
             
         }.padding(.horizontal , Spacing.s20).background(Color.gray100)
     }
@@ -20,6 +21,6 @@ struct CoinView: View {
 
 struct CoinView_Previews: PreviewProvider {
     static var previews: some View {
-        CoinView()
+        CoinView(viewModel: CoinViewModel(getCoinPacksUseCase: GetCoinsPlans(settingsRepo: SettingsRepoImp(remote: SettingsRemoteImp(apiService:URLSessionNetworkService() )))))
     }
 }

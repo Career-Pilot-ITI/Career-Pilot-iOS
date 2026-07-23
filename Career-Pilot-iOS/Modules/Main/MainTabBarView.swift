@@ -22,7 +22,7 @@ struct MainTabBarView: View {
                 }
             
             // Tab 4: Settings
-            SettingsView()
+            SettingsVIew()
                 .tabItem {
                     Label { Text("Settings") } icon: { Image.AppIcon.settings.renderingMode(.template) }
                 }

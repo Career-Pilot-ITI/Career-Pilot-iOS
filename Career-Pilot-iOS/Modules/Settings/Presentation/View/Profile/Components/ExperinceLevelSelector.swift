@@ -17,7 +17,7 @@ struct ExperienceLevelSelector: View {
                 .foregroundColor(.primaryNavy)
                 .frame(width: 44, height: 44)
                 .background(
-                    RoundedRectangle(cornerRadius: Radius.lg)
+                    RoundedRectangle(cornerRadius: Radius.r12)
                         .fill(Color.primaryNavy.opacity(0.06))
                 )
             
@@ -29,7 +29,7 @@ struct ExperienceLevelSelector: View {
                 HStack(spacing: 8) {
                     ForEach(options, id: \.self) { option in
                         Text(option)
-                            .font(.chip.bold())
+                            .font(.size13Medium.bold())
                             .foregroundColor(selected == option ? .white : .gray400)
                             .padding(.horizontal, 16)
                             .padding(.vertical, 10)
