@@ -39,37 +39,5 @@ extension DIContainer{
             )
         }
 
-        
-        // MARK: - PracticeSession
-        container.register(StartInterviewUseCaseProtocol.self) { resolver in
-            StartInterviewUseCase(
-                repository: resolver.resolve(InterviewRepository.self)!
-            )
-        }
-
-        container.register(SubmitAnswerUseCaseProtocol.self) { resolver in
-            SubmitAnswerUseCase(
-                repository: resolver.resolve(InterviewRepository.self)!,
-                validationService: resolver.resolve(InterviewValidationServicing.self)!
-            )
-        }
-
-        container.register(ResumeInterviewUseCaseProtocol.self) { resolver in
-            ResumeInterviewUseCase(
-                repository: resolver.resolve(InterviewRepository.self)!
-            )
-        }
-
-        container.register(FinishInterviewUseCaseProtocol.self) { resolver in
-            FinishInterviewUseCase(
-                repository: resolver.resolve(InterviewRepository.self)!
-            )
-        }
-
-        container.register(CancelInterviewUseCaseProtocol.self) { resolver in
-            CancelInterviewUseCase(
-                repository: resolver.resolve(InterviewRepository.self)!
-            )
-        }
     }
 }
