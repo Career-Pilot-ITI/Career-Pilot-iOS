@@ -15,19 +15,19 @@ struct OnBordingIdelState: View{
         ScrollView{
             switch vm.currentView{
             case.ChooseTrackView:
-                ChoseTrackView(vm: vm)
+                ChooseTrackView(vm: vm)
             case.UploadCvView:
                 UploadCvView(vm: vm)
             case.ProfileView:
-                profile(userData: $vm.userData)
+                profile(vm: vm)
             }
         }
         .padding(.bottom, 20)
     }
 }
-
-struct OnBordingIdelState_Previews: PreviewProvider {
-    static var previews: some View {
-        OnBordingIdelState(vm: DIContainer.shared.container.resolve(OnBordingViewModel.self)!)
-    }
-}
+//
+//struct OnBordingIdelState_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OnBordingIdelState(vm: OnBordingViewModel(uploadCvUseCase: UploadCvUseCase(userDataRepo: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService())))))
+//    }
+//}

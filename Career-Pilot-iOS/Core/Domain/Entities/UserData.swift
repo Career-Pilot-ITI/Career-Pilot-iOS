@@ -11,8 +11,11 @@ import UIKit
 struct UserData {
     var email: String
     var title: String
+    var avatarUrl: String?
+    var avatarFileId: Int?
+    var gender: String?
     var experienceLevel: String
-    var skills: [String]
+    var skills: [Skill]
     var profileImageData : Data?
     var firstName: String
     var lastName: String

@@ -9,4 +9,5 @@ import Foundation
 
 protocol OnBordingRepo{
     func getAllTracks() async throws -> [Track]
+    func updateProfile(user: User) async throws -> User
 }

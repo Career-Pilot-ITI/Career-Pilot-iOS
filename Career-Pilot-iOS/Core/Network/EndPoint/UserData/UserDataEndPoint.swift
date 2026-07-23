@@ -19,15 +19,15 @@ enum UserDataEndPointes: APIEndpoint {
     private static let boundary = "Boundary-\(UUID().uuidString)"
 
     var baseURL: String {
-        return "https://career-pilot-iti.github.io/Career-Pilot-Backend/"
+        return "https://192.168.84.1:8080"
     }
 
     var path: String {
         switch self {
         case .analyseCv:
-            return "api/v1/profile/cv/analyze"
+            return "/api/v1/profile/cv/analyze"
         case .uplodeFile:
-            return "api/v1/files/upload"
+            return "/api/v1/files/upload"
         }
     }
 

@@ -10,6 +10,8 @@ import Foundation
 enum NetworkError: Error, LocalizedError {
     case invalidURL
     case noInternet
+    case unauthorized          // No token found
+    case tokenExpired          // Token expired, need re-auth
     case decodingFailed(Error)
     case encodingFailed(Error)
     case serverError(statusCode: Int, data: Data?)
@@ -21,6 +23,10 @@ enum NetworkError: Error, LocalizedError {
             return "Invalid URL"
         case .noInternet:
             return "No internet connection"
+        case .unauthorized:
+            return "Please log in again"
+        case .tokenExpired:
+            return "Session expired. Please log in again."
         case .decodingFailed:
             return "Failed to decode response"
         case .encodingFailed:

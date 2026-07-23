@@ -10,7 +10,7 @@ import UniformTypeIdentifiers
 
 
 struct UploadCvView: View {
-    @StateObject var vm: OnBordingViewModel
+    @ObservedObject var vm: OnBordingViewModel
     @State var isImporterPresented: Bool = false
     
     //A custom type for .docx
@@ -61,9 +61,9 @@ struct UploadCvView: View {
     }
 }
 
-struct UploadCvView_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        UploadCvView(vm: DIContainer.shared.container.resolve(OnBordingViewModel.self)!)
-    }
-}
+//struct UploadCvView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        
+//        UploadCvView(vm: OnBordingViewModel(uploadCvUseCase: UploadCvUseCase(userDataRepo: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService())))))
+//    }
+//}

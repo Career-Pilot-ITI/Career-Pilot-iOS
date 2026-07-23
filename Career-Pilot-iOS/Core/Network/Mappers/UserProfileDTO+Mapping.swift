@@ -14,6 +14,8 @@ extension UserProfileDTO {
             username: username ?? "",
             email: email ?? "",
             avatarUrl: avatarUrl.flatMap(URL.init(string:)),
+            avatarFileId: avatarFileId ?? 0,
+            cvFileId: cvFileId ?? 0,
             gender: gender,
             dateOfBirth: dateOfBirth.flatMap(DateFormatter.apiDateOnly.date(from:)),
             targetRole: targetRole,
@@ -22,7 +24,7 @@ extension UserProfileDTO {
             currentJobTitle: currentJobTitle,
             yearsOfExperience: yearsOfExperience,
             cvUrl: cvUrl.flatMap(URL.init(string:)),
-            skills: skills ?? [],
+            skills: (skills ?? []).map { $0.toDomain() },
             targetCompanies: targetCompanies ?? [],
             educationLevel: educationLevel,
             timezone: timezone,
@@ -30,10 +32,11 @@ extension UserProfileDTO {
             subscriptionTier: subscriptionTier,
             coinBalance: coinBalance ?? 0,
             onboardingCompleted: onboardingCompleted ?? false,
-            trackName: trackName
+            trackName: trackName,
+            trackId: 0
         )
     }
-}
+}	
 
 extension DateFormatter {
     /// Matches "2026-07-17" style dates from the API.

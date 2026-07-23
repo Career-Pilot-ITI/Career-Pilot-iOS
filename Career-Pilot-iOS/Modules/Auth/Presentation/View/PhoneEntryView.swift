@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PhoneEntryView: View {
-    @EnvironmentObject var coordinator: AppCoordinator
+    @EnvironmentObject var coordinator: AppCoordinator<AuthRoute>
     @EnvironmentObject var toastManager: ToastManager
     @StateObject private var phoneFieldViewModel = PhoneFieldViewModel()
     

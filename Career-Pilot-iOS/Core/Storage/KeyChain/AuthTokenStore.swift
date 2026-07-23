@@ -35,6 +35,10 @@ final class KeychainAuthTokenStore: AuthTokenStoring {
             expiresAt: expiresAt
         )
         try keychain.save(stored, forKey: key)
+        
+        print("------------------------------------------")
+        print("🔑 [SUCCESSFULLY SAVED TOKEN]: \(stored)")
+        print("------------------------------------------")
     }
 
     func loadTokens() throws -> AuthTokens? {
