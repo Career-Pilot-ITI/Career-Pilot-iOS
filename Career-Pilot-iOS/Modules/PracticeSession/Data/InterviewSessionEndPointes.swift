@@ -8,8 +8,8 @@
 import Foundation
 
 enum InterviewSessionEndPointes: APIEndpoint {
-    case startSession(StartInterviewSessionRequest)
-    case submitAnswer(SubmitAnswerRequest)
+    case startSession(StartInterviewSessionRequestDTO)
+    case submitAnswer(SubmitAnswerRequestDTO)
     case resumeSession(sessionId: String)
     case getFeedback(sessionId: String)
 

@@ -167,6 +167,7 @@
 		D9B4B1B630117ED4004909ED /* NewSessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4B1B530117ED3004909ED /* NewSessionDTO.swift */; };
 		D9B4B1B83011810E004909ED /* NewSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4B1B73011810E004909ED /* NewSession.swift */; };
 		D9B4B1BA301181FE004909ED /* NewSessionDTOMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4B1B9301181FE004909ED /* NewSessionDTOMapping.swift */; };
+		D9B4B1BD301195B3004909ED /* ApiRequestesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4B1BC301195B3004909ED /* ApiRequestesDTO.swift */; };
 		D9B614E5300CF39E00552F85 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = D9B614E4300CF39E00552F85 /* Swinject */; };
 		D9B614E8300CF49400552F85 /* DIContainer+Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614E7300CF49400552F85 /* DIContainer+Repositories.swift */; };
 		D9B614EA300CF4A100552F85 /* DIContainer+UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614E9300CF4A100552F85 /* DIContainer+UseCases.swift */; };
@@ -376,6 +377,7 @@
 		D9B4B1B530117ED3004909ED /* NewSessionDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSessionDTO.swift; sourceTree = "<group>"; };
 		D9B4B1B73011810E004909ED /* NewSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSession.swift; sourceTree = "<group>"; };
 		D9B4B1B9301181FE004909ED /* NewSessionDTOMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSessionDTOMapping.swift; sourceTree = "<group>"; };
+		D9B4B1BC301195B3004909ED /* ApiRequestesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestesDTO.swift; sourceTree = "<group>"; };
 		D9B614E7300CF49400552F85 /* DIContainer+Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+Repositories.swift"; sourceTree = "<group>"; };
 		D9B614E9300CF4A100552F85 /* DIContainer+UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+UseCases.swift"; sourceTree = "<group>"; };
 		D9B614EB300CF50000552F85 /* DIContainer+ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+ViewModels.swift"; sourceTree = "<group>"; };
@@ -976,6 +978,7 @@
 			isa = PBXGroup;
 			children = (
 				D95C3B98300E495C0042785F /* InterviewSessionEndPointes.swift */,
+				D9B4B1BB301195A5004909ED /* Requestes */,
 				D92853EB3010050600F8CAC2 /* DTOs */,
 				D95C3B9B300E49740042785F /* DataSources */,
 				D92853F53010176200F8CAC2 /* Mappers */,
@@ -1184,6 +1187,14 @@
 				D9C187BA300662F000BFF8E9 /* HTTPMethod.swift */,
 			);
 			path = Generic;
+			sourceTree = "<group>";
+		};
+		D9B4B1BB301195A5004909ED /* Requestes */ = {
+			isa = PBXGroup;
+			children = (
+				D9B4B1BC301195B3004909ED /* ApiRequestesDTO.swift */,
+			);
+			path = Requestes;
 			sourceTree = "<group>";
 		};
 		D9B614E6300CF3D700552F85 /* InjectFolders */ = {
@@ -1702,6 +1713,7 @@
 				D92853F230100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift in Sources */,
 				616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */,
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
+				D9B4B1BD301195B3004909ED /* ApiRequestesDTO.swift in Sources */,
 				41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */,
 				41BE1A71300BF0950033D1B5 /* UserDataRepo.swift in Sources */,
 				CEE62A8730091FD10071F076 /* MainTabBarView.swift in Sources */,
