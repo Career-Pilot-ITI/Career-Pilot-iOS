@@ -50,7 +50,9 @@ extension DIContainer{
         container.register(SubmitAnswerUseCaseProtocol.self) { resolver in
             SubmitAnswerUseCase(
                 repository: resolver.resolve(InterviewRepository.self)!,
-                validationService: resolver.resolve(InterviewValidationServicing.self)!, speechRecognitionService: resolver.resolve(SpeechRecognitionService.self)!)
+                validationService: resolver.resolve(InterviewValidationServicing.self)!, speechRecognitionService: resolver.resolve(SpeechRecognitionServicing.self)!
+                
+            )
         }
 
         container.register(ResumeInterviewUseCaseProtocol.self) { resolver in

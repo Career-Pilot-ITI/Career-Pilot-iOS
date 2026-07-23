@@ -10,7 +10,7 @@ struct MainTabBarView: View {
                 }
             
             // Tab 2: Practice
-            PracticeSessionView()
+            PracticeSessionView(vm: DIContainer.shared.container.resolve(PracticeSessionViewModel.self)!)
                 .tabItem {
                     Label { Text("Practice") } icon: { Image.AppIcon.mic.renderingMode(.template) }
                 }

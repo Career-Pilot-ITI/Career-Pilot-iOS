@@ -33,8 +33,11 @@ extension DIContainer{
         }
 
         // MARK: - PracticeSession
-        container.register(InterviewRepository.self) { _ in
-            InterviewRepositoryImp()
+        container.register(InterviewRepository.self) { r in
+
+            StubInterviewRepository()
+            
+            //            InterviewRepositoryImp(remoteDataSource: r.resolve(InterviewSessionRemoteDataSource.self)!)
         }
     }
 }

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct PracticeSessionView: View {
-    @StateObject var vm: PracticeSessionViewModel = PracticeSessionViewModelFactory.makeStub(realRepo: false)
+    @StateObject var vm: PracticeSessionViewModel
+//    PracticeSessionViewModelFactory.makeStub(realRepo: false)
 
     var body: some View {
         Group {

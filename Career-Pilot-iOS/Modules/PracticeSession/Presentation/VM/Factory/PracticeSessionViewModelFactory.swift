@@ -15,7 +15,7 @@ enum PracticeSessionViewModelFactory {
         let repository: InterviewRepository
         
         if realRepo{
-            repository = DIContainer.shared.container.resolve(InterviewRepository.self)?
+            repository = DIContainer.shared.container.resolve(InterviewRepository.self)!
         }else{
             repository = StubInterviewRepository()
         }
