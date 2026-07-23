@@ -45,6 +45,31 @@ extension DIContainer{
         container.register(AppState.self) { _ in
             AppState()
         }
+        
+        //MARK: PracticeSession
+        container.register(InterviewValidationServicing.self) { _ in
+            InterviewValidationService()
+        }
+
+        container.register(InterviewProgressServicing.self) { _ in
+            InterviewProgressService()
+        }
+
+        container.register(AudioRecordingServicing.self) { _ in
+            AudioRecordingService()
+        }
+
+        container.register(SilenceDetectionServicing.self) { _ in
+            SilenceDetectionService()
+        }
+
+        container.register(SpeechPlaybackServicing.self) { _ in
+            SpeechPlaybackService()
+        }
+
+        container.register(SpeechRecognitionServicing.self) { _ in
+            SpeechRecognitionService()
+        }
 
     }
 }

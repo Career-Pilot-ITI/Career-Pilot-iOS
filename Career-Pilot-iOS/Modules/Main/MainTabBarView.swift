@@ -10,7 +10,7 @@ struct MainTabBarView: View {
                 }
             
             // Tab 2: Practice
-            PracticeView()
+            PracticeSessionView()
                 .tabItem {
                     Label { Text("Practice") } icon: { Image.AppIcon.mic.renderingMode(.template) }
                 }
