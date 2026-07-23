@@ -30,7 +30,7 @@ struct AnsweredQuestionDTO: Decodable {
     let speechRateWpm: Double
     let avgPauseMs: Double
     let silenceRatio: Double
-    let createdAt: Date
-    let completedAt: Date
+    let createdAt: String
+    let completedAt: String
     let score: ScoreDTO?
 }

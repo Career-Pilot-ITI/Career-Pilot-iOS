@@ -23,7 +23,7 @@ struct ScoreDTO: Codable {
     let fillerWords: Int
     let overallScore: Int
     let coachingTip: String
-    let createdAt: Date
+    let createdAt: String
 }
 
 struct QuestionDTO: Codable {
@@ -31,5 +31,5 @@ struct QuestionDTO: Codable {
     let sessionId: Int
     let questionText: String
     let questionOrder: Int
-    let createdAt: Date
+    let createdAt: String
 }

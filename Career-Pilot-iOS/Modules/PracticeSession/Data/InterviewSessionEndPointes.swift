@@ -20,13 +20,13 @@ enum InterviewSessionEndPointes: APIEndpoint {
     var path: String {
         switch self {
         case .startSession:
-            return "/interviews/sessions"
+            return "api/v1/interviews/sessions"
         case .submitAnswer(let submitRequest):
-            return "/interviews/sessions/\(submitRequest.sessionId)/answer"
+            return "api/v1//interviews/sessions/\(submitRequest.sessionId)/answer"
         case .resumeSession(let sessionId):
-            return "/interviews/sessions/\(sessionId)/state"
+            return "api/v1//interviews/sessions/\(sessionId)/state"
         case .getFeedback(let sessionId):
-            return "/interviews/sessions/\(sessionId)/feedback"
+            return "api/v1//interviews/sessions/\(sessionId)/feedback"
         }
     }
 

@@ -32,8 +32,8 @@ struct FeedbackReportQuestion: Codable {
     let speechRateWpm: Int
     let avgPauseMs: Int
     let silenceRatio: Double
-    let createdAt: Date
-    let completedAt: Date
+    let createdAt: String
+    let completedAt: String
     let score: FeedbackReportScore
 }
 
@@ -47,5 +47,5 @@ struct FeedbackReportScore: Codable {
     let fillerWords: Int
     let overallScore: Int
     let coachingTip: String
-    let createdAt: Date
+    let createdAt: String
 }

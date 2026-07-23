@@ -26,7 +26,7 @@ enum PracticeSessionViewModelFactory {
         let configuration = InterviewConfiguration(
             maxQuestions: 3,
             maxAnswerDuration: 240,   // 4 minutes per answer
-            maxInterviewDuration: 1800, // 30 minutes total
+            maxInterviewDuration: 120, // 30 minutes total
             silenceTimeout: 5 , // 5s of silence before auto-submit
             trackID: 1
         )

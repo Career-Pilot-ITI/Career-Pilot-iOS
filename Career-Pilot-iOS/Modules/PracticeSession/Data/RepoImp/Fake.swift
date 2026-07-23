@@ -29,7 +29,7 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
             text: stubQuestions[0],
             order: 0
         )
-            return NewSession(sessionId: 1, trackName: "Ai", targetDurationMinutes: 10, maxQuestions: 3, startedAt: Date(), currentQuestion: firstQuestion)
+            return NewSession(sessionId: 1, trackName: "Ai", targetDurationMinutes: 10, maxQuestions: 3, startedAt: "1", currentQuestion: firstQuestion)
 
     }
 

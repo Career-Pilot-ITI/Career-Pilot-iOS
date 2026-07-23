@@ -12,7 +12,7 @@ struct NewSessionDTO: Codable {
     let trackName: String
     let targetDurationMinutes: Int
     let maxQuestions: Int
-    let startedAt: Date
+    let startedAt: String
     let currentQuestion: QuestionDTO
 }
 
