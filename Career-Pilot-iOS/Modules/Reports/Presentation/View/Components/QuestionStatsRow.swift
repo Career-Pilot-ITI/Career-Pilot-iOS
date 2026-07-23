@@ -18,16 +18,16 @@ struct QuestionStatsRow: View {
         }
     }
 }
-
-#Preview {
-    QuestionStatsRow(question: QuestionReview(
-        questionNumber: 1,
-        questionText: "Tell me about yourself and your background.",
-        score: 88,
-        fillerWordsCount: 3,
-        duration: "1:42",
-        coachFeedback: "Great structure. Consider leading with impact earlier.",
-        transcript: "So, uh, I think the main challenge was… um… basically we had to figure out how the architecture would, you know, handle the load…",
-        flaggedWords: ["uh", "um", "you know", "basically"]
-    ))
-}
+//
+//#Preview {
+//    QuestionStatsRow(question: QuestionReview(
+//        questionNumber: 1,
+//        questionText: "Tell me about yourself and your background.",
+//        score: 88,
+//        fillerWordsCount: 3,
+//        duration: "1:42",
+//        coachFeedback: "Great structure. Consider leading with impact earlier.",
+//        transcript: "So, uh, I think the main challenge was… um… basically we had to figure out how the architecture would, you know, handle the load…",
+//        flaggedWords: ["uh", "um", "you know", "basically"]
+//    ))
+//}

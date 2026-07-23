@@ -21,7 +21,7 @@ struct SuggestionIconView: View {
             }
     }
 }
-
-#Preview {
-    SuggestionIconView(icon: "target")
-}
+//
+//#Preview {
+//    SuggestionIconView(icon: "target")
+//}

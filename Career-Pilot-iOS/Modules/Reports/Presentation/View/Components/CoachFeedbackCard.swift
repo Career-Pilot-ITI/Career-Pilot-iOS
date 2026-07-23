@@ -33,6 +33,6 @@ struct CoachFeedbackCard: View {
     }
 }
 
-#Preview {
-    CoachFeedbackCard(feedback: "Great structure. Consider leading with impact earlier.")
-}
+//#Preview {
+//    CoachFeedbackCard(feedback: "Great structure. Consider leading with impact earlier.")
+//}

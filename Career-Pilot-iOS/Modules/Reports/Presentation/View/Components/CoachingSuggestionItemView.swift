@@ -38,15 +38,15 @@ struct CoachingSuggestionItemView: View {
     }
 }
 
-#Preview {
-    ZStack() {
-        Color.lightBackGround
-        VStack {
-            Spacer()
-            CoachingSuggestionItemView(
-            suggestion: CoachingSuggestion(icon: "target", text: "Reduce filler words", description: "You used 'um' and 'uh' 14 times. Try pausing silently instead.", badgeLevel: "High impact"))
-            Spacer()
-        }
-        .padding(.horizontal, 24)
-    }
-}
+//#Preview {
+//    ZStack() {
+//        Color.lightBackGround
+//        VStack {
+//            Spacer()
+//            CoachingSuggestionItemView(
+//            suggestion: CoachingSuggestion(icon: "target", text: "Reduce filler words", description: "You used 'um' and 'uh' 14 times. Try pausing silently instead.", badgeLevel: "High impact"))
+//            Spacer()
+//        }
+//        .padding(.horizontal, 24)
+//    }
+//}

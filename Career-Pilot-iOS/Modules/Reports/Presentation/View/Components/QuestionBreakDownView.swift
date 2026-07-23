@@ -69,14 +69,14 @@ struct QuestionBreakDownView: View {
     }
 }
 
-#Preview {
-    ZStack() {
-        Color.lightBackGround
-        VStack {
-            Spacer()
-            QuestionBreakDownView()
-            Spacer()
-        }
-        .padding(.horizontal, 24)
-    }
-}
+//#Preview {
+//    ZStack() {
+//        Color.lightBackGround
+//        VStack {
+//            Spacer()
+//            QuestionBreakDownView()
+//            Spacer()
+//        }
+//        .padding(.horizontal, 24)
+//    }
+//}

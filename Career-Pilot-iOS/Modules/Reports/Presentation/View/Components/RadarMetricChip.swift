@@ -28,6 +28,6 @@ struct RadarMetricChip: View {
     }
 }
 
-#Preview {
-    RadarMetricChip(metric:     RadarMetric(label: "Clarity", value: 78, color: .orange))
-}
+//#Preview {
+//    RadarMetricChip(metric:     RadarMetric(label: "Clarity", value: 78, color: .orange))
+//}

@@ -44,7 +44,7 @@ struct TranscriptSnippetCard: View {
         }
     }
 }
-
-#Preview {
-    TranscriptSnippetCard(transcript: "\"So, uh, I think the main challenge was… um… basically we had to figure out how the architecture would, you know, handle the load…\"", flaggedWords: ["uh" , "um" , "you know" , "basically"])
-}
+//
+//#Preview {
+//    TranscriptSnippetCard(transcript: "\"So, uh, I think the main challenge was… um… basically we had to figure out how the architecture would, you know, handle the load…\"", flaggedWords: ["uh" , "um" , "you know" , "basically"])
+//}

@@ -147,6 +147,17 @@
 		CEE62A95300929830071F076 /* ProgressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A94300929830071F076 /* ProgressCard.swift */; };
 		CEE62A97300929960071F076 /* PracticeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A96300929960071F076 /* PracticeCard.swift */; };
 		CEE62A99300929A70071F076 /* SessionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A98300929A70071F076 /* SessionRow.swift */; };
+		D920C24B300EFEB400AB7317 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920C24A300EFEB400AB7317 /* RecordingView.swift */; };
+		D920C24D300EFEC800AB7317 /* SessionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920C24C300EFEC800AB7317 /* SessionHeader.swift */; };
+		D920C24F300EFEE200AB7317 /* StatusScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920C24E300EFEE200AB7317 /* StatusScreens.swift */; };
+		D920C251300F001800AB7317 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920C250300F001800AB7317 /* LoadingView.swift */; };
+		D92853EA301004B800F8CAC2 /* InterviewRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853E9301004B800F8CAC2 /* InterviewRepositoryImp.swift */; };
+		D92853EF301006E900F8CAC2 /* FeedbackReportDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853EE301006E900F8CAC2 /* FeedbackReportDTO.swift */; };
+		D92853F230100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853F130100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift */; };
+		D9285400301017E100F8CAC2 /* SubmitAnswerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92853FD301017E100F8CAC2 /* SubmitAnswerResponseDTO.swift */; };
+		D92854073010188400F8CAC2 /* FeedbackReportDTOMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92854033010188300F8CAC2 /* FeedbackReportDTOMapping.swift */; };
+		D92854083010188400F8CAC2 /* InterviewQuestionMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92854043010188300F8CAC2 /* InterviewQuestionMapping.swift */; };
+		D92854093010188400F8CAC2 /* SessionDTOMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92854053010188400F8CAC2 /* SessionDTOMapping.swift */; };
 		D935DFCB30078012009DF855 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFCA30078012009DF855 /* CustomButton.swift */; };
 		D935DFCF300789EF009DF855 /* CvUploadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFCE300789EF009DF855 /* CvUploadingView.swift */; };
 		D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFF930080448009DF855 /* OnBordingView.swift */; };
@@ -158,6 +169,30 @@
 		D93938F83004064600CF4372 /* Career_Pilot_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93938F73004064600CF4372 /* Career_Pilot_iOSTests.swift */; };
 		D93939023004064600CF4372 /* Career_Pilot_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93939013004064600CF4372 /* Career_Pilot_iOSUITests.swift */; };
 		D93939043004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93939033004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift */; };
+		D95C3B99300E495C0042785F /* InterviewSessionEndPointes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3B98300E495C0042785F /* InterviewSessionEndPointes.swift */; };
+		D95C3B9E300E49BF0042785F /* AudioRecordingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3B9D300E49BF0042785F /* AudioRecordingService.swift */; };
+		D95C3BA0300E49D20042785F /* CancelInterviewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3B9F300E49D20042785F /* CancelInterviewUseCase.swift */; };
+		D95C3BA2300E49E10042785F /* FinishInterviewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BA1300E49E10042785F /* FinishInterviewUseCase.swift */; };
+		D95C3BA6300E49F30042785F /* InterviewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BA5300E49F30042785F /* InterviewConfiguration.swift */; };
+		D95C3BA8300E49FD0042785F /* InterviewError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BA7300E49FD0042785F /* InterviewError.swift */; };
+		D95C3BAB300E4A240042785F /* InterviewFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BAA300E4A240042785F /* InterviewFeedback.swift */; };
+		D95C3BAD300E4A2A0042785F /* InterviewProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BAC300E4A2A0042785F /* InterviewProgressService.swift */; };
+		D95C3BB1300E4A460042785F /* InterviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BB0300E4A460042785F /* InterviewRepository.swift */; };
+		D95C3BB3300E4A4C0042785F /* InterviewSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BB2300E4A4C0042785F /* InterviewSession.swift */; };
+		D95C3BB5300E4A520042785F /* InterviewSessionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BB4300E4A520042785F /* InterviewSessionStatus.swift */; };
+		D95C3BB7300E4A5E0042785F /* InterviewValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BB6300E4A5E0042785F /* InterviewValidationService.swift */; };
+		D95C3BB9300E4ABE0042785F /* ResumeInterviewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BB8300E4ABE0042785F /* ResumeInterviewUseCase.swift */; };
+		D95C3BBC300E4AC60042785F /* SpeechPlaybackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BBA300E4AC60042785F /* SpeechPlaybackService.swift */; };
+		D95C3BBD300E4AC60042785F /* SilenceDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BBB300E4AC60042785F /* SilenceDetectionService.swift */; };
+		D95C3BC0300E4ACF0042785F /* SubmitAnswerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BBE300E4ACF0042785F /* SubmitAnswerUseCase.swift */; };
+		D95C3BC1300E4ACF0042785F /* StartInterviewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BBF300E4ACF0042785F /* StartInterviewUseCase.swift */; };
+		D95C3BC4300E7B6E0042785F /* PracticeSessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BC3300E7B6E0042785F /* PracticeSessionViewModel.swift */; };
+		D95C3BC6300E7C4F0042785F /* PracticeSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BC5300E7C4F0042785F /* PracticeSessionView.swift */; };
+		D95C3BC9300EA1650042785F /* AITurnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BC8300EA1650042785F /* AITurnView.swift */; };
+		D95C3BCB300EA1800042785F /* WaitingForAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCA300EA1800042785F /* WaitingForAnswerView.swift */; };
+		D95C3BCD300EA1A20042785F /* UserTrunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCC300EA1A20042785F /* UserTrunView.swift */; };
+		D95C3BCF300EA1C00042785F /* SubmitingAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCE300EA1C00042785F /* SubmitingAnswerView.swift */; };
+		D9868B41300FD22600B84CD6 /* SpeechRecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9868B40300FD22600B84CD6 /* SpeechRecognitionService.swift */; };
 		D98A79703008D9A300DFDC6B /* CvViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A796F3008D9A300DFDC6B /* CvViewInfo.swift */; };
 		D98A79733008DB2F00DFDC6B /* ChooseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79723008DB2F00DFDC6B /* ChooseTrackView.swift */; };
 		D98A79753008DFD800DFDC6B /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79743008DFD800DFDC6B /* Track.swift */; };
@@ -165,10 +200,19 @@
 		D98A79793008EB9200DFDC6B /* ChoseTrackViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79783008EB9200DFDC6B /* ChoseTrackViewInfo.swift */; };
 		D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A797C300903BF00DFDC6B /* UploadeCvErrors.swift */; };
 		D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */; };
+		D999D5A63010E71F00CF606B /* SessionStateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5A53010E71F00CF606B /* SessionStateDTO.swift */; };
+		D999D5A83010ED0E00CF606B /* SessionStateDTOMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */; };
+		D999D5AD301130B300CF606B /* ApiRequestes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5AC301130B300CF606B /* ApiRequestes.swift */; };
+		D99D97523012309E00F2A7C2 /* StringMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D97513012309E00F2A7C2 /* StringMapping.swift */; };
 		D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */; };
 		D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */; };
 		D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28583300A6CC300ABB5BD /* UserDataRepoImp.swift */; };
 		D9A28588300A82CE00ABB5BD /* UserDataRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */; };
+		D9B4B1B630117ED4004909ED /* NewSessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4B1B530117ED3004909ED /* NewSessionDTO.swift */; };
+		D9B4B1B83011810E004909ED /* NewSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4B1B73011810E004909ED /* NewSession.swift */; };
+		D9B4B1BA301181FE004909ED /* NewSessionDTOMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4B1B9301181FE004909ED /* NewSessionDTOMapping.swift */; };
+		D9B4B1BD301195B3004909ED /* ApiRequestesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4B1BC301195B3004909ED /* ApiRequestesDTO.swift */; };
+		D9B614E5300CF39E00552F85 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = D9B614E4300CF39E00552F85 /* Swinject */; };
 		D9B614E8300CF49400552F85 /* DIContainer+Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614E7300CF49400552F85 /* DIContainer+Repositories.swift */; };
 		D9B614EA300CF4A100552F85 /* DIContainer+UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614E9300CF4A100552F85 /* DIContainer+UseCases.swift */; };
 		D9B614EC300CF50000552F85 /* DIContainer+ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614EB300CF50000552F85 /* DIContainer+ViewModels.swift */; };
@@ -181,13 +225,14 @@
 		D9B614FD300D1D5700552F85 /* OnBordingRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614FC300D1D5700552F85 /* OnBordingRemoteDataSource.swift */; };
 		D9B614FF300D1D7C00552F85 /* TrackDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B614FE300D1D7C00552F85 /* TrackDTO.swift */; };
 		D9B61505300D1F2C00552F85 /* GetAllTracks+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B61504300D1F2C00552F85 /* GetAllTracks+Mapping.swift */; };
+		D9BA3474300ED4BF0058D6E6 /* PracticeSessionViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BA3473300ED4BF0058D6E6 /* PracticeSessionViewModelFactory.swift */; };
+		D9BA3476300ED5040058D6E6 /* Fake.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BA3475300ED5040058D6E6 /* Fake.swift */; };
 		D9C09B10300A2B32008C1E58 /* OnBordingIdelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */; };
 		D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187A930065C8700BFF8E9 /* AuthViewModel.swift */; };
 		D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187AE300660D100BFF8E9 /* APIEndpoint.swift */; };
 		D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187B23006618500BFF8E9 /* DIContainer.swift */; };
 		D9C187BB300662F000BFF8E9 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187BA300662F000BFF8E9 /* HTTPMethod.swift */; };
 		D9C187C830066A4F00BFF8E9 /* Colors+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187C730066A4F00BFF8E9 /* Colors+Extension.swift */; };
-		D9C187CF30066B2800BFF8E9 /* style.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C187CE30066B2800BFF8E9 /* style.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -348,6 +393,17 @@
 		CEE62A94300929830071F076 /* ProgressCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCard.swift; sourceTree = "<group>"; };
 		CEE62A96300929960071F076 /* PracticeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCard.swift; sourceTree = "<group>"; };
 		CEE62A98300929A70071F076 /* SessionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRow.swift; sourceTree = "<group>"; };
+		D920C24A300EFEB400AB7317 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
+		D920C24C300EFEC800AB7317 /* SessionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHeader.swift; sourceTree = "<group>"; };
+		D920C24E300EFEE200AB7317 /* StatusScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusScreens.swift; sourceTree = "<group>"; };
+		D920C250300F001800AB7317 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		D92853E9301004B800F8CAC2 /* InterviewRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewRepositoryImp.swift; sourceTree = "<group>"; };
+		D92853EE301006E900F8CAC2 /* FeedbackReportDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackReportDTO.swift; sourceTree = "<group>"; };
+		D92853F130100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewSessionRemoteDataSource.swift; sourceTree = "<group>"; };
+		D92853FD301017E100F8CAC2 /* SubmitAnswerResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitAnswerResponseDTO.swift; sourceTree = "<group>"; };
+		D92854033010188300F8CAC2 /* FeedbackReportDTOMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackReportDTOMapping.swift; sourceTree = "<group>"; };
+		D92854043010188300F8CAC2 /* InterviewQuestionMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewQuestionMapping.swift; sourceTree = "<group>"; };
+		D92854053010188400F8CAC2 /* SessionDTOMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDTOMapping.swift; sourceTree = "<group>"; };
 		D935DFCA30078012009DF855 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		D935DFCE300789EF009DF855 /* CvUploadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvUploadingView.swift; sourceTree = "<group>"; };
 		D935DFF930080448009DF855 /* OnBordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingView.swift; sourceTree = "<group>"; };
@@ -362,6 +418,30 @@
 		D93938FD3004064600CF4372 /* Career-Pilot-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Career-Pilot-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93939013004064600CF4372 /* Career_Pilot_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career_Pilot_iOSUITests.swift; sourceTree = "<group>"; };
 		D93939033004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career_Pilot_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D95C3B98300E495C0042785F /* InterviewSessionEndPointes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewSessionEndPointes.swift; sourceTree = "<group>"; };
+		D95C3B9D300E49BF0042785F /* AudioRecordingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecordingService.swift; sourceTree = "<group>"; };
+		D95C3B9F300E49D20042785F /* CancelInterviewUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelInterviewUseCase.swift; sourceTree = "<group>"; };
+		D95C3BA1300E49E10042785F /* FinishInterviewUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishInterviewUseCase.swift; sourceTree = "<group>"; };
+		D95C3BA5300E49F30042785F /* InterviewConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewConfiguration.swift; sourceTree = "<group>"; };
+		D95C3BA7300E49FD0042785F /* InterviewError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewError.swift; sourceTree = "<group>"; };
+		D95C3BAA300E4A240042785F /* InterviewFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewFeedback.swift; sourceTree = "<group>"; };
+		D95C3BAC300E4A2A0042785F /* InterviewProgressService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewProgressService.swift; sourceTree = "<group>"; };
+		D95C3BB0300E4A460042785F /* InterviewRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewRepository.swift; sourceTree = "<group>"; };
+		D95C3BB2300E4A4C0042785F /* InterviewSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewSession.swift; sourceTree = "<group>"; };
+		D95C3BB4300E4A520042785F /* InterviewSessionStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewSessionStatus.swift; sourceTree = "<group>"; };
+		D95C3BB6300E4A5E0042785F /* InterviewValidationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterviewValidationService.swift; sourceTree = "<group>"; };
+		D95C3BB8300E4ABE0042785F /* ResumeInterviewUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeInterviewUseCase.swift; sourceTree = "<group>"; };
+		D95C3BBA300E4AC60042785F /* SpeechPlaybackService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechPlaybackService.swift; sourceTree = "<group>"; };
+		D95C3BBB300E4AC60042785F /* SilenceDetectionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SilenceDetectionService.swift; sourceTree = "<group>"; };
+		D95C3BBE300E4ACF0042785F /* SubmitAnswerUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitAnswerUseCase.swift; sourceTree = "<group>"; };
+		D95C3BBF300E4ACF0042785F /* StartInterviewUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartInterviewUseCase.swift; sourceTree = "<group>"; };
+		D95C3BC3300E7B6E0042785F /* PracticeSessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeSessionViewModel.swift; sourceTree = "<group>"; };
+		D95C3BC5300E7C4F0042785F /* PracticeSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeSessionView.swift; sourceTree = "<group>"; };
+		D95C3BC8300EA1650042785F /* AITurnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AITurnView.swift; sourceTree = "<group>"; };
+		D95C3BCA300EA1800042785F /* WaitingForAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForAnswerView.swift; sourceTree = "<group>"; };
+		D95C3BCC300EA1A20042785F /* UserTrunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTrunView.swift; sourceTree = "<group>"; };
+		D95C3BCE300EA1C00042785F /* SubmitingAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitingAnswerView.swift; sourceTree = "<group>"; };
+		D9868B40300FD22600B84CD6 /* SpeechRecognitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionService.swift; sourceTree = "<group>"; };
 		D98A796F3008D9A300DFDC6B /* CvViewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvViewInfo.swift; sourceTree = "<group>"; };
 		D98A79723008DB2F00DFDC6B /* ChooseTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTrackView.swift; sourceTree = "<group>"; };
 		D98A79743008DFD800DFDC6B /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
@@ -369,6 +449,10 @@
 		D98A79783008EB9200DFDC6B /* ChoseTrackViewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseTrackViewInfo.swift; sourceTree = "<group>"; };
 		D98A797C300903BF00DFDC6B /* UploadeCvErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadeCvErrors.swift; sourceTree = "<group>"; };
 		D98A797E3009084000DFDC6B /* OnBordingErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingErrorState.swift; sourceTree = "<group>"; };
+		D999D5A53010E71F00CF606B /* SessionStateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateDTO.swift; sourceTree = "<group>"; };
+		D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateDTOMapping.swift; sourceTree = "<group>"; };
+		D999D5AC301130B300CF606B /* ApiRequestes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestes.swift; sourceTree = "<group>"; };
+		D99D97513012309E00F2A7C2 /* StringMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringMapping.swift; sourceTree = "<group>"; };
 		D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UploadCvUseCase.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UploadCvUseCase.swift"; sourceTree = SOURCE_ROOT; };
 		D9A2857C300A5E0300ABB5BD /* UploadCvRequest+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UploadCvRequest+Response.swift"; sourceTree = "<group>"; };
 		D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataEndPoint.swift; path = "Career-Pilot-iOS/Core/Network/EndPoint/UserData/UserDataEndPoint.swift"; sourceTree = SOURCE_ROOT; };
@@ -376,6 +460,10 @@
 		D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRemoteDataSource.swift; sourceTree = "<group>"; };
 		D9A2858A300A834A00ABB5BD /* CvUplodingResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvUplodingResponseDTO.swift; sourceTree = "<group>"; };
 		D9A2858D300A859E00ABB5BD /* CvUplodingApiResponse+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CvUplodingApiResponse+Mapping.swift"; sourceTree = "<group>"; };
+		D9B4B1B530117ED3004909ED /* NewSessionDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSessionDTO.swift; sourceTree = "<group>"; };
+		D9B4B1B73011810E004909ED /* NewSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSession.swift; sourceTree = "<group>"; };
+		D9B4B1B9301181FE004909ED /* NewSessionDTOMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSessionDTOMapping.swift; sourceTree = "<group>"; };
+		D9B4B1BC301195B3004909ED /* ApiRequestesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestesDTO.swift; sourceTree = "<group>"; };
 		D9B614E7300CF49400552F85 /* DIContainer+Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+Repositories.swift"; sourceTree = "<group>"; };
 		D9B614E9300CF4A100552F85 /* DIContainer+UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+UseCases.swift"; sourceTree = "<group>"; };
 		D9B614EB300CF50000552F85 /* DIContainer+ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+ViewModels.swift"; sourceTree = "<group>"; };
@@ -388,6 +476,8 @@
 		D9B614FC300D1D5700552F85 /* OnBordingRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingRemoteDataSource.swift; sourceTree = "<group>"; };
 		D9B614FE300D1D7C00552F85 /* TrackDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDTO.swift; sourceTree = "<group>"; };
 		D9B61504300D1F2C00552F85 /* GetAllTracks+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GetAllTracks+Mapping.swift"; sourceTree = "<group>"; };
+		D9BA3473300ED4BF0058D6E6 /* PracticeSessionViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeSessionViewModelFactory.swift; sourceTree = "<group>"; };
+		D9BA3475300ED5040058D6E6 /* Fake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fake.swift; sourceTree = "<group>"; };
 		D9C09B0F300A2B32008C1E58 /* OnBordingIdelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingIdelState.swift; sourceTree = "<group>"; };
 		D9C1879630065B0400BFF8E9 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		D9C1879D30065B9800BFF8E9 /* TestDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDao.swift; sourceTree = "<group>"; };
@@ -397,7 +487,6 @@
 		D9C187BA300662F000BFF8E9 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		D9C187C730066A4F00BFF8E9 /* Colors+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Extension.swift"; sourceTree = "<group>"; };
 		D9C187CC30066B1F00BFF8E9 /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
-		D9C187CE30066B2800BFF8E9 /* style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = style.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -933,6 +1022,30 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D92853EB3010050600F8CAC2 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				D9B4B1B530117ED3004909ED /* NewSessionDTO.swift */,
+				D92853FD301017E100F8CAC2 /* SubmitAnswerResponseDTO.swift */,
+				D92853EE301006E900F8CAC2 /* FeedbackReportDTO.swift */,
+				D999D5A53010E71F00CF606B /* SessionStateDTO.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		D92853F53010176200F8CAC2 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				D92854053010188400F8CAC2 /* SessionDTOMapping.swift */,
+				D92854033010188300F8CAC2 /* FeedbackReportDTOMapping.swift */,
+				D92854043010188300F8CAC2 /* InterviewQuestionMapping.swift */,
+				D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */,
+				D9B4B1B9301181FE004909ED /* NewSessionDTOMapping.swift */,
+				D99D97513012309E00F2A7C2 /* StringMapping.swift */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
 		D935DFF330080203009DF855 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
@@ -1028,6 +1141,163 @@
 			path = "Career-Pilot-iOSUITests";
 			sourceTree = "<group>";
 		};
+		D95C3B8A300E48730042785F /* PracticeSession */ = {
+			isa = PBXGroup;
+			children = (
+				D95C3B8D300E48D80042785F /* Presentation */,
+				D95C3B8C300E48D50042785F /* Domain */,
+				D95C3B8B300E48CF0042785F /* Data */,
+			);
+			path = PracticeSession;
+			sourceTree = "<group>";
+		};
+		D95C3B8B300E48CF0042785F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D95C3B98300E495C0042785F /* InterviewSessionEndPointes.swift */,
+				D9B4B1BB301195A5004909ED /* Requestes */,
+				D92853EB3010050600F8CAC2 /* DTOs */,
+				D95C3B9B300E49740042785F /* DataSources */,
+				D92853F53010176200F8CAC2 /* Mappers */,
+				D95C3B9A300E496E0042785F /* RepoImp */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D95C3B8C300E48D50042785F /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				D95C3BC2300E55E60042785F /* Services */,
+				D95C3B92300E48F80042785F /* Entites */,
+				D95C3B91300E48F30042785F /* UseCases */,
+				D95C3B90300E48ED0042785F /* Repo */,
+				D95C3B9C300E49AD0042785F /* Services */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		D95C3B8D300E48D80042785F /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				D95C3B8F300E48E10042785F /* View */,
+				D95C3B8E300E48DD0042785F /* VM */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		D95C3B8E300E48DD0042785F /* VM */ = {
+			isa = PBXGroup;
+			children = (
+				D9BA3472300ED4B80058D6E6 /* Factory */,
+				D95C3BC3300E7B6E0042785F /* PracticeSessionViewModel.swift */,
+				D95C3BAC300E4A2A0042785F /* InterviewProgressService.swift */,
+			);
+			path = VM;
+			sourceTree = "<group>";
+		};
+		D95C3B8F300E48E10042785F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D95C3BC7300EA14C0042785F /* Compountes */,
+				D95C3BC5300E7C4F0042785F /* PracticeSessionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D95C3B90300E48ED0042785F /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+				D95C3BB0300E4A460042785F /* InterviewRepository.swift */,
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		D95C3B91300E48F30042785F /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				D999D5AB301130A000CF606B /* Requestes */,
+				D95C3BBF300E4ACF0042785F /* StartInterviewUseCase.swift */,
+				D95C3BBE300E4ACF0042785F /* SubmitAnswerUseCase.swift */,
+				D95C3B9F300E49D20042785F /* CancelInterviewUseCase.swift */,
+				D95C3BA1300E49E10042785F /* FinishInterviewUseCase.swift */,
+				D95C3BB8300E4ABE0042785F /* ResumeInterviewUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		D95C3B92300E48F80042785F /* Entites */ = {
+			isa = PBXGroup;
+			children = (
+				D95C3BA9300E4A0E0042785F /* Errors */,
+				D95C3BB2300E4A4C0042785F /* InterviewSession.swift */,
+				D9B4B1B73011810E004909ED /* NewSession.swift */,
+				D95C3BA5300E49F30042785F /* InterviewConfiguration.swift */,
+				D95C3BB4300E4A520042785F /* InterviewSessionStatus.swift */,
+				D95C3BAA300E4A240042785F /* InterviewFeedback.swift */,
+			);
+			path = Entites;
+			sourceTree = "<group>";
+		};
+		D95C3B9A300E496E0042785F /* RepoImp */ = {
+			isa = PBXGroup;
+			children = (
+				D9BA3475300ED5040058D6E6 /* Fake.swift */,
+				D92853E9301004B800F8CAC2 /* InterviewRepositoryImp.swift */,
+			);
+			path = RepoImp;
+			sourceTree = "<group>";
+		};
+		D95C3B9B300E49740042785F /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				D92853F130100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		D95C3B9C300E49AD0042785F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D95C3BBB300E4AC60042785F /* SilenceDetectionService.swift */,
+				D95C3BBA300E4AC60042785F /* SpeechPlaybackService.swift */,
+				D95C3B9D300E49BF0042785F /* AudioRecordingService.swift */,
+				D9868B40300FD22600B84CD6 /* SpeechRecognitionService.swift */,
+			);
+			name = Services;
+			path = ../Data/Services;
+			sourceTree = "<group>";
+		};
+		D95C3BA9300E4A0E0042785F /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				D95C3BA7300E49FD0042785F /* InterviewError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		D95C3BC2300E55E60042785F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D95C3BB6300E4A5E0042785F /* InterviewValidationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D95C3BC7300EA14C0042785F /* Compountes */ = {
+			isa = PBXGroup;
+			children = (
+				D920C24C300EFEC800AB7317 /* SessionHeader.swift */,
+				D95C3BC8300EA1650042785F /* AITurnView.swift */,
+				D95C3BCC300EA1A20042785F /* UserTrunView.swift */,
+				D95C3BCA300EA1800042785F /* WaitingForAnswerView.swift */,
+				D95C3BCE300EA1C00042785F /* SubmitingAnswerView.swift */,
+				D920C24A300EFEB400AB7317 /* RecordingView.swift */,
+				D920C24E300EFEE200AB7317 /* StatusScreens.swift */,
+				D920C250300F001800AB7317 /* LoadingView.swift */,
+			);
+			path = Compountes;
+			sourceTree = "<group>";
+		};
 		D98A79713008DB1100DFDC6B /* ChoseTrack */ = {
 			isa = PBXGroup;
 			children = (
@@ -1053,6 +1323,14 @@
 				D98A797C300903BF00DFDC6B /* UploadeCvErrors.swift */,
 			);
 			path = UploadeCV;
+			sourceTree = "<group>";
+		};
+		D999D5AB301130A000CF606B /* Requestes */ = {
+			isa = PBXGroup;
+			children = (
+				D999D5AC301130B300CF606B /* ApiRequestes.swift */,
+			);
+			path = Requestes;
 			sourceTree = "<group>";
 		};
 		D9A28582300A6CAD00ABB5BD /* RepoImp */ = {
@@ -1087,6 +1365,14 @@
 				D9C187BA300662F000BFF8E9 /* HTTPMethod.swift */,
 			);
 			path = Generic;
+			sourceTree = "<group>";
+		};
+		D9B4B1BB301195A5004909ED /* Requestes */ = {
+			isa = PBXGroup;
+			children = (
+				D9B4B1BC301195B3004909ED /* ApiRequestesDTO.swift */,
+			);
+			path = Requestes;
 			sourceTree = "<group>";
 		};
 		D9B614E6300CF3D700552F85 /* InjectFolders */ = {
@@ -1156,6 +1442,14 @@
 			path = Mappers;
 			sourceTree = "<group>";
 		};
+		D9BA3472300ED4B80058D6E6 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				D9BA3473300ED4BF0058D6E6 /* PracticeSessionViewModelFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 		D9C09B0E300A2B1C008C1E58 /* OnBordingStates */ = {
 			isa = PBXGroup;
 			children = (
@@ -1168,6 +1462,7 @@
 		D9C1878430065A4800BFF8E9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D95C3B8A300E48730042785F /* PracticeSession */,
 				616CACFD30080EB3007FC4AF /* Settings */,
 				CEE62A90300921720071F076 /* Reports */,
 				CEE62A8F3009214D0071F076 /* Practice */,
@@ -1408,7 +1703,6 @@
 		D9C187CA30066AD800BFF8E9 /* Style */ = {
 			isa = PBXGroup;
 			children = (
-				D9C187CE30066B2800BFF8E9 /* style.swift */,
 				CE8AFF14300712FC0064CC6C /* Colors.swift */,
 				CE8AFF15300712FC0064CC6C /* Font.swift */,
 				CE8AFF1C300718670064CC6C /* Round.swift */,
@@ -1581,11 +1875,16 @@
 				CE8AFF18300712FC0064CC6C /* Font.swift in Sources */,
 				6182BB53300C67BB001157B8 /* ImagePicker.swift in Sources */,
 				CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */,
+				D92854073010188400F8CAC2 /* FeedbackReportDTOMapping.swift in Sources */,
+				D95C3BB1300E4A460042785F /* InterviewRepository.swift in Sources */,
+				D99D97523012309E00F2A7C2 /* StringMapping.swift in Sources */,
 				D9C187C830066A4F00BFF8E9 /* Colors+Extension.swift in Sources */,
 				41BC7722300D146900E89C3F /* SuggestionIconView.swift in Sources */,
 				41C6A23A30080AE10035EFBF /* SuccessOTPCodeView.swift in Sources */,
 				41D69D18300A6D0100294D94 /* AuthTokens.swift in Sources */,
 				41C6A23E30083FDB0035EFBF /* PhoneEntryView.swift in Sources */,
+				D9868B41300FD22600B84CD6 /* SpeechRecognitionService.swift in Sources */,
+				D95C3BBC300E4AC60042785F /* SpeechPlaybackService.swift in Sources */,
 				CEE62A95300929830071F076 /* ProgressCard.swift in Sources */,
 				61D8F303300780C50088F170 /* FreeSessionBanner.swift in Sources */,
 				D935DFFF30082AA9009DF855 /* UploadCvView.swift in Sources */,
@@ -1603,8 +1902,11 @@
 				41BC7740300D3D1800E89C3F /* StatCard.swift in Sources */,
 				41BC7728300D18DC00E89C3F /* RadarGridShape.swift in Sources */,
 				D935DFCB30078012009DF855 /* CustomButton.swift in Sources */,
+				D9B4B1BA301181FE004909ED /* NewSessionDTOMapping.swift in Sources */,
+				D92853F230100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift in Sources */,
 				616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */,
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
+				D9B4B1BD301195B3004909ED /* ApiRequestesDTO.swift in Sources */,
 				41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */,
 				41BC772E300D19A100E89C3F /* RadarMetricChip.swift in Sources */,
 				41BE1A71300BF0950033D1B5 /* UserDataRepo.swift in Sources */,
@@ -1612,6 +1914,7 @@
 				CEE62A8730091FD10071F076 /* MainTabBarView.swift in Sources */,
 				41A7F6FB300BBDA000FBE8EB /* UserEntity+Mapping.swift in Sources */,
 				41BE1A65300BEF510033D1B5 /* UserProfileDTO.swift in Sources */,
+				D95C3BC6300E7C4F0042785F /* PracticeSessionView.swift in Sources */,
 				41D69D4E300B4A0F00294D94 /* ClearSessionUseCase.swift in Sources */,
 				41D69D39300B445000294D94 /* AuthTokenStore.swift in Sources */,
 				D98A79703008D9A300DFDC6B /* CvViewInfo.swift in Sources */,
@@ -1623,12 +1926,14 @@
 				41CE20E8300A5506005DC31F /* ToastView.swift in Sources */,
 				41BE1A78300BF42E0033D1B5 /* AuthRemoteDataSource.swift in Sources */,
 				D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */,
+				D95C3BA2300E49E10042785F /* FinishInterviewUseCase.swift in Sources */,
 				CECCDA3F300F68D50068620D /* UpdateProfileDTO+Mapping.swift in Sources */,
 				CE12F3C230093ED30083D66D /* HomeViewModel.swift in Sources */,
 				41BC773E300D3CD800E89C3F /* QuestionPromptCard.swift in Sources */,
 				41BC7726300D18CA00E89C3F /* RadarShape.swift in Sources */,
 				41CE20E6300A54A4005DC31F /* ToastManager.swift in Sources */,
 				D9B614F0300CFA1000552F85 /* DIContainer+DataSources.swift in Sources */,
+				D95C3BA8300E49FD0042785F /* InterviewError.swift in Sources */,
 				D98A79753008DFD800DFDC6B /* Track.swift in Sources */,
 				D9B614E8300CF49400552F85 /* DIContainer+Repositories.swift in Sources */,
 				CEB622133010405800027035 /* UsertoEntity.swift in Sources */,
@@ -1636,18 +1941,26 @@
 				41BC7720300D126E00E89C3F /* ImpactBadge.swift in Sources */,
 				CEE62A97300929960071F076 /* PracticeCard.swift in Sources */,
 				41BE1A76300BF4000033D1B5 /* SendOTPUseCase.swift in Sources */,
+				D9C187B83006623F00BFF8E9 /* NetworkService.swift in Sources */,
+				D92853EA301004B800F8CAC2 /* InterviewRepositoryImp.swift in Sources */,
+				D95C3BC9300EA1650042785F /* AITurnView.swift in Sources */,
 				41BC7730300D1C5300E89C3F /* RadarMetricsLegend.swift in Sources */,
 				41A7F6F8300BBB2A00FBE8EB /* LampGlitchModifier.swift in Sources */,
 				D9B614F6300D1B8E00552F85 /* GetAllTrackesUseCase.swift in Sources */,
 				41A5CEE330100E120095B0D3 /* Skill.swift in Sources */,
 				CECC20D83007B60900DC450D /* AppStrings.swift in Sources */,
+				D95C3BA0300E49D20042785F /* CancelInterviewUseCase.swift in Sources */,
 				CE12F3C030093CE40083D66D /* SessionData.swift in Sources */,
+				D95C3BA6300E49F30042785F /* InterviewConfiguration.swift in Sources */,
 				41D69D1C300A6DB400294D94 /* VerifyOTPResponseDTO+Mapping.swift in Sources */,
 				41BC7742300D3D5900E89C3F /* QuestionStatsRow.swift in Sources */,
 				41BC7732300D31C900E89C3F /* SessionView.swift in Sources */,
 				41BC7752300D9A8D00E89C3F /* AppState.swift in Sources */,
 				CEE62A83300910E90071F076 /* CustomNavigationBar.swift in Sources */,
 				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
+				D999D5A83010ED0E00CF606B /* SessionStateDTOMapping.swift in Sources */,
+				D999D5A63010E71F00CF606B /* SessionStateDTO.swift in Sources */,
+				D95C3BB5300E4A520042785F /* InterviewSessionStatus.swift in Sources */,
 				CECC20D63007AD4E00DC450D /* CountryPickerSheet.swift in Sources */,
 				41BE1A7C300BF4540033D1B5 /* AuthRepositoryProtocol.swift in Sources */,
 				41BC771E300D119A00E89C3F /* CoachingSuggestionItemView.swift in Sources */,
@@ -1655,10 +1968,13 @@
 				41BE1A64300BEF510033D1B5 /* UserDTO.swift in Sources */,
 				CEB622153010440800027035 /* SaveUserUseCase.swift in Sources */,
 				CEE62A99300929A70071F076 /* SessionRow.swift in Sources */,
+				D95C3BAD300E4A2A0042785F /* InterviewProgressService.swift in Sources */,
 				41D69D3B300B456A00294D94 /* CoreDataManager.swift in Sources */,
 				41A5CEE130100DF80095B0D3 /* SkillDTO.swift in Sources */,
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
 				616CAD0E30082441007FC4AF /* SupportAndLeagalSettingsView.swift in Sources */,
+				D95C3BC0300E4ACF0042785F /* SubmitAnswerUseCase.swift in Sources */,
+				D95C3BC4300E7B6E0042785F /* PracticeSessionViewModel.swift in Sources */,
 				CED18895300B096300B15B81 /* Userdefaultsmanager.swift in Sources */,
 				61D8F2F8300761200088F170 /* CustomProfileTextField.swift in Sources */,
 				41BC7724300D173100E89C3F /* CoachingSuggestionsListView.swift in Sources */,
@@ -1667,26 +1983,37 @@
 				41BE1A6C300BF00B0033D1B5 /* UserProfileDTO+Mapping.swift in Sources */,
 				41BE1A74300BF0E30033D1B5 /* UploadCvRequest+Response.swift in Sources */,
 				D9C09B10300A2B32008C1E58 /* OnBordingIdelState.swift in Sources */,
+				D95C3BBD300E4AC60042785F /* SilenceDetectionService.swift in Sources */,
 				41C6A2363008008D0035EFBF /* SendingOTPCodeView.swift in Sources */,
 				41D69D12300A6CB100294D94 /* VerifyOTPResult.swift in Sources */,
 				6182BB55300C67DF001157B8 /* PhotoPicker.swift in Sources */,
+				D9BA3474300ED4BF0058D6E6 /* PracticeSessionViewModelFactory.swift in Sources */,
 				D9B614EC300CF50000552F85 /* DIContainer+ViewModels.swift in Sources */,
 				41BC773A300D3A9500E89C3F /* SessionHistoryListView.swift in Sources */,
 				41C6A23C30080BDA0035EFBF /* OTPView.swift in Sources */,
 				D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */,
+				D95C3BC1300E4ACF0042785F /* StartInterviewUseCase.swift in Sources */,
+				D9C187BE300663F200BFF8E9 /* NetworkError.swift in Sources */,
+				CEE62A8D3009202F0071F076 /* SettingsView.swift in Sources */,
 				41D69D14300A6CCE00294D94 /* UserProfile.swift in Sources */,
+				D920C24F300EFEE200AB7317 /* StatusScreens.swift in Sources */,
 				CEE62A89300920070071F076 /* PracticeView.swift in Sources */,
 				CECCDA3D300F5E230068620D /* UpdateProfileDTO.swift in Sources */,
 				CECC20E63007DB3D00DC450D /* PulsingIconBadge.swift in Sources */,
 				CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */,
+				D92854083010188400F8CAC2 /* InterviewQuestionMapping.swift in Sources */,
+				D95C3BB7300E4A5E0042785F /* InterviewValidationService.swift in Sources */,
 				CECCDA35300F20200068620D /* UserData+Mapping.swift in Sources */,
 				61D8F2FA300778520088F170 /* SkillTag.swift in Sources */,
 				41C38365300A2849005D4BB9 /* AuthEndPoint.swift in Sources */,
+				D95C3BCD300EA1A20042785F /* UserTrunView.swift in Sources */,
 				CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */,
 				CEB6221130103D2600027035 /* UserLocalDataSource.swift in Sources */,
 				41BC7734300D347E00E89C3F /* SessionHistoryView.swift in Sources */,
 				41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */,
 				D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */,
+				D95C3BCB300EA1800042785F /* WaitingForAnswerView.swift in Sources */,
+				D9B4B1B630117ED4004909ED /* NewSessionDTO.swift in Sources */,
 				D9B614FD300D1D5700552F85 /* OnBordingRemoteDataSource.swift in Sources */,
 				D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */,
 				616CAD0430080EEC007FC4AF /* SettingsView.swift in Sources */,
@@ -1696,19 +2023,26 @@
 				41BC774C300D427F00E89C3F /* AppCoordinator.swift in Sources */,
 				D93938E23004064400CF4372 /* Career_Pilot_iOSApp.swift in Sources */,
 				61D8F2FC300779ED0088F170 /* Flowlayout.swift in Sources */,
+				D95C3BCF300EA1C00042785F /* SubmitingAnswerView.swift in Sources */,
 				D98A79773008E19900DFDC6B /* TrackChip.swift in Sources */,
 				D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */,
 				41D69D16300A6CF100294D94 /* User.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
+				D95C3B99300E495C0042785F /* InterviewSessionEndPointes.swift in Sources */,
 				D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */,
+				D9BA3476300ED5040058D6E6 /* Fake.swift in Sources */,
 				616CAD0C30081EF4007FC4AF /* AccountSettingsView.swift in Sources */,
 				CEB62218301061F700027035 /* UploadCvUseCase.swift in Sources */,
 				41BE1A7A300BF43E0033D1B5 /* AuthRepositoryImpl.swift in Sources */,
+				D95C3B9E300E49BF0042785F /* AudioRecordingService.swift in Sources */,
 				D9B61505300D1F2C00552F85 /* GetAllTracks+Mapping.swift in Sources */,
+				D92854093010188400F8CAC2 /* SessionDTOMapping.swift in Sources */,
 				CECC20E43007DB2C00DC450D /* WaitingStateView.swift in Sources */,
 				41D69D52300B4D5B00294D94 /* Persistence.swift in Sources */,
 				CEE62A80300910840071F076 /* HomeView.swift in Sources */,
 				CEE62A8530091A6B0071F076 /* Image+AppIcons.swift in Sources */,
+				D95C3BB3300E4A4C0042785F /* InterviewSession.swift in Sources */,
+				D92853EF301006E900F8CAC2 /* FeedbackReportDTO.swift in Sources */,
 				CEE62A8B3009201C0071F076 /* ReportsView.swift in Sources */,
 				CECCDA3B300F52C30068620D /* User+Mapping.swift in Sources */,
 				D9B614EE300CF50D00552F85 /* DIContainer+Services.swift in Sources */,
@@ -1716,21 +2050,27 @@
 				CE12F3C830094FB50083D66D /* OTPBoxView.swift in Sources */,
 				41BC771C300D0EA300E89C3F /* QuestionBreakDownView.swift in Sources */,
 				CE12F3C930094FB50083D66D /* OTPCodeView.swift in Sources */,
+				D9B4B1B83011810E004909ED /* NewSession.swift in Sources */,
+				D95C3BB9300E4ABE0042785F /* ResumeInterviewUseCase.swift in Sources */,
 				CE8AFF1D300718670064CC6C /* Round.swift in Sources */,
-				D9C187CF30066B2800BFF8E9 /* style.swift in Sources */,
 				D935DFFC3008045A009DF855 /* OnBordingViewModel.swift in Sources */,
 				D9B614FF300D1D7C00552F85 /* TrackDTO.swift in Sources */,
 				D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */,
+				D920C24B300EFEB400AB7317 /* RecordingView.swift in Sources */,
 				CECCDA32300F1F830068620D /*   UserProfile+Mapping.swift in Sources */,
 				D9B614EA300CF4A100552F85 /* DIContainer+UseCases.swift in Sources */,
 				616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */,
+				D920C24D300EFEC800AB7317 /* SessionHeader.swift in Sources */,
+				D999D5AD301130B300CF606B /* ApiRequestes.swift in Sources */,
 				6182BB4F300C519B001157B8 /* ProfilePhoto.swift in Sources */,
 				41D69D50300B4A2200294D94 /* LoadSessionUseCase.swift in Sources */,
+				D9285400301017E100F8CAC2 /* SubmitAnswerResponseDTO.swift in Sources */,
 				D9B614F3300D1AB400552F85 /* OnBordingEndPointes.swift in Sources */,
 				D9C187BB300662F000BFF8E9 /* HTTPMethod.swift in Sources */,
 				D9B614FB300D1D2400552F85 /* OnBordingRepoImp.swift in Sources */,
 				CECC20E83007DB4D00DC450D /* WaveformBars.swift in Sources */,
 				41D69D37300B43FF00294D94 /* KeychainManager.swift in Sources */,
+				D920C251300F001800AB7317 /* LoadingView.swift in Sources */,
 				CECC20EA3007DB5E00DC450D /* ShakeEffect.swift in Sources */,
 				41BC773C300D3C6000E89C3F /* QuestionTabSelector.swift in Sources */,
 				CECC20D43007AD3A00DC450D /* CountryCode.swift in Sources */,
@@ -1738,6 +2078,7 @@
 				61D8F2F03007523E0088F170 /* HeaderView.swift in Sources */,
 				41BE1A6B300BF00B0033D1B5 /* UserDTO+Mapping.swift in Sources */,
 				6182BB59300C70A1001157B8 /* SuggestedSkill.swift in Sources */,
+				D95C3BAB300E4A240042785F /* InterviewFeedback.swift in Sources */,
 				41D69D10300A6C7A00294D94 /* AuthTokensDTO+Mapping.swift in Sources */,
 				D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */,
 				41BC7744300D3DA600E89C3F /* CoachFeedbackCard.swift in Sources */,
@@ -1919,6 +2260,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app need the camera to allow u take a photo";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses the microphone to record your interview answers.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to transcribe your interview answers.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1946,6 +2289,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app need the camera to allow u take a photo";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses the microphone to record your interview answers.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to transcribe your interview answers.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

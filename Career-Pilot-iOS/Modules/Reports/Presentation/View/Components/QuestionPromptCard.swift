@@ -30,6 +30,6 @@ struct QuestionPromptCard: View {
     }
 }
 
-#Preview {
-    QuestionPromptCard(questionNumber: 2, questionText: "Tell me about yourself and your background.")
-}
+//#Preview {
+//    QuestionPromptCard(questionNumber: 2, questionText: "Tell me about yourself and your background.")
+//}

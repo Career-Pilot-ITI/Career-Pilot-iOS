@@ -31,6 +31,6 @@ struct StatCard: View {
     }
 }
 
-#Preview {
-    StatCard(value: "88", label: "score", valueColor: Color.successColour)
-}
+//#Preview {
+//    StatCard(value: "88", label: "score", valueColor: Color.successColour)
+//}
