@@ -17,8 +17,8 @@ struct FeedbackReportDTO: Codable {
     let fillerWordsScore: Int
     let contentRelevanceScore: Int
     let coachingTips: [String]
-    let generatedAt: Date
-    let createdAt: Date
+    let generatedAt: String
+    let createdAt: String
     let questions: [FeedbackReportQuestion]
 }
 

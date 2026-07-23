@@ -14,7 +14,7 @@ enum PracticeSessionViewModelFactory {
         
         let repository: InterviewRepository
         
-        if realRepo{
+        if true{
             repository = InterviewRepositoryImp(remoteDataSource: InterviewSessionRemoteDataSourceImp(apiService: URLSessionNetworkService()))
         }else{
             repository = StubInterviewRepository()

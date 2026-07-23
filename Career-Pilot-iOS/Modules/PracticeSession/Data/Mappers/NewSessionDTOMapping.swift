@@ -9,6 +9,6 @@ import Foundation
 
 extension NewSessionDTO{
     func toDomain() -> NewSession{
-        return NewSession(sessionId: sessionId, trackName: trackName, targetDurationMinutes: targetDurationMinutes, maxQuestions: maxQuestions, startedAt: startedAt, currentQuestion: currentQuestion.toDomain())
+        return NewSession(sessionId: sessionId, trackName: trackName, targetDurationMinutes: targetDurationMinutes, maxQuestions: maxQuestions, startedAt: startedAt.toDate() ?? Date(), currentQuestion: currentQuestion.toDomain())
     }
 }

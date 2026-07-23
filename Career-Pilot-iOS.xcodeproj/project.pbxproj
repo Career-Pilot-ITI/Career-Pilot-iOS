@@ -160,6 +160,7 @@
 		D999D5A63010E71F00CF606B /* SessionStateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5A53010E71F00CF606B /* SessionStateDTO.swift */; };
 		D999D5A83010ED0E00CF606B /* SessionStateDTOMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */; };
 		D999D5AD301130B300CF606B /* ApiRequestes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5AC301130B300CF606B /* ApiRequestes.swift */; };
+		D99D97523012309E00F2A7C2 /* StringMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D97513012309E00F2A7C2 /* StringMapping.swift */; };
 		D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */; };
 		D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */; };
 		D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28583300A6CC300ABB5BD /* UserDataRepoImp.swift */; };
@@ -367,6 +368,7 @@
 		D999D5A53010E71F00CF606B /* SessionStateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateDTO.swift; sourceTree = "<group>"; };
 		D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateDTOMapping.swift; sourceTree = "<group>"; };
 		D999D5AC301130B300CF606B /* ApiRequestes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestes.swift; sourceTree = "<group>"; };
+		D99D97513012309E00F2A7C2 /* StringMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringMapping.swift; sourceTree = "<group>"; };
 		D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UploadCvUseCase.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UploadCvUseCase.swift"; sourceTree = SOURCE_ROOT; };
 		D9A2857C300A5E0300ABB5BD /* UploadCvRequest+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UploadCvRequest+Response.swift"; sourceTree = "<group>"; };
 		D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataEndPoint.swift; path = "Career-Pilot-iOS/Core/Network/EndPoint/UserData/UserDataEndPoint.swift"; sourceTree = SOURCE_ROOT; };
@@ -868,6 +870,7 @@
 				D92854043010188300F8CAC2 /* InterviewQuestionMapping.swift */,
 				D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */,
 				D9B4B1B9301181FE004909ED /* NewSessionDTOMapping.swift */,
+				D99D97513012309E00F2A7C2 /* StringMapping.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -1694,6 +1697,7 @@
 				CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */,
 				D92854073010188400F8CAC2 /* FeedbackReportDTOMapping.swift in Sources */,
 				D95C3BB1300E4A460042785F /* InterviewRepository.swift in Sources */,
+				D99D97523012309E00F2A7C2 /* StringMapping.swift in Sources */,
 				D9C187C830066A4F00BFF8E9 /* Colors+Extension.swift in Sources */,
 				41C6A23A30080AE10035EFBF /* SuccessOTPCodeView.swift in Sources */,
 				41D69D18300A6D0100294D94 /* AuthTokens.swift in Sources */,

@@ -12,7 +12,7 @@ struct NewSession {
     let trackName: String
     let targetDurationMinutes: Int
     let maxQuestions: Int
-    let startedAt: String
+    let startedAt: Date
     let currentQuestion: InterviewQuestion
 }
 

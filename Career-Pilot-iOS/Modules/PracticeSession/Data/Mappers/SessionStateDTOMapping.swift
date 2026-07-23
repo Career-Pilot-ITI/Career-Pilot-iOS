@@ -23,22 +23,3 @@ extension SessionStateDTO {
         )
     }
 }
-
-extension String {
-
-    func mapStatusToDomain() -> InterviewSessionStatus {
-        switch self.lowercased() {
-        case "pending":
-            return .paused
-
-        case "inprogress":
-            return .recording
-
-        case "completed":
-            return .completed
-
-        default:
-            return .completed
-        }
-    }
-}

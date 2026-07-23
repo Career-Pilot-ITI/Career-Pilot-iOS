@@ -11,8 +11,8 @@ struct SessionStateDTO: Decodable {
     let sessionId: Int
     let status: String
     let trackName: String
-    let startedAt: Date
-    let updatedAt: Date
+    let startedAt: String
+    let updatedAt: String
     let answeredCount: Int
     let totalCount: Int
     let answeredQuestions: [AnsweredQuestionDTO]
