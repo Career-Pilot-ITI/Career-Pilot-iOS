@@ -10,11 +10,21 @@ import SwiftUI
 @main
 struct Career_Pilot_iOSApp: App {
     let persistenceController = PersistenceController.shared
+    @StateObject private var appState = AppState()
+    
+    init() {
+            let state = AppState()
+            _appState = StateObject(wrappedValue: state)
+
+            DIContainer.shared.container.register(AppState.self) { _ in state }
+                .inObjectScope(.container)
+        }
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(appState)
         }
     }
 }

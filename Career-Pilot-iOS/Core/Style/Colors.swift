@@ -59,13 +59,12 @@ extension Color {
    static let primary = Color(hex: "FF7A45")
    static let primaryYellow = Color("Yellow")
    static let activeColour = Color("Amber")
+   static let activeColourLight = Color("AmberLight")
    static let primaryTeal = Color("Teal")
    static let primaryTealLight = Color("TealLight")
    static let primaryNavy = Color("PrimaryNavy")
-    
-
-    
-  }
+   static let tealAccent = Color(red: 0.31, green: 0.86, blue: 0.76)
+}
 
 
 

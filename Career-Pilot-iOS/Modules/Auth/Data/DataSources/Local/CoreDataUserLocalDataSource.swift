@@ -47,7 +47,7 @@ final class CoreDataUserLocalDataSource: UserLocalDataSourceProtocol {
 
             for skill in user.profile.skills ?? [] {
                 let skillEntity = SkillEntity(context: context)
-                skillEntity.value = skill
+//                skillEntity.value = skill
                 skillEntity.profile = profileEntity
             }
             for company in user.profile.targetCompanies ?? [] {

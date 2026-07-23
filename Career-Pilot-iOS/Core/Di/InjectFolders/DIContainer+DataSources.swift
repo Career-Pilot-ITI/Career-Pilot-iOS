@@ -22,6 +22,12 @@ extension DIContainer{
             )
         }.inObjectScope(.container)
         
+        container.register(UserLocalDataSource.self) { r in
+            UserLocalDataSourceImpl(
+                coreData: r.resolve(CoreDataManager.self)!
+            )
+        }
+        
         //UserData
         container.register(UserDataRemoteDataSource.self) { r in
             UserDataRemoteDataSourceImp(networkService: r.resolve(NetworkService.self, name: "base")!)

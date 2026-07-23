@@ -7,7 +7,8 @@
 import SwiftUI
 
 struct OTPView: View {
-    @EnvironmentObject var coordinator: AppCoordinator
+    @EnvironmentObject var appState: AppState
+    @EnvironmentObject var coordinator: AppCoordinator<AuthRoute>
     @EnvironmentObject var toastManager: ToastManager
     @StateObject private var viewModel: AuthViewModel
     @State private var code: String
@@ -73,6 +74,7 @@ struct OTPView: View {
             let input = VerifyOTPInput(phoneNumber: phoneNumber, code: code)
             let success = await viewModel.verifyOTP(input)
             if success {
+                appState.markLoggedIn()
                 coordinator.push(.successOTPScreen)
             } else {
                 code = ""
@@ -87,6 +89,6 @@ struct OTPView_Previews: PreviewProvider {
             phoneNumber: "+20 101 234 5678",
             viewModel: DIContainer.shared.container.resolve(AuthViewModel.self)!
         )
-        .environmentObject(AppCoordinator())
+        .environmentObject(AppCoordinator<AuthRoute>())
     }
 }

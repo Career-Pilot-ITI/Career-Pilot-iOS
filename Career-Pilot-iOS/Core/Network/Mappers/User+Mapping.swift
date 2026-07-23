@@ -8,8 +8,8 @@
 import Foundation
 
 extension User {
-    func toDTO() -> UpdateProfileDTO {
-        return UpdateProfileDTO(
+    func toDTO() -> UpdateProfileRequestDTO {
+        return UpdateProfileRequestDTO(
             username: self.profile.username,
             email: self.profile.email,
             currentPassword: nil,
@@ -24,7 +24,7 @@ extension User {
             currentJobTitle: self.profile.currentJobTitle,
             yearsOfExperience: self.profile.yearsOfExperience,
             cvFileId: self.profile.cvFileId,
-            skills: self.profile.skills,
+            skills: (self.profile.skills ?? []).map { $0.skillName },
             targetCompanies: self.profile.targetCompanies,
             educationLevel: self.profile.educationLevel,
             timezone: self.profile.timezone,

@@ -22,9 +22,11 @@ extension DIContainer{
         //OnBordingViewModel
         container.register(OnBordingViewModel.self){ r in
             OnBordingViewModel(
+                appState: r.resolve(AppState.self)!,
                 uploadCvUseCase: r.resolve(UploadCvUseCase.self)!,
                 getAllTracksUseCase: r.resolve(GetAllTrackesUseCase.self)!,
-                updateProfileUseCase: r.resolve(UpdateProfileUseCase.self)!
+                updateProfileUseCase: r.resolve(UpdateProfileUseCase.self)!,
+                saveUserUseCase: r.resolve(SaveUserUseCase.self)!
             )
         }
         

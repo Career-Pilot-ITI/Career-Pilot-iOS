@@ -15,7 +15,7 @@ struct UserData {
     var avatarFileId: Int?
     var gender: String?
     var experienceLevel: String
-    var skills: [String]
+    var skills: [Skill]
     var profileImageData : Data?
     var firstName: String
     var lastName: String

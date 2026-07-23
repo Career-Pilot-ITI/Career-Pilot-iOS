@@ -25,9 +25,9 @@ enum UserDataEndPointes: APIEndpoint {
     var path: String {
         switch self {
         case .analyseCv:
-            return "api/v1/profile/cv/analyze"
+            return "/api/v1/profile/cv/analyze"
         case .uplodeFile:
-            return "api/v1/files/upload"
+            return "/api/v1/files/upload"
         }
     }
 
@@ -38,7 +38,8 @@ enum UserDataEndPointes: APIEndpoint {
     var headers: [String: String] {
         return [
             "Content-Type": "multipart/form-data; boundary=\(Self.boundary)",
-            "accept": "application/json"
+            "accept": "application/json",
+            "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWQiOjEsInN1YiI6InVzZXJfODU4MzM4IiwiaWF0IjoxNzg0NTQxODIyLCJleHAiOjE3ODQ1NDU0MjJ9.i6FLXunKRul3t9vR-Go2Dm132DfopNAUoDSMPtWpHOs"
         ]
     }
 

@@ -24,7 +24,7 @@ extension UserProfileDTO {
             currentJobTitle: currentJobTitle,
             yearsOfExperience: yearsOfExperience,
             cvUrl: cvUrl.flatMap(URL.init(string:)),
-            skills: skills ?? [],
+            skills: (skills ?? []).map { $0.toDomain() },
             targetCompanies: targetCompanies ?? [],
             educationLevel: educationLevel,
             timezone: timezone,
@@ -36,7 +36,7 @@ extension UserProfileDTO {
             trackId: 0
         )
     }
-}
+}	
 
 extension DateFormatter {
     /// Matches "2026-07-17" style dates from the API.

@@ -27,7 +27,7 @@ struct SupportAndLeagalSettingsView: View {
                 }
             }
         }
-        .padding(.horizontal, Spacing.s32)
+        .padding(.horizontal, Spacing.s16)
                 .padding(.vertical, Spacing.s8)
                 .background(
                     RoundedRectangle(cornerRadius: Radius.r24)

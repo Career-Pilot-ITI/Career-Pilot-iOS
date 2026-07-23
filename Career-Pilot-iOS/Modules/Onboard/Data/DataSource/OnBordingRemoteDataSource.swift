@@ -10,7 +10,7 @@ import Foundation
 
 protocol OnBordingRemoteDataSource{
     func getAllTraks() async throws -> [TrackDTO]
-    func updateUserProfile(updateProfileDTO: UpdateProfileDTO) async throws -> UpdateProfileDTO
+    func updateUserProfile(updateProfileDTO: UpdateProfileRequestDTO) async throws -> UpdateProfileDTO
 }
 
 class OnBordingRemoteDataSourceImp: OnBordingRemoteDataSource{
@@ -23,16 +23,19 @@ class OnBordingRemoteDataSourceImp: OnBordingRemoteDataSource{
     
     func getAllTraks() async throws -> [TrackDTO] {
         let endPoint = OnBordingEndPointes.getAllTrackes
-        do {
-            return try await apiService.request(endPoint)
-        } catch {
-            print("Actual error: \(error)")
-            throw error
-        }
+        
+        return try await apiService.request(endPoint)
     }
     
-
-    func updateUserProfile(updateProfileDTO: UpdateProfileDTO) async throws -> UpdateProfileDTO {
+//    func updateUserProfile(updateProfileDTO: UpdateProfileDTO) async throws -> UpdateProfileDTO {
+//        let endPoint = OnBordingEndPointes.updateUserProfile(updateProfileDTO: updateProfileDTO)
+//        
+//        let updatedProfile: UpdateProfileDTO = try await apiService.request(endPoint)
+//        
+//        return updatedProfile
+//    }
+  
+    func updateUserProfile(updateProfileDTO: UpdateProfileRequestDTO) async throws -> UpdateProfileDTO {
             let endPoint = OnBordingEndPointes.updateUserProfile(updateProfileDTO: updateProfileDTO)
             
             print("🌐 [RemoteDataSource] Sending update profile request to: \(endPoint.baseURL)/\(endPoint.path)")

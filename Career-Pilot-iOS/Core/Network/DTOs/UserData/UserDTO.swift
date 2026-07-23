@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserDTO : Codable {
+struct UserDTO : Decodable {
     let id: Int
     let phoneNumber: String
     let profile: UserProfileDTO

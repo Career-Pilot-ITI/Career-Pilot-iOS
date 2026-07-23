@@ -32,6 +32,12 @@ extension DIContainer{
         container.register(UpdateProfileUseCase.self) { r in
             UpdateProfileUseCase(onBordingRepo: r.resolve(OnBordingRepo.self)!)
         }
+        
+        container.register(SaveUserUseCase.self) { r in
+            SaveUserUseCase(
+                userRepository: r.resolve(UserDataRepo.self)!
+            )
+        }
 
     }
 }

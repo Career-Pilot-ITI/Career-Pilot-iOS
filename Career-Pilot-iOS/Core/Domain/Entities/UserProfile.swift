@@ -22,7 +22,7 @@ struct UserProfile: Equatable {
     let currentJobTitle: String?
     let yearsOfExperience: Int?
     let cvUrl: URL?
-    let skills: [String]?
+    let skills: [Skill]?
     let targetCompanies: [String]?
     let educationLevel: String?
     let timezone: String?

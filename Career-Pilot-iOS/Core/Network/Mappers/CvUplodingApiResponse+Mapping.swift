@@ -13,7 +13,7 @@ extension CvUplodingResponseDTO{
         let firstName = components.first ?? ""
         let lastName = components.dropFirst().joined(separator: " ")
         
-        let userData = UserData(email: email, title: currentJobTitle ?? "Job Title", experienceLevel: experienceLevel ?? "No Level", skills: skills ?? [""], firstName: firstName, lastName: lastName)
+        let userData = UserData(email: email, title: currentJobTitle ?? "Job Title", experienceLevel: experienceLevel ?? "No Level", skills: [Skill(skillName: "", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: "")], firstName: firstName, lastName: lastName)
         
         return UploadCvResponse(userData: userData)
     }

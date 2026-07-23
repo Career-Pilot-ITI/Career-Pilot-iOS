@@ -25,18 +25,27 @@ extension UserEntity {
     }
 }
 
+extension SkillEntity {
+    func toDomain() -> Skill {
+        Skill(
+            skillName: skillName ?? "",
+            category: category ?? "",
+            performanceScore: Int(performanceScore),
+            timesAssessed: Int(timesAssessed),
+            lastAssessedAt: lastAssessedAt ?? ""
+        )
+    }
+}
+
 extension UserProfileEntity {
     func toDomain() -> UserProfile {
         let avatar: URL? = avatarUrl.flatMap { URL(string: $0) }
         let cv: URL? = cvUrl.flatMap { URL(string: $0) }
         let years: Int? = yearsOfExperience == 0 ? nil : Int(yearsOfExperience)
-
         let skillsSet: Set<SkillEntity> = (skills as? Set<SkillEntity>) ?? []
-        let skillList: [String] = skillsSet.map { $0.value ?? "" }
-
+        let skillList: [Skill] = skillsSet.map { $0.toDomain() }
         let companiesSet: Set<TargetCompanyEntity> = (targetCompanies as? Set<TargetCompanyEntity>) ?? []
         let companyList: [String] = companiesSet.map { $0.value ?? "" }
-
         return UserProfile(
                 displayName: displayName ?? "",
                 username: username ?? "",

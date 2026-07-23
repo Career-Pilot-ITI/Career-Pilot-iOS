@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UpdateProfileDTO: Codable {
+struct UpdateProfileDTO: Decodable {
     let username: String?
     let email: String?
     let currentPassword: String?
@@ -22,7 +22,7 @@ struct UpdateProfileDTO: Codable {
     let currentJobTitle: String?
     let yearsOfExperience: Int?
     let cvFileId: Int?
-    let skills: [String]?
+    let skills: [SkillDTO]?          
     let targetCompanies: [String]?
     let educationLevel: String?
     let timezone: String?
