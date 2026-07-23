@@ -15,7 +15,7 @@ enum PracticeSessionViewModelFactory {
         let repository: InterviewRepository
         
         if realRepo{
-            repository = InterviewRepositoryImp(remoteDataSource: InterviewSessionRemoteDataSourceImp(apiService: URLSessionNetworkService()))
+            repository = DIContainer.shared.container.resolve(InterviewRepository.self)?
         }else{
             repository = StubInterviewRepository()
         }
@@ -28,7 +28,7 @@ enum PracticeSessionViewModelFactory {
             maxAnswerDuration: 240,   // 4 minutes per answer
             maxInterviewDuration: 120, // 30 minutes total
             silenceTimeout: 5 , // 5s of silence before auto-submit
-            trackID: 1
+            trackID: 5
         )
 
         return PracticeSessionViewModel(
