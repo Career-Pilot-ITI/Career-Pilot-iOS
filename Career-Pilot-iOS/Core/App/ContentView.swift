@@ -16,7 +16,7 @@ struct ContentView: View {
     
     var body: some View {
         Group {
-            if appState.isOnboadingSeen { 
+            if true { 
                 MainTabBarView()
             } else  {
                 NavigationStack(path: $coordinator.path) {

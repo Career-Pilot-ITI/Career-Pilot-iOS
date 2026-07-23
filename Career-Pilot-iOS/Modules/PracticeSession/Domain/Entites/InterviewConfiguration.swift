@@ -8,4 +8,3 @@ struct InterviewConfiguration: Equatable, Sendable {
     let silenceTimeout: TimeInterval
     let trackID: Int
 }
-

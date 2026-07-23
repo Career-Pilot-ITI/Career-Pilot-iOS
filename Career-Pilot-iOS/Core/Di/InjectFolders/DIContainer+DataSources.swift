@@ -39,5 +39,10 @@ extension DIContainer{
                 apiService: r.resolve(NetworkService.self, name: "authenticated")!
             )
         }
+        
+        //MARK: PracticSession
+        container.register(InterviewSessionRemoteDataSource.self) { r in
+            InterviewSessionRemoteDataSourceImp(apiService: r.resolve(NetworkService.self, name: "base")!)
+        }
     }
 }
