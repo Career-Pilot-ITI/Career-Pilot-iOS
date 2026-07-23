@@ -32,13 +32,22 @@ extension DIContainer{
         
         // MARK: - PracticeSession
         container.register(PracticeSessionViewModel.self) { resolver in
+            
+            let userLocalDataSource: UserLocalDataSource = resolver.resolve(userLocalDataSource.self)!
+            let user: User? = userLocalDataSource.getUser()
+            
+            guad let user = user else{
+                return
+            }
+            let trackId = user?.profile.trackId
+            
             PracticeSessionViewModel(
                 configuration: InterviewConfiguration(
                     maxQuestions: 8,
                     maxAnswerDuration: 240,
                     maxInterviewDuration: 1800,
                     silenceTimeout: 5,
-                    trackID: 5555
+                    trackID: trackId
                 ),
                 startUseCase: resolver.resolve(StartInterviewUseCaseProtocol.self)!,
                 submitUseCase: resolver.resolve(SubmitAnswerUseCaseProtocol.self)!,

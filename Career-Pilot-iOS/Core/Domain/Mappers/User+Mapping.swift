@@ -2,10 +2,24 @@
 //  User+Mapping.swift
 //  Career-Pilot-iOS
 //
-//  Created by Ahmed El-Sayyad Mohamed on 21/07/2026.
+//  Created by Mohamed Magdy on 23/07/2026.
 //
 
 import Foundation
+
+extension User{
+    func toUserData() -> UserData{
+        
+        let components = userName
+            .split(separator: " ")
+            .map(String.init)
+
+        let firstName = components.first ?? ""
+        let lastName = components.dropFirst().joined(separator: " ")
+        
+        return UserData(email: profile.email, title: profile.trackName, experienceLevel: profile.experienceLevel, skills: profile.skills, firstName: , lastName: lastName)
+    }
+}
 
 extension User {
     func toDTO() -> UpdateProfileRequestDTO {

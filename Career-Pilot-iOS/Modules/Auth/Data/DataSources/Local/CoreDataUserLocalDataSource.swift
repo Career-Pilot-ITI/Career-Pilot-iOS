@@ -27,7 +27,7 @@ final class CoreDataUserLocalDataSource: UserLocalDataSourceProtocol {
             profileEntity.displayName = user.profile.displayName
             profileEntity.username = user.profile.username
             profileEntity.email = user.profile.email
-            profileEntity.avatarUrl = user.profile.avatarUrl?.absoluteString
+            profileEntity.avatarUrl = user.profile.avatarUrl.absoluteString
             profileEntity.gender = user.profile.gender
             profileEntity.dateOfBirth = user.profile.dateOfBirth
             profileEntity.targetRole = user.profile.targetRole
@@ -35,7 +35,7 @@ final class CoreDataUserLocalDataSource: UserLocalDataSourceProtocol {
             profileEntity.experienceLevel = user.profile.experienceLevel
             profileEntity.currentJobTitle = user.profile.currentJobTitle
             profileEntity.yearsOfExperience = Int32(user.profile.yearsOfExperience ?? 0)
-            profileEntity.cvUrl = user.profile.cvUrl?.absoluteString
+            profileEntity.cvUrl = user.profile.cvUrl.absoluteString
             profileEntity.educationLevel = user.profile.educationLevel
             profileEntity.timezone = user.profile.timezone
             profileEntity.termsAccepted = user.profile.termsAccepted

@@ -13,3 +13,5 @@ struct User: Equatable {
     let profile: UserProfile
     let isNewUser: Bool
 }
+
+
