@@ -30,6 +30,7 @@ final class SettingsViewModel: ObservableObject {
         }
     }
     func logout(appState : AppState) async   {
+         
         do {
             try await userLogout.execute()
             appState.logout()

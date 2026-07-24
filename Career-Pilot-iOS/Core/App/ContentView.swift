@@ -16,11 +16,13 @@ struct ContentView: View {
     
     var body: some View {
         Group {
-            if appState.isOnboadingSeen { 
+            if appState.isLoggedIn {
                 MainTabBarView()
             } else  {
                 NavigationStack(path: $coordinator.path) {
-                    if !appState.isLoggedIn {
+                    
+                    if appState.isOnboadingSeen {
+                       
                         PhoneEntryView()
                             .navigationDestination(for: AuthRoute.self) { route in
                                 destination(for: route)

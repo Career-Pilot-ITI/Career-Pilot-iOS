@@ -53,7 +53,7 @@ enum SettingsEndpoint : APIEndpoint{
         }
     var headers: [String: String] {
         ["Content-Type": "application/json" ,
-         "Authorization" :"Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWQiOjEsImVtYWlsIjoiRXlhZHc4N0BnbWFpbC5jb20iLCJzdWIiOiJFeWFkdzg3IiwiaWF0IjoxNzg0OTIxMzk4LCJleHAiOjE3ODQ5MjQ5OTh9.DcJHrrHSgvFpsYxqb6g97uaQTd2kE31rPUeDZTeDsjVq"]
+         "Authorization" :"Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWQiOjEsImVtYWlsIjoiRXlhZHc4N0BnbWFpbC5jb20iLCJzdWIiOiJFeWFkdzg3IiwiaWF0IjoxNzg0OTI1OTAyLCJleHAiOjE3ODQ5Mjk1MDJ9.5uPX8y6Wh9cs5gjmB_ZXWCe7wqnBSJ8CCE3sFrWl6_Q"]
     }
     
 
