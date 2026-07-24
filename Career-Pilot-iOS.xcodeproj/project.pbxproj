@@ -257,8 +257,8 @@
 		D999D5A63010E71F00CF606B /* SessionStateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5A53010E71F00CF606B /* SessionStateDTO.swift */; };
 		D999D5A83010ED0E00CF606B /* SessionStateDTOMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */; };
 		D999D5AD301130B300CF606B /* ApiRequestes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5AC301130B300CF606B /* ApiRequestes.swift */; };
-		D99D97523012309E00F2A7C2 /* StringMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D97513012309E00F2A7C2 /* StringMapping.swift */; };
 		D99D9754301265B000F2A7C2 /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D9753301265B000F2A7C2 /* SettingsTabView.swift */; };
+		D99D9756301282E000F2A7C2 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D9755301282E000F2A7C2 /* String+Extension.swift */; };
 		D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */; };
 		D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */; };
 		D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28583300A6CC300ABB5BD /* UserDataRepoImp.swift */; };
@@ -561,8 +561,8 @@
 		D999D5A53010E71F00CF606B /* SessionStateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateDTO.swift; sourceTree = "<group>"; };
 		D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateDTOMapping.swift; sourceTree = "<group>"; };
 		D999D5AC301130B300CF606B /* ApiRequestes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestes.swift; sourceTree = "<group>"; };
-		D99D97513012309E00F2A7C2 /* StringMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringMapping.swift; sourceTree = "<group>"; };
 		D99D9753301265B000F2A7C2 /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
+		D99D9755301282E000F2A7C2 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UploadCvUseCase.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UploadCvUseCase.swift"; sourceTree = SOURCE_ROOT; };
 		D9A2857C300A5E0300ABB5BD /* UploadCvRequest+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UploadCvRequest+Response.swift"; sourceTree = "<group>"; };
 		D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataEndPoint.swift; path = "Career-Pilot-iOS/Core/Network/EndPoint/UserData/UserDataEndPoint.swift"; sourceTree = SOURCE_ROOT; };
@@ -1387,7 +1387,6 @@
 				D92854043010188300F8CAC2 /* InterviewQuestionMapping.swift */,
 				D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */,
 				D9B4B1B9301181FE004909ED /* NewSessionDTOMapping.swift */,
-				D99D97513012309E00F2A7C2 /* StringMapping.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -2026,6 +2025,7 @@
 				D9C187C730066A4F00BFF8E9 /* Colors+Extension.swift */,
 				CEE62A8430091A6B0071F076 /* Image+AppIcons.swift */,
 				6117C02E300F9FD700CABEC6 /* StringsExtenstion.swift */,
+				D99D9755301282E000F2A7C2 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2228,7 +2228,6 @@
 				CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */,
 				D92854073010188400F8CAC2 /* FeedbackReportDTOMapping.swift in Sources */,
 				D95C3BB1300E4A460042785F /* InterviewRepository.swift in Sources */,
-				D99D97523012309E00F2A7C2 /* StringMapping.swift in Sources */,
 				D9C187C830066A4F00BFF8E9 /* Colors+Extension.swift in Sources */,
 				41BC7722300D146900E89C3F /* SuggestionIconView.swift in Sources */,
 				61F33938301397A800C94B89 /* UserCard.swift in Sources */,
@@ -2393,6 +2392,7 @@
 				41BC7734300D347E00E89C3F /* SessionHistoryView.swift in Sources */,
 				41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */,
 				D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */,
+				D99D9756301282E000F2A7C2 /* String+Extension.swift in Sources */,
 				D95C3BCB300EA1800042785F /* WaitingForAnswerView.swift in Sources */,
 				D9B4B1B630117ED4004909ED /* NewSessionDTO.swift in Sources */,
 				D9B614FD300D1D5700552F85 /* OnBordingRemoteDataSource.swift in Sources */,

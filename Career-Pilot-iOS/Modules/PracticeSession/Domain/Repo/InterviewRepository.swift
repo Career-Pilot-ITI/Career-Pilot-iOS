@@ -7,5 +7,3 @@ protocol InterviewRepository {
     func finishInterview(finishInterviewRequest: FinishInterviewRequest) async throws -> InterviewFeedback
     func cancelInterview(sessionId: String) async throws
 }
-
-//

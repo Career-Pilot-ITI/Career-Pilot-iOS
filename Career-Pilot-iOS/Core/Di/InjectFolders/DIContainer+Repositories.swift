@@ -32,5 +32,12 @@ extension DIContainer{
             OnBordingRepoImp(remote: r.resolve(OnBordingRemoteDataSource.self)!)
         }
 
+        // MARK: - PracticeSession
+        container.register(InterviewRepository.self) { r in
+
+            StubInterviewRepository()
+            
+            //            InterviewRepositoryImp(remoteDataSource: r.resolve(InterviewSessionRemoteDataSource.self)!)
+        }
     }
 }

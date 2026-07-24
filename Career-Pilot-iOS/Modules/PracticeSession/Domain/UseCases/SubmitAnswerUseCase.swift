@@ -8,11 +8,11 @@ protocol SubmitAnswerUseCaseProtocol {
 actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
     private let repository: InterviewRepository
     private let validationService: InterviewValidationServicing
-    private let speechRecognitionService: SpeechRecognitionService
+    private let speechRecognitionService: SpeechRecognitionServicing
     private var isSubmitting = false
     
     
-    init(repository: InterviewRepository, validationService: InterviewValidationServicing, speechRecognitionService: SpeechRecognitionService) {
+    init(repository: InterviewRepository, validationService: InterviewValidationServicing, speechRecognitionService: SpeechRecognitionServicing) {
         self.repository = repository
         self.validationService = validationService
         self.speechRecognitionService = speechRecognitionService
