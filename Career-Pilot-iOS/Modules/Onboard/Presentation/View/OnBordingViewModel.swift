@@ -38,7 +38,7 @@ class OnBordingViewModel: ObservableObject {
     @Published var cvViewInfo: CvViewInfo = CvViewInfo(isSelected: false)
     
     //For Profie View
-    @Published var userData: UserData = UserData(email: "", title: "", experienceLevel: "", skills: [Skill(skillName: "", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: "")], firstName: "", lastName: "")
+    @Published var userData: OnBoardingUser = OnBoardingUser(email: "", title: "", experienceLevel: "", skills: [Skill(skillName: "", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: "")], firstName: "", lastName: "")
     
     //UseCases
     var uploadCvUseCase: UploadCvUseCase

@@ -39,21 +39,21 @@ extension UserProfile {
         entity.displayName = displayName
         entity.username = username
         entity.email = email
-        entity.avatarUrl = avatarUrl?.absoluteString
-        entity.cvUrl = cvUrl?.absoluteString
+        entity.avatarUrl = avatarURL
+        entity.cvUrl = cvURL
         entity.gender = gender
-        entity.dateOfBirth = dateOfBirth
+        entity.dateOfBirth = dateOfBirth.toDate()
         entity.targetRole = targetRole
         entity.industry = industry
         entity.experienceLevel = experienceLevel
         entity.currentJobTitle = currentJobTitle
-        entity.yearsOfExperience = Int32(yearsOfExperience ?? 0)
+        entity.yearsOfExperience = Int32(yearsOfExperience )
         entity.educationLevel = educationLevel
         entity.timezone = timezone
         entity.termsAccepted = termsAccepted
         entity.subscriptionTier = subscriptionTier
-        entity.coinBalance = Int32(coinBalance ?? 0)
-        entity.onboardingCompleted = onboardingCompleted ?? false
+        entity.coinBalance = Int32(coinBalance )
+        entity.onboardingCompleted = onboardingCompleted 
         entity.trackName = trackName
 
         return entity

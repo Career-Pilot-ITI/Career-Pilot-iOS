@@ -27,30 +27,30 @@ final class CoreDataUserLocalDataSource: UserLocalDataSourceProtocol {
             profileEntity.displayName = user.profile.displayName
             profileEntity.username = user.profile.username
             profileEntity.email = user.profile.email
-            profileEntity.avatarUrl = user.profile.avatarUrl.absoluteString
+            profileEntity.avatarUrl = user.profile.avatarURL
             profileEntity.gender = user.profile.gender
-            profileEntity.dateOfBirth = user.profile.dateOfBirth
+            profileEntity.dateOfBirth = user.profile.dateOfBirth.toDate()
             profileEntity.targetRole = user.profile.targetRole
             profileEntity.industry = user.profile.industry
             profileEntity.experienceLevel = user.profile.experienceLevel
             profileEntity.currentJobTitle = user.profile.currentJobTitle
-            profileEntity.yearsOfExperience = Int32(user.profile.yearsOfExperience ?? 0)
-            profileEntity.cvUrl = user.profile.cvUrl.absoluteString
+            profileEntity.yearsOfExperience = Int32(user.profile.yearsOfExperience )
+            profileEntity.cvUrl = user.profile.cvURL
             profileEntity.educationLevel = user.profile.educationLevel
             profileEntity.timezone = user.profile.timezone
             profileEntity.termsAccepted = user.profile.termsAccepted
             profileEntity.subscriptionTier = user.profile.subscriptionTier
-            profileEntity.coinBalance = Int32(user.profile.coinBalance ?? 0)
-            profileEntity.onboardingCompleted = user.profile.onboardingCompleted ?? false
+            profileEntity.coinBalance = Int32(user.profile.coinBalance )
+            profileEntity.onboardingCompleted = user.profile.onboardingCompleted
             profileEntity.trackName = user.profile.trackName
             profileEntity.user = entity
 
-            for skill in user.profile.skills ?? [] {
+            for _ in user.profile.skills {
                 let skillEntity = SkillEntity(context: context)
 //                skillEntity.value = skill
                 skillEntity.profile = profileEntity
             }
-            for company in user.profile.targetCompanies ?? [] {
+            for company in user.profile.targetCompanies {
                 let companyEntity = TargetCompanyEntity(context: context)
                 companyEntity.value = company
                 companyEntity.profile = profileEntity

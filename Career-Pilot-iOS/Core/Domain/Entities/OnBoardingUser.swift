@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct UserData {
+struct OnBoardingUser {
     var email: String
     var title: String
     var avatarUrl: String?

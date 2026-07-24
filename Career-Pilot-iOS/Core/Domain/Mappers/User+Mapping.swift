@@ -8,44 +8,68 @@
 import Foundation
 
 extension User{
-    func toUserData() -> UserData{
+    func toOnBoardingUser() -> OnBoardingUser{
         
-        let components = userName
+        let components = profile.username
             .split(separator: " ")
             .map(String.init)
 
         let firstName = components.first ?? ""
         let lastName = components.dropFirst().joined(separator: " ")
         
-        return UserData(email: profile.email, title: profile.trackName, experienceLevel: profile.experienceLevel, skills: profile.skills, firstName: , lastName: lastName)
+        return OnBoardingUser(email: profile.email, title: profile.trackName, experienceLevel: profile.experienceLevel, skills: profile.skills, firstName: firstName,lastName: lastName)
     }
 }
 
 extension User {
-    func toDTO() -> UpdateProfileRequestDTO {
-        return UpdateProfileRequestDTO(
-            username: self.profile.username,
-            email: self.profile.email,
-            currentPassword: nil,
-            newPassword: nil,
-            displayName: self.profile.displayName,
-            avatarFileId: self.profile.avatarFileId,
-            gender: self.profile.gender,
-            dateOfBirth: self.profile.dateOfBirth?.iso8601String,
-            targetRole: self.profile.targetRole,
-            industry: self.profile.industry,
-            experienceLevel: self.profile.experienceLevel,
-            currentJobTitle: self.profile.currentJobTitle,
-            yearsOfExperience: self.profile.yearsOfExperience,
-            cvFileId: self.profile.cvFileId,
-            skills: (self.profile.skills ?? []).map { $0.skillName },
-            targetCompanies: self.profile.targetCompanies,
-            educationLevel: self.profile.educationLevel,
-            timezone: self.profile.timezone,
-            termsAccepted: self.profile.termsAccepted,
-            onboardingCompleted: self.profile.onboardingCompleted,
-            subscriptionTier: self.profile.subscriptionTier,
-            trackId: self.profile.trackId
+    func toDTO() -> UserDTO {
+        UserDTO(
+            id: id,
+            phoneNumber: phoneNumber,
+            profile: profile.toDTO(),
+            newUser: isNewUser
+        )
+    }
+}
+
+extension UserProfile {
+    func toDTO() -> UserProfileDTO {
+        UserProfileDTO(
+            id: id,
+            phoneNumber: phoneNumber,
+            displayName: displayName,
+            username: username,
+            email: email,
+            avatarUrl: avatarURL,
+            gender: gender,
+            dateOfBirth: dateOfBirth,
+            targetRole: targetRole,
+            industry: industry,
+            experienceLevel: experienceLevel,
+            currentJobTitle: currentJobTitle,
+            yearsOfExperience: yearsOfExperience,
+            cvUrl: cvURL,
+            skills: skills.map { $0.toDTO() },
+            targetCompanies: targetCompanies,
+            educationLevel: educationLevel,
+            timezone: timezone,
+            termsAccepted: termsAccepted,
+            subscriptionTier: subscriptionTier,
+            coinBalance: coinBalance,
+            onboardingCompleted: onboardingCompleted,
+            trackName: trackName
+        )
+    }
+}
+
+extension Skill {
+    func toDTO() -> SkillDTO {
+        SkillDTO(
+            skillName: skillName,
+            category: category,
+            performanceScore: performanceScore,
+            timesAssessed: timesAssessed,
+            lastAssessedAt: lastAssessedAt
         )
     }
 }

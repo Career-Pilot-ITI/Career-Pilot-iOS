@@ -22,7 +22,7 @@ struct UpdateProfileRequestDTO: Encodable {
     let currentJobTitle: String?
     let yearsOfExperience: Int?
     let cvFileId: Int?
-    let skills: [String]?          
+    let skills: [String]?
     let targetCompanies: [String]?
     let educationLevel: String?
     let timezone: String?

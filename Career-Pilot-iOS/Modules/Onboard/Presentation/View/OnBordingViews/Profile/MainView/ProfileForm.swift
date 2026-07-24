@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileForm: View {
-    @Binding var userData: UserData
+    @Binding var userData: OnBoardingUser
     private var skillNamesBinding: Binding<[String]> {
         Binding(
             get: { userData.skills.map { $0.skillName } },
