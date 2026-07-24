@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CoinsValueView: View {
     @ObservedObject var viewModel: CoinViewModel
-    @EnvironmentObject var coordinator: AppCoordinator
+    @EnvironmentObject var coordinator:  AppCoordinator<SettingsRoute>
 
       
     var body: some View {

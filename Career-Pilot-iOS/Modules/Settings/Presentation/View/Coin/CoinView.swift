@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CoinView: View {
-    @StateObject var viewModel: CoinViewModel = CoinViewModel(getCoinPacksUseCase: GetCoinsPlans(settingsRepo: SettingsRepoImp(remote: SettingsRemoteImp(apiService: URLSessionNetworkService()))))
+    @StateObject var viewModel: CoinViewModel = CoinViewModel(getCoinPacksUseCase: GetCoinsPlans(settingsRepo: SettingsRepoImp(remote: SettingsRemoteImp(apiService: URLSessionNetworkService()), local: SettingsLocalDataSourceImp(coreDataManager: CoreDataManager()), authToken: KeychainAuthTokenStore())))
     var body: some View {
         VStack(spacing : 0 ){
             CoinTopView()
@@ -19,8 +19,8 @@ struct CoinView: View {
     }
 }
 
-struct CoinView_Previews: PreviewProvider {
-    static var previews: some View {
-        CoinView(viewModel: CoinViewModel(getCoinPacksUseCase: GetCoinsPlans(settingsRepo: SettingsRepoImp(remote: SettingsRemoteImp(apiService:URLSessionNetworkService() )))))
-    }
-}
+//struct CoinView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CoinView(viewModel: CoinViewModel(getCoinPacksUseCase: GetCoinsPlans(settingsRepo: SettingsRepoImp(remote: SettingsRemoteImp(apiService:URLSessionNetworkService() ), local: SettingsLocalDataSourceImp(coreDataManager: CoreDataManager()), authToken: <#AuthTokenStoring#>))))
+//    }
+//}

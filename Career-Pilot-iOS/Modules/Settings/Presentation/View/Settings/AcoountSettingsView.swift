@@ -6,20 +6,29 @@
 //
 
 import SwiftUI
-
+import Combine
 struct AccountItem {
     let icon: String
     let title: String
     let subtitle: String
-    let route : AppRoute
+    let route : SettingsRoute
 }
 struct AccountSettingsView: View {
-    @EnvironmentObject var coordinator: AppCoordinator
-    let items: [AccountItem] = [
-        AccountItem(icon: "Subscription", title: "Subscription", subtitle: "Free · 3 sessions/mo",route: .subscribtion ),
-        AccountItem(icon: "Favourite", title: "Coin Balance", subtitle: "247 coins" , route: .coin),
-        AccountItem(icon: "notifiaction", title: "Notifications", subtitle: "Reminders on" , route: .coin)
-       ]
+    var user: UserModelSettingsView
+        
+        @EnvironmentObject var coordinator: AppCoordinator<SettingsRoute>
+        
+        init(user: UserModelSettingsView) {
+            self.user = user
+        }
+        
+        var items: [AccountItem] {
+            [
+                AccountItem(icon: "Subscription", title: "Subscription", subtitle: "\(user.subscriptionPlan)", route: .subscribtion),
+                AccountItem(icon: "Favourite", title: "Coin Balance", subtitle: "\(user.coinBalance)", route: .coin)
+            ]
+        }
+
        
        var body: some View {
            VStack(spacing: 0) {

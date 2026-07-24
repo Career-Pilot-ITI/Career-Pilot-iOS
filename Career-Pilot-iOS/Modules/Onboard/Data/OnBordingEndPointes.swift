@@ -14,7 +14,7 @@ enum OnBordingEndPointes: APIEndpoint{
     case updateUserProfile(updateProfileDTO: UpdateProfileRequestDTO)
     
     var baseURL: String{
-        "https://a32c-102-188-63-78.ngrok-free.app/"
+        "https://ed39-102-188-31-161.ngrok-free.app"
     }
     
     var path: String{

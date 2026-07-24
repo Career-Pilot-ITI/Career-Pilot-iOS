@@ -9,18 +9,17 @@ import Foundation
 struct UserSettingsDomain{
     let displayName: String
     let username: String
+    let phoneNumber : String
     let email: String
-    let avatarUrl: URL?
-    let avatarFileId: Int?
-    let cvFileId: Int?
+    var avatar: Data?
     let targetRole: String?
     let industry: String?
-    let experienceLevel: String?
-    let currentJobTitle: String?
-    let cvUrl: URL?
-    let skills: [String]?
+    let experienceLevel: String
+    let currentJobTitle: String
+    let cvUrl: URL
+    let skills: [Skill]
     let subscriptionTier: String?
-    let coinBalance: Int?
-    let trackName: String?
-    let trackId: Int?
+    let coinBalance: Int
+    let trackName: String
+    let trackId: Int
 }

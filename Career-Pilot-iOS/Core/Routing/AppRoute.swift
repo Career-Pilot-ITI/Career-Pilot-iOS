@@ -16,17 +16,18 @@ enum AuthRoute: Hashable {
     
     // MARK : Onboarding
     case onboardingScreen(vm : OnBordingViewModel)
-    // MARK : Checkout
-    case checkout(item :CheckoutItem)
-    case subscribtion
-    case coin
+   
 }
 
 enum HomeRoute: Hashable {
     case sessionDetail(metrics: [RadarMetric], suggestions: [CoachingSuggestion])
 }
 
-
+enum  SettingsRoute : Hashable {
+    case checkout(item :CheckoutItem)
+    case subscribtion
+    case coin
+}
 
 enum ReportsRoute: Hashable {
     case sessionDetail(metrics: [RadarMetric], suggestions: [CoachingSuggestion])

@@ -8,12 +8,16 @@
 import Foundation
 class GetUserDataUseCase{
     var settingsRepo : SettingsRepo
-    
     init(settingsRepo: SettingsRepo) {
         self.settingsRepo = settingsRepo
     }
-    func execute() async->User{
-        return await settingsRepo.fetchUserData()
+    func execute() async throws -> UserModelSettingsView  {
+        do{
+           return await  try settingsRepo.fetchUserData().toUserModelSettingsView()
+        }
+        catch {
+            print("The error in fetching user data is \(error)")
+            throw error
+        }
     }
-    
 }

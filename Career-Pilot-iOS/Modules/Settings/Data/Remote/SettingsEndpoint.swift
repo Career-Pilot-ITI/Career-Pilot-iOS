@@ -12,7 +12,7 @@ enum SettingsEndpoint : APIEndpoint{
     case upgradeSubscription(subscriptionUpgrading:SubscriptionUpgrading)
     
     var baseURL: String{
-        "https://660c-102-188-23-75.ngrok-free.app/"
+        "https://ed39-102-188-31-161.ngrok-free.app/"
     }
     
     var path: String{
@@ -52,7 +52,8 @@ enum SettingsEndpoint : APIEndpoint{
             }
         }
     var headers: [String: String] {
-        ["Content-Type": "application/json"]
+        ["Content-Type": "application/json" ,
+         "Authorization" :"Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWQiOjEsImVtYWlsIjoiRXlhZHc4N0BnbWFpbC5jb20iLCJzdWIiOiJFeWFkdzg3IiwiaWF0IjoxNzg0OTIxMzk4LCJleHAiOjE3ODQ5MjQ5OTh9.DcJHrrHSgvFpsYxqb6g97uaQTd2kE31rPUeDZTeDsjVq"]
     }
     
 

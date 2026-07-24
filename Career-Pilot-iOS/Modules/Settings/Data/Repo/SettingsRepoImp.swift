@@ -7,13 +7,35 @@
 
 import Foundation
 class SettingsRepoImp : SettingsRepo  {
+    
     var remote : SettingsRemote
-    init(remote: SettingsRemote) {
+    var local : SettingsLocalDataSource
+    var authToken : AuthTokenStoring
+    init(remote: SettingsRemote ,  local : SettingsLocalDataSource , authToken : AuthTokenStoring) {
         self.remote = remote
+        self.local = local
+        self.authToken = authToken
     }
-    func fetchUserData() async -> User {
-        return await remote.getUserData()
+    func fetchUserData() async throws -> UserSettingsDomain {
+        if let cachedUser = try await local.fetchUserData() {
+            var user = cachedUser.toUserSettingsDomain()
+            user.avatar =  await try cachedUser.avatarUrl == nil ? nil : ImageLoader.loadImage(from: URL(string:cachedUser.avatarUrl!)!)
+            return user
+        }
+        do{
+            let remoteUser =  try await remote.getUserData()
+            let cachedUser = try await local.saveUserData(user: remoteUser)
+            var user =  cachedUser.toUserSettingsDomain()
+            user.avatar = await try cachedUser.avatarUrl == nil ? nil : ImageLoader.loadImage(from: URL(string:cachedUser.avatarUrl!)!)
+            return user
+        }
+        catch{
+            print("Error in getting saved userin core data  \(error)")
+            throw error
+        }
     }
+    
+    
     
     func upgradeSubscription(upgradeSubscription: SubscriptionUpgrading) async throws -> PaymentResponse {
         do{
@@ -30,6 +52,9 @@ class SettingsRepoImp : SettingsRepo  {
     func logout() async throws{
         do{
             try await remote.logoutUser()
+            try authToken.clear()
+            try await local.deleteUserData()
+            
         }catch{
             print("error in the repor for the logout \(error)")
             throw error
@@ -56,6 +81,5 @@ class SettingsRepoImp : SettingsRepo  {
         ]
     }
    
-    
     
 }

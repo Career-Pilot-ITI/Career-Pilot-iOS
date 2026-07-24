@@ -37,7 +37,27 @@ extension UserProfileDTO {
         )
     }
 }	
-
+extension UserProfileDTO {    
+    func toUserSettingsDomain() -> UserSettingsDomain {
+        UserSettingsDomain(
+            displayName: displayName ?? "",
+            username: username ?? "",
+            phoneNumber: "01554132837",
+            email: email ?? "",
+            avatar: nil,
+            targetRole: targetRole,
+            industry: industry,
+            experienceLevel: experienceLevel ?? "",
+            currentJobTitle: currentJobTitle ?? "",
+            cvUrl: cvUrl.flatMap { URL(string: $0) } ?? URL(string: "about:blank")!,
+            skills: (skills ?? []).map { $0.toDomain() },
+            subscriptionTier: subscriptionTier,
+            coinBalance: coinBalance ?? 0,
+            trackName: trackName ?? "",
+            trackId: 0
+        )
+    }
+}
 extension DateFormatter {
     /// Matches "2026-07-17" style dates from the API.
     static let apiDateOnly: DateFormatter = {

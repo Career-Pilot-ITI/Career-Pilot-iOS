@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct SkillDTO: Codable {
     let skillName: String?
@@ -27,3 +28,15 @@ extension SkillDTO {
         )
     }
 }
+extension SkillDTO {
+    func toEntity(context: NSManagedObjectContext) -> SkillEntity {
+        let skillEntity = SkillEntity(context: context)
+        skillEntity.skillName = skillName
+        skillEntity.category = category
+        skillEntity.performanceScore = Int32(performanceScore ?? 0)
+        skillEntity.timesAssessed = Int32(timesAssessed ?? 0)
+        skillEntity.lastAssessedAt = lastAssessedAt
+        return skillEntity
+    }
+}
+

@@ -8,7 +8,7 @@
 import Foundation
 protocol  SettingsRepo{
     func upgradeSubscription(upgradeSubscription: SubscriptionUpgrading) async throws -> PaymentResponse 
-    func fetchUserData() async -> User
+    func fetchUserData() async throws -> UserSettingsDomain
     func logout() async throws
     func getSubscription() -> [SubscriptionPlan]
     func getCoins() ->[CoinPack]

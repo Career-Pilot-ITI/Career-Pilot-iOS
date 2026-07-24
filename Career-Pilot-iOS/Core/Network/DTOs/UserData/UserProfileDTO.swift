@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct UserProfileDTO: Decodable {
     let displayName: String?
@@ -31,4 +32,69 @@ struct UserProfileDTO: Decodable {
     let coinBalance: Int?
     let onboardingCompleted: Bool?
     let trackName: String?
+}
+extension UserDTO {
+    func toEntity(context: NSManagedObjectContext) -> UserEntity {
+        let userEntity = UserEntity(context: context)
+        userEntity.id = Int64(id)
+        userEntity.phoneNumber = phoneNumber
+        userEntity.profile = profile.toEntity(context: context)
+        return userEntity
+    }
+}
+
+extension UserProfileDTO {
+    func toEntity(context: NSManagedObjectContext) -> UserProfileEntity {
+        let profileEntity = UserProfileEntity(context: context)
+        profileEntity.displayName = displayName
+        profileEntity.username = username
+        profileEntity.email = email
+        profileEntity.avatarUrl = avatarUrl
+        profileEntity.gender = gender
+        profileEntity.targetRole = targetRole
+        profileEntity.industry = industry
+        profileEntity.experienceLevel = experienceLevel
+        profileEntity.currentJobTitle = currentJobTitle
+        profileEntity.yearsOfExperience = Int32(yearsOfExperience ?? 0)
+        profileEntity.cvUrl = cvUrl
+        profileEntity.educationLevel = educationLevel
+        profileEntity.timezone = timezone
+        profileEntity.termsAccepted = termsAccepted ?? false
+        profileEntity.subscriptionTier = subscriptionTier
+        profileEntity.coinBalance = Int32(Int64(coinBalance ?? 0))
+        profileEntity.onboardingCompleted = onboardingCompleted ?? false
+        profileEntity.trackName = trackName
+        
+        
+        if let skills = skills {
+            let skillEntities = skills.map { $0.toEntity(context: context) }
+            profileEntity.skills = NSSet(array: skillEntities)
+        }
+        
+        return profileEntity
+    }
+}
+extension UserProfileDTO {
+    func toSettingsDomain() -> UserSettingsDomain {
+        let cv: URL = cvUrl.flatMap { URL(string: $0) } ?? URL(string: "about:blank")!
+        let skillList: [Skill] = skills?.map { $0.toDomain() } ?? []
+        
+        return UserSettingsDomain(
+            displayName: displayName ?? "",
+            username: username ?? "",
+            phoneNumber: "",
+            email: email ?? "",
+            avatar: nil,
+            targetRole: targetRole,
+            industry: industry,
+            experienceLevel: experienceLevel ?? "",
+            currentJobTitle: currentJobTitle ?? "",
+            cvUrl: cv,
+            skills: skillList,
+            subscriptionTier: subscriptionTier,
+            coinBalance: coinBalance ?? 0,
+            trackName: trackName ?? "",
+            trackId: 0
+        )
+    }
 }

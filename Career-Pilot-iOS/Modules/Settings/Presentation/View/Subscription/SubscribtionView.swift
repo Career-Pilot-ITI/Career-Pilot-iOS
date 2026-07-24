@@ -13,8 +13,8 @@ import SwiftUI
 
 
 struct ChoosePlanView: View {
-    @StateObject var viewModel: SubscriptionViewModel = SubscriptionViewModel(getPlansUseCase: GetSubscribtionPlan(settingsRepo: SettingsRepoImp(remote: SettingsRemoteImp(apiService: URLSessionNetworkService()))))
-    @EnvironmentObject var coordinator: AppCoordinator
+    @StateObject var viewModel: SubscriptionViewModel = SubscriptionViewModel(getPlansUseCase: GetSubscribtionPlan(settingsRepo: SettingsRepoImp(remote: SettingsRemoteImp(apiService: URLSessionNetworkService()), local: SettingsLocalDataSourceImp(coreDataManager: CoreDataManager()), authToken: KeychainAuthTokenStore())))
+    @EnvironmentObject var coordinator: AppCoordinator<SettingsRoute>
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {

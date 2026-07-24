@@ -7,6 +7,7 @@
 
 import Foundation
 class SettingsRemoteImp : SettingsRemote{
+ 
 
     
     var apiService: NetworkService
@@ -27,15 +28,21 @@ class SettingsRemoteImp : SettingsRemote{
     func logoutUser()  async throws{
         let endpoint = SettingsEndpoint.logout
         do{
+            
             return try await apiService.request(endpoint)
         }catch{
             print("Logout error : \(error)")
            throw error
         }
     }
-    func getUserData() async -> User {
-        print("user here it is ")
-        return User(id: 1, phoneNumber: "01554132837", profile: UserProfile(displayName: "Eyad waleed", username: "eyad", email: "eyadw@gmail.com", avatarUrl: URL(string: ""), avatarFileId: 5, cvFileId: 10, gender: "", dateOfBirth: Date.now, targetRole: "", industry: "", experienceLevel: "", currentJobTitle: "", yearsOfExperience: 4, cvUrl: URL(string: ""), skills: [""], targetCompanies: [], educationLevel: "", timezone: "", termsAccepted: true, subscriptionTier: "", coinBalance: 500, onboardingCompleted: true, trackName: "Software engineeering", trackId: 5), isNewUser: true)
+    func getUserData() async throws -> UserDTO {
+        let endpoint = SettingsEndpoint.getUserData
+        do{
+            return try await apiService.request(endpoint)
+        }  catch {
+            print("Actual error: \(error)")
+            throw error
+        }
     }
     func getSubscription()  async{
         print("Here is the subscription")
