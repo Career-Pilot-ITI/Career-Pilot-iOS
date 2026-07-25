@@ -38,6 +38,13 @@ extension DIContainer{
                 userRepository: r.resolve(UserDataRepo.self)!
             )
         }
+        
+        // get currentUser
+        container.register(GetCurrentUserUseCaseProtocol.self) { resolver in
+            GetCurrentUserUseCase(
+                repository: resolver.resolve(UserDataRepo.self)!
+            )
+        }
 
         
         // MARK: - PracticeSession

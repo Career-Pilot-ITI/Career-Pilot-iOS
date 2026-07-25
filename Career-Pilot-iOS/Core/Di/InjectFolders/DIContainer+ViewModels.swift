@@ -30,6 +30,10 @@ extension DIContainer{
             )
         }
         
+        // homeViewModel
+        container.register(HomeViewModel.self){ r in
+            HomeViewModel(getCurrentUserUseCase: r.resolve(GetCurrentUserUseCaseProtocol.self)!)
+        }
 //        // MARK: - PracticeSession
 //        container.register(PracticeSessionViewModel.self) { resolver in
 //            
