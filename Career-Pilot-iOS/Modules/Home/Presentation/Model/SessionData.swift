@@ -21,3 +21,9 @@ struct CareerItem: Identifiable {
     let tagText: String
     let durationText: String
 }
+
+struct PracticeTip: Identifiable {
+    let id = UUID()
+    let stepNumber: String
+    let text: String
+}
