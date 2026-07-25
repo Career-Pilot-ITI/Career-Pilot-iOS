@@ -10,7 +10,7 @@ import Foundation
 
 protocol OnBordingRemoteDataSource{
     func getAllTraks() async throws -> [TrackDTO]
-    func updateUserProfile(updateProfileDTO: UpdateProfileRequestDTO) async throws -> UserProfileDTO
+    func updateUserProfile(updateProfileRequestDTO: UpdateProfileRequestDTO) async throws -> UpdateProfileResponseDTO
 }
 
 class OnBordingRemoteDataSourceImp: OnBordingRemoteDataSource{
@@ -27,30 +27,22 @@ class OnBordingRemoteDataSourceImp: OnBordingRemoteDataSource{
         return try await apiService.request(endPoint)
     }
     
-//    func updateUserProfile(updateProfileDTO: UpdateProfileDTO) async throws -> UpdateProfileDTO {
-//        let endPoint = OnBordingEndPointes.updateUserProfile(updateProfileDTO: updateProfileDTO)
-//        
-//        let updatedProfile: UpdateProfileDTO = try await apiService.request(endPoint)
-//        
-//        return updatedProfile
-//    }
-  
-    func updateUserProfile(updateProfileDTO: UpdateProfileRequestDTO) async throws -> UserProfileDTO {
-            let endPoint = OnBordingEndPointes.updateUserProfile(updateProfileDTO: updateProfileDTO)
+    func updateUserProfile(updateProfileRequestDTO: UpdateProfileRequestDTO) async throws -> UpdateProfileResponseDTO {
+            let endPoint = OnBordingEndPointes.updateUserProfile(updateProfileRequestDTO: updateProfileRequestDTO)
             
             print("🌐 [RemoteDataSource] Sending update profile request to: \(endPoint.baseURL)/\(endPoint.path)")
             
             do {
                 let encoder = JSONEncoder()
                 encoder.outputFormatting = .prettyPrinted
-                if let data = try? encoder.encode(updateProfileDTO),
+                if let data = try? encoder.encode(updateProfileRequestDTO),
                    let jsonString = String(data: data, encoding: .utf8) {
                     print("📦 [RemoteDataSource] Request Payload:\n\(jsonString)")
                 }
                 
-                let updatedProfile: UserProfileDTO = try await apiService.request(endPoint)
+                let updateProfileResponseDTO: UpdateProfileResponseDTO = try await apiService.request(endPoint)
                 print("✅ [RemoteDataSource] Profile updated successfully from server.")
-                return updatedProfile
+                return updateProfileResponseDTO
                 
             } catch {
                 print("🔴 [RemoteDataSource] Update profile failed with error: \(error)")
