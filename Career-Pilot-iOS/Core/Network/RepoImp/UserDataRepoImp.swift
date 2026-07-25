@@ -21,7 +21,7 @@ class UserDataRepoImp: UserDataRepo{
            try await localDataSource.saveUser(user)
        }
 
-    func getUser() async throws -> User? {
+    func getCurrentUser() async throws -> User? {
            try await localDataSource.getUser()
      }
 
