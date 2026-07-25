@@ -16,9 +16,9 @@ extension DIContainer{
             AuthRemoteDataSource()
         }
         // Local Data Source — uses shared CoreDataManager
-        container.register(UserLocalDataSourceProtocol.self) { r in
-            CoreDataUserLocalDataSource(
-                coreDataManager: r.resolve(CoreDataManager.self)!
+        container.register(UserLocalDataSource.self) { r in
+            UserLocalDataSourceImpl(
+                coreData: r.resolve(CoreDataManager.self)!
             )
         }.inObjectScope(.container)
         
