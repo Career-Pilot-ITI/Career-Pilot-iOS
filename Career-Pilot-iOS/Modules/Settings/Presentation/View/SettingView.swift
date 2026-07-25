@@ -1,18 +1,100 @@
 //
-//  SettingView.swift
+//  SettingsVIew.swift
 //  Career-Pilot-iOS
 //
-//  Created by Ahmed El-Sayyad Mohamed on 25/07/2026.
+//  Created by Eyad waleed on 15/07/2026.
 //
 
 import SwiftUI
 
-struct SettingView: View {
+struct SettingsView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+        Color.gray100
+                .ignoresSafeArea()
+        ScrollView{
+            VStack(alignment: .leading){
+                Group{
+                    Text("Settings").font(.size22Semibold).foregroundColor(.primaryNavy)
+                    ProfileCard()
+                }
+                Group{
+                    Spacer().frame(height: Spacing.s12)
+                    Text("ACCOUNT").font(.size14Semibold).foregroundColor(.gray400)
+                    Spacer().frame(height: Spacing.s6)
+                    AccountSettingsView()
+                    Spacer().frame(height: Spacing.s24)
+                    Text("Support & Legal").font(.size14Semibold).foregroundColor(.gray400)
+                    Spacer().frame(height: Spacing.s6)
+                    SupportAndLeagalSettingsView()
+                }
+                
+                Spacer().frame(height: Spacing.s32)
+                Text("Danger Zone").font(.size14Semibold).foregroundColor(.gray400)
+                Spacer().frame(height: Spacing.s6)
+                
+                HStack(spacing: 12) {
+                    Image(systemName: "trash.fill")
+                        .foregroundColor(.errorColour)
+                        .frame(width: 44, height: 44)
+                        .background(
+                            RoundedRectangle(cornerRadius: Radius.r20)
+                                .fill(Color.errorColour.opacity(0.08))
+                        )
+                    
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Request Data Deletion")
+                            .font(.size14Medium)
+                            .foregroundColor(.errorColour)
+                        Text("Permanently delete account & data")
+                            .font(.caption)
+                            .foregroundColor(.gray400)
+                    }
+                    
+                    Spacer()
+                    
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(.gray400)
+                        .font(.caption.bold())
+                }
+                .padding(.horizontal, Spacing.s20)
+                .padding(.vertical, Spacing.s8)
+                .background(
+                    RoundedRectangle(cornerRadius: Radius.r12)
+                        .fill(Color.white)
+                )
+                
+                Spacer().frame(height: Spacing.s12)
+                
+                
+                HStack {
+                    Spacer()
+                    HStack(spacing: 8) {
+                        Image(systemName: "rectangle.portrait.and.arrow.right")
+                            .foregroundColor(.errorColour)
+                        Text("Sign Out")
+                            .font(.size14Medium)
+                            .foregroundColor(.errorColour)
+                    }
+                    Spacer()
+                }
+                .padding(.vertical, Spacing.s12)
+                .background(
+                    RoundedRectangle(cornerRadius: Radius.r12)
+                        .fill(Color.errorColour.opacity(0.08))
+                )
+                
+                
+            }
+            .padding(Spacing.s24)
+        }
+        
     }
+  }
 }
 
-#Preview {
-    SettingView()
+struct SettingsVIew_Previews: PreviewProvider {
+    static var previews: some View {
+        SettingsView()
+    }
 }
