@@ -41,7 +41,7 @@ struct FinishInterviewRequestDTO{
 //MARK: Mappers
 extension SubmitAnswerRequest{
     func toDTO() -> SubmitAnswerRequestDTO{
-        return SubmitAnswerRequestDTO(sessionId: sessionId, questionId: questionId, sessionElapsedSeconds: sessionElapsedSeconds, durationMs: durationMs, audioUrlAsString: audioUrlAsString, audioUrl: audioUrl, words: words)
+        return SubmitAnswerRequestDTO(sessionId: sessionId, questionId: questionId, sessionElapsedSeconds: sessionElapsedSeconds, durationMs: durationMs, audioAsUrl: audioAsUrl, audioUrl: audioUrl, words: words)
     }
 }
 
