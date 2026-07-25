@@ -69,7 +69,6 @@
 		41D69D37300B43FF00294D94 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D36300B43FF00294D94 /* KeychainManager.swift */; };
 		41D69D39300B445000294D94 /* AuthTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D38300B445000294D94 /* AuthTokenStore.swift */; };
 		41D69D3B300B456A00294D94 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D3A300B456A00294D94 /* CoreDataManager.swift */; };
-		41D69D40300B45C500294D94 /* CoreDataUserLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D3F300B45C500294D94 /* CoreDataUserLocalDataSource.swift */; };
 		41D69D4E300B4A0F00294D94 /* ClearSessionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D4D300B4A0F00294D94 /* ClearSessionUseCase.swift */; };
 		41D69D50300B4A2200294D94 /* LoadSessionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D4F300B4A2200294D94 /* LoadSessionUseCase.swift */; };
 		41D69D52300B4D5B00294D94 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D51300B4D5B00294D94 /* Persistence.swift */; };
@@ -102,6 +101,8 @@
 		CE8AFF1D300718670064CC6C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1C300718670064CC6C /* Round.swift */; };
 		CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1E3007187D0064CC6C /* Spaces.swift */; };
 		CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF21300726660064CC6C /* PhoneTextField.swift */; };
+		CEA4C08330142ABC00CB5DD3 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08230142ABC00CB5DD3 /* SettingView.swift */; };
+		CEA4C08530143D6900CB5DD3 /* OnBoardingUser+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08430143D6900CB5DD3 /* OnBoardingUser+Mapping.swift */; };
 		CEB6221130103D2600027035 /* UserLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6221030103D2600027035 /* UserLocalDataSource.swift */; };
 		CEB622133010405800027035 /* UsertoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB622123010405800027035 /* UsertoEntity.swift */; };
 		CEB622153010440800027035 /* SaveUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB622143010440800027035 /* SaveUserUseCase.swift */; };
@@ -125,9 +126,7 @@
 		CECCDA2A300F1DD80068620D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA23300F1DD80068620D /* NetworkService.swift */; };
 		CECCDA2B300F1DD80068620D /* AuthenticatedNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA21300F1DD80068620D /* AuthenticatedNetworkService.swift */; };
 		CECCDA30300F1E460068620D /* UpdateProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA2C300F1E460068620D /* UpdateProfileUseCase.swift */; };
-		CECCDA32300F1F830068620D /* UserProfile+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA31300F1F830068620D /* UserProfile+Mapping.swift */; };
-		CECCDA35300F20200068620D /* UserData+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA33300F20200068620D /* UserData+Mapping.swift */; };
-		CECCDA3D300F5E230068620D /* UpdateProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA3C300F5E230068620D /* UpdateProfileDTO.swift */; };
+		CECCDA3D300F5E230068620D /* UpdateProfileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA3C300F5E230068620D /* UpdateProfileResponseDTO.swift */; };
 		CECCDA3F300F68D50068620D /* UpdateProfileDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDA3E300F68D50068620D /* UpdateProfileDTO+Mapping.swift */; };
 		CED18895300B096300B15B81 /* Userdefaultsmanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED18894300B096300B15B81 /* Userdefaultsmanager.swift */; };
 		CEE62A80300910840071F076 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A7F300910840071F076 /* HomeView.swift */; };
@@ -195,7 +194,6 @@
 		D999D5A63010E71F00CF606B /* SessionStateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5A53010E71F00CF606B /* SessionStateDTO.swift */; };
 		D999D5A83010ED0E00CF606B /* SessionStateDTOMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */; };
 		D999D5AD301130B300CF606B /* ApiRequestes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5AC301130B300CF606B /* ApiRequestes.swift */; };
-		D99D9754301265B000F2A7C2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D9753301265B000F2A7C2 /* SettingsView.swift */; };
 		D99D9756301282E000F2A7C2 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D9755301282E000F2A7C2 /* String+Extension.swift */; };
 		D99D97583012969C00F2A7C2 /* User+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D97573012969C00F2A7C2 /* User+Mapping.swift */; };
 		D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */; };
@@ -307,7 +305,6 @@
 		41D69D36300B43FF00294D94 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		41D69D38300B445000294D94 /* AuthTokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenStore.swift; sourceTree = "<group>"; };
 		41D69D3A300B456A00294D94 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		41D69D3F300B45C500294D94 /* CoreDataUserLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUserLocalDataSource.swift; sourceTree = "<group>"; };
 		41D69D4D300B4A0F00294D94 /* ClearSessionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearSessionUseCase.swift; sourceTree = "<group>"; };
 		41D69D4F300B4A2200294D94 /* LoadSessionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSessionUseCase.swift; sourceTree = "<group>"; };
 		41D69D51300B4D5B00294D94 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -340,6 +337,8 @@
 		CE8AFF1C300718670064CC6C /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		CE8AFF1E3007187D0064CC6C /* Spaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spaces.swift; sourceTree = "<group>"; };
 		CE8AFF21300726660064CC6C /* PhoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTextField.swift; sourceTree = "<group>"; };
+		CEA4C08230142ABC00CB5DD3 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		CEA4C08430143D6900CB5DD3 /* OnBoardingUser+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnBoardingUser+Mapping.swift"; sourceTree = "<group>"; };
 		CEB6221030103D2600027035 /* UserLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalDataSource.swift; sourceTree = "<group>"; };
 		CEB622123010405800027035 /* UsertoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsertoEntity.swift; sourceTree = "<group>"; };
 		CEB622143010440800027035 /* SaveUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUserUseCase.swift; sourceTree = "<group>"; };
@@ -364,9 +363,7 @@
 		CECCDA25300F1DD80068620D /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
 		CECCDA2C300F1E460068620D /* UpdateProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileUseCase.swift; sourceTree = "<group>"; };
 		CECCDA2D300F1E460068620D /* UploadCvUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadCvUseCase.swift; sourceTree = "<group>"; };
-		CECCDA31300F1F830068620D /* UserProfile+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+Mapping.swift"; sourceTree = "<group>"; };
-		CECCDA33300F20200068620D /* UserData+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+Mapping.swift"; sourceTree = "<group>"; };
-		CECCDA3C300F5E230068620D /* UpdateProfileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileDTO.swift; sourceTree = "<group>"; };
+		CECCDA3C300F5E230068620D /* UpdateProfileResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileResponseDTO.swift; sourceTree = "<group>"; };
 		CECCDA3E300F68D50068620D /* UpdateProfileDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateProfileDTO+Mapping.swift"; sourceTree = "<group>"; };
 		CED18894300B096300B15B81 /* Userdefaultsmanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userdefaultsmanager.swift; sourceTree = "<group>"; };
 		CEE62A7F300910840071F076 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -437,7 +434,6 @@
 		D999D5A53010E71F00CF606B /* SessionStateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateDTO.swift; sourceTree = "<group>"; };
 		D999D5A73010ED0E00CF606B /* SessionStateDTOMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateDTOMapping.swift; sourceTree = "<group>"; };
 		D999D5AC301130B300CF606B /* ApiRequestes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestes.swift; sourceTree = "<group>"; };
-		D99D9753301265B000F2A7C2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D99D9755301282E000F2A7C2 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		D99D97573012969C00F2A7C2 /* User+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Mapping.swift"; sourceTree = "<group>"; };
 		D9A28579300A5CFB00ABB5BD /* UploadCvUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UploadCvUseCase.swift; path = "Career-Pilot-iOS/Modules/Onboard/Domain/UseCases/UploadCv/UploadCvUseCase.swift"; sourceTree = SOURCE_ROOT; };
@@ -624,7 +620,6 @@
 			children = (
 				41BE1A69300BF00B0033D1B5 /* UserDTO+Mapping.swift */,
 				41BE1A67300BEF820033D1B5 /* CvUplodingApiResponse+Mapping.swift */,
-				CECCDA31300F1F830068620D /* UserProfile+Mapping.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -727,7 +722,7 @@
 				616CAD0830081C62007FC4AF /* SettingsCard.swift */,
 				616CAD0B30081EF4007FC4AF /* AccountSettingsView.swift */,
 				616CAD0D30082441007FC4AF /* SupportAndLeagalSettingsView.swift */,
-				D99D9753301265B000F2A7C2 /* SettingsView.swift */,
+				CEA4C08230142ABC00CB5DD3 /* SettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -896,7 +891,7 @@
 			isa = PBXGroup;
 			children = (
 				D99D97573012969C00F2A7C2 /* User+Mapping.swift */,
-				CECCDA33300F20200068620D /* UserData+Mapping.swift */,
+				CEA4C08430143D6900CB5DD3 /* OnBoardingUser+Mapping.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -1387,8 +1382,8 @@
 			isa = PBXGroup;
 			children = (
 				D9B614FE300D1D7C00552F85 /* TrackDTO.swift */,
-				CECCDA3C300F5E230068620D /* UpdateProfileDTO.swift */,
 				41833E4630101E9B0055D990 /* UpdateProfileRequestDTO.swift */,
+				CECCDA3C300F5E230068620D /* UpdateProfileResponseDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -1528,7 +1523,6 @@
 		D9C1879930065B5800BFF8E9 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
-				D9C1879B30065B6B00BFF8E9 /* Local */,
 				D9C1879A30065B6800BFF8E9 /* Remote */,
 			);
 			path = DataSources;
@@ -1541,14 +1535,6 @@
 				41C38364300A2849005D4BB9 /* AuthEndPoint.swift */,
 			);
 			path = Remote;
-			sourceTree = "<group>";
-		};
-		D9C1879B30065B6B00BFF8E9 /* Local */ = {
-			isa = PBXGroup;
-			children = (
-				41D69D3F300B45C500294D94 /* CoreDataUserLocalDataSource.swift */,
-			);
-			path = Local;
 			sourceTree = "<group>";
 		};
 		D9C1879C30065B7500BFF8E9 /* RepositoryImpl */ = {
@@ -1925,7 +1911,6 @@
 				41D69D1C300A6DB400294D94 /* VerifyOTPResponseDTO+Mapping.swift in Sources */,
 				41BC7742300D3D5900E89C3F /* QuestionStatsRow.swift in Sources */,
 				41BC7732300D31C900E89C3F /* SessionView.swift in Sources */,
-				D99D9754301265B000F2A7C2 /* SettingsView.swift in Sources */,
 				41BC7752300D9A8D00E89C3F /* AppState.swift in Sources */,
 				CEE62A83300910E90071F076 /* CustomNavigationBar.swift in Sources */,
 				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
@@ -1963,12 +1948,11 @@
 				D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */,
 				D95C3BC1300E4ACF0042785F /* StartInterviewUseCase.swift in Sources */,
 				D920C24F300EFEE200AB7317 /* StatusScreens.swift in Sources */,
-				CECCDA3D300F5E230068620D /* UpdateProfileDTO.swift in Sources */,
+				CECCDA3D300F5E230068620D /* UpdateProfileResponseDTO.swift in Sources */,
 				CECC20E63007DB3D00DC450D /* PulsingIconBadge.swift in Sources */,
 				CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */,
 				D92854083010188400F8CAC2 /* InterviewQuestionMapping.swift in Sources */,
 				D95C3BB7300E4A5E0042785F /* InterviewValidationService.swift in Sources */,
-				CECCDA35300F20200068620D /* UserData+Mapping.swift in Sources */,
 				61D8F2FA300778520088F170 /* SkillTag.swift in Sources */,
 				41C38365300A2849005D4BB9 /* AuthEndPoint.swift in Sources */,
 				D95C3BCD300EA1A20042785F /* UserTrunView.swift in Sources */,
@@ -1980,6 +1964,7 @@
 				D99D9756301282E000F2A7C2 /* String+Extension.swift in Sources */,
 				D95C3BCB300EA1800042785F /* WaitingForAnswerView.swift in Sources */,
 				D9B4B1B630117ED4004909ED /* NewSessionDTO.swift in Sources */,
+				CEA4C08530143D6900CB5DD3 /* OnBoardingUser+Mapping.swift in Sources */,
 				D9B614FD300D1D5700552F85 /* OnBordingRemoteDataSource.swift in Sources */,
 				D9A2857A300A5CFB00ABB5BD /* UploadCvUseCase.swift in Sources */,
 				CECC20E23007DB1B00DC450D /* WaitingIndicatorState.swift in Sources */,
@@ -2021,7 +2006,6 @@
 				D9B614FF300D1D7C00552F85 /* TrackDTO.swift in Sources */,
 				D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */,
 				D920C24B300EFEB400AB7317 /* RecordingView.swift in Sources */,
-				CECCDA32300F1F830068620D /* UserProfile+Mapping.swift in Sources */,
 				D9B614EA300CF4A100552F85 /* DIContainer+UseCases.swift in Sources */,
 				616CAD0730080FDE007FC4AF /* ProfileCard.swift in Sources */,
 				D920C24D300EFEC800AB7317 /* SessionHeader.swift in Sources */,
@@ -2042,12 +2026,12 @@
 				61D8F2F03007523E0088F170 /* HeaderView.swift in Sources */,
 				41BE1A6B300BF00B0033D1B5 /* UserDTO+Mapping.swift in Sources */,
 				6182BB59300C70A1001157B8 /* SuggestedSkill.swift in Sources */,
+				CEA4C08330142ABC00CB5DD3 /* SettingView.swift in Sources */,
 				D95C3BAB300E4A240042785F /* InterviewFeedback.swift in Sources */,
 				41D69D10300A6C7A00294D94 /* AuthTokensDTO+Mapping.swift in Sources */,
 				D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */,
 				41BC7744300D3DA600E89C3F /* CoachFeedbackCard.swift in Sources */,
 				41BC7746300D3DCD00E89C3F /* TranscriptSnippetCard.swift in Sources */,
-				41D69D40300B45C500294D94 /* CoreDataUserLocalDataSource.swift in Sources */,
 				41D69D07300A69E200294D94 /* VerifyOTPResponseDTO.swift in Sources */,
 				41BC7750300D4B1500E89C3F /* OverallScoreCardView.swift in Sources */,
 				CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */,

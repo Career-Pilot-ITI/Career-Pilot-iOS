@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23H124" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="24902" systemVersion="25F84" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CompanyEntity" representedClassName="CompanyEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="value" attributeType="String"/>
+        <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserProfileEntity" inverseName="targetCompanies" inverseEntity="UserProfileEntity"/>
+    </entity>
     <entity name="SkillEntity" representedClassName="SkillEntity" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="lastAssessedAt" optional="YES" attributeType="String"/>
-        <attribute name="performanceScore" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="performanceScore" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="skillName" optional="YES" attributeType="String"/>
-        <attribute name="timesAssessed" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="timesAssessed" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserProfileEntity" inverseName="skills" inverseEntity="UserProfileEntity"/>
-    </entity>
-    <entity name="TargetCompanyEntity" representedClassName="TargetCompanyEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="value" attributeType="String"/>
-        <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserProfileEntity" inverseName="targetCompanies" inverseEntity="UserProfileEntity"/>
     </entity>
     <entity name="UserEntity" representedClassName="UserEntity" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="Integer 64" usesScalarValueType="YES"/>
@@ -19,27 +19,29 @@
         <relationship name="profile" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="UserProfileEntity" inverseName="user" inverseEntity="UserProfileEntity"/>
     </entity>
     <entity name="UserProfileEntity" representedClassName="UserProfileEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="avatarUrl" optional="YES" attributeType="String"/>
-        <attribute name="coinBalance" attributeType="Integer 32" usesScalarValueType="YES"/>
+        <attribute name="avatarURL" optional="YES" attributeType="String"/>
+        <attribute name="coinBalance" attributeType="Integer 64" usesScalarValueType="YES"/>
         <attribute name="currentJobTitle" optional="YES" attributeType="String"/>
-        <attribute name="cvUrl" optional="YES" attributeType="String"/>
-        <attribute name="dateOfBirth" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="cvURL" optional="YES" attributeType="String"/>
+        <attribute name="dateOfBirth" optional="YES" attributeType="String"/>
         <attribute name="displayName" optional="YES" attributeType="String"/>
         <attribute name="educationLevel" optional="YES" attributeType="String"/>
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="experienceLevel" optional="YES" attributeType="String"/>
         <attribute name="gender" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="industry" optional="YES" attributeType="String"/>
         <attribute name="onboardingCompleted" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String"/>
         <attribute name="subscriptionTier" optional="YES" attributeType="String"/>
         <attribute name="targetRole" optional="YES" attributeType="String"/>
         <attribute name="termsAccepted" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="timezone" optional="YES" attributeType="String"/>
         <attribute name="trackName" optional="YES" attributeType="String"/>
         <attribute name="username" attributeType="String"/>
-        <attribute name="yearsOfExperience" attributeType="Integer 32" usesScalarValueType="YES"/>
+        <attribute name="yearsOfExperience" attributeType="Integer 64" usesScalarValueType="YES"/>
         <relationship name="skills" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SkillEntity" inverseName="profile" inverseEntity="SkillEntity"/>
-        <relationship name="targetCompanies" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TargetCompanyEntity" inverseName="profile" inverseEntity="TargetCompanyEntity"/>
+        <relationship name="targetCompanies" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CompanyEntity" inverseName="profile" inverseEntity="CompanyEntity"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="profile" inverseEntity="UserEntity"/>
     </entity>
 </model>
