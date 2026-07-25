@@ -8,50 +8,115 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var viewModel = HomeViewModel()
+    @StateObject private var viewModel =
+        DIContainer.shared.container.resolve(HomeViewModel.self)!
+
+    let cardColors: [Color] = [.orange, .blue, .purple, .green, .pink, .teal]
+    let assignedColor  = Color.blue
     
     var body: some View {
-        ScrollView {
-            ZStack {
-                // Main Content
-                VStack(spacing: 20) {
-                    CustomNavigationBar(userName: viewModel.userName, userScore: viewModel.userScore)
-                    
-                    SubscriptionCard(usedSessions: viewModel.usedSessions, totalSessions: viewModel.totalSessions)
-                    
-                    ProgressCard(
-                        score: 88,
-                        progressLabel: "Good Progress",
-                        scoreChange: "▲ +6 from last week"
-                    )
-                    
-                    PracticeCard(category: "SOFTWARE ENGINEERING")
-                    
-                    VStack(spacing: 12) {
-                        HStack {
-                            Text("Recent Sessions").font(.headline)
-                            Spacer()
-                            Text("See all").foregroundColor(.orange)
-                        }
-                        
-                        ForEach(viewModel.recentSessions) { session in
-                            SessionRow(score: session.score, title: session.title, time: session.time)
-                        }
-                    }
-                }
-                .padding()
-                .opacity(viewModel.isLoading ? 0 : 1)
-                
-                if viewModel.isLoading {
-                    ShimmerLoadingView()
-                        .transition(.opacity.animation(.easeInOut))
-                }
+        Group {
+            if let user = viewModel.user {
+                content(user)
+            } else {
+                ShimmerLoadingView()
             }
         }
         .background(Color(.systemGroupedBackground))
+        .task {
+            await viewModel.loadUser()
+            viewModel.loadData()
+        }
+    }
+
+    @ViewBuilder
+    private func content(_ user: User) -> some View {
+        ScrollView {
+            VStack(spacing: 20) {
+                CustomNavigationBar(
+                    userName: user.profile.displayName,
+                    userScore: user.profile.coinBalance
+                )
+
+                SubscriptionCard(
+                    usedSessions: viewModel.usedSessions,
+                    totalSessions: viewModel.totalSessions
+                ).transition(.move(edge: .top).combined(with: .opacity))
+
+                ProgressCard(
+                    score: 88,
+                    progressLabel: "Good Progress",
+                    scoreChange: "▲ +6 from last week"
+                )
+
+                PracticeCard(category: user.profile.trackName)
+                HStack {
+                    Text("Recommended For You")
+                        .font(.headline)
+                    Spacer()
+                    Text("See all")
+                        .foregroundColor(.orange)
+                }
+
+
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: Spacing.s16) {
+                        if viewModel.isLoading {
+                            ForEach(0..<3, id: \.self) { _ in
+                                CareerCardSkeletonView()
+                            }
+                        } else {
+                            ForEach(Array(viewModel.mockCareerItems.enumerated()), id: \.offset) { index, item in
+                                let assignedColor = cardColors[index % cardColors.count]
+                                
+                                CareerCardView(
+                                    iconName: item.iconName,
+                                    title: item.title,
+                                    tagText: item.tagText,
+                                    durationText: item.durationText,
+                                    accentColor: assignedColor,
+                                    action: {
+                                        print("Tapped on \(item.title)")
+                                    }
+                                )
+                            }
+                        }
+                    }
+                }
+                
+                VStack(spacing: 12) {
+                    HStack {
+                        Text("Recent Sessions")
+                            .font(.headline)
+                        Spacer()
+                        Text("See all")
+                            .foregroundColor(.orange)
+                    }
+
+                    if viewModel.isLoading {
+                            ForEach(0..<3, id: \.self) { _ in
+                                SessionRowSkeleton()
+                            }
+                        } else {
+                            ForEach(Array(viewModel.recentSessions.enumerated()), id: \.offset) { index, session in
+                                let assignedColor = cardColors[index % cardColors.count]
+                                
+                                SessionRow(
+                                    score: session.score,
+                                    title: session.title,
+                                    time: session.time,
+                                    iconColor: assignedColor,
+                                    action: {
+                                        print("Tapped on \(session.title)")
+                                    }
+                                )
+                            }
+                        }
+                }
+            }
+            .padding()
+        }
     }
 }
 
-//#Preview {
-//    HomeView()
-//}
+
