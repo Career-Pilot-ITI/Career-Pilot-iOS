@@ -36,7 +36,7 @@ struct UserProfile: Equatable {
     let subscriptionTier: String
     let coinBalance: Int
     let onboardingCompleted: Bool
-    let trackName: String
+    let trackId: Int
 }
 
 struct Skill: Equatable {

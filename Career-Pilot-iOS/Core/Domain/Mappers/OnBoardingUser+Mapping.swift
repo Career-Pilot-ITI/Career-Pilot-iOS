@@ -41,7 +41,7 @@ extension OnBoardingUser {
                 subscriptionTier: "",
                 coinBalance: 0,
                 onboardingCompleted: false,
-                trackName: selectedTrack?.title ?? ""
+                trackId: selectedTrack?.id ?? 0
             ),
             isNewUser: isNewUser
         )

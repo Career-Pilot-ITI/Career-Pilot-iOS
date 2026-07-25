@@ -50,7 +50,7 @@ extension UserProfile {
         entity.subscriptionTier = subscriptionTier
         entity.coinBalance = Int64(coinBalance)
         entity.onboardingCompleted = onboardingCompleted
-        entity.trackName = trackName
+        entity.trackId = Int64(trackId)
 
         // Companies
         let companyEntities = targetCompanies.map { companyName in

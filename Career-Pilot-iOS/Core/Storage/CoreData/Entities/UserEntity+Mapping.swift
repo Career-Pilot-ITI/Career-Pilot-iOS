@@ -55,7 +55,7 @@ extension UserProfileEntity {
             subscriptionTier: subscriptionTier ?? "",
             coinBalance: Int(coinBalance),
             onboardingCompleted: onboardingCompleted,
-            trackName: trackName ?? ""
+            trackId: Int(trackId)
         )
     }
 }

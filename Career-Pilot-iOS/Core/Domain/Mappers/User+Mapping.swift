@@ -17,7 +17,7 @@ extension User{
         let firstName = components.first ?? ""
         let lastName = components.dropFirst().joined(separator: " ")
         
-        return OnBoardingUser(email: profile.email, title: profile.trackName, experienceLevel: profile.experienceLevel, skills: profile.skills, firstName: firstName,lastName: lastName)
+        return OnBoardingUser(email: profile.email, title: profile.targetRole, experienceLevel: profile.experienceLevel, skills: profile.skills, firstName: firstName,lastName: lastName)
     }
 }
 
@@ -57,7 +57,7 @@ extension UserProfile {
             subscriptionTier: subscriptionTier,
             coinBalance: coinBalance,
             onboardingCompleted: onboardingCompleted,
-            trackName: trackName
+            trackId: trackId
         )
     }
 }

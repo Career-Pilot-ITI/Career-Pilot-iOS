@@ -37,7 +37,7 @@ struct UserProfileDTO: Decodable {
     let subscriptionTier: String?
     let coinBalance: Int?
     let onboardingCompleted: Bool?
-    let trackName: String?
+    let trackId: Int?
 }
 
 struct SkillDTO: Decodable {

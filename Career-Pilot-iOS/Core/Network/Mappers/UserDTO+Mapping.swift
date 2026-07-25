@@ -43,7 +43,7 @@ extension UserProfileDTO {
             subscriptionTier: subscriptionTier ?? "",
             coinBalance: coinBalance ?? 0,
             onboardingCompleted: onboardingCompleted ?? false,
-            trackName: trackName ?? ""
+            trackId: trackId ?? 0
         )
     }
 }
