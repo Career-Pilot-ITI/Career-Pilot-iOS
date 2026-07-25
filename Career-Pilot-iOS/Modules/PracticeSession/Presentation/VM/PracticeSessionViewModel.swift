@@ -51,7 +51,7 @@ final class PracticeSessionViewModel: ObservableObject {
         session?.feedback
     }
     
-    private let configuration: InterviewConfiguration
+    private var interviewType: InterviewType = .Classic
     
     private let startUseCase: StartInterviewUseCaseProtocol
     private let submitUseCase: SubmitAnswerUseCaseProtocol
@@ -71,7 +71,6 @@ final class PracticeSessionViewModel: ObservableObject {
     
     
     init(
-        configuration: InterviewConfiguration,
         startUseCase: StartInterviewUseCaseProtocol,
         submitUseCase: SubmitAnswerUseCaseProtocol,
         resumeUseCase: ResumeInterviewUseCaseProtocol,
@@ -83,7 +82,6 @@ final class PracticeSessionViewModel: ObservableObject {
         silenceService: SilenceDetectionServicing,
         speechService: SpeechPlaybackServicing
     ) {
-        self.configuration = configuration
         self.startUseCase = startUseCase
         self.submitUseCase = submitUseCase
         self.resumeUseCase = resumeUseCase
@@ -95,12 +93,11 @@ final class PracticeSessionViewModel: ObservableObject {
         self.silenceService = silenceService
         self.speechService = speechService
         
-        // Assigned last, after every stored property is set, so `self` is fully valid.
         self.recordingService.delegate = self
         self.silenceService.delegate = self
         self.speechService.delegate = self
     }
-    
+
     //MARK: OnError
     func onError(error: Error) async{
         
@@ -127,18 +124,20 @@ final class PracticeSessionViewModel: ObservableObject {
         
         screenState = .loading
         do {
-            let startInterviewSessionRequest = StartInterviewSessionRequest(trackId: 555555, questionCount: configuration.maxQuestions, durationMinutes: Int(configuration.maxInterviewDuration))
-            let newSession = try await startUseCase.execute(startInterviewSessionRequest: startInterviewSessionRequest)
-            fillCurrentSesstionWithNewData(newSession: newSession)
+            
+            //UseCase
+            let newSession = try await startUseCase.execute(interviewConfiguration: interviewType.interviewConfiguration)
+            
+            await fillCurrentSesstionWithNewData(newSession: newSession)
             beginAITurn(question: newSession.currentQuestion)
         } catch {
             screenState = .error(InterviewError.map(error))
         }
     }
     
-    private func fillCurrentSesstionWithNewData(newSession: NewSession){
+    private func fillCurrentSesstionWithNewData(newSession: NewSession) async{
         
-        session = InterviewSession(id: String(newSession.sessionId), status: .aiAsking, currentQuestionIndex: 0, questions: [newSession.currentQuestion], answers: [], configuration: configuration, currentQuestion: newSession.currentQuestion)
+        session = InterviewSession(id: String(newSession.sessionId), status: .aiAsking, currentQuestionIndex: 0, questions: [newSession.currentQuestion], answers: [], configuration: interviewType.interviewConfiguration, currentQuestion: newSession.currentQuestion)
         
         guard var tempSession = session else{
             return
@@ -147,7 +146,7 @@ final class PracticeSessionViewModel: ObservableObject {
         print("newSession: \(newSession)")
         tempSession.currentQuestion = newSession.currentQuestion
         tempSession.id = String(newSession.sessionId)
-        tempSession.configuration = configuration
+        tempSession.configuration = interviewType.interviewConfiguration
         
         
     }

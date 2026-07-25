@@ -36,7 +36,7 @@ extension UpdateProfileResponseDTO {
                 subscriptionTier: subscriptionTier ?? "",
                 coinBalance: coinBalance,
                 onboardingCompleted: onboardingCompleted,
-                trackName: trackName ?? "",
+                trackName: trackName ?? ""
             ),
             isNewUser: newUser
         )

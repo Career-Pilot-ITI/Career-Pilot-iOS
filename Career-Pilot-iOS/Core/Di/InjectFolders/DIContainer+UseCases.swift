@@ -43,7 +43,8 @@ extension DIContainer{
         // MARK: - PracticeSession
         container.register(StartInterviewUseCaseProtocol.self) { resolver in
             StartInterviewUseCase(
-                repository: resolver.resolve(InterviewRepository.self)!
+                repository: resolver.resolve(InterviewRepository.self)!,
+                userLDS: resolver.resolve(UserLocalDataSource.self)!
             )
         }
 
