@@ -11,7 +11,7 @@ import Foundation
 enum OnBordingEndPointes: APIEndpoint{
 
     case getAllTrackes
-    case updateUserProfile(updateProfileDTO: UpdateProfileRequestDTO)
+    case updateUserProfile(updateProfileRequestDTO: UpdateProfileRequestDTO)
     
     
     var path: String{

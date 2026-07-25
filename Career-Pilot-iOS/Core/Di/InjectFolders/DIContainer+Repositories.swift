@@ -24,7 +24,7 @@ extension DIContainer{
             AuthRepositoryImpl(
                 remoteDataSource: r.resolve(AuthRemoteDataSourceProtocol.self)!,
                 tokenStore: r.resolve(AuthTokenStoring.self)!, 
-                userLocalDataSource: r.resolve(UserLocalDataSourceProtocol.self)!
+                userLocalDataSource: r.resolve(UserLocalDataSource.self)!
             )
         }
         //OnBordingRepo

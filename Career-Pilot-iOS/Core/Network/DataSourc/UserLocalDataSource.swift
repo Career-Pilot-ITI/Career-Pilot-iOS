@@ -3,11 +3,7 @@
 //  Career-Pilot-iOS
 //
 //  Created by Ahmed El-Sayyad Mohamed on 22/07/2026.
-//
-//
-//  UserLocalDataSource.swift
-//  Career-Pilot-iOS
-//
+
 
 import CoreData
 
@@ -45,19 +41,16 @@ final class UserLocalDataSourceImpl: UserLocalDataSource {
     }
 
     func getUser() async throws -> User? {
-
-        try await coreData.performViewContextTask { context in
-
+        try await coreData.performViewContextTask { context -> User? in
             let request: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
 
-            guard let entity = try context.fetch(request).first else {
+            guard let entity = try self.coreData.fetch(request, in: context).first else {
                 return nil
             }
 
             return try entity.toDomain()
         }
     }
-
     func deleteUser() async throws {
 
         try await coreData.performBackgroundTask { context in

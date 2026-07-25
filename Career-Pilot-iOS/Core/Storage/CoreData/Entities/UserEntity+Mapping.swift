@@ -2,8 +2,6 @@
 //  UserEntity+Mapping.swift
 //  Career-Pilot-iOS
 //
-//  Created by Moaz on 17/07/2026.
-//
 
 import Foundation
 
@@ -12,20 +10,58 @@ enum LocalStoreError: Error {
 }
 
 extension UserEntity {
+
     func toDomain() throws -> User {
-        guard let profileEntity = profile else {
+        guard let profile = profile else {
             throw LocalStoreError.missingProfile
         }
+
         return User(
             id: Int(id),
             phoneNumber: phoneNumber ?? "",
-            profile: profileEntity.toDomain(),
+            profile: profile.toDomain(),
             isNewUser: isNewUser
         )
     }
 }
 
+extension UserProfileEntity {
+
+    func toDomain() -> UserProfile {
+
+        let skillEntities = (skills as? Set<SkillEntity>) ?? []
+        let companyEntities = (targetCompanies as? Set<CompanyEntity>) ?? []
+
+        return UserProfile(
+            id: Int(id),
+            phoneNumber: phoneNumber ?? "",
+            displayName: displayName ?? "",
+            username: username ?? "",
+            email: email ?? "",
+            avatarURL: avatarURL ?? "",
+            gender: gender ?? "",
+            dateOfBirth: dateOfBirth ?? "",
+            targetRole: targetRole ?? "",
+            industry: industry ?? "",
+            experienceLevel: experienceLevel ?? "",
+            currentJobTitle: currentJobTitle ?? "",
+            yearsOfExperience: Int(yearsOfExperience),
+            cvURL: cvURL ?? "",
+            skills: skillEntities.map { $0.toDomain() },
+            targetCompanies: companyEntities.compactMap(\.value),
+            educationLevel: educationLevel ?? "",
+            timezone: timezone ?? "",
+            termsAccepted: termsAccepted,
+            subscriptionTier: subscriptionTier ?? "",
+            coinBalance: Int(coinBalance),
+            onboardingCompleted: onboardingCompleted,
+            trackId: Int(trackId)
+        )
+    }
+}
+
 extension SkillEntity {
+
     func toDomain() -> Skill {
         Skill(
             skillName: skillName ?? "",
@@ -34,43 +70,5 @@ extension SkillEntity {
             timesAssessed: Int(timesAssessed),
             lastAssessedAt: lastAssessedAt ?? ""
         )
-    }
-}
-
-extension UserProfileEntity {
-    func toDomain() -> UserProfile {
-        let avatar: URL? = avatarUrl.flatMap { URL(string: $0) }
-        let cv: URL? = cvUrl.flatMap { URL(string: $0) }
-        let years: Int? = yearsOfExperience == 0 ? nil : Int(yearsOfExperience)
-        let skillsSet: Set<SkillEntity> = (skills as? Set<SkillEntity>) ?? []
-        let skillList: [Skill] = skillsSet.map { $0.toDomain() }
-        let companiesSet: Set<TargetCompanyEntity> = (targetCompanies as? Set<TargetCompanyEntity>) ?? []
-        let companyList: [String] = companiesSet.map { $0.value ?? "" }
-        return UserProfile(
-                displayName: displayName ?? "",
-                username: username ?? "",
-                email: email ?? "",
-                avatarUrl: avatar,
-                avatarFileId: 0,
-                cvFileId: 0,
-                gender: gender,
-                dateOfBirth: dateOfBirth,
-                targetRole: targetRole,
-                industry: industry,
-                experienceLevel: experienceLevel,
-                currentJobTitle: currentJobTitle,
-                yearsOfExperience: Int(yearsOfExperience),
-                cvUrl: cv,
-                skills: skillList,
-                targetCompanies: companyList,
-                educationLevel: educationLevel,
-                timezone: timezone,
-                termsAccepted: termsAccepted,
-                subscriptionTier: subscriptionTier,
-                coinBalance: Int(coinBalance),
-                onboardingCompleted: onboardingCompleted,
-                trackName: trackName ?? "",
-                trackId: 0
-            )
     }
 }

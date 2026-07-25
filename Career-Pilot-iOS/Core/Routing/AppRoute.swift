@@ -20,10 +20,9 @@ enum HomeRoute: Hashable {
     case sessionDetail(metrics: [RadarMetric], suggestions: [CoachingSuggestion])
 }
 
-
-
 enum ReportsRoute: Hashable {
     case sessionDetail(metrics: [RadarMetric], suggestions: [CoachingSuggestion])
     case sessionHistory(sessionCount: Int, sessionAvgScore: Double, sessions: [Session])
     case questionBreakdown(questions: [QuestionReview])
 }
+

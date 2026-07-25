@@ -15,7 +15,7 @@ extension InterviewError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .invalidState(let current, let attempted):
-            return "Can't \(attempted) while the interview is in '\(current.rawValue)' state."
+            return "\(attempted) while the interview is in '\(current.rawValue)' state."
         case .questionLimitReached:
             return "You've reached the maximum number of questions for this interview."
         case .interviewTimeExpired:
