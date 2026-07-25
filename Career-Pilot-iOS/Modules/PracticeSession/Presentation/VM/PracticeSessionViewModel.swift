@@ -101,6 +101,7 @@ final class PracticeSessionViewModel: ObservableObject {
     //MARK: OnError
     func onError(error: Error) async{
         
+        //Interview Error
         if let interviewError = error as? InterviewError{
             switch interviewError{
             case .questionLimitReached, .interviewTimeExpired:
@@ -108,8 +109,10 @@ final class PracticeSessionViewModel: ObservableObject {
             case .networkUnavailable, .repositoryError(_), .unknown(_), .invalidState(_, _),.sessionNotFound:
                 await resumeAfterNetworkDrop()
             }
-        }else if let peechRecognitionError = error as? SpeechRecognitionError{
-            switch peechRecognitionError{
+            
+            //speechRecognitionErrors
+        }else if let speechRecognitionError = error as? SpeechRecognitionError{
+            switch speechRecognitionError{
                 
             case .authorizationDenied,.recognizerUnavailable,.noSpeechDetected, .transcriptionFailed(_):
                 await resumeAfterNetworkDrop()
