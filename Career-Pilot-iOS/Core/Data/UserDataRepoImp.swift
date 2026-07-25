@@ -8,7 +8,7 @@
 import Foundation
 
 class UserDataRepoImp: UserDataRepo{
-    
+
     private let remoteDataSource: UserDataRemoteDataSource
     private let localDataSource: UserLocalDataSource
 
@@ -29,6 +29,10 @@ class UserDataRepoImp: UserDataRepo{
         let cvURL = uploadCVRequest.cv
         let responseResult = try await remoteDataSource.uploadCv(cvURL: cvURL)
         return responseResult.toDomain()
+    }
+    
+    func uploadUserFile(fileURL: URL, fileType: FileTypes) async throws -> UploadedFile {
+        return try await remoteDataSource.uploadFile(fileURL: fileURL, fileType: fileType).toDomain()
     }
     
     

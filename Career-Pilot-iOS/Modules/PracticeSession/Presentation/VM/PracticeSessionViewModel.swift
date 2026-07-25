@@ -271,7 +271,9 @@ final class PracticeSessionViewModel: ObservableObject {
                     return
                 }
                 
-                let submitRequest = SubmitAnswerRequest(sessionId: tempSession.id, questionId: tempSession.currentQuestion.id, transcript: nil, sessionElapsedSeconds: Int(elapsedSessionTime / 60), durationMs: Int(elapsedRecordingTime / 60) , audioUrlAsString: audioURL.fileURL.absoluteString, audioUrl: audioURL.fileURL, words: nil)
+                let submitRequest = SubmitAnswerRequest(sessionId: tempSession.id, questionId: tempSession.currentQuestion.id, transcript: nil, sessionElapsedSeconds: Int(elapsedSessionTime * 1000), durationMs: Int(elapsedRecordingTime * 1000) , audioUrlAsString: audioURL.fileURL.absoluteString, audioUrl: audioURL.fileURL, words: nil)
+                
+                print(submitRequest)
                 
 
                 let updatedSession = try await submitUseCase.execute(session: tempSession, submitAnsRequest: submitRequest)

@@ -7,13 +7,15 @@ protocol SubmitAnswerUseCaseProtocol {
 
 actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
     private let repository: InterviewRepository
+    private let userDataRepository: UserDataRepo
     private let validationService: InterviewValidationServicing
     private let speechRecognitionService: SpeechRecognitionServicing
     private var isSubmitting = false
     
     
-    init(repository: InterviewRepository, validationService: InterviewValidationServicing, speechRecognitionService: SpeechRecognitionServicing) {
+    init(repository: InterviewRepository, userDataRepository: UserDataRepo, validationService: InterviewValidationServicing, speechRecognitionService: SpeechRecognitionServicing) {
         self.repository = repository
+        self.userDataRepository = userDataRepository
         self.validationService = validationService
         self.speechRecognitionService = speechRecognitionService
     }
@@ -39,7 +41,10 @@ actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
         
         var updatedSubmitAnsRequest: SubmitAnswerRequest = submitAnsRequest
         
-        updatedSubmitAnsRequest.transcript = try await speechRecognitionService.transcribe(audioAt: submitAnsRequest.audioUrl)
+        //init the data before the request
+        updatedSubmitAnsRequest.transcript = try await speechRecognitionService.transcribe(audioAt: submitAnsRequest.audioAsUrl)
+        
+        updatedSubmitAnsRequest.audioUrl = try await userDataRepository.uploadUserFile(fileURL: submitAnsRequest.audioAsUrl, fileType: .Audio).url
         
         let outcome: SubmitAnswerOutcome
         do {
@@ -51,7 +56,7 @@ actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
         var updatedSession = session
         let answer = InterviewAnswer(
             questionId: submitAnsRequest.questionId,
-            audioURL: submitAnsRequest.audioUrl,
+            audioURL: submitAnsRequest.audioAsUrl,
             duration: TimeInterval(submitAnsRequest.durationMs * 60),
             submittedAt: Date()
         )

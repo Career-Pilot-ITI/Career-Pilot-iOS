@@ -22,8 +22,8 @@ struct SubmitAnswerRequestDTO: Encodable {
     var transcript: String?
     let sessionElapsedSeconds: Int?
     let durationMs: Int
-    let audioUrlAsString: String
-    let audioUrl: URL
+    let audioAsUrl: URL
+    let audioUrl: String
     let words: [WordTiming]?
 }
 struct WordTimingDTO: Encodable {

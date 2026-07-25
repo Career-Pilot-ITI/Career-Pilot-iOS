@@ -18,10 +18,8 @@ final class StartInterviewUseCase: StartInterviewUseCaseProtocol {
         do {
             // Need to get trackId
             let user = try await userLDS.getUser()
-            guard let user = user else{
-                throw InterviewError.invalidState(current: .aiAsking, attempted: "User Not Found")
-            }
-            let trackId = user.profile.trackId
+//
+            let trackId = user?.profile.trackId ?? 5
             
             
             let startInterviewSessionRequest = StartInterviewSessionRequest(trackId: trackId, questionCount: Int(interviewConfiguration.maxInterviewDuration), durationMinutes: Int(interviewConfiguration.maxInterviewDuration))
