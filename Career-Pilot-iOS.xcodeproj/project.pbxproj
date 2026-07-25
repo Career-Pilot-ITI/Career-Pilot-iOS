@@ -103,6 +103,10 @@
 		CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF21300726660064CC6C /* PhoneTextField.swift */; };
 		CEA4C08330142ABC00CB5DD3 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08230142ABC00CB5DD3 /* SettingView.swift */; };
 		CEA4C08530143D6900CB5DD3 /* OnBoardingUser+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08430143D6900CB5DD3 /* OnBoardingUser+Mapping.swift */; };
+		CEA4C0883014528800CB5DD3 /* GetCurrentUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C0873014528800CB5DD3 /* GetCurrentUserUseCase.swift */; };
+		CEA4C08A30145B0900CB5DD3 /* TrackInterviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08930145B0900CB5DD3 /* TrackInterviewCard.swift */; };
+		CEA4C08E3014676600CB5DD3 /* CareerCardSkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08D3014676600CB5DD3 /* CareerCardSkeletonView.swift */; };
+		CEA4C0903014698600CB5DD3 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08F3014698600CB5DD3 /* SwiftUIView.swift */; };
 		CEB6221130103D2600027035 /* UserLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6221030103D2600027035 /* UserLocalDataSource.swift */; };
 		CEB622133010405800027035 /* UsertoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB622123010405800027035 /* UsertoEntity.swift */; };
 		CEB622153010440800027035 /* SaveUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB622143010440800027035 /* SaveUserUseCase.swift */; };
@@ -339,6 +343,10 @@
 		CE8AFF21300726660064CC6C /* PhoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTextField.swift; sourceTree = "<group>"; };
 		CEA4C08230142ABC00CB5DD3 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		CEA4C08430143D6900CB5DD3 /* OnBoardingUser+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnBoardingUser+Mapping.swift"; sourceTree = "<group>"; };
+		CEA4C0873014528800CB5DD3 /* GetCurrentUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentUserUseCase.swift; sourceTree = "<group>"; };
+		CEA4C08930145B0900CB5DD3 /* TrackInterviewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInterviewCard.swift; sourceTree = "<group>"; };
+		CEA4C08D3014676600CB5DD3 /* CareerCardSkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareerCardSkeletonView.swift; sourceTree = "<group>"; };
+		CEA4C08F3014698600CB5DD3 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		CEB6221030103D2600027035 /* UserLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalDataSource.swift; sourceTree = "<group>"; };
 		CEB622123010405800027035 /* UsertoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsertoEntity.swift; sourceTree = "<group>"; };
 		CEB622143010440800027035 /* SaveUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUserUseCase.swift; sourceTree = "<group>"; };
@@ -627,6 +635,7 @@
 		41D69D21300A77C500294D94 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				CEA4C0863014526200CB5DD3 /* UseCases */,
 				D9C1878F30065ACC00BFF8E9 /* Entities */,
 				CECCDA34300F20200068620D /* Mappers */,
 				41BE1A70300BF0940033D1B5 /* Repo */,
@@ -841,6 +850,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		CEA4C0863014526200CB5DD3 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				CEA4C0873014528800CB5DD3 /* GetCurrentUserUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 		CEB62217301061F700027035 /* UploadCv */ = {
 			isa = PBXGroup;
 			children = (
@@ -912,6 +929,9 @@
 				CEE62A94300929830071F076 /* ProgressCard.swift */,
 				CEE62A96300929960071F076 /* PracticeCard.swift */,
 				CEE62A98300929A70071F076 /* SessionRow.swift */,
+				CEA4C08930145B0900CB5DD3 /* TrackInterviewCard.swift */,
+				CEA4C08D3014676600CB5DD3 /* CareerCardSkeletonView.swift */,
+				CEA4C08F3014698600CB5DD3 /* SwiftUIView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1905,6 +1925,7 @@
 				41A7F6F8300BBB2A00FBE8EB /* LampGlitchModifier.swift in Sources */,
 				D9B614F6300D1B8E00552F85 /* GetAllTrackesUseCase.swift in Sources */,
 				CECC20D83007B60900DC450D /* AppStrings.swift in Sources */,
+				CEA4C0883014528800CB5DD3 /* GetCurrentUserUseCase.swift in Sources */,
 				D95C3BA0300E49D20042785F /* CancelInterviewUseCase.swift in Sources */,
 				CE12F3C030093CE40083D66D /* SessionData.swift in Sources */,
 				D95C3BA6300E49F30042785F /* InterviewConfiguration.swift in Sources */,
@@ -1914,6 +1935,7 @@
 				41BC7752300D9A8D00E89C3F /* AppState.swift in Sources */,
 				CEE62A83300910E90071F076 /* CustomNavigationBar.swift in Sources */,
 				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
+				CEA4C08A30145B0900CB5DD3 /* TrackInterviewCard.swift in Sources */,
 				D999D5A83010ED0E00CF606B /* SessionStateDTOMapping.swift in Sources */,
 				D999D5A63010E71F00CF606B /* SessionStateDTO.swift in Sources */,
 				D95C3BB5300E4A520042785F /* InterviewSessionStatus.swift in Sources */,
@@ -1960,6 +1982,7 @@
 				CEB6221130103D2600027035 /* UserLocalDataSource.swift in Sources */,
 				41BC7734300D347E00E89C3F /* SessionHistoryView.swift in Sources */,
 				41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */,
+				CEA4C08E3014676600CB5DD3 /* CareerCardSkeletonView.swift in Sources */,
 				D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */,
 				D99D9756301282E000F2A7C2 /* String+Extension.swift in Sources */,
 				D95C3BCB300EA1800042785F /* WaitingForAnswerView.swift in Sources */,
@@ -1979,6 +2002,7 @@
 				41D69D16300A6CF100294D94 /* User.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
 				D95C3B99300E495C0042785F /* InterviewSessionEndPointes.swift in Sources */,
+				CEA4C0903014698600CB5DD3 /* SwiftUIView.swift in Sources */,
 				D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */,
 				D9BA3476300ED5040058D6E6 /* Fake.swift in Sources */,
 				616CAD0C30081EF4007FC4AF /* AccountSettingsView.swift in Sources */,
