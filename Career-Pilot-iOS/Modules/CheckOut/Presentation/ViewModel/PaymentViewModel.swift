@@ -3,20 +3,20 @@
 //  Career-Pilot-iOS
 //
 //  Created by Eyad waleed on 23/07/2026.
-//import Foundation
-//@MainActor
-//final class PaymentViewModel: ObservableObject {
+import Foundation
+import Combine
+@MainActor
+final class PaymentViewModel: ObservableObject {
 //    @Published var state: LoadState<PaymentResult> = .idle
 //    @Published var checkoutURL: URL?
-//
+
 //    private let createCheckoutSessionUseCase:      CreateCheckoutSessionUseCase
 //    private let verifyPaymentUseCase: VerifyPaymentUseCase
-//
-//    init(createCheckoutSessionUseCase: CreateCheckoutSessionUseCase, verifyPaymentUseCase: VerifyPaymentUseCase) {
-//        self.createCheckoutSessionUseCase = createCheckoutSessionUseCase
-//        self.verifyPaymentUseCase = verifyPaymentUseCase
-//    }
-//
+
+    init() {
+     
+    }
+
 //    func startPayment(item: CheckoutItem, method: PaymentMethodType) async {
 //        state = .loading
 //        do {
@@ -26,7 +26,7 @@
 //            state = .failure(error)
 //        }
 //    }
-//
+
 //    func handleRedirect(_ url: URL) {
 //        checkoutURL = nil
 //
@@ -39,7 +39,7 @@
 //            await verifyPayment(transactionId: transactionId)
 //        }
 //    }
-//
+
 //    private func verifyPayment(transactionId: String) async {
 //        state = .loading
 //        do {
@@ -49,11 +49,11 @@
 //            state = .failure(error)
 //        }
 //    }
-//
+
 //    private func extractTransactionId(from url: URL) -> String? {
 //        URLComponents(url: url, resolvingAgainstBaseURL: false)?
 //            .queryItems?
 //            .first(where: { $0.name == "transactionId" })?
 //            .value
 //    }
-//}
+}

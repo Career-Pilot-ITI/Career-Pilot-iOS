@@ -120,10 +120,17 @@
 		6182BB57300C7033001157B8 /* SelectedSkillChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6182BB56300C7033001157B8 /* SelectedSkillChip.swift */; };
 		6182BB59300C70A1001157B8 /* SuggestedSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6182BB58300C70A1001157B8 /* SuggestedSkill.swift */; };
 		6182BB5B300C72F7001157B8 /* SkillsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6182BB5A300C72F7001157B8 /* SkillsInputView.swift */; };
+		618C29F530145CFA0099BF69 /* UpgradeUserSubscriptionUsecae.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C29F430145CFA0099BF69 /* UpgradeUserSubscriptionUsecae.swift */; };
+		618C29F730145D310099BF69 /* CheckOutRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C29F630145D310099BF69 /* CheckOutRepo.swift */; };
+		618C29F930145DDD0099BF69 /* UserBuyCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C29F830145DDD0099BF69 /* UserBuyCoin.swift */; };
+		618C29FC30145E160099BF69 /* CheckoutRepoImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C29FB30145E160099BF69 /* CheckoutRepoImplementation.swift */; };
+		618C29FF301461B60099BF69 /* CoinRequestedDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C29FE301461B60099BF69 /* CoinRequestedDTO.swift */; };
+		618C2A03301461F30099BF69 /* CheckoutRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C2A02301461F30099BF69 /* CheckoutRemoteDataSource.swift */; };
+		618C2A05301461FB0099BF69 /* CheckoutRemoteDataSourceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C2A04301461FB0099BF69 /* CheckoutRemoteDataSourceImp.swift */; };
+		618C2A07301463390099BF69 /* CheckoutEndpointService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C2A06301463390099BF69 /* CheckoutEndpointService.swift */; };
 		618F82633010B71B0065331A /* SettingsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618F82623010B71B0065331A /* SettingsEndpoint.swift */; };
-		618F8267301101E20065331A /* SubscriptionUpgrading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618F8266301101E20065331A /* SubscriptionUpgrading.swift */; };
-		61970B6D301133D5009D7E58 /* PaymentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61970B6C301133D5009D7E58 /* PaymentResponse.swift */; };
-		61970B6F30114513009D7E58 /* UpgradeUserSubsription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61970B6E30114513009D7E58 /* UpgradeUserSubsription.swift */; };
+		618F8267301101E20065331A /* SubscriptionUpgradingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618F8266301101E20065331A /* SubscriptionUpgradingDTO.swift */; };
+		61970B6D301133D5009D7E58 /* PaymentResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61970B6C301133D5009D7E58 /* PaymentResponseDTO.swift */; };
 		61970B7530114CD3009D7E58 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61970B7430114CD3009D7E58 /* SettingsViewModel.swift */; };
 		61970B7830114ED8009D7E58 /* LoadStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61970B7730114ED8009D7E58 /* LoadStates.swift */; };
 		61970B7B30114F0F009D7E58 /* UserSessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61970B7A30114F0F009D7E58 /* UserSessions.swift */; };
@@ -420,10 +427,17 @@
 		6182BB56300C7033001157B8 /* SelectedSkillChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedSkillChip.swift; sourceTree = "<group>"; };
 		6182BB58300C70A1001157B8 /* SuggestedSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedSkill.swift; sourceTree = "<group>"; };
 		6182BB5A300C72F7001157B8 /* SkillsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsInputView.swift; sourceTree = "<group>"; };
+		618C29F430145CFA0099BF69 /* UpgradeUserSubscriptionUsecae.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeUserSubscriptionUsecae.swift; sourceTree = "<group>"; };
+		618C29F630145D310099BF69 /* CheckOutRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutRepo.swift; sourceTree = "<group>"; };
+		618C29F830145DDD0099BF69 /* UserBuyCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBuyCoin.swift; sourceTree = "<group>"; };
+		618C29FB30145E160099BF69 /* CheckoutRepoImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutRepoImplementation.swift; sourceTree = "<group>"; };
+		618C29FE301461B60099BF69 /* CoinRequestedDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRequestedDTO.swift; sourceTree = "<group>"; };
+		618C2A02301461F30099BF69 /* CheckoutRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutRemoteDataSource.swift; sourceTree = "<group>"; };
+		618C2A04301461FB0099BF69 /* CheckoutRemoteDataSourceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutRemoteDataSourceImp.swift; sourceTree = "<group>"; };
+		618C2A06301463390099BF69 /* CheckoutEndpointService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutEndpointService.swift; sourceTree = "<group>"; };
 		618F82623010B71B0065331A /* SettingsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEndpoint.swift; sourceTree = "<group>"; };
-		618F8266301101E20065331A /* SubscriptionUpgrading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionUpgrading.swift; sourceTree = "<group>"; };
-		61970B6C301133D5009D7E58 /* PaymentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentResponse.swift; sourceTree = "<group>"; };
-		61970B6E30114513009D7E58 /* UpgradeUserSubsription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeUserSubsription.swift; sourceTree = "<group>"; };
+		618F8266301101E20065331A /* SubscriptionUpgradingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionUpgradingDTO.swift; sourceTree = "<group>"; };
+		61970B6C301133D5009D7E58 /* PaymentResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentResponseDTO.swift; sourceTree = "<group>"; };
 		61970B7430114CD3009D7E58 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		61970B7730114ED8009D7E58 /* LoadStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadStates.swift; sourceTree = "<group>"; };
 		61970B7A30114F0F009D7E58 /* UserSessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessions.swift; sourceTree = "<group>"; };
@@ -833,7 +847,6 @@
 				616320CB301090F900F417C9 /* LogoutUsecase.swift */,
 				616320D73010947800F417C9 /* GetSubscription.swift */,
 				616320D93010948400F417C9 /* GetCoins.swift */,
-				61970B6E30114513009D7E58 /* UpgradeUserSubsription.swift */,
 				61F339333013869900C94B89 /* GetImageData.swift */,
 			);
 			path = Usecase;
@@ -907,8 +920,9 @@
 		6165A1E8300B406D0085E3FD /* CheckOut */ = {
 			isa = PBXGroup;
 			children = (
-				61DD05D33011836300594030 /* ViewModel */,
-				6165A1E9300B40770085E3FD /* View */,
+				618C29F030145B230099BF69 /* Domain */,
+				618C29EF30145B1B0099BF69 /* Data */,
+				618C29EE30145B100099BF69 /* Presentation */,
 			);
 			path = CheckOut;
 			sourceTree = "<group>";
@@ -1061,6 +1075,95 @@
 			path = UiKitWrappers;
 			sourceTree = "<group>";
 		};
+		618C29EE30145B100099BF69 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				61DD05D33011836300594030 /* ViewModel */,
+				6165A1E9300B40770085E3FD /* View */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		618C29EF30145B1B0099BF69 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				618C2A00301461CC0099BF69 /* DataSource */,
+				618C29FD301461320099BF69 /* Model */,
+				618C29FA30145DF50099BF69 /* Repo */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		618C29F030145B230099BF69 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				618C29F330145B800099BF69 /* Repo */,
+				618C29F230145B360099BF69 /* Usecase */,
+				618C29F130145B2C0099BF69 /* Model */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		618C29F130145B2C0099BF69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		618C29F230145B360099BF69 /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+				618C29F430145CFA0099BF69 /* UpgradeUserSubscriptionUsecae.swift */,
+				618C29F830145DDD0099BF69 /* UserBuyCoin.swift */,
+			);
+			path = Usecase;
+			sourceTree = "<group>";
+		};
+		618C29F330145B800099BF69 /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+				618C29F630145D310099BF69 /* CheckOutRepo.swift */,
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		618C29FA30145DF50099BF69 /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+				618C29FB30145E160099BF69 /* CheckoutRepoImplementation.swift */,
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		618C29FD301461320099BF69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				618F8266301101E20065331A /* SubscriptionUpgradingDTO.swift */,
+				61970B6C301133D5009D7E58 /* PaymentResponseDTO.swift */,
+				618C29FE301461B60099BF69 /* CoinRequestedDTO.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		618C2A00301461CC0099BF69 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				618C2A01301461D70099BF69 /* Remote */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		618C2A01301461D70099BF69 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				618C2A02301461F30099BF69 /* CheckoutRemoteDataSource.swift */,
+				618C2A04301461FB0099BF69 /* CheckoutRemoteDataSourceImp.swift */,
+				618C2A06301463390099BF69 /* CheckoutEndpointService.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
 		618F82643010E79B0065331A /* Subscription */ = {
 			isa = PBXGroup;
 			children = (
@@ -1072,8 +1175,6 @@
 		618F8265301101CE0065331A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				618F8266301101E20065331A /* SubscriptionUpgrading.swift */,
-				61970B6C301133D5009D7E58 /* PaymentResponse.swift */,
 				61970B8730115725009D7E58 /* SubscriptionPlans.swift */,
 				61970B8D30115BE2009D7E58 /* CoinPack.swift */,
 			);
@@ -2244,7 +2345,7 @@
 				CECCDA28300F1DD80068620D /* TokenProvider.swift in Sources */,
 				CECCDA29300F1DD80068620D /* NetworkServiceProtocol.swift in Sources */,
 				CECCDA2A300F1DD80068620D /* NetworkService.swift in Sources */,
-				618F8267301101E20065331A /* SubscriptionUpgrading.swift in Sources */,
+				618F8267301101E20065331A /* SubscriptionUpgradingDTO.swift in Sources */,
 				CECCDA2B300F1DD80068620D /* AuthenticatedNetworkService.swift in Sources */,
 				61970B7830114ED8009D7E58 /* LoadStates.swift in Sources */,
 				616320D6301091DB00F417C9 /* UserSettingsDomain.swift in Sources */,
@@ -2255,7 +2356,7 @@
 				61D8F2F6300760680088F170 /* ProfileForm.swift in Sources */,
 				61970B863011539B009D7E58 /* PlanType.swift in Sources */,
 				D98A79793008EB9200DFDC6B /* ChoseTrackViewInfo.swift in Sources */,
-				61970B6F30114513009D7E58 /* UpgradeUserSubsription.swift in Sources */,
+				618C2A03301461F30099BF69 /* CheckoutRemoteDataSource.swift in Sources */,
 				41BC7740300D3D1800E89C3F /* StatCard.swift in Sources */,
 				41BC7728300D18DC00E89C3F /* RadarGridShape.swift in Sources */,
 				D935DFCB30078012009DF855 /* CustomButton.swift in Sources */,
@@ -2288,6 +2389,7 @@
 				41CE20E8300A5506005DC31F /* ToastView.swift in Sources */,
 				41BE1A78300BF42E0033D1B5 /* AuthRemoteDataSource.swift in Sources */,
 				6169A7C7301044E5001FDC39 /* ExperinceLevelSelector.swift in Sources */,
+				618C29F930145DDD0099BF69 /* UserBuyCoin.swift in Sources */,
 				D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */,
 				6169A7CD301044E5001FDC39 /* SkillsDetectedSettingsProfile.swift in Sources */,
 				D95C3BA2300E49E10042785F /* FinishInterviewUseCase.swift in Sources */,
@@ -2298,6 +2400,7 @@
 				41CE20E6300A54A4005DC31F /* ToastManager.swift in Sources */,
 				D9B614F0300CFA1000552F85 /* DIContainer+DataSources.swift in Sources */,
 				D95C3BA8300E49FD0042785F /* InterviewError.swift in Sources */,
+				618C29FC30145E160099BF69 /* CheckoutRepoImplementation.swift in Sources */,
 				D98A79753008DFD800DFDC6B /* Track.swift in Sources */,
 				D9B614E8300CF49400552F85 /* DIContainer+Repositories.swift in Sources */,
 				CEB622133010405800027035 /* UsertoEntity.swift in Sources */,
@@ -2367,6 +2470,7 @@
 				D9BA3474300ED4BF0058D6E6 /* PracticeSessionViewModelFactory.swift in Sources */,
 				D9B614EC300CF50000552F85 /* DIContainer+ViewModels.swift in Sources */,
 				41BC773A300D3A9500E89C3F /* SessionHistoryListView.swift in Sources */,
+				618C29F530145CFA0099BF69 /* UpgradeUserSubscriptionUsecae.swift in Sources */,
 				41C6A23C30080BDA0035EFBF /* OTPView.swift in Sources */,
 				6117C02F300F9FD700CABEC6 /* StringsExtenstion.swift in Sources */,
 				D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */,
@@ -2384,6 +2488,7 @@
 				616320E13010955B00F417C9 /* SettingsRemoteImp.swift in Sources */,
 				6165A1E5300B11F60085E3FD /* CoinsTypeVIew.swift in Sources */,
 				61D8F2FA300778520088F170 /* SkillTag.swift in Sources */,
+				618C2A07301463390099BF69 /* CheckoutEndpointService.swift in Sources */,
 				41C38365300A2849005D4BB9 /* AuthEndPoint.swift in Sources */,
 				61F3392C30135F0200C94B89 /* SettingsLocalDataSourceImp.swift in Sources */,
 				D95C3BCD300EA1A20042785F /* UserTrunView.swift in Sources */,
@@ -2421,6 +2526,7 @@
 				6169A7D1301044E5001FDC39 /* ProfileCard.swift in Sources */,
 				6165A1F2300B48980085E3FD /* PaymentMethod.swift in Sources */,
 				D92854093010188400F8CAC2 /* SessionDTOMapping.swift in Sources */,
+				618C2A05301461FB0099BF69 /* CheckoutRemoteDataSourceImp.swift in Sources */,
 				CECC20E43007DB2C00DC450D /* WaitingStateView.swift in Sources */,
 				41D69D52300B4D5B00294D94 /* Persistence.swift in Sources */,
 				CEE62A80300910840071F076 /* HomeView.swift in Sources */,
@@ -2461,7 +2567,7 @@
 				41D69D50300B4A2200294D94 /* LoadSessionUseCase.swift in Sources */,
 				D9285400301017E100F8CAC2 /* SubmitAnswerResponseDTO.swift in Sources */,
 				D9B614F3300D1AB400552F85 /* OnBordingEndPointes.swift in Sources */,
-				61970B6D301133D5009D7E58 /* PaymentResponse.swift in Sources */,
+				61970B6D301133D5009D7E58 /* PaymentResponseDTO.swift in Sources */,
 				D9C187BB300662F000BFF8E9 /* HTTPMethod.swift in Sources */,
 				D9B614FB300D1D2400552F85 /* OnBordingRepoImp.swift in Sources */,
 				CECC20E83007DB4D00DC450D /* WaveformBars.swift in Sources */,
@@ -2479,6 +2585,7 @@
 				6182BB59300C70A1001157B8 /* SuggestedSkill.swift in Sources */,
 				61F3393030136A6100C94B89 /* SettignsViewModelMapping.swift in Sources */,
 				D95C3BAB300E4A240042785F /* InterviewFeedback.swift in Sources */,
+				618C29F730145D310099BF69 /* CheckOutRepo.swift in Sources */,
 				41D69D10300A6C7A00294D94 /* AuthTokensDTO+Mapping.swift in Sources */,
 				D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */,
 				41BC7744300D3DA600E89C3F /* CoachFeedbackCard.swift in Sources */,
@@ -2493,6 +2600,7 @@
 				6169A7CF301044E5001FDC39 /* SettingsVIew.swift in Sources */,
 				6182BB57300C7033001157B8 /* SelectedSkillChip.swift in Sources */,
 				CEE62A933009296E0071F076 /* SubscriptionCard.swift in Sources */,
+				618C29FF301461B60099BF69 /* CoinRequestedDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

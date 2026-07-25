@@ -1,19 +1,19 @@
 //
-//  UpgradeUserSubsription.swift
+//  GetUpgradeSubscription.swift
 //  Career-Pilot-iOS
 //
-//  Created by Eyad waleed on 22/07/2026.
+//  Created by Eyad waleed on 25/07/2026.
 //
 
 import Foundation
 class UpgradeUserSubscription{
-    var settingsRepo : SettingsRepo
-    init(settingsRepo: SettingsRepo) {
-        self.settingsRepo = settingsRepo
+    var checkoutRepo : CheckOutRepo
+    init(checkoutRepo: CheckOutRepo) {
+        self.checkoutRepo = checkoutRepo
     }
     func execute(upgradeSubscription :SubscriptionUpgrading)async throws -> PaymentResponse {
         do{
-          return  try await settingsRepo.upgradeSubscription(upgradeSubscription: upgradeSubscription )
+          return  try await checkoutRepo.upgradeSubscription(upgradeSubscription: upgradeSubscription )
         }catch{
             print("error for subscripton \(error)")
             throw error

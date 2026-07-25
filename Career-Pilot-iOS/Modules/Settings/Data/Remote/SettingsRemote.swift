@@ -11,5 +11,5 @@ protocol SettingsRemote{
     func getUserData() async throws ->UserDTO
     func getSubscription() async
     func getCoins() async
-    func upgradeSubscription(upgradeSubscription : SubscriptionUpgrading) async throws -> PaymentResponse
+
 }

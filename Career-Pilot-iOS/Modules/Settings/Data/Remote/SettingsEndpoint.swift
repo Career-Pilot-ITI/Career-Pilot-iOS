@@ -9,7 +9,6 @@ import Foundation
 enum SettingsEndpoint : APIEndpoint{
     case logout
     case getUserData
-    case upgradeSubscription(subscriptionUpgrading:SubscriptionUpgrading)
     
     var baseURL: String{
         "https://ed39-102-188-31-161.ngrok-free.app/"
@@ -19,8 +18,6 @@ enum SettingsEndpoint : APIEndpoint{
         switch self {
         case.getUserData:
             return "api/v1/profile"
-        case.upgradeSubscription:
-            return "api/v1/upgrade"
         case .logout:
             return "api/v1/auth/logout"
         }
@@ -30,8 +27,6 @@ enum SettingsEndpoint : APIEndpoint{
         switch self {
         case.getUserData:
             return .get
-        case.upgradeSubscription:
-            return .post
         case .logout:
             return .post
         }
@@ -40,14 +35,12 @@ enum SettingsEndpoint : APIEndpoint{
             switch self {
             case .logout, .getUserData:
                 return nil
-            case .upgradeSubscription(let subscriptionUpgrading):
-                return Self.encode(subscriptionUpgrading)
+         
             }
         }
     var requiresAuthentication: Bool {
             switch self {
             case .getUserData:  return true
-            case .upgradeSubscription:  return true
             case .logout:  return true
             }
         }

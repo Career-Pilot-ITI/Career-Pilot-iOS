@@ -37,17 +37,7 @@ class SettingsRepoImp : SettingsRepo  {
     
     
     
-    func upgradeSubscription(upgradeSubscription: SubscriptionUpgrading) async throws -> PaymentResponse {
-        do{
-            let response = try await remote.upgradeSubscription(upgradeSubscription: upgradeSubscription)
-            return response
-            
-        }catch{
-            print("Upgrade error in the repo \(error)")
-            throw error
-        }
-        
-    }
+
     
     func logout() async throws{
         do{

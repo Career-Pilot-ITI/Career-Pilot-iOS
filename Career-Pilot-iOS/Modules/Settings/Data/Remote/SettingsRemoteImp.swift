@@ -16,14 +16,7 @@ class SettingsRemoteImp : SettingsRemote{
         self.apiService = apiService
     }
     
-    func upgradeSubscription(upgradeSubscription: SubscriptionUpgrading) async throws -> PaymentResponse {
-        let endPoint = SettingsEndpoint.upgradeSubscription(subscriptionUpgrading: upgradeSubscription)
-        do {
-            return try await apiService.request(endPoint)
-        } catch {
-            print("Actual error: \(error)")
-            throw error
-        } }
+   
     
     func logoutUser()  async throws{
         let endpoint = SettingsEndpoint.logout
