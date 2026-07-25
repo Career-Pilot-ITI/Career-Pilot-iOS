@@ -10,7 +10,9 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var viewModel =
         DIContainer.shared.container.resolve(HomeViewModel.self)!
-
+   
+    @EnvironmentObject var coordinator: AppCoordinator<HomeRoute>
+    
     let cardColors: [Color] = [.orange, .blue, .purple, .green, .pink, .teal]
     let assignedColor  = Color.blue
     
@@ -41,15 +43,22 @@ struct HomeView: View {
                 SubscriptionCard(
                     usedSessions: viewModel.usedSessions,
                     totalSessions: viewModel.totalSessions
-                ).transition(.move(edge: .top).combined(with: .opacity))
-
+                )
                 ProgressCard(
                     score: 88,
                     progressLabel: "Good Progress",
                     scoreChange: "▲ +6 from last week"
                 )
 
-                PracticeCard(category: user.profile.trackName)
+                PracticeCard(category: user.profile.trackName){
+                    print("👉 PracticeCard tapped! Pushing route...")
+                    
+                    coordinator.push(.interviewPrep(
+                            trackName: user.profile.trackName,
+                            interviewTime: 30,
+                            questionsCount: 8
+                        ))
+                }
                 HStack {
                     Text("Recommended For You")
                         .font(.headline)
@@ -118,5 +127,3 @@ struct HomeView: View {
         }
     }
 }
-
-

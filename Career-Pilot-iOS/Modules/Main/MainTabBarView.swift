@@ -1,14 +1,31 @@
 import SwiftUI
 
 struct MainTabBarView: View {
+    @StateObject private var homeCoordinator = AppCoordinator<HomeRoute>()
     var body: some View {
         TabView {
             // Tab 1: Home
-            HomeView()
-                .tabItem {
-                    Label { Text("Home") } icon: { Image.AppIcon.home.renderingMode(.template) }
-                }
-            
+            NavigationStack(path: $homeCoordinator.path) {
+                HomeView()
+                    .navigationDestination(for: HomeRoute.self) { route in
+                        switch route {
+                        case .sessionDetail(let metrics, let suggestions):
+                            Text("Session Detail View")
+                            
+                        case .interviewPrep(let trackName, let interviewTime, let questionsCount):
+                            InterviewPrepContainerView(
+                                trackName: trackName,
+                                interviewTime: interviewTime,
+                                quetionsCount: questionsCount
+                            ).toolbar(.hidden, for: .tabBar)
+                        }
+                      }
+                    }
+                    .tabItem {
+                        Label { Text("Home") } icon: { Image.AppIcon.home.renderingMode(.template) }
+                    }
+                    .environmentObject(homeCoordinator)
+
             // Tab 2: Practice
             PracticeSessionView(vm: DIContainer.shared.container.resolve(PracticeSessionViewModel.self)!)
                 .tabItem {
