@@ -1,48 +1,44 @@
-////
-////  UpdateProfileDTO+Mapping.swift
-////  Career-Pilot-iOS
-////
-////  Created by Ahmed El-Sayyad Mohamed on 21/07/2026.
-////
 //
-//import Foundation
-////UserProfileDTO
+//  UpdateProfileDTO+Mapping.swift
+//  Career-Pilot-iOS
 //
-//extension UpdateProfileDTO {
+//  Created by Ahmed El-Sayyad Mohamed on 21/07/2026.
 //
-//    func toDomain(id: Int = 0, phoneNumber: String = "", isNewUser: Bool = false) -> User {
-//        let profile = UserProfile(
-//            displayName: self.displayName ?? "",
-//            username: self.username ?? "",
-//            email: self.email ?? "",
-//            avatarUrl: self.av,
-//            avatarFileId: self.avatarFileId,
-//            cvFileId: self.cvFileId,
-//            gender: self.gender,
-//            dateOfBirth: self.dateOfBirth?.toDate(),
-//            targetRole: self.targetRole,
-//            industry: self.industry,
-//            experienceLevel: self.experienceLevel,
-//            currentJobTitle: self.currentJobTitle,
-//            yearsOfExperience: self.yearsOfExperience,
-//            cvUrl: nil,
-//            skills: (self.skills ?? []).map { $0.toDomain() },
-//            targetCompanies: self.targetCompanies,
-//            educationLevel: self.educationLevel,
-//            timezone: self.timezone,
-//            termsAccepted: self.termsAccepted ?? false,
-//            subscriptionTier: self.subscriptionTier,
-//            coinBalance: nil,
-//            onboardingCompleted: self.onboardingCompleted,
-//            trackName: nil,
-//            trackId: self.trackId
-//        )
-//        
-//        return User(
-//            id: id,
-//            phoneNumber: phoneNumber,
-//            profile: profile,
-//            isNewUser: isNewUser
-//        )
-//    }
-//}
+
+import Foundation
+
+extension UpdateProfileResponseDTO {
+
+    func toDomain(newUser: Bool = false) -> User {
+        User(
+            id: id,
+            phoneNumber: phoneNumber,
+            profile: UserProfile(
+                id: id,
+                phoneNumber: phoneNumber,
+                displayName: displayName,
+                username: username,
+                email: email,
+                avatarURL: avatarUrl ?? "",
+                gender: gender ?? "",
+                dateOfBirth: dateOfBirth ?? "",
+                targetRole: targetRole ?? "",
+                industry: industry ?? "",
+                experienceLevel: experienceLevel ?? "",
+                currentJobTitle: currentJobTitle ?? "",
+                yearsOfExperience: yearsOfExperience ?? 0,
+                cvURL: cvUrl ?? "",
+                skills: skills.map { $0.toDomain() },
+                targetCompanies: targetCompanies ?? [],
+                educationLevel: educationLevel ?? "",
+                timezone: timezone ?? "",
+                termsAccepted: termsAccepted,
+                subscriptionTier: subscriptionTier ?? "",
+                coinBalance: coinBalance,
+                onboardingCompleted: onboardingCompleted,
+                trackName: trackName ?? "",
+            ),
+            isNewUser: newUser
+        )
+    }
+}

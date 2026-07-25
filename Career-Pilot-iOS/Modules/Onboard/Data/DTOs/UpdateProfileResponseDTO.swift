@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct UserResponseDTO: Decodable {
+struct UpdateProfileResponseDTO: Decodable {
     let id: Int
     let phoneNumber: String
     let displayName: String
@@ -22,7 +22,7 @@ struct UserResponseDTO: Decodable {
     let yearsOfExperience: Int?
     let cvUrl: String?
     let skills: [SkillDTO]
-    let targetCompanies: [String]
+    let targetCompanies: [String]?
     let educationLevel: String?
     let timezone: String?
     let termsAccepted: Bool
@@ -30,12 +30,4 @@ struct UserResponseDTO: Decodable {
     let coinBalance: Int
     let onboardingCompleted: Bool
     let trackName: String?
-}
-
-struct SkillDTO: Decodable {
-    let skillName: String
-    let category: String
-    let performanceScore: Int
-    let timesAssessed: Int
-    let lastAssessedAt: String
 }
