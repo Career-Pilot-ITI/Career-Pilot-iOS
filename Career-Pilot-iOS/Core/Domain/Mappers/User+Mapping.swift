@@ -74,6 +74,39 @@ extension Skill {
     }
 }
 
+
+extension User {
+    func toUpdateProfileRequestDTO(
+        avatarFileId: Int? = nil,
+        cvFileId: Int? = nil,
+        trackId: Int? = nil
+    ) -> UpdateProfileRequestDTO {
+        UpdateProfileRequestDTO(
+            username: profile.username,
+            email: profile.email,
+            displayName: profile.displayName,
+            avatarUrl: profile.avatarURL,
+            avatarFileId: avatarFileId,
+            gender: profile.gender,
+            dateOfBirth: profile.dateOfBirth,
+            targetRole: profile.targetRole,
+            industry: profile.industry,
+            experienceLevel: profile.experienceLevel,
+            currentJobTitle: profile.currentJobTitle,
+            yearsOfExperience: profile.yearsOfExperience,
+            cvUrl: profile.cvURL,
+            cvFileId: cvFileId,
+            skills: profile.skills.map(\.skillName),
+            targetCompanies: profile.targetCompanies,
+            educationLevel: profile.educationLevel,
+            timezone: profile.timezone,
+            termsAccepted: profile.termsAccepted,
+            onboardingCompleted: profile.onboardingCompleted,
+            trackId: trackId
+        )
+    }
+}
+
 private extension Date {
     var iso8601String: String {
         let formatter = ISO8601DateFormatter()
