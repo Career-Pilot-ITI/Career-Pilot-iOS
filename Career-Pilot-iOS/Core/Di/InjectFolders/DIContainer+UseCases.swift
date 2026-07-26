@@ -73,5 +73,18 @@ extension DIContainer{
                 repository: resolver.resolve(InterviewRepository.self)!
             )
         }
+        
+        container.register(LoadSessionsUseCase.self) { r in
+            LoadSessionsUseCase(
+                repository: r.resolve(ReportsRepositoryProtocol.self)!,
+                currentUserProvider: r.resolve(CurrentUserProviding.self)!
+            )
+        }
+        container.register(LoadSessionFeedbackUseCase.self) { r in
+            LoadSessionFeedbackUseCase(repository: r.resolve(ReportsRepositoryProtocol.self)!)
+        }
+        container.register(DeleteSessionUseCase.self) { r in
+            DeleteSessionUseCase(repository: r.resolve(ReportsRepositoryProtocol.self)!)
+        }
     }
 }

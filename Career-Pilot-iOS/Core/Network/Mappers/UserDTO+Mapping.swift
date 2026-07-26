@@ -21,8 +21,6 @@ extension UserDTO {
 extension UserProfileDTO {
     func toDomain() -> UserProfile {
         UserProfile(
-            id: id,
-            phoneNumber: phoneNumber,
             displayName: displayName ?? "",
             username: username ?? "",
             email: email ?? "",
