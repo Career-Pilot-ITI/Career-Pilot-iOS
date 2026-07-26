@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ReportsRemoteDataSourceProtocol {
-    func fetchSessions() async throws -> [ReportsInterviewSessionDTO]
+    func fetchSessions() async throws -> ReportsInterviewSessionResponseDTO
     func fetchSessionDetail(sessionId: Int) async throws -> ReportsInterviewSessionDTO
     func fetchSessionQuestions(sessionId: Int) async throws -> [SessionQuestionDTO]
     func fetchQuestionDetail(sessionId: Int, questionId: Int) async throws -> SessionQuestionDTO
@@ -23,7 +23,7 @@ final class ReportsRemoteDataSource: ReportsRemoteDataSourceProtocol {
         self.network = network
     }
 
-    func fetchSessions() async throws -> [ReportsInterviewSessionDTO] {
+    func fetchSessions() async throws -> ReportsInterviewSessionResponseDTO {
         try await network.request(ReportsEndpoint.sessions)
     }	
 

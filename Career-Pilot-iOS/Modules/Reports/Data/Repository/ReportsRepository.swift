@@ -19,7 +19,7 @@ final class ReportsRepository: ReportsRepositoryProtocol {
             let cached = try await local.fetchSessions(for: userId)
             if !cached.isEmpty { return cached }
         }
-        let fresh = try await remote.fetchSessions()
+        let fresh = try await remote.fetchSessions().data
         try await local.saveSessions(fresh, for: userId)
         return fresh
     }

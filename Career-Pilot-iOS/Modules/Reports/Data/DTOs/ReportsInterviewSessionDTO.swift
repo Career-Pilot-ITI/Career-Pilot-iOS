@@ -20,3 +20,10 @@ struct ReportsInterviewSessionDTO: Codable {
     let completedAt: Date?
     let createdAt: Date
 }
+
+struct ReportsInterviewSessionResponseDTO: Decodable {
+    let message: String
+    let success: Bool
+    let timestamp: String
+    let data: [ReportsInterviewSessionDTO]
+}
