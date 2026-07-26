@@ -12,6 +12,10 @@
 		41A7F6F8300BBB2A00FBE8EB /* LampGlitchModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7F6F7300BBB2A00FBE8EB /* LampGlitchModifier.swift */; };
 		41A7F6FB300BBDA000FBE8EB /* UserEntity+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7F6F9300BBDA000FBE8EB /* UserEntity+Mapping.swift */; };
 		41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EE30076D5500502158 /* CustomSearchTextField.swift */; };
+		41AD8FE3301612F900BDFDA0 /* InterviewSessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD8FE2301612F900BDFDA0 /* InterviewSessionDTO.swift */; };
+		41AD8FE53016130900BDFDA0 /* QuestionScoreDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD8FE43016130900BDFDA0 /* QuestionScoreDTO.swift */; };
+		41AD8FE73016131900BDFDA0 /* SessionFeedbackDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD8FE63016131900BDFDA0 /* SessionFeedbackDTO.swift */; };
+		41AD8FE93016132800BDFDA0 /* SessionQuestionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD8FE83016132800BDFDA0 /* SessionQuestionDTO.swift */; };
 		41BC771C300D0EA300E89C3F /* QuestionBreakDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC771B300D0EA300E89C3F /* QuestionBreakDownView.swift */; };
 		41BC771E300D119A00E89C3F /* CoachingSuggestionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC771D300D119A00E89C3F /* CoachingSuggestionItemView.swift */; };
 		41BC7720300D126E00E89C3F /* ImpactBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC771F300D126E00E89C3F /* ImpactBadge.swift */; };
@@ -248,6 +252,10 @@
 		41A7F6F7300BBB2A00FBE8EB /* LampGlitchModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampGlitchModifier.swift; sourceTree = "<group>"; };
 		41A7F6F9300BBDA000FBE8EB /* UserEntity+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+Mapping.swift"; sourceTree = "<group>"; };
 		41AC14EE30076D5500502158 /* CustomSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchTextField.swift; sourceTree = "<group>"; };
+		41AD8FE2301612F900BDFDA0 /* InterviewSessionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewSessionDTO.swift; sourceTree = "<group>"; };
+		41AD8FE43016130900BDFDA0 /* QuestionScoreDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionScoreDTO.swift; sourceTree = "<group>"; };
+		41AD8FE63016131900BDFDA0 /* SessionFeedbackDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFeedbackDTO.swift; sourceTree = "<group>"; };
+		41AD8FE83016132800BDFDA0 /* SessionQuestionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionQuestionDTO.swift; sourceTree = "<group>"; };
 		41BC771B300D0EA300E89C3F /* QuestionBreakDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBreakDownView.swift; sourceTree = "<group>"; };
 		41BC771D300D119A00E89C3F /* CoachingSuggestionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachingSuggestionItemView.swift; sourceTree = "<group>"; };
 		41BC771F300D126E00E89C3F /* ImpactBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactBadge.swift; sourceTree = "<group>"; };
@@ -507,9 +515,37 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		41AD8FDF301612AC00BDFDA0 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				41AD8FE2301612F900BDFDA0 /* InterviewSessionDTO.swift */,
+				41AD8FE43016130900BDFDA0 /* QuestionScoreDTO.swift */,
+				41AD8FE63016131900BDFDA0 /* SessionFeedbackDTO.swift */,
+				41AD8FE83016132800BDFDA0 /* SessionQuestionDTO.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		41AD8FE0301612B200BDFDA0 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				41AD8FE1301612C000BDFDA0 /* Remote */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		41AD8FE1301612C000BDFDA0 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
 		41BC7715300D0BF900E89C3F /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				41AD8FDF301612AC00BDFDA0 /* DTOs */,
+				41AD8FE0301612B200BDFDA0 /* DataSources */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1828,6 +1864,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41AD8FE53016130900BDFDA0 /* QuestionScoreDTO.swift in Sources */,
 				41D69D63300B553F00294D94 /* Career_Pilot_iOS.xcdatamodeld in Sources */,
 				CECC20DA3007BE6800DC450D /* PhoneFieldViewModel.swift in Sources */,
 				41BC774A300D3E5F00E89C3F /* QuestionBreakdownView.swift in Sources */,
@@ -1861,7 +1898,9 @@
 				41BC7728300D18DC00E89C3F /* RadarGridShape.swift in Sources */,
 				D935DFCB30078012009DF855 /* CustomButton.swift in Sources */,
 				D9B4B1BA301181FE004909ED /* NewSessionDTOMapping.swift in Sources */,
+				41AD8FE93016132800BDFDA0 /* SessionQuestionDTO.swift in Sources */,
 				D92853F230100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift in Sources */,
+				41AD8FE73016131900BDFDA0 /* SessionFeedbackDTO.swift in Sources */,
 				616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */,
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
 				D9B4B1BD301195B3004909ED /* ApiRequestesDTO.swift in Sources */,
@@ -1869,6 +1908,7 @@
 				41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */,
 				41BC772E300D19A100E89C3F /* RadarMetricChip.swift in Sources */,
 				41BE1A71300BF0950033D1B5 /* UserDataRepo.swift in Sources */,
+				41AD8FE3301612F900BDFDA0 /* InterviewSessionDTO.swift in Sources */,
 				41833E4730101E9B0055D990 /* UpdateProfileRequestDTO.swift in Sources */,
 				CEE62A8730091FD10071F076 /* MainTabBarView.swift in Sources */,
 				41A7F6FB300BBDA000FBE8EB /* UserEntity+Mapping.swift in Sources */,
