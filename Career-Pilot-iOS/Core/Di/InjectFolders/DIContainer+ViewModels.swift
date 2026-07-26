@@ -46,5 +46,21 @@ extension DIContainer{
                 speechService: resolver.resolve(SpeechPlaybackServicing.self)!
             )
         }
+        
+        container.register(ReportsListViewModel.self) { r in
+            ReportsListViewModel(
+                loadSessionsUseCase: r.resolve(LoadSessionsUseCase.self)!,
+                deleteSessionUseCase: r.resolve(DeleteSessionUseCase.self)!
+            )
+        }
+
+        // Note the closure signature: (Resolver, Int) — Swinject lets you pass
+        // a runtime argument alongside the resolver for cases needing per-instance data.
+        container.register(SessionDetailViewModel.self) { (r, sessionId: Int) in
+            SessionDetailViewModel(
+                sessionId: sessionId,
+                loadFeedbackUseCase: r.resolve(LoadSessionFeedbackUseCase.self)!
+            )
+        }
     }
 }

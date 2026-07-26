@@ -42,7 +42,14 @@ extension DIContainer{
         
         //MARK: PracticSession
         container.register(InterviewSessionRemoteDataSource.self) { r in
-            InterviewSessionRemoteDataSourceImp(apiService: r.resolve(NetworkService.self, name: "base")!)
+            InterviewSessionRemoteDataSourceImp(apiService: r.resolve(NetworkService.self, name: "authenticated")!)
+        }
+        
+        container.register(ReportsRemoteDataSourceProtocol.self) { r in
+            ReportsRemoteDataSource(network: r.resolve(NetworkService.self, name: "authenticated")!)
+        }
+        container.register(ReportsLocalDataProtocol.self) { r in
+            ReportsLocalDataSource(coreDataManager: r.resolve(CoreDataManaging.self)!)
         }
     }
 }
