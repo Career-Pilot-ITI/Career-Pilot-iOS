@@ -54,8 +54,6 @@ extension DIContainer{
             )
         }
 
-        // Note the closure signature: (Resolver, Int) — Swinject lets you pass
-        // a runtime argument alongside the resolver for cases needing per-instance data.
         container.register(SessionDetailViewModel.self) { (r, sessionId: Int) in
             SessionDetailViewModel(
                 sessionId: sessionId,
