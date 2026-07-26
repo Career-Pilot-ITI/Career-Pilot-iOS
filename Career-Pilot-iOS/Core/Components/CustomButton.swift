@@ -24,8 +24,8 @@ struct CustomButton: View {
 
                 }
             }
-            .font(.size14Semibold)
-            .foregroundStyle(isButtonEnabeld ? Color.gray100 : Color.primaryNavy)
+            .font(Font.size14Semibold)
+            .foregroundStyle(Color.gray100)
             .frame(width: 350, height: 52)
             .background{
                 RoundedRectangle(cornerRadius: Radius.r16)

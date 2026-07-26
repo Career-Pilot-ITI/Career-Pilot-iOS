@@ -11,8 +11,7 @@ struct PhoneEntryView: View {
     @EnvironmentObject var coordinator: AppCoordinator<AuthRoute>
     @EnvironmentObject var toastManager: ToastManager
     @StateObject private var phoneFieldViewModel = PhoneFieldViewModel()
-
-       
+    
     var body: some View {
         ZStack {
             Color.darkBackGround.ignoresSafeArea()
@@ -78,7 +77,7 @@ struct PhoneEntryView: View {
                         }
 
                         let phoneNumber = phoneFieldViewModel.rawPhoneNumber()
-                        coordinator.push(.sendingOTPScreen(phoneNumber: phoneNumber.removingLeadingPlus()))
+                        coordinator.push(.sendingOTPScreen(phoneNumber: phoneNumber))
                     }
                     .disabled(!phoneFieldViewModel.canProceed)
                     .opacity(phoneFieldViewModel.canProceed ? 1 : 0.5)

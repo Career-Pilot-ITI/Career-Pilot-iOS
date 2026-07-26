@@ -21,7 +21,7 @@ class OnBordingRemoteDataSourceImp: OnBordingRemoteDataSource{
         self.apiService = apiService
     }
     
-    func getAllTraks() async throws -> [TrackDTO] {
+    func getAllTraks()  async throws -> [TrackDTO] {
         let endPoint = OnBordingEndPointes.getAllTrackes
         
         return try await apiService.request(endPoint)

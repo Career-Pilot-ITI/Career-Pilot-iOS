@@ -30,7 +30,6 @@ class OnBordingViewModel: ObservableObject {
     @Published var currentView: OnBordingViews = .ChooseTrackView
     @Published var screenState: OnBordingScreenStates = .loading
     @Published var navToHomeScreen: Bool = false
-    @Published var emailErrorMessage: String? = nil
     
     //For ChooseTrack View
     @Published var selectedTrackInfo: SelectedTrackViewInfo = SelectedTrackViewInfo()

@@ -13,20 +13,11 @@ enum AuthRoute: Hashable {
     case sendingOTPScreen(phoneNumber: String)
     case otpScreen(phoneNumber: String)
     case successOTPScreen
-    
-    // MARK : Onboarding
-    case onboardingScreen(vm : OnBordingViewModel)
-   
+    case onboardingScreen(vm: OnBordingViewModel)
 }
 
 enum HomeRoute: Hashable {
     case sessionDetail(metrics: [RadarMetric], suggestions: [CoachingSuggestion])
-}
-
-enum  SettingsRoute : Hashable {
-    case checkout(item :CheckoutItem)
-    case subscribtion
-    case coin
 }
 
 enum ReportsRoute: Hashable {

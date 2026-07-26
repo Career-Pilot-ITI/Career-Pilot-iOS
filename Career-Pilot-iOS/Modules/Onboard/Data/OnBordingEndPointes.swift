@@ -13,9 +13,6 @@ enum OnBordingEndPointes: APIEndpoint{
     case getAllTrackes
     case updateUserProfile(updateProfileRequestDTO: UpdateProfileRequestDTO)
     
-    var baseURL: String{
-        "https://ed39-102-188-31-161.ngrok-free.app"
-    }
     
     var path: String{
         switch self {
@@ -44,7 +41,7 @@ enum OnBordingEndPointes: APIEndpoint{
     
     var requiresAuthentication: Bool {
             switch self {
-            case .getAllTrackes:  return true
+            case .getAllTrackes:  return false
             case .updateUserProfile:  return true
             }
         }

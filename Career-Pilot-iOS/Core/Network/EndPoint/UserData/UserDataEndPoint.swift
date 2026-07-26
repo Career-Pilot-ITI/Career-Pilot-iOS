@@ -19,7 +19,7 @@ enum UserDataEndPointes: APIEndpoint {
     private static let boundary = "Boundary-\(UUID().uuidString)"
 
     var baseURL: String {
-        return "https://a32c-102-188-63-78.ngrok-free.app/swagger-ui/index.html"
+        return "https://192.168.84.1:8080"
     }
 
     var path: String {
