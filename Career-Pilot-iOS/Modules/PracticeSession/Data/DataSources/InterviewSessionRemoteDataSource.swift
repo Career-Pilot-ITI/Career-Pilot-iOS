@@ -24,7 +24,10 @@ class InterviewSessionRemoteDataSourceImp: InterviewSessionRemoteDataSource {
 
     func startInterview(startInterviewSessionRequest: StartInterviewSessionRequest) async throws -> NewSessionDTO {
         let startInterviewEndPoint = InterviewSessionEndPointes.startSession(startInterviewSessionRequest.toDTO())
-        return try await apiService.request(startInterviewEndPoint)
+        print("startInterview:\(startInterviewEndPoint)")
+        let result: NewSessionResponseDTO =  try await apiService.request(startInterviewEndPoint)
+        print("Result: \(result)")
+        return result.data
     }
 
     func submitAnswer(submitAnswerRequest: SubmitAnswerRequest) async throws -> SubmitAnswerResponseDTO {

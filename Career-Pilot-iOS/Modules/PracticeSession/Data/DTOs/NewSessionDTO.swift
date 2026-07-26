@@ -7,6 +7,13 @@
 
 import Foundation
 
+struct NewSessionResponseDTO: Codable {
+    let message: String
+    let success: Bool
+    let timestamp: String
+    let data: NewSessionDTO
+}
+
 struct NewSessionDTO: Codable {
     let sessionId: Int
     let trackName: String
@@ -14,5 +21,13 @@ struct NewSessionDTO: Codable {
     let maxQuestions: Int
     let startedAt: String
     let currentQuestion: QuestionDTO
+}
+
+struct QuestionDTO: Codable {
+    let id: Int
+    let sessionId: Int
+    let questionText: String
+    let questionOrder: Int
+    let createdAt: String
 }
 

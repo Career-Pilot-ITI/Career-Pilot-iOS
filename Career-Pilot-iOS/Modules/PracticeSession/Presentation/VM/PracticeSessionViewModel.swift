@@ -7,8 +7,7 @@
 
 import Foundation
 
-
-enum PracticeSessionScreenState: Equatable {
+enum PracticeSessionScreenState {
     case loading
     case aiTurn
     case waitingForAnswer
@@ -16,7 +15,7 @@ enum PracticeSessionScreenState: Equatable {
     case submittingAnswer
     case reconnecting
     case completed
-    case error(InterviewError)
+    case error(Error)
 }
 
 struct SilenceWarning: Equatable {
@@ -25,34 +24,48 @@ struct SilenceWarning: Equatable {
 
 @MainActor
 final class PracticeSessionViewModel: ObservableObject {
-    
+
     @Published private(set) var session: InterviewSession?
     @Published private(set) var screenState: PracticeSessionScreenState = .loading
-    
-    @Published private(set) var elapsedRecordingTime: TimeInterval = 0 // record Time
-    @Published private(set) var elapsedSessionTime: TimeInterval = 0 // record Time
+
+    @Published private(set) var elapsedRecordingTime: TimeInterval = 0
+    @Published private(set) var elapsedSessionTime: TimeInterval = 0
     private var elapsedTimer: Timer?
     private var elapsedSessionTimer: Timer?
-    
+
+    // In-flight work we need to be able to cancel on reconnect/cancel/dealloc
+    private var aiTurnTask: Task<Void, Never>?
+    private var submitTask: Task<Void, Never>?
+
     var currentQuestionText: String {
         session?.currentQuestion.text ?? ""
     }
-    
+
     var currentQuestionNumber: Int {
-        guard let session = session else { return 0 }
+        guard let session else { return 0 }
         return progressService.currentQuestionNumber(session: session)
     }
-    
+
     var totalQuestions: Int {
         session?.configuration.maxQuestions ?? 0
     }
-    
+
+    var questionsRemaining: Int {
+        guard let session else { return 0 }
+        return progressService.questionsRemaining(session: session)
+    }
+
+    var completionPercentage: Double {
+        guard let session else { return 0 }
+        return progressService.completionPercentage(session: session)
+    }
+
     var feedback: InterviewFeedback? {
         session?.feedback
     }
-    
+
     private var interviewType: InterviewType = .Classic
-    
+
     private let startUseCase: StartInterviewUseCaseProtocol
     private let submitUseCase: SubmitAnswerUseCaseProtocol
     private let resumeUseCase: ResumeInterviewUseCaseProtocol
@@ -60,16 +73,14 @@ final class PracticeSessionViewModel: ObservableObject {
     private let cancelUseCase: CancelInterviewUseCaseProtocol
     private let validationService: InterviewValidationServicing
     private let progressService: InterviewProgressServicing
-    
+
     private let recordingService: AudioRecordingServicing
     private let silenceService: SilenceDetectionServicing
     private let speechService: SpeechPlaybackServicing
-    
-    
-    private let silenceThreshold: Float = 0.08 // Audio level
-    
-    
-    
+    private let speechRecognitionService: SpeechRecognitionServicing
+
+    private let silenceThreshold: Float = 0.08
+
     init(
         startUseCase: StartInterviewUseCaseProtocol,
         submitUseCase: SubmitAnswerUseCaseProtocol,
@@ -80,7 +91,8 @@ final class PracticeSessionViewModel: ObservableObject {
         progressService: InterviewProgressServicing,
         recordingService: AudioRecordingServicing,
         silenceService: SilenceDetectionServicing,
-        speechService: SpeechPlaybackServicing
+        speechService: SpeechPlaybackServicing,
+        speechRecognitionService: SpeechRecognitionServicing
     ) {
         self.startUseCase = startUseCase
         self.submitUseCase = submitUseCase
@@ -92,69 +104,90 @@ final class PracticeSessionViewModel: ObservableObject {
         self.recordingService = recordingService
         self.silenceService = silenceService
         self.speechService = speechService
-        
+        self.speechRecognitionService = speechRecognitionService
+
         self.recordingService.delegate = self
         self.silenceService.delegate = self
         self.speechService.delegate = self
     }
 
-    //MARK: OnError
-    func onError(error: Error) async{
-        
-        //Interview Error
-        if let interviewError = error as? InterviewError{
-            switch interviewError{
-            case .questionLimitReached, .interviewTimeExpired:
-                await finish()
-            case .networkUnavailable, .repositoryError(_), .unknown(_), .invalidState(_, _),.sessionNotFound:
-                await resumeAfterNetworkDrop()
-            }
-            
-            //speechRecognitionErrors
-        }else if let speechRecognitionError = error as? SpeechRecognitionError{
-            switch speechRecognitionError{
-                
-            case .authorizationDenied,.recognizerUnavailable,.noSpeechDetected, .transcriptionFailed(_):
-                await resumeAfterNetworkDrop()
-            }
-            
-        }
+    deinit {
+        elapsedTimer?.invalidate()
+        elapsedSessionTimer?.invalidate()
     }
-    
-    // MARK: - Lifecycle
-    func start() async {
-        startSessionTimer()
-        
-        screenState = .loading
-        do {
-            
-            //UseCase
-            let newSession = try await startUseCase.execute(interviewConfiguration: interviewType.interviewConfiguration)
-            
-            await fillCurrentSesstionWithNewData(newSession: newSession)
-            beginAITurn(question: newSession.currentQuestion)
-        } catch {
+
+    // MARK: - Single error funnel
+    // Every failure path in this ViewModel should end up here instead of
+    // setting `screenState = .error(...)` directly, so recovery behavior
+    // (resume vs finish vs let-them-answer-anyway) stays consistent.
+    func onError(error: Error) async {
+        print("onError: \(error)")
+
+        if let interviewError = error as? InterviewError {
+            await handle(interviewError)
+        } else if let speechRecognitionError = error as? SpeechRecognitionError {
+            handle(speechRecognitionError)
+        } else if let speechPlaybackError = error as? SpeechPlaybackError {
+            // AI voice failed to play — the question text is already on screen,
+            // so let the user answer instead of dead-ending on an error state.
+            print("Speech playback failed: \(speechPlaybackError.localizedDescription)")
+            beginWaitingForAnswer()
+        } else {
             screenState = .error(InterviewError.map(error))
         }
     }
-    
-    private func fillCurrentSesstionWithNewData(newSession: NewSession) async{
-        
-        session = InterviewSession(id: String(newSession.sessionId), status: .aiAsking, currentQuestionIndex: 0, questions: [newSession.currentQuestion], answers: [], configuration: interviewType.interviewConfiguration, currentQuestion: newSession.currentQuestion)
-        
-        guard var tempSession = session else{
-            return
+
+    private func handle(_ error: InterviewError) async {
+        switch error {
+        case .questionLimitReached, .interviewTimeExpired, .sessionQuotaExceeded:
+            guard session != nil else {
+                screenState = .error(error)
+                return
+            }
+            await finish()
+
+        case .networkUnavailable, .repositoryError, .unknown, .invalidState, .sessionNotFound:
+            guard session != nil else {
+                // Nothing to resume — e.g. start() itself failed before a session existed.
+                screenState = .error(error)
+                return
+            }
+            await resumeAfterNetworkDrop()
         }
-        
-        print("newSession: \(newSession)")
-        tempSession.currentQuestion = newSession.currentQuestion
-        tempSession.id = String(newSession.sessionId)
-        tempSession.configuration = interviewType.interviewConfiguration
-        
-        
     }
-    
-    //MARK: Begin With AI
+
+    private func handle(_ error: SpeechRecognitionError) {
+        switch error {
+        case .authorizationDenied, .recognizerUnavailable, .noSpeechDetected, .transcriptionFailed:
+            beginWaitingForAnswer()
+        }
+    }
+
+    // MARK: - Lifecycle
+    func start() async {
+        startSessionTimer()
+        screenState = .loading
+        do {
+            let newSession = try await startUseCase.execute(interviewConfiguration: interviewType.interviewConfiguration)
+            applyNewSession(newSession)
+            beginAITurn(question: newSession.currentQuestion)
+        } catch {
+            await screenState = .error(error)
+        }
+    }
+
+    private func applyNewSession(_ newSession: NewSession) {
+        session = InterviewSession(
+            id: String(newSession.sessionId),
+            status: .aiAsking,
+            currentQuestionIndex: 0,
+            questions: [newSession.currentQuestion],
+            answers: [],
+            configuration: interviewType.interviewConfiguration,
+            currentQuestion: newSession.currentQuestion
+        )
+    }
+
     private func beginAITurn(question: InterviewQuestion?) {
         guard let question = question else {
             Task {
@@ -182,21 +215,16 @@ final class PracticeSessionViewModel: ObservableObject {
     
     //MARK: Click On Start Answering
     func startAnswering() {
-        print("Current Session \(session?.status ?? .cancelled)")
-        guard let currentSession = session else {
-            screenState = .error(InterviewError.unknown("Can Not Answering This Q Now"))
+        guard let currentSession = session,
+              validationService.canStartRecording(session: currentSession) else {
+            screenState = .error(InterviewError.unknown("Can't answer this question right now."))
             return
         }
-        
-        guard validationService.canStartRecording(session: currentSession) else {
-            screenState = .error(InterviewError.unknown("Can Not Answering This Q Now"))
-            return
-        }
-        
+
         session?.status = .recording
-        screenState = .recording(silenceWarning: nil) // send to the ui the remaing number but if the silcen start
+        screenState = .recording(silenceWarning: nil)
         elapsedRecordingTime = 0
-        
+
         do {
             try recordingService.startRecording()
             try silenceService.startMonitoring(
@@ -205,17 +233,14 @@ final class PracticeSessionViewModel: ObservableObject {
             )
             startElapsedTimer()
         } catch {
-            let message = (error as? AudioRecordingError)?.localizedDescription
-            ?? InterviewError.map(error).localizedDescription
-            screenState = .error(InterviewError.unknown(message))
+            screenState = .error(error)
         }
     }
-    
+
     func submitAnswerManually() {
         finishRecordingAndSubmit()
     }
-    
-    
+
     func resumeAfterNetworkDrop() async {
         guard let tempSession = session else { return }
         screenState = .reconnecting
@@ -225,75 +250,84 @@ final class PracticeSessionViewModel: ObservableObject {
             session = restored
             resumeUIState(for: restored)
         } catch {
+            // Don't route back through onError here — a failed resume attempt
+            // retrying itself would loop. Dead-end on .error is correct.
             screenState = .error(InterviewError.map(error))
         }
     }
-    
+
     func cancel() async {
+        aiTurnTask?.cancel()
+        submitTask?.cancel()
         stopEverythingForReconnect()
         guard let sessionId = session?.id else { return }
         try? await cancelUseCase.execute(sessionId: sessionId)
     }
-    
-    
+
     private func beginWaitingForAnswer() {
-        //        speechService.stop()
         session?.status = .waitingForAnswer
         screenState = .waitingForAnswer
     }
-    
+
     private func finishRecordingAndSubmit() {
         guard let currentSession = session,
               validationService.canSubmitAnswer(session: currentSession) else {
             return
         }
-        
+
         stopElapsedTimer()
         silenceService.stopMonitoring()
-        
-        let audioURL: AudioRecordingResult
+
+        let audioResult: AudioRecordingResult
         do {
-            audioURL = try recordingService.stopRecording()
-            print("AudioURL: \(audioURL.fileURL)")
-            print("AudioDuration: \(audioURL.duration)")
+            audioResult = try recordingService.stopRecording()
         } catch {
-            let message = (error as? AudioRecordingError)?.localizedDescription
-            ?? InterviewError.map(error).localizedDescription
-            screenState = .error(InterviewError.unknown(message))
+            screenState = .error(InterviewError.unknown(
+                (error as? AudioRecordingError)?.localizedDescription
+                    ?? InterviewError.map(error).localizedDescription
+            ))
             return
         }
-        
+
         screenState = .submittingAnswer
-        
-        Task {
+
+        submitTask?.cancel()
+        submitTask = Task {
+            guard let tempSession = session else { return }
+
             do {
-                guard let tempSession = session else{
-                    return
-                }
-                
-                let submitRequest = SubmitAnswerRequest(sessionId: tempSession.id, questionId: tempSession.currentQuestion.id, transcript: nil, sessionElapsedSeconds: Int(elapsedSessionTime * 1000), durationMs: Int(elapsedRecordingTime * 1000) , audioAsUrl: audioURL.fileURL, audioUrl: audioURL.fileURL.absoluteString, words: nil)
-                
-                print(submitRequest)
-                
+                let transcript: String = try await speechRecognitionService.transcribe(audioAt: audioResult.fileURL)
+                let submitRequest = SubmitAnswerRequest(
+                    sessionId: tempSession.id,
+                    questionId: tempSession.currentQuestion.id,
+                    transcript: transcript,
+                    sessionElapsedSeconds: Int(elapsedSessionTime * 1000),
+                    durationMs: Int(elapsedRecordingTime * 1000),
+                    audioAsUrl: audioResult.fileURL,
+                    audioUrl: audioResult.fileURL.absoluteString,
+                    words: nil
+                )
 
                 let updatedSession = try await submitUseCase.execute(session: tempSession, submitAnsRequest: submitRequest)
                 session = updatedSession
+
                 if updatedSession.status == .completed {
-                    print("Session Done")
                     screenState = .completed
                 } else {
-                    print("New Q")
                     beginAITurn(question: updatedSession.currentQuestion)
                 }
             } catch {
-                screenState = .error(InterviewError.map(error))
+                screenState = .error(error)
             }
         }
     }
-    
+
     func finish() async {
         stopSessionTimer()
-        guard let sessionId = session?.id else { return }
+        guard let sessionId = session?.id else {
+            screenState = .error(InterviewError.unknown("Can't finish — no active session."))
+            return
+        }
         screenState = .submittingAnswer
         do {
             let finalFeedback = try await finishUseCase.execute(finishInterviewRequest: FinishInterviewRequest(sessionID: sessionId))
@@ -301,10 +335,10 @@ final class PracticeSessionViewModel: ObservableObject {
             session?.status = .completed
             screenState = .completed
         } catch {
-            screenState = .error(InterviewError.map(error))
+            screenState = .error(error)
         }
     }
-    
+
     private func resumeUIState(for session: InterviewSession) {
         switch session.status {
         case .aiAsking:
@@ -312,8 +346,6 @@ final class PracticeSessionViewModel: ObservableObject {
         case .waitingForAnswer:
             beginWaitingForAnswer()
         case .recording:
-            // Backend can't hand us back locally-recorded audio — safest recovery is
-            // to re-ask the current question rather than pretend a recording exists.
             beginAITurn(question: session.currentQuestion)
         case .completed:
             screenState = .completed
@@ -321,7 +353,7 @@ final class PracticeSessionViewModel: ObservableObject {
             beginAITurn(question: session.currentQuestion)
         }
     }
-    
+
     private func stopEverythingForReconnect() {
         stopElapsedTimer()
         silenceService.stopMonitoring()
@@ -330,33 +362,33 @@ final class PracticeSessionViewModel: ObservableObject {
             _ = try? recordingService.stopRecording()
         }
     }
-    
+
     // MARK: - Elapsed time display
     private func startElapsedTimer() {
         elapsedTimer?.invalidate()
         elapsedTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-            guard let self = self else { return }
-            Task { @MainActor in
+            Task { @MainActor [weak self] in
+                guard let self else { return }
                 self.elapsedRecordingTime += 1
             }
         }
     }
-    
+
     private func startSessionTimer() {
         elapsedSessionTimer?.invalidate()
         elapsedSessionTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-            guard let self = self else { return }
-            Task { @MainActor in
+            Task { @MainActor [weak self] in
+                guard let self else { return }
                 self.elapsedSessionTime += 1
             }
         }
     }
-    
+
     private func stopElapsedTimer() {
         elapsedTimer?.invalidate()
         elapsedTimer = nil
     }
-    
+
     private func stopSessionTimer() {
         elapsedSessionTimer?.invalidate()
         elapsedSessionTimer = nil
@@ -364,70 +396,52 @@ final class PracticeSessionViewModel: ObservableObject {
 }
 
 // MARK: - AudioRecordingServiceDelegate
-
 extension PracticeSessionViewModel: AudioRecordingServiceDelegate {
     nonisolated func audioRecordingService(_ service: AudioRecordingService, didUpdateLevel level: Float) {
-        Task { @MainActor in
-            self.silenceService.processLevel(level)
-        }
+        Task { @MainActor in self.silenceService.processLevel(level) }
     }
-    
+
     nonisolated func audioRecordingService(_ service: AudioRecordingService, didFailWithError error: AudioRecordingError) {
-        Task { @MainActor in
-            self.screenState = .error(InterviewError.unknown(error.localizedDescription))
-        }
+        Task { @MainActor in await self.onError(error: InterviewError.unknown(error.localizedDescription)) }
     }
 }
 
 // MARK: - SilenceDetectionServiceDelegate
-
 extension PracticeSessionViewModel: SilenceDetectionServiceDelegate {
     nonisolated func silenceDetectionServiceDidDetectSilenceStart(_ service: SilenceDetectionService) {
-        Task { @MainActor in
-            self.screenState = .recording(silenceWarning: SilenceWarning(remainingSeconds: 0))
-        }
+        Task { @MainActor in self.screenState = .recording(silenceWarning: SilenceWarning(remainingSeconds: 0)) }
     }
-    
+
     nonisolated func silenceDetectionServiceDidResumeSpeech(_ service: SilenceDetectionService) {
-        Task { @MainActor in
-            self.screenState = .recording(silenceWarning: nil)
-        }
+        Task { @MainActor in self.screenState = .recording(silenceWarning: nil) }
     }
-    
+
     nonisolated func silenceDetectionService(_ service: SilenceDetectionService, didUpdateCountdown remaining: TimeInterval) {
         Task { @MainActor in
             self.screenState = .recording(silenceWarning: SilenceWarning(remainingSeconds: Int(remaining.rounded(.up))))
         }
     }
-    
-    /// The auto-submit trigger — same destination as the manual "Submit Answering" tap.
+
     nonisolated func silenceDetectionServiceDidTimeout(_ service: SilenceDetectionService) {
-        Task { @MainActor in
-            self.finishRecordingAndSubmit()
-        }
+        Task { @MainActor in self.submitAnswerManually() }
     }
 }
 
 // MARK: - SpeechPlaybackServiceDelegate
-
+// NOTE: as implemented today, SpeechPlaybackService never actually calls
+// didFinish/didFailWithError on this delegate (its AVSpeechSynthesizerDelegate
+// only resumes the internal continuation). These are kept for when that's
+// wired up, but beginAITurn's own do/catch is currently the real path.
 extension PracticeSessionViewModel: SpeechPlaybackServiceDelegate {
     nonisolated func speechPlaybackServiceDidStart(_ service: SpeechPlaybackService) {
-        Task { @MainActor in
-            self.screenState = .aiTurn
-        }
+        Task { @MainActor in self.screenState = .aiTurn }
     }
-    
+
     nonisolated func speechPlaybackServiceDidFinish(_ service: SpeechPlaybackService) {
-        Task { @MainActor in
-            self.beginWaitingForAnswer()
-        }
+        Task { @MainActor in self.beginWaitingForAnswer() }
     }
-    
+
     nonisolated func speechPlaybackService(_ service: SpeechPlaybackService, didFailWithError error: SpeechPlaybackError) {
-        Task { @MainActor in
-            // Same fallback as a throw from speak(): let the user answer even if the
-            // AI voice failed — the question text is already on screen.
-            self.beginWaitingForAnswer()
-        }
+        Task { @MainActor in await self.onError(error: error) }
     }
 }

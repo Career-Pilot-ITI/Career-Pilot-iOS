@@ -26,10 +26,3 @@ struct ScoreDTO: Codable {
     let createdAt: String
 }
 
-struct QuestionDTO: Codable {
-    let id: Int
-    let sessionId: Int
-    let questionText: String
-    let questionOrder: Int
-    let createdAt: String
-}

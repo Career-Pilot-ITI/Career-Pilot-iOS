@@ -41,13 +41,14 @@ actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
         
         var updatedSubmitAnsRequest: SubmitAnswerRequest = submitAnsRequest
         
-        //init the data before the request
-        updatedSubmitAnsRequest.transcript = try await speechRecognitionService.transcribe(audioAt: submitAnsRequest.audioAsUrl)
-        
+        //For transcript
+//        updatedSubmitAnsRequest.transcript = try await speechRecognitionService.transcribe(audioAt: submitAnsRequest.audioAsUrl)
+        //For getting the audio url from backend
         updatedSubmitAnsRequest.audioUrl = try await userDataRepository.uploadUserFile(fileURL: submitAnsRequest.audioAsUrl, fileType: .Audio).url
         
         let outcome: SubmitAnswerOutcome
         do {
+            print(updatedSubmitAnsRequest)
             outcome = try await repository.submitAnswer(submitAnswerRequest: updatedSubmitAnsRequest)
         } catch {
             throw InterviewError.map(error)

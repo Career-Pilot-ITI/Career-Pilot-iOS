@@ -40,7 +40,7 @@ enum PracticeSessionViewModelFactory {
             progressService: progressService,
             recordingService: AudioRecordingService(),
             silenceService: SilenceDetectionService(),
-            speechService: SpeechPlaybackService()
+            speechService: SpeechPlaybackService(), speechRecognitionService: SpeechRecognitionService()
         )
     }
 }
