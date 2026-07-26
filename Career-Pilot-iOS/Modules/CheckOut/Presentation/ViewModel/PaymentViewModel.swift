@@ -55,26 +55,38 @@ final class PaymentViewModel: ObservableObject {
     
     // MARK: - Step 3: poll backend for the authoritative result
     private func pollForConfirmation() async {
-        print("I visited teh poll For Confirmation")
-          guard let item = checkoutItem else {
-              phase = .failed("Missing payment reference.")
-              return
-          }
-          
-          for attempt in 1...maxPollAttempts {
-              print("Poll attempt \(attempt) starting at \(Date())")
+        guard let item = checkoutItem else {
+            phase = .failed("Missing payment reference.")
+            return
+        }
+        var  counter : Int = 0
 
-              if let isConfirmed = try? await verifyPaymentUseCase.execute(item: item), isConfirmed {
-                  print("Confirmed on attempt \(attempt)")
-                  phase = .succeeded
-                  await userRefreshData.execute()
-                  return
-              }
-              try? await Task.sleep(nanoseconds: pollDelaySeconds * 1_000_000_000)
-          }
-          
-          phase = .failed("Could not confirm payment. Please check your account shortly.")
-      }
+        for attempt in 1...maxPollAttempts {
+            
+            if Task.isCancelled { return } // don't touch `phase` if we've been cancelled
+
+            if let isConfirmed = try? await verifyPaymentUseCase.execute(item: item), isConfirmed {
+                phase = .succeeded
+                print("Excute me ")
+                await userRefreshData.execute()
+                return
+            }
+
+            do {
+                try await Task.sleep(nanoseconds: pollDelaySeconds * 1_000_000_000)
+                counter+=1
+            } catch {
+                print("the throwing error of sleeping \(error)")
+                return // sleep threw because task was cancelled — exit quietly
+            }
+        }
+
+        if counter == maxPollAttempts {
+            print("I has been cancelled so what should i do now ")
+            phase = .failed("Could not confirm payment. Please check your account shortly. ya 3byyyyyyyyt")
+        }
+    }
+
     // MARK: - Reset, e.g. if the user wants to try again after a failure
     func reset() {
         phase = .idle

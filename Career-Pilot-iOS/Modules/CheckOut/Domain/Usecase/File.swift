@@ -24,7 +24,8 @@ struct VerifyPaymentUseCaseImp: VerifyPaymentUseCase {
             let localUser = try await getUserData.execute()
             let currentBalance = try await checkoutRepo.getUserCoin()
             print("User local balance \(localUser.coinBalance)")
-            return currentBalance > (Int(localUser.coinBalance)! + coinsAmount)
+            print("user Current Balance \(currentBalance)")
+            return currentBalance > (Int(localUser.coinBalance)! )
         }
     }
 }

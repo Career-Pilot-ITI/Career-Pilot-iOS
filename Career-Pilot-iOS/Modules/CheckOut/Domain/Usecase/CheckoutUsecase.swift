@@ -15,16 +15,18 @@ class CheckoutUsecase{
         switch checkoutItem {
         case .coinPack(let plan) :
             do{
-              return  try await checkoutRepo.buyingCoins(coinsRequest: CointRequestedDTo(coinPackSize: plan, currency: "EGP", method: "card"))
+                return  try await checkoutRepo.buyingCoins(coinsRequest: CointRequestedDTo(coinPackSize: plan, currency: "EGP", method: "card"))
             }catch{
                 print("error for subscripton \(error)")
                 throw error
                 
             }
         case .subscription(let planType):
+            let tier =  planType.rawValue
+            print(tier.lowercased())
             do{
                 
-                return  try await checkoutRepo.upgradeSubscription(upgradeSubscription: SubscriptionUpgrading(tier: planType.rawValue, currency: "EGP", method: "card") )
+                return  try await checkoutRepo.upgradeSubscription(upgradeSubscription: SubscriptionUpgrading(tier:tier.uppercased(), currency: "EGP", method: "card") )
             }catch{
                 print("error for subscripton \(error)")
                 throw error}

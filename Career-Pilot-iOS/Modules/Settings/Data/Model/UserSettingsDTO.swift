@@ -30,6 +30,7 @@ struct UserSettingsDTO: Decodable {
     let coinBalance: Int?
     let onboardingCompleted: Bool?
     let trackName: String?
+    let isnewUser:Bool?
 }
 import Foundation
 import CoreData
@@ -49,10 +50,9 @@ extension UserSettingsDTO {
         userEntity.id = Int64(id)
         userEntity.phoneNumber = phoneNumber
         // Note: 'isNewUser' can be set based on your business logic or defaulted
-        
+        userEntity.isNewUser = isnewUser ?? false
         // 2. Handle the One-to-One relationship for UserProfileEntity
         let profileEntity = userEntity.profile ?? UserProfileEntity(context: context)
-        
         profileEntity.avatarUrl = avatarUrl
         profileEntity.coinBalance = Int32(coinBalance ?? 0)
         profileEntity.currentJobTitle = currentJobTitle
