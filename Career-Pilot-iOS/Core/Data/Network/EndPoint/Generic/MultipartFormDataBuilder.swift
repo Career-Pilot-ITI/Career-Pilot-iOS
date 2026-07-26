@@ -1,15 +1,13 @@
+
 //
 //  MultipartFormDataBuilder.swift
 //  Career-Pilot-iOS
 //
 //  Created by Mohamed Magdy on 26/07/2026.
 //
-
-import Foundation
 import Foundation
 
 final class MultipartFormDataBuilder {
-
     let boundary: String
     private var body = Data()
 
@@ -29,18 +27,19 @@ final class MultipartFormDataBuilder {
         fileURL: URL,
         mimeType: String? = nil
     ) throws -> Self {
-
         let fileData = try Data(contentsOf: fileURL)
         let mime = mimeType ?? MimeTypeResolver.mimeType(for: fileURL)
-
         body.appendString("--\(boundary)\r\n")
         body.appendString(
             "Content-Disposition: form-data; name=\"\(name)\"; filename=\"\(fileURL.lastPathComponent)\"\r\n"
         )
         body.appendString("Content-Type: \(mime)\r\n\r\n")
+
+        // Every part — including file content — must be followed by \r\n
+        // before the next boundary delimiter. Omitting this breaks the
+        // multipart structure itself, even if the boundary value is correct.
         body.append(fileData)
         body.appendString("\r\n")
-
         return self
     }
 
@@ -56,25 +55,18 @@ enum MimeTypeResolver {
         switch url.pathExtension.lowercased() {
         case "pdf":
             return "application/pdf"
-
         case "jpg", "jpeg":
             return "image/jpeg"
-
         case "png":
             return "image/png"
-
         case "mp3":
             return "audio/mpeg"
-
         case "wav":
             return "audio/wav"
-
         case "m4a":
             return "audio/mp4"
-
         case "aac":
             return "audio/aac"
-
         default:
             return "application/octet-stream"
         }
@@ -82,10 +74,9 @@ enum MimeTypeResolver {
 }
 
 extension Data {
-
     mutating func appendString(_ string: String) {
         append(string.data(using: .utf8)!)
     }
-
 }
+
 

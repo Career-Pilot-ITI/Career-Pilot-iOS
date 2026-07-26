@@ -40,6 +40,9 @@ actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
         defer { isSubmitting = false }
         
         var updatedSubmitAnsRequest: SubmitAnswerRequest = submitAnsRequest
+        
+        
+        print("Transcript: \(submitAnsRequest.transcript ?? "No transcript")")
 
         //For getting the url from server
         updatedSubmitAnsRequest.audioUrl = try await userDataRepository.uploadUserFile(fileURL: submitAnsRequest.audioAsUrl, fileType: .Audio).url

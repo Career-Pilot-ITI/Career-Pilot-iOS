@@ -47,6 +47,7 @@ final class URLSessionNetworkService: NetworkService {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = endpoint.method.rawValue
         urlRequest.httpBody = endpoint.body
+        print("RequestBody: \(endpoint.body)")
         endpoint.headers.forEach { urlRequest.setValue($1, forHTTPHeaderField: $0) }
         
         print("➡️ [Request] \(urlRequest.httpMethod ?? "?") \(url.absoluteString)")

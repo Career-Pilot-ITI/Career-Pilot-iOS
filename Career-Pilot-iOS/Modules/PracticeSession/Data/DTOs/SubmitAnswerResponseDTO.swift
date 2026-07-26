@@ -7,6 +7,13 @@
 
 import Foundation
 
+struct SubmitAnswerFinalResponseDTO: Codable {
+    let message: String
+    let success: Bool
+    let timestamp: String
+    let data: SubmitAnswerResponseDTO
+}
+
 struct SubmitAnswerResponseDTO: Codable {
     let sessionStatus: String
     let score: ScoreDTO

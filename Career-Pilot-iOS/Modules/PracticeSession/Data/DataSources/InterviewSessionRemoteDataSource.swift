@@ -31,11 +31,16 @@ class InterviewSessionRemoteDataSourceImp: InterviewSessionRemoteDataSource {
     }
 
     func submitAnswer(submitAnswerRequest: SubmitAnswerRequest) async throws -> SubmitAnswerResponseDTO {
+        
+        print("submitAnswer: \(submitAnswerRequest)")
         let submitAnswerEndPoint = InterviewSessionEndPointes.submitAnswer(submitAnswerRequest.toDTO())
-        return try await apiService.request(submitAnswerEndPoint)
+        let result: SubmitAnswerFinalResponseDTO = try await apiService.request(submitAnswerEndPoint)
+        return result.data
     }
 
     func resumeInterview(sessionId: String) async throws -> SessionStateDTO {
+        print("resumeInterview: \(sessionId)")
+
         let resumeEndPoint = InterviewSessionEndPointes.resumeSession(sessionId: sessionId)
         return try await apiService.request(resumeEndPoint)
     }
