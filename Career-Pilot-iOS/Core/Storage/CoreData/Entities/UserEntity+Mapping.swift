@@ -33,8 +33,6 @@ extension UserProfileEntity {
         let companyEntities = (targetCompanies as? Set<CompanyEntity>) ?? []
 
         return UserProfile(
-            id: Int(id),
-            phoneNumber: phoneNumber ?? "",
             displayName: displayName ?? "",
             username: username ?? "",
             email: email ?? "",

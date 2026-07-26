@@ -27,7 +27,7 @@ final class AuthTokenProvider: TokenProviding {
         print("🔑 [TOKENS]: \(tokens)")
         print("------------------------------------------")
         
-        let isExpired = tokens.expiresIn <= 60
+        let isExpired = tokens.expiresIn <= 120
         
         if isExpired {
             try tokenStore.clear()
