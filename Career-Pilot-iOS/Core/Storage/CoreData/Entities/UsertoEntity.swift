@@ -30,6 +30,8 @@ extension UserProfile {
 
         let entity = UserProfileEntity(context: context)
 
+        entity.id = Int64(id)
+        entity.phoneNumber = phoneNumber
         entity.displayName = displayName
         entity.username = username
         entity.email = email

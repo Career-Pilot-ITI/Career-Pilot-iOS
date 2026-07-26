@@ -20,14 +20,6 @@ extension DIContainer{
             KeychainManager()
         }.inObjectScope(.container)
         
-        container.register(CoreDataManaging.self) { _ in
-            CoreDataManager()
-        }.inObjectScope(.container)
-        
-        container.register(CurrentUserProviding.self) { _ in
-            CurrentUserProvider()
-        }.inObjectScope(.container)
-        
         // KeychainAuthTokenStore
         container.register(AuthTokenStoring.self) { r in
             KeychainAuthTokenStore(keychain: r.resolve(KeychainManaging.self)!)

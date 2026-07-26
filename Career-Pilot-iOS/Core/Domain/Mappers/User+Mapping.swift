@@ -35,6 +35,8 @@ extension User {
 extension UserProfile {
     func toDTO() -> UserProfileDTO {
         UserProfileDTO(
+            id: id,
+            phoneNumber: phoneNumber,
             displayName: displayName,
             username: username,
             email: email,

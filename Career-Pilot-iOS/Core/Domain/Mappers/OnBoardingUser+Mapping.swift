@@ -19,6 +19,8 @@ extension OnBoardingUser {
             id: id,
             phoneNumber: phoneNumber,
             profile: UserProfile(
+                id: id,
+                phoneNumber: phoneNumber,
                 displayName: fullName,
                 username: "ahmed_elsayyad",
                 email: email,

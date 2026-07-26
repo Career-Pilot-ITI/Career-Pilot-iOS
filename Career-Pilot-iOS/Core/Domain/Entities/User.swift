@@ -14,6 +14,8 @@ struct User: Equatable {
 }
 
 struct UserProfile: Equatable {
+    let id: Int
+    let phoneNumber: String
     let displayName: String
     let username: String
     let email: String

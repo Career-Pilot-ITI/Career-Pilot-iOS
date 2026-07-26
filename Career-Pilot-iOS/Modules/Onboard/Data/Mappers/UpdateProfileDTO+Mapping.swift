@@ -14,6 +14,8 @@ extension UpdateProfileResponseDTO {
             id: id,
             phoneNumber: phoneNumber,
             profile: UserProfile(
+                id: id,
+                phoneNumber: phoneNumber,
                 displayName: displayName,
                 username: username,
                 email: email,

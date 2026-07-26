@@ -19,31 +19,12 @@ final class AuthenticatedNetworkService: NetworkService {
     
     func request<T: Decodable>(_ endpoint: APIEndpoint) async throws -> T {
         let authenticated = try await addAuthIfNeeded(to: endpoint)
-        do {
-            return try await baseService.request(authenticated)
-        } catch {
-            throw mapToTokenExpiredIfNeeded(error)
-        }
+        return try await baseService.request(authenticated)
     }
     
     func request(_ endpoint: APIEndpoint) async throws {
         let authenticated = try await addAuthIfNeeded(to: endpoint)
-        do {
-            try await baseService.request(authenticated)
-        } catch {
-            throw mapToTokenExpiredIfNeeded(error)
-        }
-    }
-    
-    /// Maps server 401/403 responses to `.tokenExpired` so the app can trigger re-auth,
-    /// covering the race condition where a token passes the client-side check but is
-    /// rejected by the server.
-    private func mapToTokenExpiredIfNeeded(_ error: Error) -> Error {
-        if case NetworkError.serverError(let statusCode, _) = error,
-           statusCode == 401 || statusCode == 403 {
-            return NetworkError.tokenExpired
-        }
-        return error
+        try await baseService.request(authenticated)
     }
     
     private func addAuthIfNeeded(to endpoint: APIEndpoint) async throws -> APIEndpoint {

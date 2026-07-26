@@ -7,65 +7,67 @@
 
 import SwiftUI
 
-@MainActor
 struct ReportsView: View {
     @StateObject private var coordinator = AppCoordinator<ReportsRoute>()
-    @StateObject private var viewModel: ReportsListViewModel
-
-    init(viewModel: ReportsListViewModel = DIContainer.shared.container.resolve(ReportsListViewModel.self)!) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
+    @State private var metrics: [RadarMetric] = [
+        RadarMetric(label: "Clarity", value: 78, color: .orange),
+        RadarMetric(label: "Confidence", value: 85, color: .green),
+        RadarMetric(label: "Pacing", value: 72, color: .orange),
+        RadarMetric(label: "Filler Words", value: 65, color: .orange),
+        RadarMetric(label: "Content", value: 90, color: .green)
+    ]
+    @State private var suggestions: [CoachingSuggestion] = [
+        CoachingSuggestion(
+            icon: "target",
+            text: "Reduce filler words",
+            description: "You used 'um' and 'uh' 14 times. Try pausing silently instead.",
+            badgeLevel: "High impact"
+        ),
+        CoachingSuggestion(
+            icon: "target",
+            text: "Slow down your pace",
+            description: "Your speaking pace was a bit fast in the second half of the answer.",
+            badgeLevel: "Medium impact"
+        ),
+        CoachingSuggestion(
+            icon: "target",
+            text: "Add more structure",
+            description: "Try using a clear beginning, middle, and end for your answers.",
+            badgeLevel: "Low impact"
+        )
+    ]
+    @State private var sessions: [Session] = [
+        Session(title: "Software Engineering", score: 82, noOfQuestions: 8, perioudTime: "18m", date: "Today"),
+        Session(title: "Software Engineering", score: 74, noOfQuestions: 8, perioudTime: "22m", date: "Yesterday"),
+        Session(title: "System Design", score: 68, noOfQuestions: 6, perioudTime: "15m", date: "Mon 8 Jul"),
+        Session(title: "Software Engineering", score: 79, noOfQuestions: 8, perioudTime: "20m", date: "Sat 6 Jul"),
+        Session(title: "Behavioural", score: 85, noOfQuestions: 10, perioudTime: "25m", date: "Thu 4 Jul"),
+        Session(title: "Software Engineering", score: 71, noOfQuestions: 8, perioudTime: "18m", date: "Mon 1 Jul")
+    ]
 
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            content
-                .navigationDestination(for: ReportsRoute.self) { route in
-                    destination(for: route)
-                }
+            SessionHistory(
+                sessionCount: sessions.count,
+                sessionAvgScore: sessions.map(\.score).reduce(0, +) / Double(max(sessions.count, 1)),
+                sessions: sessions
+            )
+            .navigationDestination(for: ReportsRoute.self) { route in
+                destination(for: route)
+            }
         }
         .environmentObject(coordinator)
-        .task {
-            await viewModel.loadSessions()
-        }
-    }
-
-    @ViewBuilder
-    private var content: some View {
-        switch viewModel.state {
-        case .idle, .loading:
-            ProgressView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-        case .empty:
-            Text("No sessions yet")
-                .foregroundStyle(Color.gray600)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-        case .error(let message):
-            VStack(spacing: 12) {
-                Text(message).foregroundStyle(.red)
-                Button("Retry") { Task { await viewModel.loadSessions(forceRefresh: true) } }
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-        case .loaded:
-            SessionHistory(
-                sessionCount: viewModel.sessions.count,
-                sessionAvgScore: viewModel.sessions.map(\.overallScore).reduce(0, +) / Double(max(viewModel.sessions.count, 1)),
-                sessions: viewModel.sessions.map { $0.toUIModel() }
-            )
-        }
     }
 
     @ViewBuilder
     private func destination(for route: ReportsRoute) -> some View {
         switch route {
-        case .sessionDetail(let sessionId):
-            SessionView(
-                sessionId: sessionId,
-                viewModel: DIContainer.shared.container.resolve(SessionDetailViewModel.self, argument: sessionId)!
-            )
-        case .questionBreakdown(let sessionId):
-            QuestionBreakdownView(
-                viewModel: DIContainer.shared.container.resolve(SessionDetailViewModel.self, argument: sessionId)!
-            )
+        case .sessionDetail(let metrics, let suggestions):
+            SessionView(metrics: metrics, suggesions: suggestions)
+        case .sessionHistory(let count, let avg, let sessions):
+            SessionHistory(sessionCount: count, sessionAvgScore: avg, sessions: sessions)
+        case .questionBreakdown(let questions):
+            QuestionBreakdownView(questions: questions)
         }
     }
 }

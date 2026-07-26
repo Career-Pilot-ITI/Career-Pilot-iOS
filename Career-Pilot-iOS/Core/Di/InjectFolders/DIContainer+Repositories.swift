@@ -39,12 +39,5 @@ extension DIContainer{
             
             //            InterviewRepositoryImp(remoteDataSource: r.resolve(InterviewSessionRemoteDataSource.self)!)
         }
-        
-        container.register(ReportsRepositoryProtocol.self) { r in
-           ReportsRepository(
-               remote: r.resolve(ReportsRemoteDataSourceProtocol.self)!,
-               local: r.resolve(ReportsLocalDataProtocol.self)!
-           )
-       }
     }
 }
