@@ -41,6 +41,7 @@ class InterviewSessionRemoteDataSourceImp: InterviewSessionRemoteDataSource {
     }
 
     func finishInterview(finishInterviewRequest: FinishInterviewRequest) async throws -> FeedbackReportDTO {
+        print("FinshInterview: \(finishInterviewRequest)")
         let finishEndPoint = InterviewSessionEndPointes.getFeedback(sessionId: finishInterviewRequest.sessionID)
         return try await apiService.request(finishEndPoint)
     }

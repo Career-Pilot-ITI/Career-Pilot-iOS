@@ -40,10 +40,8 @@ actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
         defer { isSubmitting = false }
         
         var updatedSubmitAnsRequest: SubmitAnswerRequest = submitAnsRequest
-        
-        //For transcript
-//        updatedSubmitAnsRequest.transcript = try await speechRecognitionService.transcribe(audioAt: submitAnsRequest.audioAsUrl)
-        //For getting the audio url from backend
+
+        //For getting the url from server
         updatedSubmitAnsRequest.audioUrl = try await userDataRepository.uploadUserFile(fileURL: submitAnsRequest.audioAsUrl, fileType: .Audio).url
         
         let outcome: SubmitAnswerOutcome
