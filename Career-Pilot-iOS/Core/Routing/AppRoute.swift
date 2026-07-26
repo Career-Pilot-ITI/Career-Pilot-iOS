@@ -24,7 +24,7 @@ enum HomeRoute: Hashable {
 }
 
 enum  SettingsRoute : Hashable {
-    case checkout(item :CheckoutItem)
+    case checkout(item :CheckoutDisplayInfo)
     case subscribtion
     case coin
 }

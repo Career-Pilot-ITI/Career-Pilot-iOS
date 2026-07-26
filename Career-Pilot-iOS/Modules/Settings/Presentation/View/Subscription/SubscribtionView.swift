@@ -18,14 +18,6 @@ struct ChoosePlanView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Button(action: { /* close action */ }) {
-                HStack(spacing: 4) {
-                    Image(systemName: "xmark")
-                    Text("Close")
-                }
-                .foregroundColor(.gray600)
-            }
-            
             VStack(alignment: .leading, spacing: 4) {
                 Text("Choose your plan")
                     .font(.system(size: 24, weight: .bold))
@@ -74,11 +66,11 @@ struct ChoosePlanView: View {
                 
                 Button(action: {
                     guard let currentPlan = viewModel.currentPlan else { return }
-                    let item = CheckoutItem.subscription(
-                        plan: currentPlan.label,
-                        monthlyPrice: currentPlan.price,
+                    let item = CheckoutDisplayInfo.subscription(
+                        
+                        plan: currentPlan.label, monthlyPrice: currentPlan.price,
                         billingCycle: "Monthly",
-                        total: currentPlan.price
+                        total: currentPlan.price, checkoutItem: CheckoutItem.subscription(planType: currentPlan.type  )
                     )
                     coordinator.push(.checkout(item: item))
                 }) {

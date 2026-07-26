@@ -50,11 +50,12 @@ struct CoinsValueView: View {
                    buttonTitle: viewModel.buttonLabel,
                    onClick: {
                        guard let pack = viewModel.selectedPack else { return }
-                       let item = CheckoutItem.coinPack(
+                       let item = CheckoutDisplayInfo.coinPack(
                            name: "\(pack.coinsValue) Coins",
                            pricePerPack: pack.price,
                            coinsIncluded: pack.coinsValue,
-                           total: pack.price
+                           total: pack.price,
+                           checkoutItem: .coinPack(packNumber: Int(pack.coinsValue)!)
                        )
                        coordinator.push(.checkout(item: item))
                    }

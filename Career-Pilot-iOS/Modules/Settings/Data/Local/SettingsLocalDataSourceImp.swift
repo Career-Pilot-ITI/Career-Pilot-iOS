@@ -72,11 +72,11 @@ class SettingsLocalDataSourceImp: SettingsLocalDataSource {
                 throw error
             }
         }
-    func saveUserData(user: UserDTO)async throws -> UserProfileEntity{
+    func saveUserData(user: UserSettingsDTO)async throws -> UserProfileEntity{
         do{
-            let entity = user.profile.toEntity(context: coreDataManager.viewContext )
+            let entity = user.toEntity(in: coreDataManager.viewContext )
             try self.coreDataManager.save(coreDataManager.viewContext)
-            return entity
+            return entity.profile!
         }catch{
             print("The error we have  is \(error)")
             throw error

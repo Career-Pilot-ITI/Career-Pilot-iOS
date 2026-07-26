@@ -8,10 +8,36 @@
 import Foundation
 class CheckoutRepoImplementation  : CheckOutRepo{
 
+  
+    
+
+    
+
     
     var remote : CheckoutRemoteDataSource
     init(remote: CheckoutRemoteDataSource) {
         self.remote = remote
+    }
+    func getUserCoin() async throws -> Int {
+        do{
+            let response = try await remote.getUserCoin()
+            return response.balance
+            
+        }catch{
+            print("Upgrade error in the repo \(error)")
+            throw error
+        }
+    }
+    
+    func getUserSubscription() async throws -> CurrentSubscriptionDomain {
+        do{
+            let response = try await remote.getUserSubscription()
+            return response.toDomain()
+            
+        }catch{
+            print("Upgrade error in the repo \(error)")
+            throw error
+        }
     }
     
     func upgradeSubscription(upgradeSubscription: SubscriptionUpgrading) async throws -> PaymentResponse {

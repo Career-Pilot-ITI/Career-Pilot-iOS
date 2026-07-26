@@ -7,6 +7,8 @@
 
 import Foundation
 class SettingsRepoImp : SettingsRepo  {
+ 
+    
     
     var remote : SettingsRemote
     var local : SettingsLocalDataSource
@@ -35,7 +37,18 @@ class SettingsRepoImp : SettingsRepo  {
         }
     }
     
-    
+    func refreshUserData() async throws   {
+            do {
+                let remoteUser = try await remote.getUserData()
+                let cachedUser = try await local.saveUserData(user: remoteUser)
+                var user = cachedUser.toUserSettingsDomain()
+                user.avatar = await try cachedUser.avatarUrl == nil ? nil : ImageLoader.loadImage(from: URL(string: cachedUser.avatarUrl!)!)
+               
+            } catch {
+                print("Error in refreshing user data: \(error)")
+                throw error
+            }
+        }
     
 
     
@@ -71,7 +84,7 @@ class SettingsRepoImp : SettingsRepo  {
         return   [
             CoinPack(coinsValue: "100", price: "29", subTitle: "Great for trying premium features"),
             CoinPack(coinsValue: "500", price: "119", subTitle: "Best value for regular practitioners"),
-            CoinPack(coinsValue: "1,000", price: "199", subTitle: "Power users & intensive prep")
+            CoinPack(coinsValue: "1000", price: "199", subTitle: "Power users & intensive prep")
         ]
     }
    

@@ -8,7 +8,7 @@
 import Foundation
 protocol SettingsRemote{
     func logoutUser() async throws
-    func getUserData() async throws ->UserDTO
+    func getUserData() async throws ->UserSettingsDTO
     func getSubscription() async
     func getCoins() async
 

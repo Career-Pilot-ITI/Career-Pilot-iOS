@@ -11,7 +11,7 @@ enum SettingsEndpoint : APIEndpoint{
     case getUserData
     
     var baseURL: String{
-        "https://ed39-102-188-31-161.ngrok-free.app/"
+        "https://dfa0-41-41-134-165.ngrok-free.app/"
     }
     
     var path: String{
@@ -45,8 +45,22 @@ enum SettingsEndpoint : APIEndpoint{
             }
         }
     var headers: [String: String] {
-        ["Content-Type": "application/json" ,
-         "Authorization" :"Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWQiOjEsImVtYWlsIjoiRXlhZHc4N0BnbWFpbC5jb20iLCJzdWIiOiJFeWFkdzg3IiwiaWF0IjoxNzg0OTI1OTAyLCJleHAiOjE3ODQ5Mjk1MDJ9.5uPX8y6Wh9cs5gjmB_ZXWCe7wqnBSJ8CCE3sFrWl6_Q"]
+        let tokenString: String
+        do {
+            
+            if let tokens = try KeychainAuthTokenStore().loadTokens() {
+                tokenString = tokens.accessToken
+            } else {
+                tokenString = ""
+            }
+        } catch {
+            tokenString = ""
+        }
+        
+        return [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWQiOjEsImVtYWlsIjoiRXlhZHc4N0BnbWFpbC5jb20iLCJzdWIiOiJFeWFkdzg3IiwiaWF0IjoxNzg1MDc2NjU4LCJleHAiOjE3ODU0MzY2NTh9.OdAp3AWlrzCmjKCYk_UQnXWtq8PLeOnGyeNKMbYoJvw"
+        ]
     }
     
 

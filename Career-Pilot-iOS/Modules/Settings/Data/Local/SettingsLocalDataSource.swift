@@ -10,6 +10,6 @@ protocol SettingsLocalDataSource {
     func fetchUserData()async throws->UserProfileEntity?
     func updateUserData( userProfileEntity: UserProfileEntity) async throws
     func deleteUserData() async throws
-    func saveUserData(user: UserDTO)async throws -> UserProfileEntity
+    func saveUserData(user: UserSettingsDTO)async throws -> UserProfileEntity
     
 }

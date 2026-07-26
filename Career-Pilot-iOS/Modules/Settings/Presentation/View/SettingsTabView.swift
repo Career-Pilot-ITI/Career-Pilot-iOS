@@ -27,7 +27,7 @@ struct SettingsTabView: View {
         private func settingsDestination(for route: SettingsRoute) -> some View {
             switch route {
             case .checkout(let item):
-                CheckOutView(checkoutItem: item)
+                CheckOutView(checkoutDisplayInfo: item, paymentVM: PaymentViewModel(verifyPaymentUseCase: VerifyPaymentUseCaseImp(getUserData: GetUserDataUseCase(settingsRepo: SettingsRepoImp(remote: SettingsRemoteImp(apiService: URLSessionNetworkService()), local: SettingsLocalDataSourceImp(coreDataManager: CoreDataManager()), authToken: KeychainAuthTokenStore())), checkoutRepo: CheckoutRepoImplementation(remote: CheckoutRemoteDataSourceImp(checkOutNetworkService:URLSessionNetworkService() ))), checkoutUsecase: CheckoutUsecase(checkoutRepo: CheckoutRepoImplementation(remote: CheckoutRemoteDataSourceImp(checkOutNetworkService: URLSessionNetworkService()))), userRefreshData: RefreshUserDataUseCase(settingsRepo:SettingsRepoImp(remote: SettingsRemoteImp(apiService: URLSessionNetworkService()), local: SettingsLocalDataSourceImp(coreDataManager: CoreDataManager()), authToken: KeychainAuthTokenStore()) )))
             case .subscribtion:
                 ChoosePlanView()
             case .coin:

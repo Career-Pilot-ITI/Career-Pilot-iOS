@@ -28,7 +28,7 @@ class SettingsRemoteImp : SettingsRemote{
            throw error
         }
     }
-    func getUserData() async throws -> UserDTO {
+    func getUserData() async throws -> UserSettingsDTO {
         let endpoint = SettingsEndpoint.getUserData
         do{
             return try await apiService.request(endpoint)

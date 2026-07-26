@@ -11,4 +11,5 @@ protocol  SettingsRepo{
     func logout() async throws
     func getSubscription() -> [SubscriptionPlan]
     func getCoins() ->[CoinPack]
+    func refreshUserData() async throws
 }

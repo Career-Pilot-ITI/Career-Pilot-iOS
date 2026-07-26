@@ -7,7 +7,7 @@
 
 import Foundation
 struct CointRequestedDTo : Decodable , Encodable {
-    var amount : Int ; // 100 || 500 || 1000
+    var coinPackSize : Int ; // 100 || 500 || 1000
     var currency : String  // e.g. "EGP"
     var method  : String // card or cash
 }
