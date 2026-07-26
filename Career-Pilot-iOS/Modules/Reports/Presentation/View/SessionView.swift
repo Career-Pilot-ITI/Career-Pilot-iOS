@@ -7,31 +7,61 @@
 
 import SwiftUI
 
-struct SessionView: View {
-    let metrics: [RadarMetric]
-    let suggesions : [CoachingSuggestion]
-    var body: some View {
-        ZStack() {
-            Color.lightBackGround.ignoresSafeArea()
-            
-            ScrollView {
-                VStack(spacing: Spacing.s16) {
-                    OverallScoreCardView(score: 95, performanceLabel: "Strong Performance", percentileText: "Top 28% of users this week")
-                    PerformanceBreakdownView(metrics: metrics)
-                    QuestionBreakDownView()
-                    
-                    VStack(alignment: .leading, spacing: Spacing.s12) {
-                            Text("Coaching Suggestions")
-                                .font(Font.size15Bold)
-                                .foregroundStyle(Color.primaryNavy)
+// SessionView.swift
+import SwiftUI
 
-                            CoachingSuggestionsListView(suggestions: suggesions)
+struct SessionView: View {
+    @StateObject private var viewModel: SessionDetailViewModel
+    let sessionId: Int
+
+    init(sessionId: Int, viewModel: SessionDetailViewModel) {
+        self.sessionId = sessionId
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
+
+    var body: some View {
+        ZStack {
+            Color.lightBackGround.ignoresSafeArea()
+            switch viewModel.state {
+            case .idle, .loading:
+                ProgressView()
+            case .error(let message):
+                Text(message).foregroundStyle(.red)
+            case .loaded:
+                if let feedback = viewModel.feedback {
+                    ScrollView {
+                        VStack(spacing: Spacing.s16) {
+                            OverallScoreCardView(
+                                score: Int(feedback.overallScore),
+                                performanceLabel: performanceLabel(for: feedback.overallScore),
+                                percentileText: "Top 28% of users this week"
+                            )
+                            PerformanceBreakdownView(metrics: feedback.toRadarMetrics())
+                            QuestionBreakDownView(sessionId: sessionId)
+                            VStack(alignment: .leading, spacing: Spacing.s12) {
+                                Text("Coaching Suggestions")
+                                    .font(Font.size15Bold)
+                                    .foregroundStyle(Color.primaryNavy)
+                                CoachingSuggestionsListView(suggestions: feedback.toCoachingSuggestions())
+                            }
                         }
+                        .padding(.top, 16)
+                    }
+                    .scrollIndicators(.hidden)
+                    .padding(.horizontal, 24)
                 }
-                .padding(.top, 16)
             }
-            .scrollIndicators(.hidden)
-            .padding(.horizontal, 24)
+        }
+        .task {
+            await viewModel.loadFeedback()
+        }
+    }
+
+    private func performanceLabel(for score: Double) -> String {
+        switch score {
+        case 85...: return "Strong Performance"
+        case 65..<85: return "Good Performance"
+        default: return "Needs Improvement"
         }
     }
 }
