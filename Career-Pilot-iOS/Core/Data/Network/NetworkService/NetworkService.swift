@@ -17,17 +17,19 @@ final class URLSessionNetworkService: NetworkService {
         self.decoder = decoder
     }
     
-    func request<T: Decodable>(_ endpoint: APIEndpoint) async throws ->  T where T: Decodable {
+    func request<T: Decodable>(_ endpoint: APIEndpoint) async throws -> T {
         let data = try await performRequest(endpoint)
         do {
             let decoded = try decoder.decode(T.self, from: data)
-            print("✅ [Decode] Successfully decoded \(T.self)")
+            print("✅ [DECODE SUCCESS] Successfully parsed response to -> \(T.self)\n")
             return decoded
+        } catch let decodingError as DecodingError {
+            logDecodingError(decodingError, targetType: T.self)
+            logRawJSON(data, label: "Response Body")
+            throw NetworkError.decodingFailed(decodingError)
         } catch {
-            print("❌ [Decode] Failed to decode \(T.self): \(error)")
-            if let raw = String(data: data, encoding: .utf8) {
-                print("📦 [Decode] Raw response body:\n\(raw)")
-            }
+            print("❌ [DECODE ERROR] Unexpected error decoding \(T.self): \(error.localizedDescription)\n")
+            logRawJSON(data, label: "Response Body")
             throw NetworkError.decodingFailed(error)
         }
     }
@@ -39,50 +41,82 @@ final class URLSessionNetworkService: NetworkService {
     @discardableResult
     private func performRequest(_ endpoint: APIEndpoint) async throws -> Data {
         guard let url = endpoint.url else {
-            print("❌ [Request] Invalid URL for endpoint Url: \(endpoint.url)\n\n\n")
-            print("❌ [Request] Invalid URL for endpoint: \(endpoint)")
+            print("❌ [REQUEST ERROR] Invalid URL for endpoint: \(endpoint)")
             throw NetworkError.invalidURL
         }
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = endpoint.method.rawValue
         urlRequest.httpBody = endpoint.body
-        print("RequestBody: \(endpoint.body)")
         endpoint.headers.forEach { urlRequest.setValue($1, forHTTPHeaderField: $0) }
         
-        print("➡️ [Request] \(urlRequest.httpMethod ?? "?") \(url.absoluteString)")
-        print("➡️ [Request] Headers: \(endpoint.headers)")
-        if let body = endpoint.body, let bodyString = String(data: body, encoding: .utf8) {
-            print("➡️ [Request] Body: \(bodyString)")
+        // Log Request
+        print("----------------------------------------------------------------------")
+        print("🚀 [REQUEST] \(urlRequest.httpMethod ?? "GET") -> \(url.absoluteString)")
+        if !endpoint.headers.isEmpty {
+            print("🔹 [HEADERS] \(endpoint.headers)")
         }
+        if let body = endpoint.body {
+            logRawJSON(body, label: "Request Body")
+        }
+        print("----------------------------------------------------------------------")
         
         do {
             let (data, response) = try await session.data(for: urlRequest)
             
             guard let httpResponse = response as? HTTPURLResponse else {
-                print("❌ [Response] Not an HTTPURLResponse: \(response)")
+                print("❌ [RESPONSE ERROR] Non-HTTP response received: \(response)")
                 throw NetworkError.unknown(URLError(.badServerResponse))
             }
             
-            print("⬅️ [Response] Status \(httpResponse.statusCode) for \(url.absoluteString)")
+            let statusIcon = (200...299).contains(httpResponse.statusCode) ? "📥" : "⚠️"
+            print("\(statusIcon) [RESPONSE] Status \(httpResponse.statusCode) <- \(url.absoluteString)")
             
             guard (200...299).contains(httpResponse.statusCode) else {
-                if let raw = String(data: data, encoding: .utf8) {
-                    print("❌ [Response] Server error body:\n\(raw)")
-                }
+                logRawJSON(data, label: "Server Error Body")
                 throw NetworkError.serverError(statusCode: httpResponse.statusCode, data: data)
             }
             
             return data
         } catch let error as NetworkError {
-            print("❌ [Request] NetworkError rethrown: \(error)")
+            print("❌ [NETWORK ERROR] \(error)")
             throw error
         } catch let urlError as URLError where urlError.code == .notConnectedToInternet {
-            print("❌ [Request] No internet connection")
+            print("❌ [NETWORK ERROR] No internet connection")
             throw NetworkError.noInternet
         } catch {
-            print("❌ [Request] Unknown error: \(error)")
+            print("❌ [UNKNOWN ERROR] \(error.localizedDescription)")
             throw NetworkError.unknown(error)
+        }
+    }
+    
+    // MARK: - Logging Helpers
+    
+    private func logRawJSON(_ data: Data, label: String) {
+        if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []),
+           let prettyData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted),
+           let prettyString = String(data: prettyData, encoding: .utf8) {
+            print("📦 [\(label)]:\n\(prettyString)")
+        } else if let rawString = String(data: data, encoding: .utf8), !rawString.isEmpty {
+            print("📦 [\(label) (Raw)]:\n\(rawString)")
+        } else {
+            print("📦 [\(label)]: <Empty Body>")
+        }
+    }
+    
+    private func logDecodingError<T>(_ error: DecodingError, targetType: T.Type) {
+        print("❌ [DECODE ERROR] Failed decoding \(targetType)")
+        switch error {
+        case .keyNotFound(let key, let context):
+            print("   👉 Missing Key: '\(key.stringValue)' | Path: \(context.codingPath.map { $0.stringValue }.joined(separator: "."))")
+        case .typeMismatch(let type, let context):
+            print("   👉 Type Mismatch: Expected \(type) | Path: \(context.codingPath.map { $0.stringValue }.joined(separator: "."))")
+        case .valueNotFound(let type, let context):
+            print("   👉 Value Null/NotFound: Expected non-null \(type) | Path: \(context.codingPath.map { $0.stringValue }.joined(separator: "."))")
+        case .dataCorrupted(let context):
+            print("   👉 Data Corrupted: \(context.debugDescription)")
+        @unknown default:
+            print("   👉 Unknown Decoding Error: \(error.localizedDescription)")
         }
     }
 }

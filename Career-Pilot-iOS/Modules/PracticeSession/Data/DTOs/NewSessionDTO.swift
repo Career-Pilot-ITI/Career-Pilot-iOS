@@ -25,10 +25,9 @@ struct NewSessionDTO: Decodable {
 }
 
 struct QuestionDTO: Decodable {
-    let id: Int
-    let sessionId: Int
-    let questionText: String
-    let questionOrder: Int
-    let createdAt: String
+    let id: Int?
+    let sessionId: Int?
+    let questionText: String?
+    let questionOrder: Int?
+    let createdAt: String?
 }
-
