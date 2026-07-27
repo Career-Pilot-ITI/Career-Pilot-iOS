@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct UserDTO: Decodable {
     let id: Int
@@ -46,4 +47,16 @@ struct SkillDTO: Decodable {
     let performanceScore: Int?
     let timesAssessed: Int?
     let lastAssessedAt: String?
+}
+extension SkillDTO {
+    @discardableResult
+    func toEntity(context: NSManagedObjectContext) -> SkillEntity {
+        let entity = SkillEntity(context: context)
+        entity.skillName = skillName
+        entity.category = category
+        entity.performanceScore = Int64(performanceScore ?? 0)
+        entity.timesAssessed = Int64(timesAssessed ?? 0)
+        entity.lastAssessedAt = lastAssessedAt
+        return entity
+    }
 }

@@ -44,7 +44,7 @@ enum OnBordingEndPointes: APIEndpoint{
     
     var requiresAuthentication: Bool {
             switch self {
-            case .getAllTrackes:  return false
+            case .getAllTrackes:  return true
             case .updateUserProfile:  return true
             }
         }

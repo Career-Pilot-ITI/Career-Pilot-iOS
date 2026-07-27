@@ -17,11 +17,13 @@ struct OTPView: View {
     init(
         phoneNumber: String,
         code: String = "",
+       
         viewModel: @autoclosure @escaping () -> AuthViewModel
     ) {
         self.phoneNumber = phoneNumber
         self._code = State(initialValue: code)
         self._viewModel = StateObject(wrappedValue: viewModel())
+        print(phoneNumber)
     }
 
     var body: some View {

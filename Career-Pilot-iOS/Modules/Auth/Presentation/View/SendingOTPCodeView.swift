@@ -32,6 +32,8 @@ struct SendingOTPCodeView: View {
                 guard !Task.isCancelled else { return }
                 if success {
                     coordinator.push(.otpScreen(phoneNumber: phoneNumber))
+                    coordinator.popToRoot()
+                    
                 } else {
                     try? await Task.sleep(for: .seconds(1.5))
                     guard !Task.isCancelled else { return }

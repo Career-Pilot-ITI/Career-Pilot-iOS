@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ProfileCard: View {
+    var user : UserModelSettingsView
     var body: some View {
         HStack(spacing:16){
             Image("colorfulIcon")
             VStack (alignment:.leading){
-                Text("Sarah Chen").font(.size16Bold).foregroundColor(.primaryNavy)
-                Text("sarah.chen@example.com")
+                Text("\(user.fullName)").font(.size16Bold).foregroundColor(.primaryNavy)
+                Text("\(user.email)")
                     .font(.size13Medium).foregroundColor(Color.gray400)
             }
             Spacer()
@@ -27,9 +28,9 @@ struct ProfileCard: View {
             )
     }
 }
-
-struct ProfileCard_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileCard()
-    }
-}
+//
+//struct ProfileCard_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileCard()
+//    }
+//}
