@@ -7,21 +7,13 @@
 
 import Foundation
 
-struct NetworkResponseDTO<T: Decodable>: Decodable{
-    let message: String
-    let success: Bool
-    let timestamp: String
-    let data: T
-}
-
-
 struct NewSessionDTO: Decodable {
-    let sessionId: Int
-    let trackName: String
-    let targetDurationMinutes: Int
-    let maxQuestions: Int
-    let startedAt: String
-    let currentQuestion: QuestionDTO
+    let sessionId: Int?
+    let trackName: String?
+    let targetDurationMinutes: Int?
+    let maxQuestions: Int?
+    let startedAt: String?
+    let currentQuestion: QuestionDTO?
 }
 
 struct QuestionDTO: Decodable {

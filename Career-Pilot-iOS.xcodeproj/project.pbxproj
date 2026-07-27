@@ -188,6 +188,7 @@
 		D970C9EB301569F8002F6269 /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9EA301569F8002F6269 /* UserDataEndPoint.swift */; };
 		D970C9ED30156B68002F6269 /* UploadedFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9EC30156B68002F6269 /* UploadedFile.swift */; };
 		D970C9EF30156C02002F6269 /* UplodeFile+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9EE30156C02002F6269 /* UplodeFile+Mapping.swift */; };
+		D9720DBA3017CD0B00A33A99 /* NetworkResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9720DB93017CD0B00A33A99 /* NetworkResponseDTO.swift */; };
 		D9868B41300FD22600B84CD6 /* SpeechRecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9868B40300FD22600B84CD6 /* SpeechRecognitionService.swift */; };
 		D98A79703008D9A300DFDC6B /* CvViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A796F3008D9A300DFDC6B /* CvViewInfo.swift */; };
 		D98A79733008DB2F00DFDC6B /* ChooseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98A79723008DB2F00DFDC6B /* ChooseTrackView.swift */; };
@@ -431,6 +432,7 @@
 		D970C9EA301569F8002F6269 /* UserDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataEndPoint.swift; path = Generic/UserDataEndPoint.swift; sourceTree = "<group>"; };
 		D970C9EC30156B68002F6269 /* UploadedFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadedFile.swift; sourceTree = "<group>"; };
 		D970C9EE30156C02002F6269 /* UplodeFile+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UplodeFile+Mapping.swift"; sourceTree = "<group>"; };
+		D9720DB93017CD0B00A33A99 /* NetworkResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponseDTO.swift; sourceTree = "<group>"; };
 		D9868B40300FD22600B84CD6 /* SpeechRecognitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionService.swift; sourceTree = "<group>"; };
 		D98A796F3008D9A300DFDC6B /* CvViewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvViewInfo.swift; sourceTree = "<group>"; };
 		D98A79723008DB2F00DFDC6B /* ChooseTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTrackView.swift; sourceTree = "<group>"; };
@@ -1504,6 +1506,7 @@
 				41BE1A60300BEF510033D1B5 /* UserDTO.swift */,
 				41BE1A5E300BEF510033D1B5 /* CvUplodingResponseDTO.swift */,
 				D970C9E5301566B3002F6269 /* UploadFileResponseDTO.swift */,
+				D9720DB93017CD0B00A33A99 /* NetworkResponseDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -1854,6 +1857,7 @@
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
 				D9B4B1BD301195B3004909ED /* ApiRequestesDTO.swift in Sources */,
 				D99D97583012969C00F2A7C2 /* User+Mapping.swift in Sources */,
+				D9720DBA3017CD0B00A33A99 /* NetworkResponseDTO.swift in Sources */,
 				41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */,
 				41BC772E300D19A100E89C3F /* RadarMetricChip.swift in Sources */,
 				41BE1A71300BF0950033D1B5 /* UserDataRepo.swift in Sources */,
