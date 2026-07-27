@@ -47,6 +47,7 @@ final class SpeechRecognitionService: SpeechRecognitionServicing {
     }
 
     func transcribe(audioAt url: URL) async throws -> String {
+        print("Statrt transcribte")
         try await requestPermission()
 
         guard let recognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US")) else {

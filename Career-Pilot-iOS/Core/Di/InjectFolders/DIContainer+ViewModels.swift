@@ -43,7 +43,7 @@ extension DIContainer{
                 progressService: resolver.resolve(InterviewProgressServicing.self)!,
                 recordingService: resolver.resolve(AudioRecordingServicing.self)!,
                 silenceService: resolver.resolve(SilenceDetectionServicing.self)!,
-                speechService: resolver.resolve(SpeechPlaybackServicing.self)!
+                speechService: resolver.resolve(SpeechPlaybackServicing.self)!, speechRecognitionService: resolver.resolve(SpeechRecognitionServicing.self)!
             )
         }
         

@@ -31,13 +31,13 @@ extension DIContainer{
         container.register(OnBordingRepo.self) { r in
             OnBordingRepoImp(remote: r.resolve(OnBordingRemoteDataSource.self)!)
         }
-
+        
         // MARK: - PracticeSession
         container.register(InterviewRepository.self) { r in
-
-            StubInterviewRepository()
             
-            //            InterviewRepositoryImp(remoteDataSource: r.resolve(InterviewSessionRemoteDataSource.self)!)
+            //            StubInterviewRepository()
+            
+            InterviewRepositoryImp(remoteDataSource: r.resolve(InterviewSessionRemoteDataSource.self)!)
         }
         
         container.register(ReportsRepositoryProtocol.self) { r in
