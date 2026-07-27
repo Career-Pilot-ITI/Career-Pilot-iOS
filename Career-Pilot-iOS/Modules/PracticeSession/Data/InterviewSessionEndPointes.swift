@@ -17,9 +17,6 @@ enum InterviewSessionEndPointes: APIEndpoint {
         return true
     }
 
-    var baseURL: String {
-        return "https://afd9-196-130-248-12.ngrok-free.app/"
-    }
 
     var path: String {
         switch self {
@@ -44,8 +41,7 @@ enum InterviewSessionEndPointes: APIEndpoint {
     }
 
     var headers: [String: String] {
-            return ["Content-Type": "application/json",
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWQiOjEsInN1YiI6InVzZXJfMTMyODM3IiwiaWF0IjoxNzg1MTYzOTkxLCJleHAiOjE3ODU1MjM5OTF9.JEPGUo5zmBHLYmRD1MUyPdXjUMhbti1jTQeUq_wOoCw"
+            return ["Content-Type": "application/json"
             ]
     }
 
