@@ -7,19 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
-enum : Hashable {
-    case subscription(plan: String, monthlyPrice: String, billingCycle: String, total: String, checkoutItem: CheckoutItem)
-    case coinPack(name: String, pricePerPack: String, coinsIncluded: String, total: String, checkoutItem: CheckoutItem)
-    
-    var checkoutItem: CheckoutItem {
-        switch self {
-        case .subscription(_, _, _, _, let item): return item
-        case .coinPack(_, _, _, _, let item): return item
-        }
-    }
-}
 
 struct CheckOutView: View {
     let checkoutDisplayInfo: CheckoutDisplayInfo
