@@ -8,10 +8,10 @@
 import Foundation
 
 struct UploadFileResponseDTO: Decodable {
-    let id: Int
-    let type: String
-    let originalName: String
-    let url: String
-    let sizeBytes: Int
-    let createdAt: String
+    let id: Int?
+    let type: String?
+    let originalName: String?
+    let url: String?
+    let sizeBytes: Int?
+    let createdAt: String?
 }

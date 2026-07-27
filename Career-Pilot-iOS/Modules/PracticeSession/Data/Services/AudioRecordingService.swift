@@ -123,7 +123,7 @@ final class AudioRecordingService: NSObject, AudioRecordingServicing {
 
         let duration = Date().timeIntervalSince(startTime)
 //        let url = URL(string: "file:///Users/mohamed/Library/Developer/CoreSimulator/Devices/CD29D4D6-B581-41CE-86CB-B816F1261257/data/Containers/Shared/AppGroup/626553A3-43FF-409F-BF4E-84101AE7D052/File%20Provider%20Storage/a%CC%82%C2%80%C2%8Ea%CC%82%C2%81%C2%A8%C3%98%C2%B4%C3%98%C2%A7%C3%98%C2%B1%C3%98%C2%B9%20%C3%98%C2%A7U%CC%80%C2%84U%CC%80%C2%81%C3%98%C2%B1U%CC%80%C2%8AU%CC%80%C2%82%20%C3%98%C2%B9%C3%98%C2%B2U%CC%80%C2%8A%C3%98%C2%B2%20%C3%98%C2%A7U%CC%80%C2%84U%CC%80%3F%C3%98%C2%B5%C3%98%C2%B1U%CC%80%C2%8A%2094a%CC%82%C2%81%C2%A9.m4a")!
-        let url = recorder.url
+        let url = recorder.url  
 
         guard FileManager.default.fileExists(atPath: url.path) else {
             throw AudioRecordingError.fileWriteFailed("Recorded file was not found on disk.")
