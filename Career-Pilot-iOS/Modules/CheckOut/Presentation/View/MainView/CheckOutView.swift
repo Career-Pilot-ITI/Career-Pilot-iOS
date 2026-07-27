@@ -9,7 +9,7 @@ import SwiftUI
 
 import SwiftUI
 
-enum CheckoutDisplayInfo: Hashable {
+enum : Hashable {
     case subscription(plan: String, monthlyPrice: String, billingCycle: String, total: String, checkoutItem: CheckoutItem)
     case coinPack(name: String, pricePerPack: String, coinsIncluded: String, total: String, checkoutItem: CheckoutItem)
     
