@@ -7,14 +7,15 @@
 
 import Foundation
 
-struct NewSessionResponseDTO: Codable {
+struct NetworkResponseDTO<T: Decodable>: Decodable{
     let message: String
     let success: Bool
     let timestamp: String
-    let data: NewSessionDTO
+    let data: T
 }
 
-struct NewSessionDTO: Codable {
+
+struct NewSessionDTO: Decodable {
     let sessionId: Int
     let trackName: String
     let targetDurationMinutes: Int
@@ -23,7 +24,7 @@ struct NewSessionDTO: Codable {
     let currentQuestion: QuestionDTO
 }
 
-struct QuestionDTO: Codable {
+struct QuestionDTO: Decodable {
     let id: Int
     let sessionId: Int
     let questionText: String

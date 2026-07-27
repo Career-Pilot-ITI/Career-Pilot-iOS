@@ -7,20 +7,20 @@
 
 import Foundation
 
-struct SubmitAnswerFinalResponseDTO: Codable {
+struct SubmitAnswerFinalResponseDTO: Decodable {
     let message: String
     let success: Bool
     let timestamp: String
     let data: SubmitAnswerResponseDTO
 }
 
-struct SubmitAnswerResponseDTO: Codable {
+struct SubmitAnswerResponseDTO: Decodable {
     let sessionStatus: String
     let score: ScoreDTO
     let nextQuestion: QuestionDTO?
 }
 
-struct ScoreDTO: Codable {
+struct ScoreDTO: Decodable {
     let id: Int
     let sessionQuestionId: Int
     let contentRelevance: Int

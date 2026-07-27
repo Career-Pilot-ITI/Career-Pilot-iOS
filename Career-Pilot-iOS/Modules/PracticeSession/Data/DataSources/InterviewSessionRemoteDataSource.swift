@@ -25,19 +25,15 @@ class InterviewSessionRemoteDataSourceImp: InterviewSessionRemoteDataSource {
     func startInterview(startInterviewSessionRequest: StartInterviewSessionRequest) async throws -> NewSessionDTO {
         let startInterviewEndPoint = InterviewSessionEndPointes.startSession(startInterviewSessionRequest.toDTO())
         print("startInterview:\(startInterviewEndPoint)")
-        let result: NewSessionResponseDTO =  try await apiService.request(startInterviewEndPoint)
+        let result: NetworkResponseDTO<NewSessionDTO> =  try await apiService.request(startInterviewEndPoint)
         print("Result: \(result)")
         return result.data
     }
 
     func submitAnswer(submitAnswerRequest: SubmitAnswerRequest) async throws -> SubmitAnswerResponseDTO {
-<<<<<<< HEAD
-        
-=======
->>>>>>> 5743779d (Refactor: all the dto to make it confierm decodable not codable)
         print("submitAnswer: \(submitAnswerRequest)")
         let submitAnswerEndPoint = InterviewSessionEndPointes.submitAnswer(submitAnswerRequest.toDTO())
-        let result: SubmitAnswerFinalResponseDTO = try await apiService.request(submitAnswerEndPoint)
+        let result: NetworkResponseDTO<SubmitAnswerResponseDTO> = try await apiService.request(submitAnswerEndPoint)
         return result.data
     }
 
@@ -45,14 +41,17 @@ class InterviewSessionRemoteDataSourceImp: InterviewSessionRemoteDataSource {
         print("resumeInterview: \(sessionId)")
 
         let resumeEndPoint = InterviewSessionEndPointes.resumeSession(sessionId: sessionId)
-        print("ResumeInterview: \(sessionId)")
-        return try await apiService.request(resumeEndPoint)
+        let result: NetworkResponseDTO<SessionStateDTO> = try await apiService.request(resumeEndPoint)
+    
+        return result.data
     }
 
     func finishInterview(finishInterviewRequest: FinishInterviewRequest) async throws -> FeedbackReportDTO {
         print("FinshInterview: \(finishInterviewRequest)")
         let finishEndPoint = InterviewSessionEndPointes.getFeedback(sessionId: finishInterviewRequest.sessionID)
-        return try await apiService.request(finishEndPoint)
+        let result: NetworkResponseDTO<FeedbackReportDTO> = try await apiService.request(finishEndPoint)
+    
+        return result.data
     }
 
     func cancelInterview(sessionId: String) async throws {
