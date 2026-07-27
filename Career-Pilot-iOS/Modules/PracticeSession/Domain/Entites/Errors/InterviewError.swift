@@ -1,13 +1,16 @@
 import Foundation
 
 
+import Foundation
+
 enum InterviewError: Error, Equatable {
     case invalidState(current: InterviewSessionStatus, attempted: String)
     case questionLimitReached
     case interviewTimeExpired
     case sessionNotFound
     case networkUnavailable
-    case repositoryError(String)
+    case sessionQuotaExceeded
+    case serverError(String)
     case unknown(String)
 }
 
@@ -24,22 +27,58 @@ extension InterviewError: LocalizedError {
             return "No active interview session was found."
         case .networkUnavailable:
             return "Connection lost. Please check your network and try again."
-        case .repositoryError(let message):
-            return message
+        case .sessionQuotaExceeded:
+            return "You have 0 sessions remaining. Subscribe or buy more to continue."
+        case .serverError(let message):
+            return "\(message)"
         case .unknown(let message):
             return message
         }
     }
 }
 
+
 extension InterviewError {
     static func map(_ error: Error) -> InterviewError {
         if let domainError = error as? InterviewError {
-            return domainError
+            return domainError // errors that i already throwed
         }
+
+        if let networkError = error as? NetworkError {
+            switch networkError {
+            case.noInternet:
+                return.networkUnavailable
+            case .serverError(let statusCode, let data):
+                switch statusCode {
+                case 403:
+                    return .sessionQuotaExceeded
+                case 404:
+                    return .sessionNotFound
+                default:
+                    let message = data
+                        .flatMap { try? JSONDecoder().decode(APIErrorResponse.self, from: $0) }?
+                        .message
+                    return .serverError(message ?? "Request failed with status \(statusCode)")
+                }
+            // handle NetworkError's other cases here too, whatever they are
+            default:
+                return .networkUnavailable
+            }
+        }
+
         if (error as NSError).domain == NSURLErrorDomain {
             return .networkUnavailable
         }
-        return .repositoryError(error.localizedDescription)
+
+        return .serverError(error.localizedDescription)
     }
+}
+
+struct APIErrorResponse: Decodable {
+    let message: String?
+}
+
+struct HTTPStatusError: Error {
+    let statusCode: Int
+    let data: Data?
 }

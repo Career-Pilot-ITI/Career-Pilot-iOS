@@ -32,7 +32,7 @@ enum PracticeSessionViewModelFactory {
 
         return PracticeSessionViewModel(
             startUseCase: StartInterviewUseCase(repository: repository, userLDS: UserLocalDataSourceImpl(coreData: CoreDataManager())),
-            submitUseCase: SubmitAnswerUseCase(repository: repository, validationService: validationService, speechRecognitionService: speechRecognitionService),
+            submitUseCase: SubmitAnswerUseCase(repository: repository, userDataRepository: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService()), localDataSource: UserLocalDataSourceImpl(coreData: CoreDataManager())), validationService: validationService, speechRecognitionService: speechRecognitionService),
             resumeUseCase: ResumeInterviewUseCase(repository: repository),
             finishUseCase: FinishInterviewUseCase(repository: repository),
             cancelUseCase: CancelInterviewUseCase(repository: repository),
@@ -40,7 +40,7 @@ enum PracticeSessionViewModelFactory {
             progressService: progressService,
             recordingService: AudioRecordingService(),
             silenceService: SilenceDetectionService(),
-            speechService: SpeechPlaybackService()
+            speechService: SpeechPlaybackService(), speechRecognitionService: SpeechRecognitionService()
         )
     }
 }
