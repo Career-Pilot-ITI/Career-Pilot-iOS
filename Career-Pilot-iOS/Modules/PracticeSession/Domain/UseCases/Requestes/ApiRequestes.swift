@@ -19,11 +19,11 @@ struct StartInterviewSessionRequest: Encodable {
 struct SubmitAnswerRequest: Encodable {
     var sessionId: String
     var questionId: String
-    var transcript: String?
+    var transcript: String
     let sessionElapsedSeconds: Int?
     let durationMs: Int
-    let audioUrlAsString: String
-    let audioUrl: URL
+    var audioAsUrl: URL
+    var audioUrl: String
     let words: [WordTiming]?
 }
 struct WordTiming: Encodable {

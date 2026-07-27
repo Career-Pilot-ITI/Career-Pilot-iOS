@@ -27,14 +27,12 @@ enum PracticeSessionViewModelFactory {
             maxQuestions: 3,
             maxAnswerDuration: 240,   // 4 minutes per answer
             maxInterviewDuration: 120, // 30 minutes total
-            silenceTimeout: 5 , // 5s of silence before auto-submit
-            trackID: 5
+            silenceTimeout: 5 // 5s of silence before auto-submit
         )
 
         return PracticeSessionViewModel(
-            configuration: configuration,
-            startUseCase: StartInterviewUseCase(repository: repository),
-            submitUseCase: SubmitAnswerUseCase(repository: repository, validationService: validationService, speechRecognitionService: speechRecognitionService),
+            startUseCase: StartInterviewUseCase(repository: repository, userLDS: UserLocalDataSourceImpl(coreData: CoreDataManager())),
+            submitUseCase: SubmitAnswerUseCase(repository: repository, userDataRepository: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService()), localDataSource: UserLocalDataSourceImpl(coreData: CoreDataManager())), validationService: validationService, speechRecognitionService: speechRecognitionService),
             resumeUseCase: ResumeInterviewUseCase(repository: repository),
             finishUseCase: FinishInterviewUseCase(repository: repository),
             cancelUseCase: CancelInterviewUseCase(repository: repository),
@@ -42,7 +40,7 @@ enum PracticeSessionViewModelFactory {
             progressService: progressService,
             recordingService: AudioRecordingService(),
             silenceService: SilenceDetectionService(),
-            speechService: SpeechPlaybackService()
+            speechService: SpeechPlaybackService(), speechRecognitionService: SpeechRecognitionService()
         )
     }
 }

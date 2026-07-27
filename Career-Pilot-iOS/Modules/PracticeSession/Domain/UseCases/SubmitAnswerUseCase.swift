@@ -7,23 +7,21 @@ protocol SubmitAnswerUseCaseProtocol {
 
 actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
     private let repository: InterviewRepository
+    private let userDataRepository: UserDataRepo
     private let validationService: InterviewValidationServicing
     private let speechRecognitionService: SpeechRecognitionServicing
     private var isSubmitting = false
     
     
-    init(repository: InterviewRepository, validationService: InterviewValidationServicing, speechRecognitionService: SpeechRecognitionServicing) {
+    init(repository: InterviewRepository, userDataRepository: UserDataRepo, validationService: InterviewValidationServicing, speechRecognitionService: SpeechRecognitionServicing) {
         self.repository = repository
+        self.userDataRepository = userDataRepository
         self.validationService = validationService
         self.speechRecognitionService = speechRecognitionService
     }
     
     func execute(session: InterviewSession, submitAnsRequest: SubmitAnswerRequest) async throws -> InterviewSession {
-        
-//        guard let question = session. else {
-//            throw InterviewError.sessionNotFound
-//        }
-        
+
         guard validationService.canSubmitAnswer(session: session) else {
             throw InterviewError.invalidState(current: session.status, attempted: "submitAnswer")
         }
@@ -39,10 +37,15 @@ actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
         
         var updatedSubmitAnsRequest: SubmitAnswerRequest = submitAnsRequest
         
-        updatedSubmitAnsRequest.transcript = try await speechRecognitionService.transcribe(audioAt: submitAnsRequest.audioUrl)
+        
+        print("Transcript: \(submitAnsRequest.transcript)")
+
+        //For getting the url from server
+        updatedSubmitAnsRequest.audioUrl = try await userDataRepository.uploadUserFile(fileURL: submitAnsRequest.audioAsUrl, fileType: .Audio).url
         
         let outcome: SubmitAnswerOutcome
         do {
+            print(updatedSubmitAnsRequest)
             outcome = try await repository.submitAnswer(submitAnswerRequest: updatedSubmitAnsRequest)
         } catch {
             throw InterviewError.map(error)
@@ -51,7 +54,7 @@ actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
         var updatedSession = session
         let answer = InterviewAnswer(
             questionId: submitAnsRequest.questionId,
-            audioURL: submitAnsRequest.audioUrl,
+            audioURL: submitAnsRequest.audioAsUrl,
             duration: TimeInterval(submitAnsRequest.durationMs * 60),
             submittedAt: Date()
         )

@@ -68,5 +68,35 @@ extension DIContainer{
 //                speechService: resolver.resolve(SpeechPlaybackServicing.self)!
 //            )
 //        }
+        // MARK: - PracticeSession
+        container.register(PracticeSessionViewModel.self) { resolver in
+
+            return PracticeSessionViewModel(
+                startUseCase: resolver.resolve(StartInterviewUseCaseProtocol.self)!,
+                submitUseCase: resolver.resolve(SubmitAnswerUseCaseProtocol.self)!,
+                resumeUseCase: resolver.resolve(ResumeInterviewUseCaseProtocol.self)!,
+                finishUseCase: resolver.resolve(FinishInterviewUseCaseProtocol.self)!,
+                cancelUseCase: resolver.resolve(CancelInterviewUseCaseProtocol.self)!,
+                validationService: resolver.resolve(InterviewValidationServicing.self)!,
+                progressService: resolver.resolve(InterviewProgressServicing.self)!,
+                recordingService: resolver.resolve(AudioRecordingServicing.self)!,
+                silenceService: resolver.resolve(SilenceDetectionServicing.self)!,
+                speechService: resolver.resolve(SpeechPlaybackServicing.self)!, speechRecognitionService: resolver.resolve(SpeechRecognitionServicing.self)!
+            )
+        }
+        
+        container.register(ReportsListViewModel.self) { r in
+            ReportsListViewModel(
+                loadSessionsUseCase: r.resolve(LoadSessionsUseCase.self)!,
+                deleteSessionUseCase: r.resolve(DeleteSessionUseCase.self)!
+            )
+        }
+
+        container.register(SessionDetailViewModel.self) { (r, sessionId: Int) in
+            SessionDetailViewModel(
+                sessionId: sessionId,
+                loadFeedbackUseCase: r.resolve(LoadSessionFeedbackUseCase.self)!
+            )
+        }
     }
 }

@@ -27,8 +27,8 @@ extension String {
         case "pending":
             return .paused
 
-        case "inprogress":
-            return .recording
+        case "IN_PROGRESS".lowercased():
+            return .waitingForAnswer
 
         case "completed":
             return .completed

@@ -12,4 +12,6 @@ protocol UserDataRepo{
     func saveUser(_ user: User) async throws -> Bool
     func getCurrentUser() async throws -> User?
     func uploadUserCV(uploadCVRequest: UploadCvRequest) async throws -> UploadCvResponse
+    func uploadUserFile(fileURL: URL, fileType: FileTypes) async throws -> UploadedFile
+    
 }

@@ -13,7 +13,7 @@ final class InterviewProgressService: InterviewProgressServicing, Sendable {
     }
 
     func questionsRemaining(session: InterviewSession) -> Int {
-        max(0, session.configuration.maxQuestions - (session.currentQuestionIndex + 1))
+        max(0, (session.configuration.maxQuestions - (session.currentQuestionIndex + 1) - 1))
     }
 
     func completionPercentage(session: InterviewSession) -> Double {

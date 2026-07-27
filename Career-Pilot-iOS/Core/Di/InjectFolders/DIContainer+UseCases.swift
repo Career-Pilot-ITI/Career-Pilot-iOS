@@ -50,13 +50,14 @@ extension DIContainer{
         // MARK: - PracticeSession
         container.register(StartInterviewUseCaseProtocol.self) { resolver in
             StartInterviewUseCase(
-                repository: resolver.resolve(InterviewRepository.self)!
+                repository: resolver.resolve(InterviewRepository.self)!,
+                userLDS: resolver.resolve(UserLocalDataSource.self)!
             )
         }
 
         container.register(SubmitAnswerUseCaseProtocol.self) { resolver in
             SubmitAnswerUseCase(
-                repository: resolver.resolve(InterviewRepository.self)!,
+                repository: resolver.resolve(InterviewRepository.self)!, userDataRepository: resolver.resolve(UserDataRepo.self)!,
                 validationService: resolver.resolve(InterviewValidationServicing.self)!, speechRecognitionService: resolver.resolve(SpeechRecognitionServicing.self)!
                 
             )
@@ -78,6 +79,19 @@ extension DIContainer{
             CancelInterviewUseCase(
                 repository: resolver.resolve(InterviewRepository.self)!
             )
+        }
+        
+        container.register(LoadSessionsUseCase.self) { r in
+            LoadSessionsUseCase(
+                repository: r.resolve(ReportsRepositoryProtocol.self)!,
+                currentUserProvider: r.resolve(CurrentUserProviding.self)!
+            )
+        }
+        container.register(LoadSessionFeedbackUseCase.self) { r in
+            LoadSessionFeedbackUseCase(repository: r.resolve(ReportsRepositoryProtocol.self)!)
+        }
+        container.register(DeleteSessionUseCase.self) { r in
+            DeleteSessionUseCase(repository: r.resolve(ReportsRepositoryProtocol.self)!)
         }
     }
 }

@@ -7,6 +7,9 @@
 
 import Foundation
 
+
+
+
 final class UpdateProfileUseCase: UseCase {
     
     typealias Input = User
@@ -19,6 +22,9 @@ final class UpdateProfileUseCase: UseCase {
     }
     
     func execute(_ input: User) async throws -> User {
+        guard InputValidator.isValidEmail(input.profile.email) else {
+            throw UseCaseError.invalidEmail
+        }
         return try await onBordingRepo.updateProfile(user: input)
     }
 }

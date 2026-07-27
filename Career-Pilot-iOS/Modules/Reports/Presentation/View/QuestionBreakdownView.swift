@@ -7,44 +7,58 @@
 
 import SwiftUI
 
+// QuestionBreakdownView.swift
+import SwiftUI
+
 struct QuestionBreakdownView: View {
-    let questions: [QuestionReview]
+    @StateObject private var viewModel: SessionDetailViewModel
     @State private var selectedIndex: Int = 0
+
+    init(viewModel: SessionDetailViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
 
     var body: some View {
         ZStack {
             Color.lightBackGround.ignoresSafeArea()
-
-            ScrollView {
-                VStack(alignment: .leading, spacing: Spacing.s16) {
-                    Text("Question Breakdown")
-                        .font(Font.size22Bold)
-                        .foregroundStyle(Color.primaryNavy)
-
-                    QuestionTabSelector(questions: questions, selectedIndex: $selectedIndex)
-
-                    if let question = questions[safe: selectedIndex] {
-                        QuestionPromptCard(questionNumber: question.questionNumber, questionText: question.questionText)
-                        QuestionStatsRow(question: question)
-                        CoachFeedbackCard(feedback: question.coachFeedback)
-                        TranscriptSnippetCard(transcript: question.transcript, flaggedWords: question.flaggedWords)
+            switch viewModel.state {
+            case .idle, .loading:
+                ProgressView()
+            case .error(let message):
+                Text(message).foregroundStyle(.red)
+            case .loaded:
+                if let feedback = viewModel.feedback {
+                    let questions = feedback.toQuestionReviews()
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: Spacing.s16) {
+                            Text("Question Breakdown")
+                                .font(Font.size22Bold)
+                                .foregroundStyle(Color.primaryNavy)
+                            QuestionTabSelector(questions: questions, selectedIndex: $selectedIndex)
+                            if questions.indices.contains(selectedIndex) {
+                                let question = questions[selectedIndex]
+                                QuestionPromptCard(questionNumber: question.questionNumber, questionText: question.questionText)
+                                QuestionStatsRow(question: question)
+                                CoachFeedbackCard(feedback: question.coachFeedback)
+                                TranscriptSnippetCard(transcript: question.transcript, flaggedWords: question.flaggedWords)
+                            }
+                        }
+                        .padding(.horizontal, 24)
+                        .padding(.top, 8)
                     }
+                    .scrollIndicators(.hidden)
                 }
-                .padding(.horizontal, 24)
-                .padding(.top, 8)
             }
-            .scrollIndicators(.hidden)
         }
         .navigationTitle("")
         .navigationBarBackButtonHidden(false)
+        .task {
+            await viewModel.loadFeedback()
+        }
     }
 }
 
-extension Array {
-    subscript(safe index: Int) -> Element? {
-        indices.contains(index) ? self[index] : nil
-    }
-}
+
 
 //#Preview {
 //    NavigationStack {

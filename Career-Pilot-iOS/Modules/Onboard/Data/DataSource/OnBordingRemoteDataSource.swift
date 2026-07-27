@@ -21,7 +21,7 @@ class OnBordingRemoteDataSourceImp: OnBordingRemoteDataSource{
         self.apiService = apiService
     }
     
-    func getAllTraks()  async throws -> [TrackDTO] {
+    func getAllTraks() async throws -> [TrackDTO] {
         let endPoint = OnBordingEndPointes.getAllTrackes
         
         return try await apiService.request(endPoint)
@@ -33,12 +33,12 @@ class OnBordingRemoteDataSourceImp: OnBordingRemoteDataSource{
             print("🌐 [RemoteDataSource] Sending update profile request to: \(endPoint.baseURL)/\(endPoint.path)")
             
             do {
-                let encoder = JSONEncoder()
-                encoder.outputFormatting = .prettyPrinted
-                if let data = try? encoder.encode(updateProfileRequestDTO),
-                   let jsonString = String(data: data, encoding: .utf8) {
-                    print("📦 [RemoteDataSource] Request Payload:\n\(jsonString)")
-                }
+//                let encoder = JSONEncoder()
+//                encoder.outputFormatting = .prettyPrinted
+//                if let data = try? encoder.encode(updateProfileRequestDTO),
+//                   let jsonString = String(data: data, encoding: .utf8) {
+//                    print("📦 [RemoteDataSource] Request Payload:\n\(jsonString)")
+//                }
                 
                 let updateProfileResponseDTO: UpdateProfileResponseDTO = try await apiService.request(endPoint)
                 print("✅ [RemoteDataSource] Profile updated successfully from server.")

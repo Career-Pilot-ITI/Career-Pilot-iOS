@@ -19,8 +19,6 @@ extension OnBoardingUser {
             id: id,
             phoneNumber: phoneNumber,
             profile: UserProfile(
-                id: id,
-                phoneNumber: phoneNumber,
                 displayName: fullName,
                 username: "ahmed_elsayyad",
                 email: email,
@@ -41,7 +39,7 @@ extension OnBoardingUser {
                 subscriptionTier: "",
                 coinBalance: 0,
                 onboardingCompleted: false,
-                trackName: selectedTrack?.title ?? ""
+                trackId: selectedTrack?.id ?? 0
             ),
             isNewUser: isNewUser
         )

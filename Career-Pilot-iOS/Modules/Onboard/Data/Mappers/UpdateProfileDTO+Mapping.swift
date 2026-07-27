@@ -14,8 +14,6 @@ extension UpdateProfileResponseDTO {
             id: id,
             phoneNumber: phoneNumber,
             profile: UserProfile(
-                id: id,
-                phoneNumber: phoneNumber,
                 displayName: displayName,
                 username: username,
                 email: email,
@@ -36,7 +34,7 @@ extension UpdateProfileResponseDTO {
                 subscriptionTier: subscriptionTier ?? "",
                 coinBalance: coinBalance,
                 onboardingCompleted: onboardingCompleted,
-                trackName: trackName ?? "",
+                trackId: trackId ?? 0
             ),
             isNewUser: newUser
         )
