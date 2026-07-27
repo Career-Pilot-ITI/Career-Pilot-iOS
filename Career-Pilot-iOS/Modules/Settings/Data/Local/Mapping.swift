@@ -9,8 +9,6 @@ import Foundation
 
 extension UserProfileEntity {
     func toUserSettingsDomain() -> UserSettingsDomain {
-        let avatar: URL? = avatarUrl.flatMap { URL(string: $0) }
-        let cv: URL = cvUrl.flatMap { URL(string: $0) } ?? URL(string: "about:blank")!
         let skillsSet: Set<SkillEntity> = (skills as? Set<SkillEntity>) ?? []
                let skillList: [Skill] = skillsSet.map { $0.toDomain() }
         
@@ -23,12 +21,11 @@ extension UserProfileEntity {
             targetRole: targetRole,
             industry: industry,
             experienceLevel: experienceLevel ?? "",
-            currentJobTitle: currentJobTitle ?? "",
-            cvUrl: cv,
+            currentJobTitle: currentJobTitle ?? "",  cvUrl: URL(string: "") ?? nil,
             skills: skillList,
             subscriptionTier: subscriptionTier,
             coinBalance: Int(coinBalance),
-            trackName: trackName ?? "",
+            trackName: "",
             trackId: 0
         )
     }

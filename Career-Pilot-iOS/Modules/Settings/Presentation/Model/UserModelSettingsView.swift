@@ -17,7 +17,7 @@ struct UserModelSettingsView{
     var coinBalance : String
     var subscriptionPlan : String
     var phoneNumber : String
-    var cvUrl : URL
+    var cvUrl : URL?
     
 
 }

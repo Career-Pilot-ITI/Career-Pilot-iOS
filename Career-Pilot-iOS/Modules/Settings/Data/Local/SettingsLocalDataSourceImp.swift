@@ -38,9 +38,9 @@ class SettingsLocalDataSourceImp: SettingsLocalDataSource {
                 
                 objectInContext.displayName = userProfileEntity.displayName
                 objectInContext.email = userProfileEntity.email
-                objectInContext.trackName = userProfileEntity.trackName
+             
                 objectInContext.experienceLevel = userProfileEntity.experienceLevel
-                objectInContext.cvUrl = userProfileEntity.cvUrl
+               
                 objectInContext.skills = userProfileEntity.skills
                 objectInContext.subscriptionTier = userProfileEntity.subscriptionTier
                 objectInContext.coinBalance = userProfileEntity.coinBalance

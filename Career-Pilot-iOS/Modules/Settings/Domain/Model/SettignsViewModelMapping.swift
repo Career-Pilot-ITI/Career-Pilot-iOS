@@ -20,7 +20,7 @@ extension UserSettingsDomain {
             coinBalance: "\(coinBalance)",
             subscriptionPlan: subscriptionTier ?? "Free",
             phoneNumber: "",
-            cvUrl:cvUrl
+            cvUrl: cvUrl ?? nil
         )
     }
 }

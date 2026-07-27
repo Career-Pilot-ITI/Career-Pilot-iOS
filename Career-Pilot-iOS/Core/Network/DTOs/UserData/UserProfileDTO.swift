@@ -1,19 +1,20 @@
 //
-//  UpdateUserProfileRequest.swift
+//  UserProfileDTO.swift
 //  Career-Pilot-iOS
 //
-//  Created by Ahmed El-Sayyad Mohamed on 21/07/2026.
+//  Created by Moaz on 17/07/2026.
 //
+
 import Foundation
 import CoreData
 
-struct UpdateProfileResponseDTO: Decodable {
-    let id: Int
-    let phoneNumber: String
-    let displayName: String
-    let username: String
-    let email: String
+struct UserProfileDTO: Decodable {
+    let displayName: String?
+    let username: String?
+    let email: String?
     let avatarUrl: String?
+    let avatarFileId: Int?
+    let cvFileId: Int?
     let gender: String?
     let dateOfBirth: String?
     let targetRole: String?
@@ -22,15 +23,15 @@ struct UpdateProfileResponseDTO: Decodable {
     let currentJobTitle: String?
     let yearsOfExperience: Int?
     let cvUrl: String?
-    let skills: [SkillDTO]
+    let skills: [SkillDTO]?
     let targetCompanies: [String]?
     let educationLevel: String?
     let timezone: String?
-    let termsAccepted: Bool
+    let termsAccepted: Bool?
     let subscriptionTier: String?
-    let coinBalance: Int
-    let onboardingCompleted: Bool
-    let trackId: Int?
+    let coinBalance: Int?
+    let onboardingCompleted: Bool?
+    let trackName: String?
 }
 extension UserDTO {
     func toEntity(context: NSManagedObjectContext) -> UserEntity {
@@ -48,18 +49,21 @@ extension UserProfileDTO {
         profileEntity.displayName = displayName
         profileEntity.username = username
         profileEntity.email = email
+        profileEntity.avatarUrl = avatarUrl
         profileEntity.gender = gender
         profileEntity.targetRole = targetRole
         profileEntity.industry = industry
         profileEntity.experienceLevel = experienceLevel
         profileEntity.currentJobTitle = currentJobTitle
-        profileEntity.yearsOfExperience = Int64(Int32(yearsOfExperience ?? 0))
+        profileEntity.yearsOfExperience = Int32(yearsOfExperience ?? 0)
+        profileEntity.cvUrl = cvUrl
         profileEntity.educationLevel = educationLevel
         profileEntity.timezone = timezone
         profileEntity.termsAccepted = termsAccepted ?? false
         profileEntity.subscriptionTier = subscriptionTier
-        profileEntity.coinBalance = Int64(Int32(Int64(coinBalance ?? 0)))
+        profileEntity.coinBalance = Int32(Int64(coinBalance ?? 0))
         profileEntity.onboardingCompleted = onboardingCompleted ?? false
+        profileEntity.trackName = trackName
         
         
         if let skills = skills {
@@ -89,7 +93,7 @@ extension UserProfileDTO {
             skills: skillList,
             subscriptionTier: subscriptionTier,
             coinBalance: coinBalance ?? 0,
-            trackName: "",
+            trackName: trackName ?? "",
             trackId: 0
         )
     }

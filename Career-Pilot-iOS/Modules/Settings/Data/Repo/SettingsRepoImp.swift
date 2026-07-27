@@ -21,14 +21,14 @@ class SettingsRepoImp : SettingsRepo  {
     func fetchUserData() async throws -> UserSettingsDomain {
         if let cachedUser = try await local.fetchUserData() {
             var user = cachedUser.toUserSettingsDomain()
-            user.avatar =  await try cachedUser.avatarUrl == nil ? nil : ImageLoader.loadImage(from: URL(string:cachedUser.avatarUrl!)!)
+            
             return user
         }
         do{
             let remoteUser =  try await remote.getUserData()
             let cachedUser = try await local.saveUserData(user: remoteUser)
             var user =  cachedUser.toUserSettingsDomain()
-            user.avatar = await try cachedUser.avatarUrl == nil ? nil : ImageLoader.loadImage(from: URL(string:cachedUser.avatarUrl!)!)
+            
             return user
         }
         catch{
@@ -42,7 +42,7 @@ class SettingsRepoImp : SettingsRepo  {
                 let remoteUser = try await remote.getUserData()
                 let cachedUser = try await local.saveUserData(user: remoteUser)
                 var user = cachedUser.toUserSettingsDomain()
-                user.avatar = await try cachedUser.avatarUrl == nil ? nil : ImageLoader.loadImage(from: URL(string: cachedUser.avatarUrl!)!)
+           
                
             } catch {
                 print("Error in refreshing user data: \(error)")

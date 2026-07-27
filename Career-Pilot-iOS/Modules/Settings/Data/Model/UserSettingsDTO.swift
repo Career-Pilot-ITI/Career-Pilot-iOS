@@ -53,15 +53,13 @@ extension UserSettingsDTO {
         userEntity.isNewUser = isnewUser ?? false
         // 2. Handle the One-to-One relationship for UserProfileEntity
         let profileEntity = userEntity.profile ?? UserProfileEntity(context: context)
-        profileEntity.avatarUrl = avatarUrl
-        profileEntity.coinBalance = Int32(coinBalance ?? 0)
+        profileEntity.coinBalance = Int64(Int32(coinBalance ?? 0))
         profileEntity.currentJobTitle = currentJobTitle
-        profileEntity.cvUrl = cvUrl
         
         // Convert Date string to Date object if needed (adjust format to match your API)
         if let dobString = dateOfBirth {
             let formatter = ISO8601DateFormatter()
-            profileEntity.dateOfBirth = formatter.date(from: dobString)
+            profileEntity.dateOfBirth = dobString
         }
         
         profileEntity.displayName = displayName
@@ -75,9 +73,8 @@ extension UserSettingsDTO {
         profileEntity.targetRole = targetRole
         profileEntity.termsAccepted = termsAccepted ?? false
         profileEntity.timezone = timezone
-        profileEntity.trackName = trackName
         profileEntity.username = username
-        profileEntity.yearsOfExperience = Int32(yearsOfExperience ?? 0)
+        profileEntity.yearsOfExperience = Int64(Int32(yearsOfExperience ?? 0))
         
         // 3. Clear and Map Skills Relationship
         if let existingSkills = profileEntity.skills as? Set<SkillEntity> {
@@ -89,30 +86,18 @@ extension UserSettingsDTO {
                 let skillEntity = SkillEntity(context: context)
                 skillEntity.skillName = skillDTO.skillName
                 skillEntity.category = skillDTO.category
-                skillEntity.performanceScore = Int32(skillDTO.performanceScore ?? 0)
-                skillEntity.timesAssessed = Int32(skillDTO.timesAssessed ?? 0)
+                skillEntity.performanceScore = Int64(Int32(skillDTO.performanceScore ?? 0))
+                skillEntity.timesAssessed = Int64(Int32(skillDTO.timesAssessed ?? 0))
                 skillEntity.lastAssessedAt = skillDTO.lastAssessedAt
                 skillEntity.profile = profileEntity
             }
         }
-        
-        // 4. Clear and Map Target Companies Relationship
-        if let existingCompanies = profileEntity.targetCompanies as? Set<TargetCompanyEntity> {
-            existingCompanies.forEach { context.delete($0) }
-        }
-        
-        if let companyNames = targetCompanies {
-            for name in companyNames {
-                let companyEntity = TargetCompanyEntity(context: context)
-                companyEntity.value = name
-                companyEntity.profile = profileEntity
-            }
-        }
-        
-        // Link profile back to user
-        profileEntity.user = userEntity
-        userEntity.profile = profileEntity
-        
         return userEntity
-    }
-}
+
+       
+        }
+        
+        }
+        
+    
+

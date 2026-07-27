@@ -16,7 +16,7 @@ struct UserSettingsDomain{
     let industry: String?
     let experienceLevel: String
     let currentJobTitle: String
-    let cvUrl: URL
+    let cvUrl: URL?
     let skills: [Skill]
     let subscriptionTier: String?
     let coinBalance: Int
