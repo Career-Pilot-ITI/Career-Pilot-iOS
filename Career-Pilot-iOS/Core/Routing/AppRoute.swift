@@ -42,8 +42,10 @@ enum SettingsRoute : Hashable {
 }
 
 enum ReportsRoute: Hashable {
-    case sessionDetail(metrics: [RadarMetric], suggestions: [CoachingSuggestion])
-    case sessionHistory(sessionCount: Int, sessionAvgScore: Double, sessions: [Session])
-    case questionBreakdown(questions: [QuestionReview])
+//    case sessionDetail(metrics: [RadarMetric], suggestions: [CoachingSuggestion])
+//    case sessionHistory(sessionCount: Int, sessionAvgScore: Double, sessions: [Session])
+//    case questionBreakdown(questions: [QuestionReview])
+    case sessionDetail(sessionId: Int)
+    case questionBreakdown(sessionId: Int)
 }
 

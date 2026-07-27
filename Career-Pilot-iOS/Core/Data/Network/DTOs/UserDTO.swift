@@ -16,8 +16,6 @@ struct UserDTO: Decodable {
 }
 
 struct UserProfileDTO: Decodable {
-    let id: Int
-    let phoneNumber: String
     let displayName: String?
     let username: String?
     let email: String?

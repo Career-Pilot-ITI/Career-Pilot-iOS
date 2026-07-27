@@ -46,5 +46,19 @@ extension DIContainer{
                 speechService: resolver.resolve(SpeechPlaybackServicing.self)!, speechRecognitionService: resolver.resolve(SpeechRecognitionServicing.self)!
             )
         }
+        
+        container.register(ReportsListViewModel.self) { r in
+            ReportsListViewModel(
+                loadSessionsUseCase: r.resolve(LoadSessionsUseCase.self)!,
+                deleteSessionUseCase: r.resolve(DeleteSessionUseCase.self)!
+            )
+        }
+
+        container.register(SessionDetailViewModel.self) { (r, sessionId: Int) in
+            SessionDetailViewModel(
+                sessionId: sessionId,
+                loadFeedbackUseCase: r.resolve(LoadSessionFeedbackUseCase.self)!
+            )
+        }
     }
 }
