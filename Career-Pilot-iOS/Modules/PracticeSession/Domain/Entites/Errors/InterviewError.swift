@@ -30,7 +30,7 @@ extension InterviewError: LocalizedError {
         case .sessionQuotaExceeded:
             return "You have 0 sessions remaining. Subscribe or buy more to continue."
         case .serverError(let message):
-            return "Server Error: \(message)"
+            return "\(message)"
         case .unknown(let message):
             return message
         }

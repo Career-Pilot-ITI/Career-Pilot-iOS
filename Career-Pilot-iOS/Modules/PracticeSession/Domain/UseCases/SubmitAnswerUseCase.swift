@@ -21,11 +21,7 @@ actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
     }
     
     func execute(session: InterviewSession, submitAnsRequest: SubmitAnswerRequest) async throws -> InterviewSession {
-        
-//        guard let question = session. else {
-//            throw InterviewError.sessionNotFound
-//        }
-        
+
         guard validationService.canSubmitAnswer(session: session) else {
             throw InterviewError.invalidState(current: session.status, attempted: "submitAnswer")
         }
@@ -42,7 +38,7 @@ actor SubmitAnswerUseCase: SubmitAnswerUseCaseProtocol {
         var updatedSubmitAnsRequest: SubmitAnswerRequest = submitAnsRequest
         
         
-        print("Transcript: \(submitAnsRequest.transcript ?? "No transcript")")
+        print("Transcript: \(submitAnsRequest.transcript)")
 
         //For getting the url from server
         updatedSubmitAnsRequest.audioUrl = try await userDataRepository.uploadUserFile(fileURL: submitAnsRequest.audioAsUrl, fileType: .Audio).url

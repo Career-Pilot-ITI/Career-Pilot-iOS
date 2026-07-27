@@ -6,7 +6,7 @@ enum InterviewType: Hashable{
     var interviewConfiguration: InterviewConfiguration{
         switch self{
         case.Classic:
-            return InterviewConfiguration(maxQuestions: 5, maxAnswerDuration: TimeInterval(120), maxInterviewDuration: TimeInterval(1200), silenceTimeout: TimeInterval(5))
+            return InterviewConfiguration(maxQuestions: 3, maxAnswerDuration: TimeInterval(2), maxInterviewDuration: TimeInterval(120), silenceTimeout: TimeInterval(5))
         }
     }
 }

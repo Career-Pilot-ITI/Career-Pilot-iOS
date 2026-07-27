@@ -12,9 +12,9 @@ extension SessionStateDTO {
     func toDomain(configuration: InterviewConfiguration) -> InterviewSession {
 
         InterviewSession(
-            id: String(sessionId),
-            status: status.mapStatusToDomain(),
-            currentQuestionIndex: answeredCount,
+            id: String(sessionId ?? 0),
+            status: (status ?? "").mapStatusToDomain(),
+            currentQuestionIndex: answeredCount ?? 0,
             questions: [],
             answers: [],
             configuration: configuration,

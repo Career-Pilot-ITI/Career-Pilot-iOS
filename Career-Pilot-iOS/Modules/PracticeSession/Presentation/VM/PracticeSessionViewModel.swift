@@ -47,7 +47,9 @@ final class PracticeSessionViewModel: ObservableObject {
     }
 
     var totalQuestions: Int {
-        session?.configuration.maxQuestions ?? 0
+        (
+            session?.configuration.maxQuestions  ?? 0
+        ) - 1
     }
 
     var questionsRemaining: Int {
@@ -233,6 +235,7 @@ final class PracticeSessionViewModel: ObservableObject {
     }
 
     func submitAnswerManually() {
+//        screenState = .error(InterviewError.networkUnavailable)
         finishRecordingAndSubmit()
     }
 
@@ -243,6 +246,7 @@ final class PracticeSessionViewModel: ObservableObject {
         do {
             let restored = try await resumeUseCase.execute(session: tempSession)
             session = restored
+            print("Let's resumeAfterNetworkDrop: \(session!)")
             resumeUIState(for: restored)
         } catch {
             // Don't route back through onError here — a failed resume attempt
@@ -289,8 +293,6 @@ final class PracticeSessionViewModel: ObservableObject {
         submitTask?.cancel()
         submitTask = Task {
             guard let tempSession = session else { return }
-            
-            //file:///Users/mohamed/Library/Developer/CoreSimulator/Devices/CD29D4D6-B581-41CE-86CB-B816F1261257/data/Containers/Shared/AppGroup/626553A3-43FF-409F-BF4E-84101AE7D052/File%20Provider%20Storage/a%CC%82%C2%80%C2%8Ea%CC%82%C2%81%C2%A8%C3%98%C2%B4%C3%98%C2%A7%C3%98%C2%B1%C3%98%C2%B9%20%C3%98%C2%A7U%CC%80%C2%84U%CC%80%C2%81%C3%98%C2%B1U%CC%80%C2%8AU%CC%80%C2%82%20%C3%98%C2%B9%C3%98%C2%B2U%CC%80%C2%8A%C3%98%C2%B2%20%C3%98%C2%A7U%CC%80%C2%84U%CC%80%3F%C3%98%C2%B5%C3%98%C2%B1U%CC%80%C2%8A%2094a%CC%82%C2%81%C2%A9.m4a
 
             do {
                 let transcript: String = try await speechRecognitionService.transcribe(audioAt: audioResult.fileURL)
@@ -298,7 +300,7 @@ final class PracticeSessionViewModel: ObservableObject {
                     sessionId: tempSession.id,
                     questionId: tempSession.currentQuestion.id,
                     transcript: transcript,
-                    sessionElapsedSeconds: Int(elapsedSessionTime * 1000),
+                    sessionElapsedSeconds: Int(elapsedSessionTime),
                     durationMs: Int(elapsedRecordingTime * 1000),
                     audioAsUrl: audioResult.fileURL,
                     audioUrl: audioResult.fileURL.absoluteString,

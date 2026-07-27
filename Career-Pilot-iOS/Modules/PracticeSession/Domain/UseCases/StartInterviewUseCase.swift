@@ -24,9 +24,10 @@ final class StartInterviewUseCase: StartInterviewUseCaseProtocol {
             // Need to get trackId
             let user = try await userLDS.getUser()
 
+//            let trackId = user?.profile.trackId
             let trackId = 5
-            
-            let startInterviewSessionRequest = StartInterviewSessionRequest(trackId: trackId, questionCount:5, durationMinutes: 120)
+
+            let startInterviewSessionRequest = StartInterviewSessionRequest(trackId: trackId, questionCount: interviewConfiguration.maxQuestions, durationMinutes: Int(interviewConfiguration.maxInterviewDuration))
             
             return try await repository.startInterview(startInterviewSessionRequest: startInterviewSessionRequest)
         } catch {

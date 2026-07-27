@@ -45,7 +45,7 @@ enum InterviewSessionEndPointes: APIEndpoint {
 
     var headers: [String: String] {
             return ["Content-Type": "application/json",
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWQiOjEsImVtYWlsIjoiRXlhZHc4N0BnbWFpbC5jb20iLCJzdWIiOiJFeWFkdzg3IiwiaWF0IjoxNzg1MDc2NjU4LCJleHAiOjE3ODU0MzY2NTh9.OdAp3AWlrzCmjKCYk_UQnXWtq8PLeOnGyeNKMbYoJvw"
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWQiOjEsInN1YiI6InVzZXJfMTMyODM3IiwiaWF0IjoxNzg1MTYzOTkxLCJleHAiOjE3ODU1MjM5OTF9.JEPGUo5zmBHLYmRD1MUyPdXjUMhbti1jTQeUq_wOoCw"
             ]
     }
 
