@@ -16,15 +16,18 @@ final class StartInterviewUseCase: StartInterviewUseCaseProtocol {
 
     func execute(interviewConfiguration: InterviewConfiguration) async throws -> NewSession {
         do {
+            
+            let tokenProvieder: TokenProviding = AuthTokenProvider(tokenStore: KeychainAuthTokenStore())
+            
+            print("Token: \(try await tokenProvieder.getAccessToken())")
+            
             // Need to get trackId
             let user = try await userLDS.getUser()
-            guard let user = user else{
-                throw InterviewError.invalidState(current: .aiAsking, attempted: "User Not Found")
-            }
-            let trackId = user.profile.trackId
-            
-            
-            let startInterviewSessionRequest = StartInterviewSessionRequest(trackId: trackId, questionCount: Int(interviewConfiguration.maxInterviewDuration), durationMinutes: Int(interviewConfiguration.maxInterviewDuration))
+
+//            let trackId = user?.profile.trackId
+            let trackId = 5
+
+            let startInterviewSessionRequest = StartInterviewSessionRequest(trackId: trackId, questionCount: interviewConfiguration.maxQuestions, durationMinutes: Int(interviewConfiguration.maxInterviewDuration))
             
             return try await repository.startInterview(startInterviewSessionRequest: startInterviewSessionRequest)
         } catch {

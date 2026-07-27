@@ -122,6 +122,7 @@ final class AudioRecordingService: NSObject, AudioRecordingServicing {
         isRecording = false
 
         let duration = Date().timeIntervalSince(startTime)
+
         let url = recorder.url
 
         guard FileManager.default.fileExists(atPath: url.path) else {

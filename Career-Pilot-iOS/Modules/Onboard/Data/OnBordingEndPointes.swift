@@ -13,8 +13,8 @@ enum OnBordingEndPointes: APIEndpoint{
     case getAllTrackes
     case updateUserProfile(updateProfileRequestDTO: UpdateProfileRequestDTO)
     
-    var baseURL: String{
-        "https://ed39-102-188-31-161.ngrok-free.app"
+    var baseURL: String {
+        return "https://afd9-196-130-248-12.ngrok-free.app"
     }
     
     var path: String{

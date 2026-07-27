@@ -125,7 +125,7 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
         let speechService = SpeechRecognitionService()
         var audioAsText: String = "No text yes"
 
-        audioAsText = try await speechService.transcribe(audioAt: submitAnswerRequest.audioUrl)
+        audioAsText = try await speechService.transcribe(audioAt: submitAnswerRequest.audioAsUrl)
 
 
         print("Audio As Text: \(audioAsText)")

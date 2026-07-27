@@ -12,21 +12,22 @@ enum InterviewSessionEndPointes: APIEndpoint {
     case submitAnswer(SubmitAnswerRequestDTO)
     case resumeSession(sessionId: String)
     case getFeedback(sessionId: String)
-
-    var baseURL: String {
-        return "http://localhost:8080/api/v1"
+    
+    var requiresAuthentication: Bool{
+        return true
     }
+
 
     var path: String {
         switch self {
         case .startSession:
             return "api/v1/interviews/sessions"
         case .submitAnswer(let submitRequest):
-            return "api/v1//interviews/sessions/\(submitRequest.sessionId)/answer"
+            return "api/v1/interviews/sessions/\(submitRequest.sessionId)/answer"
         case .resumeSession(let sessionId):
-            return "api/v1//interviews/sessions/\(sessionId)/state"
+            return "api/v1/interviews/sessions/\(sessionId)/state"
         case .getFeedback(let sessionId):
-            return "api/v1//interviews/sessions/\(sessionId)/feedback"
+            return "api/v1/interviews/sessions/\(sessionId)/feedback"
         }
     }
 
@@ -40,12 +41,8 @@ enum InterviewSessionEndPointes: APIEndpoint {
     }
 
     var headers: [String: String] {
-        switch self {
-        case .startSession, .submitAnswer:
-            return ["Content-Type": "application/json"]
-        case .resumeSession, .getFeedback:
-            return [:]
-        }
+            return ["Content-Type": "application/json",            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWQiOjEsInN1YiI6InVzZXJfMTMyODM3IiwiaWF0IjoxNzg1MTYzOTkxLCJleHAiOjE3ODU1MjM5OTF9.JEPGUo5zmBHLYmRD1MUyPdXjUMhbti1jTQeUq_wOoCw"
+            ]
     }
 
     var body: Data? {
