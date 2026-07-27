@@ -46,7 +46,7 @@ struct UploadCvView: View {
             
             Spacer()
         }
-        .fileImporter(isPresented: $isImporterPresented, allowedContentTypes: [.pdf,docxType]){ result in
+        .fileImporter(isPresented: $isImporterPresented, allowedContentTypes: [.pdf,docxType,.mp3,.audio,.mpeg4Audio,.appleProtectedMPEG4Audio]){ result in
             vm.onCvResult(result: result)
         }
     }

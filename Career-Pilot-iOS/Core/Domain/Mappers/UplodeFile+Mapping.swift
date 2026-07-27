@@ -9,6 +9,6 @@ import Foundation
 
 extension UploadFileResponseDTO{
     func toDomain() -> UploadedFile{
-        return UploadedFile(id: id, originalName: originalName, url: url, sizeBytes: sizeBytes, createdAt: createdAt.ISO8601Format())
+        return UploadedFile(id: id, originalName: originalName, url: url, sizeBytes: sizeBytes, createdAt: createdAt)
     }
 }

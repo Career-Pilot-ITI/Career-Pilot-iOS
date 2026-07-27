@@ -13,5 +13,5 @@ struct UploadFileResponseDTO: Decodable {
     let originalName: String
     let url: String
     let sizeBytes: Int
-    let createdAt: Date
+    let createdAt: String
 }

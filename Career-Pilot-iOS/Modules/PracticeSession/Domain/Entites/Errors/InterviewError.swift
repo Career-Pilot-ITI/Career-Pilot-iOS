@@ -10,7 +10,7 @@ enum InterviewError: Error, Equatable {
     case sessionNotFound
     case networkUnavailable
     case sessionQuotaExceeded
-    case repositoryError(String)
+    case serverError(String)
     case unknown(String)
 }
 
@@ -29,7 +29,7 @@ extension InterviewError: LocalizedError {
             return "Connection lost. Please check your network and try again."
         case .sessionQuotaExceeded:
             return "You have 0 sessions remaining. Subscribe or buy more to continue."
-        case .repositoryError(let message):
+        case .serverError(let message):
             return "Server Error: \(message)"
         case .unknown(let message):
             return message
@@ -41,11 +41,13 @@ extension InterviewError: LocalizedError {
 extension InterviewError {
     static func map(_ error: Error) -> InterviewError {
         if let domainError = error as? InterviewError {
-            return domainError
+            return domainError // errors that i already throwed
         }
 
         if let networkError = error as? NetworkError {
             switch networkError {
+            case.noInternet:
+                return.networkUnavailable
             case .serverError(let statusCode, let data):
                 switch statusCode {
                 case 403:
@@ -56,7 +58,7 @@ extension InterviewError {
                     let message = data
                         .flatMap { try? JSONDecoder().decode(APIErrorResponse.self, from: $0) }?
                         .message
-                    return .repositoryError(message ?? "Request failed with status \(statusCode)")
+                    return .serverError(message ?? "Request failed with status \(statusCode)")
                 }
             // handle NetworkError's other cases here too, whatever they are
             default:
@@ -68,7 +70,7 @@ extension InterviewError {
             return .networkUnavailable
         }
 
-        return .repositoryError(error.localizedDescription)
+        return .serverError(error.localizedDescription)
     }
 }
 

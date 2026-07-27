@@ -24,33 +24,34 @@ class InterviewSessionRemoteDataSourceImp: InterviewSessionRemoteDataSource {
 
     func startInterview(startInterviewSessionRequest: StartInterviewSessionRequest) async throws -> NewSessionDTO {
         let startInterviewEndPoint = InterviewSessionEndPointes.startSession(startInterviewSessionRequest.toDTO())
-        print("startInterview:\(startInterviewEndPoint)")
+        print("startInterviewRDS:\(startInterviewEndPoint)")
         let result: NetworkResponseDTO<NewSessionDTO> =  try await apiService.request(startInterviewEndPoint)
         print("Result: \(result)")
         return result.data
     }
 
     func submitAnswer(submitAnswerRequest: SubmitAnswerRequest) async throws -> SubmitAnswerResponseDTO {
-        print("submitAnswer: \(submitAnswerRequest)")
+        print("submitAnswerRDS: \(submitAnswerRequest)")
         let submitAnswerEndPoint = InterviewSessionEndPointes.submitAnswer(submitAnswerRequest.toDTO())
         let result: NetworkResponseDTO<SubmitAnswerResponseDTO> = try await apiService.request(submitAnswerEndPoint)
+        print("Result: \(result)")
         return result.data
     }
 
     func resumeInterview(sessionId: String) async throws -> SessionStateDTO {
-        print("resumeInterview: \(sessionId)")
+        print("resumeInterviewRDS: \(sessionId)")
 
         let resumeEndPoint = InterviewSessionEndPointes.resumeSession(sessionId: sessionId)
         let result: NetworkResponseDTO<SessionStateDTO> = try await apiService.request(resumeEndPoint)
-    
+        print("Result: \(result)")
         return result.data
     }
 
     func finishInterview(finishInterviewRequest: FinishInterviewRequest) async throws -> FeedbackReportDTO {
-        print("FinshInterview: \(finishInterviewRequest)")
+        print("FinshInterviewRDS: \(finishInterviewRequest)")
         let finishEndPoint = InterviewSessionEndPointes.getFeedback(sessionId: finishInterviewRequest.sessionID)
         let result: NetworkResponseDTO<FeedbackReportDTO> = try await apiService.request(finishEndPoint)
-    
+        print("Result: \(result)")
         return result.data
     }
 

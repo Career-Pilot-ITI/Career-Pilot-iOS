@@ -19,7 +19,7 @@ struct StartInterviewSessionRequestDTO: Encodable {
 struct SubmitAnswerRequestDTO: Encodable {
     var sessionId: String
     var questionId: String
-    var transcript: String?
+    var transcript: String
     let sessionElapsedSeconds: Int?
     let durationMs: Int
     let audioAsUrl: URL
@@ -41,7 +41,7 @@ struct FinishInterviewRequestDTO{
 //MARK: Mappers
 extension SubmitAnswerRequest{
     func toDTO() -> SubmitAnswerRequestDTO{
-        return SubmitAnswerRequestDTO(sessionId: sessionId, questionId: questionId, sessionElapsedSeconds: sessionElapsedSeconds, durationMs: durationMs, audioAsUrl: audioAsUrl, audioUrl: audioUrl, words: words)
+        return SubmitAnswerRequestDTO(sessionId: sessionId, questionId: questionId, transcript: transcript, sessionElapsedSeconds: sessionElapsedSeconds, durationMs: durationMs, audioAsUrl: audioAsUrl, audioUrl: audioUrl, words: words)
     }
 }
 

@@ -19,7 +19,7 @@ struct StartInterviewSessionRequest: Encodable {
 struct SubmitAnswerRequest: Encodable {
     var sessionId: String
     var questionId: String
-    var transcript: String?
+    var transcript: String
     let sessionElapsedSeconds: Int?
     let durationMs: Int
     var audioAsUrl: URL

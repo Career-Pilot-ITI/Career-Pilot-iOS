@@ -18,7 +18,7 @@ enum InterviewSessionEndPointes: APIEndpoint {
     }
 
     var baseURL: String {
-        return "https://dfa0-41-41-134-165.ngrok-free.app/"
+        return "https://afd9-196-130-248-12.ngrok-free.app/"
     }
 
     var path: String {
@@ -26,11 +26,11 @@ enum InterviewSessionEndPointes: APIEndpoint {
         case .startSession:
             return "api/v1/interviews/sessions"
         case .submitAnswer(let submitRequest):
-            return "api/v1//interviews/sessions/\(submitRequest.sessionId)/answer"
+            return "api/v1/interviews/sessions/\(submitRequest.sessionId)/answer"
         case .resumeSession(let sessionId):
-            return "api/v1//interviews/sessions/\(sessionId)/state"
+            return "api/v1/interviews/sessions/\(sessionId)/state"
         case .getFeedback(let sessionId):
-            return "api/v1//interviews/sessions/\(sessionId)/feedback"
+            return "api/v1/interviews/sessions/\(sessionId)/feedback"
         }
     }
 
@@ -45,7 +45,8 @@ enum InterviewSessionEndPointes: APIEndpoint {
 
     var headers: [String: String] {
             return ["Content-Type": "application/json",
-                    "Authorization": " Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWQiOjEsImVtYWlsIjoiRXlhZHc4N0BnbWFpbC5jb20iLCJzdWIiOiJFeWFkdzg3IiwiaWF0IjoxNzg1MDc2NjU4LCJleHAiOjE3ODU0MzY2NTh9.OdAp3AWlrzCmjKCYk_UQnXWtq8PLeOnGyeNKMbYoJvw"]
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWQiOjEsImVtYWlsIjoiRXlhZHc4N0BnbWFpbC5jb20iLCJzdWIiOiJFeWFkdzg3IiwiaWF0IjoxNzg1MDc2NjU4LCJleHAiOjE3ODU0MzY2NTh9.OdAp3AWlrzCmjKCYk_UQnXWtq8PLeOnGyeNKMbYoJvw"
+            ]
     }
 
     var body: Data? {

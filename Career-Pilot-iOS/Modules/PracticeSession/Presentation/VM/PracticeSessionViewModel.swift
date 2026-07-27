@@ -116,10 +116,7 @@ final class PracticeSessionViewModel: ObservableObject {
         elapsedSessionTimer?.invalidate()
     }
 
-    // MARK: - Single error funnel
-    // Every failure path in this ViewModel should end up here instead of
-    // setting `screenState = .error(...)` directly, so recovery behavior
-    // (resume vs finish vs let-them-answer-anyway) stays consistent.
+    // MARK: - Single error func
     func onError(error: Error) async {
         print("onError: \(error)")
 
@@ -128,8 +125,6 @@ final class PracticeSessionViewModel: ObservableObject {
         } else if let speechRecognitionError = error as? SpeechRecognitionError {
             handle(speechRecognitionError)
         } else if let speechPlaybackError = error as? SpeechPlaybackError {
-            // AI voice failed to play — the question text is already on screen,
-            // so let the user answer instead of dead-ending on an error state.
             print("Speech playback failed: \(speechPlaybackError.localizedDescription)")
             beginWaitingForAnswer()
         } else {
@@ -146,7 +141,7 @@ final class PracticeSessionViewModel: ObservableObject {
             }
             await finish()
 
-        case .networkUnavailable, .repositoryError, .unknown, .invalidState, .sessionNotFound:
+        case .networkUnavailable, .serverError, .unknown, .invalidState, .sessionNotFound:
             guard session != nil else {
                 // Nothing to resume — e.g. start() itself failed before a session existed.
                 screenState = .error(error)
@@ -172,7 +167,7 @@ final class PracticeSessionViewModel: ObservableObject {
             applyNewSession(newSession)
             beginAITurn(question: newSession.currentQuestion)
         } catch {
-            await screenState = .error(error)
+            screenState = .error(error)
         }
     }
 
@@ -294,6 +289,8 @@ final class PracticeSessionViewModel: ObservableObject {
         submitTask?.cancel()
         submitTask = Task {
             guard let tempSession = session else { return }
+            
+            //file:///Users/mohamed/Library/Developer/CoreSimulator/Devices/CD29D4D6-B581-41CE-86CB-B816F1261257/data/Containers/Shared/AppGroup/626553A3-43FF-409F-BF4E-84101AE7D052/File%20Provider%20Storage/a%CC%82%C2%80%C2%8Ea%CC%82%C2%81%C2%A8%C3%98%C2%B4%C3%98%C2%A7%C3%98%C2%B1%C3%98%C2%B9%20%C3%98%C2%A7U%CC%80%C2%84U%CC%80%C2%81%C3%98%C2%B1U%CC%80%C2%8AU%CC%80%C2%82%20%C3%98%C2%B9%C3%98%C2%B2U%CC%80%C2%8A%C3%98%C2%B2%20%C3%98%C2%A7U%CC%80%C2%84U%CC%80%3F%C3%98%C2%B5%C3%98%C2%B1U%CC%80%C2%8A%2094a%CC%82%C2%81%C2%A9.m4a
 
             do {
                 let transcript: String = try await speechRecognitionService.transcribe(audioAt: audioResult.fileURL)
