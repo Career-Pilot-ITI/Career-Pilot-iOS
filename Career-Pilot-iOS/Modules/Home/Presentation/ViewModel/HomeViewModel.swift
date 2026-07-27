@@ -7,27 +7,91 @@
 
 import Foundation
 
-class HomeViewModel: ObservableObject {
+@MainActor
+final class HomeViewModel: ObservableObject {
+
+    // MARK: Published Properties
+
     @Published var usedSessions: Double = 1.0
     @Published var totalSessions: Double = 3.0
+
+    @Published var microphoneEnabled = false
+    @Published var showSettingsAlert = false
+    @Published var showOpenSettingsConfirmation = false
     
     @Published var recentSessions: [SessionData] = []
     @Published var mockCareerItems: [CareerItem] = []
-    
+
     @Published var user: User?
-    
-    // state
+
     @Published var isLoading = true
 
-    // useCases
+    // MARK: Dependencies
+
     private let getCurrentUserUseCase: GetCurrentUserUseCaseProtocol
+    private let permissionManager: MicrophonePermissionManaging
 
+    // MARK: Init
 
-    init(getCurrentUserUseCase: GetCurrentUserUseCaseProtocol) {
+    init(
+        getCurrentUserUseCase: GetCurrentUserUseCaseProtocol,
+        permissionManger: MicrophonePermissionManaging
+    ) {
         self.getCurrentUserUseCase = getCurrentUserUseCase
+        self.permissionManager = permissionManger
     }
 
-    @MainActor
+    // MARK: Permission
+
+    func onAppear() {
+        refreshMicrophonePermission()
+    }
+
+    func refreshMicrophonePermission() {
+        microphoneEnabled = permissionManager.permissionStatus() == .granted
+    }
+
+    func microphoneToggleChanged(_ enabled: Bool) {
+
+        if enabled {
+
+            switch permissionManager.permissionStatus() {
+
+            case .granted:
+                microphoneEnabled = true
+
+            case .undetermined:
+
+                permissionManager.requestPermission { [weak self] granted in
+                    guard let self else { return }
+
+                    Task { @MainActor in
+                        self.microphoneEnabled = granted
+
+                        if !granted {
+                            self.showSettingsAlert = true
+                        }
+                    }
+                }
+
+            case .denied:
+                microphoneEnabled = false
+                showSettingsAlert = true
+
+            @unknown default:
+                microphoneEnabled = false
+            }
+
+        } else {
+            
+            showOpenSettingsConfirmation = true
+
+            microphoneEnabled = true
+        }
+    }
+
+    // MARK: User
+
     func loadUser() async {
         do {
             user = try await getCurrentUserUseCase.execute()
@@ -36,17 +100,20 @@ class HomeViewModel: ObservableObject {
         }
     }
 
+    // MARK: Mock Data
 
     func loadData() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.recentSessions = [
+
+        Task {
+            try? await Task.sleep(for: .seconds(2))
+
+            recentSessions = [
                 SessionData(score: 82, title: "Software Eng.", time: "Today, 2:14 PM · 18 min"),
                 SessionData(score: 74, title: "Software Eng.", time: "Yesterday, 10:30 AM · 22 min"),
                 SessionData(score: 68, title: "System Design", time: "Mon, 9:00 AM · 15 min")
             ]
-            
-            
-            self.mockCareerItems = [
+
+            mockCareerItems = [
                 CareerItem(
                     iconName: "bolt.fill",
                     title: "React Deep Dive",
@@ -72,8 +139,8 @@ class HomeViewModel: ObservableObject {
                     durationText: "~10 min"
                 )
             ]
-            self.isLoading = false
-        }
 
+            isLoading = false
+        }
     }
 }

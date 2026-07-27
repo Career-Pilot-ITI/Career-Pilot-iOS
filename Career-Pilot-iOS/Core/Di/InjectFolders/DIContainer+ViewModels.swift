@@ -32,7 +32,10 @@ extension DIContainer{
         
         // homeViewModel
         container.register(HomeViewModel.self){ r in
-            HomeViewModel(getCurrentUserUseCase: r.resolve(GetCurrentUserUseCaseProtocol.self)!)
+            HomeViewModel(
+                getCurrentUserUseCase: r.resolve(GetCurrentUserUseCaseProtocol.self)!,
+                permissionManger: r.resolve(MicrophonePermissionManaging.self)!
+            )
         }
 //        // MARK: - PracticeSession
 //        container.register(PracticeSessionViewModel.self) { resolver in

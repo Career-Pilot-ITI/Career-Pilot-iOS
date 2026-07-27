@@ -96,6 +96,7 @@
 		CE12F3C4300940CE0083D66D /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C3300940CE0083D66D /* Shimmer.swift */; };
 		CE12F3C830094FB50083D66D /* OTPBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C530094FB50083D66D /* OTPBoxView.swift */; };
 		CE12F3C930094FB50083D66D /* OTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C630094FB50083D66D /* OTPCodeView.swift */; };
+		CE1D8991301616B000C759CA /* MicrophonePermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D8990301616B000C759CA /* MicrophonePermissionManager.swift */; };
 		CE8AFF18300712FC0064CC6C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF15300712FC0064CC6C /* Font.swift */; };
 		CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF14300712FC0064CC6C /* Colors.swift */; };
 		CE8AFF1D300718670064CC6C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1C300718670064CC6C /* Round.swift */; };
@@ -338,6 +339,8 @@
 		CE12F3C3300940CE0083D66D /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		CE12F3C530094FB50083D66D /* OTPBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPBoxView.swift; sourceTree = "<group>"; };
 		CE12F3C630094FB50083D66D /* OTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPCodeView.swift; sourceTree = "<group>"; };
+		CE1D898F301611C900C759CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CE1D8990301616B000C759CA /* MicrophonePermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophonePermissionManager.swift; sourceTree = "<group>"; };
 		CE8AFF14300712FC0064CC6C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CE8AFF15300712FC0064CC6C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		CE8AFF1C300718670064CC6C /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
@@ -1105,6 +1108,7 @@
 		D93938E03004064400CF4372 /* Career-Pilot-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				CE1D898F301611C900C759CA /* Info.plist */,
 				D9C187D030066BC900BFF8E9 /* App */,
 				D9C187AB30065F6800BFF8E9 /* Core */,
 				D9C1878430065A4800BFF8E9 /* Modules */,
@@ -1702,6 +1706,7 @@
 			isa = PBXGroup;
 			children = (
 				D9C187CC30066B1F00BFF8E9 /* util.swift */,
+				CE1D8990301616B000C759CA /* MicrophonePermissionManager.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1938,6 +1943,7 @@
 				CE12F3C030093CE40083D66D /* SessionData.swift in Sources */,
 				D95C3BA6300E49F30042785F /* InterviewConfiguration.swift in Sources */,
 				41D69D1C300A6DB400294D94 /* VerifyOTPResponseDTO+Mapping.swift in Sources */,
+				CE1D8991301616B000C759CA /* MicrophonePermissionManager.swift in Sources */,
 				41BC7742300D3D5900E89C3F /* QuestionStatsRow.swift in Sources */,
 				41BC7732300D31C900E89C3F /* SessionView.swift in Sources */,
 				41BC7752300D9A8D00E89C3F /* AppState.swift in Sources */,
@@ -2239,8 +2245,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Career-Pilot-iOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Career-Pilot-iOS/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app need the camera to allow u take a photo";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses the microphone to record your interview answers.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to the microphone to record your voice.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to transcribe your interview answers.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2268,8 +2275,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Career-Pilot-iOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Career-Pilot-iOS/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app need the camera to allow u take a photo";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses the microphone to record your interview answers.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to the microphone to record your voice.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to transcribe your interview answers.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

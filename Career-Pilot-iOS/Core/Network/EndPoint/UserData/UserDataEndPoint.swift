@@ -18,9 +18,6 @@ enum UserDataEndPointes: APIEndpoint {
 
     private static let boundary = "Boundary-\(UUID().uuidString)"
 
-    var baseURL: String {
-        return "https://192.168.84.1:8080"
-    }
 
     var path: String {
         switch self {
