@@ -31,7 +31,10 @@ class InterviewSessionRemoteDataSourceImp: InterviewSessionRemoteDataSource {
     }
 
     func submitAnswer(submitAnswerRequest: SubmitAnswerRequest) async throws -> SubmitAnswerResponseDTO {
+<<<<<<< HEAD
         
+=======
+>>>>>>> 5743779d (Refactor: all the dto to make it confierm decodable not codable)
         print("submitAnswer: \(submitAnswerRequest)")
         let submitAnswerEndPoint = InterviewSessionEndPointes.submitAnswer(submitAnswerRequest.toDTO())
         let result: SubmitAnswerFinalResponseDTO = try await apiService.request(submitAnswerEndPoint)
@@ -42,6 +45,7 @@ class InterviewSessionRemoteDataSourceImp: InterviewSessionRemoteDataSource {
         print("resumeInterview: \(sessionId)")
 
         let resumeEndPoint = InterviewSessionEndPointes.resumeSession(sessionId: sessionId)
+        print("ResumeInterview: \(sessionId)")
         return try await apiService.request(resumeEndPoint)
     }
 
