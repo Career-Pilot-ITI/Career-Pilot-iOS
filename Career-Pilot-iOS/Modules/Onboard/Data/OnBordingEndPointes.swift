@@ -11,7 +11,7 @@ import Foundation
 enum OnBordingEndPointes: APIEndpoint{
 
     case getAllTrackes
-    case updateUserProfile(updateProfileDTO: UpdateProfileRequestDTO)
+    case updateUserProfile(updateProfileRequestDTO: UpdateProfileRequestDTO)
     
     var baseURL: String{
         "https://ed39-102-188-31-161.ngrok-free.app"

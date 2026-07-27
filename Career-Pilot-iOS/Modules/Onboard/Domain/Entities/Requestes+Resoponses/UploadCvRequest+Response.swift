@@ -12,5 +12,5 @@ struct UploadCvRequest{
 }
 
 struct UploadCvResponse{
-    var userData: UserData
+    var userData: OnBoardingUser
 }

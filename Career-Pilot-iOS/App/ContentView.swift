@@ -15,28 +15,25 @@ struct ContentView: View {
     @StateObject private var appState = AppState()
     
     var body: some View {
-//        Group {
-//            if appState.isLoggedIn {
-//                MainTabBarView()
-//            } else  {
-//                NavigationStack(path: $coordinator.path) {
-//
-//                    if appState.isOnboadingSeen {
-//
-//                        PhoneEntryView()
-//                            .navigationDestination(for: AuthRoute.self) { route in
-//                                destination(for: route)
-//                            }
-//                    } else {
-//                        OnBordingView(vm: DIContainer.shared.container.resolve(OnBordingViewModel.self)!)
-//                            .navigationDestination(for: AuthRoute.self) { route in
-//                                destination(for: route)
-//                            }
-//                    }
-//                }
-//            }
-//        }
-SettingsTabView()
+        Group {
+            if true {
+                MainTabBarView()
+            } else  {
+                NavigationStack(path: $coordinator.path) {
+                    if !appState.isLoggedIn {
+                        PhoneEntryView()
+                            .navigationDestination(for: AuthRoute.self) { route in
+                                destination(for: route)
+                            }
+                    } else {
+                        OnBordingView(vm: DIContainer.shared.container.resolve(OnBordingViewModel.self)!)
+                            .navigationDestination(for: AuthRoute.self) { route in
+                                destination(for: route)
+                            }
+                    }
+                }
+            }
+        }
         .environmentObject(coordinator)
         .environmentObject(appState)
         .environmentObject(ToastManager.shared)

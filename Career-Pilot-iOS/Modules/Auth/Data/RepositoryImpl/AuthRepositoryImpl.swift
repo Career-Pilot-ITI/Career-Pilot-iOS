@@ -10,12 +10,12 @@ import Foundation
 class AuthRepositoryImpl: AuthRepositoryProtocol {
     private let remoteDataSource: AuthRemoteDataSourceProtocol
     private let tokenStore: AuthTokenStoring
-    private let userLocalDataSource: UserLocalDataSourceProtocol
+    private let userLocalDataSource: UserLocalDataSource
     
     init(
         remoteDataSource: AuthRemoteDataSourceProtocol,
         tokenStore: AuthTokenStoring,
-        userLocalDataSource: UserLocalDataSourceProtocol 
+        userLocalDataSource: UserLocalDataSource
     ) {
         self.remoteDataSource = remoteDataSource
         self.tokenStore = tokenStore
@@ -31,7 +31,7 @@ class AuthRepositoryImpl: AuthRepositoryProtocol {
         let result = dto.toDomain()
         
         try tokenStore.save(result.authTokens)
-        try await userLocalDataSource.save(result.user)
+        try await userLocalDataSource.saveUser(result.user)
 
         return result
     }
@@ -48,7 +48,7 @@ class AuthRepositoryImpl: AuthRepositoryProtocol {
             return nil
         }
 
-        guard let user = try await userLocalDataSource.loadUser() else {
+        guard let user = try await userLocalDataSource.getUser() else {
             // Tokens are valid but the cached user is missing
             try? await clearSession()
             return nil
@@ -59,6 +59,6 @@ class AuthRepositoryImpl: AuthRepositoryProtocol {
 
     func clearSession() async throws {
         try tokenStore.clear()
-        try await userLocalDataSource.clear()
+        try await userLocalDataSource.deleteUser()
     }
 }

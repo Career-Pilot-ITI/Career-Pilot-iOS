@@ -39,7 +39,7 @@ class OnBordingViewModel: ObservableObject {
     @Published var cvViewInfo: CvViewInfo = CvViewInfo(isSelected: false)
     
     //For Profie View
-    @Published var userData: UserData = UserData(email: "", title: "", experienceLevel: "", skills: [Skill(skillName: "", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: "")], firstName: "", lastName: "")
+    @Published var userData: OnBoardingUser = OnBoardingUser(email: "", title: "", experienceLevel: "", skills:[], firstName: "", lastName: "")
     
     //UseCases
     var uploadCvUseCase: UploadCvUseCase
@@ -219,37 +219,77 @@ class OnBordingViewModel: ObservableObject {
         print(cvResponse.userData)
     }
     
-   private func onNavToHomeScreen() {
-       print("start update")
-       Task {
-           do {
-               screenState = .loading
-               
-               let currentUser = User(
-                   id: 0,
-                   phoneNumber: "",
-                   profile: userData.toUserProfile(),
-                   isNewUser: false
-               )
-               
-               let updatedUser = try await updateProfileUseCase.execute(currentUser)
-               let isSaved = try await saveUserUseCase.save(updatedUser)
-               if isSaved {
-                   print("✅ User added to CoreData successfull")
-               }
-               print("✅ Profile updated successfully for user ID: \(updatedUser.id)")
-               
-               screenState = .idel
-               navToHomeScreen = true
-               appState.markOnboardingSeen()
-           } catch let error as NetworkError {
-               screenState = .error(error.errorDescription ?? error.localizedDescription)
-           } catch {
-               screenState = .error(error.localizedDescription)
-           }
-       }
-   }
+//   private func onNavToHomeScreen() {
+//       print("start update")
+//       Task {
+//           do {
+//               screenState = .loading
+//               
+//               let currentUser = userData.toUser()
+//               
+//               let updatedUser = try await updateProfileUseCase.execute(currentUser)
+//               let isSaved = try await saveUserUseCase.save(updatedUser)
+//               if isSaved {
+//                   print("✅ User added to CoreData successfull")
+//               }
+//               print("✅ Profile updated successfully for user ID: \(updatedUser.id)")
+//               
+//               screenState = .idel
+//               navToHomeScreen = true
+//               appState.markOnboardingSeen()
+//           } catch let error as NetworkError {
+//               screenState = .error(error.errorDescription ?? error.localizedDescription)
+//           } catch {
+//               screenState = .error(error.localizedDescription)
+//           }
+//       }
+//   }
 
+    private func onNavToHomeScreen() {
+        Task {
+            await updateAndPersistUser()
+        }
+    }
+
+    @MainActor
+    private func updateAndPersistUser() async {
+        screenState = .loading
+
+        do {
+            let user = userData.toUser()
+            let updatedUser = try await updateUser(user)
+            try await persistUser(updatedUser)
+
+            completeOnboarding()
+        } catch let error as NetworkError {
+            screenState = .error(error.errorDescription ?? error.localizedDescription)
+        } catch {
+            screenState = .error(error.localizedDescription)
+        }
+    }
+
+    private func updateUser(_ user: User) async throws -> User {
+        let updatedUser = try await updateProfileUseCase.execute(user)
+        print("✅ Profile updated successfully for user ID: \(updatedUser.id)")
+        return updatedUser
+    }
+
+    private func persistUser(_ user: User) async throws {
+        let isSaved = try await saveUserUseCase.save(user)
+
+        if isSaved {
+            print("✅ User saved to CoreData")
+        }
+    }
+
+    @MainActor
+    private func completeOnboarding() {
+        screenState = .idel
+        navToHomeScreen = true
+        appState.markOnboardingSeen()
+    }
+    
+    
     func backByStep(){
         switch currentView{
         case.ChooseTrackView:

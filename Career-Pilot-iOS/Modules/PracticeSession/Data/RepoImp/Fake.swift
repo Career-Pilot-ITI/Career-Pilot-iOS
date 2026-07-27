@@ -49,7 +49,7 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
                 maxQuestions: 3,
                 maxAnswerDuration: 240,
                 maxInterviewDuration: 1800,
-                silenceTimeout: 5, trackID: 5
+                silenceTimeout: 5
             ), currentQuestion: question,
             feedback: nil
         )

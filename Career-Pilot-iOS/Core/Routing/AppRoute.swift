@@ -34,3 +34,4 @@ enum ReportsRoute: Hashable {
     case sessionHistory(sessionCount: Int, sessionAvgScore: Double, sessions: [Session])
     case questionBreakdown(questions: [QuestionReview])
 }
+

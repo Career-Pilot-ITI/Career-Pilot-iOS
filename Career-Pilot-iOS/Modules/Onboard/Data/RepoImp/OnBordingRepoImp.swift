@@ -26,10 +26,14 @@ class OnBordingRepoImp: OnBordingRepo{
     
     
     func updateProfile(user: User) async throws -> User {
-        let userDTO = user.toDTO()
+       
+        let updateProfileRequestDTO = user.toUpdateProfileRequestDTO()
         
-        let updatedUserDTO = try await remoteDataSource.updateUserProfile(updateProfileDTO:userDTO)
+        let updateProfileResponseDTO =
+        try await remoteDataSource.updateUserProfile(updateProfileRequestDTO:updateProfileRequestDTO)
+
+        let user = updateProfileResponseDTO.toDomain()
         
-        return updatedUserDTO.toDomain()
+        return user
     }
 }
