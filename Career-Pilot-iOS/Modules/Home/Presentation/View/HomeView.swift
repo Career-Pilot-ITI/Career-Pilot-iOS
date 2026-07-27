@@ -50,11 +50,11 @@ struct HomeView: View {
                     scoreChange: "▲ +6 from last week"
                 )
 
-                PracticeCard(category: user.profile.trackName){
+                PracticeCard(category: "SoftWare Engineering"){
                     print("👉 PracticeCard tapped! Pushing route...")
                     
                     coordinator.push(.interviewPrep(
-                            trackName: user.profile.trackName,
+                            trackName: "SoftWare Engineering",
                             interviewTime: 30,
                             questionsCount: 8
                         ))
