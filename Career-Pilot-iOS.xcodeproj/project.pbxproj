@@ -67,7 +67,6 @@
 		41BE1A68300BEF820033D1B5 /* CvUplodingApiResponse+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A67300BEF820033D1B5 /* CvUplodingApiResponse+Mapping.swift */; };
 		41BE1A6B300BF00B0033D1B5 /* UserDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A69300BF00B0033D1B5 /* UserDTO+Mapping.swift */; };
 		41BE1A6E300BF0810033D1B5 /* OnBoardingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A6D300BF0810033D1B5 /* OnBoardingUser.swift */; };
-		41BE1A71300BF0950033D1B5 /* UserDataRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A6F300BF0940033D1B5 /* UserDataRepo.swift */; };
 		41BE1A74300BF0E30033D1B5 /* UploadCvRequest+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A72300BF0E30033D1B5 /* UploadCvRequest+Response.swift */; };
 		41BE1A76300BF4000033D1B5 /* SendOTPUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A75300BF4000033D1B5 /* SendOTPUseCase.swift */; };
 		41BE1A78300BF42E0033D1B5 /* AuthRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A77300BF42E0033D1B5 /* AuthRemoteDataSource.swift */; };
@@ -101,6 +100,10 @@
 		41D69D63300B553F00294D94 /* Career_Pilot_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D60300B54DE00294D94 /* Career_Pilot_iOS.xcdatamodeld */; };
 		6117C02F300F9FD700CABEC6 /* StringsExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6117C02E300F9FD700CABEC6 /* StringsExtenstion.swift */; };
 		6117C031300FBCF900CABEC6 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6117C030300FBCF900CABEC6 /* Validation.swift */; };
+		612EEDE63018E96100E6733E /* UserDataRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A6F300BF0940033D1B5 /* UserDataRepo.swift */; };
+		612EEDF23018F55000E6733E /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 612EEDF13018F55000E6733E /* Shimmer */; };
+		612EEDF430192F0500E6733E /* GetUserSubscribtion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612EEDF330192F0500E6733E /* GetUserSubscribtion.swift */; };
+		612EEDF630194B7000E6733E /* SubscribitonsPriceDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612EEDF530194B7000E6733E /* SubscribitonsPriceDTO.swift */; };
 		61601FC43016441A00581229 /* UserSettingsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61601FC33016441A00581229 /* UserSettingsDTO.swift */; };
 		61601FC630164C5E00581229 /* UserWalletBalanceDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61601FC530164C5E00581229 /* UserWalletBalanceDTO.swift */; };
 		6161D86630153A8600098A0C /* CheckOutDomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6161D86530153A8600098A0C /* CheckOutDomainModel.swift */; };
@@ -446,6 +449,8 @@
 		6117C02E300F9FD700CABEC6 /* StringsExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsExtenstion.swift; sourceTree = "<group>"; };
 		6117C030300FBCF900CABEC6 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		6124908E3014ED98000401CF /* PaymentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentState.swift; sourceTree = "<group>"; };
+		612EEDF330192F0500E6733E /* GetUserSubscribtion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserSubscribtion.swift; sourceTree = "<group>"; };
+		612EEDF530194B7000E6733E /* SubscribitonsPriceDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribitonsPriceDTO.swift; sourceTree = "<group>"; };
 		61601FC33016441A00581229 /* UserSettingsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsDTO.swift; sourceTree = "<group>"; };
 		61601FC530164C5E00581229 /* UserWalletBalanceDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWalletBalanceDTO.swift; sourceTree = "<group>"; };
 		6161D86530153A8600098A0C /* CheckOutDomainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutDomainModel.swift; sourceTree = "<group>"; };
@@ -696,6 +701,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				612EEDF23018F55000E6733E /* Shimmer in Frameworks */,
 				41C187CA3018B04000FDCB32 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1012,7 +1018,6 @@
 			children = (
 				618F8265301101CE0065331A /* Model */,
 				616320DD301094E400F417C9 /* Repo */,
-				616320DC301094DB00F417C9 /* Local */,
 				616320DB301094D000F417C9 /* Remote */,
 			);
 			path = Data;
@@ -1027,6 +1032,7 @@
 				616320D93010948400F417C9 /* GetCoins.swift */,
 				61F339333013869900C94B89 /* GetImageData.swift */,
 				6161D86D301585E800098A0C /* RefreshUserData.swift */,
+				612EEDF330192F0500E6733E /* GetUserSubscribtion.swift */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -1051,6 +1057,7 @@
 		616320DB301094D000F417C9 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				616320DC301094DB00F417C9 /* Local */,
 				616320DE301094F700F417C9 /* SettingsRemote.swift */,
 				616320E03010955B00F417C9 /* SettingsRemoteImp.swift */,
 				618F82623010B71B0065331A /* SettingsEndpoint.swift */,
@@ -1362,6 +1369,7 @@
 				61970B8730115725009D7E58 /* SubscriptionPlans.swift */,
 				61970B8D30115BE2009D7E58 /* CoinPack.swift */,
 				61601FC33016441A00581229 /* UserSettingsDTO.swift */,
+				612EEDF530194B7000E6733E /* SubscribitonsPriceDTO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2391,6 +2399,7 @@
 			name = "Career-Pilot-iOS";
 			packageProductDependencies = (
 				41C187C93018B04000FDCB32 /* Swinject */,
+				612EEDF13018F55000E6733E /* Shimmer */,
 			);
 			productName = "Career-Pilot-iOS";
 			productReference = D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */;
@@ -2466,6 +2475,7 @@
 			mainGroup = D93938D53004064400CF4372;
 			packageReferences = (
 				41C187C83018B04000FDCB32 /* XCRemoteSwiftPackageReference "swinject" */,
+				612EEDF03018F55000E6733E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			productRefGroup = D93938DF3004064400CF4372 /* Products */;
 			projectDirPath = "";
@@ -2526,6 +2536,7 @@
 				61F33938301397A800C94B89 /* UserCard.swift in Sources */,
 				41C6A23A30080AE10035EFBF /* SuccessOTPCodeView.swift in Sources */,
 				41D69D18300A6D0100294D94 /* AuthTokens.swift in Sources */,
+				612EEDF630194B7000E6733E /* SubscribitonsPriceDTO.swift in Sources */,
 				41C6A23E30083FDB0035EFBF /* PhoneEntryView.swift in Sources */,
 				41AD901930161FAA00BDFDA0 /* ReportsUIMapping.swift in Sources */,
 				D9868B41300FD22600B84CD6 /* SpeechRecognitionService.swift in Sources */,
@@ -2573,7 +2584,6 @@
 				41BC772E300D19A100E89C3F /* RadarMetricChip.swift in Sources */,
 				41AD8FF330161A4E00BDFDA0 /* ReportsInterviewSession.swift in Sources */,
 				61724A033017D8D1003C4781 /* SettingsTabView.swift in Sources */,
-				41BE1A71300BF0950033D1B5 /* UserDataRepo.swift in Sources */,
 				61AD45A6300D608D00B70AFA /* SubscribtionCheckoutView.swift in Sources */,
 				41833E4730101E9B0055D990 /* UpdateProfileRequestDTO.swift in Sources */,
 				CEE62A8730091FD10071F076 /* MainTabBarView.swift in Sources */,
@@ -2663,6 +2673,7 @@
 				D95C3BC0300E4ACF0042785F /* SubmitAnswerUseCase.swift in Sources */,
 				41AD8FFE30161BB900BDFDA0 /* SessionFeedbackDTO+Mapping.swift in Sources */,
 				D95C3BC4300E7B6E0042785F /* PracticeSessionViewModel.swift in Sources */,
+				612EEDF430192F0500E6733E /* GetUserSubscribtion.swift in Sources */,
 				CED18895300B096300B15B81 /* Userdefaultsmanager.swift in Sources */,
 				61970B9030115C5F009D7E58 /* CoinsPackViewData.swift in Sources */,
 				6169A7D2301044E5001FDC39 /* SettingsCard.swift in Sources */,
@@ -2705,6 +2716,7 @@
 				61F3392C30135F0200C94B89 /* SettingsLocalDataSourceImp.swift in Sources */,
 				D95C3BCD300EA1A20042785F /* UserTrunView.swift in Sources */,
 				41AD900030161BCF00BDFDA0 /* SessionQuestionDTO+Mapping.swift in Sources */,
+				612EEDE63018E96100E6733E /* UserDataRepo.swift in Sources */,
 				CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */,
 				41AD8FF530161A8900BDFDA0 /* QuestionScore.swift in Sources */,
 				CEB6221130103D2600027035 /* UserLocalDataSource.swift in Sources */,
@@ -3171,6 +3183,14 @@
 				version = 2.8.4;
 			};
 		};
+		612EEDF03018F55000E6733E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -3178,6 +3198,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 41C187C83018B04000FDCB32 /* XCRemoteSwiftPackageReference "swinject" */;
 			productName = Swinject;
+		};
+		612EEDF13018F55000E6733E /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 612EEDF03018F55000E6733E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -15,13 +15,13 @@ enum CheckoutEndpointService : APIEndpoint{
     var path: String {
         switch self {
         case .upgradeUserSubscriptionPlan:
-            return "api/v1/subscriptions/upgrade"
+            return "/api/v1/subscriptions/upgrade"
         case .buyingCoins:
-            return  "api/v1/wallet/top-up"
+            return  "/api/v1/wallet/top-up"
         case .getUserCoins :
-            return "api/v1/wallet/balance"
+            return "/api/v1/wallet/balance"
         case .getUserSubscription:
-            return "api/v1/subscriptions/current"
+            return "/api/v1/subscriptions/current"
         }
     }
     
@@ -59,5 +59,18 @@ enum CheckoutEndpointService : APIEndpoint{
     }
     
     var headers: [String : String]  {
-        ["Content-Type": "application/json" ]}
+        let tokenString: String
+        do {
+            
+            if let tokens = try KeychainAuthTokenStore().loadTokens() {
+                tokenString = tokens.accessToken
+            } else {
+                tokenString = ""
+            }
+        } catch {
+            tokenString = ""
+        }
+        return ["Content-Type": "application/json" ,
+         "Authorization": "Bearer \(tokenString)"
+]}
 }

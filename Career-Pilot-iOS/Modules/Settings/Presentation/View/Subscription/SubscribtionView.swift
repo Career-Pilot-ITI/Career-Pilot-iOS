@@ -6,37 +6,49 @@
 //
 
 import SwiftUI
+
+
+
+
+
 import SwiftUI
-
-
-
-
+import Shimmer
 
 struct ChoosePlanView: View {
-    @StateObject var viewModel: SubscriptionViewModel = SubscriptionViewModel(getPlansUseCase: GetSubscribtionPlan(settingsRepo: SettingsRepoImp(remote: SettingsRemoteImp(apiService: URLSessionNetworkService()), local: SettingsLocalDataSourceImp(coreDataManager: CoreDataManager()), authToken: KeychainAuthTokenStore())))
+    @StateObject var viewModel: SubscriptionViewModel = SubscriptionViewModel(
+        getPlansUseCase: GetSubscribtionPlan(settingsRepo: SettingsRepoImp(remote: SettingsRemoteImp(apiService: URLSessionNetworkService()), local: SettingsLocalDataSourceImp(coreDataManager: CoreDataManager()), authToken: KeychainAuthTokenStore())),
+        getUserSubscribtion: GetUserSubscribtion(settingsRepo: SettingsRepoImp(remote: SettingsRemoteImp(apiService: URLSessionNetworkService()), local: SettingsLocalDataSourceImp(coreDataManager: CoreDataManager()), authToken: KeychainAuthTokenStore()))
+    )
     @EnvironmentObject var coordinator: AppCoordinator<SettingsRoute>
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Choose your plan")
-                    .font(.system(size: 24, weight: .bold))
-                    .foregroundColor(.primaryNavy)
-                Text("Unlock your full interview potential.")
-                    .font(.size14Medium)
-                    .foregroundColor(.gray600)
-            }
-            
             switch viewModel.plansState {
             case .idle, .loading:
-                ProgressView()
-                    .frame(maxWidth: .infinity)
+                planSkeleton
                 
             case .failure:
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Choose your plan")
+                        .font(.system(size: 24, weight: .bold))
+                        .foregroundColor(.primaryNavy)
+                    Text("Unlock your full interview potential.")
+                        .font(.size14Medium)
+                        .foregroundColor(.gray600)
+                }
                 Text("Couldn't load plans")
                     .foregroundColor(.errorColour)
                 
             case .success(let plans):
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Choose your plan")
+                        .font(.system(size: 24, weight: .bold))
+                        .foregroundColor(.primaryNavy)
+                    Text("Unlock your full interview potential.")
+                        .font(.size14Medium)
+                        .foregroundColor(.gray600)
+                }
+                
                 HStack(spacing: 8) {
                     ForEach(plans) { plan in
                         Text(plan.label.replacingOccurrences(of: " Plan", with: ""))
@@ -67,28 +79,29 @@ struct ChoosePlanView: View {
                 Button(action: {
                     guard let currentPlan = viewModel.currentPlan else { return }
                     let item = CheckoutDisplayInfo.subscription(
-                        
-                        plan: currentPlan.label, monthlyPrice: currentPlan.price,
+                        plan: currentPlan.label,
+                        monthlyPrice: currentPlan.price,
                         billingCycle: "Monthly",
-                        total: currentPlan.price, checkoutItem: CheckoutItem.subscription(planType: currentPlan.type  )
+                        total: currentPlan.price,
+                        checkoutItem: CheckoutItem.subscription(planType: currentPlan.type)
                     )
                     coordinator.push(.checkout(item: item))
                 }) {
                     HStack {
-                        Text(viewModel.selectedPlan == .free ? "Current Plan" : "Upgrade to \(viewModel.selectedPlan.rawValue)")
+                        Text(viewModel.buttonTitle)
                             .font(.size16Bold)
-                        if viewModel.selectedPlan != .free {
+                        if !viewModel.isSelectedPlanCurrent {
                             Image(systemName: "arrow.right")
                         }
                     }
-                    .foregroundColor(viewModel.selectedPlan == .free ? .gray400 : .white)
+                    .foregroundColor(viewModel.isSelectedPlanCurrent ? .gray400 : .white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
                     .background(
-                        Capsule().fill(viewModel.selectedPlan == .free ? Color.gray100 : Color.orange)
+                        Capsule().fill(viewModel.isSelectedPlanCurrent ? Color.gray100 : Color.orange)
                     )
                 }
-                .disabled(viewModel.selectedPlan == .free)
+                .disabled(viewModel.isSelectedPlanCurrent)
             }
         }
         .padding(20)
@@ -96,6 +109,64 @@ struct ChoosePlanView: View {
         .task {
             await viewModel.loadPlans()
         }
+    }
+    
+    // MARK: - Shimmering skeleton, including the header
+    private var planSkeleton: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            // Header placeholder
+            VStack(alignment: .leading, spacing: 6) {
+                RoundedRectangle(cornerRadius: 6)
+                    .fill(Color.gray200)
+                    .frame(width: 180, height: 26)
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.gray200)
+                    .frame(width: 220, height: 14)
+            }
+            
+            // Tabs placeholder
+            HStack(spacing: 8) {
+                ForEach(0..<3, id: \.self) { _ in
+                    Capsule()
+                        .fill(Color.gray200)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 38)
+                }
+            }
+            
+            // Detail card placeholder
+            VStack(alignment: .leading, spacing: 16) {
+                RoundedRectangle(cornerRadius: 6)
+                    .fill(Color.gray200)
+                    .frame(width: 140, height: 32)
+                
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.gray200)
+                    .frame(width: 100, height: 14)
+                
+                VStack(alignment: .leading, spacing: 12) {
+                    ForEach(0..<4, id: \.self) { _ in
+                        HStack(spacing: 10) {
+                            Circle().fill(Color.gray200).frame(width: 16, height: 16)
+                            RoundedRectangle(cornerRadius: 4).fill(Color.gray200).frame(height: 14)
+                        }
+                    }
+                }
+            }
+            .padding(20)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(RoundedRectangle(cornerRadius: Radius.r16).fill(Color.gray200))
+            
+            Spacer()
+            
+            // Button placeholder
+            Capsule()
+                .fill(Color.gray200)
+                .frame(maxWidth: .infinity)
+                .frame(height: 52)
+        }
+        .redacted(reason: .placeholder)
+        .shimmering()
     }
     
     @ViewBuilder
@@ -133,15 +204,3 @@ struct ChoosePlanView: View {
         .background(RoundedRectangle(cornerRadius: Radius.r16).fill(Color.primaryNavy))
     }
 }
-//struct ChoosePlanView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChoosePlanView()
-//            .environmentObject(AppCoordinator())
-//    }
-//}
-
-//struct SubscribtionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SubscribtionView()
-//    }
-//}

@@ -20,7 +20,7 @@ protocol APIEndpoint {
 
 extension APIEndpoint {
     var baseURL: String {
-        "http://192.168.84.1:8080"
+        "https://3172-196-130-229-67.ngrok-free.app"
     }
     var requiresAuthentication: Bool { false }
     var queryParameters: [URLQueryItem]? { nil }

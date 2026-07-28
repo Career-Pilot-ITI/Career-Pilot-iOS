@@ -9,12 +9,14 @@ import Foundation
 enum SettingsEndpoint : APIEndpoint{
     case logout
     case getUserData
-    
+    case getSubscribtionsPrice
     
     var path: String{
         switch self {
         case.getUserData:
             return "/api/v1/profile"
+        case .getSubscribtionsPrice:
+            return "/api/v1/subscriptions/tiers"
         case .logout:
             return "/api/v1/auth/logout"
         }
@@ -22,18 +24,19 @@ enum SettingsEndpoint : APIEndpoint{
     
     var method: HTTPMethod {
         switch self {
-        case.getUserData:
+        case.getUserData :
             return .get
+            
+        case .getSubscribtionsPrice:
+            return .get
+            
         case .logout:
             return .post
+            
         }
     }
     var body: Data? {
-            switch self {
-            case .logout, .getUserData:
-                return nil
-         
-            }
+         return nil
         }
     var requiresAuthentication: Bool {
             true

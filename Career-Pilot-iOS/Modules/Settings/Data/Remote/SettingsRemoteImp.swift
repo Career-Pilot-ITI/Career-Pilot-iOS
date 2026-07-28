@@ -39,8 +39,12 @@ class SettingsRemoteImp : SettingsRemote{
             throw error
         }
     }
-    func getSubscription()  async{
-        print("Here is the subscription")
+    func getSubscription()  async throws -> SubscribitonsPriceDTO{
+        let endpoint = SettingsEndpoint.getSubscribtionsPrice
+
+        var response = try await apiService.request(endpoint)
+        print("user Data response = \(response)")
+        return try await apiService.request(endpoint)
     }
     func getCoins() async {
         print("Here is the coin")

@@ -11,7 +11,13 @@ class GetSubscribtionPlan{
     init(settingsRepo: SettingsRepo) {
         self.settingsRepo = settingsRepo
     }
-    func execute() -> [SubscriptionPlan]{
-        settingsRepo.getSubscription()
+    func execute() async throws -> [SubscriptionPlan]{
+        do {
+           return try await settingsRepo.getSubscription()
+        }
+        catch{
+            print("There is error")
+            throw error
+        }
     }
 }

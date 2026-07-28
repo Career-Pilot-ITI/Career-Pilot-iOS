@@ -9,7 +9,8 @@ import Foundation
 protocol  SettingsRepo{
     func fetchUserData() async throws -> UserSettingsDomain
     func logout() async throws
-    func getSubscription() -> [SubscriptionPlan]
+    func getSubscription() async throws -> [SubscriptionPlan]
     func getCoins() ->[CoinPack]
     func refreshUserData() async throws
+    func getUserSubscription () async -> PlanType
 }

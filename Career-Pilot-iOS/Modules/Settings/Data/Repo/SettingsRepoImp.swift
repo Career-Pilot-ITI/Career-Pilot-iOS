@@ -7,9 +7,6 @@
 
 import Foundation
 class SettingsRepoImp : SettingsRepo  {
- 
-    
-    
     var remote : SettingsRemote
     var local : SettingsLocalDataSource
     var authToken : AuthTokenStoring
@@ -50,7 +47,16 @@ class SettingsRepoImp : SettingsRepo  {
             }
         }
     
-
+    func getUserSubscription() async -> PlanType {
+        do{
+            let cachedUser = try await local.fetchUserData()
+            print("The user Plan \(cachedUser?.subscriptionTier?.capitalized )")
+            return PlanType(rawValue: cachedUser?.subscriptionTier?.capitalized ?? "Free") ?? .free
+        }catch{
+            print("Error")
+            return .free
+        }
+    }
     
     func logout() async throws{
         do{
@@ -64,15 +70,24 @@ class SettingsRepoImp : SettingsRepo  {
         }
     }
     
-    func getSubscription()  -> [SubscriptionPlan] {
-        return     [
-            SubscriptionPlan(type: .free, price: "0", label: "Free Plan",
-                 features: ["3 sessions / month", "Basic score report", "Standard feedback"]),
-            SubscriptionPlan(type: .plus, price: "199", label: "Plus Plan",
-                 features: ["12 sessions / month", "Detailed radar chart", "Priority AI feedback", "Coaching tips library"]),
-            SubscriptionPlan(type: .pro, price: "349", label: "Pro Plan",
-                 features: ["Unlimited sessions", "Instant feedback", "All tracks unlocked", "1:1 coaching session"])
-        ]
+    func getSubscription() async throws -> [SubscriptionPlan] {
+        do{
+           let response = try await remote.getSubscription()
+            return     [
+                SubscriptionPlan(type: .free, price: "0", label: "Free Plan",
+                     features: ["3 sessions / month", "Basic score report", "Standard feedback"]),
+                SubscriptionPlan(type: .plus, price: "\(response.PLUS)" , label: "Plus Plan",
+                     features: ["12 sessions / month", "Detailed radar chart", "Priority AI feedback", "Coaching tips library"]),
+                SubscriptionPlan(type: .pro, price: "\(response.PRO)", label: "Pro Plan",
+                     features: ["Unlimited sessions", "Instant feedback", "All tracks unlocked", "1:1 coaching session"])
+            ]
+            
+        }catch{
+            print("error in the repor for the logout \(error)")
+            throw error
+        }
+        
+ 
         
     }
     
