@@ -45,7 +45,7 @@ final class ToastManager: ObservableObject {
     @Published var currentToast: ToastMessage?
     private var dismissTask: Task<Void, Never>?
 
-    func show(_ text: String, type: ToastType = .error, duration: TimeInterval = 2.5) {
+    func show(_ text: String, type: ToastType = .error, duration: TimeInterval = 3.5) {
         dismissTask?.cancel()   // cancel any pending dismiss from a previous toast
 
         let toast = ToastMessage(text: text, type: type)

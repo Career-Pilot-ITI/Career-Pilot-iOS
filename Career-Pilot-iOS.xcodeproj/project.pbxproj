@@ -34,7 +34,6 @@
 		41AD901430161EA800BDFDA0 /* ReportsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD901330161EA800BDFDA0 /* ReportsListViewModel.swift */; };
 		41AD901630161EFA00BDFDA0 /* SessionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD901530161EFA00BDFDA0 /* SessionDetailViewModel.swift */; };
 		41AD901930161FAA00BDFDA0 /* ReportsUIMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD901830161FAA00BDFDA0 /* ReportsUIMapping.swift */; };
-		41AD901C301621FA00BDFDA0 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 41AD901B301621FA00BDFDA0 /* Swinject */; };
 		41AD901E3016229900BDFDA0 /* ReportsInterviewSessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD901D3016229900BDFDA0 /* ReportsInterviewSessionDTO.swift */; };
 		41AD9020301623CC00BDFDA0 /* CurrentUserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD901F301623CC00BDFDA0 /* CurrentUserProvider.swift */; };
 		41AD90223016260600BDFDA0 /* Date+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD90213016260600BDFDA0 /* Date+Formatting.swift */; };
@@ -74,6 +73,7 @@
 		41BE1A78300BF42E0033D1B5 /* AuthRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A77300BF42E0033D1B5 /* AuthRemoteDataSource.swift */; };
 		41BE1A7A300BF43E0033D1B5 /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A79300BF43E0033D1B5 /* AuthRepositoryImpl.swift */; };
 		41BE1A7C300BF4540033D1B5 /* AuthRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A7B300BF4540033D1B5 /* AuthRepositoryProtocol.swift */; };
+		41C187CA3018B04000FDCB32 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 41C187C93018B04000FDCB32 /* Swinject */; };
 		41C38365300A2849005D4BB9 /* AuthEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C38364300A2849005D4BB9 /* AuthEndPoint.swift */; };
 		41C6A2363008008D0035EFBF /* SendingOTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A2353008008D0035EFBF /* SendingOTPCodeView.swift */; };
 		41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A237300804650035EFBF /* SoundWaveView.swift */; };
@@ -305,7 +305,7 @@
 		D999D5AD301130B300CF606B /* ApiRequestes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999D5AC301130B300CF606B /* ApiRequestes.swift */; };
 		D99D9756301282E000F2A7C2 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D9755301282E000F2A7C2 /* String+Extension.swift */; };
 		D99D97583012969C00F2A7C2 /* User+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D97573012969C00F2A7C2 /* User+Mapping.swift */; };
-		D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28580300A61DC00ABB5BD /* UserDataEndPoint.swift */; };
+		D9A28581300A61DC00ABB5BD /* (null) in Sources */ = {isa = PBXBuildFile; };
 		D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28583300A6CC300ABB5BD /* UserDataRepoImp.swift */; };
 		D9A28588300A82CE00ABB5BD /* UserDataRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A28587300A82CE00ABB5BD /* UserDataRemoteDataSource.swift */; };
 		D9B4B1B630117ED4004909ED /* NewSessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4B1B530117ED3004909ED /* NewSessionDTO.swift */; };
@@ -696,7 +696,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41AD901C301621FA00BDFDA0 /* Swinject in Frameworks */,
+				41C187CA3018B04000FDCB32 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1510,14 +1510,6 @@
 				CEA4C0873014528800CB5DD3 /* GetCurrentUserUseCase.swift */,
 			);
 			path = UseCases;
-			sourceTree = "<group>";
-		};
-		CEB62217301061F700027035 /* UploadCv */ = {
-			isa = PBXGroup;
-			children = (
-				CEB62216301061F700027035 /* UploadCvUseCase.swift */,
-			);
-			path = UploadCv;
 			sourceTree = "<group>";
 		};
 		CECC20CE3007ACE100DC450D /* PhoneField */ = {
@@ -2398,7 +2390,7 @@
 			);
 			name = "Career-Pilot-iOS";
 			packageProductDependencies = (
-				41AD901B301621FA00BDFDA0 /* Swinject */,
+				41C187C93018B04000FDCB32 /* Swinject */,
 			);
 			productName = "Career-Pilot-iOS";
 			productReference = D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */;
@@ -2473,7 +2465,7 @@
 			);
 			mainGroup = D93938D53004064400CF4372;
 			packageReferences = (
-				41AD901A301621FA00BDFDA0 /* XCRemoteSwiftPackageReference "swinject" */,
+				41C187C83018B04000FDCB32 /* XCRemoteSwiftPackageReference "swinject" */,
 			);
 			productRefGroup = D93938DF3004064400CF4372 /* Products */;
 			projectDirPath = "";
@@ -2569,7 +2561,6 @@
 				41AD8FE93016132800BDFDA0 /* SessionQuestionDTO.swift in Sources */,
 				D92853F230100BBC00F8CAC2 /* InterviewSessionRemoteDataSource.swift in Sources */,
 				41AD8FE73016131900BDFDA0 /* SessionFeedbackDTO.swift in Sources */,
-				616CAD0930081C62007FC4AF /* SettingsCard.swift in Sources */,
 				6169A7B230103051001FDC39 /* UserError.swift in Sources */,
 				D957B3043017EC6100B0562A /* TrackSelector.swift in Sources */,
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
@@ -2742,7 +2733,7 @@
 				D970C9E6301566B3002F6269 /* UploadFileResponseDTO.swift in Sources */,
 				D95C3B99300E495C0042785F /* InterviewSessionEndPointes.swift in Sources */,
 				CEA4C0903014698600CB5DD3 /* SessionRowSkeleton.swift in Sources */,
-				D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */,
+				D9A28581300A61DC00ABB5BD /* (null) in Sources */,
 				D9BA3476300ED5040058D6E6 /* Fake.swift in Sources */,
 				CEB62218301061F700027035 /* UploadCvUseCase.swift in Sources */,
 				41BE1A7A300BF43E0033D1B5 /* AuthRepositoryImpl.swift in Sources */,
@@ -3172,7 +3163,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		41AD901A301621FA00BDFDA0 /* XCRemoteSwiftPackageReference "swinject" */ = {
+		41C187C83018B04000FDCB32 /* XCRemoteSwiftPackageReference "swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/swinject/swinject";
 			requirement = {
@@ -3183,9 +3174,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		41AD901B301621FA00BDFDA0 /* Swinject */ = {
+		41C187C93018B04000FDCB32 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 41AD901A301621FA00BDFDA0 /* XCRemoteSwiftPackageReference "swinject" */;
+			package = 41C187C83018B04000FDCB32 /* XCRemoteSwiftPackageReference "swinject" */;
 			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
