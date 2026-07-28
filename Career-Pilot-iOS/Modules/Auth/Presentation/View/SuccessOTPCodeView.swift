@@ -9,8 +9,7 @@ import SwiftUI
 
 struct SuccessOTPCodeView: View {
     @EnvironmentObject var coordinator: AppCoordinator<AuthRoute>
-    @EnvironmentObject var appState: AppState
-    
+
     @State private var navigationTask: Task<Void, Never>?
     
     var body: some View {
@@ -27,14 +26,15 @@ struct SuccessOTPCodeView: View {
         }
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            navigationTask = Task  {
+            navigationTask = Task {
                 try? await Task.sleep(for: .seconds(5))
                 guard !Task.isCancelled else { return }
+                // Only new users reach this screen; always proceed to onboarding.
                 coordinator.push(.onboardingScreen(vm: DIContainer.shared.container.resolve(OnBordingViewModel.self)!))
-	            }
+            }
         }
         .onDisappear {
-                navigationTask?.cancel()
+            navigationTask?.cancel()
         }
     }
 }

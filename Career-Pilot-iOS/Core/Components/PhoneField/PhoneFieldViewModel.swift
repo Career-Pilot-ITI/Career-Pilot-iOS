@@ -12,9 +12,13 @@ class PhoneFieldViewModel: ObservableObject {
     @Published var phoneNumber: String = ""
     @Published var selectedCountry: CountryCode
     @Published var hasBeenEdited: Bool = false
+    @Published private(set) var validationState: PhoneValidationState = .idle
+    
+    private var cancellables = Set<AnyCancellable>()
     
     init(selectedCountry: CountryCode = CountryCode.defaultList[0]) {
         self.selectedCountry = selectedCountry
+        setupValidationPipeline()
     }
     
     var isValid: Bool {
@@ -44,4 +48,21 @@ class PhoneFieldViewModel: ObservableObject {
             hasBeenEdited = true
         }
     }
+    
+    // MARK: - Reactive Validation
+    
+    private func setupValidationPipeline() {
+        // Combine phoneNumber and selectedCountry into a single stream,
+        // debounce to avoid validating on every keystroke.
+        Publishers.CombineLatest($phoneNumber, $selectedCountry)
+            .debounce(for: .milliseconds(400), scheduler: RunLoop.main)
+            .map { number, country in
+                guard !number.isEmpty else {
+                    return .idle
+                }
+                return PhoneValidator.validate(number: number, for: country)
+            }
+            .assign(to: &$validationState)
+    }
 }
+

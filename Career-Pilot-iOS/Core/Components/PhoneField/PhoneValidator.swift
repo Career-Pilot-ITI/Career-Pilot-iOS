@@ -41,4 +41,32 @@ struct PhoneValidator {
         }
         return result
     }
+
+    // MARK: - Detailed Validation
+
+    /// Returns a specific validation state for live feedback as the user types.
+    static func validate(number: String, for country: CountryCode) -> PhoneValidationState {
+        let digits = cleanDigits(number)
+
+        if digits.isEmpty {
+            return .empty
+        }
+
+        if digits.count < country.maxLength {
+            return .tooShort
+        }
+
+        // Country-specific prefix validation
+        if country.dialCode == "+20" {
+            // Egyptian mobile numbers: after stripping leading 0, first two digits
+            // must be one of: 10, 11, 12, 15
+            let validEgyptianPrefixes = ["10", "11", "12", "15"]
+            let prefix = String(digits.prefix(2))
+            if !validEgyptianPrefixes.contains(prefix) {
+                return .invalidPrefix
+            }
+        }
+
+        return .valid
+    }
 }

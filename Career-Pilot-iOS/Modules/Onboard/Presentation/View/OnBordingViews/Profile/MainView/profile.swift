@@ -32,6 +32,7 @@ struct profile: View {
             }
             .padding(.horizontal, Spacing.s20)
         }
+        .scrollIndicators(.hidden)
         .background(Color.gray100)
         .ignoresSafeArea(.keyboard)  
 

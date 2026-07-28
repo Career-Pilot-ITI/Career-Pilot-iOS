@@ -11,9 +11,6 @@ enum CheckoutEndpointService : APIEndpoint{
     case buyingCoins(coinRequest : CointRequestedDTo)
     case getUserCoins
     case getUserSubscription
-    var baseURL: String {
-        return "https://dfa0-41-41-134-165.ngrok-free.app/"
-    }
     
     var path: String {
         switch self {

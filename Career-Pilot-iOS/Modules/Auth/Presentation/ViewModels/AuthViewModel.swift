@@ -34,22 +34,23 @@ class AuthViewModel: ObservableObject {
             try await sendUseCase.execute(phoneNumber)
             return true
         } catch {
-            toastManager.show(error.localizedDescription, type: .error)
+            let message = (error as? NetworkError)?.userMessage ?? error.localizedDescription
+            toastManager.show(message, type: .error)
             return false
         }
     }
     
-    @discardableResult
-    func verifyOTP(_ verifyOtpInput: VerifyOTPInput) async -> Bool {
+    func verifyOTP(_ verifyOtpInput: VerifyOTPInput) async -> VerifyOTPResult? {
         isLoading = true
         defer { isLoading = false }
         
         do {
-            let response = try await verifyUseCase.execute(verifyOtpInput)
-            return true
-        } catch(let error) {
-            toastManager.show(error.localizedDescription, type: .error)
-            return false
+            let result = try await verifyUseCase.execute(verifyOtpInput)
+            return result
+        } catch {
+            let message = (error as? NetworkError)?.userMessage ?? error.localizedDescription
+            toastManager.show(message, type: .error)
+            return nil
         }
     }
 }
