@@ -31,7 +31,7 @@ final class UserLocalDataSourceImpl: UserLocalDataSource {
 
             users.forEach(context.delete)
 
-            user.toEntity(in: context)
+            let isSaved = user.toEntity(in: context)
 
             let verifyRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
             let count = try context.count(for: verifyRequest)

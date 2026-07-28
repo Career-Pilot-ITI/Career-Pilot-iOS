@@ -1,0 +1,77 @@
+//
+//  TrackInterviewCard.swift
+//  Career-Pilot-iOS
+//
+//  Created by Ahmed El-Sayyad Mohamed on 25/07/2026.
+//
+
+import SwiftUI
+
+struct CareerCardView: View {
+    let iconName: String
+    let title: String
+    let tagText: String
+    let durationText: String
+    let accentColor: Color
+    let action: () -> Void
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: Spacing.s12) {
+            
+            ZStack {
+                RoundedRectangle(cornerRadius: Radius.r16)
+                    .fill(accentColor.opacity(0.12))
+                
+                Image(systemName: iconName)
+                    .font(.size18Bold)
+                    .foregroundColor(accentColor)
+            }
+            .frame(width: 56, height: 56)
+            
+            // Title
+            Text(title)
+                .font(.size20Bold)
+                .foregroundColor(Color(red: 0.1, green: 0.12, blue: 0.2))
+                .lineLimit(3)
+            
+            // Tag Pill
+            Text(tagText)
+                .font(.size14Semibold)
+                .foregroundColor(accentColor)
+                .padding(.horizontal, Spacing.s12)
+                .padding(.vertical, Spacing.s6)
+                .background(
+                    Capsule()
+                        .fill(accentColor.opacity(0.12))
+                )
+            
+            Spacer()
+            
+            HStack {
+                Text(durationText)
+                    .font(.size16Medium)
+                    .foregroundColor(.secondary)
+                
+                Spacer()
+                
+                Button(action: action) {
+                    Image(systemName: "chevron.right")
+                        .font(.size16Bold)
+                        .foregroundColor(.white)
+                        .frame(width: 48, height: 48)
+                        .background(accentColor)
+                        .cornerRadius(Radius.r14)
+                }
+            }
+        }
+        .padding(Spacing.s24)
+        .frame(width: 200, height: 250)
+        .background(Color.white)
+        .cornerRadius(Radius.r24)
+        .shadow(color: Color.black.opacity(0.05), radius: Radius.r16, x: 0, y: 5)
+        .overlay(
+            RoundedRectangle(cornerRadius: Radius.r24)
+                .stroke(Color(.systemGray6), lineWidth: 1)
+        )
+    }
+}

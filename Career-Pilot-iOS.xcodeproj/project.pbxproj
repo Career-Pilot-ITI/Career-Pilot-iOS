@@ -189,12 +189,19 @@
 		CE12F3C4300940CE0083D66D /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C3300940CE0083D66D /* Shimmer.swift */; };
 		CE12F3C830094FB50083D66D /* OTPBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C530094FB50083D66D /* OTPBoxView.swift */; };
 		CE12F3C930094FB50083D66D /* OTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C630094FB50083D66D /* OTPCodeView.swift */; };
+		CE1D8991301616B000C759CA /* MicrophonePermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D8990301616B000C759CA /* MicrophonePermissionManager.swift */; };
 		CE8AFF18300712FC0064CC6C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF15300712FC0064CC6C /* Font.swift */; };
 		CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF14300712FC0064CC6C /* Colors.swift */; };
 		CE8AFF1D300718670064CC6C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1C300718670064CC6C /* Round.swift */; };
 		CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1E3007187D0064CC6C /* Spaces.swift */; };
 		CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF21300726660064CC6C /* PhoneTextField.swift */; };
 		CEA4C08530143D6900CB5DD3 /* OnBoardingUser+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08430143D6900CB5DD3 /* OnBoardingUser+Mapping.swift */; };
+		CEA4C0883014528800CB5DD3 /* GetCurrentUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C0873014528800CB5DD3 /* GetCurrentUserUseCase.swift */; };
+		CEA4C08A30145B0900CB5DD3 /* TrackInterviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08930145B0900CB5DD3 /* TrackInterviewCard.swift */; };
+		CEA4C08E3014676600CB5DD3 /* CareerCardSkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08D3014676600CB5DD3 /* CareerCardSkeletonView.swift */; };
+		CEA4C0903014698600CB5DD3 /* SessionRowSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08F3014698600CB5DD3 /* SessionRowSkeleton.swift */; };
+		CEA4C09230146F6300CB5DD3 /* PracticePreparationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C09130146F6300CB5DD3 /* PracticePreparationView.swift */; };
+		CEA4C0943014703600CB5DD3 /* InterviewPrepContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C0933014703600CB5DD3 /* InterviewPrepContainerView.swift */; };
 		CEB6221130103D2600027035 /* UserLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6221030103D2600027035 /* UserLocalDataSource.swift */; };
 		CEB622133010405800027035 /* UsertoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB622123010405800027035 /* UsertoEntity.swift */; };
 		CEB622153010440800027035 /* SaveUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB622143010440800027035 /* SaveUserUseCase.swift */; };
@@ -531,12 +538,20 @@
 		CE12F3C3300940CE0083D66D /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		CE12F3C530094FB50083D66D /* OTPBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPBoxView.swift; sourceTree = "<group>"; };
 		CE12F3C630094FB50083D66D /* OTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPCodeView.swift; sourceTree = "<group>"; };
+		CE1D898F301611C900C759CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CE1D8990301616B000C759CA /* MicrophonePermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophonePermissionManager.swift; sourceTree = "<group>"; };
 		CE8AFF14300712FC0064CC6C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CE8AFF15300712FC0064CC6C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		CE8AFF1C300718670064CC6C /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		CE8AFF1E3007187D0064CC6C /* Spaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spaces.swift; sourceTree = "<group>"; };
 		CE8AFF21300726660064CC6C /* PhoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTextField.swift; sourceTree = "<group>"; };
 		CEA4C08430143D6900CB5DD3 /* OnBoardingUser+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnBoardingUser+Mapping.swift"; sourceTree = "<group>"; };
+		CEA4C0873014528800CB5DD3 /* GetCurrentUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentUserUseCase.swift; sourceTree = "<group>"; };
+		CEA4C08930145B0900CB5DD3 /* TrackInterviewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInterviewCard.swift; sourceTree = "<group>"; };
+		CEA4C08D3014676600CB5DD3 /* CareerCardSkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareerCardSkeletonView.swift; sourceTree = "<group>"; };
+		CEA4C08F3014698600CB5DD3 /* SessionRowSkeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowSkeleton.swift; sourceTree = "<group>"; };
+		CEA4C09130146F6300CB5DD3 /* PracticePreparationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticePreparationView.swift; sourceTree = "<group>"; };
+		CEA4C0933014703600CB5DD3 /* InterviewPrepContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewPrepContainerView.swift; sourceTree = "<group>"; };
 		CEB6221030103D2600027035 /* UserLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalDataSource.swift; sourceTree = "<group>"; };
 		CEB622123010405800027035 /* UsertoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsertoEntity.swift; sourceTree = "<group>"; };
 		CEB622143010440800027035 /* SaveUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUserUseCase.swift; sourceTree = "<group>"; };
@@ -928,6 +943,7 @@
 		41D69D21300A77C500294D94 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				CEA4C0863014526200CB5DD3 /* UseCases */,
 				D9C1878F30065ACC00BFF8E9 /* Entities */,
 				CECCDA34300F20200068620D /* Mappers */,
 				41BE1A70300BF0940033D1B5 /* Repo */,
@@ -1488,6 +1504,22 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		CEA4C0863014526200CB5DD3 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				CEA4C0873014528800CB5DD3 /* GetCurrentUserUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		CEB62217301061F700027035 /* UploadCv */ = {
+			isa = PBXGroup;
+			children = (
+				CEB62216301061F700027035 /* UploadCvUseCase.swift */,
+			);
+			path = UploadCv;
+			sourceTree = "<group>";
+		};
 		CECC20CE3007ACE100DC450D /* PhoneField */ = {
 			isa = PBXGroup;
 			children = (
@@ -1552,6 +1584,10 @@
 				CEE62A94300929830071F076 /* ProgressCard.swift */,
 				CEE62A96300929960071F076 /* PracticeCard.swift */,
 				CEE62A98300929A70071F076 /* SessionRow.swift */,
+				CEA4C08930145B0900CB5DD3 /* TrackInterviewCard.swift */,
+				CEA4C08D3014676600CB5DD3 /* CareerCardSkeletonView.swift */,
+				CEA4C08F3014698600CB5DD3 /* SessionRowSkeleton.swift */,
+				CEA4C09130146F6300CB5DD3 /* PracticePreparationView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1613,6 +1649,7 @@
 			children = (
 				CEE62A81300910D50071F076 /* Components */,
 				CEE62A7F300910840071F076 /* HomeView.swift */,
+				CEA4C0933014703600CB5DD3 /* InterviewPrepContainerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1719,6 +1756,7 @@
 		D93938E03004064400CF4372 /* Career-Pilot-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				CE1D898F301611C900C759CA /* Info.plist */,
 				D9C187D030066BC900BFF8E9 /* App */,
 				D9C187AB30065F6800BFF8E9 /* Core */,
 				D9C1878430065A4800BFF8E9 /* Modules */,
@@ -2326,6 +2364,7 @@
 			children = (
 				6169A7B03010301E001FDC39 /* Error */,
 				D9C187CC30066B1F00BFF8E9 /* util.swift */,
+				CE1D8990301616B000C759CA /* MicrophonePermissionManager.swift */,
 				6117C030300FBCF900CABEC6 /* Validation.swift */,
 			);
 			path = Util;
@@ -2490,6 +2529,7 @@
 				D92854073010188400F8CAC2 /* FeedbackReportDTOMapping.swift in Sources */,
 				D95C3BB1300E4A460042785F /* InterviewRepository.swift in Sources */,
 				D9C187C830066A4F00BFF8E9 /* Colors+Extension.swift in Sources */,
+				CEA4C09230146F6300CB5DD3 /* PracticePreparationView.swift in Sources */,
 				41BC7722300D146900E89C3F /* SuggestionIconView.swift in Sources */,
 				61F33938301397A800C94B89 /* UserCard.swift in Sources */,
 				41C6A23A30080AE10035EFBF /* SuccessOTPCodeView.swift in Sources */,
@@ -2571,6 +2611,7 @@
 				D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */,
 				6169A7CD301044E5001FDC39 /* SkillsDetectedSettingsProfile.swift in Sources */,
 				D95C3BA2300E49E10042785F /* FinishInterviewUseCase.swift in Sources */,
+				CEA4C0943014703600CB5DD3 /* InterviewPrepContainerView.swift in Sources */,
 				CECCDA3F300F68D50068620D /* UpdateProfileDTO+Mapping.swift in Sources */,
 				CE12F3C230093ED30083D66D /* HomeViewModel.swift in Sources */,
 				41BC773E300D3CD800E89C3F /* QuestionPromptCard.swift in Sources */,
@@ -2596,17 +2637,20 @@
 				41A7F6F8300BBB2A00FBE8EB /* LampGlitchModifier.swift in Sources */,
 				D9B614F6300D1B8E00552F85 /* GetAllTrackesUseCase.swift in Sources */,
 				CECC20D83007B60900DC450D /* AppStrings.swift in Sources */,
+				CEA4C0883014528800CB5DD3 /* GetCurrentUserUseCase.swift in Sources */,
 				D95C3BA0300E49D20042785F /* CancelInterviewUseCase.swift in Sources */,
 				CE12F3C030093CE40083D66D /* SessionData.swift in Sources */,
 				41AD90223016260600BDFDA0 /* Date+Formatting.swift in Sources */,
 				D95C3BA6300E49F30042785F /* InterviewConfiguration.swift in Sources */,
 				41D69D1C300A6DB400294D94 /* VerifyOTPResponseDTO+Mapping.swift in Sources */,
+				CE1D8991301616B000C759CA /* MicrophonePermissionManager.swift in Sources */,
 				41BC7742300D3D5900E89C3F /* QuestionStatsRow.swift in Sources */,
 				41BC7732300D31C900E89C3F /* SessionView.swift in Sources */,
 				41BC7752300D9A8D00E89C3F /* AppState.swift in Sources */,
 				61970B8E30115BE2009D7E58 /* CoinPack.swift in Sources */,
 				CEE62A83300910E90071F076 /* CustomNavigationBar.swift in Sources */,
 				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
+				CEA4C08A30145B0900CB5DD3 /* TrackInterviewCard.swift in Sources */,
 				6169A7D3301044E5001FDC39 /* SupportAndLeagalSettingsView.swift in Sources */,
 				D999D5A83010ED0E00CF606B /* SessionStateDTOMapping.swift in Sources */,
 				D999D5A63010E71F00CF606B /* SessionStateDTO.swift in Sources */,
@@ -2675,6 +2719,7 @@
 				CEB6221130103D2600027035 /* UserLocalDataSource.swift in Sources */,
 				41BC7734300D347E00E89C3F /* SessionHistoryView.swift in Sources */,
 				41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */,
+				CEA4C08E3014676600CB5DD3 /* CareerCardSkeletonView.swift in Sources */,
 				D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */,
 				D99D9756301282E000F2A7C2 /* String+Extension.swift in Sources */,
 				D95C3BCB300EA1800042785F /* WaitingForAnswerView.swift in Sources */,
@@ -2696,6 +2741,8 @@
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
 				D970C9E6301566B3002F6269 /* UploadFileResponseDTO.swift in Sources */,
 				D95C3B99300E495C0042785F /* InterviewSessionEndPointes.swift in Sources */,
+				CEA4C0903014698600CB5DD3 /* SessionRowSkeleton.swift in Sources */,
+				D9A28581300A61DC00ABB5BD /* UserDataEndPoint.swift in Sources */,
 				D9BA3476300ED5040058D6E6 /* Fake.swift in Sources */,
 				CEB62218301061F700027035 /* UploadCvUseCase.swift in Sources */,
 				41BE1A7A300BF43E0033D1B5 /* AuthRepositoryImpl.swift in Sources */,
@@ -2959,8 +3006,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Career-Pilot-iOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Career-Pilot-iOS/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app need the camera to allow u take a photo";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses the microphone to record your interview answers.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to the microphone to record your voice.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to transcribe your interview answers.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2988,8 +3036,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Career-Pilot-iOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Career-Pilot-iOS/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app need the camera to allow u take a photo";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses the microphone to record your interview answers.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to the microphone to record your voice.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to transcribe your interview answers.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -8,6 +8,7 @@
 import Foundation
 enum Radius {
     static let r6: CGFloat = 6
+    static let r8: CGFloat = 6
     static let r10: CGFloat = 10
     static let r12: CGFloat = 12
     static let r13: CGFloat = 13

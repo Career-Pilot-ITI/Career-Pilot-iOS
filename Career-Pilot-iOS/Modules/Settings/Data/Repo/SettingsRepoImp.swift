@@ -54,10 +54,6 @@ class SettingsRepoImp : SettingsRepo  {
     
     func logout() async throws{
         do{
-            try await authToken.save(AuthTokens(accessToken: "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWQiOjEsImVtYWlsIjoiRXlhZHc4N0BnbWFpbC5jb20iLCJzdWIiOiJFeWFkdzg3IiwiaWF0IjoxNzg0OTI1OTAyLCJleHAiOjE3ODQ5Mjk1MDJ9.5uPX8y6Wh9cs5gjmB_ZXWCe7wqnBSJ8CCE3sFrWl6_Q", refreshToken: "f2bdf399-ea22-4d21-9fb4-ccd75c1854f2", expiresIn: 3600000))
-        }
-        catch{}
-        do{
             try await remote.logoutUser()
             try authToken.clear()
             try await local.deleteUserData()

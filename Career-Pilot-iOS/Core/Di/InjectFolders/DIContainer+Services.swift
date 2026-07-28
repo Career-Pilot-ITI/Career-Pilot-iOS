@@ -10,6 +10,11 @@ import Foundation
 extension DIContainer{
     func registerServices(){
         
+        //MicrophonePermissionManaging
+        container.register(MicrophonePermissionManaging.self){ _ in
+            MicrophonePermissionManager()
+            
+        }.inObjectScope(.container)
         // CoreData
         container.register(CoreDataManager.self) { _ in
             CoreDataManager() 
