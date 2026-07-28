@@ -62,8 +62,11 @@ final class PracticeSessionViewModel: ObservableObject {
         return progressService.completionPercentage(session: session)
     }
 
-    var feedback: InterviewFeedback? {
-        session?.feedback
+    var feedback: InterviewFeedback {
+        guard let feedback = session?.feedback else{
+            return InterviewFeedback.empty
+        }
+        return feedback
     }
 
     private var interviewType: InterviewType
@@ -326,7 +329,6 @@ final class PracticeSessionViewModel: ObservableObject {
 
     func finish() async {
         screenState = .loading
-        
         stopSessionTimer()
         guard let sessionId = session?.id else {
             screenState = .error(InterviewError.unknown("Can't finish — no active session."))
