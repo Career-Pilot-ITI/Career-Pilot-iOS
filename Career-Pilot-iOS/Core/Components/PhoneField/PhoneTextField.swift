@@ -58,10 +58,20 @@ struct PhoneTextField: View {
             .background(RoundedRectangle(cornerRadius: 16).fill(isDisabled ? AppColors.PhoneField.backgroundDisabled : AppColors.PhoneField.background))
             .overlay(RoundedRectangle(cornerRadius: 10).stroke(currentState.borderColor, lineWidth: currentState.borderWidth))
             
-            if currentState == .invalid && !isFieldFocused {
-                Label(AppStrings.PhoneField.errorInvalid, systemImage: "exclamationmark.circle.fill")
-                    .foregroundColor(AppColors.error)
-                    .font(.caption)
+            if viewModel.hasBeenEdited {
+                HStack(spacing: 4) {
+                    if viewModel.validationState == .valid {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(viewModel.validationState.color)
+                    } else if viewModel.validationState != .idle {
+                        Image(systemName: "exclamationmark.circle.fill")
+                            .foregroundColor(viewModel.validationState.color)
+                    }
+                    Text(viewModel.validationState.message)
+                        .foregroundColor(viewModel.validationState.color)
+                        .font(.caption)
+                }
+                .animation(.easeInOut(duration: 0.2), value: viewModel.validationState)
             }
         }
         .sheet(isPresented: $showCountryPicker) {
