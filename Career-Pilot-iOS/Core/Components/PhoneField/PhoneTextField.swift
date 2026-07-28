@@ -58,27 +58,37 @@ struct PhoneTextField: View {
             .background(RoundedRectangle(cornerRadius: 16).fill(isDisabled ? AppColors.PhoneField.backgroundDisabled : AppColors.PhoneField.background))
             .overlay(RoundedRectangle(cornerRadius: 10).stroke(currentState.borderColor, lineWidth: currentState.borderWidth))
             
-            if viewModel.hasBeenEdited {
-                HStack(spacing: 4) {
-                    if viewModel.validationState == .valid {
-                        Image(systemName: "checkmark.circle.fill")
-                            .foregroundColor(viewModel.validationState.color)
-                    } else if viewModel.validationState != .idle {
-                        Image(systemName: "exclamationmark.circle.fill")
-                            .foregroundColor(viewModel.validationState.color)
-                    }
-                    Text(viewModel.validationState.message)
-                        .foregroundColor(viewModel.validationState.color)
-                        .font(.caption)
-                }
+            validationHint
                 .animation(.easeInOut(duration: 0.2), value: viewModel.validationState)
-            }
         }
         .sheet(isPresented: $showCountryPicker) {
             CountryPickerSheet(countries: CountryCode.defaultList, selected: $viewModel.selectedCountry, isPresented: $showCountryPicker)
         }
     }
     
+    // MARK: - Validation Hint
+
+    /// Rendered as a stable view (never inside a conditional) so that
+    /// `.animation(_:value:)` can resolve `PhoneValidationState` correctly.
+    @ViewBuilder
+    private var validationHint: some View {
+        if viewModel.hasBeenEdited && viewModel.validationState != .idle {
+            HStack(spacing: 4) {
+                let state = viewModel.validationState
+                Image(systemName: state == .valid
+                    ? "checkmark.circle.fill"
+                    : "exclamationmark.circle.fill"
+                )
+                .foregroundColor(state.color)
+                Text(state.message)
+                    .foregroundColor(state.color)
+                    .font(.caption)
+            }
+        } else {
+            EmptyView()
+        }
+    }
+
     @ViewBuilder
     private var trailingIcon: some View {
         switch currentState {
