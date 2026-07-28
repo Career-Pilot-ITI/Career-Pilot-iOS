@@ -58,36 +58,18 @@ struct PhoneTextField: View {
             .background(RoundedRectangle(cornerRadius: 16).fill(isDisabled ? AppColors.PhoneField.backgroundDisabled : AppColors.PhoneField.background))
             .overlay(RoundedRectangle(cornerRadius: 10).stroke(currentState.borderColor, lineWidth: currentState.borderWidth))
             
-            validationHint
-                .animation(.easeInOut(duration: 0.2), value: viewModel.validationState)
+            PhoneValidationHintView(
+                state: viewModel.validationState,
+                hasBeenEdited: viewModel.hasBeenEdited
+            )
+            .animation(.easeInOut(duration: 0.2), value: viewModel.hasBeenEdited)
         }
         .sheet(isPresented: $showCountryPicker) {
             CountryPickerSheet(countries: CountryCode.defaultList, selected: $viewModel.selectedCountry, isPresented: $showCountryPicker)
         }
     }
     
-    // MARK: - Validation Hint
-
-    /// Rendered as a stable view (never inside a conditional) so that
-    /// `.animation(_:value:)` can resolve `PhoneValidationState` correctly.
-    @ViewBuilder
-    private var validationHint: some View {
-        if viewModel.hasBeenEdited && viewModel.validationState != .idle {
-            HStack(spacing: 4) {
-                let state = viewModel.validationState
-                Image(systemName: state == .valid
-                    ? "checkmark.circle.fill"
-                    : "exclamationmark.circle.fill"
-                )
-                .foregroundColor(state.color)
-                Text(state.message)
-                    .foregroundColor(state.color)
-                    .font(.caption)
-            }
-        } else {
-            EmptyView()
-        }
-    }
+    // MARK: - Trailing icon
 
     @ViewBuilder
     private var trailingIcon: some View {
@@ -115,12 +97,28 @@ struct PhoneTextField: View {
     }
 }
 
-//
-//#Preview {
-//    ZStack {
-//        Color.darkBackGround.ignoresSafeArea()
-//        
-//        PhoneTextField(viewModel: PhoneFieldViewModel(selectedCountry: CountryCode.defaultList[0]))
-//            .padding(.horizontal, 16)
-//    }
-//}
+// MARK: - Validation Hint View
+
+/// Standalone view so type inference has no @ObservedObject involvement.
+/// Receives plain value-type parameters — no Binding confusion possible.
+private struct PhoneValidationHintView: View {
+    let state: PhoneValidationState
+    let hasBeenEdited: Bool
+
+    var body: some View {
+        if hasBeenEdited && state != .idle {
+            HStack(spacing: 4) {
+                Image(systemName: state == .valid
+                    ? "checkmark.circle.fill"
+                    : "exclamationmark.circle.fill"
+                )
+                .foregroundColor(state.color)
+
+                Text(state.message)
+                    .foregroundColor(state.color)
+                    .font(.caption)
+            }
+        }
+    }
+}
+
