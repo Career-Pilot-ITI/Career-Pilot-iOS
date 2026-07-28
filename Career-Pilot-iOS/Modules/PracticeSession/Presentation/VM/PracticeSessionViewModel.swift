@@ -62,11 +62,14 @@ final class PracticeSessionViewModel: ObservableObject {
         return progressService.completionPercentage(session: session)
     }
 
-    var feedback: InterviewFeedback? {
-        session?.feedback
+    var feedback: InterviewFeedback {
+        guard let feedback = session?.feedback else{
+            return InterviewFeedback.empty
+        }
+        return feedback
     }
 
-    private var interviewType: InterviewType = .Classic
+    private var interviewType: InterviewType
 
     private let startUseCase: StartInterviewUseCaseProtocol
     private let submitUseCase: SubmitAnswerUseCaseProtocol
@@ -84,6 +87,7 @@ final class PracticeSessionViewModel: ObservableObject {
     private let silenceThreshold: Float = 0.08
 
     init(
+        interviewType: InterviewType = .Classic,
         startUseCase: StartInterviewUseCaseProtocol,
         submitUseCase: SubmitAnswerUseCaseProtocol,
         resumeUseCase: ResumeInterviewUseCaseProtocol,
@@ -108,6 +112,7 @@ final class PracticeSessionViewModel: ObservableObject {
         self.speechService = speechService
         self.speechRecognitionService = speechRecognitionService
 
+        self.interviewType = interviewType
         self.recordingService.delegate = self
         self.silenceService.delegate = self
         self.speechService.delegate = self
@@ -121,6 +126,7 @@ final class PracticeSessionViewModel: ObservableObject {
     // MARK: - Single error func
     func onError(error: Error) async {
         print("onError: \(error)")
+        screenState = .loading
 
         if let interviewError = error as? InterviewError {
             await handle(interviewError)
@@ -150,6 +156,9 @@ final class PracticeSessionViewModel: ObservableObject {
                 return
             }
             await resumeAfterNetworkDrop()
+        case .unauthorized:
+            //Have to make him logout
+            return
         }
     }
 
@@ -322,6 +331,7 @@ final class PracticeSessionViewModel: ObservableObject {
     }
 
     func finish() async {
+        screenState = .loading
         stopSessionTimer()
         guard let sessionId = session?.id else {
             screenState = .error(InterviewError.unknown("Can't finish — no active session."))

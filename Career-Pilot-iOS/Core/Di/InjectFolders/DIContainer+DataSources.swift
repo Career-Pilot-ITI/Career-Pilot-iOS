@@ -30,7 +30,7 @@ extension DIContainer{
         
         //UserData
         container.register(UserDataRemoteDataSource.self) { r in
-            UserDataRemoteDataSourceImp(networkService: r.resolve(NetworkService.self, name: "base")!)
+            UserDataRemoteDataSourceImp(networkService: r.resolve(NetworkService.self, name: "authenticated")!)
         }
         
         //OnBording
