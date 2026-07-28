@@ -40,28 +40,31 @@ extension InterviewError: LocalizedError {
 
 extension InterviewError {
     static func map(_ error: Error) -> InterviewError {
+        print("Start mapping the error")
         if let domainError = error as? InterviewError {
+            print("-------\(domainError.errorDescription ?? "no Error")")
             return domainError // errors that i already throwed
         }
 
         if let networkError = error as? NetworkError {
             switch networkError {
+            case.unauthorized,.tokenExpired:
+                return.sessionNotFound
             case.noInternet:
                 return.networkUnavailable
-            case .serverError(let statusCode, let data):
+            case .serverError(let statusCode,_):
                 switch statusCode {
                 case 403:
                     return .sessionQuotaExceeded
                 case 404:
                     return .sessionNotFound
                 default:
-                    let message = data
-                        .flatMap { try? JSONDecoder().decode(APIErrorResponse.self, from: $0) }?
-                        .message
-                    return .serverError(message ?? "Request failed with status \(statusCode)")
+                    return .serverError("Something went wrong. Please try again.")
                 }
-            // handle NetworkError's other cases here too, whatever they are
+            case.invalidURL,.decodingFailed(_),.encodingFailed(_):
+                return.unknown("Sorry For That\nServer problem, please contact support.")
             default:
+                print("Defualt")
                 return .networkUnavailable
             }
         }
@@ -72,13 +75,4 @@ extension InterviewError {
 
         return .serverError(error.localizedDescription)
     }
-}
-
-struct APIErrorResponse: Decodable {
-    let message: String?
-}
-
-struct HTTPStatusError: Error {
-    let statusCode: Int
-    let data: Data?
 }
