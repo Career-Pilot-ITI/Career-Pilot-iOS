@@ -10,16 +10,13 @@ enum SettingsEndpoint : APIEndpoint{
     case logout
     case getUserData
     
-    var baseURL: String{
-        "https://dfa0-41-41-134-165.ngrok-free.app/"
-    }
     
     var path: String{
         switch self {
         case.getUserData:
-            return "api/v1/profile"
+            return "/api/v1/profile"
         case .logout:
-            return "api/v1/auth/logout"
+            return "/api/v1/auth/logout"
         }
     }
     
@@ -39,10 +36,7 @@ enum SettingsEndpoint : APIEndpoint{
             }
         }
     var requiresAuthentication: Bool {
-            switch self {
-            case .getUserData:  return true
-            case .logout:  return true
-            }
+            true
         }
     var headers: [String: String] {
         let tokenString: String
@@ -58,7 +52,8 @@ enum SettingsEndpoint : APIEndpoint{
         }
         
         return [
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(tokenString)"
         ]
     }
     

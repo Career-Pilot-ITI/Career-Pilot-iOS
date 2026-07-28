@@ -11,9 +11,6 @@ enum AuthEndPoint : APIEndpoint {
     case sendOTP(phoneNumber: String)
     case verifyOTP(phoneNumber: String ,code: String)
     
-    var baseURL: String {
-        "https://dfa0-41-41-134-165.ngrok-free.app"
-    }
     
     var path: String {
         switch self {

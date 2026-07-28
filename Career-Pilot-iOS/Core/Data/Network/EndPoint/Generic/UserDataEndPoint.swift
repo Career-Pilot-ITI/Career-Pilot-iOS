@@ -60,7 +60,6 @@ enum UserDataEndpoints: APIEndpoint {
     var headers: [String: String] {
         [
             "Content-Type": "multipart/form-data; boundary=\(boundary)",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWQiOjEsInN1YiI6InVzZXJfMTMyODM3IiwiaWF0IjoxNzg1MTYzOTkxLCJleHAiOjE3ODU1MjM5OTF9.JEPGUo5zmBHLYmRD1MUyPdXjUMhbti1jTQeUq_wOoCw"
         ]
     }
 }

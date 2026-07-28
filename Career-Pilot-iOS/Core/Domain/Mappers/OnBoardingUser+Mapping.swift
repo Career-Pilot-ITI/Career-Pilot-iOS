@@ -20,7 +20,7 @@ extension OnBoardingUser {
             phoneNumber: phoneNumber,
             profile: UserProfile(
                 displayName: fullName,
-                username: "ahmed_elsayyad",
+                username: fullName.trimmingCharacters(in:.whitespacesAndNewlines),
                 email: email,
                 avatarURL: avatarUrl ?? "",
                 gender: gender ?? "male",
