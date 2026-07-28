@@ -15,10 +15,7 @@ import SwiftUI
 import Shimmer
 
 struct ChoosePlanView: View {
-    @StateObject var viewModel: SubscriptionViewModel = SubscriptionViewModel(
-        getPlansUseCase: GetSubscribtionPlan(settingsRepo: SettingsRepoImp(remote: SettingsRemoteImp(apiService: URLSessionNetworkService()), local: SettingsLocalDataSourceImp(coreDataManager: CoreDataManager()), authToken: KeychainAuthTokenStore())),
-        getUserSubscribtion: GetUserSubscribtion(settingsRepo: SettingsRepoImp(remote: SettingsRemoteImp(apiService: URLSessionNetworkService()), local: SettingsLocalDataSourceImp(coreDataManager: CoreDataManager()), authToken: KeychainAuthTokenStore()))
-    )
+    @StateObject var viewModel: SubscriptionViewModel 
     @EnvironmentObject var coordinator: AppCoordinator<SettingsRoute>
     
     var body: some View {

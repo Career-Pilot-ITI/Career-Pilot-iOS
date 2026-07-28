@@ -51,5 +51,21 @@ extension DIContainer{
         container.register(ReportsLocalDataProtocol.self) { r in
             ReportsLocalDataSource(coreDataManager: r.resolve(CoreDataManaging.self)!)
         }
+        
+        
+        // MARK: - Settings Data Sources
+        container.register(SettingsRemoteImp.self) { r in
+            SettingsRemoteImp(apiService: r.resolve(NetworkService.self, name: "base")!)
+        }
+
+        container.register(SettingsLocalDataSourceImp.self) { r in
+            SettingsLocalDataSourceImp(coreDataManager: r.resolve(CoreDataManager.self)!)
+        }
+
+        // MARK: - Checkout Data Source
+        container.register(CheckoutRemoteDataSourceImp.self) { r in
+            CheckoutRemoteDataSourceImp(checkOutNetworkService: r.resolve(NetworkService.self, name: "base")!)
+        }
+
     }
 }

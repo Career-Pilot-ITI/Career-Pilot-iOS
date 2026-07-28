@@ -98,5 +98,29 @@ extension DIContainer{
                 loadFeedbackUseCase: r.resolve(LoadSessionFeedbackUseCase.self)!
             )
         }
+        
+        // MARK: - Subscription, Payment, Settings ViewModels
+        container.register(SubscriptionViewModel.self) { r in
+            SubscriptionViewModel(
+                getPlansUseCase: r.resolve(GetSubscribtionPlan.self)!,
+                getUserSubscribtion: r.resolve(GetUserSubscribtion.self)!
+            )
+        }
+
+        container.register(PaymentViewModel.self) { r in
+            PaymentViewModel(
+                verifyPaymentUseCase: r.resolve(VerifyPaymentUseCaseImp.self)!,
+                checkoutUsecase: r.resolve(CheckoutUsecase.self)!,
+                userRefreshData: r.resolve(RefreshUserDataUseCase.self)!
+            )
+        }
+
+        container.register(SettingsViewModel.self) { r in
+            SettingsViewModel(
+                getUserData: r.resolve(GetUserDataUseCase.self)!,
+                userLogout: r.resolve(LogoutUsecase.self)!
+            )
+        }
+
     }
 }

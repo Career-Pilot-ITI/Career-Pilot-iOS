@@ -93,5 +93,39 @@ extension DIContainer{
         container.register(DeleteSessionUseCase.self) { r in
             DeleteSessionUseCase(repository: r.resolve(ReportsRepositoryProtocol.self)!)
         }
+        // MARK: - Settings & Subscription Use Cases
+        container.register(GetSubscribtionPlan.self) { r in
+            GetSubscribtionPlan(settingsRepo: r.resolve(SettingsRepoImp.self)!)
+        }
+
+        container.register(GetUserSubscribtion.self) { r in
+            GetUserSubscribtion(settingsRepo: r.resolve(SettingsRepoImp.self)!)
+        }
+
+        container.register(GetUserDataUseCase.self) { r in
+            GetUserDataUseCase(settingsRepo: r.resolve(SettingsRepoImp.self)!)
+        }
+
+        container.register(RefreshUserDataUseCase.self) { r in
+            RefreshUserDataUseCase(settingsRepo: r.resolve(SettingsRepoImp.self)!)
+        }
+
+        container.register(LogoutUsecase.self) { r in
+            LogoutUsecase(settingsRepo: r.resolve(SettingsRepoImp.self)!)
+        }
+
+        // MARK: - Payment & Checkout Use Cases
+        container.register(CheckoutUsecase.self) { r in
+            CheckoutUsecase(checkoutRepo: r.resolve(CheckoutRepoImplementation.self)!)
+        }
+
+        container.register(VerifyPaymentUseCaseImp.self) { r in
+            VerifyPaymentUseCaseImp(
+                getUserData: r.resolve(GetUserDataUseCase.self)!,
+                checkoutRepo: r.resolve(CheckoutRepoImplementation.self)!
+            )
+        }
+
     }
+    
 }
