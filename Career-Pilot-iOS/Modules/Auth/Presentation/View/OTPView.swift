@@ -12,6 +12,7 @@ struct OTPView: View {
     @EnvironmentObject var toastManager: ToastManager
     @StateObject private var viewModel: AuthViewModel
     @State private var code: String
+    @State private var showBackConfirmation = false
     private let phoneNumber: String
 
     init(
@@ -67,18 +68,47 @@ struct OTPView: View {
             .padding(.horizontal, Spacing.s24)
         }
         .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    showBackConfirmation = true
+                } label: {
+                    HStack(spacing: 4) {
+                        Image(systemName: "chevron.left")
+                        Text("Change number")
+                    }
+                    .font(.size14Regular)
+                    .foregroundColor(.white)
+                }
+            }
+        }
+        .alert("Change Phone Number?", isPresented: $showBackConfirmation) {
+            Button("Go Back", role: .destructive) {
+                code = ""
+                coordinator.popToRoot()
+            }
+            Button("Stay", role: .cancel) { }
+        } message: {
+            Text("You'll need to request a new code if you change your number.")
+        }
     }
 
     private func verifyEnteredCode() {
         Task {
             let input = VerifyOTPInput(phoneNumber: phoneNumber, code: code)
-            let success = await viewModel.verifyOTP(input)
-            if success {
-                appState.markLoggedIn()
-                coordinator.push(.successOTPScreen)
-            } else {
+            guard let result = await viewModel.verifyOTP(input) else {
                 code = ""
+                return
             }
+            
+            appState.markLoggedIn()
+            
+            if !result.user.isNewUser {
+                // Returning user — skip onboarding
+                appState.markOnboardingSeen()
+            }
+            
+            coordinator.push(.successOTPScreen)
         }
     }
 }
@@ -92,3 +122,4 @@ struct OTPView_Previews: PreviewProvider {
         .environmentObject(AppCoordinator<AuthRoute>())
     }
 }
+

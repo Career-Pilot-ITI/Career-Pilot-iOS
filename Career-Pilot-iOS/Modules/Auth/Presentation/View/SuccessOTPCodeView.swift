@@ -30,8 +30,17 @@ struct SuccessOTPCodeView: View {
             navigationTask = Task  {
                 try? await Task.sleep(for: .seconds(5))
                 guard !Task.isCancelled else { return }
-                coordinator.push(.onboardingScreen(vm: DIContainer.shared.container.resolve(OnBordingViewModel.self)!))
-	            }
+                
+                if appState.isOnboadingSeen {
+                    // Returning user — ContentView will automatically show MainTabBarView
+                    // since isOnboadingSeen is already true. Just pop back so the
+                    // NavigationStack is clean when ContentView swaps its root.
+                    coordinator.popToRoot()
+                } else {
+                    // New user — proceed to onboarding
+                    coordinator.push(.onboardingScreen(vm: DIContainer.shared.container.resolve(OnBordingViewModel.self)!))
+                }
+            }
         }
         .onDisappear {
                 navigationTask?.cancel()

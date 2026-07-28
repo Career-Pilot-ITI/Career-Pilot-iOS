@@ -84,6 +84,9 @@ final class URLSessionNetworkService: NetworkService {
         } catch let urlError as URLError where urlError.code == .notConnectedToInternet {
             print("❌ [NETWORK ERROR] No internet connection")
             throw NetworkError.noInternet
+        } catch let urlError as URLError where urlError.code == .timedOut {
+            print("❌ [NETWORK ERROR] Request timed out")
+            throw NetworkError.requestTimeout
         } catch {
             print("❌ [UNKNOWN ERROR] \(error.localizedDescription)")
             throw NetworkError.unknown(error)
