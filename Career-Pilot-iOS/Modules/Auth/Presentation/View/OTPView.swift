@@ -100,15 +100,20 @@ struct OTPView: View {
                 code = ""
                 return
             }
-            
-            appState.markLoggedIn()
-            
-            if !result.user.isNewUser {
-                // Returning user — skip onboarding
+
+            if result.user.isNewUser {
+                // New user: log in then show success animation → onboarding
+                appState.markLoggedIn()
+                coordinator.push(.successOTPScreen)
+            } else {
+                // Returning user: set isOnboadingSeen BEFORE isLoggedIn so
+                // ContentView never enters the (isLoggedIn=true, isOnboadingSeen=false)
+                // intermediate state that would swap the NavigationStack root to
+                // OnBordingView. ContentView observes @AppStorage and auto-transitions
+                // to MainTabBarView — no push needed.
                 appState.markOnboardingSeen()
+                appState.markLoggedIn()
             }
-            
-            coordinator.push(.successOTPScreen)
         }
     }
 }
