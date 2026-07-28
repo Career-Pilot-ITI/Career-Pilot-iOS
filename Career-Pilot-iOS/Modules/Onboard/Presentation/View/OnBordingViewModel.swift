@@ -61,6 +61,33 @@ class OnBordingViewModel: ObservableObject {
         self.saveUserUseCase = saveUserUseCase
     }
     
+    //MARK: OnAppers
+    func onApper(){
+        getAllTracks()
+    }
+    
+    func onTryAgin(){
+        switch currentView {
+        case .ChooseTrackView:
+            getAllTracks()
+        case .UploadCvView:
+            screenState = .idel
+        case .ProfileView:
+            screenState = .idel
+        }
+    }
+    
+    //MARK: For Uploding CV
+    func onCvResult(result: Result<URL,Error>){
+        switch result{
+        case.success(let cvURL):
+            didSelectCV(cvURL: cvURL)
+        case.failure(_):
+            screenState = .error(UploadCVErrors.CanNotUploadCv.description)
+        }
+    }
+    
+    
     //For Bottom Button
     var buttonTitle: String {
         switch currentView{
@@ -88,33 +115,7 @@ class OnBordingViewModel: ObservableObject {
         }
     }
     
-    //MARK: OnAppers
-    func onApper(){
-        getAllTracks()
-    }
     
-    func onTryAgin(){
-        switch currentView {
-        case .ChooseTrackView:
-            getAllTracks()
-        case .UploadCvView:
-            screenState = .idel
-        case .ProfileView:
-            screenState = .idel
-        }
-    }
-    
-
-    
-    //MARK: For Uploding CV
-    func onCvResult(result: Result<URL,Error>){
-        switch result{
-        case.success(let cvURL):
-            didSelectCV(cvURL: cvURL)
-        case.failure(_):
-            screenState = .error(UploadCVErrors.CanNotUploadCv.description)
-        }
-    }
     
     private func didSelectCV(cvURL: URL){
         //For UplodingCV View
@@ -132,9 +133,17 @@ class OnBordingViewModel: ObservableObject {
             let fileSizeInBytes = Double(values.fileSize ?? 0)
             let fileSizeInMB = fileSizeInBytes / (1024 * 1024)
             cvViewInfo.cvSize = fileSizeInMB
-        }catch let cvError as UploadCVErrors{
-            screenState = .error(cvError.description)
         }catch{
+            onCatchError(error: error)
+        }
+    }
+    
+    private func onCatchError(error: Error){
+        if let networkError = error as? NetworkError{
+            screenState = .error(networkError.userMessage)
+        }else if let cvError = error as? UploadCVErrors{
+            screenState = .error(cvError.description)
+        }else {
             screenState = .error(error.localizedDescription)
         }
     }
@@ -154,7 +163,7 @@ class OnBordingViewModel: ObservableObject {
                 selectedTrackInfo.filteredTracks = selectedTrackInfo.traks
                 screenState = .idel
             }catch{
-                screenState = .idel
+                onCatchError(error: error)
             }
         }
     }
@@ -183,11 +192,17 @@ class OnBordingViewModel: ObservableObject {
         screenState = .idel
         switch currentView{
         case.ChooseTrackView:
-            currentView = .UploadCvView
+            onNavToUploadCV()
         case.UploadCvView:
             onNavToProvileView()
         case.ProfileView:
             onNavToHomeScreen()
+        }
+    }
+    
+    private func onNavToUploadCV(){
+        if userData.selectedTrack != nil{
+            currentView = .UploadCvView
         }
     }
     
@@ -203,47 +218,21 @@ class OnBordingViewModel: ObservableObject {
                 screenState = .loading
                 try await uploadUserCv(userCV: userCV)
                 currentView = .ProfileView
-                
-            }catch let cvError as UploadCVErrors{
-                screenState = .error(cvError.description)
+                screenState = .idel
+                print("Now on ProfileView")
             }catch{
-                print(error.localizedDescription)
-                screenState = .error(error.localizedDescription)
+                onCatchError(error: error)
             }
         }
     }
     
     private func uploadUserCv(userCV: URL) async throws {
         let cvResponse = try await self.uploadCvUseCase.execute(UploadCvRequest(cv: userCV))
+        let oldUserData = userData
+        
         userData = cvResponse.userData
-        print(cvResponse.userData)
+        userData.selectedTrack = oldUserData.selectedTrack
     }
-    
-//   private func onNavToHomeScreen() {
-//       print("start update")
-//       Task {
-//           do {
-//               screenState = .loading
-//               
-//               let currentUser = userData.toUser()
-//               
-//               let updatedUser = try await updateProfileUseCase.execute(currentUser)
-//               let isSaved = try await saveUserUseCase.save(updatedUser)
-//               if isSaved {
-//                   print("✅ User added to CoreData successfull")
-//               }
-//               print("✅ Profile updated successfully for user ID: \(updatedUser.id)")
-//               
-//               screenState = .idel
-//               navToHomeScreen = true
-//               appState.markOnboardingSeen()
-//           } catch let error as NetworkError {
-//               screenState = .error(error.errorDescription ?? error.localizedDescription)
-//           } catch {
-//               screenState = .error(error.localizedDescription)
-//           }
-//       }
-//   }
 
     private func onNavToHomeScreen() {
         Task {
@@ -254,17 +243,15 @@ class OnBordingViewModel: ObservableObject {
     @MainActor
     private func updateAndPersistUser() async {
         screenState = .loading
-
+        
         do {
             let user = userData.toUser()
             let updatedUser = try await updateUser(user)
             try await persistUser(updatedUser)
-
+            
             completeOnboarding()
-        } catch let error as NetworkError {
-            screenState = .error(error.errorDescription ?? error.localizedDescription)
-        } catch {
-            screenState = .error(error.localizedDescription)
+        } catch{
+            onCatchError(error: error)
         }
     }
 

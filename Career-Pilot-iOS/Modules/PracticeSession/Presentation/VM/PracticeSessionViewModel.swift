@@ -156,6 +156,9 @@ final class PracticeSessionViewModel: ObservableObject {
                 return
             }
             await resumeAfterNetworkDrop()
+        case .unauthorized:
+            //Have to make him logout
+            return
         }
     }
 

@@ -46,7 +46,7 @@ extension SessionFeedbackEntity {
             pacingScore: pacingScore,
             fillerWordsScore: fillerWordsScore,
             contentRelevanceScore: contentRelevanceScore,
-            coachingTips: (coachingTips as? [String]) ?? [],
+            coachingTips: (coachingTips) ?? [],
             generatedAt: generatedAt ?? Date(),
             createdAt: createdAt ?? Date(),
             questions: sortedQuestions
