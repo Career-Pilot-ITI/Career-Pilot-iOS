@@ -17,15 +17,15 @@ enum ReportsEndpoint: APIEndpoint {
     var path: String {
         switch self {
         case .sessions:
-            return "/api/v1/interviews/sessions"
+            return "api/v1/interviews/sessions"
         case .sessionDetail(let sessionId):
-            return "/api/v1/interviews/sessions/\(sessionId)"
+            return "api/v1/interviews/sessions/\(sessionId)"
         case .sessionQuestions(let sessionId):
-            return "/api/v1/interviews/sessions/\(sessionId)/questions"
+            return "api/v1/interviews/sessions/\(sessionId)/questions"
         case .questionDetail(let sessionId, let questionId):
-            return "/api/v1/interviews/sessions/\(sessionId)/questions/\(questionId)"
+            return "api/v1/interviews/sessions/\(sessionId)/questions/\(questionId)"
         case .sessionFeedback(let sessionId):
-            return "/api/v1/interviews/sessions/\(sessionId)/feedback"
+            return "api/v1/interviews/sessions/\(sessionId)/feedback"
         }
     }
     

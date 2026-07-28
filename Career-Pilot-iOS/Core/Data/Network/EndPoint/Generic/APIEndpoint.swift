@@ -20,7 +20,7 @@ protocol APIEndpoint {
 
 extension APIEndpoint {
     var baseURL: String {
-        "http://192.168.84.1:8080"
+        "https://career-pilot-backend-production.up.railway.app/"
     }
     var requiresAuthentication: Bool { false }
     var queryParameters: [URLQueryItem]? { nil }

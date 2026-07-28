@@ -14,9 +14,9 @@ enum SettingsEndpoint : APIEndpoint{
     var path: String{
         switch self {
         case.getUserData:
-            return "/api/v1/profile"
+            return "api/v1/profile"
         case .logout:
-            return "/api/v1/auth/logout"
+            return "api/v1/auth/logout"
         }
     }
     

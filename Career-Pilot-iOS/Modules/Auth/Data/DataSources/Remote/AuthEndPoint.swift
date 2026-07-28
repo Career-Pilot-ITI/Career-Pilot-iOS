@@ -15,9 +15,9 @@ enum AuthEndPoint : APIEndpoint {
     var path: String {
         switch self {
         case .sendOTP:
-            return "/api/v1/otp/send"
+            return "api/v1/otp/send"
         case .verifyOTP:
-            return "/api/v1/otp/verify"
+            return "api/v1/otp/verify"
         }
     }
     
