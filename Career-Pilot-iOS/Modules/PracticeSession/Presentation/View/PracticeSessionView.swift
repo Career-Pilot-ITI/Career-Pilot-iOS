@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PracticeSessionView: View {
     @StateObject var vm: PracticeSessionViewModel
+    @EnvironmentObject var homeCoordinator: AppCoordinator<HomeRoute>
     
     var trackId: Int
     var interviewType: InterviewType
@@ -38,16 +39,23 @@ struct PracticeSessionView: View {
                 SessionCompletedView(feedback: vm.feedback)
                 
             case .error(let error):
-                SessionErrorView(errorMessage: error.localizedDescription){
+                SessionErrorView(errorMessage: error.localizedDescription,
+                                 onRetry: {
                     Task{
                         await vm.onError(error: error)
                     }
-                }
+                },
+                                 onEndTapped: {
+                    homeCoordinator.popToRoot()
+                })
+
             }
         }
         .task {
             await vm.start(trackId: trackId, interviewType: interviewType)
         }
+        .navigationBarBackButtonHidden()
+        .toolbar(.hidden, for: .tabBar)
     }
 }
 

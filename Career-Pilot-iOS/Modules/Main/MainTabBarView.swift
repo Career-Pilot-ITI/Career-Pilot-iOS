@@ -12,7 +12,9 @@ struct MainTabBarView: View {
                         case .sessionDetail(let metrics, let suggestions):
                             Text("Session Detail View")
                             
-                        case .interviewPrep(_, let trackId, let interviewType):
+                        case let .interviewPrep(trackName, trackId, interviewType):
+                            InterviewPrepContainerView(trackName: trackName, trackId: trackId, interviewType: interviewType)
+                        case let .practiceInterview(_, trackId, interviewType):
                             PracticeSessionView(
                                 vm: DIContainer.shared.container.resolve(PracticeSessionViewModel.self)!,
                                 trackId: trackId,

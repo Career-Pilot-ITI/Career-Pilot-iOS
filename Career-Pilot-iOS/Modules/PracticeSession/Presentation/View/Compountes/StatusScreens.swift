@@ -49,9 +49,19 @@ struct ReconnectingView: View {
 struct SessionErrorView: View {
     let errorMessage: String
     var onRetry: (() -> Void)? = nil
+    var onEndTapped: (() -> Void)
 
     var body: some View {
         VStack {
+            HStack{
+                Spacer()
+                
+                Button("End", action: onEndTapped)
+                    .font(.size13Semibold)
+                    .foregroundStyle(Color.errorColour)
+            }
+            .padding(.leading, 25)
+
             Spacer()
             WaitingStateView(
                 icon: "exclamationmark.triangle.fill",

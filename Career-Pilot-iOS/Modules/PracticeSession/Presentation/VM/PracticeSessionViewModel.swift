@@ -151,8 +151,8 @@ final class PracticeSessionViewModel: ObservableObject {
 
         case .networkUnavailable, .serverError, .unknown, .invalidState, .sessionNotFound:
             guard session != nil else {
-                // Nothing to resume — e.g. start() itself failed before a session existed.
-                screenState = .error(error)
+                await resumeAfterNetworkDrop()
+//                screenState = .error(error)
                 return
             }
             await resumeAfterNetworkDrop()
@@ -252,7 +252,10 @@ final class PracticeSessionViewModel: ObservableObject {
     }
 
     func resumeAfterNetworkDrop() async {
-        guard let tempSession = session else { return }
+        guard let tempSession = session else {
+            screenState = .error(InterviewError.sessionNotFound)
+            return
+        }
         screenState = .reconnecting
         stopEverythingForReconnect()
         do {
