@@ -60,7 +60,7 @@ struct SessionErrorView: View {
                     .font(.size13Semibold)
                     .foregroundStyle(Color.errorColour)
             }
-            .padding(.leading, 25)
+            .padding(.trailing, 25)
 
             Spacer()
             WaitingStateView(
