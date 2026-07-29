@@ -56,7 +56,7 @@ struct HomeView: View {
                     coordinator.push(.interviewPrep(
                             trackName: "SoftWare Engineering",
                             trackId: viewModel.user.profile.trackId,
-                            interviewType: .Classic
+                            interviewType: .classic
                         ))
                 }
                 HStack {

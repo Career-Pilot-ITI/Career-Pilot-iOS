@@ -87,7 +87,7 @@ final class PracticeSessionViewModel: ObservableObject {
     private let silenceThreshold: Float = 0.08
 
     init(
-        interviewType: InterviewType = .Classic,
+        interviewType: InterviewType = .classic,
         startUseCase: StartInterviewUseCaseProtocol,
         submitUseCase: SubmitAnswerUseCaseProtocol,
         resumeUseCase: ResumeInterviewUseCaseProtocol,
