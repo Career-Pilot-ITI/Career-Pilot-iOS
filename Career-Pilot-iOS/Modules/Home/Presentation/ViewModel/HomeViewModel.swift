@@ -94,7 +94,7 @@ final class HomeViewModel: ObservableObject {
 
     func loadUser() async {
         do {
-            user = try await getCurrentUserUseCase.execute()
+            user = try await getCurrentUserUseCase.execute() ?? .guest
         } catch {
             print(error)
         }
