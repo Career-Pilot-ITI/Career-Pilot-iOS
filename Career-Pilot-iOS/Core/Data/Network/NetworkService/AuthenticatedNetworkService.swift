@@ -83,9 +83,8 @@ final class AuthenticatedNetworkService: NetworkService {
 
     // MARK: - Helpers
 
-    /// Returns true when the error indicates the access token was rejected.
     private func isUnauthorized(_ error: Error) -> Bool {
-        if case NetworkError.serverError(let code, _) = error, code == 401 || code == 403 {
+        if case NetworkError.serverError(let code, _) = error, code == 401 {
             return true
         }
         if case NetworkError.tokenExpired = error { return true }

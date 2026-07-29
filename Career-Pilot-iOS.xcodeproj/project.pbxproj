@@ -74,6 +74,8 @@
 		41BE1A7A300BF43E0033D1B5 /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A79300BF43E0033D1B5 /* AuthRepositoryImpl.swift */; };
 		41BE1A7C300BF4540033D1B5 /* AuthRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A7B300BF4540033D1B5 /* AuthRepositoryProtocol.swift */; };
 		41C05283301A68A5003885A1 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 41C05282301A68A5003885A1 /* Swinject */; };
+		41C05285301A7D46003885A1 /* TokenRefreshActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C05284301A7D46003885A1 /* TokenRefreshActor.swift */; };
+		41C05287301A7DA6003885A1 /* RefreshTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C05286301A7DA6003885A1 /* RefreshTokenResponseDTO.swift */; };
 		41C38365300A2849005D4BB9 /* AuthEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C38364300A2849005D4BB9 /* AuthEndPoint.swift */; };
 		41C6A2363008008D0035EFBF /* SendingOTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A2353008008D0035EFBF /* SendingOTPCodeView.swift */; };
 		41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A237300804650035EFBF /* SoundWaveView.swift */; };
@@ -418,6 +420,9 @@
 		41BE1A77300BF42E0033D1B5 /* AuthRemoteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRemoteDataSource.swift; sourceTree = "<group>"; };
 		41BE1A79300BF43E0033D1B5 /* AuthRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRepositoryImpl.swift; sourceTree = "<group>"; };
 		41BE1A7B300BF4540033D1B5 /* AuthRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRepositoryProtocol.swift; sourceTree = "<group>"; };
+		41C05284301A7D46003885A1 /* TokenRefreshActor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenRefreshActor.swift; sourceTree = "<group>"; };
+		41C05286301A7DA6003885A1 /* RefreshTokenResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshTokenResponseDTO.swift; sourceTree = "<group>"; };
+		41C05288301A87FC003885A1 /* PagedResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedResponseDTO.swift; sourceTree = "<group>"; };
 		41C38364300A2849005D4BB9 /* AuthEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndPoint.swift; sourceTree = "<group>"; };
 		41C6A2353008008D0035EFBF /* SendingOTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingOTPCodeView.swift; sourceTree = "<group>"; };
 		41C6A237300804650035EFBF /* SoundWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundWaveView.swift; sourceTree = "<group>"; };
@@ -729,6 +734,7 @@
 		41AD8FDF301612AC00BDFDA0 /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
+				41C05288301A87FC003885A1 /* PagedResponseDTO.swift */,
 				41AD8FE43016130900BDFDA0 /* QuestionScoreDTO.swift */,
 				41AD8FE63016131900BDFDA0 /* SessionFeedbackDTO.swift */,
 				41AD8FE83016132800BDFDA0 /* SessionQuestionDTO.swift */,
@@ -835,8 +841,8 @@
 			children = (
 				41AD8FDF301612AC00BDFDA0 /* DTOs */,
 				41AD8FFA30161B6B00BDFDA0 /* Mappers */,
-				41AD8FEE3016144500BDFDA0 /* Repository */,
 				41AD8FE0301612B200BDFDA0 /* DataSources */,
+				41AD8FEE3016144500BDFDA0 /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -844,8 +850,8 @@
 		41BC7716300D0C0500E89C3F /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				41AD900930161D8000BDFDA0 /* UseCases */,
 				41AD8FF130161A3900BDFDA0 /* Entities */,
+				41AD900930161D8000BDFDA0 /* UseCases */,
 				41AD900630161C9100BDFDA0 /* Repository */,
 			);
 			path = Domain;
@@ -964,6 +970,7 @@
 		41D69D23300A790300294D94 /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
+				41C05286301A7DA6003885A1 /* RefreshTokenResponseDTO.swift */,
 				41D69D08300A6A0B00294D94 /* AuthTokensDTO.swift */,
 				41D69D06300A69E200294D94 /* VerifyOTPResponseDTO.swift */,
 				41D69D1F300A6E1100294D94 /* VerifyOTPRequestDTO.swift */,
@@ -1541,6 +1548,7 @@
 		CECCDA26300F1DD80068620D /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				41C05284301A7D46003885A1 /* TokenRefreshActor.swift */,
 				CECCDA25300F1DD80068620D /* TokenProvider.swift */,
 				CECCDA21300F1DD80068620D /* AuthenticatedNetworkService.swift */,
 				CECCDA22300F1DD80068620D /* NetworkError.swift */,
@@ -2636,6 +2644,7 @@
 				41D69D1C300A6DB400294D94 /* VerifyOTPResponseDTO+Mapping.swift in Sources */,
 				CE1D8991301616B000C759CA /* MicrophonePermissionManager.swift in Sources */,
 				41BC7742300D3D5900E89C3F /* QuestionStatsRow.swift in Sources */,
+				41C05287301A7DA6003885A1 /* RefreshTokenResponseDTO.swift in Sources */,
 				41BC7732300D31C900E89C3F /* SessionView.swift in Sources */,
 				41BC7752300D9A8D00E89C3F /* AppState.swift in Sources */,
 				61970B8E30115BE2009D7E58 /* CoinPack.swift in Sources */,
@@ -2798,6 +2807,7 @@
 				41AD900830161CA100BDFDA0 /* ReportsRepositoryProtocol.swift in Sources */,
 				D957B3023017EC4100B0562A /* CheckoutRemoteDataSourceImp.swift in Sources */,
 				D920C251300F001800AB7317 /* LoadingView.swift in Sources */,
+				41C05285301A7D46003885A1 /* TokenRefreshActor.swift in Sources */,
 				CECC20EA3007DB5E00DC450D /* ShakeEffect.swift in Sources */,
 				41BC773C300D3C6000E89C3F /* QuestionTabSelector.swift in Sources */,
 				CECC20D43007AD3A00DC450D /* CountryCode.swift in Sources */,
