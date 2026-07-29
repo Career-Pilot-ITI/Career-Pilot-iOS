@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - ReportsInterviewSession → UI model
-
 extension ReportsInterviewSession {
     func toUIModel() -> Session {
         Session(
@@ -21,8 +19,6 @@ extension ReportsInterviewSession {
         )
     }
 }
-
-// MARK: - SessionFeedback → UI models
 
 extension SessionFeedback {
     func toRadarMetrics() -> [RadarMetric] {
@@ -54,8 +50,6 @@ extension SessionFeedback {
         value >= 80 ? .green : .orange
     }
 }
-
-// MARK: - SessionQuestion → UI model
 
 extension SessionQuestion {
     func toQuestionReview() -> QuestionReview {

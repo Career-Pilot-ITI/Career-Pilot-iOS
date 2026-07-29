@@ -73,7 +73,7 @@
 		41BE1A78300BF42E0033D1B5 /* AuthRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A77300BF42E0033D1B5 /* AuthRemoteDataSource.swift */; };
 		41BE1A7A300BF43E0033D1B5 /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A79300BF43E0033D1B5 /* AuthRepositoryImpl.swift */; };
 		41BE1A7C300BF4540033D1B5 /* AuthRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A7B300BF4540033D1B5 /* AuthRepositoryProtocol.swift */; };
-		41C187CA3018B04000FDCB32 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 41C187C93018B04000FDCB32 /* Swinject */; };
+		41C05283301A68A5003885A1 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 41C05282301A68A5003885A1 /* Swinject */; };
 		41C38365300A2849005D4BB9 /* AuthEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C38364300A2849005D4BB9 /* AuthEndPoint.swift */; };
 		41C6A2363008008D0035EFBF /* SendingOTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A2353008008D0035EFBF /* SendingOTPCodeView.swift */; };
 		41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6A237300804650035EFBF /* SoundWaveView.swift */; };
@@ -696,7 +696,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41C187CA3018B04000FDCB32 /* Swinject in Frameworks */,
+				41C05283301A68A5003885A1 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2390,7 +2390,7 @@
 			);
 			name = "Career-Pilot-iOS";
 			packageProductDependencies = (
-				41C187C93018B04000FDCB32 /* Swinject */,
+				41C05282301A68A5003885A1 /* Swinject */,
 			);
 			productName = "Career-Pilot-iOS";
 			productReference = D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */;
@@ -2465,7 +2465,7 @@
 			);
 			mainGroup = D93938D53004064400CF4372;
 			packageReferences = (
-				41C187C83018B04000FDCB32 /* XCRemoteSwiftPackageReference "swinject" */,
+				41C05281301A68A5003885A1 /* XCRemoteSwiftPackageReference "swinject" */,
 			);
 			productRefGroup = D93938DF3004064400CF4372 /* Products */;
 			projectDirPath = "";
@@ -3163,7 +3163,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		41C187C83018B04000FDCB32 /* XCRemoteSwiftPackageReference "swinject" */ = {
+		41C05281301A68A5003885A1 /* XCRemoteSwiftPackageReference "swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/swinject/swinject";
 			requirement = {
@@ -3174,9 +3174,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		41C187C93018B04000FDCB32 /* Swinject */ = {
+		41C05282301A68A5003885A1 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 41C187C83018B04000FDCB32 /* XCRemoteSwiftPackageReference "swinject" */;
+			package = 41C05281301A68A5003885A1 /* XCRemoteSwiftPackageReference "swinject" */;
 			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */

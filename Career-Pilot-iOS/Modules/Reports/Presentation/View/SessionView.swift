@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-// SessionView.swift
-import SwiftUI
-
 struct SessionView: View {
     @StateObject private var viewModel: SessionDetailViewModel
     let sessionId: Int
