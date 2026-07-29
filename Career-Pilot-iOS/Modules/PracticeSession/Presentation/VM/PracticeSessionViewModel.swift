@@ -170,11 +170,13 @@ final class PracticeSessionViewModel: ObservableObject {
     }
 
     // MARK: - Lifecycle
-    func start() async {
+    func start(trackId: Int, interviewType: InterviewType) async {
+        self.interviewType = interviewType
+        
         startSessionTimer()
         screenState = .loading
         do {
-            let newSession = try await startUseCase.execute(interviewConfiguration: interviewType.interviewConfiguration)
+            let newSession = try await startUseCase.execute(interviewConfiguration: interviewType.interviewConfiguration, trackId: trackId)
             applyNewSession(newSession)
             beginAITurn(question: newSession.currentQuestion)
         } catch {

@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+
 enum AuthRoute: Hashable {
     case phoneEntryScreen
     case sendingOTPScreen(phoneNumber: String)
