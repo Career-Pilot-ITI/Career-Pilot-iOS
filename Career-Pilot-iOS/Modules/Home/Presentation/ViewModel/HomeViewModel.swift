@@ -22,7 +22,7 @@ final class HomeViewModel: ObservableObject {
     @Published var recentSessions: [SessionData] = []
     @Published var mockCareerItems: [CareerItem] = []
 
-    @Published var user: User?
+    @Published var user: User = User.guest
 
     @Published var isLoading = true
 

@@ -112,3 +112,53 @@ private extension Date {
         return formatter.string(from: self)
     }
 }
+
+
+// MARK: - User Guest Default
+extension User {
+    /// Standard Guest user representation
+    static let guest = User(
+        id: -1,
+        phoneNumber: "",
+        profile: .guest,
+        isNewUser: false
+    )
+}
+
+// MARK: - UserProfile Guest Default
+extension UserProfile {
+    static let guest = UserProfile(
+        displayName: "Guest User",
+        username: "guest",
+        email: "",
+        avatarURL: "",
+        gender: "",
+        dateOfBirth: "",
+        targetRole: "Explore",
+        industry: "General",
+        experienceLevel: "Entry",
+        currentJobTitle: "",
+        yearsOfExperience: 0,
+        cvURL: "",
+        skills: [],
+        targetCompanies: [],
+        educationLevel: "",
+        timezone: TimeZone.current.identifier,
+        termsAccepted: false,
+        subscriptionTier: "Free",
+        coinBalance: 0,
+        onboardingCompleted: false,
+        trackId: 0
+    )
+}
+
+// MARK: - Skill Default / Mock Extensions
+extension Skill {
+    static let sample = Skill(
+        skillName: "General Knowledge",
+        category: "Overview",
+        performanceScore: 0,
+        timesAssessed: 0,
+        lastAssessedAt: ""
+    )
+}
