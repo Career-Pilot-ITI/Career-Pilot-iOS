@@ -65,7 +65,7 @@ extension InterviewError {
                     return .unauthorized
                 case 404:
                     return .sessionNotFound
-                case 405:
+                case 429:
                     return.sessionQuotaExceeded	
                 default:
                     return .serverError(networkError.userMessage)

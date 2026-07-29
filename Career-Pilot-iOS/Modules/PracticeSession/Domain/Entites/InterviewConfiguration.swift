@@ -1,12 +1,34 @@
 import Foundation
 
-enum InterviewType: Hashable{
-    case Classic
-    
-    var interviewConfiguration: InterviewConfiguration{
-        switch self{
-        case.Classic:
-            return InterviewConfiguration(maxQuestions: 3, maxAnswerDuration: TimeInterval(2), maxInterviewDuration: TimeInterval(120), silenceTimeout: TimeInterval(5))
+enum InterviewType: Hashable {
+    case classic
+    case custom(
+        maxQuestions: Int,
+        maxAnswerDuration: TimeInterval,
+        maxInterviewDuration: TimeInterval
+    )
+
+    var interviewConfiguration: InterviewConfiguration {
+        switch self {
+        case .classic:
+            return InterviewConfiguration(
+                maxQuestions: 3,
+                maxAnswerDuration: 2,
+                maxInterviewDuration: 120,
+                silenceTimeout: 5
+            )
+
+        case let .custom(
+            maxQuestions,
+            maxAnswerDuration,
+            maxInterviewDuration
+        ):
+            return InterviewConfiguration(
+                maxQuestions: maxQuestions,
+                maxAnswerDuration: maxAnswerDuration,
+                maxInterviewDuration: maxInterviewDuration,
+                silenceTimeout: 5
+            )
         }
     }
 }

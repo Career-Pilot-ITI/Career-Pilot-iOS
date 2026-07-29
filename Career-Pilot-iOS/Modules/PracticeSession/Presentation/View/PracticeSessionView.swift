@@ -55,7 +55,7 @@ struct PracticeSessionView_Previews: PreviewProvider {
     static var previews: some View {
         PracticeSessionView(vm: DIContainer.shared.container.resolve(PracticeSessionViewModel.self)!,
                             trackId: 5,
-                            interviewType: .Classic
+                            interviewType: .classic
         )
     }
 }

@@ -29,7 +29,7 @@ struct MainTabBarView: View {
             // Tab 2: Practice
             PracticeSessionView(vm: DIContainer.shared.container.resolve(PracticeSessionViewModel.self)!,
                                 trackId: 5,
-                                interviewType: .Classic
+                                interviewType: .classic
             )
                 .tabItem {
                     Label { Text("Practice") } icon: { Image.AppIcon.mic.renderingMode(.template) }

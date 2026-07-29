@@ -41,7 +41,7 @@ struct InterviewPrepContainerView: View {
             },
             onBegin: {
                 print("Begin interview tapped")
-                coordinator.push(.interviewPrep(trackName: trackName,trackId: viewModel.user.profile.trackId , interviewType: .Classic))
+                coordinator.push(.interviewPrep(trackName: trackName,trackId: viewModel.user.profile.trackId , interviewType: .classic))
             }
         )
         .navigationBarHidden(true)
