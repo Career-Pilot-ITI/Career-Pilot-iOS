@@ -19,7 +19,7 @@ final class LoadSessionFeedbackUseCase: UseCase {
         self.repository = repository
     }
 
-    func execute(_ input: LoadSessionFeedbackInput) async throws -> SessionFeedbackDTO {
+    func execute(_ input: LoadSessionFeedbackInput) async throws -> SessionFeedback {
         try await repository.loadFeedback(sessionId: input.sessionId, forceRefresh: input.forceRefresh)
     }
 }

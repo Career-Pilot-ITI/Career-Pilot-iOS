@@ -7,10 +7,12 @@
 
 import SwiftUI
 
-extension ReportsInterviewSessionDTO {
+// MARK: - ReportsInterviewSession → UI model
+
+extension ReportsInterviewSession {
     func toUIModel() -> Session {
         Session(
-            id: id,   // real session id
+            id: id,
             title: trackName,
             score: overallScore,
             noOfQuestions: maxQuestions,
@@ -20,14 +22,16 @@ extension ReportsInterviewSessionDTO {
     }
 }
 
-extension SessionFeedbackDTO {
+// MARK: - SessionFeedback → UI models
+
+extension SessionFeedback {
     func toRadarMetrics() -> [RadarMetric] {
         [
-            RadarMetric(label: "Clarity", value: clarityScore, color: colorFor(clarityScore)),
-            RadarMetric(label: "Confidence", value: confidenceScore, color: colorFor(confidenceScore)),
-            RadarMetric(label: "Pacing", value: pacingScore, color: colorFor(pacingScore)),
-            RadarMetric(label: "Filler Words", value: fillerWordsScore, color: colorFor(fillerWordsScore)),
-            RadarMetric(label: "Content", value: contentRelevanceScore, color: colorFor(contentRelevanceScore))
+            RadarMetric(label: "Clarity",      value: clarityScore,           color: colorFor(clarityScore)),
+            RadarMetric(label: "Confidence",   value: confidenceScore,        color: colorFor(confidenceScore)),
+            RadarMetric(label: "Pacing",       value: pacingScore,            color: colorFor(pacingScore)),
+            RadarMetric(label: "Filler Words", value: fillerWordsScore,       color: colorFor(fillerWordsScore)),
+            RadarMetric(label: "Content",      value: contentRelevanceScore,  color: colorFor(contentRelevanceScore))
         ]
     }
 
@@ -51,7 +55,9 @@ extension SessionFeedbackDTO {
     }
 }
 
-extension SessionQuestionDTO {
+// MARK: - SessionQuestion → UI model
+
+extension SessionQuestion {
     func toQuestionReview() -> QuestionReview {
         QuestionReview(
             questionNumber: questionOrder,
