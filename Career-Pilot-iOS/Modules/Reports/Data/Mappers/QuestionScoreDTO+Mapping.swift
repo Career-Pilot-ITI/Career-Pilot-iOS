@@ -9,6 +9,21 @@ import Foundation
 import CoreData
 
 extension QuestionScoreDTO {
+    func toDomain() -> QuestionScore {
+        QuestionScore(
+            id: id,
+            sessionQuestionId: sessionQuestionId,
+            contentRelevance: contentRelevance,
+            clarity: clarity,
+            confidence: confidence,
+            pacing: pacing,
+            fillerWords: fillerWords,
+            overallScore: overallScore,
+            coachingTip: coachingTip,
+            createdAt: createdAt
+        )
+    }
+
     func toEntity(in context: NSManagedObjectContext, question: SessionQuestionEntity) -> QuestionScoreEntity {
         let entity = QuestionScoreEntity(context: context)
         entity.id = Int64(id)

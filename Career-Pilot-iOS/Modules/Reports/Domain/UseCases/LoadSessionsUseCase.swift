@@ -20,7 +20,7 @@ final class LoadSessionsUseCase: UseCase {
         self.currentUserProvider = currentUserProvider
     }
 
-    func execute(_ input: LoadSessionsInput) async throws -> [ReportsInterviewSessionDTO] {
+    func execute(_ input: LoadSessionsInput) async throws -> [ReportsInterviewSession] {
         let userId = try await currentUserProvider.currentUserId()
         return try await repository.loadSessions(for: userId, forceRefresh: input.forceRefresh)
     }

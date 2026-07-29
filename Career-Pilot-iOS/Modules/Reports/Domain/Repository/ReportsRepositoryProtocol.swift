@@ -8,8 +8,8 @@
 import Foundation
 
 protocol ReportsRepositoryProtocol {
-    func loadSessions(for userId: Int, forceRefresh: Bool) async throws -> [ReportsInterviewSessionDTO]
-    func loadFeedback(sessionId: Int, forceRefresh: Bool) async throws -> SessionFeedbackDTO
+    func loadSessions(for userId: Int, forceRefresh: Bool) async throws -> [ReportsInterviewSession]
+    func loadFeedback(sessionId: Int, forceRefresh: Bool) async throws -> SessionFeedback
     func deleteSession(id: Int) async throws
     func deleteAllSessions(for userId: Int) async throws
 }

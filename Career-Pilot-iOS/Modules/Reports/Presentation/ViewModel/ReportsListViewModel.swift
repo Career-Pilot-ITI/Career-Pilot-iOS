@@ -20,7 +20,7 @@ final class ReportsListViewModel: ObservableObject {
     }
 
     @Published private(set) var state: State = .idle
-    @Published private(set) var sessions: [ReportsInterviewSessionDTO] = []
+    @Published private(set) var sessions: [ReportsInterviewSession] = []
     @Published var isRefreshing = false
 
     private let loadSessionsUseCase: LoadSessionsUseCase
@@ -54,7 +54,7 @@ final class ReportsListViewModel: ObservableObject {
         isRefreshing = false
     }
 
-    func deleteSession(_ session: ReportsInterviewSessionDTO) async {
+    func deleteSession(_ session: ReportsInterviewSession) async {
         let previousSessions = sessions
         sessions.removeAll { $0.id == session.id }
 

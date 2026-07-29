@@ -18,7 +18,7 @@ final class SessionDetailViewModel: ObservableObject {
     }
 
     @Published private(set) var state: State = .idle
-    @Published private(set) var feedback: SessionFeedbackDTO?
+    @Published private(set) var feedback: SessionFeedback?
 
     private let loadFeedbackUseCase: LoadSessionFeedbackUseCase
     private let sessionId: Int

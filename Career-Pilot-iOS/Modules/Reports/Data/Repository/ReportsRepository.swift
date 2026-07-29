@@ -14,23 +14,23 @@ final class ReportsRepository: ReportsRepositoryProtocol {
         self.local = local
     }
 
-    func loadSessions(for userId: Int, forceRefresh: Bool) async throws -> [ReportsInterviewSessionDTO] {
+    func loadSessions(for userId: Int, forceRefresh: Bool) async throws -> [ReportsInterviewSession] {
         if !forceRefresh {
             let cached = try await local.fetchSessions(for: userId)
-            if !cached.isEmpty { return cached }
+            if !cached.isEmpty { return cached.map { $0.toDomain() } }
         }
         let fresh = try await remote.fetchSessions().data
         try await local.saveSessions(fresh, for: userId)
-        return fresh
+        return fresh.map { $0.toDomain() }
     }
 
-    func loadFeedback(sessionId: Int, forceRefresh: Bool) async throws -> SessionFeedbackDTO {
+    func loadFeedback(sessionId: Int, forceRefresh: Bool) async throws -> SessionFeedback {
         if !forceRefresh, let cached = try await local.fetchFeedback(for: sessionId) {
-            return cached
+            return cached.toDomain()
         }
         let fresh = try await remote.fetchSessionFeedback(sessionId: sessionId)
         try await local.saveFeedback(fresh, sessionId: sessionId)
-        return fresh
+        return fresh.toDomain()
     }
 
     func deleteSession(id: Int) async throws {
