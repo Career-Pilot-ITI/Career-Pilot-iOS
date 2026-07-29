@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-// QuestionBreakdownView.swift
-import SwiftUI
-
 struct QuestionBreakdownView: View {
     @StateObject private var viewModel: SessionDetailViewModel
     @State private var selectedIndex: Int = 0
