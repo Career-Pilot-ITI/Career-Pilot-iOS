@@ -18,8 +18,8 @@ struct HomeView: View {
     
     var body: some View {
         Group {
-            if let user = viewModel.user {
-                content(user)
+            if !viewModel.isLoading {
+                content(viewModel.user)
             } else {
                 ShimmerLoadingView()
             }
