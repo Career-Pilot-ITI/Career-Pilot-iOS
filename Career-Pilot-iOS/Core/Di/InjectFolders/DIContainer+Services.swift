@@ -56,11 +56,8 @@ extension DIContainer{
 
         container.register(NetworkService.self, name: "authenticated") { r in
             let appState = r.resolve(AppState.self)!
-            // Capture the container weakly so the closure doesn't form a
-            // retain cycle. authRepo is resolved lazily inside onForceLogout
-            // — by that time the full container is built.
             let container = r
-            AuthenticatedNetworkService(
+            return AuthenticatedNetworkService(
                 baseService:    r.resolve(NetworkService.self, name: "base")!,
                 tokenProvider:  r.resolve(TokenProviding.self)!,
                 tokenStore:     r.resolve(AuthTokenStoring.self)!,
@@ -74,7 +71,7 @@ extension DIContainer{
         }.inObjectScope(.container)
         
         container.register(AppState.self) { _ in
-            AppState()
+            AppState()	
         }
         
         //MARK: PracticeSession
