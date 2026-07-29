@@ -21,7 +21,7 @@ enum AuthRoute: Hashable {
 
 enum HomeRoute: Hashable {
     case sessionDetail(metrics: [RadarMetric], suggestions: [CoachingSuggestion])
-    case interviewPrep(trackName: String, interviewTime: Int, questionsCount: Int)
+    case interviewPrep(trackName: String, trackId: Int, interviewType: InterviewType)
 }
 
 enum   CheckoutDisplayInfo : Hashable {
