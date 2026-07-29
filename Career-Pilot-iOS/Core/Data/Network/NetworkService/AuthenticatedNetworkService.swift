@@ -7,26 +7,14 @@
 
 import Foundation
 
-/// A decorator around `NetworkService` that:
-///
-/// 1. Attaches the Bearer access token to every authenticated request.
-/// 2. Intercepts 401 responses and attempts a **silent token refresh**
-///    using the stored refresh token.
-/// 3. Retries the original request exactly once with the new access token.
-/// 4. Deduplicates concurrent refresh calls via `TokenRefreshActor` —
-///    multiple simultaneous 401s share one in-flight refresh.
-/// 5. Falls back to `onForceLogout` only when the refresh call itself
-///    fails (i.e. the refresh token is expired/revoked).
+
 final class AuthenticatedNetworkService: NetworkService {
 
     private let baseService: NetworkService
     private let tokenProvider: TokenProviding
     private let tokenStore: AuthTokenStoring
-    /// Unauthenticated base service — used exclusively for the refresh call
-    /// so the expired access token is never sent.
     private let refreshService: NetworkService
     private let refreshActor: TokenRefreshActor
-    /// Called on the main actor when a refresh fails and the user must re-login.
     private let onForceLogout: @Sendable () async -> Void
 
     init(
@@ -92,8 +80,6 @@ final class AuthenticatedNetworkService: NetworkService {
         return false
     }
 
-    /// Calls the refresh endpoint via `TokenRefreshActor` so concurrent
-    /// calls share one in-flight refresh rather than each issuing their own.
     private func performRefresh() async throws {
         do {
             let newTokens = try await refreshActor.refresh {
