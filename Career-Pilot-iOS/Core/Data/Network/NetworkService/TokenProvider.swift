@@ -12,12 +12,6 @@ protocol TokenProviding {
     func getRefreshToken() async throws -> String
 }
 
-/// Reads the current access token from the keychain.
-///
-/// This provider only throws if there are **no tokens at all** (`.unauthorized`).
-/// Near-expiry detection is intentionally removed here — expiry is handled
-/// reactively by `AuthenticatedNetworkService` when the server returns a 401,
-/// and the actual refresh is coordinated by `TokenRefreshActor`.
 final class AuthTokenProvider: TokenProviding {
     private let tokenStore: AuthTokenStoring
 
