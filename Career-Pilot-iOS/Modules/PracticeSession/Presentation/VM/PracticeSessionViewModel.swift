@@ -87,7 +87,7 @@ final class PracticeSessionViewModel: ObservableObject {
     private let silenceThreshold: Float = 0.08
 
     init(
-        interviewType: InterviewType = .Classic,
+        interviewType: InterviewType = .classic,
         startUseCase: StartInterviewUseCaseProtocol,
         submitUseCase: SubmitAnswerUseCaseProtocol,
         resumeUseCase: ResumeInterviewUseCaseProtocol,
@@ -158,6 +158,7 @@ final class PracticeSessionViewModel: ObservableObject {
             await resumeAfterNetworkDrop()
         case .unauthorized:
             //Have to make him logout
+            screenState = .error(error)
             return
         }
     }
@@ -170,11 +171,13 @@ final class PracticeSessionViewModel: ObservableObject {
     }
 
     // MARK: - Lifecycle
-    func start() async {
+    func start(trackId: Int, interviewType: InterviewType) async {
+        self.interviewType = interviewType
+        
         startSessionTimer()
         screenState = .loading
         do {
-            let newSession = try await startUseCase.execute(interviewConfiguration: interviewType.interviewConfiguration)
+            let newSession = try await startUseCase.execute(interviewConfiguration: interviewType.interviewConfiguration, trackId: trackId)
             applyNewSession(newSession)
             beginAITurn(question: newSession.currentQuestion)
         } catch {

@@ -9,50 +9,53 @@ import SwiftUI
 
 struct PracticeSessionView: View {
     @StateObject var vm: PracticeSessionViewModel
-//    PracticeSessionViewModelFactory.makeStub(realRepo: false)
-
+    
+    var trackId: Int
+    var interviewType: InterviewType
+    
     var body: some View {
         Group {
-            NavigationStack{
-                switch vm.screenState {
-                case .loading:
-                    LoadingView()
-
-                case .aiTurn:
-                    AITurnView(vm: vm)
-
-                case .waitingForAnswer:
-                    WaitingForAnswerView(vm: vm) // Probelm with nav to this state
-
-                case .recording(let silenceWarning):
-                    RecordingView(vm: vm, silenceWarning: silenceWarning)
-
-                case .submittingAnswer:
-                    SubmittingAnswerView()
-
-                case .reconnecting:
-                    ReconnectingView()
-
-                case .completed:
-                    SessionCompletedView(feedback: vm.feedback)
-
-                case .error(let error):
-                    SessionErrorView(errorMessage: error.localizedDescription){
-                        Task{
-                            await vm.onError(error: error)
-                        }
+            switch vm.screenState {
+            case .loading:
+                LoadingView()
+                
+            case .aiTurn:
+                AITurnView(vm: vm)
+                
+            case .waitingForAnswer:
+                WaitingForAnswerView(vm: vm) // Probelm with nav to this state
+                
+            case .recording(let silenceWarning):
+                RecordingView(vm: vm, silenceWarning: silenceWarning)
+                
+            case .submittingAnswer:
+                SubmittingAnswerView()
+                
+            case .reconnecting:
+                ReconnectingView()
+                
+            case .completed:
+                SessionCompletedView(feedback: vm.feedback)
+                
+            case .error(let error):
+                SessionErrorView(errorMessage: error.localizedDescription){
+                    Task{
+                        await vm.onError(error: error)
                     }
                 }
             }
         }
         .task {
-            await vm.start()
+            await vm.start(trackId: trackId, interviewType: interviewType)
         }
     }
 }
 
 struct PracticeSessionView_Previews: PreviewProvider {
     static var previews: some View {
-        PracticeSessionView(vm: PracticeSessionViewModelFactory.makeStub(realRepo: false))
+        PracticeSessionView(vm: DIContainer.shared.container.resolve(PracticeSessionViewModel.self)!,
+                            trackId: 5,
+                            interviewType: .classic
+        )
     }
 }
