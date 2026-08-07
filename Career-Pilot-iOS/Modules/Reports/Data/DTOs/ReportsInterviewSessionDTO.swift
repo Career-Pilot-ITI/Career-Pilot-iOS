@@ -21,9 +21,7 @@ struct ReportsInterviewSessionDTO: Codable {
     let createdAt: Date
 }
 
-struct ReportsInterviewSessionResponseDTO: Decodable {
-    let message: String
-    let success: Bool
-    let timestamp: String
-    let data: [ReportsInterviewSessionDTO]
-}
+// ReportsInterviewSessionResponseDTO was removed.
+// Sessions are now delivered inside PageResponse<ReportsInterviewSessionDTO>
+// by the backend's Spring Data page envelope.
+// See: Core/Data/Network/DTOs/PageResponse.swift

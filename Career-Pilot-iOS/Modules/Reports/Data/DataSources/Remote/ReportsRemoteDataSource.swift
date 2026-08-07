@@ -1,20 +1,12 @@
-//
-//  ReportsRemoteDataSource.swift
-//  Career-Pilot-iOS
-//
-//  Created by Moaz on 26/07/2026.
-//
-
 import Foundation
 
 protocol ReportsRemoteDataSourceProtocol {
-    func fetchSessions() async throws -> ReportsInterviewSessionResponseDTO
+    func fetchSessions(page: Int, size: Int) async throws -> PageResponse<ReportsInterviewSessionDTO>
     func fetchSessionDetail(sessionId: Int) async throws -> ReportsInterviewSessionDTO
     func fetchSessionQuestions(sessionId: Int) async throws -> [SessionQuestionDTO]
     func fetchQuestionDetail(sessionId: Int, questionId: Int) async throws -> SessionQuestionDTO
     func fetchSessionFeedback(sessionId: Int) async throws -> SessionFeedbackDTO
 }
-
 
 final class ReportsRemoteDataSource: ReportsRemoteDataSourceProtocol {
     private let network: NetworkService
@@ -23,9 +15,9 @@ final class ReportsRemoteDataSource: ReportsRemoteDataSourceProtocol {
         self.network = network
     }
 
-    func fetchSessions() async throws -> ReportsInterviewSessionResponseDTO {
-        try await network.request(ReportsEndpoint.sessions)
-    }	
+    func fetchSessions(page: Int, size: Int) async throws -> PageResponse<ReportsInterviewSessionDTO> {
+        try await network.request(ReportsEndpoint.sessions(page: page, size: size))
+    }
 
     func fetchSessionDetail(sessionId: Int) async throws -> ReportsInterviewSessionDTO {
         try await network.request(ReportsEndpoint.sessionDetail(sessionId: sessionId))
@@ -43,4 +35,3 @@ final class ReportsRemoteDataSource: ReportsRemoteDataSourceProtocol {
         try await network.request(ReportsEndpoint.sessionFeedback(sessionId: sessionId))
     }
 }
-	
