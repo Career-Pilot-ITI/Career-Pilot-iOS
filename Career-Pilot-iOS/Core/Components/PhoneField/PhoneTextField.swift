@@ -52,6 +52,16 @@ struct PhoneTextField: View {
                 .focused($isFieldFocused)
                 .disabled(isDisabled || isLoading)
                 .padding(.all , 16)
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button("Done") {
+                            isFieldFocused = false
+                        }
+                        .foregroundStyle(.white)
+                        .fontWeight(.semibold)
+                    }
+                }
                 
                 trailingIcon
             }
