@@ -37,6 +37,10 @@
 		41AD901E3016229900BDFDA0 /* ReportsInterviewSessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD901D3016229900BDFDA0 /* ReportsInterviewSessionDTO.swift */; };
 		41AD9020301623CC00BDFDA0 /* CurrentUserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD901F301623CC00BDFDA0 /* CurrentUserProvider.swift */; };
 		41AD90223016260600BDFDA0 /* Date+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD90213016260600BDFDA0 /* Date+Formatting.swift */; };
+		41B138A83025F73900D1D053 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 41B138A73025F73900D1D053 /* Swinject */; };
+		41B138AB3025F7AD00D1D053 /* PaginationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B138A93025F7AD00D1D053 /* PaginationInfo.swift */; };
+		41B138AC3025F7AD00D1D053 /* PaginatedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B138AA3025F7AD00D1D053 /* PaginatedResult.swift */; };
+		41B138AE3025F7C900D1D053 /* PageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B138AD3025F7C900D1D053 /* PageResponse.swift */; };
 		41BC771C300D0EA300E89C3F /* QuestionBreakDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC771B300D0EA300E89C3F /* QuestionBreakDownView.swift */; };
 		41BC771E300D119A00E89C3F /* CoachingSuggestionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC771D300D119A00E89C3F /* CoachingSuggestionItemView.swift */; };
 		41BC7720300D126E00E89C3F /* ImpactBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC771F300D126E00E89C3F /* ImpactBadge.swift */; };
@@ -73,7 +77,6 @@
 		41BE1A78300BF42E0033D1B5 /* AuthRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A77300BF42E0033D1B5 /* AuthRemoteDataSource.swift */; };
 		41BE1A7A300BF43E0033D1B5 /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A79300BF43E0033D1B5 /* AuthRepositoryImpl.swift */; };
 		41BE1A7C300BF4540033D1B5 /* AuthRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A7B300BF4540033D1B5 /* AuthRepositoryProtocol.swift */; };
-		41C05283301A68A5003885A1 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 41C05282301A68A5003885A1 /* Swinject */; };
 		41C05285301A7D46003885A1 /* TokenRefreshActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C05284301A7D46003885A1 /* TokenRefreshActor.swift */; };
 		41C05287301A7DA6003885A1 /* RefreshTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C05286301A7DA6003885A1 /* RefreshTokenResponseDTO.swift */; };
 		41C38365300A2849005D4BB9 /* AuthEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C38364300A2849005D4BB9 /* AuthEndPoint.swift */; };
@@ -384,6 +387,9 @@
 		41AD901D3016229900BDFDA0 /* ReportsInterviewSessionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsInterviewSessionDTO.swift; sourceTree = "<group>"; };
 		41AD901F301623CC00BDFDA0 /* CurrentUserProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserProvider.swift; sourceTree = "<group>"; };
 		41AD90213016260600BDFDA0 /* Date+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatting.swift"; sourceTree = "<group>"; };
+		41B138A93025F7AD00D1D053 /* PaginationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationInfo.swift; sourceTree = "<group>"; };
+		41B138AA3025F7AD00D1D053 /* PaginatedResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatedResult.swift; sourceTree = "<group>"; };
+		41B138AD3025F7C900D1D053 /* PageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageResponse.swift; sourceTree = "<group>"; };
 		41BC771B300D0EA300E89C3F /* QuestionBreakDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBreakDownView.swift; sourceTree = "<group>"; };
 		41BC771D300D119A00E89C3F /* CoachingSuggestionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachingSuggestionItemView.swift; sourceTree = "<group>"; };
 		41BC771F300D126E00E89C3F /* ImpactBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactBadge.swift; sourceTree = "<group>"; };
@@ -701,7 +707,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41C05283301A68A5003885A1 /* Swinject in Frameworks */,
+				41B138A83025F73900D1D053 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2168,6 +2174,8 @@
 		D9C1878F30065ACC00BFF8E9 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				41B138AA3025F7AD00D1D053 /* PaginatedResult.swift */,
+				41B138A93025F7AD00D1D053 /* PaginationInfo.swift */,
 				41BE1A6D300BF0810033D1B5 /* OnBoardingUser.swift */,
 				41D69D15300A6CF100294D94 /* User.swift */,
 				D970C9EC30156B68002F6269 /* UploadedFile.swift */,
@@ -2197,6 +2205,7 @@
 		D9C1879830065B5500BFF8E9 /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
+				41B138AD3025F7C900D1D053 /* PageResponse.swift */,
 				41BE1A60300BEF510033D1B5 /* UserDTO.swift */,
 				41BE1A5E300BEF510033D1B5 /* CvUplodingResponseDTO.swift */,
 				D970C9E5301566B3002F6269 /* UploadFileResponseDTO.swift */,
@@ -2398,7 +2407,7 @@
 			);
 			name = "Career-Pilot-iOS";
 			packageProductDependencies = (
-				41C05282301A68A5003885A1 /* Swinject */,
+				41B138A73025F73900D1D053 /* Swinject */,
 			);
 			productName = "Career-Pilot-iOS";
 			productReference = D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */;
@@ -2473,7 +2482,7 @@
 			);
 			mainGroup = D93938D53004064400CF4372;
 			packageReferences = (
-				41C05281301A68A5003885A1 /* XCRemoteSwiftPackageReference "swinject" */,
+				41B138A63025F73900D1D053 /* XCRemoteSwiftPackageReference "swinject" */,
 			);
 			productRefGroup = D93938DF3004064400CF4372 /* Products */;
 			projectDirPath = "";
@@ -2562,6 +2571,7 @@
 				618C2A03301461F30099BF69 /* CheckoutRemoteDataSource.swift in Sources */,
 				41BC7740300D3D1800E89C3F /* StatCard.swift in Sources */,
 				41AD8FED301613D300BDFDA0 /* ReportsEndpoint.swift in Sources */,
+				41B138AB3025F7AD00D1D053 /* PaginationInfo.swift in Sources */,
 				41AD901630161EFA00BDFDA0 /* SessionDetailViewModel.swift in Sources */,
 				41BC7728300D18DC00E89C3F /* RadarGridShape.swift in Sources */,
 				D935DFCB30078012009DF855 /* CustomButton.swift in Sources */,
@@ -2647,6 +2657,7 @@
 				41C05287301A7DA6003885A1 /* RefreshTokenResponseDTO.swift in Sources */,
 				41BC7732300D31C900E89C3F /* SessionView.swift in Sources */,
 				41BC7752300D9A8D00E89C3F /* AppState.swift in Sources */,
+				41B138AE3025F7C900D1D053 /* PageResponse.swift in Sources */,
 				61970B8E30115BE2009D7E58 /* CoinPack.swift in Sources */,
 				CEE62A83300910E90071F076 /* CustomNavigationBar.swift in Sources */,
 				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
@@ -2761,6 +2772,7 @@
 				D92853EF301006E900F8CAC2 /* FeedbackReportDTO.swift in Sources */,
 				CEE62A8B3009201C0071F076 /* ReportsView.swift in Sources */,
 				618F82633010B71B0065331A /* SettingsEndpoint.swift in Sources */,
+				41B138AC3025F7AD00D1D053 /* PaginatedResult.swift in Sources */,
 				61970B7B30114F0F009D7E58 /* UserSessions.swift in Sources */,
 				D957B3033017EC5000B0562A /* CheckOutView.swift in Sources */,
 				616320D03010918200F417C9 /* GetUserData.swift in Sources */,
@@ -3173,7 +3185,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		41C05281301A68A5003885A1 /* XCRemoteSwiftPackageReference "swinject" */ = {
+		41B138A63025F73900D1D053 /* XCRemoteSwiftPackageReference "swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/swinject/swinject";
 			requirement = {
@@ -3184,9 +3196,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		41C05282301A68A5003885A1 /* Swinject */ = {
+		41B138A73025F73900D1D053 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 41C05281301A68A5003885A1 /* XCRemoteSwiftPackageReference "swinject" */;
+			package = 41B138A63025F73900D1D053 /* XCRemoteSwiftPackageReference "swinject" */;
 			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
