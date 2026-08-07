@@ -1,10 +1,3 @@
-//
-//  ReportsView.swift
-//  Career-Pilot-iOS
-//
-//  Created by Ahmed El-Sayyad Mohamed on 16/07/2026.
-//
-
 import SwiftUI
 
 @MainActor
@@ -35,22 +28,41 @@ struct ReportsView: View {
         case .idle, .loading:
             ProgressView()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+
         case .empty:
             Text("No sessions yet")
                 .foregroundStyle(Color.gray600)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+
         case .error(let message):
             VStack(spacing: 12) {
                 Text(message).foregroundStyle(.red)
                 Button("Retry") { Task { await viewModel.loadSessions(forceRefresh: true) } }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+
         case .loaded:
+            sessionHistoryView(isLoadingMore: false)
+
+        case .loadingMore:
+            sessionHistoryView(isLoadingMore: true)
+        }
+    }
+
+    @ViewBuilder
+    private func sessionHistoryView(isLoadingMore: Bool) -> some View {
+        VStack(spacing: 0) {
             SessionHistory(
-                sessionCount: viewModel.sessions.count,
+                sessionCount: viewModel.pagination?.totalElements ?? viewModel.sessions.count,
                 sessionAvgScore: viewModel.sessions.map(\.overallScore).reduce(0, +) / Double(max(viewModel.sessions.count, 1)),
-                sessions: viewModel.sessions.map { $0.toUIModel() }
+                sessions: viewModel.sessions.map { $0.toUIModel() },
+                hasMore: viewModel.pagination?.hasMore ?? false,
+                onLoadMore: { Task { await viewModel.loadNextPage() } }
             )
+            if isLoadingMore {
+                ProgressView()
+                    .padding(.bottom, 12)
+            }
         }
     }
 
@@ -69,7 +81,3 @@ struct ReportsView: View {
         }
     }
 }
-
-//#Preview {
-//    ReportsView()
-//}
