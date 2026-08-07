@@ -11,6 +11,7 @@ final class SettingsViewModel: ObservableObject {
     private let getUserData : GetUserDataUseCase
     private let userLogout : LogoutUsecase
     @Published var loadState: LoadState<UserModelSettingsView> = .idle
+   
     init(getUserData: GetUserDataUseCase , userLogout : LogoutUsecase) {
         self.getUserData = getUserData
         self.userLogout = userLogout
@@ -20,6 +21,7 @@ final class SettingsViewModel: ObservableObject {
         do{
             loadState  = .loading
             let user = try await getUserData.execute()
+            print("The user data is \(user.fullName)")
             loadState = .success(user)
             
         }catch{

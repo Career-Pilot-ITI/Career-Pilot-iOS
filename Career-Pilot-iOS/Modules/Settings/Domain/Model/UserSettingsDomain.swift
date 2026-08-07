@@ -12,6 +12,7 @@ struct UserSettingsDomain{
     let phoneNumber : String
     let email: String
     var avatar: Data?
+    var avatarURL : URL?
     let targetRole: String?
     let industry: String?
     let experienceLevel: String

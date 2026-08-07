@@ -10,6 +10,9 @@ enum SettingsEndpoint : APIEndpoint{
     case logout
     case getUserData
     case getSubscribtionsPrice
+    case updateUserData(UpdateProfileRequestDTO)
+    case updataUserCv
+    case updateUserAvatar(AvatarUploadDTO)
     
     var path: String{
         switch self {
@@ -19,24 +22,40 @@ enum SettingsEndpoint : APIEndpoint{
             return "/api/v1/subscriptions/tiers"
         case .logout:
             return "/api/v1/auth/logout"
+        case.updateUserData:
+            return "/api/v1/profile"
+        case .updateUserAvatar:
+            return "/api/v1/files/upload"
+        case .updataUserCv:
+            return "/api/v1/updateCv"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case.getUserData :
+        case.getUserData  :
             return .get
             
         case .getSubscribtionsPrice:
             return .get
-            
-        case .logout:
+        case .updateUserData , .updataUserCv :
+            return .patch
+        case  .logout , .updateUserAvatar :
             return .post
             
         }
     }
     var body: Data? {
-         return nil
+        switch self {
+        case .getUserData ,.logout ,.getSubscribtionsPrice , .updataUserCv  :
+            return nil
+        case .updateUserData(let userData):
+            return Self.encode(userData)
+        case .updateUserAvatar(let avatar):
+            return buildMultipartBody(dto: avatar)
+    
+        
+        }
         }
     var requiresAuthentication: Bool {
             true
@@ -46,20 +65,53 @@ enum SettingsEndpoint : APIEndpoint{
         do {
             
             if let tokens = try KeychainAuthTokenStore().loadTokens() {
+                print("Token is \(tokens.accessToken)")
                 tokenString = tokens.accessToken
+                
             } else {
                 tokenString = ""
+                print("Token is not found")
+
             }
         } catch {
             tokenString = ""
         }
-        
-        return [
-            "Content-Type": "application/json",
-            "Authorization": "Bearer \(tokenString)"
-        ]
+        switch self {
+        case .getUserData , .logout , .getSubscribtionsPrice , .updateUserData(_) , .updataUserCv :
+          return  [
+                "Content-Type": "application/json",
+                "Authorization": "Bearer \(tokenString)"
+            ]
+        case .updateUserAvatar(let avatar) :
+          return  [
+            "Content-Type": "multipart/form-data; boundary=\(avatar.boundry)",
+                "Authorization": "Bearer \(tokenString)"
+            ]
+     
+        }
+
+
     }
     
+    private func buildMultipartBody(dto: AvatarUploadDTO) -> Data {
+        var body = Data()
+        let lineBreak = "\r\n"
+        let boundary = dto.boundry
+        
+        body.append("--\(boundary)\(lineBreak)".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"type\"\(lineBreak)\(lineBreak)".data(using: .utf8)!)
+        body.append("\(dto.fileType)\(lineBreak)".data(using: .utf8)!)
+        
+        body.append("--\(boundary)\(lineBreak)".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"file\"; filename=\"avatar.jpg\"\(lineBreak)".data(using: .utf8)!)
+        body.append("Content-Type: image/jpeg\(lineBreak)\(lineBreak)".data(using: .utf8)!)
+        body.append(dto.imageData)
+        body.append(lineBreak.data(using: .utf8)!)
+        
+        body.append("--\(boundary)--\(lineBreak)".data(using: .utf8)!)
+        
+        return body
+    }
 
     
     

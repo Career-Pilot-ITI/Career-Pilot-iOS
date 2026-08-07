@@ -12,6 +12,7 @@ struct ProfilePhoto: View {
     @State private  var showCamerDialog : Bool = false
     @State private  var showImagePickerDialog : Bool = false
     @Binding  var image : UIImage?
+    let onImagePicked: (Data) -> Void
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             
@@ -70,20 +71,12 @@ struct ProfilePhoto: View {
         }
         .sheet(isPresented: $showImagePickerDialog) {
             PhotoPicker(selectedImage: $image)
-        }    }
-}
-
-struct ProfilePhoto_Previews: PreviewProvider {
-    static var previews: some View {
-        PreviewContainer()
-    }
-
-    struct PreviewContainer: View {
-
-        @State private var image: UIImage? = nil
-        
-        var body: some View {
-            ProfilePhoto(image: $image)
+        }   .onChange(of: image) { newImage in
+            guard let newImage, let data = newImage.jpegData(compressionQuality: 0.8) else { return }
+            onImagePicked(data)
         }
+        
     }
 }
+
+

@@ -125,6 +125,10 @@ extension DIContainer{
                 checkoutRepo: r.resolve(CheckoutRepoImplementation.self)!
             )
         }
+        container .register( SaveUserDataUsecase.self){
+            r in
+            SaveUserDataUsecase(repo: r.resolve(SettingsRepoImp.self)!)
+        }
 
     }
     

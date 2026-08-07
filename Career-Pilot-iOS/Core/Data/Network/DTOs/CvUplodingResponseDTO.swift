@@ -20,7 +20,7 @@ struct CvUplodingResponseDTO: Decodable{
     let currentJobTitle: String?
     let yearsOfExperience: Int?
     let cvUrl: String?
-    let skills: [String]?
+    let skills: [SkillDTO]?
     let targetCompanies: [String]?
     let educationLevel: String?
     let timezone: String?

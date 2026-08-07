@@ -7,13 +7,31 @@
 
 import Foundation
 
-extension CvUplodingResponseDTO{
-    func toDomain() -> UploadCvResponse{
+extension CvUplodingResponseDTO {
+    func toDomain() -> UploadCvResponse {
         let components = displayName.components(separatedBy: " ")
         let firstName = components.first ?? ""
         let lastName = components.dropFirst().joined(separator: " ")
         
-        let userData = OnBoardingUser(email: email, title: currentJobTitle ?? "Job Title", experienceLevel: experienceLevel ?? "No Level", skills: [Skill(skillName: "", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: "")], firstName: firstName, lastName: lastName)
+        let domainSkills: [Skill] = skills?.map { skillDTO in
+            Skill(
+                skillName: skillDTO.skillName ?? "",
+                category: skillDTO.category ?? "",
+                performanceScore: skillDTO.performanceScore ?? 0,
+                timesAssessed: skillDTO.timesAssessed ?? 0,
+                lastAssessedAt: skillDTO.lastAssessedAt ?? ""
+            )
+        } ?? []
+        
+        let userData = OnBoardingUser(
+            email: email,
+            title: currentJobTitle ?? "Job Title",
+            experienceLevel: experienceLevel ?? "No Level",
+            skills: domainSkills,
+            firstName: firstName,
+            lastName: lastName,
+            cv : URL(string:cvUrl!)!
+        )
         
         return UploadCvResponse(userData: userData)
     }

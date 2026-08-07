@@ -13,7 +13,12 @@ class GetUserDataUseCase{
     }
     func execute() async throws -> UserModelSettingsView  {
         do{
-           return await  try settingsRepo.fetchUserData().toUserModelSettingsView()
+            print("I excuted with not problem ")
+                   let response = await  try settingsRepo.fetchUserData()
+            var userVeiw =  response.toUserModelSettingsView()
+        
+           return userVeiw
+            
         }
         catch {
             print("The error in fetching user data is \(error)")

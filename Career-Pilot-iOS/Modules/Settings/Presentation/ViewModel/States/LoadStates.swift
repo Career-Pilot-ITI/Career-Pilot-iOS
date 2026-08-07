@@ -22,3 +22,9 @@ enum LoadState<T> {
         return false
     }
 }
+extension LoadState {
+    var isSuccess: Bool {
+        if case .success = self { return true }
+        return false
+    }
+}

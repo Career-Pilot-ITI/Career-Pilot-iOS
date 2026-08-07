@@ -121,6 +121,11 @@ extension DIContainer{
                 userLogout: r.resolve(LogoutUsecase.self)!
             )
         }
+        container.register(ProfileViewModel.self){ r in 
+            ProfileViewModel(getUserDataUseCase: r.resolve(GetUserDataUseCase.self)!, updateUserDataUseCase: UpdateUserData(repo: r.resolve(SettingsRepoImp.self)!), getTracks: r.resolve(GetAllTrackesUseCase.self)!, uploadCvUseCase: r.resolve(UploadCvUseCase.self)!, saveUsercase: r.resolve(SaveUserDataUsecase.self)!
+           )
+        }
 
     }
-}
+} 
+//, updateUserDataUseCase: r.resolve(UpdateUserData.self)!

@@ -11,5 +11,8 @@ protocol SettingsRemote{
     func getUserData() async throws ->UserSettingsDTO
     func getSubscription() async throws -> SubscribitonsPriceDTO
     func getCoins() async
-
+    func updateUserProfile(updateProfileRequestDTO: UpdateProfileRequestDTO) async throws -> UpdateProfileResponseDTO
+    
+    func updateUserProfileAvatar(avatarUploadRequestDTO : AvatarUploadDTO)async throws -> AvatarResponseDTO
+    
 }

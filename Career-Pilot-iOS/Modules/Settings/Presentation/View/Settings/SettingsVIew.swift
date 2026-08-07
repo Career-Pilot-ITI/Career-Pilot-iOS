@@ -5,7 +5,6 @@ struct SettingView: View {
     @StateObject var viewModel: SettingsViewModel
     @EnvironmentObject var appState: AppState
     @StateObject private var authCoordinator = AppCoordinator<AuthRoute>()
-    
     var body: some View {
         ZStack {
             Color.gray100

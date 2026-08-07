@@ -7,6 +7,10 @@
 
 import Foundation
 class SettingsRepoImp : SettingsRepo  {
+ 
+    
+ 
+
     var remote : SettingsRemote
     var local : SettingsLocalDataSource
     var authToken : AuthTokenStoring
@@ -16,22 +20,62 @@ class SettingsRepoImp : SettingsRepo  {
         self.authToken = authToken
     }
     func fetchUserData() async throws -> UserSettingsDomain {
+        print("I've  enter in the fetching phase ")
         if let cachedUser = try await local.fetchUserData() {
             var user = cachedUser.toUserSettingsDomain()
             
+            // 1. Safely unwrap and clean the avatar URL string
+            if let rawAvatarURL = cachedUser.profile?.avatarURL {
+                let cleanedPath = rawAvatarURL.replacingOccurrences(of: "\\", with: "")
+                let fullURLString = "\(SettingsEndpoint.getUserData.baseURL)\(cleanedPath)"
+                
+                print("getting the avatar \(fullURLString)")
+                
+                // 2. Pass the final string (or a valid URL) to your download method
+                if let avatarData = try? await downloadAvatarData(from: fullURLString) {
+                    user.avatar = avatarData
+                }
+            }
+            
+            print("The user is returned avatar \(user.avatar)")
             return user
         }
-        do{
-            let remoteUser =  try await remote.getUserData()
+
+
+
+
+        do {
+            print("The user  is not saved in the core data going to remote  ")
+
+            let remoteUser = try await remote.getUserData()
             let cachedUser = try await local.saveUserData(user: remoteUser)
-            var user =  cachedUser.toUserSettingsDomain()
+            var user = cachedUser.toUserSettingsDomain()
+            if let rawAvatarURL = cachedUser.profile?.avatarURL {
+                let cleanedPath = rawAvatarURL.replacingOccurrences(of: "\\", with: "")
+                let fullURLString = "\(SettingsEndpoint.getUserData.baseURL)\(cleanedPath)"
+                
+                print("getting the avatar \(fullURLString)")
+                
+                // 2. Pass the final string (or a valid URL) to your download method
+                if let avatarData = try? await downloadAvatarData(from: fullURLString) {
+                    user.avatar = avatarData
+                }
+            }
             
             return user
-        }
-        catch{
-            print("Error in getting saved userin core data  \(error)")
+        } catch {
+            print("Error in getting saved user in core data \(error)")
             throw error
         }
+    }
+
+    private func downloadAvatarData(from urlString: String?) async throws -> Data? {
+        guard let urlString = urlString, !urlString.isEmpty, let url = URL(string: urlString) else {
+            return nil
+        }
+        
+        let data = try await ImageLoader.loadImage(from: URL(string :urlString)!)
+        return data
     }
     
     func refreshUserData() async throws   {
@@ -50,8 +94,8 @@ class SettingsRepoImp : SettingsRepo  {
     func getUserSubscription() async -> PlanType {
         do{
             let cachedUser = try await local.fetchUserData()
-            print("The user Plan \(cachedUser?.subscriptionTier?.capitalized )")
-            return PlanType(rawValue: cachedUser?.subscriptionTier?.capitalized ?? "Free") ?? .free
+          
+            return PlanType(rawValue: cachedUser?.profile?.subscriptionTier?.capitalized ?? "Free") ?? .free
         }catch{
             print("Error")
             return .free
@@ -98,6 +142,30 @@ class SettingsRepoImp : SettingsRepo  {
             CoinPack(coinsValue: "1000", price: "199", subTitle: "Power users & intensive prep")
         ]
     }
+    func updateUserProfile(updateProfileRequestDTO: UpdateProfileRequestDTO) async throws {
+        do{
+            var response = try await remote.updateUserProfile(updateProfileRequestDTO: updateProfileRequestDTO)
+            try await  local.updateUserData(user:response)
+            print("The image do not have any error ")
+
+        }catch{
+            print("the error is \(error)")
+            throw error
+        }
+    }
+    func updateUserProfileAvatar(avatarUploadRequestDTO: AvatarUploadDTO) async throws -> AvatarResponseDTO {
+        do{
+            print("The image do not have any error ")
+
+            return try await remote.updateUserProfileAvatar(avatarUploadRequestDTO: avatarUploadRequestDTO)
+            
+        }catch{
+            print("User error \(error)")
+             throw error
+        }
+    }
    
-    
+    func saveUserData(user: UserSettingsDTO) async throws {
+        try await local.saveUserData(user: user)
+    }
 }
