@@ -1,10 +1,3 @@
-//
-//  ReportsRepository.swift
-//  Career-Pilot-iOS
-//
-//  Created by Moaz on 26/07/2026.
-//
-
 final class ReportsRepository: ReportsRepositoryProtocol {
     private let remote: ReportsRemoteDataSourceProtocol
     private let local: ReportsLocalDataProtocol
@@ -14,23 +7,43 @@ final class ReportsRepository: ReportsRepositoryProtocol {
         self.local = local
     }
 
-    func loadSessions(for userId: Int, forceRefresh: Bool) async throws -> [ReportsInterviewSessionDTO] {
-        if !forceRefresh {
+    func loadSessions(for userId: Int, page: Int, forceRefresh: Bool) async throws -> PaginatedResult<ReportsInterviewSession> {
+        if page == 0 && !forceRefresh {
             let cached = try await local.fetchSessions(for: userId)
-            if !cached.isEmpty { return cached }
+            if !cached.isEmpty {
+                let info = PaginationInfo(
+                    currentPage: 0,
+                    totalPages: 1,
+                    totalElements: cached.count,
+                    isLast: true
+                )
+                return PaginatedResult(items: cached.map { $0.toDomain() }, pagination: info)
+            }
         }
-        let fresh = try await remote.fetchSessions().data
-        try await local.saveSessions(fresh, for: userId)
-        return fresh
+
+        if forceRefresh && page == 0 {
+            try await local.deleteAllSessions(for: userId)
+        }
+
+        let pageResponse = try await remote.fetchSessions(page: page, size: ReportsEndpoint.defaultPageSize)
+
+        if !pageResponse.content.isEmpty {
+            try await local.saveSessions(pageResponse.content, for: userId)
+        }
+
+        return PaginatedResult(
+            items: pageResponse.content.map { $0.toDomain() },
+            pagination: pageResponse.toPaginationInfo()
+        )
     }
 
-    func loadFeedback(sessionId: Int, forceRefresh: Bool) async throws -> SessionFeedbackDTO {
+    func loadFeedback(sessionId: Int, forceRefresh: Bool) async throws -> SessionFeedback {
         if !forceRefresh, let cached = try await local.fetchFeedback(for: sessionId) {
-            return cached
+            return cached.toDomain()
         }
         let fresh = try await remote.fetchSessionFeedback(sessionId: sessionId)
         try await local.saveFeedback(fresh, sessionId: sessionId)
-        return fresh
+        return fresh.toDomain()
     }
 
     func deleteSession(id: Int) async throws {

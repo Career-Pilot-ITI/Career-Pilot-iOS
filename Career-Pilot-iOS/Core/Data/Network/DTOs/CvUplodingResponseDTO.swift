@@ -1,16 +1,11 @@
-//
-//  CvUplodingResponseDTO.swift
-//  Career-Pilot-iOS
-//
-//  Created by Mohamed Magdy on 17/07/2026.
-//
-
 import Foundation
 
-struct CvUplodingResponseDTO: Decodable{
-    let displayName: String
-    let username: String
-    let email: String
+struct CvUplodingResponseDTO: Decodable {
+    let id: Int?
+    let phoneNumber: String?
+    let username: String?
+    let email: String?
+    let displayName: String?
     let avatarUrl: String?
     let gender: String?
     let dateOfBirth: String?
@@ -29,5 +24,5 @@ struct CvUplodingResponseDTO: Decodable{
     let coinBalance: Int?
     let onboardingCompleted: Bool?
     let trackName: String?
-    
+    let trackId: Int?
 }

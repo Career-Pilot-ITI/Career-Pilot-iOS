@@ -9,6 +9,23 @@ import Foundation
 import CoreData
 
 extension SessionQuestionDTO {
+    func toDomain() -> SessionQuestion {
+        SessionQuestion(
+            id: id,
+            sessionId: sessionId,
+            questionText: questionText,
+            questionOrder: questionOrder,
+            userTranscript: userTranscript,
+            durationMs: durationMs,
+            speechRateWpm: speechRateWpm,
+            avgPauseMs: avgPauseMs,
+            silenceRatio: silenceRatio,
+            createdAt: createdAt,
+            completedAt: completedAt,
+            score: score?.toDomain()
+        )
+    }
+
     @discardableResult
     func toEntity(in context: NSManagedObjectContext, feedback: SessionFeedbackEntity) -> SessionQuestionEntity {
         let entity = SessionQuestionEntity(context: context)

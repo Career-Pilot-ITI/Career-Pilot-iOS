@@ -9,6 +9,23 @@ import Foundation
 import CoreData
 
 extension SessionFeedbackDTO {
+    func toDomain() -> SessionFeedback {
+        SessionFeedback(
+            id: id,
+            sessionId: sessionId,
+            overallScore: overallScore,
+            clarityScore: clarityScore,
+            confidenceScore: confidenceScore,
+            pacingScore: pacingScore,
+            fillerWordsScore: fillerWordsScore,
+            contentRelevanceScore: contentRelevanceScore,
+            coachingTips: coachingTips,
+            generatedAt: generatedAt,
+            createdAt: createdAt,
+            questions: questions.map { $0.toDomain() }
+        )
+    }
+
     @discardableResult
     func toEntity(in context: NSManagedObjectContext, session: InterviewSessionEntity) -> SessionFeedbackEntity {
         let entity = SessionFeedbackEntity(context: context)
@@ -46,7 +63,7 @@ extension SessionFeedbackEntity {
             pacingScore: pacingScore,
             fillerWordsScore: fillerWordsScore,
             contentRelevanceScore: contentRelevanceScore,
-            coachingTips: (coachingTips as? [String]) ?? [],
+            coachingTips: (coachingTips) ?? [],
             generatedAt: generatedAt ?? Date(),
             createdAt: createdAt ?? Date(),
             questions: sortedQuestions

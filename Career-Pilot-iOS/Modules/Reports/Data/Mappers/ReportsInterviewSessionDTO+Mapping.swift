@@ -9,6 +9,22 @@ import Foundation
 import CoreData
 
 extension ReportsInterviewSessionDTO {
+    func toDomain() -> ReportsInterviewSession {
+        ReportsInterviewSession(
+            id: id,
+            trackId: trackId,
+            trackName: trackName,
+            status: SessionStatus(rawValue: status),
+            overallScore: overallScore,
+            durationSeconds: durationSeconds,
+            targetDurationMinutes: targetDurationMinutes,
+            maxQuestions: maxQuestions,
+            startedAt: startedAt,
+            completedAt: completedAt,
+            createdAt: createdAt
+        )
+    }
+
     @discardableResult
     func toEntity(in context: NSManagedObjectContext, user: UserEntity) -> InterviewSessionEntity {
         let entity = InterviewSessionEntity(context: context)

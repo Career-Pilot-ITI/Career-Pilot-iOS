@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MainTabBarView: View {
-    @StateObject private var homeCoordinator = AppCoordinator<HomeRoute>()
+    @StateObject private var homeCoordinator: AppCoordinator<HomeRoute> = AppCoordinator<HomeRoute>()
     var body: some View {
         TabView {
             // Tab 1: Home
@@ -12,22 +12,27 @@ struct MainTabBarView: View {
                         case .sessionDetail(let metrics, let suggestions):
                             Text("Session Detail View")
                             
-                        case .interviewPrep(let trackName, let interviewTime, let questionsCount):
-                            InterviewPrepContainerView(
-                                trackName: trackName,
-                                interviewTime: interviewTime,
-                                quetionsCount: questionsCount
-                            ).toolbar(.hidden, for: .tabBar)
+                        case let .interviewPrep(trackName, trackId, interviewType):
+                            InterviewPrepContainerView(trackName: trackName, trackId: trackId, interviewType: interviewType)
+                        case let .practiceInterview(_, trackId, interviewType):
+                            PracticeSessionView(
+                                vm: DIContainer.shared.container.resolve(PracticeSessionViewModel.self)!,
+                                trackId: trackId,
+                                interviewType: interviewType
+                            )
                         }
-                      }
                     }
-                    .tabItem {
-                        Label { Text("Home") } icon: { Image.AppIcon.home.renderingMode(.template) }
-                    }
-                    .environmentObject(homeCoordinator)
+            }
+            .tabItem {
+                Label { Text("Home") } icon: { Image.AppIcon.home.renderingMode(.template) }
+            }
+            .environmentObject(homeCoordinator) 
 
             // Tab 2: Practice
-            PracticeSessionView(vm: DIContainer.shared.container.resolve(PracticeSessionViewModel.self)!)
+            PracticeSessionView(vm: DIContainer.shared.container.resolve(PracticeSessionViewModel.self)!,
+                                trackId: 5,
+                                interviewType: .classic
+            )
                 .tabItem {
                     Label { Text("Practice") } icon: { Image.AppIcon.mic.renderingMode(.template) }
                 }

@@ -18,14 +18,14 @@ struct InterviewPrepContainerView: View {
     private var scenePhase
 
     let trackName: String
-    let interviewTime: Int
-    let quetionsCount: Int
+    let trackId: Int
+    let interviewType: InterviewType
 
     var body: some View {
 
         PracticePreparationView(
             categoryText: trackName,
-            metadataText: "\(quetionsCount) Questions · ~\(interviewTime) min",
+            metadataText: "\(interviewType.interviewConfiguration.maxQuestions) Questions · ~\(interviewType.interviewConfiguration.maxInterviewDuration) min",
             title: "Ready to practice?",
             subtitle: "Before we begin, a few quick tips.",
             tips: [
@@ -41,6 +41,7 @@ struct InterviewPrepContainerView: View {
             },
             onBegin: {
                 print("Begin interview tapped")
+                coordinator.push(.practiceInterview(trackName: trackName,trackId: viewModel.user.profile.trackId , interviewType: .classic))
             }
         )
         .navigationBarHidden(true)

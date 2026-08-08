@@ -1,13 +1,7 @@
-//
-//  LoadSessionsUseCase.swift
-//  Career-Pilot-iOS
-//
-//  Created by Moaz on 26/07/2026.
-//
-
 import Foundation
 
 struct LoadSessionsInput {
+    let page: Int
     let forceRefresh: Bool
 }
 
@@ -20,8 +14,8 @@ final class LoadSessionsUseCase: UseCase {
         self.currentUserProvider = currentUserProvider
     }
 
-    func execute(_ input: LoadSessionsInput) async throws -> [ReportsInterviewSessionDTO] {
+    func execute(_ input: LoadSessionsInput) async throws -> PaginatedResult<ReportsInterviewSession> {
         let userId = try await currentUserProvider.currentUserId()
-        return try await repository.loadSessions(for: userId, forceRefresh: input.forceRefresh)
+        return try await repository.loadSessions(for: userId, page: input.page, forceRefresh: input.forceRefresh)
     }
 }

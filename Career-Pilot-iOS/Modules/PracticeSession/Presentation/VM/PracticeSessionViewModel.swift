@@ -62,11 +62,14 @@ final class PracticeSessionViewModel: ObservableObject {
         return progressService.completionPercentage(session: session)
     }
 
-    var feedback: InterviewFeedback? {
-        session?.feedback
+    var feedback: InterviewFeedback {
+        guard let feedback = session?.feedback else{
+            return InterviewFeedback.empty
+        }
+        return feedback
     }
 
-    private var interviewType: InterviewType = .Classic
+    private var interviewType: InterviewType
 
     private let startUseCase: StartInterviewUseCaseProtocol
     private let submitUseCase: SubmitAnswerUseCaseProtocol
@@ -84,6 +87,7 @@ final class PracticeSessionViewModel: ObservableObject {
     private let silenceThreshold: Float = 0.08
 
     init(
+        interviewType: InterviewType = .classic,
         startUseCase: StartInterviewUseCaseProtocol,
         submitUseCase: SubmitAnswerUseCaseProtocol,
         resumeUseCase: ResumeInterviewUseCaseProtocol,
@@ -108,6 +112,7 @@ final class PracticeSessionViewModel: ObservableObject {
         self.speechService = speechService
         self.speechRecognitionService = speechRecognitionService
 
+        self.interviewType = interviewType
         self.recordingService.delegate = self
         self.silenceService.delegate = self
         self.speechService.delegate = self
@@ -121,6 +126,7 @@ final class PracticeSessionViewModel: ObservableObject {
     // MARK: - Single error func
     func onError(error: Error) async {
         print("onError: \(error)")
+        screenState = .loading
 
         if let interviewError = error as? InterviewError {
             await handle(interviewError)
@@ -145,11 +151,15 @@ final class PracticeSessionViewModel: ObservableObject {
 
         case .networkUnavailable, .serverError, .unknown, .invalidState, .sessionNotFound:
             guard session != nil else {
-                // Nothing to resume — e.g. start() itself failed before a session existed.
-                screenState = .error(error)
+                await resumeAfterNetworkDrop()
+//                screenState = .error(error)
                 return
             }
             await resumeAfterNetworkDrop()
+        case .unauthorized:
+            //Have to make him logout
+            screenState = .error(error)
+            return
         }
     }
 
@@ -161,11 +171,13 @@ final class PracticeSessionViewModel: ObservableObject {
     }
 
     // MARK: - Lifecycle
-    func start() async {
+    func start(trackId: Int, interviewType: InterviewType) async {
+        self.interviewType = interviewType
+        
         startSessionTimer()
         screenState = .loading
         do {
-            let newSession = try await startUseCase.execute(interviewConfiguration: interviewType.interviewConfiguration)
+            let newSession = try await startUseCase.execute(interviewConfiguration: interviewType.interviewConfiguration, trackId: trackId)
             applyNewSession(newSession)
             beginAITurn(question: newSession.currentQuestion)
         } catch {
@@ -240,7 +252,10 @@ final class PracticeSessionViewModel: ObservableObject {
     }
 
     func resumeAfterNetworkDrop() async {
-        guard let tempSession = session else { return }
+        guard let tempSession = session else {
+            screenState = .error(InterviewError.sessionNotFound)
+            return
+        }
         screenState = .reconnecting
         stopEverythingForReconnect()
         do {
@@ -322,6 +337,7 @@ final class PracticeSessionViewModel: ObservableObject {
     }
 
     func finish() async {
+        screenState = .loading
         stopSessionTimer()
         guard let sessionId = session?.id else {
             screenState = .error(InterviewError.unknown("Can't finish — no active session."))

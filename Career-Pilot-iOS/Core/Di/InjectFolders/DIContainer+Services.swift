@@ -42,21 +42,36 @@ extension DIContainer{
         container.register(TokenProviding.self) { r in
             AuthTokenProvider(tokenStore: r.resolve(AuthTokenStoring.self)!)
         }.inObjectScope(.container)
-        
-        //NetworkService
+
+        // Token Refresh Actor — must be a singleton so all services share
+        // the same deduplication state.
+        container.register(TokenRefreshActor.self) { _ in
+            TokenRefreshActor()
+        }.inObjectScope(.container)
+
+        // NetworkService
         container.register(NetworkService.self, name: "base") { _ in
-                 URLSessionNetworkService()
-             }
-        
+            URLSessionNetworkService()
+        }.inObjectScope(.container)
+
         container.register(NetworkService.self, name: "authenticated") { r in
-            AuthenticatedNetworkService(
-                baseService: r.resolve(NetworkService.self, name: "base")!,
-                tokenProvider: r.resolve(TokenProviding.self)!
+            let appState = r.resolve(AppState.self)!
+            let container = r
+            return AuthenticatedNetworkService(
+                baseService:    r.resolve(NetworkService.self, name: "base")!,
+                tokenProvider:  r.resolve(TokenProviding.self)!,
+                tokenStore:     r.resolve(AuthTokenStoring.self)!,
+                refreshService: r.resolve(NetworkService.self, name: "base")!,
+                refreshActor:   r.resolve(TokenRefreshActor.self)!,
+                onForceLogout: {
+                    await MainActor.run { appState.logout() }
+                    try? await container.resolve(AuthRepositoryProtocol.self)?.clearSession()
+                }
             )
-        }
+        }.inObjectScope(.container)
         
         container.register(AppState.self) { _ in
-            AppState()
+            AppState()	
         }
         
         //MARK: PracticeSession

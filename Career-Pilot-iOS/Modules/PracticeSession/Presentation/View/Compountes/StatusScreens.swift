@@ -49,9 +49,19 @@ struct ReconnectingView: View {
 struct SessionErrorView: View {
     let errorMessage: String
     var onRetry: (() -> Void)? = nil
+    var onEndTapped: (() -> Void)
 
     var body: some View {
         VStack {
+            HStack{
+                Spacer()
+                
+                Button("End", action: onEndTapped)
+                    .font(.size13Semibold)
+                    .foregroundStyle(Color.errorColour)
+            }
+            .padding(.trailing, 25)
+
             Spacer()
             WaitingStateView(
                 icon: "exclamationmark.triangle.fill",
@@ -69,10 +79,9 @@ struct SessionErrorView: View {
     }
 }
 
-/// Interview finished — full feedback UI isn't in the design batch yet, so this is a
-/// minimal placeholder that surfaces the score so the flow doesn't dead-end silently.
+
 struct SessionCompletedView: View {
-    let feedback: InterviewFeedback?
+    let feedback: InterviewFeedback
 
     var body: some View {
         VStack {
@@ -82,8 +91,7 @@ struct SessionCompletedView: View {
                 tint: .successColour,
                 state: .success,
                 title: "Interview Complete",
-                subtitle: feedback.map { "Overall score: \(String(format: "%.1f", $0.overallScore))/10" }
-            )
+                subtitle: "Overall score: \(String(format: "%.1f", feedback.overallScore))/10")
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

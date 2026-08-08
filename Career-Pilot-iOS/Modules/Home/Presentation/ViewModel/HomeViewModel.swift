@@ -22,7 +22,7 @@ final class HomeViewModel: ObservableObject {
     @Published var recentSessions: [SessionData] = []
     @Published var mockCareerItems: [CareerItem] = []
 
-    @Published var user: User?
+    @Published var user: User = User.guest
 
     @Published var isLoading = true
 
@@ -93,9 +93,13 @@ final class HomeViewModel: ObservableObject {
     // MARK: User
 
     func loadUser() async {
+        isLoading = true
         do {
-            user = try await getCurrentUserUseCase.execute()
+            user = try await getCurrentUserUseCase.execute() ?? .guest
+            isLoading = false
         } catch {
+            isLoading = false
+
             print(error)
         }
     }

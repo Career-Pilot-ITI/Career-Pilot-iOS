@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+
 enum AuthRoute: Hashable {
     case phoneEntryScreen
     case sendingOTPScreen(phoneNumber: String)
@@ -21,7 +22,8 @@ enum AuthRoute: Hashable {
 
 enum HomeRoute: Hashable {
     case sessionDetail(metrics: [RadarMetric], suggestions: [CoachingSuggestion])
-    case interviewPrep(trackName: String, interviewTime: Int, questionsCount: Int)
+    case practiceInterview(trackName: String, trackId: Int, interviewType: InterviewType)
+    case interviewPrep(trackName: String, trackId: Int, interviewType: InterviewType)
 }
 
 enum   CheckoutDisplayInfo : Hashable {

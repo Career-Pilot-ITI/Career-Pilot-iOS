@@ -18,8 +18,8 @@ struct HomeView: View {
     
     var body: some View {
         Group {
-            if let user = viewModel.user {
-                content(user)
+            if !viewModel.isLoading {
+                content(viewModel.user)
             } else {
                 ShimmerLoadingView()
             }
@@ -55,8 +55,8 @@ struct HomeView: View {
                     
                     coordinator.push(.interviewPrep(
                             trackName: "SoftWare Engineering",
-                            interviewTime: 30,
-                            questionsCount: 8
+                            trackId: viewModel.user.profile.trackId,
+                            interviewType: .classic
                         ))
                 }
                 HStack {
