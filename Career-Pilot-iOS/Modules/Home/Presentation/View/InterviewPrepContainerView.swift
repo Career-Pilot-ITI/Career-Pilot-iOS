@@ -104,6 +104,4 @@ struct InterviewPrepContainerView: View {
         UIApplication.shared.open(url)
     }
 }
-//#Preview {
-//    InterviewPrepContainerView(trackName: "SoftWare Engineering", interviewTime: 30, quetionsCount: 8)
-//}
+

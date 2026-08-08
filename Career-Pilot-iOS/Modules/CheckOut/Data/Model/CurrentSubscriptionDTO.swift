@@ -10,9 +10,9 @@ import Foundation
 struct CurrentSubscriptionDTO:Decodable {
     let tier: String
     let isActive: Bool
-    let startedAt: Date
-    let renewalDate: Date
-    let cancelledAt: Date?
+    let startedAt: String
+    let renewalDate: String?
+    let cancelledAt: String?
     let pendingTier: String?
 
 }

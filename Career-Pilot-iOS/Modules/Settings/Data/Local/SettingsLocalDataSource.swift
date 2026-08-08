@@ -7,9 +7,9 @@
 
 import Foundation
 protocol SettingsLocalDataSource {
-    func fetchUserData()async throws->UserProfileEntity?
-    func updateUserData( userProfileEntity: UserProfileEntity) async throws
+    func fetchUserData()async throws->UserEntity?
+    func updateUserData(user: UpdateProfileResponseDTO) async throws
     func deleteUserData() async throws
-    func saveUserData(user: UserSettingsDTO)async throws -> UserProfileEntity
+    func saveUserData(user: UserSettingsDTO)async throws -> UserEntity
     
 }

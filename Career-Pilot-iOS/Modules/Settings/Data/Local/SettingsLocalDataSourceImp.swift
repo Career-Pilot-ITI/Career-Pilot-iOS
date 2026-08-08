@@ -15,10 +15,10 @@ class SettingsLocalDataSourceImp: SettingsLocalDataSource {
         self.coreDataManager = coreDataManager
     }
     
-    func fetchUserData() async throws -> UserProfileEntity? {
+    func fetchUserData() async throws -> UserEntity? {
         do {
             return try await coreDataManager.performViewContextTask { context in
-                let request: NSFetchRequest<UserProfileEntity> = UserProfileEntity.fetchRequest()
+                let request: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
                 request.fetchLimit = 1
                 let results = try context.fetch(request)
                 return results.first
@@ -29,21 +29,32 @@ class SettingsLocalDataSourceImp: SettingsLocalDataSource {
         }
     }
     
-    func updateUserData(userProfileEntity: UserProfileEntity) async throws {
+    func updateUserData(user: UpdateProfileResponseDTO) async throws {
         do {
             try await coreDataManager.performBackgroundTask { context in
-                guard let objectInContext = try context.existingObject(with: userProfileEntity.objectID) as? UserProfileEntity else {
-                    throw CoreDataError.objectNotFound
-                }
+                // 1. Fetch or create the UserEntity inside the background context
+                let request: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
+                request.fetchLimit = 1
+                let userObjectInContext = try context.fetch(request).first ?? UserEntity(context: context)
                 
-                objectInContext.displayName = userProfileEntity.displayName
-                objectInContext.email = userProfileEntity.email
-             
-                objectInContext.experienceLevel = userProfileEntity.experienceLevel
-               
-                objectInContext.skills = userProfileEntity.skills
-                objectInContext.subscriptionTier = userProfileEntity.subscriptionTier
-                objectInContext.coinBalance = userProfileEntity.coinBalance
+                let backgroundProfileEntity = user.toEntity(context: context)
+                userObjectInContext.phoneNumber = backgroundProfileEntity.phoneNumber
+                
+                if let profileObjectInContext = userObjectInContext.profile,
+                   let newProfile = backgroundProfileEntity.profile {
+                    profileObjectInContext.displayName = newProfile.displayName
+                    profileObjectInContext.email = newProfile.email
+                    profileObjectInContext.experienceLevel = newProfile.experienceLevel
+                    profileObjectInContext.avatarURL = newProfile.avatarURL
+                    // Safe because both profileObjectInContext and newProfile's skills are in 'context'
+                    profileObjectInContext.skills = newProfile.skills
+                    
+                    profileObjectInContext.subscriptionTier = newProfile.subscriptionTier
+                    profileObjectInContext.coinBalance = newProfile.coinBalance
+                } else {
+                    // If profile didn't exist yet, assign it directly
+                    userObjectInContext.profile = backgroundProfileEntity.profile
+                }
                 
                 try self.coreDataManager.save(context)
             }
@@ -52,7 +63,6 @@ class SettingsLocalDataSourceImp: SettingsLocalDataSource {
             throw error
         }
     }
-    
     func deleteUserData() async throws {
             do {
                 try await coreDataManager.performBackgroundTask { context in
@@ -72,11 +82,11 @@ class SettingsLocalDataSourceImp: SettingsLocalDataSource {
                 throw error
             }
         }
-    func saveUserData(user: UserSettingsDTO)async throws -> UserProfileEntity{
+    func saveUserData(user: UserSettingsDTO)async throws -> UserEntity{
         do{
             let entity = user.toEntity(in: coreDataManager.viewContext )
             try self.coreDataManager.save(coreDataManager.viewContext)
-            return entity.profile!
+            return entity
         }catch{
             print("The error we have  is \(error)")
             throw error

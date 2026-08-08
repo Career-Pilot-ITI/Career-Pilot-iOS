@@ -46,5 +46,24 @@ extension DIContainer{
                local: r.resolve(ReportsLocalDataProtocol.self)!
            )
        }
+        
+        // MARK: - Settings Repository
+        container.register(SettingsRepoImp.self) { r in
+            SettingsRepoImp(
+                remote: r.resolve(SettingsRemoteImp.self)!,
+                local: r.resolve(SettingsLocalDataSourceImp.self)!,
+                // We force cast to KeychainAuthTokenStore since your manual init required it,
+                // but ideally, your repo should depend on the AuthTokenStoring protocol.
+                authToken: r.resolve(AuthTokenStoring.self) as! KeychainAuthTokenStore
+            )
+        }
+
+        // MARK: - Checkout Repository
+        container.register(CheckoutRepoImplementation.self) { r in
+            CheckoutRepoImplementation(
+                remote: r.resolve(CheckoutRemoteDataSourceImp.self)!
+            )
+        }
+
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TrackSelector: View {
-    let options = [ "Software Engineering", "Product Management", "Data Science" ]
+    let options : [Track]
     @Binding var selected: String
     
     var body: some View {
@@ -27,7 +27,9 @@ struct TrackSelector: View {
                     .foregroundColor(.gray400)
                 
                 Menu {
-                    ForEach(options, id: \.self) { option in
+                    ForEach(options.map{
+                        $0.title
+                    }, id: \.self) { option in
                         Button(option) {
                             selected = option
                         }

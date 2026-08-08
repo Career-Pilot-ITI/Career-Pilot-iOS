@@ -23,6 +23,7 @@ final class DIContainer{
         registerRepositories()
         registerDataSources()
         registerServices()
+        registerSessions()
     }
 }
 

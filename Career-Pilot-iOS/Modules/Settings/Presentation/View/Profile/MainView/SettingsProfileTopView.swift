@@ -8,21 +8,20 @@
 import SwiftUI
 
 struct SettingsProfileTopView: View {
+    var isSaveEnabled: Bool
     var onSave: () -> Void
+    
     var body: some View {
-        HStack{
+        HStack {
             Text("Edit Profile")
-            Spacer() 
-            Button(action: {
-                onSave()
-                
-            }){
-                Text("Save").foregroundColor(.gray200)
-                
+            Spacer()
+            Button(action: onSave) {
+                Text("Save")
+                    .foregroundColor(isSaveEnabled ? .activeColour : .gray200)
             }
-        }.background(Color.gray100)
-        
-        
+            .disabled(!isSaveEnabled)
+        }
+        .background(Color.gray100)
     }
 }
 

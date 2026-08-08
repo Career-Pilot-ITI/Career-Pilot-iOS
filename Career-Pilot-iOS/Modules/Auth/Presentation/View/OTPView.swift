@@ -105,9 +105,11 @@ struct OTPView: View {
                 // New user: log in then show success animation → onboarding
                 appState.markLoggedIn()
                 coordinator.push(.successOTPScreen)
+                coordinator.popToRoot()
             } else {
                 appState.markOnboardingSeen()
                 appState.markLoggedIn()
+                coordinator.popToRoot()
             }
         }
     }

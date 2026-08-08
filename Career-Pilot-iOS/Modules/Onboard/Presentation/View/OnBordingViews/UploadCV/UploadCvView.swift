@@ -8,7 +8,6 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-
 struct UploadCvView: View {
     @ObservedObject var vm: OnBordingViewModel
     @State var isImporterPresented: Bool = false

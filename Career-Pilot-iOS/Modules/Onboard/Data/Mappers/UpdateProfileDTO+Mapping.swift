@@ -10,12 +10,15 @@ import Foundation
 extension UpdateProfileResponseDTO {
 
     func toDomain(newUser: Bool = false) -> User {
-        User(
+        let cleanedName = displayName
+            .replacingOccurrences(of: "\u{00A0}", with: "")
+            .filter { !$0.isWhitespace }
+        return User(
             id: id,
             phoneNumber: phoneNumber,
             profile: UserProfile(
                 displayName: displayName,
-                username: username,
+                username :cleanedName,
                 email: email,
                 avatarURL: avatarUrl ?? "",
                 gender: gender ?? "",

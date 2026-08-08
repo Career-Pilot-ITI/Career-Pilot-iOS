@@ -98,5 +98,34 @@ extension DIContainer{
                 loadFeedbackUseCase: r.resolve(LoadSessionFeedbackUseCase.self)!
             )
         }
+        
+        // MARK: - Subscription, Payment, Settings ViewModels
+        container.register(SubscriptionViewModel.self) { r in
+            SubscriptionViewModel(
+                getPlansUseCase: r.resolve(GetSubscribtionPlan.self)!,
+                getUserSubscribtion: r.resolve(GetUserSubscribtion.self)!
+            )
+        }
+
+        container.register(PaymentViewModel.self) { r in
+            PaymentViewModel(
+                verifyPaymentUseCase: r.resolve(VerifyPaymentUseCaseImp.self)!,
+                checkoutUsecase: r.resolve(CheckoutUsecase.self)!,
+                userSession: r.resolve(UserSession.self)!
+            )
+        }
+
+        container.register(SettingsViewModel.self) { r in
+            SettingsViewModel(
+                userSession: r.resolve(UserSession.self)!,
+                logout: r.resolve(LogoutUsecase.self)!
+            )
+        }
+        container.register(ProfileViewModel.self){ r in 
+            ProfileViewModel(updateUserDataUseCase:UpdateUserData(repo: r.resolve(SettingsRepoImp.self)!) , getTracks:r.resolve(GetAllTrackesUseCase.self)! , uploadCvUseCase:r.resolve(UploadCvUseCase.self)! , saveUsercase:r.resolve(SaveUserDataUsecase.self)! , userSession:r.resolve(UserSession.self)! 
+           )
+        }
+
     }
-}
+} 
+//, updateUserDataUseCase: r.resolve(UpdateUserData.self)!

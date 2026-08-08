@@ -14,13 +14,14 @@ extension OnBoardingUser {
         phoneNumber: String = "",
         isNewUser: Bool = true
     ) -> User {
+        let userName = fullName.replacingOccurrences(of: " ", with: "")
 
-        User(
+        return User(
             id: id,
             phoneNumber: phoneNumber,
             profile: UserProfile(
                 displayName: fullName,
-                username: fullName.trimmingCharacters(in:.whitespacesAndNewlines),
+                username: userName,
                 email: email,
                 avatarURL: avatarUrl ?? "",
                 gender: gender ?? "male",

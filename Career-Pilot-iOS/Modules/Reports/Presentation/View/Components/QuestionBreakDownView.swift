@@ -43,15 +43,3 @@ struct QuestionBreakDownView: View {
     }
 }
 
-//#Preview {
-//    ZStack {
-//        Color.lightBackGround
-//        VStack {
-//            Spacer()
-//            QuestionBreakDownView(sessionId: 1)
-//            Spacer()
-//        }
-//        .padding(.horizontal, 24)
-//    }
-//    .environmentObject(AppCoordinator<ReportsRoute>())
-//}

@@ -28,7 +28,7 @@ class OnBordingRemoteDataSourceImp: OnBordingRemoteDataSource{
     }
     
     func updateUserProfile(updateProfileRequestDTO: UpdateProfileRequestDTO) async throws -> UpdateProfileResponseDTO {
-            let endPoint = OnBordingEndPointes.updateUserProfile(updateProfileRequestDTO: updateProfileRequestDTO)
+        let endPoint = SettingsEndpoint.updateUserData(updateProfileRequestDTO)
             
             print("🌐 [RemoteDataSource] Sending update profile request to: \(endPoint.baseURL)/\(endPoint.path)")
             

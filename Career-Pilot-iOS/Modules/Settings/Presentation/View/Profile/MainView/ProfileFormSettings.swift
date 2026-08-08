@@ -8,32 +8,37 @@
 import SwiftUI
 
 struct ProfileFormSettings: View {
-    @State  var text : String = ""
-    @State var selector :String = "Senior"
-    @State var trackSelector : String = "Data Science"
+    @Binding  var user : UserModelSettingsView
+    var tracks : [Track]
+
+    let onImagePicked: (Data) -> Void
+    init(user: Binding<UserModelSettingsView>,tracks : [Track],onImagePicked: @escaping (Data) -> Void  ) {
+            self._user = user
+        self.tracks = tracks
+        self.onImagePicked = onImagePicked
+        }
     var body: some View {
   
             VStack(alignment: .leading, spacing: 14) {
+                ProfilePhoto(image: $user.avatar, onImagePicked: onImagePicked) .frame(maxWidth: .infinity, alignment: .center)
                 Group{
-                    CustomProfileTextField(icon: "PersonIcon", title: "Full Name", text: $text )
+                    CustomProfileTextField(icon: "PersonIcon", title: "Full Name", text: $user.fullName )
                     Divider().background(Color.gray400).frame(height: 4)
 
-                    CustomProfileTextField(icon: "email", title: "Email", text: $text)
+                    CustomProfileTextField(icon: "email", title: "Email", text: $user.email)
                     Divider().background(Color.gray400).frame(height: 4)
 
                  CustomePhoneProfileTextField(icon: "phone"
                                               , title: "PHONE NUMBER")
                     Divider().background(Color.gray400).frame(height: 4)
-                    CustomProfileTextField(icon: "tittle", title: "CURRENT ROLE / TITTLE", text: $text  )
+                    CustomProfileTextField(icon: "tittle", title: "CURRENT ROLE / TITTLE", text: $user.title  )
                     Divider().background(Color.gray400).frame(height: 4)
                 }
                 
-                ExperienceLevelSelector(selected:$selector )
+                ExperienceLevelSelector(selected: $user.experienceLevel )
                 
                 Divider().background(Color.gray400).frame(height: 4)
-                TrackSelector(selected: $trackSelector)
-                
-                
+                TrackSelector(options: tracks, selected: $user.trackName  )
             }.padding(.vertical, Spacing.s20).padding(.horizontal , Spacing.s16).background(Color.white , in : RoundedRectangle(cornerRadius: Radius.r16)).shadow(
                 color: Color.black.opacity(0.08),
                 radius: 12,

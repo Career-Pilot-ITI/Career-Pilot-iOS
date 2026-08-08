@@ -94,3 +94,75 @@ extension UserProfileDTO {
         )
     }
 }
+extension UpdateProfileResponseDTO {
+    
+    @discardableResult
+    func toEntity(context: NSManagedObjectContext) -> UserEntity {
+        // 1. Fetch or create the UserEntity (Assuming unique by 'id')
+        let fetchRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %d", Int64(id))
+        
+        let userEntity: UserEntity
+        if let existingUser = try? context.fetch(fetchRequest).first {
+            userEntity = existingUser
+        } else {
+            userEntity = UserEntity(context: context)
+        }
+        
+        // 2. Map UserEntity attributes
+        userEntity.id = Int64(id)
+        userEntity.phoneNumber = phoneNumber
+        userEntity.isNewUser = false // Update as appropriate for your logic
+        
+        // 3. Handle the one-to-one relationship with UserProfileEntity
+        let profileEntity: UserProfileEntity
+        if let existingProfile = userEntity.profile {
+            profileEntity = existingProfile
+        } else {
+            profileEntity = UserProfileEntity(context: context)
+            userEntity.profile = profileEntity
+        }
+        
+        // 4. Map UserProfileEntity attributes
+        profileEntity.id = Int64(id)
+        profileEntity.displayName = displayName
+        profileEntity.username = username
+        profileEntity.email = email
+        profileEntity.avatarURL = avatarUrl
+        profileEntity.gender = gender
+        profileEntity.dateOfBirth = dateOfBirth
+        profileEntity.targetRole = targetRole
+        profileEntity.industry = industry
+        profileEntity.experienceLevel = experienceLevel
+        profileEntity.currentJobTitle = currentJobTitle
+        profileEntity.yearsOfExperience = yearsOfExperience != nil ? Int64(yearsOfExperience!) : 0
+        profileEntity.cvURL = cvUrl
+        profileEntity.educationLevel = educationLevel
+        profileEntity.timezone = timezone
+        profileEntity.termsAccepted = termsAccepted
+        profileEntity.subscriptionTier = subscriptionTier
+        profileEntity.coinBalance = Int64(coinBalance)
+        profileEntity.onboardingCompleted = onboardingCompleted
+        profileEntity.trackId = trackId != nil ? Int64(trackId!) : 0
+        
+        // 5. Map skills (assuming SkillDTO has a mapping method to SkillEntity)
+        // Clear existing skills relationships if updating
+        if let existingSkills = profileEntity.skills as? Set<SkillEntity> {
+            existingSkills.forEach { context.delete($0) }
+        }
+        
+        let skillEntities = skills.map { skillDTO -> SkillEntity in
+            let skillEntity = SkillEntity(context: context)
+            skillEntity.skillName = skillDTO.skillName // Adjust property names based on your SkillDTO/SkillEntity
+            skillEntity.category = skillDTO.category
+            skillEntity.performanceScore = Int64(skillDTO.performanceScore ?? 0)
+            skillEntity.timesAssessed = Int64(skillDTO.timesAssessed ?? 0)
+            skillEntity.lastAssessedAt = skillDTO.lastAssessedAt
+            skillEntity.profile = profileEntity
+            return skillEntity
+        }
+        profileEntity.skills = NSSet(array: skillEntities)
+        
+        return userEntity
+    }
+}

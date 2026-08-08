@@ -29,7 +29,7 @@ struct ProfileForm: View {
     var body: some View {
         VStack( spacing: 14) {
             Group{
-                ProfilePhoto(image:$userData.profileImage )
+                ProfilePhoto(image:$userData.profileImage, onImagePicked: {data in } )
                 Text("Tap to add a profile photo").font(.size12Medium).foregroundColor(.gray400)
                 Divider().background(Color.gray400).frame(height: 4)
                

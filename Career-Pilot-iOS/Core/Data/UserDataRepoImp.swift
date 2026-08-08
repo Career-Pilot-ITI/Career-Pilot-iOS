@@ -27,7 +27,9 @@ class UserDataRepoImp: UserDataRepo{
 
     func uploadUserCV(uploadCVRequest: UploadCvRequest) async throws -> UploadCvResponse {
         let cvURL = uploadCVRequest.cv
+        
         let responseResult = try await remoteDataSource.uploadCv(cvURL: cvURL)
+        print("The response result \(responseResult)")
         return responseResult.toDomain()
     }
     

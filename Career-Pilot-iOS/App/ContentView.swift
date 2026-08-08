@@ -16,7 +16,7 @@ struct ContentView: View {
     
     var body: some View {
         Group {
-            if appState.isOnboadingSeen{
+            if appState.isOnboadingSeen && appState.isLoggedIn{
                 MainTabBarView()
             } else  {
                 NavigationStack(path: $coordinator.path) {
@@ -32,6 +32,7 @@ struct ContentView: View {
                             }
                     }
                 }
+
             }
         }
         .environmentObject(coordinator)

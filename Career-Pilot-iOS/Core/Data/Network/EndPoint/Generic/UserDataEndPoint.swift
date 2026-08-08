@@ -32,9 +32,9 @@ enum UserDataEndpoints: APIEndpoint {
     var path: String {
         switch self {
         case .analyseCV:
-            return "api/v1/profile/cv/analyze"
+            return "/api/v1/profile/cv/analyze"
         case .uploadFile:
-            return "api/v1/files/upload"
+            return "/api/v1/files/upload"
         }
     }
 
@@ -58,8 +58,24 @@ enum UserDataEndpoints: APIEndpoint {
     }
 
     var headers: [String: String] {
-        [
+        let tokenString: String
+        do {
+            
+            if let tokens = try KeychainAuthTokenStore().loadTokens() {
+                print("Token is \(tokens.accessToken)")
+                tokenString = tokens.accessToken
+                
+            } else {
+                tokenString = ""
+                print("Token is not found")
+
+            }
+        } catch {
+            tokenString = ""
+        }
+       return [
             "Content-Type": "multipart/form-data; boundary=\(boundary)",
+            "Authorization": "Bearer \(tokenString)"
         ]
     }
 }
