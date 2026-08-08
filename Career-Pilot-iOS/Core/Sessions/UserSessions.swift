@@ -5,29 +5,31 @@
 //  Created by Eyad waleed on 22/07/2026.
 //
 
-//import Foundation
-//@MainActor
-//final class UserSession: ObservableObject {
-//    @Published var userData: UserData?
-//    
-//    private let getUserDataUseCase: GetUserDataUseCase
-//    private let updateUserDataUseCase: UpdateUserDataUseCase
-//    
-//    init(getUserDataUseCase: GetUserDataUseCase, updateUserDataUseCase: UpdateUserDataUseCase) {
-//        self.getUserDataUseCase = getUserDataUseCase
-//        self.updateUserDataUseCase = updateUserDataUseCase
-//    }
-//    
-//    func loadUserData() async {
-//        do {
-//            userData = try await getUserDataUseCase.execute()
-//        } catch {
-//            print("Failed to load user data: \(error)")
-//        }
-//    }
-//    
-//    func updateUserData(_ newData: UserData) async throws {
-//        try await updateUserDataUseCase.execute(newData)
-//        userData = newData
-//    }
-//}
+import Foundation
+
+@MainActor
+final class UserSession: ObservableObject {
+    @Published var userData: UserModelSettingsView?
+    
+    private let getUserDataUseCase: GetUserDataUseCase
+    private let refreshUseCase : RefreshUserDataUseCase
+    
+    init(getUserDataUseCase: GetUserDataUseCase,refreshUseCase : RefreshUserDataUseCase) {
+        self.getUserDataUseCase = getUserDataUseCase
+        self.refreshUseCase = refreshUseCase
+    }
+    
+    func loadIfNeeded() async throws {
+        guard userData == nil else { return }
+        userData = try await getUserDataUseCase.execute()
+    }
+    
+    func reload() async throws {
+        try await refreshUseCase.execute()
+        userData = try await getUserDataUseCase.execute()
+    }
+    
+    func update(_ newData: UserModelSettingsView) {
+        userData = newData
+    }
+}

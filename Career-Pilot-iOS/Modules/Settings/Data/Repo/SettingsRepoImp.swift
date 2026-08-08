@@ -7,10 +7,6 @@
 
 import Foundation
 class SettingsRepoImp : SettingsRepo  {
- 
-    
- 
-
     var remote : SettingsRemote
     var local : SettingsLocalDataSource
     var authToken : AuthTokenStoring
@@ -77,7 +73,7 @@ class SettingsRepoImp : SettingsRepo  {
         let data = try await ImageLoader.loadImage(from: URL(string :urlString)!)
         return data
     }
-    
+                                
     func refreshUserData() async throws   {
             do {
                 let remoteUser = try await remote.getUserData()

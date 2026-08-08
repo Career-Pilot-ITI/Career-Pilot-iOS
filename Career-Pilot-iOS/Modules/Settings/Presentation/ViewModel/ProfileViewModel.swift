@@ -13,26 +13,26 @@ class ProfileViewModel: ObservableObject {
     @Published var load: LoadState<UserModelSettingsView> = .idle
     @Published var editableUser: UserModelSettingsView?
     @Published var tracks: [Track]?
+    private var userSession : UserSession
     private var originalUser: UserModelSettingsView?
     private var getTracks: GetAllTrackesUseCase
-    private let getUserDataUseCase: GetUserDataUseCase
     private let updateUserDataUseCase: UpdateUserData
     private let uploadCvUseCase: UploadCvUseCase
     private let saveUsercase : SaveUserDataUsecase
     private var pendingAvatarData: Data?
 
     init(
-        getUserDataUseCase: GetUserDataUseCase,
         updateUserDataUseCase: UpdateUserData,
         getTracks: GetAllTrackesUseCase,
         uploadCvUseCase: UploadCvUseCase,
-        saveUsercase : SaveUserDataUsecase
+        saveUsercase : SaveUserDataUsecase,
+        userSession : UserSession
     ) {
-        self.getUserDataUseCase = getUserDataUseCase
         self.updateUserDataUseCase = updateUserDataUseCase
         self.getTracks = getTracks
         self.uploadCvUseCase = uploadCvUseCase
         self.saveUsercase = saveUsercase
+        self.userSession = userSession
     }
 
     var hasChanges: Bool {
@@ -45,11 +45,15 @@ class ProfileViewModel: ObservableObject {
             load = .loading
         }
         do {
-            async let userDataResponse = getUserDataUseCase.execute()
+            async let userDataResponse = userSession.loadIfNeeded()
             async let tracksResponse = getTracks.execute(())
 
-            var user = try await userDataResponse
+             try await userDataResponse
             let tracks = try await tracksResponse
+            guard var user = userSession.userData else {
+                load = .failure( NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to load tracks"]))
+                return
+                    }
             user.trackName = tracks.filter { user.trackId == $0.id }.compactMap { $0.title }.first ?? ""
 
             await MainActor.run {
@@ -95,18 +99,22 @@ class ProfileViewModel: ObservableObject {
         editableUser?.skills = response.userData.skills
         originalUser?.cvUrl = response.userData.cv
         originalUser?.skills = response.userData.skills
+        userSession.update(originalUser!)
+        
     }
 
     func updateUserData() async {
         load = .loading
-
+        editableUser?.trackId = tracks?.filter{
+            $0.title == editableUser?.trackName
+        }.compactMap { $0.id }.first ?? 0
         do {
             try await updateUserDataUseCase.execute(
                 imagUrl: pendingAvatarData,
                 updateUserProfile: (editableUser?.toUserSettingsDomain())!
             )
             originalUser = editableUser
-
+            userSession.update(originalUser!)
             load = .success(originalUser!)
         } catch {
             print(error)

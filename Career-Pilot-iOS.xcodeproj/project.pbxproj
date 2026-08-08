@@ -144,6 +144,7 @@
 		6169A7D3301044E5001FDC39 /* SupportAndLeagalSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169A7C5301044E5001FDC39 /* SupportAndLeagalSettingsView.swift */; };
 		616D8480301B344A0003CF76 /* AvatarResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616D847F301B344A0003CF76 /* AvatarResponseDTO.swift */; };
 		616D8482301B3B9B0003CF76 /* CvUploadSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616D8481301B3B9B0003CF76 /* CvUploadSheet.swift */; };
+		61703F1F3026EB4500412A27 /* DIContainer+Sessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61703F1E3026EB4500412A27 /* DIContainer+Sessions.swift */; };
 		61724A033017D8D1003C4781 /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61724A023017D8D1003C4781 /* SettingsTabView.swift */; };
 		617DF223300DF5F80046297B /* SubscribtionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DF222300DF5F80046297B /* SubscribtionView.swift */; };
 		6182BB4F300C519B001157B8 /* ProfilePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6182BB4E300C519B001157B8 /* ProfilePhoto.swift */; };
@@ -498,6 +499,7 @@
 		6169A7C5301044E5001FDC39 /* SupportAndLeagalSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportAndLeagalSettingsView.swift; sourceTree = "<group>"; };
 		616D847F301B344A0003CF76 /* AvatarResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarResponseDTO.swift; sourceTree = "<group>"; };
 		616D8481301B3B9B0003CF76 /* CvUploadSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvUploadSheet.swift; sourceTree = "<group>"; };
+		61703F1E3026EB4500412A27 /* DIContainer+Sessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+Sessions.swift"; sourceTree = "<group>"; };
 		61724A023017D8D1003C4781 /* SettingsTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
 		617DF222300DF5F80046297B /* SubscribtionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribtionView.swift; sourceTree = "<group>"; };
 		6182BB4E300C519B001157B8 /* ProfilePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhoto.swift; sourceTree = "<group>"; };
@@ -2038,6 +2040,7 @@
 				D9B614E7300CF49400552F85 /* DIContainer+Repositories.swift */,
 				D9B614EF300CFA1000552F85 /* DIContainer+DataSources.swift */,
 				D9B614ED300CF50D00552F85 /* DIContainer+Services.swift */,
+				61703F1E3026EB4500412A27 /* DIContainer+Sessions.swift */,
 			);
 			path = InjectFolders;
 			sourceTree = "<group>";
@@ -2793,6 +2796,7 @@
 				D935DFFC3008045A009DF855 /* OnBordingViewModel.swift in Sources */,
 				6169A7CC301044E5001FDC39 /* SettingsProfileTopView.swift in Sources */,
 				D9B614FF300D1D7C00552F85 /* TrackDTO.swift in Sources */,
+				61703F1F3026EB4500412A27 /* DIContainer+Sessions.swift in Sources */,
 				D970C9E4301560D3002F6269 /* MultipartFormDataBuilder.swift in Sources */,
 				D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */,
 				6103DA3C301A228E008BC8BF /* UpdateUserData.swift in Sources */,

@@ -12,16 +12,16 @@ final class PaymentViewModel: ObservableObject {
     
     private var merchantOrderId: String?
     private let verifyPaymentUseCase: VerifyPaymentUseCase
-   private  var userRefreshData : RefreshUserDataUseCase
     private  var checkoutItem : CheckoutItem?
     private let checkoutUsecase:CheckoutUsecase
     private let maxPollAttempts = 10
     private let pollDelaySeconds: UInt64 = 2
+    private let userSession : UserSession
     
-    init( verifyPaymentUseCase: VerifyPaymentUseCase, checkoutUsecase: CheckoutUsecase ,  userRefreshData : RefreshUserDataUseCase) {
+    init( verifyPaymentUseCase: VerifyPaymentUseCase, checkoutUsecase: CheckoutUsecase ,   userSession : UserSession) {
         self.verifyPaymentUseCase = verifyPaymentUseCase
         self.checkoutUsecase = checkoutUsecase
-        self.userRefreshData = userRefreshData
+        self.userSession = userSession
     }
     
     // MARK: - Step 1: user taps "Pay"
@@ -68,7 +68,12 @@ final class PaymentViewModel: ObservableObject {
             if let isConfirmed = try? await verifyPaymentUseCase.execute(item: item), isConfirmed {
                 phase = .succeeded
                 print("Excute me ")
-                await userRefreshData.execute()
+                do {
+                   try await userSession.reload()
+
+                }catch {
+                    print("Error in reloading ")
+                }
                 return
             }
 

@@ -111,18 +111,18 @@ extension DIContainer{
             PaymentViewModel(
                 verifyPaymentUseCase: r.resolve(VerifyPaymentUseCaseImp.self)!,
                 checkoutUsecase: r.resolve(CheckoutUsecase.self)!,
-                userRefreshData: r.resolve(RefreshUserDataUseCase.self)!
+                userSession: r.resolve(UserSession.self)!
             )
         }
 
         container.register(SettingsViewModel.self) { r in
             SettingsViewModel(
-                getUserData: r.resolve(GetUserDataUseCase.self)!,
-                userLogout: r.resolve(LogoutUsecase.self)!
+                userSession: r.resolve(UserSession.self)!,
+                logout: r.resolve(LogoutUsecase.self)!
             )
         }
         container.register(ProfileViewModel.self){ r in 
-            ProfileViewModel(getUserDataUseCase: r.resolve(GetUserDataUseCase.self)!, updateUserDataUseCase: UpdateUserData(repo: r.resolve(SettingsRepoImp.self)!), getTracks: r.resolve(GetAllTrackesUseCase.self)!, uploadCvUseCase: r.resolve(UploadCvUseCase.self)!, saveUsercase: r.resolve(SaveUserDataUsecase.self)!
+            ProfileViewModel(updateUserDataUseCase:UpdateUserData(repo: r.resolve(SettingsRepoImp.self)!) , getTracks:r.resolve(GetAllTrackesUseCase.self)! , uploadCvUseCase:r.resolve(UploadCvUseCase.self)! , saveUsercase:r.resolve(SaveUserDataUsecase.self)! , userSession:r.resolve(UserSession.self)! 
            )
         }
 
