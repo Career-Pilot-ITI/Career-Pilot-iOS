@@ -28,22 +28,14 @@ struct MainTabBarView: View {
             }
             .environmentObject(homeCoordinator) 
 
-            // Tab 2: Practice
-            PracticeSessionView(vm: DIContainer.shared.container.resolve(PracticeSessionViewModel.self)!,
-                                trackId: 5,
-                                interviewType: .classic
-            )
-                .tabItem {
-                    Label { Text("Practice") } icon: { Image.AppIcon.mic.renderingMode(.template) }
-                }
             
-            // Tab 3: Reports
+            // Tab 2: Reports
             ReportsView()
                 .tabItem {
                     Label { Text("Reports") } icon: { Image.AppIcon.report.renderingMode(.template) }
                 }
             
-            // Tab 4: Settings
+            // Tab 3: Settings
             SettingsTabView()
                 .tabItem {
                     Label { Text("Settings") } icon: { Image.AppIcon.settings.renderingMode(.template) }
