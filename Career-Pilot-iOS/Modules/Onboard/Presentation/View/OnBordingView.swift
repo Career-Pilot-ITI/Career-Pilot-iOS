@@ -110,8 +110,8 @@ struct BackButton: View {
     }
 }
 
-struct OnBordingView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnBordingView()
-    }
-}
+//struct OnBordingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OnBordingView()
+//    }
+//}

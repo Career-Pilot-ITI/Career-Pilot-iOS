@@ -10,6 +10,7 @@ import Shimmer
 
 struct ProfileScreen: View {
     @StateObject var viewModel: ProfileViewModel
+    @EnvironmentObject var toastManager: ToastManager
 
     var body: some View {
         ScrollView {
@@ -29,6 +30,15 @@ struct ProfileScreen: View {
         .background(Color.gray100)
         .task {
             await viewModel.loadAllScreenData()
+        }
+        .onChange(of: viewModel.load) { newState in
+            guard case .failure(let error) = newState else { return }
+            
+            if let validationError = error as? ProfileValidationError {
+                toastManager.show(validationError.errorDescription ?? "Please check your details", type: .error)
+            } else {
+                toastManager.show("Couldn't load your profile", type: .error)
+            }
         }
     }
     
@@ -77,15 +87,34 @@ struct ProfileScreen: View {
         .padding(.horizontal, Spacing.s16)
     }
     
+    @ViewBuilder
     private func errorState(_ error: Error) -> some View {
+        if let validationError = error as? ProfileValidationError {
+            genericErrorContent(
+                icon: "exclamationmark.circle.fill",
+                iconColor: .orange,
+                title: "Please check your details",
+                message: validationError.errorDescription ?? ""
+            )
+        } else {
+            genericErrorContent(
+                icon: "exclamationmark.triangle.fill",
+                iconColor: .errorColour,
+                title: "Couldn't load your profile",
+                message: error.localizedDescription
+            )
+        }
+    }
+    
+    private func genericErrorContent(icon: String, iconColor: Color, title: String, message: String) -> some View {
         VStack(spacing: 12) {
-            Image(systemName: "exclamationmark.triangle.fill")
+            Image(systemName: icon)
                 .font(.system(size: 40))
-                .foregroundColor(.errorColour)
-            Text("Couldn't load your profile")
+                .foregroundColor(iconColor)
+            Text(title)
                 .font(.size16Bold)
                 .foregroundColor(.primaryNavy)
-            Text(error.localizedDescription)
+            Text(message)
                 .font(.caption)
                 .foregroundColor(.gray400)
                 .multilineTextAlignment(.center)

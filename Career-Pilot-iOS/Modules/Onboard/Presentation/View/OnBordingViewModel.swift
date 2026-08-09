@@ -11,7 +11,7 @@ enum OnBordingViews: Int, Hashable, CaseIterable{
     case ChooseTrackView = 0, UploadCvView = 1, ProfileView = 2
 }
 
-enum OnBordingScreenStates{
+enum OnBordingScreenStates : Equatable{
     case idel, loading, error(String)
     
     var isError: Bool{
@@ -143,7 +143,11 @@ class OnBordingViewModel: ObservableObject {
             screenState = .error(networkError.userMessage)
         }else if let cvError = error as? UploadCVErrors{
             screenState = .error(cvError.description)
-        }else {
+        } else if let validationError = error as? ProfileValidationError {
+            
+            screenState = .error(validationError.errorDescription ?? "Please check your details")
+        }
+        else {
             screenState = .error(error.localizedDescription)
         }
     }

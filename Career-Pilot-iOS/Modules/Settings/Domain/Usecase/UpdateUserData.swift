@@ -16,7 +16,7 @@ class UpdateUserData {
     
     func execute(imagUrl: Data?, updateUserProfile: UserSettingsDomain) async throws {
         var mutableUser = updateUserProfile
-        
+        try ProfileValidator.validate(updateUserProfile)
         do {
         
             if let imagUrl = imagUrl {
