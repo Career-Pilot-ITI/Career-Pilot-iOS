@@ -20,6 +20,8 @@ struct MainTabBarView: View {
                                 trackId: trackId,
                                 interviewType: interviewType
                             )
+                        case .InterviewsView:
+                            InterviewsView()
                         }
                     }
             }

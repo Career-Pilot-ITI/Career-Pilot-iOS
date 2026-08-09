@@ -16,7 +16,8 @@ struct ContentView: View {
     
     var body: some View {
         Group {
-            if appState.isOnboadingSeen && appState.isLoggedIn{
+//            if appState.isOnboadingSeen && appState.isLoggedIn{
+            if true{
                 MainTabBarView()
             } else  {
                 NavigationStack(path: $coordinator.path) {
