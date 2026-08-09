@@ -17,7 +17,7 @@ struct ProfileCard: View {
 
             }
             else{
-                Image(user.avatar).resizable().scaledToFill().frame(width: 40, height: 40).clipShape(Circle())
+                Image(user.avatar!).resizable().scaledToFill().frame(width: 40, height: 40).clipShape(Circle())
             }
             VStack (alignment:.leading){
                 Text("\(user.fullName)").font(.size16Bold).foregroundColor(.primaryNavy)
