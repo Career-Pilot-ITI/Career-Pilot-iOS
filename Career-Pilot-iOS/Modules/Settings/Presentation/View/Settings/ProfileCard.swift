@@ -17,7 +17,7 @@ struct ProfileCard: View {
 
             }
             else{
-                Image(uiImage: image!).resizable().scaledToFill().frame(width: 40, height: 40).clipShape(Circle())
+                Image("PersonIcon").resizable().scaledToFill().frame(width: 40, height: 40).clipShape(Circle())
             }
             VStack (alignment:.leading){
                 Text("\(user.fullName)").font(.size16Bold).foregroundColor(.primaryNavy)
