@@ -30,8 +30,8 @@ struct OnBordingView: View {
                 case .loading:
                     ProgressView()
                     
-                case .error(let error):
-                    OnBoardingErrorState(vm: vm, errorMessage: error.description)
+                case .error(let errorMessage):
+                    OnBoardingErrorState(vm: vm, errorMessage: errorMessage)
                 }
                 
                 Spacer()
