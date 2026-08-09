@@ -28,30 +28,29 @@ struct CustomNavigationBar: View {
             
             HStack(alignment: .bottom,spacing:12){
                 
-                // Star Button
                 HStack(spacing: 4) {
                     Image.AppIcon.star
-                        .foregroundColor(Color.primary)
+                        .foregroundColor(.primary)
                     
                     Text("\(userScore)")
                         .fontWeight(.semibold)
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 8)
-                .background(Color.primary.opacity(0.1))
+                .background(.primary.opacity(0.1))
                 .cornerRadius(20)
                 
                 // Notification Button
-                Button(action: {
-                    print("Notifications tapped")
-                }) {
-                    Image.AppIcon.bell
-                    .font(.title3)
-                        .foregroundColor(.gray)
-                        .padding(8)
-                        .background(Color.gray.opacity(0.1))
-                        .clipShape(Circle())
-                }
+//                Button(action: {
+//                    print("Notifications tapped")
+//                }) {
+//                    Image.AppIcon.bell
+//                    .font(.title3)
+//                        .foregroundColor(.gray)
+//                        .padding(8)
+//                        .background(Color.gray.opacity(0.1))
+//                        .clipShape(Circle())
+//                }
             }.padding(.horizontal)
         }
     }
