@@ -27,7 +27,7 @@ struct profile: View {
                         x: 0,
                         y: 4
                     )
-
+                
                 FreeSessionBanner()
             }
             .padding(.horizontal, Spacing.s20)
