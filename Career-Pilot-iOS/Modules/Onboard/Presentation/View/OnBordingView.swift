@@ -65,7 +65,7 @@ private struct OnBordingTopPart: View {
 
             VStack {
                 if vm.currentView.rawValue != 0 {
-                    BackButton()
+                    BackButton(text: "Back")
                         .onTapGesture {
                             vm.backByStep()
                         }
@@ -101,10 +101,11 @@ private struct OnBordingTopPart: View {
 }
 
 struct BackButton: View {
+    let text: String
     var body: some View {
         HStack(spacing: 8) {
             Image(systemName: "arrow.left")
-            Text("Back")
+            Text(text)
         }
     }
 }

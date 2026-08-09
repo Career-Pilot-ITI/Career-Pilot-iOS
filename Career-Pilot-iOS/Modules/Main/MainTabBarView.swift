@@ -20,6 +20,8 @@ struct MainTabBarView: View {
                                 trackId: trackId,
                                 interviewType: interviewType
                             )
+                        case .sessionFeedback(let feedBack, let sessionId):
+                            SessionFeedBackView(feedback: feedBack,sessionId: sessionId)
                         }
                     }
             }
