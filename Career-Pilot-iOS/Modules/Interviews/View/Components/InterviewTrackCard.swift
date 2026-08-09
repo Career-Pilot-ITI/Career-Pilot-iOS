@@ -1,0 +1,18 @@
+//
+//  InterviewTrackItem.swift
+//  Career-Pilot-iOS
+//
+//  Created by Ahmed El-Sayyad Mohamed on 09/08/2026.
+//
+
+import SwiftUI
+
+struct InterviewTrackItem: View {
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
+}
+
+#Preview {
+    InterviewTrackItem()
+}
