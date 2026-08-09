@@ -6,16 +6,16 @@
 //
 
 import Foundation
-//
-//struct QuestionScore: Equatable, Identifiable {
-//    let id: Int
-//    let sessionQuestionId: Int
-//    let contentRelevance: Double
-//    let clarity: Double
-//    let confidence: Double
-//    let pacing: Double
-//    let fillerWords: Double
-//    let overallScore: Double
-//    let coachingTip: String
-//    let createdAt: Date
-//}
+
+struct QuestionScore: Equatable, Identifiable {
+    let id: Int
+    let sessionQuestionId: Int
+    let contentRelevance: Double
+    let clarity: Double
+    let confidence: Double
+    let pacing: Double
+    let fillerWords: Double
+    let overallScore: Double
+    let coachingTip: String
+    let createdAt: Date
+}
