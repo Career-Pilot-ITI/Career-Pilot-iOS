@@ -16,7 +16,9 @@ final class ReportsRemoteDataSource: ReportsRemoteDataSourceProtocol {
     }
 
     func fetchSessions(page: Int, size: Int) async throws -> PageResponse<ReportsInterviewSessionDTO> {
-        try await network.request(ReportsEndpoint.sessions(page: page, size: size))
+        let response: NetworkResponseDTO<PageResponse<ReportsInterviewSessionDTO>> =
+            try await network.request(ReportsEndpoint.sessions(page: page, size: size))
+        return response.data
     }
 
     func fetchSessionDetail(sessionId: Int) async throws -> ReportsInterviewSessionDTO {
