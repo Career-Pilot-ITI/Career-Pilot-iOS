@@ -22,18 +22,26 @@ final class ReportsRemoteDataSource: ReportsRemoteDataSourceProtocol {
     }
 
     func fetchSessionDetail(sessionId: Int) async throws -> ReportsInterviewSessionDTO {
-        try await network.request(ReportsEndpoint.sessionDetail(sessionId: sessionId))
+        let response: NetworkResponseDTO<ReportsInterviewSessionDTO> =
+            try await network.request(ReportsEndpoint.sessionDetail(sessionId: sessionId))
+        return response.data
     }
 
     func fetchSessionQuestions(sessionId: Int) async throws -> [SessionQuestionDTO] {
-        try await network.request(ReportsEndpoint.sessionQuestions(sessionId: sessionId))
+        let response: NetworkResponseDTO<[SessionQuestionDTO]> =
+            try await network.request(ReportsEndpoint.sessionQuestions(sessionId: sessionId))
+        return response.data
     }
 
     func fetchQuestionDetail(sessionId: Int, questionId: Int) async throws -> SessionQuestionDTO {
-        try await network.request(ReportsEndpoint.questionDetail(sessionId: sessionId, questionId: questionId))
+        let response: NetworkResponseDTO<SessionQuestionDTO> =
+            try await network.request(ReportsEndpoint.questionDetail(sessionId: sessionId, questionId: questionId))
+        return response.data
     }
 
     func fetchSessionFeedback(sessionId: Int) async throws -> SessionFeedbackDTO {
-        try await network.request(ReportsEndpoint.sessionFeedback(sessionId: sessionId))
+        let response: NetworkResponseDTO<SessionFeedbackDTO> =
+            try await network.request(ReportsEndpoint.sessionFeedback(sessionId: sessionId))
+        return response.data
     }
 }
