@@ -12,11 +12,11 @@ struct SessionQuestionDTO: Codable {
     let sessionId: Int
     let questionText: String
     let questionOrder: Int
-    let userTranscript: String
-    let durationMs: Int
-    let speechRateWpm: Double
-    let avgPauseMs: Double
-    let silenceRatio: Double
+    let userTranscript: String?
+    let durationMs: Int?
+    let speechRateWpm: Double?
+    let avgPauseMs: Double?
+    let silenceRatio: Double?
     let createdAt: Date
     let completedAt: Date?
     let score: QuestionScoreDTO?
