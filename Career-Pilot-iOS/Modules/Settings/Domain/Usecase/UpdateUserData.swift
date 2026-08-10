@@ -20,6 +20,7 @@ class UpdateUserData {
         do {
         
             if let imagUrl = imagUrl {
+                print("The image url is \(imagUrl)")
                 do {
                     let response = try await repo.updateUserProfileAvatar(
                         avatarUploadRequestDTO: AvatarUploadDTO(

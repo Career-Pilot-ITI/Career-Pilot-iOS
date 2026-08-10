@@ -175,6 +175,7 @@
 		61970B8830115725009D7E58 /* SubscriptionPlans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61970B8730115725009D7E58 /* SubscriptionPlans.swift */; };
 		61970B8E30115BE2009D7E58 /* CoinPack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61970B8D30115BE2009D7E58 /* CoinPack.swift */; };
 		61970B9030115C5F009D7E58 /* CoinsPackViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61970B8F30115C5F009D7E58 /* CoinsPackViewData.swift */; };
+		619B670A3029261900BAFA09 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 619B67093029261900BAFA09 /* Swinject */; };
 		61AD45A6300D608D00B70AFA /* SubscribtionCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AD45A5300D608D00B70AFA /* SubscribtionCheckoutView.swift */; };
 		61B48C19301A1384002AEAC9 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B48C18301A1384002AEAC9 /* ProfileViewModel.swift */; };
 		61D309163025AF1E0072734C /* SaveUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D309153025AF1E0072734C /* SaveUserData.swift */; };
@@ -722,7 +723,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				612EEDF23018F55000E6733E /* Shimmer in Frameworks */,
-				41C187CA3018B04000FDCB32 /* Swinject in Frameworks */,
+				619B670A3029261900BAFA09 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2421,8 +2422,8 @@
 			);
 			name = "Career-Pilot-iOS";
 			packageProductDependencies = (
-				41C187C93018B04000FDCB32 /* Swinject */,
 				612EEDF13018F55000E6733E /* Shimmer */,
+				619B67093029261900BAFA09 /* Swinject */,
 			);
 			productName = "Career-Pilot-iOS";
 			productReference = D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */;
@@ -2497,8 +2498,8 @@
 			);
 			mainGroup = D93938D53004064400CF4372;
 			packageReferences = (
-				41C187C83018B04000FDCB32 /* XCRemoteSwiftPackageReference "swinject" */,
 				612EEDF03018F55000E6733E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+				619B67083029261900BAFA09 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = D93938DF3004064400CF4372 /* Products */;
 			projectDirPath = "";
@@ -2588,7 +2589,6 @@
 				618C2A03301461F30099BF69 /* CheckoutRemoteDataSource.swift in Sources */,
 				41BC7740300D3D1800E89C3F /* StatCard.swift in Sources */,
 				41AD8FED301613D300BDFDA0 /* ReportsEndpoint.swift in Sources */,
-				41B138AB3025F7AD00D1D053 /* PaginationInfo.swift in Sources */,
 				41AD901630161EFA00BDFDA0 /* SessionDetailViewModel.swift in Sources */,
 				41BC7728300D18DC00E89C3F /* RadarGridShape.swift in Sources */,
 				D935DFCB30078012009DF855 /* CustomButton.swift in Sources */,
@@ -2675,7 +2675,6 @@
 				41C05287301A7DA6003885A1 /* RefreshTokenResponseDTO.swift in Sources */,
 				41BC7732300D31C900E89C3F /* SessionView.swift in Sources */,
 				41BC7752300D9A8D00E89C3F /* AppState.swift in Sources */,
-				41B138AE3025F7C900D1D053 /* PageResponse.swift in Sources */,
 				61970B8E30115BE2009D7E58 /* CoinPack.swift in Sources */,
 				CEE62A83300910E90071F076 /* CustomNavigationBar.swift in Sources */,
 				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
@@ -3210,14 +3209,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		41B138A63025F73900D1D053 /* XCRemoteSwiftPackageReference "swinject" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/swinject/swinject";
-			requirement = {
-				kind = exactVersion;
-				version = 2.8.4;
-			};
-		};
 		612EEDF03018F55000E6733E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer.git";
@@ -3226,18 +3217,26 @@
 				version = 1.3.0;
 			};
 		};
+		619B67083029261900BAFA09 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.8.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		41B138A73025F73900D1D053 /* Swinject */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 41B138A63025F73900D1D053 /* XCRemoteSwiftPackageReference "swinject" */;
-			productName = Swinject;
-		};
 		612EEDF13018F55000E6733E /* Shimmer */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 612EEDF03018F55000E6733E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
 			productName = Shimmer;
+		};
+		619B67093029261900BAFA09 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 619B67083029261900BAFA09 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
 

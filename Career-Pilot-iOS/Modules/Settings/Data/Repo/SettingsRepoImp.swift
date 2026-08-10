@@ -32,9 +32,13 @@ class SettingsRepoImp : SettingsRepo  {
                     user.avatar = avatarData
                 }
             }
-            
-            print("The user is returned avatar \(user.avatar)")
-            return user
+            guard let avatarUser = user.avatar else {
+                print("The user avatar is null please look at u code")
+                throw NSError(domain: "UserDataError", code: -1, userInfo: [NSLocalizedDescriptionKey: "User avatar is missing"])
+            }
+            print("The user avatar that downloaded is \(avatarUser)")
+                  
+                    return user
         }
 
 
@@ -57,6 +61,12 @@ class SettingsRepoImp : SettingsRepo  {
                     user.avatar = avatarData
                 }
             }
+            guard let avatarUser = user.avatar else {
+                print("The user avatar is null please look at u code")
+                throw NSError(domain: "UserDataError", code: -1, userInfo: [NSLocalizedDescriptionKey: "User avatar is missing"])
+            }
+            print("The user avatar that downloaded is \(avatarUser)")
+
             
             return user
         } catch {

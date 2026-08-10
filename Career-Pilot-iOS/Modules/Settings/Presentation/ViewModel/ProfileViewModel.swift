@@ -33,6 +33,8 @@ class ProfileViewModel: ObservableObject {
         self.uploadCvUseCase = uploadCvUseCase
         self.saveUsercase = saveUsercase
         self.userSession = userSession
+        print("🟡 Profile Session ID:", ObjectIdentifier(userSession))
+
     }
 
     var hasChanges: Bool {
@@ -55,7 +57,7 @@ class ProfileViewModel: ObservableObject {
                 return
                     }
             user.trackName = tracks.filter { user.trackId == $0.id }.compactMap { $0.title }.first ?? ""
-
+            print("the user image is \(user.avatar)")
             await MainActor.run {
                 originalUser = user
                 editableUser = user

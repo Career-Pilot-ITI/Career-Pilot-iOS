@@ -17,9 +17,9 @@ enum OnBordingEndPointes: APIEndpoint{
     var path: String{
         switch self {
         case.getAllTrackes:
-            return "api/v1/tracks"
+            return "/api/v1/tracks"
         case.updateUserProfile:
-            return "api/v1/profile"
+            return "/api/v1/profile"
         }
     }
 
