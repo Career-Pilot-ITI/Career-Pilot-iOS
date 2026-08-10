@@ -209,7 +209,6 @@
 		CE8AFF1D300718670064CC6C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1C300718670064CC6C /* Round.swift */; };
 		CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1E3007187D0064CC6C /* Spaces.swift */; };
 		CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF21300726660064CC6C /* PhoneTextField.swift */; };
-		CE92F09430276A14001E955D /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = CE92F09330276A14001E955D /* Swinject */; };
 		CEA4C08530143D6900CB5DD3 /* OnBoardingUser+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08430143D6900CB5DD3 /* OnBoardingUser+Mapping.swift */; };
 		CEA4C0883014528800CB5DD3 /* GetCurrentUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C0873014528800CB5DD3 /* GetCurrentUserUseCase.swift */; };
 		CEA4C08A30145B0900CB5DD3 /* TrackInterviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08930145B0900CB5DD3 /* TrackInterviewCard.swift */; };

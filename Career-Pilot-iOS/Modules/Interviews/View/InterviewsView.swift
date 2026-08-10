@@ -21,8 +21,8 @@ struct InterviewsView: View {
                     coordinator.push(.interviewPrep(
                         trackName: item.trackInterview.track.title,
                         trackId: item.trackInterview.track.id,
-                        interviewType: .classic,
-                    ),
+                        interviewType: .classic
+                    )
                     )
                 }
                 .listRowInsets(EdgeInsets(top: Spacing.s6, leading: 0, bottom: Spacing.s6, trailing: 0))
