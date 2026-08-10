@@ -17,17 +17,17 @@ enum SettingsEndpoint : APIEndpoint{
     var path: String{
         switch self {
         case.getUserData:
-            return "/api/v1/profile"
+            return "api/v1/profile"
         case .getSubscribtionsPrice:
-            return "/api/v1/subscriptions/tiers"
+            return "api/v1/subscriptions/tiers"
         case .logout:
-            return "/api/v1/auth/logout"
+            return "api/v1/auth/logout"
         case.updateUserData:
-            return "/api/v1/profile"
+            return "api/v1/profile"
         case .updateUserAvatar:
-            return "/api/v1/files/upload"
+            return "api/v1/files/upload"
         case .updataUserCv:
-            return "/api/v1/updateCv"
+            return "api/v1/updateCv"
         }
     }
     
