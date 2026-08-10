@@ -14,7 +14,7 @@ extension ReportsInterviewSession {
             title: trackName,
             score: overallScore,
             noOfQuestions: maxQuestions,
-            perioudTime: "\(durationSeconds / 60)m",
+            perioudTime: durationSeconds.map { "\($0 / 60)m" } ?? "–",
             date: createdAt.formattedRelative()
         )
     }

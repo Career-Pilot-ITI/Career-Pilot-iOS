@@ -54,7 +54,10 @@ struct ReportsView: View {
         VStack(spacing: 0) {
             SessionHistory(
                 sessionCount: viewModel.pagination?.totalElements ?? viewModel.sessions.count,
-                sessionAvgScore: viewModel.sessions.map(\.overallScore).reduce(0, +) / Double(max(viewModel.sessions.count, 1)),
+                sessionAvgScore: {
+                    let scores = viewModel.sessions.compactMap(\.overallScore)
+                    return scores.isEmpty ? 0 : scores.reduce(0, +) / Double(scores.count)
+                }(),
                 sessions: viewModel.sessions.map { $0.toUIModel() },
                 hasMore: viewModel.pagination?.hasMore ?? false,
                 onLoadMore: { Task { await viewModel.loadNextPage() } }

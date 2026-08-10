@@ -132,7 +132,20 @@ private struct AnyDecodable: Decodable {
 private extension JSONDecoder {
     static let pageDecoder: JSONDecoder = {
         let d = JSONDecoder()
-        d.dateDecodingStrategy = .iso8601
+        let formatterWithFraction = ISO8601DateFormatter()
+        formatterWithFraction.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        let formatterWithoutFraction = ISO8601DateFormatter()
+        formatterWithoutFraction.formatOptions = [.withInternetDateTime]
+        d.dateDecodingStrategy = .custom { decoder in
+            let container = try decoder.singleValueContainer()
+            let string = try container.decode(String.self)
+            if let date = formatterWithFraction.date(from: string) { return date }
+            if let date = formatterWithoutFraction.date(from: string) { return date }
+            throw DecodingError.dataCorruptedError(
+                in: container,
+                debugDescription: "Cannot decode date string: \(string)"
+            )
+        }
         return d
     }()
 }
