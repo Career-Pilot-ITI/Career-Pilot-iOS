@@ -16,8 +16,9 @@ struct JobMatchView: View {
 //            NavBar(onBack: onBack)
 
             ScrollView {
-                VStack(spacing: Layout.cardSpacing) {
-                    JobHeaderCard(job: data.job)
+                VStack(spacing: Radius.r16) {
+                    JobHeaderCard(initial: "G", title: "Senior Frontend Engineer", companyName: "Google", location: "Cairo, EG", workMode: "Hybrid")
+
 
                     MatchScoreCardView(
                         score: data.matchScore,
@@ -60,9 +61,10 @@ struct JobMatchView: View {
                     ActionButtonsView()
                         .padding(.top, 4)
                 }
-                .padding(.horizontal, Layout.screenPadding)
+                .padding(.horizontal, Radius.r16)
                 .padding(.bottom, 24)
             }
+            .scrollIndicators(.hidden)
         }
         .background(Color.screenBackground.ignoresSafeArea())
     }

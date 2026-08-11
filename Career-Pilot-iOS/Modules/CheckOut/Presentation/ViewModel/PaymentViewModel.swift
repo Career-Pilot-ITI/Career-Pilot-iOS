@@ -61,7 +61,7 @@ final class PaymentViewModel: ObservableObject {
         }
         var  counter : Int = 0
 
-        for attempt in 1...maxPollAttempts {
+        for _ in 1...maxPollAttempts {
             
             if Task.isCancelled { return } // don't touch `phase` if we've been cancelled
 

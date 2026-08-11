@@ -14,7 +14,7 @@ class GetUserDataUseCase{
     func execute() async throws -> UserModelSettingsView  {
         do{
             print("I excuted with not problem ")
-                   let response = await  try settingsRepo.fetchUserData()
+            let response = try await settingsRepo.fetchUserData()
             var userVeiw =  response.toUserModelSettingsView()
         
            return userVeiw
