@@ -15,6 +15,7 @@ extension DIContainer{
             MicrophonePermissionManager()
             
         }.inObjectScope(.container)
+        
         // CoreData
         container.register(CoreDataManager.self) { _ in
             CoreDataManager() 

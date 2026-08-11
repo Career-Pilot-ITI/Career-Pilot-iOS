@@ -1,6 +1,6 @@
 import Foundation
 
-struct InterviewFeedback: Equatable, Sendable {
+struct InterviewFeedback: Equatable, Sendable, Hashable {
     let overallScore: Int
     let clarityScore: Int
     let confidenceScore: Int
@@ -24,7 +24,7 @@ struct InterviewFeedback: Equatable, Sendable {
     }
 }
 
-struct InterviewFeedbackQuestion: Equatable, Sendable {
+struct InterviewFeedbackQuestion: Equatable, Sendable, Hashable {
     let question: String
     let transcript: String
     let durationMs: Int
@@ -44,7 +44,7 @@ struct InterviewFeedbackQuestion: Equatable, Sendable {
     }
 }
 
-struct InterviewQuestionScore: Equatable, Sendable {
+struct InterviewQuestionScore: Equatable, Sendable, Hashable {
     let overall: Int
     let clarity: Int
     let confidence: Int

@@ -231,11 +231,14 @@
 		CE12F3C830094FB50083D66D /* OTPBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C530094FB50083D66D /* OTPBoxView.swift */; };
 		CE12F3C930094FB50083D66D /* OTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C630094FB50083D66D /* OTPCodeView.swift */; };
 		CE1D8991301616B000C759CA /* MicrophonePermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D8990301616B000C759CA /* MicrophonePermissionManager.swift */; };
+		CE767FE830286EB3008A27C2 /* InterviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE767FE730286EB3008A27C2 /* InterviewsViewModel.swift */; };
+		CE767FEA3028AD03008A27C2 /* InterviewPrepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE767FE93028AD03008A27C2 /* InterviewPrepViewModel.swift */; };
 		CE8AFF18300712FC0064CC6C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF15300712FC0064CC6C /* Font.swift */; };
 		CE8AFF19300712FC0064CC6C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF14300712FC0064CC6C /* Colors.swift */; };
 		CE8AFF1D300718670064CC6C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1C300718670064CC6C /* Round.swift */; };
 		CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1E3007187D0064CC6C /* Spaces.swift */; };
 		CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF21300726660064CC6C /* PhoneTextField.swift */; };
+		CE92F09430276A14001E955D /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = CE92F09330276A14001E955D /* Swinject */; };
 		CEA4C08530143D6900CB5DD3 /* OnBoardingUser+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08430143D6900CB5DD3 /* OnBoardingUser+Mapping.swift */; };
 		CEA4C0883014528800CB5DD3 /* GetCurrentUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C0873014528800CB5DD3 /* GetCurrentUserUseCase.swift */; };
 		CEA4C08A30145B0900CB5DD3 /* TrackInterviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08930145B0900CB5DD3 /* TrackInterviewCard.swift */; };
@@ -247,6 +250,10 @@
 		CEB622133010405800027035 /* UsertoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB622123010405800027035 /* UsertoEntity.swift */; };
 		CEB622153010440800027035 /* SaveUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB622143010440800027035 /* SaveUserUseCase.swift */; };
 		CEB62218301061F700027035 /* UploadCvUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB62216301061F700027035 /* UploadCvUseCase.swift */; };
+		CEC5AEC8302813D7000B5BDC /* ATSCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5AEC7302813D7000B5BDC /* ATSCard.swift */; };
+		CEC5AECC302818EC000B5BDC /* InterviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5AECB302818EC000B5BDC /* InterviewsView.swift */; };
+		CEC5AECF30281937000B5BDC /* InterviewTrackCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5AECE30281937000B5BDC /* InterviewTrackCard.swift */; };
+		CEC5AED23028197F000B5BDC /* InterviewTrackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5AED13028197F000B5BDC /* InterviewTrackItem.swift */; };
 		CECC20D03007AD1200DC450D /* PhoneFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20CF3007AD1200DC450D /* PhoneFieldState.swift */; };
 		CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20D13007AD2800DC450D /* PhoneValidator.swift */; };
 		CECC20D43007AD3A00DC450D /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC20D33007AD3A00DC450D /* CountryCode.swift */; };
@@ -294,6 +301,8 @@
 		D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFF930080448009DF855 /* OnBordingView.swift */; };
 		D935DFFC3008045A009DF855 /* OnBordingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFFB3008045A009DF855 /* OnBordingViewModel.swift */; };
 		D935DFFF30082AA9009DF855 /* UploadCvView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935DFFE30082AA9009DF855 /* UploadCvView.swift */; };
+		D938BBD130287B330073ED15 /* SessionFeedBackMappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D938BBD030287B330073ED15 /* SessionFeedBackMappers.swift */; };
+		D938BBD330287F100073ED15 /* FeedbackUIMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D938BBD230287F100073ED15 /* FeedbackUIMapping.swift */; };
 		D93938E23004064400CF4372 /* Career_Pilot_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93938E13004064400CF4372 /* Career_Pilot_iOSApp.swift */; };
 		D93938E43004064400CF4372 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93938E33004064400CF4372 /* ContentView.swift */; };
 		D93938E93004064600CF4372 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93938E83004064600CF4372 /* Preview Assets.xcassets */; };
@@ -328,6 +337,7 @@
 		D95C3BCB300EA1800042785F /* WaitingForAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCA300EA1800042785F /* WaitingForAnswerView.swift */; };
 		D95C3BCD300EA1A20042785F /* UserTrunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCC300EA1A20042785F /* UserTrunView.swift */; };
 		D95C3BCF300EA1C00042785F /* SubmitingAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCE300EA1C00042785F /* SubmitingAnswerView.swift */; };
+		D9634B0430286D4E0043BABB /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = D9634B0330286D4E0043BABB /* Swinject */; };
 		D970C9E4301560D3002F6269 /* MultipartFormDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9E3301560D3002F6269 /* MultipartFormDataBuilder.swift */; };
 		D970C9E6301566B3002F6269 /* UploadFileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9E5301566B3002F6269 /* UploadFileResponseDTO.swift */; };
 		D970C9EB301569F8002F6269 /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9EA301569F8002F6269 /* UserDataEndPoint.swift */; };
@@ -622,6 +632,8 @@
 		CE12F3C630094FB50083D66D /* OTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPCodeView.swift; sourceTree = "<group>"; };
 		CE1D898F301611C900C759CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE1D8990301616B000C759CA /* MicrophonePermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophonePermissionManager.swift; sourceTree = "<group>"; };
+		CE767FE730286EB3008A27C2 /* InterviewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewsViewModel.swift; sourceTree = "<group>"; };
+		CE767FE93028AD03008A27C2 /* InterviewPrepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewPrepViewModel.swift; sourceTree = "<group>"; };
 		CE8AFF14300712FC0064CC6C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CE8AFF15300712FC0064CC6C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		CE8AFF1C300718670064CC6C /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
@@ -638,6 +650,10 @@
 		CEB622123010405800027035 /* UsertoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsertoEntity.swift; sourceTree = "<group>"; };
 		CEB622143010440800027035 /* SaveUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUserUseCase.swift; sourceTree = "<group>"; };
 		CEB62216301061F700027035 /* UploadCvUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadCvUseCase.swift; sourceTree = "<group>"; };
+		CEC5AEC7302813D7000B5BDC /* ATSCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATSCard.swift; sourceTree = "<group>"; };
+		CEC5AECB302818EC000B5BDC /* InterviewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewsView.swift; sourceTree = "<group>"; };
+		CEC5AECE30281937000B5BDC /* InterviewTrackCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewTrackCard.swift; sourceTree = "<group>"; };
+		CEC5AED13028197F000B5BDC /* InterviewTrackItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewTrackItem.swift; sourceTree = "<group>"; };
 		CECC20CF3007AD1200DC450D /* PhoneFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFieldState.swift; sourceTree = "<group>"; };
 		CECC20D13007AD2800DC450D /* PhoneValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneValidator.swift; sourceTree = "<group>"; };
 		CECC20D33007AD3A00DC450D /* CountryCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
@@ -686,6 +702,8 @@
 		D935DFF930080448009DF855 /* OnBordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBordingView.swift; sourceTree = "<group>"; };
 		D935DFFB3008045A009DF855 /* OnBordingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnBordingViewModel.swift; path = "Career-Pilot-iOS/Modules/Onboard/Presentation/View/OnBordingViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		D935DFFE30082AA9009DF855 /* UploadCvView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadCvView.swift; sourceTree = "<group>"; };
+		D938BBD030287B330073ED15 /* SessionFeedBackMappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFeedBackMappers.swift; sourceTree = "<group>"; };
+		D938BBD230287F100073ED15 /* FeedbackUIMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackUIMapping.swift; sourceTree = "<group>"; };
 		D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Career-Pilot-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93938E13004064400CF4372 /* Career_Pilot_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career_Pilot_iOSApp.swift; sourceTree = "<group>"; };
 		D93938E33004064400CF4372 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -778,8 +796,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				416B28BD3027B752004E8977 /* Shimmer in Frameworks */,
-				416B28BA3027B72D004E8977 /* Swinject in Frameworks */,
+				612EEDF23018F55000E6733E /* Shimmer in Frameworks */,
+				D9634B0430286D4E0043BABB /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1742,12 +1760,55 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		CE767FE630286E9D008A27C2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE767FE730286EB3008A27C2 /* InterviewsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		CEA4C0863014526200CB5DD3 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
 				CEA4C0873014528800CB5DD3 /* GetCurrentUserUseCase.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		CEC5AEC9302818A5000B5BDC /* Interviews */ = {
+			isa = PBXGroup;
+			children = (
+				CE767FE630286E9D008A27C2 /* ViewModel */,
+				CEC5AED030281956000B5BDC /* Model */,
+				CEC5AECA302818DE000B5BDC /* View */,
+			);
+			path = Interviews;
+			sourceTree = "<group>";
+		};
+		CEC5AECA302818DE000B5BDC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEC5AECD30281916000B5BDC /* Components */,
+				CEC5AECB302818EC000B5BDC /* InterviewsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEC5AECD30281916000B5BDC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CEC5AECE30281937000B5BDC /* InterviewTrackCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		CEC5AED030281956000B5BDC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEC5AED13028197F000B5BDC /* InterviewTrackItem.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CECC20CE3007ACE100DC450D /* PhoneField */ = {
@@ -1819,6 +1880,7 @@
 				CEA4C08D3014676600CB5DD3 /* CareerCardSkeletonView.swift */,
 				CEA4C08F3014698600CB5DD3 /* SessionRowSkeleton.swift */,
 				CEA4C09130146F6300CB5DD3 /* PracticePreparationView.swift */,
+				CEC5AEC7302813D7000B5BDC /* ATSCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1889,6 +1951,7 @@
 			isa = PBXGroup;
 			children = (
 				CE12F3C130093ED30083D66D /* HomeViewModel.swift */,
+				CE767FE93028AD03008A27C2 /* InterviewPrepViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1961,6 +2024,15 @@
 				D935DFFE30082AA9009DF855 /* UploadCvView.swift */,
 			);
 			path = UploadCV;
+			sourceTree = "<group>";
+		};
+		D938BBCF30287B210073ED15 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				D938BBD030287B330073ED15 /* SessionFeedBackMappers.swift */,
+				D938BBD230287F100073ED15 /* FeedbackUIMapping.swift */,
+			);
+			path = Mappers;
 			sourceTree = "<group>";
 		};
 		D93938D53004064400CF4372 = {
@@ -2108,6 +2180,7 @@
 		D95C3B92300E48F80042785F /* Entites */ = {
 			isa = PBXGroup;
 			children = (
+				D938BBCF30287B210073ED15 /* Mappers */,
 				D95C3BA9300E4A0E0042785F /* Errors */,
 				D95C3BB2300E4A4C0042785F /* InterviewSession.swift */,
 				D9B4B1B73011810E004909ED /* NewSession.swift */,
@@ -2345,6 +2418,7 @@
 		D9C1878430065A4800BFF8E9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CEC5AEC9302818A5000B5BDC /* Interviews */,
 				41B4EFED3027B0E400AE0804 /* ATS */,
 				6165A1E8300B406D0085E3FD /* CheckOut */,
 				D95C3B8A300E48730042785F /* PracticeSession */,
@@ -2634,8 +2708,8 @@
 			);
 			name = "Career-Pilot-iOS";
 			packageProductDependencies = (
-				416B28B93027B72D004E8977 /* Swinject */,
-				416B28BC3027B752004E8977 /* Shimmer */,
+				612EEDF13018F55000E6733E /* Shimmer */,
+				D9634B0330286D4E0043BABB /* Swinject */,
 			);
 			productName = "Career-Pilot-iOS";
 			productReference = D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */;
@@ -2710,8 +2784,8 @@
 			);
 			mainGroup = D93938D53004064400CF4372;
 			packageReferences = (
-				416B28B83027B72D004E8977 /* XCRemoteSwiftPackageReference "swinject" */,
-				416B28BB3027B752004E8977 /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */,
+				612EEDF03018F55000E6733E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+				D9634B0230286D4E0043BABB /* XCRemoteSwiftPackageReference "swinject" */,
 			);
 			productRefGroup = D93938DF3004064400CF4372 /* Products */;
 			projectDirPath = "";
@@ -2818,6 +2892,7 @@
 				41AD8FE73016131900BDFDA0 /* SessionFeedbackDTO.swift in Sources */,
 				6169A7B230103051001FDC39 /* UserError.swift in Sources */,
 				D957B3043017EC6100B0562A /* TrackSelector.swift in Sources */,
+				CE767FEA3028AD03008A27C2 /* InterviewPrepViewModel.swift in Sources */,
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
 				D9B4B1BD301195B3004909ED /* ApiRequestesDTO.swift in Sources */,
 				41AD901130161E3800BDFDA0 /* ClearReportsUseCase.swift in Sources */,
@@ -2857,6 +2932,7 @@
 				41BE1A78300BF42E0033D1B5 /* AuthRemoteDataSource.swift in Sources */,
 				6169A7C7301044E5001FDC39 /* ExperinceLevelSelector.swift in Sources */,
 				D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */,
+				CE767FE830286EB3008A27C2 /* InterviewsViewModel.swift in Sources */,
 				6169A7CD301044E5001FDC39 /* SkillsDetectedSettingsProfile.swift in Sources */,
 				D95C3BA2300E49E10042785F /* FinishInterviewUseCase.swift in Sources */,
 				CEA4C0943014703600CB5DD3 /* InterviewPrepContainerView.swift in Sources */,
@@ -2922,6 +2998,7 @@
 				CEE62A99300929A70071F076 /* SessionRow.swift in Sources */,
 				D95C3BAD300E4A2A0042785F /* InterviewProgressService.swift in Sources */,
 				41D69D3B300B456A00294D94 /* CoreDataManager.swift in Sources */,
+				D938BBD130287B330073ED15 /* SessionFeedBackMappers.swift in Sources */,
 				6165A1EE300B40D90085E3FD /* CheckOutTopView.swift in Sources */,
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
 				D95C3BC0300E4ACF0042785F /* SubmitAnswerUseCase.swift in Sources */,
@@ -2961,6 +3038,7 @@
 				D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */,
 				D95C3BC1300E4ACF0042785F /* StartInterviewUseCase.swift in Sources */,
 				D920C24F300EFEE200AB7317 /* StatusScreens.swift in Sources */,
+				CEC5AED23028197F000B5BDC /* InterviewTrackItem.swift in Sources */,
 				414B4BE6302B563D00B66FA7 /* JobDTO+Mapper.swift in Sources */,
 				CECCDA3D300F5E230068620D /* UpdateProfileResponseDTO.swift in Sources */,
 				CECC20E63007DB3D00DC450D /* PulsingIconBadge.swift in Sources */,
@@ -3007,7 +3085,9 @@
 				D970C9E6301566B3002F6269 /* UploadFileResponseDTO.swift in Sources */,
 				D95C3B99300E495C0042785F /* InterviewSessionEndPointes.swift in Sources */,
 				CEA4C0903014698600CB5DD3 /* SessionRowSkeleton.swift in Sources */,
+				CEC5AEC8302813D7000B5BDC /* ATSCard.swift in Sources */,
 				D9A28581300A61DC00ABB5BD /* (null) in Sources */,
+				D938BBD330287F100073ED15 /* FeedbackUIMapping.swift in Sources */,
 				D9BA3476300ED5040058D6E6 /* Fake.swift in Sources */,
 				CEB62218301061F700027035 /* UploadCvUseCase.swift in Sources */,
 				41BE1A7A300BF43E0033D1B5 /* AuthRepositoryImpl.swift in Sources */,
@@ -3042,6 +3122,7 @@
 				61601FC43016441A00581229 /* UserSettingsDTO.swift in Sources */,
 				6161D86C301571C800098A0C /* CurrentSubscriptionDomainModel.swift in Sources */,
 				6161D8683015630800098A0C /* CurrentSubscriptionDTO.swift in Sources */,
+				CEC5AECF30281937000B5BDC /* InterviewTrackCard.swift in Sources */,
 				D9B4B1B83011810E004909ED /* NewSession.swift in Sources */,
 				D95C3BB9300E4ABE0042785F /* ResumeInterviewUseCase.swift in Sources */,
 				41AD8FFC30161B8300BDFDA0 /* ReportsInterviewSessionDTO+Mapping.swift in Sources */,
@@ -3059,6 +3140,7 @@
 				414B4BE9302B579000B66FA7 /* GetJobByURLUseCase.swift in Sources */,
 				D920C24B300EFEB400AB7317 /* RecordingView.swift in Sources */,
 				D9B614EA300CF4A100552F85 /* DIContainer+UseCases.swift in Sources */,
+				CEC5AECC302818EC000B5BDC /* InterviewsView.swift in Sources */,
 				D920C24D300EFEC800AB7317 /* SessionHeader.swift in Sources */,
 				D999D5AD301130B300CF606B /* ApiRequestes.swift in Sources */,
 				6182BB4F300C519B001157B8 /* ProfilePhoto.swift in Sources */,
@@ -3281,6 +3363,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Career-Pilot-iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 5PGGXHFM2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Career-Pilot-iOS/Info.plist";
@@ -3312,6 +3395,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Career-Pilot-iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 5PGGXHFM2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Career-Pilot-iOS/Info.plist";
@@ -3453,7 +3537,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		416B28B83027B72D004E8977 /* XCRemoteSwiftPackageReference "swinject" */ = {
+		612EEDF03018F55000E6733E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.3.0;
+			};
+		};
+		D9634B0230286D4E0043BABB /* XCRemoteSwiftPackageReference "swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/swinject/swinject";
 			requirement = {
@@ -3461,26 +3553,18 @@
 				version = 2.8.4;
 			};
 		};
-		416B28BB3027B752004E8977 /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/markiv/swiftui-Shimmer";
-			requirement = {
-				kind = exactVersion;
-				version = 1.3.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		416B28B93027B72D004E8977 /* Swinject */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 416B28B83027B72D004E8977 /* XCRemoteSwiftPackageReference "swinject" */;
-			productName = Swinject;
-		};
-		416B28BC3027B752004E8977 /* Shimmer */ = {
+		612EEDF13018F55000E6733E /* Shimmer */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 416B28BB3027B752004E8977 /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */;
 			productName = Shimmer;
+		};
+		D9634B0330286D4E0043BABB /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D9634B0230286D4E0043BABB /* XCRemoteSwiftPackageReference "swinject" */;
+			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
 
