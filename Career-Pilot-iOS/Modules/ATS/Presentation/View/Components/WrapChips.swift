@@ -8,11 +8,26 @@
 import SwiftUI
 
 struct WrapChips: View {
+    let items: [String]
+    let color: Color
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        FlowLayout(spacing: 8) {
+            ForEach(items, id: \.self) { item in
+                Text(item)
+                    .font(.footnote.weight(.medium))
+                    .foregroundStyle(color == .orange ? .orange : .green)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(
+                        Capsule().fill(color.opacity(0.15))
+                    )
+            }
+        }
     }
 }
 
-#Preview {
-    WrapChips()
-}
+
+//#Preview {
+//    WrapChips()
+//}

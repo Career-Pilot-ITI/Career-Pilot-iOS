@@ -233,6 +233,8 @@
 		CE12F3C830094FB50083D66D /* OTPBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C530094FB50083D66D /* OTPBoxView.swift */; };
 		CE12F3C930094FB50083D66D /* OTPCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12F3C630094FB50083D66D /* OTPCodeView.swift */; };
 		CE1D8991301616B000C759CA /* MicrophonePermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D8990301616B000C759CA /* MicrophonePermissionManager.swift */; };
+		CE3F0AF6302B766300EF10EB /* JobDescriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F0AF5302B766000EF10EB /* JobDescriptionModel.swift */; };
+		CE3F0AF8302B76A700EF10EB /* WrapChips.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F0AF7302B76A700EF10EB /* WrapChips.swift */; };
 		CE767FE830286EB3008A27C2 /* InterviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE767FE730286EB3008A27C2 /* InterviewsViewModel.swift */; };
 		CE767FEA3028AD03008A27C2 /* InterviewPrepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE767FE93028AD03008A27C2 /* InterviewPrepViewModel.swift */; };
 		CE8AFF18300712FC0064CC6C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF15300712FC0064CC6C /* Font.swift */; };
@@ -633,6 +635,8 @@
 		CE12F3C630094FB50083D66D /* OTPCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPCodeView.swift; sourceTree = "<group>"; };
 		CE1D898F301611C900C759CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE1D8990301616B000C759CA /* MicrophonePermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophonePermissionManager.swift; sourceTree = "<group>"; };
+		CE3F0AF5302B766000EF10EB /* JobDescriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDescriptionModel.swift; sourceTree = "<group>"; };
+		CE3F0AF7302B76A700EF10EB /* WrapChips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapChips.swift; sourceTree = "<group>"; };
 		CE767FE730286EB3008A27C2 /* InterviewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewsViewModel.swift; sourceTree = "<group>"; };
 		CE767FE93028AD03008A27C2 /* InterviewPrepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewPrepViewModel.swift; sourceTree = "<group>"; };
 		CE8AFF14300712FC0064CC6C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -918,6 +922,7 @@
 		41897C6C3028B16100654888 /* UIModel */ = {
 			isa = PBXGroup;
 			children = (
+				CE3F0AF5302B766000EF10EB /* JobDescriptionModel.swift */,
 				41897C6D3028B17700654888 /* JobMatchModels.swift */,
 			);
 			path = UIModel;
@@ -1086,6 +1091,7 @@
 				41897C7B3028B54600654888 /* ActionButtons.swift */,
 				414B4BC9302B4FF400B66FA7 /* JobLinkTextField.swift */,
 				414B4BCB302B506700B66FA7 /* ATSFeatureBadge.swift */,
+				CE3F0AF7302B76A700EF10EB /* WrapChips.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -3046,6 +3052,7 @@
 				CEC5AED23028197F000B5BDC /* InterviewTrackItem.swift in Sources */,
 				414B4BE6302B563D00B66FA7 /* JobDTO+Mapper.swift in Sources */,
 				CECCDA3D300F5E230068620D /* UpdateProfileResponseDTO.swift in Sources */,
+				CE3F0AF6302B766300EF10EB /* JobDescriptionModel.swift in Sources */,
 				CECC20E63007DB3D00DC450D /* PulsingIconBadge.swift in Sources */,
 				CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */,
 				D92854083010188400F8CAC2 /* InterviewQuestionMapping.swift in Sources */,
@@ -3143,6 +3150,7 @@
 				616320D83010947800F417C9 /* GetSubscription.swift in Sources */,
 				61DD05D53011839200594030 /* PaymentViewModel.swift in Sources */,
 				414B4BE9302B579000B66FA7 /* GetJobByURLUseCase.swift in Sources */,
+				CE3F0AF8302B76A700EF10EB /* WrapChips.swift in Sources */,
 				D920C24B300EFEB400AB7317 /* RecordingView.swift in Sources */,
 				D9B614EA300CF4A100552F85 /* DIContainer+UseCases.swift in Sources */,
 				CEC5AECC302818EC000B5BDC /* InterviewsView.swift in Sources */,

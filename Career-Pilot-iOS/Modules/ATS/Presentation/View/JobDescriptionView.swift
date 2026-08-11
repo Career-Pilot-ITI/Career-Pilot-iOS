@@ -1,46 +1,5 @@
 import SwiftUI
 
-struct JobDescriptionModel {
-    let companyInitial: String
-    let title: String
-    let company: String
-    let location: String
-    let workMode: String
-
-    let employmentType: String
-    let experienceLevel: String
-    let postedText: String
-    let appliedText: String
-
-    let description: String
-
-    let skills: [String]
-    let skillsCount: Int
-    let preferredSkills: [String]
-    let preferredSkillsCount: Int
-    let technologies: [String]
-    let technologiesCount: Int
-
-    static let mock = JobDescriptionModel(
-        companyInitial: "G",
-        title: "Senior Frontend Engineer",
-        company: "Google",
-        location: "Cairo, EG",
-        workMode: "Hybrid",
-        employmentType: "Full-time",
-        experienceLevel: "Senior (5+ yrs)",
-        postedText: "2 days ago",
-        appliedText: "1000+ Person",
-        description: "We are looking for a Senior Frontend Engineer to join our Cairo office. You will lead the development of user-facing features for Google's cloud products, collaborating with designers and backend engineers to deliver performant, accessible web applications at scale.",
-        skills: ["TypeScript", "Node.js", "System Design", "AWS", "REST APIs"],
-        skillsCount: 8,
-        preferredSkills: ["GraphQL"],
-        preferredSkillsCount: 3,
-        technologies: ["Kubernetes", "Go", "GraphQL"],
-        technologiesCount: 3
-    )
-}
-
 // MARK: - Root View
 
 struct JobDescriptionView: View {
@@ -59,10 +18,12 @@ struct JobDescriptionView: View {
                     overviewCard
                     descriptionCard
                     requirementsCard
+                    
                 }
                 .padding(16)
                 .padding(.bottom, 90) // room for the sticky button
             }
+            .scrollIndicators(.hidden)
 
             startScoringButton
                 .padding(.horizontal, 16)
@@ -227,28 +188,6 @@ struct JobDescriptionView: View {
     private var cardBackground: some View {
         RoundedRectangle(cornerRadius: 20)
             .fill(Color(.secondarySystemGroupedBackground))
-    }
-}
-
-// MARK: - Wrapping chip layout
-
-struct WrapChips: View {
-    let items: [String]
-    let color: Color
-
-    var body: some View {
-        FlowLayout(spacing: 8) {
-            ForEach(items, id: \.self) { item in
-                Text(item)
-                    .font(.footnote.weight(.medium))
-                    .foregroundStyle(color == .orange ? .orange : .green)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background(
-                        Capsule().fill(color.opacity(0.15))
-                    )
-            }
-        }
     }
 }
 
