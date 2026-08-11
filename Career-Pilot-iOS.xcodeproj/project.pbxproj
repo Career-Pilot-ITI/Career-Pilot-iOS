@@ -19,8 +19,6 @@
 		414B4BE6302B563D00B66FA7 /* JobDTO+Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B4BE5302B563D00B66FA7 /* JobDTO+Mapper.swift */; };
 		414B4BE9302B579000B66FA7 /* GetJobByURLUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B4BE8302B579000B66FA7 /* GetJobByURLUseCase.swift */; };
 		414B4BEC302B59CE00B66FA7 /* ATSViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B4BEB302B59CE00B66FA7 /* ATSViewModel.swift */; };
-		416B28BA3027B72D004E8977 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 416B28B93027B72D004E8977 /* Swinject */; };
-		416B28BD3027B752004E8977 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 416B28BC3027B752004E8977 /* Shimmer */; };
 		416EA7673027D2EE00EDCB6E /* JobLinkShareTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416EA7663027D2EE00EDCB6E /* JobLinkShareTipView.swift */; };
 		41833E4730101E9B0055D990 /* UpdateProfileRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41833E4630101E9B0055D990 /* UpdateProfileRequestDTO.swift */; };
 		41897C673028A99900654888 /* UploadedCVCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41897C663028A99900654888 /* UploadedCVCard.swift */; };
@@ -105,6 +103,10 @@
 		41BE1A78300BF42E0033D1B5 /* AuthRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A77300BF42E0033D1B5 /* AuthRemoteDataSource.swift */; };
 		41BE1A7A300BF43E0033D1B5 /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A79300BF43E0033D1B5 /* AuthRepositoryImpl.swift */; };
 		41BE1A7C300BF4540033D1B5 /* AuthRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A7B300BF4540033D1B5 /* AuthRepositoryProtocol.swift */; };
+		41BFB979302B71B20010C447 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 612EEDF13018F55000E6733E /* Shimmer */; };
+		41BFB97B302B72560010C447 /* JobDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BFB97A302B72560010C447 /* JobDescriptionView.swift */; };
+		41BFB97E302B74FB0010C447 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 41BFB97D302B74FB0010C447 /* Swinject */; };
+		41BFB981302B751E0010C447 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 41BFB980302B751E0010C447 /* Shimmer */; };
 		41C05285301A7D46003885A1 /* TokenRefreshActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C05284301A7D46003885A1 /* TokenRefreshActor.swift */; };
 		41C05287301A7DA6003885A1 /* RefreshTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C05286301A7DA6003885A1 /* RefreshTokenResponseDTO.swift */; };
 		41C38365300A2849005D4BB9 /* AuthEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C38364300A2849005D4BB9 /* AuthEndPoint.swift */; };
@@ -238,7 +240,6 @@
 		CE8AFF1D300718670064CC6C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1C300718670064CC6C /* Round.swift */; };
 		CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1E3007187D0064CC6C /* Spaces.swift */; };
 		CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF21300726660064CC6C /* PhoneTextField.swift */; };
-		CE92F09430276A14001E955D /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = CE92F09330276A14001E955D /* Swinject */; };
 		CEA4C08530143D6900CB5DD3 /* OnBoardingUser+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08430143D6900CB5DD3 /* OnBoardingUser+Mapping.swift */; };
 		CEA4C0883014528800CB5DD3 /* GetCurrentUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C0873014528800CB5DD3 /* GetCurrentUserUseCase.swift */; };
 		CEA4C08A30145B0900CB5DD3 /* TrackInterviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08930145B0900CB5DD3 /* TrackInterviewCard.swift */; };
@@ -337,7 +338,6 @@
 		D95C3BCB300EA1800042785F /* WaitingForAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCA300EA1800042785F /* WaitingForAnswerView.swift */; };
 		D95C3BCD300EA1A20042785F /* UserTrunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCC300EA1A20042785F /* UserTrunView.swift */; };
 		D95C3BCF300EA1C00042785F /* SubmitingAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCE300EA1C00042785F /* SubmitingAnswerView.swift */; };
-		D9634B0430286D4E0043BABB /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = D9634B0330286D4E0043BABB /* Swinject */; };
 		D970C9E4301560D3002F6269 /* MultipartFormDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9E3301560D3002F6269 /* MultipartFormDataBuilder.swift */; };
 		D970C9E6301566B3002F6269 /* UploadFileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9E5301566B3002F6269 /* UploadFileResponseDTO.swift */; };
 		D970C9EB301569F8002F6269 /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9EA301569F8002F6269 /* UserDataEndPoint.swift */; };
@@ -500,6 +500,7 @@
 		41BE1A77300BF42E0033D1B5 /* AuthRemoteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRemoteDataSource.swift; sourceTree = "<group>"; };
 		41BE1A79300BF43E0033D1B5 /* AuthRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRepositoryImpl.swift; sourceTree = "<group>"; };
 		41BE1A7B300BF4540033D1B5 /* AuthRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRepositoryProtocol.swift; sourceTree = "<group>"; };
+		41BFB97A302B72560010C447 /* JobDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDescriptionView.swift; sourceTree = "<group>"; };
 		41C05284301A7D46003885A1 /* TokenRefreshActor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenRefreshActor.swift; sourceTree = "<group>"; };
 		41C05286301A7DA6003885A1 /* RefreshTokenResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshTokenResponseDTO.swift; sourceTree = "<group>"; };
 		41C05288301A87FC003885A1 /* PagedResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedResponseDTO.swift; sourceTree = "<group>"; };
@@ -796,8 +797,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				612EEDF23018F55000E6733E /* Shimmer in Frameworks */,
-				D9634B0430286D4E0043BABB /* Swinject in Frameworks */,
+				41BFB981302B751E0010C447 /* Shimmer in Frameworks */,
+				41BFB979302B71B20010C447 /* Shimmer in Frameworks */,
+				41BFB97E302B74FB0010C447 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1062,6 +1064,7 @@
 				41B4EFF13027B17100AE0804 /* ATSJobMatchView.swift */,
 				41897C7D3028B58C00654888 /* JobMatchScoreView.swift */,
 				41897C7F3028B60300654888 /* SuggestedResumeEditsView.swift */,
+				41BFB97A302B72560010C447 /* JobDescriptionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2709,7 +2712,8 @@
 			name = "Career-Pilot-iOS";
 			packageProductDependencies = (
 				612EEDF13018F55000E6733E /* Shimmer */,
-				D9634B0330286D4E0043BABB /* Swinject */,
+				41BFB97D302B74FB0010C447 /* Swinject */,
+				41BFB980302B751E0010C447 /* Shimmer */,
 			);
 			productName = "Career-Pilot-iOS";
 			productReference = D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */;
@@ -2784,8 +2788,8 @@
 			);
 			mainGroup = D93938D53004064400CF4372;
 			packageReferences = (
-				612EEDF03018F55000E6733E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
-				D9634B0230286D4E0043BABB /* XCRemoteSwiftPackageReference "swinject" */,
+				41BFB97C302B74FB0010C447 /* XCRemoteSwiftPackageReference "swinject" */,
+				41BFB97F302B751E0010C447 /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */,
 			);
 			productRefGroup = D93938DF3004064400CF4372 /* Products */;
 			projectDirPath = "";
@@ -2935,6 +2939,7 @@
 				CE767FE830286EB3008A27C2 /* InterviewsViewModel.swift in Sources */,
 				6169A7CD301044E5001FDC39 /* SkillsDetectedSettingsProfile.swift in Sources */,
 				D95C3BA2300E49E10042785F /* FinishInterviewUseCase.swift in Sources */,
+				41BFB97B302B72560010C447 /* JobDescriptionView.swift in Sources */,
 				CEA4C0943014703600CB5DD3 /* InterviewPrepContainerView.swift in Sources */,
 				CECCDA3F300F68D50068620D /* UpdateProfileDTO+Mapping.swift in Sources */,
 				CE12F3C230093ED30083D66D /* HomeViewModel.swift in Sources */,
@@ -3537,15 +3542,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		612EEDF03018F55000E6733E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer.git";
-			requirement = {
-				kind = exactVersion;
-				version = 1.3.0;
-			};
-		};
-		D9634B0230286D4E0043BABB /* XCRemoteSwiftPackageReference "swinject" */ = {
+		41BFB97C302B74FB0010C447 /* XCRemoteSwiftPackageReference "swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/swinject/swinject";
 			requirement = {
@@ -3553,18 +3550,30 @@
 				version = 2.8.4;
 			};
 		};
+		41BFB97F302B751E0010C447 /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/swiftui-Shimmer";
+			requirement = {
+				kind = exactVersion;
+				version = 1.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		612EEDF13018F55000E6733E /* Shimmer */ = {
+		41BFB97D302B74FB0010C447 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 416B28BB3027B752004E8977 /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */;
+			package = 41BFB97C302B74FB0010C447 /* XCRemoteSwiftPackageReference "swinject" */;
+			productName = Swinject;
+		};
+		41BFB980302B751E0010C447 /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41BFB97F302B751E0010C447 /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */;
 			productName = Shimmer;
 		};
-		D9634B0330286D4E0043BABB /* Swinject */ = {
+		612EEDF13018F55000E6733E /* Shimmer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D9634B0230286D4E0043BABB /* XCRemoteSwiftPackageReference "swinject" */;
-			productName = Swinject;
+			productName = Shimmer;
 		};
 /* End XCSwiftPackageProductDependency section */
 
