@@ -22,7 +22,10 @@ class SettingsRepoImp : SettingsRepo  {
             
             // 1. Safely unwrap and clean the avatar URL string
             if let rawAvatarURL = cachedUser.profile?.avatarURL {
-                let cleanedPath = rawAvatarURL.replacingOccurrences(of: "\\", with: "")
+                var cleanedPath = rawAvatarURL.replacingOccurrences(of: "\\", with: "")
+                if(cleanedPath.first == "/" && SettingsEndpoint.getUserData.baseURL.last == "/"){
+                    cleanedPath.removeFirst()
+                }
                 let fullURLString = "\(SettingsEndpoint.getUserData.baseURL)\(cleanedPath)"
                 
                 print("getting the avatar \(fullURLString)")

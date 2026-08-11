@@ -34,7 +34,7 @@ struct ProfileScreen: View {
     
     @ViewBuilder
     private func successContent(_ user: Binding<UserModelSettingsView>) -> some View {
-        VStack(alignment: .center, spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
             SettingsProfileTopView(
                 isSaveEnabled: viewModel.hasChanges,
                 onSave: {
@@ -43,6 +43,7 @@ struct ProfileScreen: View {
                     }
                 }
             )
+            Spacer().frame(height: Spacing.s8)
             
             Group {
                 ProfileFormSettings(user: user, tracks: viewModel.tracks ?? []) { data in
