@@ -9,11 +9,14 @@ import Foundation
 
 enum ATSEndPoint : APIEndpoint {
     case getJobUrl(url: String)
+    case generateCoverLetter(id: Int)
     
     var path: String {
         switch self {
         case .getJobUrl:
             return "api/v1/workspaces/import/url"
+        case .generateCoverLetter(let id):
+            return "api/v1/workspaces/\(id)/cover-letter"
         }
     }
     
@@ -21,8 +24,8 @@ enum ATSEndPoint : APIEndpoint {
     
     var body: Data? {
         switch self {
-        case .getJobUrl(let url):
-            return Self.encode(url)
+            case .getJobUrl(let url): return Self.encode(url)
+            case .generateCoverLetter(let id) : return nil
         }
     }
     
@@ -42,16 +45,11 @@ enum ATSEndPoint : APIEndpoint {
         } catch {
             tokenString = ""
         }
-        switch self {
-        case .getJobUrl(url: _):
-          return  [
-                "Content-Type": "application/json",
-                "Authorization": "Bearer \(tokenString)"
-            ]
-       
-     
-        }
-
+        
+        return [
+              "Content-Type": "application/json",
+              "Authorization": "Bearer \(tokenString)"
+        ]
 
     }
    
