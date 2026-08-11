@@ -64,6 +64,26 @@ extension Color {
    static let primaryTealLight = Color("TealLight")
    static let primaryNavy = Color("PrimaryNavy")
    static let tealAccent = Color(red: 0.31, green: 0.86, blue: 0.76)
+
+   static let priorityHigh = Color(hex: "FF5A5A")
+   static let priorityHighBackground = Color(hex: "FF5A5A").opacity(0.14)
+   static let priorityMedium = Color(hex: "FFB03A")
+   static let priorityMediumBackground = Color(hex: "FFB03A").opacity(0.14)
+   static let priorityLow = Color.white.opacity(0.45)
+   static let priorityLowBackground = Color.white.opacity(0.08)
+    
+    static let accentTeal = Color(hex: "2DD9B9")
+    static let accentTealBackground = Color(hex: "2DD9B9").opacity(0.14)
+ 
+    static let accentOrange = Color(hex: "FF6B35")
+    
+    static let textPrimary = Color("PrimaryNavy")
+    static let textSecondary = Color("Gray600")
+    static let textTertiary = Color("Gray400")
+    
+    static let cardBackground = Color.white
+    static let cardBackgroundSecondary = Color(hex: "16161D")
+    static let separator = Color.white.opacity(0.08)
 }
 
 
