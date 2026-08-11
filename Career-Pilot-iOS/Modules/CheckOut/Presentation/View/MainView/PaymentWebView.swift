@@ -39,7 +39,7 @@ struct PaymentWebView: UIViewRepresentable {
         func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
             print("the redirc")
             if let url = navigationAction.request.url,
-               url.absoluteString.contains("payments/return") {
+               url.absoluteString.contains("payment") {
                 onRedirect(url)
                 decisionHandler(.cancel)   
                 return

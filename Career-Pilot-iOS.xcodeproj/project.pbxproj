@@ -2452,6 +2452,7 @@
 			name = "Career-Pilot-iOS";
 			packageProductDependencies = (
 				612EEDF13018F55000E6733E /* Shimmer */,
+				619B67093029261900BAFA09 /* Swinject */,
 			);
 			productName = "Career-Pilot-iOS";
 			productReference = D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */;

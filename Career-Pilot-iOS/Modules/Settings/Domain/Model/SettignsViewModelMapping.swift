@@ -11,7 +11,6 @@ import UIKit
 extension UserSettingsDomain {
     
     func toUserModelSettingsView() -> UserModelSettingsView {
-        print("The view of the avatar is \(UIImage(data: avatar!))")
         return UserModelSettingsView(
             email: email,
             title: currentJobTitle,

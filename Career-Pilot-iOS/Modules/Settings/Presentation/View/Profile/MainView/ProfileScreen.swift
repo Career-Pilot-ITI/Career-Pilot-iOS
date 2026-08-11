@@ -19,8 +19,9 @@ struct ProfileScreen: View {
                 profileSkeleton
                 
             case .failure(let error):
-                errorState(error)
-                
+                if let editableUser = Binding($viewModel.editableUser) {
+                             errorState(error, user: editableUser)
+                         }
             case .success:
                 if let editableUser = Binding($viewModel.editableUser) {
                     successContent(editableUser)
@@ -28,6 +29,7 @@ struct ProfileScreen: View {
             }
         }
         .background(Color.gray100)
+        .navigationBarBackButtonHidden(viewModel.load == .loading || viewModel.load == .idle)
         .task {
             await viewModel.loadAllScreenData()
         }
@@ -89,14 +91,9 @@ struct ProfileScreen: View {
     }
     
     @ViewBuilder
-    private func errorState(_ error: Error) -> some View {
+    private func errorState(_ error: Error  , user : Binding<UserModelSettingsView> ) -> some View {
         if let validationError = error as? ProfileValidationError {
-            genericErrorContent(
-                icon: "exclamationmark.circle.fill",
-                iconColor: .orange,
-                title: "Please check your details",
-                message: validationError.errorDescription ?? ""
-            )
+            successContent(user)
         } else {
             genericErrorContent(
                 icon: "exclamationmark.triangle.fill",
