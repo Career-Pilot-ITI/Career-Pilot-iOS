@@ -34,18 +34,23 @@ struct ATSCard: View {
 
 
     var body: some View {
-        Button(action: action) {
-            HStack(spacing: Spacing.s12) {
-                iconView
-                textStack
-                Spacer(minLength: Spacing.s8)
-                chevron
+        NavigationLink(destination: {
+            ATSJobMatchView()
+        }, label: {
+            Button(action: action) {
+                HStack(spacing: Spacing.s12) {
+                    iconView
+                    textStack
+                    Spacer(minLength: Spacing.s8)
+                    chevron
+                }
+                .padding(Spacing.s16)
+                .background(background)
+                .overlay(border)
             }
-            .padding(Spacing.s16)
-            .background(background)
-            .overlay(border)
-        }
-        .buttonStyle(.plain)
+            .buttonStyle(.plain)
+        
+        })
     }
 
 

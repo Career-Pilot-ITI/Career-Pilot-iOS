@@ -24,7 +24,7 @@ extension JobDTO {
             applicationUrl: applicationUrl.flatMap(URL.init(string:)) ?? placeholderURL,
             sourceUrl: sourceUrl.flatMap(URL.init(string:)) ?? placeholderURL,
             sourceType: sourceType ?? "URL",
-            createdAt: createdAt ?? .distantPast,
+            createdAt: createdAt ?? "",
             companyLogoUrl: companyLogoUrl.flatMap(URL.init(string:)) ?? placeholderURL,
             postedLabel: postedLabel ?? "",
             applicantsLabel: applicantsLabel ?? ""

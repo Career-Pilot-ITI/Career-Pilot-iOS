@@ -15,6 +15,7 @@ class GetJobByURLUseCase : UseCase {
     }
     
     func execute(_ input: String) async throws -> JobEntity {
+        
         try await repository.getJobByURL(from: input)
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 struct JobMatchResultDTO: Decodable {
     let message: String?
     let success: Bool?
-    let timestamp: Date?
+    let timestamp: String?
     let data : JobDTO
 }
 

@@ -66,9 +66,8 @@ struct HomeView: View {
                     badgeText: "NEW",
                     subtitle: "Paste a job link · See how your CV scores",
                     accentColor: .primaryTeal,
-                    action: {
-                        // Navigate to ATS
-                        print("go to ats")
+                    action: {        coordinator.push(.atsJobMatch)   // whatever case your HomeRoute enum defines
+
                     }
                 )
 

@@ -20,7 +20,7 @@ struct JobDTO: Decodable {
     let applicationUrl: String?
     let sourceUrl: String?
     let sourceType: String?
-    let createdAt: Date?
+    let createdAt: String?
     let companyLogoUrl: String?
     let postedLabel: String?
     let applicantsLabel: String?

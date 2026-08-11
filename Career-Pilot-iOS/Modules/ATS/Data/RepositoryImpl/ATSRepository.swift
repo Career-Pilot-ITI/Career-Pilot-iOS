@@ -16,7 +16,7 @@ class ATSRepository : ATSRepositoryProtocol {
     
     func getJobByURL(from url: String) async throws -> JobEntity {
         let dto = try await localDataSource.getJobByURL(from: url)
-        let result = dto.data?.toDomain()
+        let result = dto.data.toDomain()
         return result
     }
 }

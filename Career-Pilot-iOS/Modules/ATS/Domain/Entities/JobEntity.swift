@@ -20,7 +20,7 @@ struct JobEntity: Identifiable, Equatable {
     let applicationUrl: URL
     let sourceUrl: URL
     let sourceType: String
-    let createdAt: Date
+    let createdAt: String
     let companyLogoUrl: URL
     let postedLabel: String
     let applicantsLabel: String

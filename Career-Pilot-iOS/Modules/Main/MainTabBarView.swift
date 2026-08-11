@@ -24,6 +24,8 @@ struct MainTabBarView: View {
                             InterviewsView()
                         case .sessionFeedback(let feedBack, let sessionId):
                             SessionFeedBackView(feedback: feedBack,sessionId: sessionId)
+                        case .atsJobMatch:
+                            ATSJobMatchView()
                         }
                     }
             }

@@ -26,11 +26,35 @@ enum ATSEndPoint : APIEndpoint {
         }
     }
     
-    
     var headers: [String: String] {
-        ["Content-Type": "application/json"]
-    }
+        let tokenString: String
+        do {
+            
+            if let tokens = try KeychainAuthTokenStore().loadTokens() {
+                print("Token is \(tokens.accessToken)")
+                tokenString = tokens.accessToken
+                
+            } else {
+                tokenString = ""
+                print("Token is not found")
 
+            }
+        } catch {
+            tokenString = ""
+        }
+        switch self {
+        case .getJobUrl(url: _):
+          return  [
+                "Content-Type": "application/json",
+                "Authorization": "Bearer \(tokenString)"
+            ]
+       
+     
+        }
+
+
+    }
+   
     var requiresAuthentication: Bool { true }
     
 }

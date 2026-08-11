@@ -19,7 +19,9 @@ class ATSRemoteDataSource : ATSRemoteDataSourceProtocol {
     }
     
     func getJobByURL(from url: String) async throws -> JobMatchResultDTO {
-        try await networkService.request(ATSEndPoint.getJobUrl(url: url))
+        let cleanedPath = url.replacingOccurrences(of: "\\", with: "")
+        print("the url requested is \(cleanedPath)")
+        return try await networkService.request(ATSEndPoint.getJobUrl(url: cleanedPath))
     }
     
 }
