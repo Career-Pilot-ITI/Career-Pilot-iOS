@@ -30,8 +30,8 @@ struct OnBordingView: View {
                 case .loading:
                     ProgressView()
                     
-                case .error(let error):
-                    OnBoardingErrorState(vm: vm, errorMessage: error.description)
+                case .error(let errorMessage):
+                    OnBoardingErrorState(vm: vm, errorMessage: errorMessage)
                 }
                 
                 Spacer()
@@ -65,7 +65,7 @@ private struct OnBordingTopPart: View {
 
             VStack {
                 if vm.currentView.rawValue != 0 {
-                    BackButton()
+                    BackButton(text: "Back")
                         .onTapGesture {
                             vm.backByStep()
                         }
@@ -101,16 +101,17 @@ private struct OnBordingTopPart: View {
 }
 
 struct BackButton: View {
+    let text: String
     var body: some View {
         HStack(spacing: 8) {
             Image(systemName: "arrow.left")
-            Text("Back")
+            Text(text)
         }
     }
 }
 
-struct OnBordingView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnBordingView()
-    }
-}
+//struct OnBordingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OnBordingView()
+//    }
+//}

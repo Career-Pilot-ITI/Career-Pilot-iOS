@@ -22,9 +22,7 @@ final class UpdateProfileUseCase: UseCase {
     }
     
     func execute(_ input: User) async throws -> User {
-        guard InputValidator.isValidEmail(input.profile.email) else {
-            throw UseCaseError.invalidEmail
-        }
+        try ProfileValidator.validateOnboard(input)
         return try await onBordingRepo.updateProfile(user: input)
     }
 }

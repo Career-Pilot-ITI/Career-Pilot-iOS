@@ -21,6 +21,7 @@ class ProfileViewModel: ObservableObject {
     private let saveUsercase : SaveUserDataUsecase
     private var pendingAvatarData: Data?
 
+
     init(
         updateUserDataUseCase: UpdateUserData,
         getTracks: GetAllTrackesUseCase,
@@ -106,20 +107,29 @@ class ProfileViewModel: ObservableObject {
     }
 
     func updateUserData() async {
+        guard var updatedUser = editableUser else { return }
+        updatedUser.trackId = tracks?
+            .filter { $0.title == updatedUser.trackName }
+            .compactMap { $0.id }
+            .first ?? 0
         load = .loading
-        editableUser?.trackId = tracks?.filter{
-            $0.title == editableUser?.trackName
-        }.compactMap { $0.id }.first ?? 0
         do {
+            let domainUpdate = updatedUser.toUserSettingsDomain()
             try await updateUserDataUseCase.execute(
                 imagUrl: pendingAvatarData,
-                updateUserProfile: (editableUser?.toUserSettingsDomain())!
+                updateUserProfile: domainUpdate
             )
-            originalUser = editableUser
-            userSession.update(originalUser!)
-            load = .success(originalUser!)
+            editableUser = updatedUser
+            originalUser = updatedUser
+            userSession.update(domainUpdate.toUserModelSettingsView())
+            load = .success(updatedUser)
+            
+        } catch let validationError as ProfileValidationError {
+            load = .failure(validationError)
+            
         } catch {
-            print(error)
+            load = .failure(error)
         }
     }
+    
 }

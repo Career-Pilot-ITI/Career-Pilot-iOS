@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct profile: View {
-    @ObservedObject var vm: OnBordingViewModel  
+    @ObservedObject var vm: OnBordingViewModel
+    @EnvironmentObject var toastManager: ToastManager
 
     var body: some View {
-        ScrollView{
+        ScrollView {
             VStack(spacing: 24) {
                 HeaderView()
 
@@ -26,35 +27,17 @@ struct profile: View {
                         x: 0,
                         y: 4
                     )
-
-                FreeSessionBanner()
                 
+                FreeSessionBanner()
             }
             .padding(.horizontal, Spacing.s20)
         }
         .scrollIndicators(.hidden)
         .background(Color.gray100)
-        .ignoresSafeArea(.keyboard)  
-
+        .ignoresSafeArea(.keyboard)
+        .onChange(of: vm.screenState) { newState in
+            guard case .error(let message) = newState else { return }
+            toastManager.show(message, type: .error)
+        }
     }
 }
-//struct profile_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PreviewWrapper()
-//    }
-//    
-//    struct PreviewWrapper: View {
-//        @State private var userData = UserData(
-//            email: "eyad@gmail.com",
-//            title: "developer",
-//            experienceLevel: "Senior",
-//            skills: [],
-//            firstName: "Eyad",
-//            lastName: "Waleed"
-//        )
-//        
-//        var body: some View {
-//            profile(userData: $userData)
-//        }
-//    }
-//}

@@ -36,7 +36,7 @@ struct PracticeSessionView: View {
                 ReconnectingView()
                 
             case .completed:
-                SessionCompletedView(feedback: vm.feedback)
+                SessionCompletedView(feedback: vm.feedback, sessionID: Int(vm.session?.id ?? "0") ?? 0)
                 
             case .error(let error):
                 SessionErrorView(errorMessage: error.localizedDescription,
