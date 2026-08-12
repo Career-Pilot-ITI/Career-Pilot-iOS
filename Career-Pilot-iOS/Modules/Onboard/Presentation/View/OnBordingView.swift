@@ -29,9 +29,11 @@ struct OnBordingView: View {
                 case .loading:
                     ProgressView()
                     
-                case .error(let errorMessage):
+                case .error(let errorMessage) :
                     OnBoardingErrorState(vm: vm, errorMessage: errorMessage)
+            
                 }
+           
                 
                 Spacer()
                 
@@ -40,6 +42,7 @@ struct OnBordingView: View {
                     isButtonEnabeld: vm.isButtonEnabeld,
                     buttonTitle: vm.buttonTitle
                 ) {
+                    
                     vm.navToNext()
                 }
             }
@@ -109,8 +112,8 @@ struct BackButton: View {
     }
 }
 
-struct OnBordingView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnBordingView()
-    }
-}
+//struct OnBordingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OnBordingView()
+//    }
+//}

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileForm: View {
     @Binding var userData: OnBoardingUser
+    @Binding var emailErrorMessage :  String?
     private var skillNamesBinding: Binding<[String]> {
         Binding(
             get: { userData.skills.map { $0.skillName } },
@@ -36,16 +37,19 @@ struct ProfileForm: View {
             }.frame( alignment: .center)
        
             Group{
-                CustomProfileTextField(icon: "PersonIcon", title: "Full Name", text: $userData.fullName)
+                CustomProfileTextField(icon: "PersonIcon", title: "Full Name", autocapitalization: .words, text: $userData.fullName)
+                
                 Divider().background(Color.gray400).frame(height: 4)
 
-                CustomProfileTextField(icon: "email", title: "Email", text: $userData.email)
+                CustomProfileTextField(icon: "email", title: "Email", autocapitalization: .never , text: $userData.email , errorMessage: emailErrorMessage ).onChange(of:userData.email){ _ in
+                    emailErrorMessage = nil
+                }
                 Divider().background(Color.gray400).frame(height: 4)
 
-                CustomProfileTextField(icon: "tittle", title: "CURRENT ROLE / TITTLE", text: $userData.title)
+                CustomProfileTextField(icon: "tittle", title: "CURRENT ROLE / TITTLE", autocapitalization: .never,text: $userData.title)
                 Divider().background(Color.gray400).frame(height: 4)
+                ExperienceLevelSelector(selected: $userData.experienceLevel)
 
-                CustomProfileTextField(icon: "ExperinceLevel", title: "EXPERIENCE LEVEL", text: $userData.experienceLevel)
 
                 Spacer().frame(height: Spacing.s20)
             }
@@ -74,6 +78,28 @@ struct ProfileForm: View {
 
 //struct ProfileForm_Previews: PreviewProvider {
 //    static var previews: some View {
-//        ProfileForm(userData: .constant(UserData(email: "eyad@gmail.com", title: "Developer", experienceLevel: "Junior", skills: ["React", "Node.js", "TypeScript", "Python", "AWS", "System Design"], firstName: "Eyad", lastName: "Waleed")))
+//        PreviewWrapper()
+//    }
+//    
+//    struct PreviewWrapper: View {
+//        @State private var userData = OnBoardingUser(
+//            email: "eyad@gmail.com",
+//            title: "Developer",
+//            experienceLevel: "Junior",
+//            skills: [
+//                Skill(skillName: "React", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: ""),
+//                Skill(skillName: "Node.js", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: ""),
+//                Skill(skillName: "TypeScript", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: ""),
+//                Skill(skillName: "Python", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: ""),
+//                Skill(skillName: "AWS", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: ""),
+//                Skill(skillName: "System Design", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: "")
+//            ],
+//            firstName: "Eyad",
+//            lastName: "Waleed"
+//        )
+//        
+//        var body: some View {
+//            ProfileForm(userData: $userData)
+//        }
 //    }
 //}

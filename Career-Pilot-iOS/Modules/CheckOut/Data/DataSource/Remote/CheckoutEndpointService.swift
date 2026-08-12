@@ -15,13 +15,13 @@ enum CheckoutEndpointService : APIEndpoint{
     var path: String {
         switch self {
         case .upgradeUserSubscriptionPlan:
-            return "/api/v1/subscriptions/upgrade"
+            return "api/v1/subscriptions/upgrade"
         case .buyingCoins:
-            return  "/api/v1/wallet/top-up"
+            return  "api/v1/wallet/top-up"
         case .getUserCoins :
-            return "/api/v1/wallet/balance"
+            return "api/v1/wallet/balance"
         case .getUserSubscription:
-            return "/api/v1/subscriptions/current"
+            return "api/v1/subscriptions/current"
         }
     }
     

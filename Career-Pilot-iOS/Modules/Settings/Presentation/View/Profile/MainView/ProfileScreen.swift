@@ -10,6 +10,7 @@ import Shimmer
 
 struct ProfileScreen: View {
     @StateObject var viewModel: ProfileViewModel
+    @EnvironmentObject var toastManager: ToastManager
 
     var body: some View {
         ScrollView {
@@ -18,8 +19,9 @@ struct ProfileScreen: View {
                 profileSkeleton
                 
             case .failure(let error):
-                errorState(error)
-                
+                if let editableUser = Binding($viewModel.editableUser) {
+                             errorState(error, user: editableUser)
+                         }
             case .success:
                 if let editableUser = Binding($viewModel.editableUser) {
                     successContent(editableUser)
@@ -27,14 +29,24 @@ struct ProfileScreen: View {
             }
         }
         .background(Color.gray100)
+        .navigationBarBackButtonHidden(viewModel.load == .loading || viewModel.load == .idle)
         .task {
             await viewModel.loadAllScreenData()
+        }
+        .onChange(of: viewModel.load) { newState in
+            guard case .failure(let error) = newState else { return }
+            
+            if let validationError = error as? ProfileValidationError {
+                toastManager.show(validationError.errorDescription ?? "Please check your details", type: .error)
+            } else {
+                toastManager.show("Couldn't load your profile", type: .error)
+            }
         }
     }
     
     @ViewBuilder
     private func successContent(_ user: Binding<UserModelSettingsView>) -> some View {
-        VStack(alignment: .center, spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
             SettingsProfileTopView(
                 isSaveEnabled: viewModel.hasChanges,
                 onSave: {
@@ -43,6 +55,7 @@ struct ProfileScreen: View {
                     }
                 }
             )
+            Spacer().frame(height: Spacing.s8)
             
             Group {
                 ProfileFormSettings(user: user, tracks: viewModel.tracks ?? []) { data in
@@ -77,15 +90,29 @@ struct ProfileScreen: View {
         .padding(.horizontal, Spacing.s16)
     }
     
-    private func errorState(_ error: Error) -> some View {
+    @ViewBuilder
+    private func errorState(_ error: Error  , user : Binding<UserModelSettingsView> ) -> some View {
+        if let validationError = error as? ProfileValidationError {
+            successContent(user)
+        } else {
+            genericErrorContent(
+                icon: "exclamationmark.triangle.fill",
+                iconColor: .errorColour,
+                title: "Couldn't load your profile",
+                message: error.localizedDescription
+            )
+        }
+    }
+    
+    private func genericErrorContent(icon: String, iconColor: Color, title: String, message: String) -> some View {
         VStack(spacing: 12) {
-            Image(systemName: "exclamationmark.triangle.fill")
+            Image(systemName: icon)
                 .font(.system(size: 40))
-                .foregroundColor(.errorColour)
-            Text("Couldn't load your profile")
+                .foregroundColor(iconColor)
+            Text(title)
                 .font(.size16Bold)
                 .foregroundColor(.primaryNavy)
-            Text(error.localizedDescription)
+            Text(message)
                 .font(.caption)
                 .foregroundColor(.gray400)
                 .multilineTextAlignment(.center)

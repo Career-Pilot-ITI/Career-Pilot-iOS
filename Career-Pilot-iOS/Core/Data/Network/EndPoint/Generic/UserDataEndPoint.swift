@@ -62,7 +62,6 @@ enum UserDataEndpoints: APIEndpoint {
         do {
             
             if let tokens = try KeychainAuthTokenStore().loadTokens() {
-                print("Token is \(tokens.accessToken)")
                 tokenString = tokens.accessToken
                 
             } else {

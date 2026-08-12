@@ -15,8 +15,8 @@ class GetUserDataUseCase{
         do{
             print("I excuted with not problem ")
                    let response = await  try settingsRepo.fetchUserData()
+            print("the user avatar value in the useCase is \(response.avatar)")
             var userVeiw =  response.toUserModelSettingsView()
-        
            return userVeiw
             
         }

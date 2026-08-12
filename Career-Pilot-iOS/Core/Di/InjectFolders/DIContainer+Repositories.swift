@@ -29,7 +29,7 @@ extension DIContainer{
         }
         //OnBordingRepo
         container.register(OnBordingRepo.self) { r in
-            OnBordingRepoImp(remote: r.resolve(OnBordingRemoteDataSource.self)!)
+            OnBordingRepoImp(remote: r.resolve(OnBordingRemoteDataSource.self)!, userLocalDataSource: r.resolve(UserLocalDataSource.self)!)
         }
         
         // MARK: - PracticeSession

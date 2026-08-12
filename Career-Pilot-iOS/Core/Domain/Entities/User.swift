@@ -9,7 +9,7 @@ import Foundation
 struct User: Equatable {
     let id: Int
     let phoneNumber: String
-    let profile: UserProfile
+    var profile: UserProfile
     let isNewUser: Bool
 }
 
@@ -17,7 +17,7 @@ struct UserProfile: Equatable {
     let displayName: String
     let username: String
     let email: String
-    let avatarURL: String
+    var avatarURL: String
     let gender: String
     let dateOfBirth: String
     let targetRole: String

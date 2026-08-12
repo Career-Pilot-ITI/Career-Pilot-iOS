@@ -28,7 +28,8 @@ struct ProfileCard: View {
             
             Image(systemName: "pencil").frame(width: 18 , height: 18).foregroundColor(.gray400)
             
-        }.frame(maxWidth: .infinity) .onTapGesture(perform: {
+        }.frame(maxWidth: .infinity).contentShape(Rectangle())
+            .onTapGesture(perform: {
             coordinator.push(.profile)
         })
             .padding([.vertical, .horizontal], Spacing.s12)
