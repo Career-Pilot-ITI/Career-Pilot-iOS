@@ -63,11 +63,7 @@ struct JobMatchView: View {
                     })
                         .padding(.top, 4)
                 }
-<<<<<<< HEAD
                 .padding(.horizontal, Radius.r16)
-=======
-                .padding(.horizontal, 16)
->>>>>>> 6986f73 (finish fetching job description screen)
                 .padding(.bottom, 24)
             }
             .scrollIndicators(.hidden)
