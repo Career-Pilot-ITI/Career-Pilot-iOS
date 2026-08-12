@@ -276,14 +276,14 @@ private extension HomeView {
 }
 
 // MARK: - Preview
-
-#Preview {
-    let viewModel =
-        DIContainer.shared.container.resolve(HomeViewModel.self)!
-
-    return HomeView()
-        .environmentObject(AppCoordinator<HomeRoute>())
-        .task {
-            await viewModel.loadHome()
-        }
-}
+//
+//#Preview {
+//    let viewModel =
+//        DIContainer.shared.container.resolve(HomeViewModel.self)!
+//
+//    return HomeView()
+//        .environmentObject(AppCoordinator<HomeRoute>())
+//        .task {
+//            await viewModel.loadHome()
+//        }
+//}

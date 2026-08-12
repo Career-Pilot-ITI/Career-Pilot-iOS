@@ -32,9 +32,9 @@ enum UserDataEndpoints: APIEndpoint {
     var path: String {
         switch self {
         case .analyseCV:
-            return "/api/v1/profile/cv/analyze"
+            return "api/v1/profile/cv/analyze"
         case .uploadFile:
-            return "/api/v1/files/upload"
+            return "api/v1/files/upload"
         }
     }
 
