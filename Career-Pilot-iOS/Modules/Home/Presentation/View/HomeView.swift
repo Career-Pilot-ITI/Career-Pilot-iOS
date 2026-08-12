@@ -61,7 +61,7 @@ struct HomeView: View {
                 // MARK: - ATS
 
                 ATSCard(
-                    iconName: "scope",
+                    iconName: "target",
                     title: "ATS Job Match",
                     badgeText: "NEW",
                     subtitle: "Paste a job link · See how your CV scores",
@@ -123,7 +123,6 @@ private extension HomeView {
     var recommendedInterviewsSection: some View {
 
         VStack(spacing: 12) {
-
             HStack {
                 Text("Recommended For You")
                     .font(.headline)

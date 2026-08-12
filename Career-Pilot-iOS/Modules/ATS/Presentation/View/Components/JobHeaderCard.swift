@@ -7,45 +7,36 @@
 import SwiftUI
 
 struct JobHeaderCard: View {
-    let initial: String
-    let title: String
-    let companyName: String
-    let location: String
-    let workMode: String
+    let job: JobDescriptionModel
     var onOpenLink: (() -> Void)? = nil
 
+    
     var body: some View {
-        HStack(spacing: 12) {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.accentOrange)
-                .frame(width: 42, height: 42)
-                .overlay(
-                    Text(initial)
-                        .font(Font.size18Bold)
-                        .foregroundColor(.white)
-                )
+        HStack(alignment: .center, spacing: Spacing.s12) {
+            ZStack {
+                RoundedRectangle(cornerRadius: Radius.r12)
+                    .fill(Color.red)
+                    .frame(width: 48, height: 48)
+                Text(job.companyInitial)
+                    .font(Font.size20Bold)
+                    .foregroundStyle(.white)
+            }
 
-            VStack(alignment: .leading, spacing: 4) {
-                Text(title)
-                    .font(Font.size14Bold)
-                    .foregroundColor(Color.textPrimary)
-                Text("\(companyName) · \(location) · \(workMode)")
-                    .font(Font.size13Regular)
-                    .foregroundColor(Color.textSecondary)
+            VStack(alignment: .leading, spacing: Spacing.s4) {
+                Text(job.title)
+                    .font(Font.size16Bold)
+                Text("\(job.company) · \(job.location) · \(job.workMode)")
+                    .font(Font.size14Regular)
+                    .foregroundStyle(.secondary)
             }
 
             Spacer()
 
-            Button(action: {
-                onOpenLink?()
-            }) {
-                Image(systemName: "arrow.up.right.square")
-                    .foregroundColor(Color.gray600)
-                    .font(.system(size: 16))
-            }
+            Image(systemName: "arrow.up.forward.square")
+                .foregroundStyle(.secondary)
         }
         .padding(16)
-        .background(Color.cardBackground)
+        .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: Radius.r16))
         .overlay {
             RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)
@@ -58,6 +49,8 @@ struct JobHeaderCard: View {
 }
 
 #Preview {
-    JobHeaderCard(initial: "G", title: "Senior Frontend Engineer", companyName: "Google", location: "Cairo, EG", workMode: "Hybrid")
+    JobHeaderCard(job: JobDescriptionModel.mock, onOpenLink: {
+        //
+    })
         .padding()
 }

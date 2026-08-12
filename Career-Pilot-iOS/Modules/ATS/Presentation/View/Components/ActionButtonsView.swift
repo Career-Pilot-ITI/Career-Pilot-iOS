@@ -31,7 +31,7 @@ struct ActionButtonsView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 15)
             }
-            .background(Color.cardBackground)
+            .background(.white)
             .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
             .overlay(
                 RoundedRectangle(cornerRadius: 16, style: .continuous)

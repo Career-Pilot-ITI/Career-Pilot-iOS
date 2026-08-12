@@ -88,6 +88,17 @@ struct ATSJobMatchView: View {
             }
             .padding(.horizontal, Spacing.s20)
             .padding(.top, Spacing.s16)
+            .task {
+                let userRepo = UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService()), localDataSource: UserLocalDataSourceImpl(coreData: CoreDataManager()))
+                
+                do {
+                    let result = try  await userRepo.getCurrentUser()
+                    print("My User Result: \(result)")
+
+                }catch(let error){
+                    print("Error: \(error.localizedDescription)")
+                }
+            }
         }
     }
 }

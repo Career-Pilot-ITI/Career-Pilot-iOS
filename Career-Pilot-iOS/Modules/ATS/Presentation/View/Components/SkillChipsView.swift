@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-/// A single pill-shaped skill chip (matched / missing required / missing preferred).
 struct SkillChip: View {
     let text: String
     let status: SkillStatus
@@ -51,7 +50,6 @@ struct SkillChip: View {
     }
 }
 
-/// A card with a section title, an optional "x of y keywords" badge, and wrapping chips.
 struct SkillChipsCard: View {
     let title: String
     let badgeText: String?
@@ -63,12 +61,12 @@ struct SkillChipsCard: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text(title)
-                    .font(.system(size: 15, weight: .semibold))
-                    .foregroundColor(.primary)
+                    .font(Font.size14Bold)
+                    .foregroundColor(Color.textPrimary)
                 Spacer()
                 if let badgeText {
                     Text(badgeText)
-                        .font(.system(size: 12, weight: .semibold))
+                        .font(Font.size11Semibold)
                         .foregroundColor(badgeColor)
                 }
             }
@@ -86,8 +84,15 @@ struct SkillChipsCard: View {
             }
         }
         .padding(16)
-        .background(Color.cardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: Radius.r16, style: .continuous))
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: Radius.r16))
+        .overlay {
+            RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)
+                .stroke(Color.black.opacity(0.06), lineWidth: 1)
+        }
+        .shadow(color: Color.black.opacity(0.06), radius: 12, x: 0, y: 4)
+        .shadow(color: Color.black.opacity(0.03), radius: 2, x: 0, y: 1)
+        
     }
 }
 

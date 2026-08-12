@@ -71,6 +71,7 @@ struct ATSCard: View {
             HStack(spacing: Spacing.s8) {
                 Text(title)
                     .font(.size16Bold)
+                    .foregroundColor(Color.textPrimary)
 
                 if let badgeText {
                     badgePill(badgeText)
@@ -78,9 +79,10 @@ struct ATSCard: View {
             }
 
             Text(subtitle)
-                .font(.size14Regular)
-                .foregroundColor(AppColors.secondaryText)
+                .font(.size12Regular)
+                .foregroundColor(Color.textSecondary)
                 .lineLimit(2)
+                .multilineTextAlignment(.leading)
                 .fixedSize(horizontal: false, vertical: true)
         }
     }

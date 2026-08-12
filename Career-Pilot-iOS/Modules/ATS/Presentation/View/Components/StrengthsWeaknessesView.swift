@@ -20,8 +20,8 @@ private struct BulletList: View {
                         .frame(width: 5, height: 5)
                         .padding(.top, 7)
                     Text(item)
-                        .font(.system(size: 14))
-                        .foregroundColor(.primary.opacity(0.85))
+                        .font(Font.size13Regular)
+                        .foregroundColor(Color.textSecondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
             }
@@ -36,11 +36,16 @@ struct StrengthsCard: View {
         VStack(alignment: .leading, spacing: 12) {
             Label {
                 Text("Strengths")
-                    .font(.system(size: 15, weight: .semibold))
+                    .font(Font.size13Bold)
                     .foregroundColor(.matchGreen)
             } icon: {
-                Image(systemName: "hand.thumbsup.fill")
+                Image(systemName: "hand.thumbsup")
                     .foregroundColor(.matchGreen)
+                    .padding(.all, 8)
+                    .background {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color.matchGreen.opacity(0.12))
+                    }
             }
 
             BulletList(items: strengths, dotColor: .matchGreen)
@@ -59,11 +64,16 @@ struct WeaknessesCard: View {
         VStack(alignment: .leading, spacing: 12) {
             Label {
                 Text("Weaknesses")
-                    .font(.system(size: 15, weight: .semibold))
+                    .font(Font.size13Bold)
                     .foregroundColor(.matchAmber)
             } icon: {
-                Image(systemName: "hand.thumbsdown.fill")
+                Image(systemName: "hand.thumbsdown")
                     .foregroundColor(.matchAmber)
+                    .padding(.all, 8)
+                    .background {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color.matchAmber.opacity(0.12))
+                    }
             }
 
             BulletList(items: weaknesses, dotColor: .matchAmber)

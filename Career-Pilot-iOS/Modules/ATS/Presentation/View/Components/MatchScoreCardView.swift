@@ -39,31 +39,30 @@ struct MatchScoreCardView: View {
                         .font(.system(size: 28, weight: .bold))
                         .foregroundColor(.primary)
                 }
-                .frame(width: 84, height: 84)
+                .frame(width: 72, height: 72)
 
                 VStack(alignment: .leading, spacing: 6) {
                     Text("MATCH SCORE")
-                        .font(.system(size: 11, weight: .semibold))
-                        .foregroundColor(.secondary)
+                        .font(Font.size11Bold)
+                        .foregroundColor(Color.textSecondary)
                         .tracking(0.5)
 
                     Text(label)
-                        .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(.primary)
+                        .font(Font.size18Bold)
+                        .foregroundColor(Color.textPrimary)
 
                     HStack(spacing: 14) {
                         Label("\(matchedCount) matched", systemImage: "checkmark")
                             .labelStyle(.titleAndIcon)
-                            .font(.system(size: 13, weight: .medium))
+                            .font(Font.size11Medium)
                             .foregroundColor(.matchGreen)
 
                         Label("\(missingCount) missing", systemImage: "xmark")
                             .labelStyle(.titleAndIcon)
-                            .font(.system(size: 13, weight: .medium))
+                            .font(Font.size11Medium)
                             .foregroundColor(.matchRed)
                     }
                 }
-
                 Spacer()
             }
 
@@ -80,14 +79,19 @@ struct MatchScoreCardView: View {
             }
             .frame(height: 6)
         }
-        .padding(18)
-        .background(Color.cardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: Radius.r16, style: .continuous))
+        .padding(20)
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: Radius.r16))
+        .overlay {
+            RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)
+                .stroke(Color.black.opacity(0.06), lineWidth: 1)
+        }
+        .shadow(color: Color.black.opacity(0.06), radius: 12, x: 0, y: 4)
+        .shadow(color: Color.black.opacity(0.03), radius: 2, x: 0, y: 1)
+        
     }
 }
 
 #Preview {
     MatchScoreCardView(score: 78, label: "Good Match", matchedCount: 8, missingCount: 5)
-        .padding()
-        .background(Color.screenBackground)
 }

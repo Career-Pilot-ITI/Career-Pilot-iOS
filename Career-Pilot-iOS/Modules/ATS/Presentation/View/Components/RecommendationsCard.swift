@@ -13,37 +13,42 @@ struct RecommendationsCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             Text("Recommendations")
-                .font(.system(size: 15, weight: .semibold))
-                .foregroundColor(.primary)
+                .font(Font.size14Bold)
+                .foregroundColor(Color.textPrimary)
 
             VStack(spacing: 12) {
                 ForEach(recommendations) { rec in
-                    HStack(alignment: .top, spacing: 12) {
+                    HStack(alignment: .center, spacing: Spacing.s12) {
                         ZStack {
-                            Circle()
-                                .fill(Color.matchGreen.opacity(0.12))
+                            RoundedRectangle(cornerRadius: Radius.r6)
+                                .fill(.teal.opacity(0.12))
                                 .frame(width: 24, height: 24)
                             Text("\(rec.index)")
-                                .font(.system(size: 12, weight: .bold))
-                                .foregroundColor(.matchGreen)
+                                .font(Font.size11Bold)
+                                .foregroundColor(.teal)
                         }
 
                         Text(rec.text)
-                            .font(.system(size: 14))
-                            .foregroundColor(.primary.opacity(0.85))
+                            .font(Font.size13Regular)
+                            .foregroundColor(Color.textSecondary)
                             .fixedSize(horizontal: false, vertical: true)
 
                         Spacer(minLength: 0)
                     }
-                    .padding(12)
-                    .background(Color.screenBackground)
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    .padding(.vertical, 12)
                 }
             }
         }
-        .padding(16)
-        .background(Color.cardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: Radius.r16, style: .continuous))
+        .padding(.all, 16)
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: Radius.r16))
+        .overlay {
+            RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)
+                .stroke(Color.black.opacity(0.06), lineWidth: 1)
+        }
+        .shadow(color: Color.black.opacity(0.06), radius: 12, x: 0, y: 4)
+        .shadow(color: Color.black.opacity(0.03), radius: 2, x: 0, y: 1)
+        
     }
 }
 
