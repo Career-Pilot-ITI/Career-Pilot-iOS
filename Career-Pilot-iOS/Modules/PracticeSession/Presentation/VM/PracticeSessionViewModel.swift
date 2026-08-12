@@ -64,6 +64,7 @@ final class PracticeSessionViewModel: ObservableObject {
 
     var feedback: InterviewFeedback {
         guard let feedback = session?.feedback else{
+            print("No Feedback yet")
             return InterviewFeedback.empty
         }
         return feedback
@@ -144,7 +145,7 @@ final class PracticeSessionViewModel: ObservableObject {
 
     private func handle(_ error: InterviewError) async {
         switch error {
-        case .questionLimitReached, .interviewTimeExpired, .sessionQuotaExceeded:
+        case .questionLimitReached, .interviewTimeExpired, .sessionQuotaExceeded, .unauthorized:
             guard session != nil else {
                 //Nav to home
                 homeCoordinator?.popToRoot()
@@ -158,10 +159,6 @@ final class PracticeSessionViewModel: ObservableObject {
                 return
             }
             await resumeAfterNetworkDrop()
-        case .unauthorized:
-            //Have to make him logout
-            screenState = .error(error)
-            return
         }
     }
 

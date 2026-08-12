@@ -7,8 +7,21 @@
 
 import Foundation
 
-enum OnBordingViews: Int, Hashable, CaseIterable{
-    case ChooseTrackView = 0, UploadCvView = 1, ProfileView = 2
+enum OnBordingViews: Int, Hashable, CaseIterable {
+    case ChooseTrackView = 0
+    case UploadCvView = 1
+    case ProfileView = 2
+    
+    var screenDescription: String {
+        switch self {
+        case .ChooseTrackView:
+            return "Choose the track that fits your career goals."
+        case .UploadCvView:
+            return "We are extracting your data to set up your personal profile details."
+        case .ProfileView:
+            return "Set up your personal profile details."
+        }
+    }
 }
 
 enum OnBordingScreenStates : Equatable{
