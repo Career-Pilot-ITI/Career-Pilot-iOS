@@ -10,6 +10,8 @@ import Foundation
 enum ATSEndPoint : APIEndpoint {
     case getJobUrl(url: String)
     case generateCoverLetter(id: Int)
+    case scoreCVAgainstJob(id: Int)
+    case optimizeCVForJob(id : Int)
     
     var path: String {
         switch self {
@@ -17,6 +19,11 @@ enum ATSEndPoint : APIEndpoint {
             return "api/v1/workspaces/import/url"
         case .generateCoverLetter(let id):
             return "api/v1/workspaces/\(id)/cover-letter"
+        case .scoreCVAgainstJob(let id):
+            return "api/v1/workspaces/\(id)/score-cv"
+        case .optimizeCVForJob(let id):
+            return "api/v1/workspaces/\(id)/cv/optimize"
+            
         }
     }
     
@@ -25,7 +32,9 @@ enum ATSEndPoint : APIEndpoint {
     var body: Data? {
         switch self {
             case .getJobUrl(let url): return Self.encode(url)
-            case .generateCoverLetter(let id) : return nil
+            case .generateCoverLetter : return nil
+            case .scoreCVAgainstJob: return nil
+            case .optimizeCVForJob: return nil
         }
     }
     

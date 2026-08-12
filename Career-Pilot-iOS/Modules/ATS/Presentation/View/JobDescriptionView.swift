@@ -3,9 +3,12 @@ import SwiftUI
 // MARK: - Root View
 
 struct JobDescriptionView: View {
+    @EnvironmentObject var coordinator: AppCoordinator<HomeRoute>
+    
     let job: JobDescriptionModel
     var onBack: () -> Void = {}
-    var onStartScoring: () -> Void = {}
+//    var onStartScoring: () -> Void = {
+//    }
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -172,7 +175,9 @@ struct JobDescriptionView: View {
     // MARK: Sticky button
 
     private var startScoringButton: some View {
-        Button(action: onStartScoring) {
+        Button(action:  {
+            coordinator.push(.atsJobmatchScore)
+        }) {
             Text("Start Scoring")
                 .font(.headline)
                 .foregroundStyle(.white)

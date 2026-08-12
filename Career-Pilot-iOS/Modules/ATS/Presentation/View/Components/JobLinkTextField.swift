@@ -10,15 +10,24 @@ struct JobLinkTextField: View {
     @Binding var link: String
 
     var body: some View {
-        HStack(spacing: Spacing.s8) {
+        HStack(spacing: Spacing.s12) {
             Image(systemName: "arrow.up.forward.square")
                 .foregroundStyle(Color.textSecondary)
 
-            TextField("https://linkedin.com/jobs/view/...", text: $link)
-                .font(Font.size14Regular)
+            TextField("",text: $link)
+                .font(Font.size13Regular)
                 .keyboardType(.URL)
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
+                .overlay(alignment: .leading) {
+                    if link.isEmpty {
+                        Text("https://linkedin.com/jobs/view/...")
+                            .foregroundStyle(Color.textSecondary)
+                            .font(Font.size13Regular)
+//                            .padding(.leading, 12)
+                            .allowsHitTesting(false)
+                    }
+                }
         }
         .padding(Spacing.s16)
         .background {

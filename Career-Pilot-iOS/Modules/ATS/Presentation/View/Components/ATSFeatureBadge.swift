@@ -9,10 +9,15 @@ import SwiftUI
 struct ATSFeatureBadge: View {
     var body: some View {
         HStack(spacing: Spacing.s8) {
-            StatusBadge(badge: "dot.scope", color: Color.primaryTeal, padding: 6, frame: (28, 28))
+            StatusBadge(
+                badge: "target",
+                color: Color.primaryTeal,
+                padding: 7,
+                frame: (30, 30)
+            )
 
             Text("ATS JOB MATCH")
-                .font(Font.size12Bold)
+                .font(Font.size13Bold)
                 .foregroundStyle(Color.primaryTeal)
                 .tracking(0.5)
         }

@@ -7,6 +7,7 @@
 import Foundation
 
 struct JobEntity: Identifiable, Equatable {
+    let workspaceID: Int
     let id: Int
     let title: String
     let companyName: String

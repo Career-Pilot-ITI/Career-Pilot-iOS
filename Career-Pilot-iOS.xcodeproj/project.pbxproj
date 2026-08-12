@@ -11,7 +11,7 @@
 		414B4BCC302B506700B66FA7 /* ATSFeatureBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B4BCB302B506700B66FA7 /* ATSFeatureBadge.swift */; };
 		414B4BD3302B519800B66FA7 /* ATSEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B4BD2302B519800B66FA7 /* ATSEndPoint.swift */; };
 		414B4BD5302B534F00B66FA7 /* JobDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B4BD4302B534F00B66FA7 /* JobDTO.swift */; };
-		414B4BD7302B539700B66FA7 /* JobMatchResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B4BD6302B539700B66FA7 /* JobMatchResultDTO.swift */; };
+		414B4BD7302B539700B66FA7 /* JobDetailsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B4BD6302B539700B66FA7 /* JobDetailsResponseDTO.swift */; };
 		414B4BD9302B540E00B66FA7 /* ATSRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B4BD8302B540E00B66FA7 /* ATSRemoteDataSource.swift */; };
 		414B4BDC302B553F00B66FA7 /* ATSRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B4BDB302B553F00B66FA7 /* ATSRepository.swift */; };
 		414B4BE0302B557000B66FA7 /* ATSRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B4BDF302B557000B66FA7 /* ATSRepositoryProtocol.swift */; };
@@ -34,6 +34,16 @@
 		41897C7C3028B54600654888 /* ActionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41897C7B3028B54600654888 /* ActionButtons.swift */; };
 		41897C7E3028B58C00654888 /* JobMatchScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41897C7D3028B58C00654888 /* JobMatchScoreView.swift */; };
 		41897C803028B60300654888 /* SuggestedResumeEditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41897C7F3028B60300654888 /* SuggestedResumeEditsView.swift */; };
+		41A3B784302C9D44003C2F2A /* CoverLetterModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B783302C9D44003C2F2A /* CoverLetterModels.swift */; };
+		41A3B786302C9D8D003C2F2A /* CoverLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B785302C9D8D003C2F2A /* CoverLetterView.swift */; };
+		41A3B788302C9DB8003C2F2A /* SendEmailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B787302C9DB8003C2F2A /* SendEmailButton.swift */; };
+		41A3B78A302C9DDB003C2F2A /* NextStepsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B789302C9DDB003C2F2A /* NextStepsCardView.swift */; };
+		41A3B78C302C9DFD003C2F2A /* CoverLetterCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B78B302C9DFD003C2F2A /* CoverLetterCardView.swift */; };
+		41A3B78E302C9E2A003C2F2A /* ContactChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B78D302C9E2A003C2F2A /* ContactChipView.swift */; };
+		41A3B790302CA915003C2F2A /* JobMatchResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B78F302CA915003C2F2A /* JobMatchResponseDTO.swift */; };
+		41A3B792302CAA63003C2F2A /* JobMatchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B791302CAA63003C2F2A /* JobMatchEntity.swift */; };
+		41A3B794302CAAAB003C2F2A /* JobMatch+Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B793302CAAAB003C2F2A /* JobMatch+Mapper.swift */; };
+		41A3B796302CAC90003C2F2A /* ScoreCVAgainstJobUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B795302CAC90003C2F2A /* ScoreCVAgainstJobUseCase.swift */; };
 		41A5E1CF3028930C00558D9B /* JobPostingLinkTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5E1CE3028930C00558D9B /* JobPostingLinkTextField.swift */; };
 		41A7F6F8300BBB2A00FBE8EB /* LampGlitchModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7F6F7300BBB2A00FBE8EB /* LampGlitchModifier.swift */; };
 		41A7F6FB300BBDA000FBE8EB /* UserEntity+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7F6F9300BBDA000FBE8EB /* UserEntity+Mapping.swift */; };
@@ -417,7 +427,7 @@
 		414B4BCB302B506700B66FA7 /* ATSFeatureBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATSFeatureBadge.swift; sourceTree = "<group>"; };
 		414B4BD2302B519800B66FA7 /* ATSEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATSEndPoint.swift; sourceTree = "<group>"; };
 		414B4BD4302B534F00B66FA7 /* JobDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDTO.swift; sourceTree = "<group>"; };
-		414B4BD6302B539700B66FA7 /* JobMatchResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobMatchResultDTO.swift; sourceTree = "<group>"; };
+		414B4BD6302B539700B66FA7 /* JobDetailsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailsResponseDTO.swift; sourceTree = "<group>"; };
 		414B4BD8302B540E00B66FA7 /* ATSRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATSRemoteDataSource.swift; sourceTree = "<group>"; };
 		414B4BDB302B553F00B66FA7 /* ATSRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATSRepository.swift; sourceTree = "<group>"; };
 		414B4BDF302B557000B66FA7 /* ATSRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATSRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -440,6 +450,16 @@
 		41897C7B3028B54600654888 /* ActionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtons.swift; sourceTree = "<group>"; };
 		41897C7D3028B58C00654888 /* JobMatchScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobMatchScoreView.swift; sourceTree = "<group>"; };
 		41897C7F3028B60300654888 /* SuggestedResumeEditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedResumeEditsView.swift; sourceTree = "<group>"; };
+		41A3B783302C9D44003C2F2A /* CoverLetterModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverLetterModels.swift; sourceTree = "<group>"; };
+		41A3B785302C9D8D003C2F2A /* CoverLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverLetterView.swift; sourceTree = "<group>"; };
+		41A3B787302C9DB8003C2F2A /* SendEmailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmailButton.swift; sourceTree = "<group>"; };
+		41A3B789302C9DDB003C2F2A /* NextStepsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextStepsCardView.swift; sourceTree = "<group>"; };
+		41A3B78B302C9DFD003C2F2A /* CoverLetterCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverLetterCardView.swift; sourceTree = "<group>"; };
+		41A3B78D302C9E2A003C2F2A /* ContactChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactChipView.swift; sourceTree = "<group>"; };
+		41A3B78F302CA915003C2F2A /* JobMatchResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobMatchResponseDTO.swift; sourceTree = "<group>"; };
+		41A3B791302CAA63003C2F2A /* JobMatchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobMatchEntity.swift; sourceTree = "<group>"; };
+		41A3B793302CAAAB003C2F2A /* JobMatch+Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JobMatch+Mapper.swift"; sourceTree = "<group>"; };
+		41A3B795302CAC90003C2F2A /* ScoreCVAgainstJobUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCVAgainstJobUseCase.swift; sourceTree = "<group>"; };
 		41A5E1CE3028930C00558D9B /* JobPostingLinkTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPostingLinkTextField.swift; sourceTree = "<group>"; };
 		41A7F6F7300BBB2A00FBE8EB /* LampGlitchModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampGlitchModifier.swift; sourceTree = "<group>"; };
 		41A7F6F9300BBDA000FBE8EB /* UserEntity+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+Mapping.swift"; sourceTree = "<group>"; };
@@ -863,7 +883,8 @@
 			isa = PBXGroup;
 			children = (
 				414B4BD4302B534F00B66FA7 /* JobDTO.swift */,
-				414B4BD6302B539700B66FA7 /* JobMatchResultDTO.swift */,
+				414B4BD6302B539700B66FA7 /* JobDetailsResponseDTO.swift */,
+				41A3B78F302CA915003C2F2A /* JobMatchResponseDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -907,6 +928,7 @@
 			isa = PBXGroup;
 			children = (
 				414B4BE2302B55BB00B66FA7 /* JobEntity.swift */,
+				41A3B791302CAA63003C2F2A /* JobMatchEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -915,6 +937,7 @@
 			isa = PBXGroup;
 			children = (
 				414B4BE5302B563D00B66FA7 /* JobDTO+Mapper.swift */,
+				41A3B793302CAAAB003C2F2A /* JobMatch+Mapper.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -923,6 +946,7 @@
 			isa = PBXGroup;
 			children = (
 				414B4BE8302B579000B66FA7 /* GetJobByURLUseCase.swift */,
+				41A3B795302CAC90003C2F2A /* ScoreCVAgainstJobUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -941,6 +965,7 @@
 				CE3F0AF5302B766000EF10EB /* JobDescriptionModel.swift */,
 				41897C6D3028B17700654888 /* JobMatchModels.swift */,
 				41BFB984302B7B420010C447 /* JobPosting.swift */,
+				41A3B783302C9D44003C2F2A /* CoverLetterModels.swift */,
 			);
 			path = UIModel;
 			sourceTree = "<group>";
@@ -1072,8 +1097,8 @@
 		41B4EFEE3027B0F100AE0804 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				414B4BEA302B59B400B66FA7 /* ViewModel */,
 				41897C6C3028B16100654888 /* UIModel */,
+				414B4BEA302B59B400B66FA7 /* ViewModel */,
 				41B4EFEF3027B0F800AE0804 /* View */,
 			);
 			path = Presentation;
@@ -1088,6 +1113,7 @@
 				41897C7F3028B60300654888 /* SuggestedResumeEditsView.swift */,
 				41BFB97A302B72560010C447 /* JobDescriptionView.swift */,
 				41BFB98C302B7BD20010C447 /* JobMatchView.swift */,
+				41A3B785302C9D8D003C2F2A /* CoverLetterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1116,6 +1142,10 @@
 				41BFB98A302B7BB00010C447 /* RecommendationsCard.swift */,
 				41BFB98E302B7BEF0010C447 /* SectionBreakdownView.swift */,
 				41BFB990302B7C0F0010C447 /* SkillChipsView.swift */,
+				41A3B787302C9DB8003C2F2A /* SendEmailButton.swift */,
+				41A3B789302C9DDB003C2F2A /* NextStepsCardView.swift */,
+				41A3B78B302C9DFD003C2F2A /* CoverLetterCardView.swift */,
+				41A3B78D302C9E2A003C2F2A /* ContactChipView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2896,6 +2926,7 @@
 				CECCDA27300F1DD80068620D /* NetworkError.swift in Sources */,
 				41BFB98D302B7BD30010C447 /* JobMatchView.swift in Sources */,
 				D970C9EF30156C02002F6269 /* UplodeFile+Mapping.swift in Sources */,
+				41A3B786302C9D8D003C2F2A /* CoverLetterView.swift in Sources */,
 				CECCDA28300F1DD80068620D /* TokenProvider.swift in Sources */,
 				CECCDA29300F1DD80068620D /* NetworkServiceProtocol.swift in Sources */,
 				CECCDA2A300F1DD80068620D /* NetworkService.swift in Sources */,
@@ -2977,6 +3008,7 @@
 				CEA4C0943014703600CB5DD3 /* InterviewPrepContainerView.swift in Sources */,
 				CECCDA3F300F68D50068620D /* UpdateProfileDTO+Mapping.swift in Sources */,
 				CE12F3C230093ED30083D66D /* HomeViewModel.swift in Sources */,
+				41A3B78A302C9DDB003C2F2A /* NextStepsCardView.swift in Sources */,
 				41BC773E300D3CD800E89C3F /* QuestionPromptCard.swift in Sources */,
 				41BC7726300D18CA00E89C3F /* RadarShape.swift in Sources */,
 				41CE20E6300A54A4005DC31F /* ToastManager.swift in Sources */,
@@ -3034,12 +3066,14 @@
 				61601FC630164C5E00581229 /* UserWalletBalanceDTO.swift in Sources */,
 				6165A1E3300B10C90085E3FD /* CoinTopView.swift in Sources */,
 				CEB622153010440800027035 /* SaveUserUseCase.swift in Sources */,
+				41A3B794302CAAAB003C2F2A /* JobMatch+Mapper.swift in Sources */,
 				CEE62A99300929A70071F076 /* SessionRow.swift in Sources */,
 				D95C3BAD300E4A2A0042785F /* InterviewProgressService.swift in Sources */,
 				41D69D3B300B456A00294D94 /* CoreDataManager.swift in Sources */,
 				D938BBD130287B330073ED15 /* SessionFeedBackMappers.swift in Sources */,
 				6165A1EE300B40D90085E3FD /* CheckOutTopView.swift in Sources */,
 				D93938E43004064400CF4372 /* ContentView.swift in Sources */,
+				41A3B790302CA915003C2F2A /* JobMatchResponseDTO.swift in Sources */,
 				D95C3BC0300E4ACF0042785F /* SubmitAnswerUseCase.swift in Sources */,
 				414B4BDC302B553F00B66FA7 /* ATSRepository.swift in Sources */,
 				41AD8FFE30161BB900BDFDA0 /* SessionFeedbackDTO+Mapping.swift in Sources */,
@@ -3060,11 +3094,13 @@
 				41C6A2363008008D0035EFBF /* SendingOTPCodeView.swift in Sources */,
 				61DD05D23011832C00594030 /* PaymentWebView.swift in Sources */,
 				6169A7C6301044E5001FDC39 /* CustomePhoneProfileTextField.swift in Sources */,
-				414B4BD7302B539700B66FA7 /* JobMatchResultDTO.swift in Sources */,
+				41A3B78C302C9DFD003C2F2A /* CoverLetterCardView.swift in Sources */,
+				414B4BD7302B539700B66FA7 /* JobDetailsResponseDTO.swift in Sources */,
 				61970B7F301151A4009D7E58 /* CoinViewModel.swift in Sources */,
 				6169A7D0301044E5001FDC39 /* AcoountSettingsView.swift in Sources */,
 				41D69D12300A6CB100294D94 /* VerifyOTPResult.swift in Sources */,
 				6182BB55300C67DF001157B8 /* PhotoPicker.swift in Sources */,
+				41A3B788302C9DB8003C2F2A /* SendEmailButton.swift in Sources */,
 				D9BA3474300ED4BF0058D6E6 /* PracticeSessionViewModelFactory.swift in Sources */,
 				D9B614EC300CF50000552F85 /* DIContainer+ViewModels.swift in Sources */,
 				41AD9020301623CC00BDFDA0 /* CurrentUserProvider.swift in Sources */,
@@ -3117,6 +3153,7 @@
 				6103DA3E301ABF78008BC8BF /* AvatarUploadDTO.swift in Sources */,
 				41BC772A300D18F000E89C3F /* PerformanceRadarChart.swift in Sources */,
 				41BC774C300D427F00E89C3F /* AppCoordinator.swift in Sources */,
+				41A3B784302C9D44003C2F2A /* CoverLetterModels.swift in Sources */,
 				D93938E23004064400CF4372 /* Career_Pilot_iOSApp.swift in Sources */,
 				61D8F2FC300779ED0088F170 /* Flowlayout.swift in Sources */,
 				D95C3BCF300EA1C00042785F /* SubmitingAnswerView.swift in Sources */,
@@ -3163,6 +3200,7 @@
 				CE12F3C930094FB50083D66D /* OTPCodeView.swift in Sources */,
 				61601FC43016441A00581229 /* UserSettingsDTO.swift in Sources */,
 				6161D86C301571C800098A0C /* CurrentSubscriptionDomainModel.swift in Sources */,
+				41A3B796302CAC90003C2F2A /* ScoreCVAgainstJobUseCase.swift in Sources */,
 				6161D8683015630800098A0C /* CurrentSubscriptionDTO.swift in Sources */,
 				CEC5AECF30281937000B5BDC /* InterviewTrackCard.swift in Sources */,
 				D9B4B1B83011810E004909ED /* NewSession.swift in Sources */,
@@ -3195,6 +3233,7 @@
 				61970B6D301133D5009D7E58 /* PaymentResponseDTO.swift in Sources */,
 				D9C187BB300662F000BFF8E9 /* HTTPMethod.swift in Sources */,
 				6161D86630153A8600098A0C /* CheckOutDomainModel.swift in Sources */,
+				41A3B792302CAA63003C2F2A /* JobMatchEntity.swift in Sources */,
 				414B4BD9302B540E00B66FA7 /* ATSRemoteDataSource.swift in Sources */,
 				D9B614FB300D1D2400552F85 /* OnBordingRepoImp.swift in Sources */,
 				CECC20E83007DB4D00DC450D /* WaveformBars.swift in Sources */,
@@ -3222,6 +3261,7 @@
 				D95C3BAB300E4A240042785F /* InterviewFeedback.swift in Sources */,
 				618C29F730145D310099BF69 /* CheckOutRepo.swift in Sources */,
 				41D69D10300A6C7A00294D94 /* AuthTokensDTO+Mapping.swift in Sources */,
+				41A3B78E302C9E2A003C2F2A /* ContactChipView.swift in Sources */,
 				D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */,
 				41BC7744300D3DA600E89C3F /* CoachFeedbackCard.swift in Sources */,
 				41BC7746300D3DCD00E89C3F /* TranscriptSnippetCard.swift in Sources */,

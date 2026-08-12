@@ -8,15 +8,22 @@
 import Foundation
 
 class ATSRepository : ATSRepositoryProtocol {
-    private let localDataSource: ATSRemoteDataSourceProtocol
+    private let remoteDataSource: ATSRemoteDataSourceProtocol
     
-    init(localDataSource: ATSRemoteDataSourceProtocol) {
-        self.localDataSource = localDataSource
+    init(remoteDataSource: ATSRemoteDataSourceProtocol) {
+        self.remoteDataSource = remoteDataSource
     }
     
     func getJobByURL(from url: String) async throws -> JobEntity {
-        let dto = try await localDataSource.getJobByURL(from: url)
-        let result = dto.data.toDomain()
+        let dto = try await remoteDataSource.getJobByURL(from: url)
+        let result = dto.data.toEntity()
         return result
     }
+    
+    func scoreCvAgainstJob(for id: Int) async throws -> JobMatchEntity {
+        let dto = try await remoteDataSource.scoreCvAgainstJob(for: id)
+        let result = dto.data.toEntity()
+        return result
+    }
+    
 }

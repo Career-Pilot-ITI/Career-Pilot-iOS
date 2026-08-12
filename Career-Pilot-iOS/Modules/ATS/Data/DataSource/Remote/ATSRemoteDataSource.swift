@@ -8,7 +8,8 @@
 import Foundation
 
 protocol ATSRemoteDataSourceProtocol {
-    func getJobByURL(from url: String) async throws -> JobMatchResultDTO
+    func getJobByURL(from url: String) async throws -> JobDetailsResponseDTO
+    func scoreCvAgainstJob(for id: Int) async throws -> JobMatchResponseDTO
 }
 
 class ATSRemoteDataSource : ATSRemoteDataSourceProtocol {
@@ -18,10 +19,14 @@ class ATSRemoteDataSource : ATSRemoteDataSourceProtocol {
         self.networkService = networkService
     }
     
-    func getJobByURL(from url: String) async throws -> JobMatchResultDTO {
+    func getJobByURL(from url: String) async throws -> JobDetailsResponseDTO {
         let cleanedPath = url.replacingOccurrences(of: "\\", with: "")
         print("the url requested is \(cleanedPath)")
         return try await networkService.request(ATSEndPoint.getJobUrl(url: cleanedPath))
+    }
+    
+    func scoreCvAgainstJob(for id: Int) async throws -> JobMatchResponseDTO {
+        return try await networkService.request(ATSEndPoint.scoreCVAgainstJob(id: id))
     }
     
 }

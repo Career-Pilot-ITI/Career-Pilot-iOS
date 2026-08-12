@@ -26,6 +26,12 @@ struct MainTabBarView: View {
                             SessionFeedBackView(feedback: feedBack,sessionId: sessionId)
                         case .atsJobMatch:
                             ATSJobMatchView()
+                        case .atsjobDescription:
+                            JobDescriptionView(job: JobDescriptionModel.mock)
+                        case .coverLetter:
+                            CoverLetterView(data: CoverLetterData.sample)
+                        case .atsJobmatchScore:
+                            JobMatchView(data: JobMatchData.sample)
                         }
                     }
             }

@@ -8,26 +8,27 @@ import Foundation
 
 private let placeholderURL = URL(string: "about:blank")!
 
-extension JobDTO {
-    func toDomain() -> JobEntity {
+extension JobWorkSpaceDTO {
+    func toEntity() -> JobEntity {
         JobEntity(
-            id: id ?? 0,
-            title: title ?? "Untitled Role",
-            companyName: companyName ?? "Unknown Company",
-            location: location ?? "—",
-            description: description ?? "",
-            employmentType: employmentType ?? "—",
-            seniorityLevel: seniorityLevel ?? "—",
-            requiredSkills: requiredSkills ?? [],
-            preferredSkills: preferredSkills ?? [],
-            technologies: technologies ?? [],
-            applicationUrl: applicationUrl.flatMap(URL.init(string:)) ?? placeholderURL,
-            sourceUrl: sourceUrl.flatMap(URL.init(string:)) ?? placeholderURL,
-            sourceType: sourceType ?? "URL",
-            createdAt: createdAt ?? "",
-            companyLogoUrl: companyLogoUrl.flatMap(URL.init(string:)) ?? placeholderURL,
-            postedLabel: postedLabel ?? "",
-            applicantsLabel: applicantsLabel ?? ""
+            workspaceID: id ?? 0,
+            id: job.id ?? 0,
+            title: job.title ?? "Untitled Role",
+            companyName: job.companyName ?? "Unknown Company",
+            location: job.location ?? "—",
+            description: job.description ?? "",
+            employmentType: job.employmentType ?? "—",
+            seniorityLevel: job.seniorityLevel ?? "—",
+            requiredSkills: job.requiredSkills ?? [],
+            preferredSkills: job.preferredSkills ?? [],
+            technologies: job.technologies ?? [],
+            applicationUrl: job.applicationUrl.flatMap(URL.init(string:)) ?? placeholderURL,
+            sourceUrl: job.sourceUrl.flatMap(URL.init(string:)) ?? placeholderURL,
+            sourceType: job.sourceType ?? "URL",
+            createdAt: job.createdAt ?? "",
+            companyLogoUrl: job.companyLogoUrl.flatMap(URL.init(string:)) ?? placeholderURL,
+            postedLabel: job.postedLabel ?? "",
+            applicantsLabel: job.applicantsLabel ?? ""
         )
     }
 }

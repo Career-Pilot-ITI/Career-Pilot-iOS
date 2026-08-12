@@ -27,6 +27,9 @@ enum HomeRoute: Hashable {
     case practiceInterview(trackName: String, trackId: Int, interviewType: InterviewType)
     case sessionFeedback(feedback: InterviewFeedback, sessionId: Int)
     case atsJobMatch
+    case atsjobDescription
+    case coverLetter
+    case atsJobmatchScore
 }
 
 enum   CheckoutDisplayInfo : Hashable {

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct JobMatchView: View {
+    @EnvironmentObject var coordinator: AppCoordinator<HomeRoute>
     let data: JobMatchData
 //    var onBack: () -> Void = {}
 
@@ -18,7 +19,6 @@ struct JobMatchView: View {
             ScrollView {
                 VStack(spacing: Radius.r16) {
                     JobHeaderCard(initial: "G", title: "Senior Frontend Engineer", companyName: "Google", location: "Cairo, EG", workMode: "Hybrid")
-
 
                     MatchScoreCardView(
                         score: data.matchScore,
@@ -58,10 +58,16 @@ struct JobMatchView: View {
 
                     RecommendationsCard(recommendations: data.recommendations)
 
-                    ActionButtonsView()
+                    ActionButtonsView( onGenerateCoverLetter: {
+                        coordinator.push(.coverLetter)
+                    })
                         .padding(.top, 4)
                 }
+<<<<<<< HEAD
                 .padding(.horizontal, Radius.r16)
+=======
+                .padding(.horizontal, 16)
+>>>>>>> 6986f73 (finish fetching job description screen)
                 .padding(.bottom, 24)
             }
             .scrollIndicators(.hidden)
