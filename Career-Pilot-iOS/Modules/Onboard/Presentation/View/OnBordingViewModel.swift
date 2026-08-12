@@ -143,7 +143,10 @@ class OnBordingViewModel: ObservableObject {
             screenState = .error(networkError.userMessage)
         }else if let cvError = error as? UploadCVErrors{
             screenState = .error(cvError.description)
-        }else {
+        }else if let useCaseError = error as? UseCaseError{
+            screenState = .error(useCaseError.userMessage)
+        }
+        else {
             screenState = .error(error.localizedDescription)
         }
     }

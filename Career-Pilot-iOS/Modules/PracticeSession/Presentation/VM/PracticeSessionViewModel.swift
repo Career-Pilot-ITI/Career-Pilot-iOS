@@ -85,6 +85,8 @@ final class PracticeSessionViewModel: ObservableObject {
     private let speechRecognitionService: SpeechRecognitionServicing
 
     private let silenceThreshold: Float = 0.08
+    
+    private var homeCoordinator: AppCoordinator<HomeRoute>?
 
     init(
         interviewType: InterviewType = .classic,
@@ -144,7 +146,8 @@ final class PracticeSessionViewModel: ObservableObject {
         switch error {
         case .questionLimitReached, .interviewTimeExpired, .sessionQuotaExceeded:
             guard session != nil else {
-                screenState = .error(error)
+                //Nav to home
+                homeCoordinator?.popToRoot()
                 return
             }
             await finish()
@@ -152,7 +155,6 @@ final class PracticeSessionViewModel: ObservableObject {
         case .networkUnavailable, .serverError, .unknown, .invalidState, .sessionNotFound:
             guard session != nil else {
                 await resumeAfterNetworkDrop()
-//                screenState = .error(error)
                 return
             }
             await resumeAfterNetworkDrop()
@@ -183,6 +185,12 @@ final class PracticeSessionViewModel: ObservableObject {
         } catch {
             screenState = .error(error)
         }
+    }
+    
+    func attach(coordinator: AppCoordinator<HomeRoute>) {
+        // Guard so re-appearances (e.g. after a sheet dismiss) don't redo setup
+        guard homeCoordinator == nil else { return }
+        self.homeCoordinator = coordinator
     }
 
     private func applyNewSession(_ newSession: NewSession) {

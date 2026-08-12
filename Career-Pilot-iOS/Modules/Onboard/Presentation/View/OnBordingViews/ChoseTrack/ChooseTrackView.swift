@@ -76,9 +76,9 @@ struct ChooseTrackView: View {
     }
 }
 
-#Preview {
-    let vm = DIContainer.shared.container.resolve(OnBordingViewModel.self)!
-    vm.getAllTracks()
-
-    return ChooseTrackView(vm: vm)
-}
+//#Preview {
+//    let vm = DIContainer.shared.container.resolve(OnBordingViewModel.self)!
+//    vm.getAllTracks()
+//
+//    return ChooseTrackView(vm: vm)
+//}

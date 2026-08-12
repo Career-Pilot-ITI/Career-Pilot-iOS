@@ -10,16 +10,15 @@ import SwiftUI
 struct OnBordingView: View {
     @EnvironmentObject var appState: AppState
     @StateObject var vm: OnBordingViewModel = DIContainer.shared.container.resolve(OnBordingViewModel.self)!
-
+    
     var body: some View {
-         ZStack {
+        ZStack {
             Color.gray100
-                    .ignoresSafeArea()
+                .ignoresSafeArea()
             VStack(alignment: .center, spacing: 14) {
                 
-                if vm.currentView != .ProfileView {
-                    OnBordingTopPart(vm: vm)
-                }
+                
+                OnBordingTopPart(vm: vm)
                 
                 Spacer()
                 // Onboarding Content
@@ -59,10 +58,10 @@ struct OnBordingView: View {
 
 private struct OnBordingTopPart: View {
     @ObservedObject var vm: OnBordingViewModel
-
+    
     var body: some View {
         HStack(spacing: 8) {
-
+            
             VStack {
                 if vm.currentView.rawValue != 0 {
                     BackButton(text: "Back")
@@ -70,18 +69,18 @@ private struct OnBordingTopPart: View {
                             vm.backByStep()
                         }
                 }
-
+                
                 drawDotts
             }
-
+            
             Spacer()
-
+            
             Text("\(vm.currentView.rawValue + 1) of \(OnBordingViews.allCases.count)")
                 .foregroundColor(.gray400)
         }
         .padding()
     }
-
+    
     private var drawDotts: some View {
         HStack(spacing: 4) {
             ForEach(0..<OnBordingViews.allCases.count, id: \.self) { index in
