@@ -11,9 +11,10 @@ import Foundation
 class OnBordingRepoImp: OnBordingRepo{
     
     var remoteDataSource: OnBordingRemoteDataSource
-    
-    init(remote: OnBordingRemoteDataSource) {
+    var userLocalDataSource: UserLocalDataSource
+    init(remote: OnBordingRemoteDataSource , userLocalDataSource : UserLocalDataSource) {
         self.remoteDataSource = remote
+        self.userLocalDataSource = userLocalDataSource
     }
     
     func getAllTracks() async throws -> [Track] {
@@ -25,8 +26,8 @@ class OnBordingRepoImp: OnBordingRepo{
     
     func updateProfile(user: User) async throws -> User {
        
-        let updateProfileRequestDTO = user.toUpdateProfileRequestDTO()
-        
+        var  updateProfileRequestDTO = user.toUpdateProfileRequestDTO()
+        updateProfileRequestDTO.username = try await userLocalDataSource.getUser()?.profile.username
         let updateProfileResponseDTO =
         try await remoteDataSource.updateUserProfile(updateProfileRequestDTO:updateProfileRequestDTO)
 

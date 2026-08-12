@@ -61,6 +61,7 @@ final class SettingsViewModel: ObservableObject {
         do {
             try await logout.execute()
             appState.logout()
+            userSession.userData = nil 
         } catch {
             print("Logout error: \(error)")
         }

@@ -31,6 +31,9 @@ class OnBordingViewModel: ObservableObject {
     @Published var screenState: OnBordingScreenStates = .loading
     @Published var navToHomeScreen: Bool = false
     @Published var emailErrorMessage: String? = nil
+    @Published var tittleErrorMessage : String? = nil
+    @Published var exprinceLevelErrorMessage : String? = nil
+    @Published var fullNameErrorMessage : String? = nil
     
     //For ChooseTrack View
     @Published var selectedTrackInfo: SelectedTrackViewInfo = SelectedTrackViewInfo()
@@ -137,15 +140,32 @@ class OnBordingViewModel: ObservableObject {
             onCatchError(error: error)
         }
     }
-    
+
+
+
     private func onCatchError(error: Error){
         if let networkError = error as? NetworkError{
             screenState = .error(networkError.userMessage)
         }else if let cvError = error as? UploadCVErrors{
             screenState = .error(cvError.description)
         } else if let validationError = error as? ProfileValidationError {
+            screenState = .idel
+                switch validationError {
+                case .emptyEmail:
+                    emailErrorMessage = validationError.errorDescription
+                case .emptyFullName:
+                    fullNameErrorMessage = validationError.errorDescription
+                case .exprinceLevel:
+                    exprinceLevelErrorMessage = validationError.errorDescription
+                case .emptyJobTitle:
+                    tittleErrorMessage = validationError.errorDescription
+                case .invalidEmail: 
+                    emailErrorMessage = validationError.errorDescription
+                default:
+                    ToastManager.shared.show("Please fill all required fields.")
+                }
             
-            screenState = .error(validationError.errorDescription ?? "Please check your details")
+            
         }
         else {
             screenState = .error(error.localizedDescription)
@@ -249,19 +269,22 @@ class OnBordingViewModel: ObservableObject {
         screenState = .loading
         
         do {
-            let user = userData.toUser()
+            print("User data is \(userData)")
+            let user = userData
             let updatedUser = try await updateUser(user)
             try await persistUser(updatedUser)
             
             completeOnboarding()
         } catch{
+            
             onCatchError(error: error)
         }
     }
 
-    private func updateUser(_ user: User) async throws -> User {
+    private func updateUser(_ user: OnBoardingUser) async throws -> User {
         let updatedUser = try await updateProfileUseCase.execute(user)
         print("✅ Profile updated successfully for user ID: \(updatedUser.id)")
+       
         return updatedUser
     }
 

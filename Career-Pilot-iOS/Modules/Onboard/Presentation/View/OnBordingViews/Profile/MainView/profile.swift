@@ -16,7 +16,7 @@ struct profile: View {
             VStack(spacing: 24) {
                 HeaderView()
 
-                ProfileForm(userData: $vm.userData)
+                ProfileForm(userData: $vm.userData , emailErrorMessage: $vm.emailErrorMessage)
                     .background(
                         RoundedRectangle(cornerRadius: Radius.r12)
                             .fill(Color.white)
@@ -35,9 +35,6 @@ struct profile: View {
         .scrollIndicators(.hidden)
         .background(Color.gray100)
         .ignoresSafeArea(.keyboard)
-        .onChange(of: vm.screenState) { newState in
-            guard case .error(let message) = newState else { return }
-            toastManager.show(message, type: .error)
-        }
+         
     }
 }

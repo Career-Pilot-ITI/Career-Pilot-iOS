@@ -13,6 +13,7 @@ enum ProfileValidationError: LocalizedError {
     case emptyEmail
     case invalidEmail
     case emptyJobTitle
+    case exprinceLevel
     case multiple([ProfileValidationError])
 
     var errorDescription: String? {
@@ -21,6 +22,7 @@ enum ProfileValidationError: LocalizedError {
         case .emptyEmail: return "Email can't be empty."
         case .invalidEmail: return "Please enter a valid email address."
         case .emptyJobTitle: return "Current role / title can't be empty."
+        case .exprinceLevel : return "ExprinceLevel can not empty."
         case .multiple(let errors): return errors.compactMap { $0.errorDescription }.joined(separator: "\n")
         }
     }
@@ -65,8 +67,12 @@ extension ProfileValidator {
             errors.append(.invalidEmail)
         }
         
-        if !Validator.isNotEmpty(user.profile.currentJobTitle) {
+        if !Validator.isNotEmpty(user.profile.targetRole) {
             errors.append(.emptyJobTitle)
+        }
+        
+        if !Validator.isNotEmpty(user.profile.experienceLevel){
+            errors.append(.exprinceLevel)
         }
         
         if !errors.isEmpty {

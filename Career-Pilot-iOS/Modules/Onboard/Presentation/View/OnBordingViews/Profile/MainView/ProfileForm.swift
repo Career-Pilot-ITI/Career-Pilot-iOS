@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileForm: View {
     @Binding var userData: OnBoardingUser
+    @Binding var emailErrorMessage :  String?
     private var skillNamesBinding: Binding<[String]> {
         Binding(
             get: { userData.skills.map { $0.skillName } },
@@ -37,15 +38,18 @@ struct ProfileForm: View {
        
             Group{
                 CustomProfileTextField(icon: "PersonIcon", title: "Full Name", autocapitalization: .words, text: $userData.fullName)
+                
                 Divider().background(Color.gray400).frame(height: 4)
 
-                CustomProfileTextField(icon: "email", title: "Email", autocapitalization: .never , text: $userData.email )
+                CustomProfileTextField(icon: "email", title: "Email", autocapitalization: .never , text: $userData.email , errorMessage: emailErrorMessage ).onChange(of:userData.email){ _ in
+                    emailErrorMessage = nil
+                }
                 Divider().background(Color.gray400).frame(height: 4)
 
                 CustomProfileTextField(icon: "tittle", title: "CURRENT ROLE / TITTLE", autocapitalization: .never,text: $userData.title)
                 Divider().background(Color.gray400).frame(height: 4)
                 ExperienceLevelSelector(selected: $userData.experienceLevel)
-//                CustomProfileTextField(icon: "ExperinceLevel", title: "EXPERIENCE LEVEL", text: $userData.experienceLevel)
+
 
                 Spacer().frame(height: Spacing.s20)
             }
