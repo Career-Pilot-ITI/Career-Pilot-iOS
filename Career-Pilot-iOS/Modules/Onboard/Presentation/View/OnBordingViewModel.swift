@@ -258,6 +258,8 @@ class OnBordingViewModel: ObservableObject {
         
         userData = cvResponse.userData
         userData.selectedTrack = oldUserData.selectedTrack
+        print("The number or retuned skills is \(userData.skills.count)")
+        print("the skill first value is \(userData.skills.first?.skillName)")
     }
 
     private func onNavToHomeScreen() {
