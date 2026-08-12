@@ -18,11 +18,13 @@ struct PhoneTextField: View {
     private var currentState: PhoneFieldState {
         if isDisabled { return .disabled }
         if isLoading { return .loading }
-        if isFieldFocused { return .focused }
-        if !viewModel.hasBeenEdited { return .idle }
+        
+        if viewModel.phoneNumber.isEmpty {
+            return isFieldFocused ? .focused : .idle
+        }
+        
         return viewModel.isValid ? .valid : .invalid
     }
-
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("PHONE NUMBER")
@@ -47,7 +49,6 @@ struct PhoneTextField: View {
                     .foregroundColor(Color.gray400)
                     .font(.size16Regular)
                 )
-                .foregroundStyle(.white)
                 .keyboardType(.numberPad)
                 .focused($isFieldFocused)
                 .disabled(isDisabled || isLoading)
@@ -58,15 +59,21 @@ struct PhoneTextField: View {
                         Button("Done") {
                             isFieldFocused = false
                         }
-                        .foregroundStyle(.white)
                         .fontWeight(.semibold)
                     }
                 }
                 
                 trailingIcon
+                    .padding()
             }
-            .background(RoundedRectangle(cornerRadius: 16).fill(isDisabled ? AppColors.PhoneField.backgroundDisabled : AppColors.PhoneField.background))
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(currentState.borderColor, lineWidth: currentState.borderWidth))
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(isDisabled ? AppColors.PhoneField.backgroundDisabled : AppColors.PhoneField.background)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(currentState.borderColor, lineWidth: currentState.borderWidth)
+            )
             
             PhoneValidationHintView(
                 state: viewModel.validationState,
@@ -97,7 +104,8 @@ struct PhoneTextField: View {
                 Text(viewModel.selectedCountry.flag)
                 Text(viewModel.selectedCountry.dialCode)
                     .font(.size14Semibold)
-                    .foregroundStyle(.white)
+                    .foregroundColor(Color.gray400)
+
                 Image(systemName: "chevron.down").font(.caption2)
                     .foregroundColor(Color.gray400)
             }

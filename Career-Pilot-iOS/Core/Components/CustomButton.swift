@@ -18,10 +18,10 @@ struct CustomButton: View {
 
             HStack {
                 Text(buttonTitle)
-
+                    .foregroundStyle(Color.white)
                 if showArrow {
                     Image(systemName: "arrow.right")
-
+                        .foregroundStyle(Color.white)
                 }
             }
             .font(.size14Semibold)
@@ -29,7 +29,7 @@ struct CustomButton: View {
             .frame(width: 350, height: 52)
             .background{
                 RoundedRectangle(cornerRadius: Radius.r16)
-                    .fill(Color.activeColour)
+                    .fill(Color.primary)
             }
         }
         .disabled(!isButtonEnabeld)
