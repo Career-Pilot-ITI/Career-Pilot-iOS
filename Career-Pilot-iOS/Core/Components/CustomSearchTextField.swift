@@ -10,43 +10,48 @@ import SwiftUI
 struct CustomSearchTextField: View {
     @Binding var text: String
     let placeholder: String
-    
-    @FocusState var isFocused : Bool
-    
+ 
+    @FocusState var isFocused: Bool
+    @Environment(\.colorScheme) private var colorScheme
+ 
     var body: some View {
-        HStack(spacing:10) {
+        HStack(spacing: 10) {
             Image(systemName: "magnifyingglass")
                 .font(.system(size: 18, weight: .medium))
-                .foregroundColor(Color.black.opacity(0.35))
-            
+                .foregroundColor(.secondary)
+ 
             TextField(placeholder, text: $text)
                 .focused($isFocused)
-                .foregroundColor(.black)
+                .foregroundColor(.gray600)
                 .autocorrectionDisabled(true)
                 .submitLabel(.search)
-            
+                .tint(.primary)
+ 
             if !text.isEmpty {
                 Button {
                     text = ""
                 } label: {
                     Image(systemName: "xmark.circle.fill")
                         .font(.system(size: 16))
-                        .foregroundColor(Color.black.opacity(0.25))
+                        .foregroundColor(.secondary)
                 }
                 .accessibilityLabel("Clear search")
             }
-            
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
         .background {
             RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)
-                .fill(.white)
-                .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 3)
+                .fill(Color(.secondarySystemBackground))
+                .shadow(
+                    color: .black.opacity(colorScheme == .dark ? 0 : 0.06),
+                    radius: 8, x: 0, y: 3
+                )
         }
         .overlay {
             RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)
-                .stroke(Color.black.opacity(isFocused ? 0.12 : 0), lineWidth: 1.5)
+                .stroke(Color.primary.opacity(isFocused ? 0.12 : 0), lineWidth: 1.5)
+                
         }
         .animation(.easeIn(duration: 0.2), value: isFocused)
         .accessibilityElement(children: .combine)
@@ -56,16 +61,18 @@ struct CustomSearchTextField: View {
 
 //#Preview {
 //    struct PreviewContainer: View {
-//        @State private var query = ""
+//        @State private var query: String = ""
+//
 //        var body: some View {
-//            VStack {
-//                Spacer()
-//                CustomSearchTextField(text: $query)
-//                Spacer()
+//            VStack(spacing: 20) {
+//                CustomSearchTextField(text: $query, placeholder: "Search tracks…")
+//
+//                CustomSearchTextField(text: .constant("React"), placeholder: "Search tracks…")
 //            }
-//            .padding(.horizontal, 20)
-//            .padding(.top, 40)
+//            .padding()
+//            .background(Color(.systemGroupedBackground))
 //        }
 //    }
+//
 //    return PreviewContainer()
 //}

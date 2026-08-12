@@ -20,8 +20,13 @@ struct MainTabBarView: View {
                                 trackId: trackId,
                                 interviewType: interviewType
                             )
+                        case .InterviewsView:
+                            InterviewsView()
                         case .sessionFeedback(let feedBack, let sessionId):
-                            SessionFeedBackView(feedback: feedBack,sessionId: sessionId)
+                            SessionFeedBackView(feedback: feedBack,sessionId: sessionId){
+                                homeCoordinator.popToRoot()
+                            }
+                                .navigationBarBackButtonHidden()
                         }
                     }
             }

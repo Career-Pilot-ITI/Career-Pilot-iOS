@@ -166,6 +166,8 @@ class OnBordingViewModel: ObservableObject {
                 }
             
             
+        }else if let useCaseError = error as? UseCaseError{
+            screenState = .error(useCaseError.userMessage)
         }
         else {
             screenState = .error(error.localizedDescription)

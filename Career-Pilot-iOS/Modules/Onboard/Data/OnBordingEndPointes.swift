@@ -40,11 +40,8 @@ enum OnBordingEndPointes: APIEndpoint{
        }
     
     var requiresAuthentication: Bool {
-            switch self {
-            case .getAllTrackes:  return true
-            case .updateUserProfile:  return true
-            }
-        }
+        return true
+    }
     
     var headers: [String: String] {
         ["Content-Type": "application/json"]

@@ -76,8 +76,9 @@ struct ChooseTrackView: View {
     }
 }
 
-//struct ChoseTrackView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChoseTrackView(vm:OnBordingViewModel(uploadCvUseCase: UploadCvUseCase(userDataRepo: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService())))))
-//    }
+//#Preview {
+//    let vm = DIContainer.shared.container.resolve(OnBordingViewModel.self)!
+//    vm.getAllTracks()
+//
+//    return ChooseTrackView(vm: vm)
 //}

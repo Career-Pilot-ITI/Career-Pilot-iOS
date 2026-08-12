@@ -33,8 +33,15 @@ extension DIContainer{
         // homeViewModel
         container.register(HomeViewModel.self){ r in
             HomeViewModel(
-                getCurrentUserUseCase: r.resolve(GetCurrentUserUseCaseProtocol.self)!,
-                permissionManger: r.resolve(MicrophonePermissionManaging.self)!
+                getCurrentUserUseCase: r.resolve(GetCurrentUserUseCaseProtocol.self)!
+            )
+        }
+        
+        container.register(InterviewPrepViewModel.self) { resolver in
+            InterviewPrepViewModel(
+                permissionManager: resolver.resolve(
+                    MicrophonePermissionManaging.self
+                )!
             )
         }
 //        // MARK: - PracticeSession
