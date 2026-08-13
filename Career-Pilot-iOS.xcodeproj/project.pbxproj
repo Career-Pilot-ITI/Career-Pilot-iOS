@@ -43,8 +43,6 @@
 		41A3B792302CAA63003C2F2A /* JobMatchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B791302CAA63003C2F2A /* JobMatchEntity.swift */; };
 		41A3B794302CAAAB003C2F2A /* JobMatch+Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B793302CAAAB003C2F2A /* JobMatch+Mapper.swift */; };
 		41A3B796302CAC90003C2F2A /* ScoreCVAgainstJobUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B795302CAC90003C2F2A /* ScoreCVAgainstJobUseCase.swift */; };
-		41A3B799302CC6D6003C2F2A /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 41A3B798302CC6D6003C2F2A /* Swinject */; };
-		41A3B79C302CC6E7003C2F2A /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 41A3B79B302CC6E7003C2F2A /* Shimmer */; };
 		41A3B79E302CCCA6003C2F2A /* OverViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B79D302CCCA6003C2F2A /* OverViewItem.swift */; };
 		41A3B7A0302CCF47003C2F2A /* OverViewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B79F302CCF47003C2F2A /* OverViewCardView.swift */; };
 		41A3B7A2302CD010003C2F2A /* JobDescriptionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B7A1302CD010003C2F2A /* JobDescriptionCardView.swift */; };
@@ -79,6 +77,15 @@
 		41AD901E3016229900BDFDA0 /* ReportsInterviewSessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD901D3016229900BDFDA0 /* ReportsInterviewSessionDTO.swift */; };
 		41AD9020301623CC00BDFDA0 /* CurrentUserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD901F301623CC00BDFDA0 /* CurrentUserProvider.swift */; };
 		41AD90223016260600BDFDA0 /* Date+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD90213016260600BDFDA0 /* Date+Formatting.swift */; };
+		41AEC130302DCF01000EC6CE /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 41AEC12F302DCF01000EC6CE /* Shimmer */; };
+		41AEC133302DCF15000EC6CE /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 41AEC132302DCF15000EC6CE /* Swinject */; };
+		41AEC135302DCFB9000EC6CE /* CoverLetterResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AEC134302DCFB9000EC6CE /* CoverLetterResponseDTO.swift */; };
+		41AEC137302DCFCD000EC6CE /* CoverLetterDTO+Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AEC136302DCFCD000EC6CE /* CoverLetterDTO+Mapper.swift */; };
+		41AEC139302DCFE3000EC6CE /* CoverLetterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AEC138302DCFE3000EC6CE /* CoverLetterEntity.swift */; };
+		41AEC13B302DCFF0000EC6CE /* GenerateCoverLetterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AEC13A302DCFF0000EC6CE /* GenerateCoverLetterUseCase.swift */; };
+		41AEC13F302DD015000EC6CE /* CoverLetterEntity+UIMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AEC13C302DD015000EC6CE /* CoverLetterEntity+UIMapper.swift */; };
+		41AEC140302DD015000EC6CE /* JobEntity+UIMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AEC13D302DD015000EC6CE /* JobEntity+UIMapper.swift */; };
+		41AEC141302DD015000EC6CE /* JobMatchEntity+UIMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AEC13E302DD015000EC6CE /* JobMatchEntity+UIMapper.swift */; };
 		41B138A13025EFAB00D1D053 /* PageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B138A03025EFAA00D1D053 /* PageResponse.swift */; };
 		41B138A33025EFE300D1D053 /* PaginatedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B138A23025EFE300D1D053 /* PaginatedResult.swift */; };
 		41B138A53025F00100D1D053 /* PaginationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B138A43025F00100D1D053 /* PaginationInfo.swift */; };
@@ -496,6 +503,13 @@
 		41AD901D3016229900BDFDA0 /* ReportsInterviewSessionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsInterviewSessionDTO.swift; sourceTree = "<group>"; };
 		41AD901F301623CC00BDFDA0 /* CurrentUserProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserProvider.swift; sourceTree = "<group>"; };
 		41AD90213016260600BDFDA0 /* Date+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatting.swift"; sourceTree = "<group>"; };
+		41AEC134302DCFB9000EC6CE /* CoverLetterResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverLetterResponseDTO.swift; sourceTree = "<group>"; };
+		41AEC136302DCFCD000EC6CE /* CoverLetterDTO+Mapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoverLetterDTO+Mapper.swift"; sourceTree = "<group>"; };
+		41AEC138302DCFE3000EC6CE /* CoverLetterEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverLetterEntity.swift; sourceTree = "<group>"; };
+		41AEC13A302DCFF0000EC6CE /* GenerateCoverLetterUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateCoverLetterUseCase.swift; sourceTree = "<group>"; };
+		41AEC13C302DD015000EC6CE /* CoverLetterEntity+UIMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoverLetterEntity+UIMapper.swift"; sourceTree = "<group>"; };
+		41AEC13D302DD015000EC6CE /* JobEntity+UIMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JobEntity+UIMapper.swift"; sourceTree = "<group>"; };
+		41AEC13E302DD015000EC6CE /* JobMatchEntity+UIMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JobMatchEntity+UIMapper.swift"; sourceTree = "<group>"; };
 		41B138A03025EFAA00D1D053 /* PageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageResponse.swift; sourceTree = "<group>"; };
 		41B138A23025EFE300D1D053 /* PaginatedResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatedResult.swift; sourceTree = "<group>"; };
 		41B138A43025F00100D1D053 /* PaginationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationInfo.swift; sourceTree = "<group>"; };
@@ -843,9 +857,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41A3B79C302CC6E7003C2F2A /* Shimmer in Frameworks */,
+				41AEC130302DCF01000EC6CE /* Shimmer in Frameworks */,
 				41BFB979302B71B20010C447 /* Shimmer in Frameworks */,
-				41A3B799302CC6D6003C2F2A /* Swinject in Frameworks */,
+				41AEC133302DCF15000EC6CE /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -888,6 +902,7 @@
 		414B4BD0302B512900B66FA7 /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
+				41AEC134302DCFB9000EC6CE /* CoverLetterResponseDTO.swift */,
 				414B4BD4302B534F00B66FA7 /* JobDTO.swift */,
 				414B4BD6302B539700B66FA7 /* JobDetailsResponseDTO.swift */,
 				41A3B78F302CA915003C2F2A /* JobMatchResponseDTO.swift */,
@@ -933,6 +948,7 @@
 		414B4BE1302B55A800B66FA7 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				41AEC138302DCFE3000EC6CE /* CoverLetterEntity.swift */,
 				414B4BE2302B55BB00B66FA7 /* JobEntity.swift */,
 				41A3B791302CAA63003C2F2A /* JobMatchEntity.swift */,
 			);
@@ -942,6 +958,7 @@
 		414B4BE4302B563000B66FA7 /* Mappers */ = {
 			isa = PBXGroup;
 			children = (
+				41AEC136302DCFCD000EC6CE /* CoverLetterDTO+Mapper.swift */,
 				414B4BE5302B563D00B66FA7 /* JobDTO+Mapper.swift */,
 				41A3B793302CAAAB003C2F2A /* JobMatch+Mapper.swift */,
 			);
@@ -951,6 +968,7 @@
 		414B4BE7302B573D00B66FA7 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				41AEC13A302DCFF0000EC6CE /* GenerateCoverLetterUseCase.swift */,
 				414B4BE8302B579000B66FA7 /* GetJobByURLUseCase.swift */,
 				41A3B795302CAC90003C2F2A /* ScoreCVAgainstJobUseCase.swift */,
 			);
@@ -971,6 +989,9 @@
 				CE3F0AF5302B766000EF10EB /* JobDescriptionModel.swift */,
 				41897C6D3028B17700654888 /* JobMatchModels.swift */,
 				41BFB984302B7B420010C447 /* JobPosting.swift */,
+				41AEC13C302DD015000EC6CE /* CoverLetterEntity+UIMapper.swift */,
+				41AEC13D302DD015000EC6CE /* JobEntity+UIMapper.swift */,
+				41AEC13E302DD015000EC6CE /* JobMatchEntity+UIMapper.swift */,
 				41A3B783302C9D44003C2F2A /* CoverLetterModels.swift */,
 			);
 			path = UIModel;
@@ -2781,8 +2802,8 @@
 			name = "Career-Pilot-iOS";
 			packageProductDependencies = (
 				612EEDF13018F55000E6733E /* Shimmer */,
-				41A3B798302CC6D6003C2F2A /* Swinject */,
-				41A3B79B302CC6E7003C2F2A /* Shimmer */,
+				41AEC12F302DCF01000EC6CE /* Shimmer */,
+				41AEC132302DCF15000EC6CE /* Swinject */,
 			);
 			productName = "Career-Pilot-iOS";
 			productReference = D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */;
@@ -2857,8 +2878,8 @@
 			);
 			mainGroup = D93938D53004064400CF4372;
 			packageReferences = (
-				41A3B797302CC6D6003C2F2A /* XCRemoteSwiftPackageReference "swinject" */,
-				41A3B79A302CC6E7003C2F2A /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */,
+				41AEC12E302DCF01000EC6CE /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */,
+				41AEC131302DCF15000EC6CE /* XCRemoteSwiftPackageReference "swinject" */,
 			);
 			productRefGroup = D93938DF3004064400CF4372 /* Products */;
 			projectDirPath = "";
@@ -2926,6 +2947,7 @@
 				612EEDF630194B7000E6733E /* SubscribitonsPriceDTO.swift in Sources */,
 				41C6A23E30083FDB0035EFBF /* PhoneEntryView.swift in Sources */,
 				41AD901930161FAA00BDFDA0 /* ReportsUIMapping.swift in Sources */,
+				41AEC139302DCFE3000EC6CE /* CoverLetterEntity.swift in Sources */,
 				D9868B41300FD22600B84CD6 /* SpeechRecognitionService.swift in Sources */,
 				D95C3BBC300E4AC60042785F /* SpeechPlaybackService.swift in Sources */,
 				CEE62A95300929830071F076 /* ProgressCard.swift in Sources */,
@@ -2955,6 +2977,7 @@
 				414B4BD5302B534F00B66FA7 /* JobDTO.swift in Sources */,
 				618C2A03301461F30099BF69 /* CheckoutRemoteDataSource.swift in Sources */,
 				41BC7740300D3D1800E89C3F /* StatCard.swift in Sources */,
+				41AEC137302DCFCD000EC6CE /* CoverLetterDTO+Mapper.swift in Sources */,
 				41AD8FED301613D300BDFDA0 /* ReportsEndpoint.swift in Sources */,
 				41AD901630161EFA00BDFDA0 /* SessionDetailViewModel.swift in Sources */,
 				41BC7728300D18DC00E89C3F /* RadarGridShape.swift in Sources */,
@@ -3000,6 +3023,7 @@
 				D9B614F9300D1CF700552F85 /* OnBordingRepo.swift in Sources */,
 				41AD900B30161DA200BDFDA0 /* LoadSessionsUseCase.swift in Sources */,
 				6117C031300FBCF900CABEC6 /* Validation.swift in Sources */,
+				41AEC135302DCFB9000EC6CE /* CoverLetterResponseDTO.swift in Sources */,
 				41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */,
 				6161D86E301585E800098A0C /* RefreshUserData.swift in Sources */,
 				41BE1A6E300BF0810033D1B5 /* OnBoardingUser.swift in Sources */,
@@ -3148,6 +3172,7 @@
 				41AD8FF530161A8900BDFDA0 /* QuestionScore.swift in Sources */,
 				CEB6221130103D2600027035 /* UserLocalDataSource.swift in Sources */,
 				41BC7734300D347E00E89C3F /* SessionHistoryView.swift in Sources */,
+				41AEC13F302DD015000EC6CE /* CoverLetterEntity+UIMapper.swift in Sources */,
 				616D8482301B3B9B0003CF76 /* CvUploadSheet.swift in Sources */,
 				41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */,
 				CEA4C08E3014676600CB5DD3 /* CareerCardSkeletonView.swift in Sources */,
@@ -3170,6 +3195,7 @@
 				D95C3BCF300EA1C00042785F /* SubmitingAnswerView.swift in Sources */,
 				D98A79773008E19900DFDC6B /* TrackChip.swift in Sources */,
 				D9A28584300A6CC300ABB5BD /* UserDataRepoImp.swift in Sources */,
+				41AEC13B302DCFF0000EC6CE /* GenerateCoverLetterUseCase.swift in Sources */,
 				41D69D16300A6CF100294D94 /* User.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
 				D970C9E6301566B3002F6269 /* UploadFileResponseDTO.swift in Sources */,
@@ -3199,6 +3225,7 @@
 				41B138A33025EFE300D1D053 /* PaginatedResult.swift in Sources */,
 				61970B7B30114F0F009D7E58 /* UserSessions.swift in Sources */,
 				D957B3033017EC5000B0562A /* CheckOutView.swift in Sources */,
+				41AEC141302DD015000EC6CE /* JobMatchEntity+UIMapper.swift in Sources */,
 				616320D03010918200F417C9 /* GetUserData.swift in Sources */,
 				D9B614EE300CF50D00552F85 /* DIContainer+Services.swift in Sources */,
 				61F33936301395DC00C94B89 /* Items.swift in Sources */,
@@ -3235,6 +3262,7 @@
 				D9B614EA300CF4A100552F85 /* DIContainer+UseCases.swift in Sources */,
 				CEC5AECC302818EC000B5BDC /* InterviewsView.swift in Sources */,
 				D920C24D300EFEC800AB7317 /* SessionHeader.swift in Sources */,
+				41AEC140302DD015000EC6CE /* JobEntity+UIMapper.swift in Sources */,
 				D999D5AD301130B300CF606B /* ApiRequestes.swift in Sources */,
 				6182BB4F300C519B001157B8 /* ProfilePhoto.swift in Sources */,
 				41D69D50300B4A2200294D94 /* LoadSessionUseCase.swift in Sources */,
@@ -3634,15 +3662,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		41A3B797302CC6D6003C2F2A /* XCRemoteSwiftPackageReference "swinject" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/swinject/swinject";
-			requirement = {
-				kind = exactVersion;
-				version = 2.8.4;
-			};
-		};
-		41A3B79A302CC6E7003C2F2A /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */ = {
+		41AEC12E302DCF01000EC6CE /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/markiv/swiftui-Shimmer";
 			requirement = {
@@ -3650,18 +3670,26 @@
 				version = 1.3.0;
 			};
 		};
+		41AEC131302DCF15000EC6CE /* XCRemoteSwiftPackageReference "swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swinject/swinject";
+			requirement = {
+				kind = exactVersion;
+				version = 2.8.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		41A3B798302CC6D6003C2F2A /* Swinject */ = {
+		41AEC12F302DCF01000EC6CE /* Shimmer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 41A3B797302CC6D6003C2F2A /* XCRemoteSwiftPackageReference "swinject" */;
-			productName = Swinject;
-		};
-		41A3B79B302CC6E7003C2F2A /* Shimmer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 41A3B79A302CC6E7003C2F2A /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */;
+			package = 41AEC12E302DCF01000EC6CE /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */;
 			productName = Shimmer;
+		};
+		41AEC132302DCF15000EC6CE /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41AEC131302DCF15000EC6CE /* XCRemoteSwiftPackageReference "swinject" */;
+			productName = Swinject;
 		};
 		612EEDF13018F55000E6733E /* Shimmer */ = {
 			isa = XCSwiftPackageProductDependency;
