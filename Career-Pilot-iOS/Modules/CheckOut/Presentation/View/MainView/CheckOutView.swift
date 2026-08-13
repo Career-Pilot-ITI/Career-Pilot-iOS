@@ -63,7 +63,6 @@ struct CheckOutView: View {
             
             Text("PAYMENT METHOD")
                 .font(.size14Semibold)
-                .foregroundColor(.gray400)
             
             Spacer().frame(height: Spacing.s8)
             
@@ -74,7 +73,6 @@ struct CheckOutView: View {
             payButton
         }
         .padding(.horizontal, Spacing.s20)
-        .background(Color.gray100)
     }
     
     @ViewBuilder
@@ -95,7 +93,7 @@ struct CheckOutView: View {
                     .padding(.vertical, 16)
             }
         }
-        .background(Capsule().fill(Color.orange))
+        .background(Capsule().fill(Color.primary))
         .disabled(paymentVM.phase == .creatingCheckout)
     }
     

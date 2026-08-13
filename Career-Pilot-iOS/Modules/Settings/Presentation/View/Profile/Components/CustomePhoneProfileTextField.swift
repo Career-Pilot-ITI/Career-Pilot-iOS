@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CustomePhoneProfileTextField: View {
     var icon : String
+    @Binding var phoneNumber: String
     let title: String
     var body: some View {
         HStack(spacing:12){
@@ -18,7 +19,7 @@ struct CustomePhoneProfileTextField: View {
                     .font(.caption.bold())
                     .foregroundColor(.gray400)
                 HStack{
-                    Text("01554132837").font(.size12Bold).foregroundColor(.gray400)
+                    Text(phoneNumber).font(.size12Bold).foregroundColor(.gray400)
                     Spacer()
                     Text("VERIFIED")
                         .font(.size12Medium)
@@ -33,7 +34,7 @@ struct CustomePhoneProfileTextField: View {
                 Spacer().frame(height: Spacing.s8)
                 Divider()
                     .frame(maxWidth: 210)
-                    .foregroundColor(Color.gray400)
+                    .background(Color.gray400)
             }
             Spacer()
             Image("lock")

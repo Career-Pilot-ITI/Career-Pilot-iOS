@@ -33,7 +33,7 @@ struct AccountSettingsView: View {
        var body: some View {
            VStack(spacing: 0) {
                ForEach(items.indices, id: \.self) { index in
-                   SettingsCard(leadingIcon: items[index].icon, title: items[index].title, subtitle: items[index].subtitle).onTapGesture(perform: {
+                   SettingsCard(leadingIcon: items[index].icon, title: items[index].title, subtitle: items[index].subtitle).contentShape(Rectangle()).onTapGesture(perform: {
                        coordinator.push(items[index].route)
                    })
                    
@@ -46,7 +46,7 @@ struct AccountSettingsView: View {
                    .padding(.vertical, Spacing.s8)
                    .background(
                        RoundedRectangle(cornerRadius: Radius.r24)
-                           .fill(Color.white)
+                        .fill(Color.background.opacity(0.8))
                    )
        }
 }

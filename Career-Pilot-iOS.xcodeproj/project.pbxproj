@@ -107,6 +107,8 @@
 		41D69D63300B553F00294D94 /* Career_Pilot_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41D69D60300B54DE00294D94 /* Career_Pilot_iOS.xcdatamodeld */; };
 		6103DA3C301A228E008BC8BF /* UpdateUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6103DA3B301A228E008BC8BF /* UpdateUserData.swift */; };
 		6103DA3E301ABF78008BC8BF /* AvatarUploadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6103DA3D301ABF78008BC8BF /* AvatarUploadDTO.swift */; };
+		611259E93028E74D00C5E9E7 /* ProfileValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611259E83028E74D00C5E9E7 /* ProfileValidationError.swift */; };
+		611259EC3028E8B800C5E9E7 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611259EB3028E8B800C5E9E7 /* Validator.swift */; };
 		6117C02F300F9FD700CABEC6 /* StringsExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6117C02E300F9FD700CABEC6 /* StringsExtenstion.swift */; };
 		6117C031300FBCF900CABEC6 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6117C030300FBCF900CABEC6 /* Validation.swift */; };
 		612EEDE63018E96100E6733E /* UserDataRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A6F300BF0940033D1B5 /* UserDataRepo.swift */; };
@@ -177,6 +179,7 @@
 		61970B8830115725009D7E58 /* SubscriptionPlans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61970B8730115725009D7E58 /* SubscriptionPlans.swift */; };
 		61970B8E30115BE2009D7E58 /* CoinPack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61970B8D30115BE2009D7E58 /* CoinPack.swift */; };
 		61970B9030115C5F009D7E58 /* CoinsPackViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61970B8F30115C5F009D7E58 /* CoinsPackViewData.swift */; };
+		619B670A3029261900BAFA09 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 619B67093029261900BAFA09 /* Swinject */; };
 		61AD45A6300D608D00B70AFA /* SubscribtionCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AD45A5300D608D00B70AFA /* SubscribtionCheckoutView.swift */; };
 		61B48C19301A1384002AEAC9 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B48C18301A1384002AEAC9 /* ProfileViewModel.swift */; };
 		61D309163025AF1E0072734C /* SaveUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D309153025AF1E0072734C /* SaveUserData.swift */; };
@@ -474,6 +477,8 @@
 		41D69D61300B54DE00294D94 /* Career_Pilot_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Career_Pilot_iOS.xcdatamodel; sourceTree = "<group>"; };
 		6103DA3B301A228E008BC8BF /* UpdateUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserData.swift; sourceTree = "<group>"; };
 		6103DA3D301ABF78008BC8BF /* AvatarUploadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarUploadDTO.swift; sourceTree = "<group>"; };
+		611259E83028E74D00C5E9E7 /* ProfileValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileValidationError.swift; sourceTree = "<group>"; };
+		611259EB3028E8B800C5E9E7 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		6117C02E300F9FD700CABEC6 /* StringsExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsExtenstion.swift; sourceTree = "<group>"; };
 		6117C030300FBCF900CABEC6 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		6124908E3014ED98000401CF /* PaymentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentState.swift; sourceTree = "<group>"; };
@@ -1048,6 +1053,14 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		611259EA3028E8A600C5E9E7 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				611259EB3028E8B800C5E9E7 /* Validator.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
 		6161D862301539EB00098A0C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1429,6 +1442,7 @@
 				61970B7730114ED8009D7E58 /* LoadStates.swift */,
 				61F33935301395DC00C94B89 /* Items.swift */,
 				61F33937301397A800C94B89 /* UserCard.swift */,
+				611259E83028E74D00C5E9E7 /* ProfileValidationError.swift */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -2352,6 +2366,7 @@
 		D9C187AB30065F6800BFF8E9 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				611259EA3028E8A600C5E9E7 /* Validation */,
 				61970B7930114EFF009D7E58 /* Sessions */,
 				6182BB50300C662C001157B8 /* Presentation */,
 				41D69D21300A77C500294D94 /* Domain */,
@@ -2753,6 +2768,7 @@
 				41BC7732300D31C900E89C3F /* SessionView.swift in Sources */,
 				41BC7752300D9A8D00E89C3F /* AppState.swift in Sources */,
 				61970B8E30115BE2009D7E58 /* CoinPack.swift in Sources */,
+				611259EC3028E8B800C5E9E7 /* Validator.swift in Sources */,
 				CEE62A83300910E90071F076 /* CustomNavigationBar.swift in Sources */,
 				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
 				CEA4C08A30145B0900CB5DD3 /* TrackInterviewCard.swift in Sources */,
@@ -2797,6 +2813,7 @@
 				41D69D12300A6CB100294D94 /* VerifyOTPResult.swift in Sources */,
 				6182BB55300C67DF001157B8 /* PhotoPicker.swift in Sources */,
 				D9BA3474300ED4BF0058D6E6 /* PracticeSessionViewModelFactory.swift in Sources */,
+				611259E93028E74D00C5E9E7 /* ProfileValidationError.swift in Sources */,
 				D9B614EC300CF50000552F85 /* DIContainer+ViewModels.swift in Sources */,
 				41AD9020301623CC00BDFDA0 /* CurrentUserProvider.swift in Sources */,
 				D970C9EB301569F8002F6269 /* UserDataEndPoint.swift in Sources */,
@@ -3129,6 +3146,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Career-Pilot-iOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Career Pilot";
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app need the camera to allow u take a photo";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to the microphone to record your voice.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to transcribe your interview answers.";
@@ -3160,6 +3178,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Career-Pilot-iOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Career Pilot";
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app need the camera to allow u take a photo";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to the microphone to record your voice.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to transcribe your interview answers.";

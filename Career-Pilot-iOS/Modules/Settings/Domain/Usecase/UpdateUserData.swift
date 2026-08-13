@@ -16,10 +16,11 @@ class UpdateUserData {
     
     func execute(imagUrl: Data?, updateUserProfile: UserSettingsDomain) async throws {
         var mutableUser = updateUserProfile
-        
+        try ProfileValidator.validate(updateUserProfile)
         do {
         
             if let imagUrl = imagUrl {
+                print("The image url is \(imagUrl)")
                 do {
                     let response = try await repo.updateUserProfileAvatar(
                         avatarUploadRequestDTO: AvatarUploadDTO(

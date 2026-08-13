@@ -30,7 +30,7 @@ extension DIContainer{
         
         //3) UpdateProfileUseCase
         container.register(UpdateProfileUseCase.self) { r in
-            UpdateProfileUseCase(onBordingRepo: r.resolve(OnBordingRepo.self)!)
+            UpdateProfileUseCase(onBordingRepo: r.resolve(OnBordingRepo.self)!, settingsRepo: r.resolve(SettingsRepoImp.self)!)
         }
         
         container.register(SaveUserUseCase.self) { r in

@@ -24,14 +24,14 @@ struct CountryPickerSheet: View {
                         Text(country.name)
                         Spacer()
                         Text(country.dialCode)
-                            .foregroundColor(AppColors.secondaryText)
+                            .foregroundColor(country == selected ? Color.primary :AppColors.secondaryText)
                         if country == selected {
                             Image(systemName: "checkmark")
-                                .foregroundColor(AppColors.accent)
+                                .foregroundColor(Color.primary)
                         }
                     }
                 }
-                .foregroundColor(AppColors.primaryText)
+                .foregroundColor(country == selected ? Color.primary :AppColors.secondaryText)
             }
             .navigationTitle(AppStrings.PhoneField.selectCountry)
             .toolbar {

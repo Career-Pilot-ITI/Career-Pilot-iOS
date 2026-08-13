@@ -63,7 +63,7 @@ struct InterviewsView: View {
     }
 
 }
-
-#Preview {
-    InterviewsView()
-}
+//
+//#Preview {
+//    InterviewsView()
+//}

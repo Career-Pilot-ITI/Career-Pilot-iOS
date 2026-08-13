@@ -37,28 +37,45 @@ struct SessionView: View {
 }
 
 
-struct SessionFeedBackView: View{
+struct SessionFeedBackView: View {
     var feedback: InterviewFeedback
     var sessionId: Int
-    
-    var body: some View{
-        ScrollView {
-            VStack(spacing: Spacing.s16) {
-                OverallScoreCardView(
-                    score: Int(feedback.overallScore),
-                    performanceLabel: performanceLabel(for: Double(feedback.overallScore)),
-                    percentileText: "Top 28% of users this week"
-                )
-                PerformanceBreakdownView(metrics: feedback.toRadarMetrics())
-                QuestionBreakDownView(sessionId: sessionId)
-                VStack(alignment: .leading, spacing: Spacing.s12) {
-                    Text("Coaching Suggestions")
-                        .font(Font.size15Bold)
-                        .foregroundStyle(Color.primaryNavy)
-                    CoachingSuggestionsListView(suggestions: feedback.toCoachingSuggestions())
-                }
+    var onBack: (() -> Void)? = nil
+
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        VStack {
+            HStack {
+                BackButton(text: "Back")
+                    .onTapGesture {
+                        if let onBack {
+                            onBack()
+                        } else {
+                            dismiss()
+                        }
+                    }
+                Spacer()
             }
-            .padding(.top, 16)
+            
+            ScrollView {
+                VStack(spacing: Spacing.s16) {
+                    OverallScoreCardView(
+                        score: Int(feedback.overallScore),
+                        performanceLabel: performanceLabel(for: Double(feedback.overallScore)),
+                        percentileText: "Top 28% of users this week"
+                    )
+                    PerformanceBreakdownView(metrics: feedback.toRadarMetrics())
+                    QuestionBreakDownView(sessionId: sessionId)
+                    VStack(alignment: .leading, spacing: Spacing.s12) {
+                        Text("Coaching Suggestions")
+                            .font(Font.size15Bold)
+                            .foregroundStyle(Color.primaryNavy)
+                        CoachingSuggestionsListView(suggestions: feedback.toCoachingSuggestions())
+                    }
+                }
+                .padding(.top, 16)
+            }
         }
         .scrollIndicators(.hidden)
         .padding(.horizontal, 24)

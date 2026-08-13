@@ -28,19 +28,19 @@ struct WaitingStateView: View {
 
                 Text(title)
                     .font(.title2.bold())
-                    .foregroundStyle(.white)
+//                    .foregroundStyle(.white)
 
                 if let subtitle {
 
                     VStack(spacing: Spacing.s8) {
                         Text(subtitle)
                             .font(.subheadline)
-                            .foregroundStyle(.white.opacity(0.65))
+//                            .foregroundStyle(.white.opacity(0.65))
                             .multilineTextAlignment(.center)
                         if let phoneNumber {
                             Text(phoneNumber)
                                 .font(.size14Semibold)
-                                .foregroundStyle(.white)
+//                                .foregroundStyle(.white)
                                 .multilineTextAlignment(.center)
                         }
                     }

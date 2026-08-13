@@ -86,8 +86,15 @@ struct SkillsInputView: View {
     
 }
 
-//struct SkillsInputView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SkillsInputView(selectedSkills: ["Flutter"], suggestedSkills: ["Mobile development" , "Python" , "Docker" , "Git" , "System design" ] )
-//    }
-//}
+#Preview {
+    struct ContainerView: View {
+        @State private var selectedSkills: [String] = ["Flutter", "SwiftUI"]
+
+        var body: some View {
+            SkillsInputView(selectedSkills: $selectedSkills)
+                .padding()
+        }
+    }
+
+    return ContainerView()
+}
