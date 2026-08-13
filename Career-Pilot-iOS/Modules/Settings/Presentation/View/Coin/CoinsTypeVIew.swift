@@ -16,12 +16,12 @@ struct CoinsTypeVIew: View {
     var body: some View {
         VStack(alignment:.leading){
             HStack(spacing:8){
-                Image("coin").font(.size24Semibold).foregroundColor(.primaryNavy)
-                Text("\(coinNumber)").font(.size24Semibold).foregroundColor(.primaryNavy)
-                Text("coins").font(.size16Bold).foregroundColor(.primaryNavy)
+                Image("coin").font(.size24Semibold).foregroundColor(.primary)
+                Text("\(coinNumber)").font(.size24Semibold)
+                Text("coins").font(.size16Bold)
                 Spacer()
-                Text("EGP").font(.size18Medium).foregroundColor(isClicked ? Color.activeColour : Color.primaryNavy )
-                Text("\(price)").font(.size18Medium).foregroundColor(isClicked ? Color.activeColour : Color.primaryNavy)
+                Text("EGP").font(.size18Medium).foregroundColor(isClicked ? Color.primary : Color.gray200 )
+                Text("\(price)").font(.size18Medium).foregroundColor(isClicked ? Color.primary : Color.gray200)
             }
             Spacer().frame(height:Spacing.s4)
             HStack{
@@ -37,11 +37,11 @@ struct CoinsTypeVIew: View {
             .background(
                 RoundedRectangle(cornerRadius: Radius.r20)
                    
-                    .fill(isClicked ? Color.activeColour.opacity(0.06) : Color.white)
+                    .fill(isClicked ? Color.primary.opacity(0.06) : Color.gray200.opacity(0.06))
                     .overlay(
                         RoundedRectangle(cornerRadius: Radius.r20)
                            
-                            .stroke(isClicked ? Color.activeColour : Color.gray200, lineWidth: 1)
+                            .stroke(isClicked ? Color.primary : Color.gray200, lineWidth: 1)
                     )
             )
             .onTapGesture {
