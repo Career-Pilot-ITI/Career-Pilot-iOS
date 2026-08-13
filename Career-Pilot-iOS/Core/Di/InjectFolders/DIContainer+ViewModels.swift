@@ -141,7 +141,7 @@ extension DIContainer{
                 generateCoverLetterUseCase: r.resolve(GenerateCoverLetterUseCase.self)!,
                 userRepo: r.resolve(UserDataRepo.self)!
             )
-        }
+        }.inObjectScope(.container)
 
     }
 } 

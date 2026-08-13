@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ATSJobMatchView: View {
     @EnvironmentObject var coordinator: AppCoordinator<HomeRoute>
+    @EnvironmentObject var viewModel: ATSViewModel
     @State private var jobLink: String = ""
-    @StateObject private var viewModel: ATSViewModel = DIContainer.shared.container.resolve(ATSViewModel.self)!
 
     private var isCompareEnabled: Bool {
         !jobLink.trimmingCharacters(in: .whitespaces).isEmpty && viewModel.cvUploaded && !viewModel.isLoading
@@ -91,8 +91,6 @@ struct ATSJobMatchView: View {
                 await viewModel.isCvFound()
             }
         }
-        // Inject the ViewModel into the environment so all ATS child screens share it
-        .environmentObject(viewModel)
     }
 }
 

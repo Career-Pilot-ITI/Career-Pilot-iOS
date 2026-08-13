@@ -2,6 +2,7 @@ import SwiftUI
 
 struct MainTabBarView: View {
     @StateObject private var homeCoordinator: AppCoordinator<HomeRoute> = AppCoordinator<HomeRoute>()
+    @StateObject private var atsViewModel: ATSViewModel = DIContainer.shared.container.resolve(ATSViewModel.self)!
     var body: some View {
         TabView {
             // Tab 1: Home
@@ -38,7 +39,8 @@ struct MainTabBarView: View {
             .tabItem {
                 Label { Text("Home") } icon: { Image.AppIcon.home.renderingMode(.template) }
             }
-            .environmentObject(homeCoordinator) 
+            .environmentObject(homeCoordinator)
+            .environmentObject(atsViewModel)
 
             
             // Tab 2: Reports
