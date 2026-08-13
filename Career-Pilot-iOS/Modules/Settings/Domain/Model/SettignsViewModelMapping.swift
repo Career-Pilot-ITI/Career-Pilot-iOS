@@ -24,7 +24,7 @@ extension UserSettingsDomain {
             cvUrl: cvUrl,
             username: username,
             avatarURL: avatarURL,
-            targetRole: targetRole,
+            targetRole: targetRole ?? "Developer sw",
             industry: industry,
             trackName: trackName,
             trackId: trackId

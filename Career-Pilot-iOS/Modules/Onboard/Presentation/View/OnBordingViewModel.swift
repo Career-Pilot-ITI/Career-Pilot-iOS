@@ -34,7 +34,6 @@ class OnBordingViewModel: ObservableObject {
     @Published var tittleErrorMessage : String? = nil
     @Published var exprinceLevelErrorMessage : String? = nil
     @Published var fullNameErrorMessage : String? = nil
-    
     //For ChooseTrack View
     @Published var selectedTrackInfo: SelectedTrackViewInfo = SelectedTrackViewInfo()
     

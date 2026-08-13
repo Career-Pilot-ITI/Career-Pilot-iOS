@@ -12,12 +12,9 @@ import Combine
 final class SettingsViewModel: ObservableObject {
     
     @Published var loadState: LoadState<UserModelSettingsView> = .idle
-
     private let logout: LogoutUsecase
     private let userSession: UserSession
-
     private var cancellables = Set<AnyCancellable>()
-
     init(
         userSession: UserSession,
         logout: LogoutUsecase

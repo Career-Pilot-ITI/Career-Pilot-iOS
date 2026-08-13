@@ -113,10 +113,10 @@ class SettingsRepoImp : SettingsRepo  {
     
     func logout() async throws{
         do{
+          
+            try await remote.logoutUser()
             try await local.deleteUserData()
             try authToken.clear()
-            try await remote.logoutUser()
-            
         }catch{
             print("error in the repor for the logout \(error)")
             throw error
