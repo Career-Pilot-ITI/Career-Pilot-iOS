@@ -166,18 +166,24 @@ private extension HomeView {
                 ForEach(
                     Array(viewModel.recommendedInterviews.enumerated()),
                     id: \.offset
-                ) { index, item in
+                ) { index, track in
 
                     let assignedColor = cardColors[index % cardColors.count]
 
                     CareerCardView(
-                        iconName: item.iconName,
-                        title: item.title,
-                        tagText: item.tagText,
-                        durationText: item.durationText,
+                        iconName: track.iconName,
+                        title: track.title,
+                        tagText: track.tagText,
+                        durationText: track.durationText,
                         accentColor: assignedColor,
                         action: {
-                            print("Tapped on \(item.title)")
+                            print("Tapped on \(track.title)")
+                            coordinator.push(.interviewPrep(
+                                    trackName: track.title,
+                                    trackId: track.trackInterview.track.id,
+                                    interviewType: .classic
+                                )
+                            )
                         }
                     )
                 }

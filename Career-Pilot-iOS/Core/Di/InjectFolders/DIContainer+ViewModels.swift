@@ -33,7 +33,13 @@ extension DIContainer{
         // homeViewModel
         container.register(HomeViewModel.self){ r in
             HomeViewModel(
-                getCurrentUserUseCase: r.resolve(GetCurrentUserUseCaseProtocol.self)!
+                getCurrentUserUseCase: r.resolve(GetCurrentUserUseCaseProtocol.self)!, getAllTracksUseCase: r.resolve(GetAllTrackesUseCase.self)!
+            )
+        }
+        // RecommendedInterviewViewModel
+        container.register(InterviewsViewModel.self){ r in
+            InterviewsViewModel(
+                getAllTracksUseCase: r.resolve(GetAllTrackesUseCase.self)!
             )
         }
         

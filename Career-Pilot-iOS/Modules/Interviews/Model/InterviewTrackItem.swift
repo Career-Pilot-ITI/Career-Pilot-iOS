@@ -50,4 +50,9 @@ struct InterviewItem: Identifiable {
     let id = UUID()
     let trackInterview : InterviewTrack
     let level: InterviewLevel
+    
+    var iconName: String { trackInterview.iconName }
+    var title: String { trackInterview.track.title } 
+    var tagText: String { trackInterview.tag ?? level.rawValue }
+    var durationText: String { level.durationText }
 }

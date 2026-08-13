@@ -8,114 +8,53 @@
 import Foundation
 import SwiftUI
 
+enum RecommendedInterviewsViewStates {
+    case idle
+    case loading
+    case success
+    case error(String)
+}
+
+@MainActor
 final class InterviewsViewModel : ObservableObject {
     
-  @Published var searchText: String = ""
+    @Published var searchText: String = ""
+    @Published var tracksState: RecommendedInterviewsViewStates = .idle
 
-  @Published var interviewsMatchesYourSkills: [InterviewItem] = [
-        InterviewItem(
-            trackInterview: InterviewTrack(
-                track: Track(
-                    id: 1,
-                    title: "System Design",
-                    description: "Learn the fundamentals of designing scalable systems.",
-                    isActive: true
-                ),
-                iconName: "waveform.path.ecg",
-                iconColor: .gray600,
-                iconBackground: .primaryTealLight,
-                tag: "Matches: System Design",
-                tagColor: .primaryTeal
-            ),
-            level: .mid
-        ),
-
-        InterviewItem(
-            trackInterview: InterviewTrack(
-                track: Track(
-                    id: 2,
-                    title: "React",
-                    description: "Master React concepts, patterns, and best practices.",
-                    isActive: true
-                ),
-                iconName: "bolt.fill",
-                iconColor: .primary,
-                iconBackground: Color.primary.opacity(0.12),
-                tag: "Matches: React",
-                tagColor: .primary
-            ),
-            level: .mid
-        ),
-
-        InterviewItem(
-            trackInterview: InterviewTrack(
-                track: Track(
-                    id: 3,
-                    title: "AWS",
-                    description: "Explore cloud architecture and AWS services.",
-                    isActive: true
-                ),
-                iconName: "shield.fill",
-                iconColor: .successColour,
-                iconBackground: Color.successColour.opacity(0.15),
-                tag: "Matches: AWS",
-                tagColor: .successColour
-            ),
-            level: .senior
-        ),
-
-        InterviewItem(
-            trackInterview: InterviewTrack(
-                track: Track(
-                    id: 4,
-                    title: "TypeScript",
-                    description: "Improve your TypeScript knowledge and design patterns.",
-                    isActive: true
-                ),
-                iconName: "doc.text.fill",
-                iconColor: .blue,
-                iconBackground: Color.blue.opacity(0.12),
-                tag: "Matches: TypeScript",
-                tagColor: .blue
-            ),
-            level: .mid
-        ),
-
-        InterviewItem(
-            trackInterview: InterviewTrack(
-                track: Track(
-                    id: 5,
-                    title: "Behavioral",
-                    description: "Prepare for behavioral interviews using proven techniques.",
-                    isActive: true
-                ),
-                iconName: "star.fill",
-                iconColor: .primaryYellow,
-                iconBackground: Color.primaryYellow.opacity(0.2),
-                tag: "Top Rated",
-                tagColor: .activeColour
-            ),
-            level: .junior
-        ),
-
-        InterviewItem(
-            trackInterview: InterviewTrack(
-                track: Track(
-                    id: 5,
-                    title: "Behavioral",
-                    description: "Practice leadership and soft-skills interview questions.",
-                    isActive: true
-                ),
-                iconName: "rosette",
-                iconColor: .purple,
-                iconBackground: Color.purple.opacity(0.15),
-                tag: "Popular · Soft Skills",
-                tagColor: .purple
-            ),
-            level: .junior
-        )
-    ]
+    @Published var interviewsMatchesYourSkills: [InterviewItem] = []
     
+    private let getAllTracksUseCase: GetAllTrackesUseCase
+    
+    init(
+        getAllTracksUseCase: GetAllTrackesUseCase
+    ) {
+        self.getAllTracksUseCase = getAllTracksUseCase
+    }
+    
+    
+    func loadRecommendedInterviews() async {
+        tracksState = .loading
+
+        do {
+            let tracks = try await getAllTracksUseCase.execute(())
+            
+            let mappedItems = tracks.map { $0.toInterviewItem() }
+            
+            self.interviewsMatchesYourSkills = mappedItems
+            
+            self.interviewsMatchesYourSkills.forEach { item in
+                print("Loaded interview item: \(item.title) (\(item.level.rawValue))")
+            }
+            
+            tracksState = .success
+
+        } catch is CancellationError {
+            return
+
+        } catch {
+            tracksState = .error(error.localizedDescription)
+        }
+    }
     
     var filteredInterviews: [InterviewItem] {
         guard !searchText.isEmpty else {

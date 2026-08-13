@@ -1,5 +1,6 @@
 import SwiftUI
 
+@MainActor
 struct MainTabBarView: View {
     @StateObject private var homeCoordinator: AppCoordinator<HomeRoute> = AppCoordinator<HomeRoute>()
     var body: some View {

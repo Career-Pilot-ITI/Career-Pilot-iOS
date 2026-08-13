@@ -5,6 +5,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum HomeState {
     case idle
@@ -22,7 +23,7 @@ final class HomeViewModel: ObservableObject {
     @Published var totalSessions: Double = 3.0
 
     @Published private(set) var recentSessions: [SessionData] = []
-    @Published private(set) var recommendedInterviews: [CareerItem] = []
+    @Published private(set) var recommendedInterviews: [InterviewItem] = []
 
     @Published private(set) var user: User = .guest
 
@@ -36,13 +37,15 @@ final class HomeViewModel: ObservableObject {
     // MARK: - Dependencies
 
     private let getCurrentUserUseCase: GetCurrentUserUseCaseProtocol
-
+    private let getAllTracksUseCase: GetAllTrackesUseCase
     // MARK: - Initialization
 
     init(
-        getCurrentUserUseCase: GetCurrentUserUseCaseProtocol
+        getCurrentUserUseCase: GetCurrentUserUseCaseProtocol,
+        getAllTracksUseCase: GetAllTrackesUseCase
     ) {
         self.getCurrentUserUseCase = getCurrentUserUseCase
+        self.getAllTracksUseCase = getAllTracksUseCase
     }
 
     // MARK: - Home
@@ -121,35 +124,16 @@ final class HomeViewModel: ObservableObject {
         tracksState = .loading
 
         do {
-            try await simulateNetworkDelay(seconds:2)
-
-            recommendedInterviews = [
-                CareerItem(
-                    iconName: "bolt.fill",
-                    title: "React Deep Dive",
-                    tagText: "Matches: React",
-                    durationText: "~15 min"
-                ),
-                CareerItem(
-                    iconName: "swift",
-                    title: "SwiftUI Architecture",
-                    tagText: "Matches: iOS",
-                    durationText: "~20 min"
-                ),
-                CareerItem(
-                    iconName: "server.rack",
-                    title: "Node.js Microservices",
-                    tagText: "Matches: Backend",
-                    durationText: "~30 min"
-                ),
-                CareerItem(
-                    iconName: "paintbrush.fill",
-                    title: "Design Systems 101",
-                    tagText: "Matches: UI/UX",
-                    durationText: "~10 min"
-                )
-            ]
-
+            let tracks = try await getAllTracksUseCase.execute(())
+            
+            let mappedItems = tracks.map { $0.toInterviewItem() }
+            
+            self.recommendedInterviews = mappedItems
+            
+            self.recommendedInterviews.forEach { item in
+                print("Loaded interview item: \(item.title) (\(item.level.rawValue))")
+            }
+            
             tracksState = .success
 
         } catch is CancellationError {
