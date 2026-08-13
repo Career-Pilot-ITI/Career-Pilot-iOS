@@ -82,7 +82,7 @@ struct CareerCardSkeletonView: View {
         }
         .padding(Spacing.s24)
         .frame(width: 200, height: 250)
-        .background(Color.white)
+        .background(Color.background)
         .cornerRadius(Radius.r24)
         .shadow(color: Color.black.opacity(0.03), radius: Radius.r16, x: 0, y: 5)
         .overlay(

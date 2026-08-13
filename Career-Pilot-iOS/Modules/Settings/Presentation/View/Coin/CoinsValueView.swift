@@ -35,7 +35,7 @@ struct CoinsValueView: View {
                            onTap: { viewModel.select(pack) }
                        )
                        .shadow(
-                           color: viewModel.selectedID == pack.id ? Color.activeColour.opacity(0.08) : Color.black.opacity(0.18),
+                           color: viewModel.selectedID == pack.id ? Color.primary.opacity(0.08) : Color.black.opacity(0.18),
                            radius: 12,
                            x: 0,
                            y: 4

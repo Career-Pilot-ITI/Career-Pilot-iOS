@@ -6,12 +6,6 @@
 //
 
 import SwiftUI
-
-
-
-
-
-import SwiftUI
 import Shimmer
 
 struct ChoosePlanView: View {

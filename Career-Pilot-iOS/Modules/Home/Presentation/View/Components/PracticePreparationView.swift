@@ -30,17 +30,18 @@ struct PracticePreparationView: View {
                     Text("Cancel")
                         .font(.size16Medium)
                 }
-                .foregroundColor(Color(red: 0.2, green: 0.24, blue: 0.3))
+                .foregroundColor(.secondary)
             }
             .padding(.top, Spacing.s8)
             
+            // Header Tags
             HStack(spacing: Spacing.s12) {
                 Text(categoryText)
                     .font(.size14Semibold)
-                    .foregroundColor(Color(red: 0.2, green: 0.24, blue: 0.3))
+                    .foregroundColor(.primary)
                     .padding(.horizontal, Spacing.s12)
                     .padding(.vertical, Spacing.s8)
-                    .background(Color(.systemGray6))
+                    .background(Color(.tertiarySystemGroupedBackground))
                     .cornerRadius(Radius.r8)
                 
                 Text(metadataText)
@@ -52,16 +53,17 @@ struct PracticePreparationView: View {
                     .cornerRadius(Radius.r8)
             }
             
+            // Title Section
             VStack(alignment: .leading, spacing: Spacing.s8) {
                 Text(title)
                     .font(.size26Semibold)
-                    .foregroundColor(Color(red: 0.1, green: 0.12, blue: 0.2))
                 
                 Text(subtitle)
                     .font(.size16Regular)
                     .foregroundColor(.secondary)
             }
             
+            // Tips Card Container
             VStack(alignment: .leading, spacing: Spacing.s16) {
                 ForEach(Array(tips.enumerated()), id: \.offset) { index, tip in
                     HStack(alignment: .top, spacing: Spacing.s16) {
@@ -74,7 +76,6 @@ struct PracticePreparationView: View {
                         
                         Text(tip.text)
                             .font(.size16Medium)
-                            .foregroundColor(Color(red: 0.15, green: 0.18, blue: 0.25))
                             .fixedSize(horizontal: false, vertical: true)
                         
                         Spacer()
@@ -82,19 +83,20 @@ struct PracticePreparationView: View {
                     
                     if index < tips.count - 1 {
                         Divider()
-                            .background(Color(.systemGray6))
+                            .background(Color(.separator))
                     }
                 }
             }
             .padding(Spacing.s24)
-            .background(Color.white)
+            .background(Color(.secondarySystemGroupedBackground))
             .cornerRadius(Radius.r24)
-            .shadow(color: Color.black.opacity(0.03), radius: Radius.r16, x: 0, y: 5)
+            .shadow(color: Color.black.opacity(0.04), radius: Radius.r16, x: 0, y: 5)
             .overlay(
                 RoundedRectangle(cornerRadius: Radius.r24)
-                    .stroke(Color(.systemGray6), lineWidth: 1)
+                    .stroke(Color(.separator), lineWidth: 1)
             )
             
+            // Microphone Access Permission Bar
             HStack(spacing: Spacing.s16) {
                 ZStack {
                     RoundedRectangle(cornerRadius: Radius.r16)
@@ -109,11 +111,10 @@ struct PracticePreparationView: View {
                 VStack(alignment: .leading, spacing: Spacing.s4) {
                     Text("Microphone Access")
                         .font(.size16Bold)
-                        .foregroundColor(Color(red: 0.1, green: 0.12, blue: 0.2))
                     
-                    Text("Required to practice")
+                    Text(isMicrophoneGranted ? "Access Granted" : "Required to practice")
                         .font(.size14Medium)
-                        .foregroundColor(.red.opacity(0.8))
+                        .foregroundColor(isMicrophoneGranted ? .green : .red)
                 }
                 
                 Spacer()
@@ -123,16 +124,17 @@ struct PracticePreparationView: View {
                     .tint(accentColor)
             }
             .padding(Spacing.s16)
-            .background(Color.white)
+            .background(Color(.secondarySystemGroupedBackground))
             .cornerRadius(Radius.r20)
-            .shadow(color: Color.black.opacity(0.03), radius: Radius.r16, x: 0, y: 5)
+            .shadow(color: Color.black.opacity(0.04), radius: Radius.r16, x: 0, y: 5)
             .overlay(
                 RoundedRectangle(cornerRadius: Radius.r20)
-                    .stroke(Color(.systemGray6), lineWidth: 1)
+                    .stroke(Color(.separator), lineWidth: 1)
             )
             
             Spacer()
             
+            // Action CTA Button
             Button(action: onBegin) {
                 HStack(spacing: Spacing.s8) {
                     Image(systemName: "mic.fill")
@@ -143,14 +145,14 @@ struct PracticePreparationView: View {
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
                 .frame(height: 56)
-                .background(isMicrophoneGranted ? accentColor : Color(.systemGray4))
+                .background(isMicrophoneGranted ? .primary : Color(.systemGray4))
                 .cornerRadius(Radius.r16)
-                .shadow(color: isMicrophoneGranted ? accentColor.opacity(0.3) : Color.clear, radius: Radius.r12, x: 0, y: 4)
+                .shadow(color: isMicrophoneGranted ? .primary.opacity(0.3) : Color.clear, radius: Radius.r12, x: 0, y: 4)
             }
-            .disabled(!isMicrophoneGranted) 
+            .disabled(!isMicrophoneGranted)
             .padding(.bottom, Spacing.s16)
         }
         .padding(.horizontal, Spacing.s24)
-        .background(Color(.systemGroupedBackground))
+        .background(Color(.systemGroupedBackground).ignoresSafeArea())
     }
 }

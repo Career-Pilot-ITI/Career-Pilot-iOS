@@ -50,10 +50,15 @@ struct ProfileForm: View {
                 Divider().background(Color.gray400).frame(height: 4)
                 ExperienceLevelSelector(selected: $userData.experienceLevel)
 
+                CustomProfileTextField(icon: "experienceLevel", title: "EXPERIENCE LEVEL", text: $userData.experienceLevel)
 
                 Spacer().frame(height: Spacing.s20)
             }
-            Text("SKILLS DETECTED").font(.size14Semibold).foregroundColor(.gray400).frame(maxWidth: .infinity , alignment: .leading)
+            Text("SKILLS DETECTED")
+                .font(.size14Semibold)
+                .foregroundColor(.gray400)
+                .frame(maxWidth: .infinity , alignment: .leading)
+            
             if userData.cv == nil {
                 SkillsInputView(selectedSkills: skillNamesBinding)
             } else {
@@ -62,7 +67,7 @@ struct ProfileForm: View {
   
         }
         .padding([.vertical, .horizontal], Spacing.s20)
-        .foregroundColor(.lightBackGround)
+        .foregroundColor(.background)
     }
 
     @ViewBuilder
@@ -76,30 +81,32 @@ struct ProfileForm: View {
     }
 }
 
-//struct ProfileForm_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PreviewWrapper()
-//    }
-//    
-//    struct PreviewWrapper: View {
+//#Preview {
+//    struct ContainerView: View {
 //        @State private var userData = OnBoardingUser(
-//            email: "eyad@gmail.com",
-//            title: "Developer",
-//            experienceLevel: "Junior",
+//            email: "ahmed@example.com",
+//            title: "iOS Developer",
+//            avatarUrl: nil,
+//            avatarFileId: nil,
+//            gender: "Male",
+//            experienceLevel: "Mid-Level",
 //            skills: [
-//                Skill(skillName: "React", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: ""),
-//                Skill(skillName: "Node.js", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: ""),
-//                Skill(skillName: "TypeScript", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: ""),
-//                Skill(skillName: "Python", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: ""),
-//                Skill(skillName: "AWS", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: ""),
-//                Skill(skillName: "System Design", category: "", performanceScore: 0, timesAssessed: 0, lastAssessedAt: "")
+//                Skill(skillName: "Swift", category: "Mobile", performanceScore: 90, timesAssessed: 5, lastAssessedAt: "2026-08-01"),
+//                Skill(skillName: "SwiftUI", category: "Mobile", performanceScore: 85, timesAssessed: 4, lastAssessedAt: "2026-08-10")
 //            ],
-//            firstName: "Eyad",
-//            lastName: "Waleed"
+//            profileImageData: nil,
+//            firstName: "Ahmed",
+//            lastName: "El-Sayyad",
+//            cv: nil,
+//            selectedTrack:nil
 //        )
-//        
+//
 //        var body: some View {
-//            ProfileForm(userData: $userData)
+//            ScrollView {
+//                ProfileForm(userData: $userData)
+//            }
 //        }
 //    }
+//
+//    return ContainerView()
 //}

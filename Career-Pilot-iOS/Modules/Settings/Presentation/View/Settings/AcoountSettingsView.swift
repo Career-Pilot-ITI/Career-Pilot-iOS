@@ -46,7 +46,7 @@ struct AccountSettingsView: View {
                    .padding(.vertical, Spacing.s8)
                    .background(
                        RoundedRectangle(cornerRadius: Radius.r24)
-                           .fill(Color.white)
+                        .fill(Color.background.opacity(0.8))
                    )
        }
 }

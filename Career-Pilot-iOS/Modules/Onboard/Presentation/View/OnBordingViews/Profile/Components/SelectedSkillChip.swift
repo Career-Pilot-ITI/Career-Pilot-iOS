@@ -15,7 +15,7 @@ struct SelectedSkillChip: View {
         HStack(spacing: 6) {
             Text(text)
                 .font(.size12Semibold)
-                .foregroundColor(.primaryNavy)
+                .foregroundColor(.primary)
             
             Button(action: onRemove) {
                 Image(systemName: "xmark")
@@ -27,7 +27,7 @@ struct SelectedSkillChip: View {
         .padding(.vertical, 8)
         .background(
             Capsule()
-                .fill(Color.primaryNavy.opacity(0.08))
+                .fill(Color.primary.opacity(0.08))
         )
     }
 }

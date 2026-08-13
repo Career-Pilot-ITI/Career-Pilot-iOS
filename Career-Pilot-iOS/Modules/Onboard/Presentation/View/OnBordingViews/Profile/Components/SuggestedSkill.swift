@@ -19,12 +19,12 @@ struct SuggestedSkillChip: View {
                 Text(text)
                     .font(.subheadline.bold())
             }
-            .foregroundColor(.activeColour)
+            .foregroundColor(.primary)
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
             .background(
                 Capsule()
-                    .fill(Color.activeColour.opacity(0.08))
+                    .fill(Color.primary.opacity(0.08))
             )
         }
     }

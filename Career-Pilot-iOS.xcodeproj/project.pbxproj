@@ -3143,6 +3143,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Career-Pilot-iOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Career Pilot";
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app need the camera to allow u take a photo";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to the microphone to record your voice.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to transcribe your interview answers.";
@@ -3174,6 +3175,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Career-Pilot-iOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Career Pilot";
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app need the camera to allow u take a photo";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to the microphone to record your voice.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to transcribe your interview answers.";
