@@ -31,7 +31,6 @@ struct CareerCardView: View {
             // Title
             Text(title)
                 .font(.size20Bold)
-                .foregroundColor(Color(red: 0.1, green: 0.12, blue: 0.2))
                 .lineLimit(3)
             
             // Tag Pill
@@ -66,7 +65,7 @@ struct CareerCardView: View {
         }
         .padding(Spacing.s24)
         .frame(width: 200, height: 250)
-        .background(Color.white)
+        .background(Color.background)
         .cornerRadius(Radius.r24)
         .shadow(color: Color.black.opacity(0.05), radius: Radius.r16, x: 0, y: 5)
         .overlay(

@@ -15,7 +15,7 @@ struct PhoneEntryView: View {
        
     var body: some View {
         ZStack {
-            Color.darkBackGround.ignoresSafeArea()
+            Color.background.ignoresSafeArea()
             
             GeometryReader { geo in
                 VStack() {
@@ -24,11 +24,11 @@ struct PhoneEntryView: View {
                         barCount: 24,
                         maxHeight: 144
                     )
-                    .opacity(0.15)
+                    .opacity(0.16)
                     Spacer(minLength: geo.size.height * 0.74)
                     SoundWaveView(
                         barCount: 24,
-                        color: Color.activeColour,
+                        color: Color.primary,
                         maxHeight: 26
                     )
                     .opacity(0.4)
@@ -43,14 +43,13 @@ struct PhoneEntryView: View {
                         .foregroundColor(.white)
                         .background {
                             RoundedRectangle(cornerRadius: Radius.r14)
-                                .fill(Color.activeColour)
+                                .fill(Color.primary)
                                 .frame(width: 36, height: 36)
                                 
                         }
                     
                     Text("CareerPilot")
                         .font(.size18Bold)
-                        .foregroundColor(.white)
                 }
                 .padding(.top,24)
                 .padding(.bottom,40)
@@ -58,11 +57,10 @@ struct PhoneEntryView: View {
                 VStack(alignment: .leading,spacing: Spacing.s8) {
                     Text("Your AI Interview Coach Awaits")
                         .font(.size32Bold)
-                        .foregroundColor(.white)
                     
                     Text("Practice realistic interviews, get instant feedback, and land your dream role.")
                         .font(.size14Regular)
-                        .foregroundColor(Color.gray400)
+                        .foregroundColor(Color.gray600)
                 }
                 .padding(.bottom,36)
                 
@@ -91,7 +89,7 @@ struct PhoneEntryView: View {
                         
                         Text("Terms of Service")
                             .font(.size12Regular)
-                            .foregroundColor(Color.activeColour)
+                            .foregroundColor(Color.primary)
                     }
                 }
 
@@ -101,6 +99,6 @@ struct PhoneEntryView: View {
         }
     }
 }
-//#Preview {
-//    PhoneEntryView()
-//}
+#Preview {
+    PhoneEntryView()
+}

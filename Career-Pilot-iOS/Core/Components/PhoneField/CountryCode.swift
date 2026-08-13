@@ -16,22 +16,11 @@ struct CountryCode: Identifiable, Equatable {
 
     static let defaultList: [CountryCode] = [
         CountryCode(flag: "🇪🇬", dialCode: "+20", name: "Egypt", maxLength: 10),
-        CountryCode(flag: "🇺🇸", dialCode: "+1", name: "United States" , maxLength: 10)
+        CountryCode(flag: "🇺🇸", dialCode: "+1", name: "United States", maxLength: 10),
+        CountryCode(flag: "🇬🇧", dialCode: "+44", name: "United Kingdom", maxLength: 10),
+        CountryCode(flag: "🇸🇦", dialCode: "+966", name: "Saudi Arabia", maxLength: 9),
+        CountryCode(flag: "🇦🇪", dialCode: "+971", name: "UAE", maxLength: 9)
     ]
 }
-//struct CountryCode: Identifiable, Equatable {
-//    let id = UUID()
-//    let flag: String
-//    let dialCode: String
-//    let name: String
-//
-//    
-//    static let defaultList: [CountryCode] = [
-//        CountryCode(flag: "🇪🇬", dialCode: "+20", name: "Egypt"),
-//        CountryCode(flag: "🇺🇸", dialCode: "+1",  name: "United States"),
-//        CountryCode(flag: "🇬🇧", dialCode: "+44", name: "United Kingdom"),
-//        CountryCode(flag: "🇸🇦", dialCode: "+966", name: "Saudi Arabia"),
-//        CountryCode(flag: "🇦🇪", dialCode: "+971", name: "UAE"),
-//    ]
-//}
+
 

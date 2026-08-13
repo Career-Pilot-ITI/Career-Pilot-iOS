@@ -19,7 +19,7 @@ struct TrackChip: View {
             .padding(.vertical, 10)
             .background(
                 Capsule()
-                    .fill(isSelected ? Color.primaryNavy : .white)
+                    .fill(isSelected ? Color.primary : .gray200.opacity(0.7))
             )
             .overlay(
                 Capsule()

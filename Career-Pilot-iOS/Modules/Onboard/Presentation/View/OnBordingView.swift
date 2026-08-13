@@ -12,9 +12,9 @@ struct OnBordingView: View {
     @StateObject var vm: OnBordingViewModel = DIContainer.shared.container.resolve(OnBordingViewModel.self)!
     
     var body: some View {
-        ZStack {
-            Color.gray100
-                .ignoresSafeArea()
+         ZStack {
+            Color.background
+                    .ignoresSafeArea()
             VStack(alignment: .center, spacing: 14) {
                 
                 
@@ -94,7 +94,7 @@ private struct OnBordingTopPart: View {
                     )
                     .foregroundColor(
                         vm.isScreenIncludedToDrawAColor(index: index)
-                        ? .activeColour
+                        ? .primary
                         : .gray400.opacity(0.5)
                     )
             }
@@ -112,8 +112,13 @@ struct BackButton: View {
     }
 }
 
-//struct OnBordingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        OnBordingView()
-//    }
-//}
+struct OnBordingView_Previews: PreviewProvider {
+    static var previews: some View {
+        OnBordingView()
+    }
+}
+
+#Preview {
+    OnBordingView()
+        .environmentObject(AppState())
+}

@@ -35,13 +35,13 @@ struct ProgressCard: View {
             Image(systemName: "chevron.right").foregroundColor(.secondary)
         }
         .padding()
-        .background(Color.white)
+        .background(Color.gray400.opacity(0.08))
         .cornerRadius(16)
     }
 }
 
-//#Preview {
-//    ProgressCard(score: 78, progressLabel: "Good Progress", scoreChange: "▲ +6 from last week")
-//        .padding()
-//        .background(Color.gray.opacity(0.1))
-//}
+#Preview {
+    ProgressCard(score: 78, progressLabel: "Good Progress", scoreChange: "▲ +6 from last week")
+        .padding()
+        .background(Color.gray.opacity(0.1))
+}

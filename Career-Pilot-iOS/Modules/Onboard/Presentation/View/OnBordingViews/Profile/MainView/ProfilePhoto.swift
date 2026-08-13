@@ -22,7 +22,7 @@ struct ProfilePhoto: View {
                 if(image == nil){
                     Text("SC")
                         .font(.size26Semibold)
-                        .foregroundColor(.gray600)
+                        .foregroundColor(.primary)
                 }
                 else{
                     Image(uiImage: image!).resizable().scaledToFill().frame(width: 80, height: 80).clipShape(Circle())
@@ -38,7 +38,7 @@ struct ProfilePhoto: View {
                             .stroke(Color.white, lineWidth: 2.4)
                     )
             )
-            .shadow(color: Color.primaryNavy.opacity(0.12), radius: 16, x: 0, y: 4)
+            .shadow(color: Color.primary.opacity(0.12), radius: 16, x: 0, y: 4)
 
             if( image == nil){
                 Button(action: {
@@ -52,13 +52,13 @@ struct ProfilePhoto: View {
                 .frame(width: 26, height: 26)
                 .background(
                     RoundedRectangle(cornerRadius: Radius.pill)
-                        .fill(Color.activeColour)
+                        .fill(Color.primary)
                         .overlay(
                             RoundedRectangle(cornerRadius: Radius.pill)
                                 .stroke(Color.white, lineWidth: 2.4)
                         )
                 )
-                .shadow(color: Color.activeColour.opacity(0.40), radius: 8, x: 0, y: 2)
+                .shadow(color: Color.primary.opacity(0.40), radius: 8, x: 0, y: 2)
                 .offset(x: 2, y: 2)
             }
         
