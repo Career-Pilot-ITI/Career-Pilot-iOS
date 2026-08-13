@@ -50,18 +50,16 @@ struct QuestionCard: View {
         VStack(alignment: .leading, spacing: Spacing.s8) {
             Text("QUESTION")
                 .font(.size12Semibold)
-                .foregroundStyle(Color.gray400)
 
             Text(text)
                 .font(.size14Regular)
-                .foregroundStyle(Color.gray100)
                 .multilineTextAlignment(.leading)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(Spacing.s16)
         .background {
             RoundedRectangle(cornerRadius: Radius.r16)
-                .fill(Color.primaryNavy)
+                .fill(Color.primary)
         }
     }
 }

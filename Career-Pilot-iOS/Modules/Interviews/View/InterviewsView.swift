@@ -26,7 +26,6 @@ struct InterviewsView: View {
                     )
                 }
                 .listRowInsets(EdgeInsets(top: Spacing.s6, leading: 0, bottom: Spacing.s6, trailing: 0))
-//                .listRowSeparator(.hidden)
                 .listRowBackground(Color.clear)
             }
         }
@@ -35,7 +34,7 @@ struct InterviewsView: View {
         .padding(.horizontal)
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
-        .background(Color(.systemGroupedBackground))
+        .background(Color(.background))
         .scrollIndicators(.hidden)
         .toolbar(.hidden, for: .tabBar)
     }

@@ -153,6 +153,6 @@ struct PracticePreparationView: View {
             .padding(.bottom, Spacing.s16)
         }
         .padding(.horizontal, Spacing.s24)
-        .background(Color(.systemGroupedBackground).ignoresSafeArea())
+        .background(Color(.background).ignoresSafeArea())
     }
 }

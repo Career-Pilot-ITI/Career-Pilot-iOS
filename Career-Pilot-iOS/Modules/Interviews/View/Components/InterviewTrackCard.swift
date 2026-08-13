@@ -45,8 +45,8 @@ struct InterviewTrackCard: View {
         .padding(Spacing.s16)
         .background(
             RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)
-                .fill(Color(.secondarySystemGroupedBackground))
-                .shadow(color: .black.opacity(0.04), radius: 6, x: 0, y: 2)
+                .fill(Color.gray400.opacity(0.08))
+                .shadow(color: .primary.opacity(0.04), radius: 6, x: 0, y: 2)
         )
         .contentShape(Rectangle())
         .onTapGesture(perform: action)

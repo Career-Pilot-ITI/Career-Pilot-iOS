@@ -65,11 +65,11 @@ struct SubscribtionCheckoutView: View {
     @ViewBuilder
      private func customIcon(icon: String) -> some View {
          Image(icon)
-             .foregroundColor(.activeColour)
+             .foregroundColor(.primary)
              .frame(width: 44, height: 44)
              .background(
                  RoundedRectangle(cornerRadius: Radius.r12 )
-                     .fill(Color.activeColour.opacity(0.1))
+                     .fill(Color.primary.opacity(0.1))
              )
      }
     

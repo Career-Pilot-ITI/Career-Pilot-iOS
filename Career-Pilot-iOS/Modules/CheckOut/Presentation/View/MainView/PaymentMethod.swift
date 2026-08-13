@@ -51,6 +51,7 @@ struct PaymentMethod: View {
                 if isSelected {
                     Image(systemName: "checkmark")
                         .font(.system(size: 12, weight: .bold))
+                        .foregroundColor(.white)
                 }
             }
         }
