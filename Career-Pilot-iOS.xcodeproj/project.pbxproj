@@ -316,6 +316,7 @@
 		D96D8360302DED6500CDD5AC /* CapturedFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D835F302DED6500CDD5AC /* CapturedFrame.swift */; };
 		D96D8362302DED7700CDD5AC /* FrameSamplingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D8361302DED7700CDD5AC /* FrameSamplingStrategy.swift */; };
 		D96D8364302DED8B00CDD5AC /* VideoCaptureError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D8363302DED8B00CDD5AC /* VideoCaptureError.swift */; };
+		D96D8369302E15A700CDD5AC /* InterviewModeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D8368302E15A700CDD5AC /* InterviewModeSelector.swift */; };
 		D970C9E4301560D3002F6269 /* MultipartFormDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9E3301560D3002F6269 /* MultipartFormDataBuilder.swift */; };
 		D970C9E6301566B3002F6269 /* UploadFileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9E5301566B3002F6269 /* UploadFileResponseDTO.swift */; };
 		D970C9EB301569F8002F6269 /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9EA301569F8002F6269 /* UserDataEndPoint.swift */; };
@@ -694,6 +695,7 @@
 		D96D835F302DED6500CDD5AC /* CapturedFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedFrame.swift; sourceTree = "<group>"; };
 		D96D8361302DED7700CDD5AC /* FrameSamplingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameSamplingStrategy.swift; sourceTree = "<group>"; };
 		D96D8363302DED8B00CDD5AC /* VideoCaptureError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaptureError.swift; sourceTree = "<group>"; };
+		D96D8368302E15A700CDD5AC /* InterviewModeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewModeSelector.swift; sourceTree = "<group>"; };
 		D970C9E3301560D3002F6269 /* MultipartFormDataBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataBuilder.swift; sourceTree = "<group>"; };
 		D970C9E5301566B3002F6269 /* UploadFileResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileResponseDTO.swift; sourceTree = "<group>"; };
 		D970C9EA301569F8002F6269 /* UserDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataEndPoint.swift; path = Generic/UserDataEndPoint.swift; sourceTree = "<group>"; };
@@ -1693,6 +1695,7 @@
 				CEA4C08F3014698600CB5DD3 /* SessionRowSkeleton.swift */,
 				CEA4C09130146F6300CB5DD3 /* PracticePreparationView.swift */,
 				CEC5AEC7302813D7000B5BDC /* ATSCard.swift */,
+				D96D8368302E15A700CDD5AC /* InterviewModeSelector.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2076,13 +2079,29 @@
 		D96D835A302DECD700CDD5AC /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				D96D8367302E011200CDD5AC /* ImageAnalysis */,
+				D96D8365302E00FE00CDD5AC /* CameraCapture */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D96D8365302E00FE00CDD5AC /* CameraCapture */ = {
+			isa = PBXGroup;
+			children = (
 				D96D835B302DECF200CDD5AC /* VideoFrameCaptureServicing.swift */,
 				D96D835D302DED3300CDD5AC /* VideoFrameCaptureService.swift */,
 				D96D835F302DED6500CDD5AC /* CapturedFrame.swift */,
 				D96D8361302DED7700CDD5AC /* FrameSamplingStrategy.swift */,
 				D96D8363302DED8B00CDD5AC /* VideoCaptureError.swift */,
 			);
-			path = Service;
+			path = CameraCapture;
+			sourceTree = "<group>";
+		};
+		D96D8367302E011200CDD5AC /* ImageAnalysis */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ImageAnalysis;
 			sourceTree = "<group>";
 		};
 		D970C9E7301567F2002F6269 /* DataSource */ = {
@@ -2700,6 +2719,7 @@
 				61970B7830114ED8009D7E58 /* LoadStates.swift in Sources */,
 				616320D6301091DB00F417C9 /* UserSettingsDomain.swift in Sources */,
 				CECCDA30300F1E460068620D /* UpdateProfileUseCase.swift in Sources */,
+				D96D8369302E15A700CDD5AC /* InterviewModeSelector.swift in Sources */,
 				D98A79733008DB2F00DFDC6B /* ChooseTrackView.swift in Sources */,
 				41D69D09300A6A0B00294D94 /* AuthTokensDTO.swift in Sources */,
 				41BE1A68300BEF820033D1B5 /* CvUplodingApiResponse+Mapping.swift in Sources */,

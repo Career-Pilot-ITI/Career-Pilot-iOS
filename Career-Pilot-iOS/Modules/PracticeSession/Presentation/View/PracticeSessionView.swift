@@ -61,7 +61,7 @@ struct PracticeSessionView: View {
             vm.attach(coordinator: homeCoordinator)
         }
         .task {
-//            await vm.start(trackId: trackId, interviewType: interviewType)
+            await vm.start(trackId: trackId, interviewType: interviewType)
         }
         .navigationBarBackButtonHidden()
         .toolbar(.hidden, for: .tabBar)

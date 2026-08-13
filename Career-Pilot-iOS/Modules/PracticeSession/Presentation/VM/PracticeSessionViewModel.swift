@@ -31,7 +31,8 @@ final class PracticeSessionViewModel: ObservableObject {
     // MARK: Published state
 
     @Published private(set) var session: InterviewSession?
-    @Published private(set) var screenState: PracticeSessionScreenState = .recording(silenceWarning: SilenceWarning(remainingSeconds: 5))
+    @Published private(set) var screenState: PracticeSessionScreenState = .loading
+    //= .recording(silenceWarning: SilenceWarning(remainingSeconds: 5))
 
     @Published private(set) var elapsedRecordingTime: TimeInterval = 0
     @Published private(set) var elapsedSessionTime: TimeInterval = 0

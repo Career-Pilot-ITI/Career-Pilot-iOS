@@ -25,8 +25,8 @@ struct RecordingView: View {
             }
 
             Spacer()
-
-            if vm.isVideoReady, let session = vm.cameraSession {
+            //vm.isVideoReady
+            if true, let session = vm.cameraSession {
                 CameraPreviewView(session: session)
                     .clipShape(RoundedRectangle(cornerRadius: Radius.r16))
                     .frame(height: 280)

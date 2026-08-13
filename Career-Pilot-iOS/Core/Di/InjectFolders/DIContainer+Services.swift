@@ -11,8 +11,8 @@ extension DIContainer{
     func registerServices(){
         
         //MicrophonePermissionManaging
-        container.register(MicrophonePermissionManaging.self){ _ in
-            MicrophonePermissionManager()
+        container.register(PermissionManaging.self){ _ in
+            PermissionManager()
             
         }.inObjectScope(.container)
         
