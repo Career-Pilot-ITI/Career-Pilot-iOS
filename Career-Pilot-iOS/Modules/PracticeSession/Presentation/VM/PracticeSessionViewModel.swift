@@ -23,6 +23,14 @@ struct SilenceWarning: Equatable {
     let remainingSeconds: Int
 }
 
+/// State of the post-interview Vision analysis pass. Only meaningful when mode == .video.
+enum VisualAnalysisState: Equatable {
+    case idle
+    case analyzing
+    case completed(framesAnalyzed: Int, framesSkipped: Int)
+    case failed
+}
+
 // MARK: - PracticeSessionViewModel
 
 @MainActor
@@ -32,24 +40,20 @@ final class PracticeSessionViewModel: ObservableObject {
 
     @Published private(set) var session: InterviewSession?
     @Published private(set) var screenState: PracticeSessionScreenState = .loading
-    //= .recording(silenceWarning: SilenceWarning(remainingSeconds: 5))
 
     @Published private(set) var elapsedRecordingTime: TimeInterval = 0
     @Published private(set) var elapsedSessionTime: TimeInterval = 0
 
-    /// True once the front camera session is configured and ready to preview/capture.
-    /// Video is best-effort: if this stays false (permission denied, no camera, config
-    /// failure) the interview proceeds audio-only and nothing else changes.
     @Published private(set) var isVideoReady: Bool = false
 
-    // MARK: Timers & in-flight work
+    /// Result of the post-interview Vision pass, driven from finish(). Stays .idle for
+    /// audio-only sessions.
+    @Published private(set) var visualAnalysisState: VisualAnalysisState = .idle
 
     private var elapsedTimer: Timer?
     private var elapsedSessionTimer: Timer?
     private var aiTurnTask: Task<Void, Never>?
     private var submitTask: Task<Void, Never>?
-
-    // MARK: Dependencies
 
     private let startUseCase: StartInterviewUseCaseProtocol
     private let submitUseCase: SubmitAnswerUseCaseProtocol
@@ -64,19 +68,18 @@ final class PracticeSessionViewModel: ObservableObject {
     private let speechService: SpeechPlaybackServicing
     private let speechRecognitionService: SpeechRecognitionServicing
 
-    /// Optional by design: an audio-only `PracticeSessionViewModel` simply never receives one.
     private let frameCaptureService: VideoFrameCaptureServicing?
+    private let frameAnalysisService: VisionFrameAnalyzing?
 
     private let silenceThreshold: Float = 0.08
 
     private var homeCoordinator: AppCoordinator<HomeRoute>?
     private var interviewType: InterviewType
 
-    /// Frames collected across the whole session, one batch appended per answered question.
-    /// Consumed by the (future) post-interview analysis phase — capture only for now.
     private(set) var capturedFrames: [CapturedFrame] = []
 
-    // MARK: Init
+    /// Result of the post-interview analysis. Empty until visualAnalysisState reaches .completed.
+    private(set) var frameObservations: [FrameObservation] = []
 
     init(
         interviewType: InterviewType = .classic,
@@ -91,7 +94,8 @@ final class PracticeSessionViewModel: ObservableObject {
         silenceService: SilenceDetectionServicing,
         speechService: SpeechPlaybackServicing,
         speechRecognitionService: SpeechRecognitionServicing,
-        frameCaptureService: VideoFrameCaptureServicing? = VideoFrameCaptureService(samplingStrategy: FrameSamplingStrategy(minimumInterval: 5))
+        frameCaptureService: VideoFrameCaptureServicing? = VideoFrameCaptureService(samplingStrategy: FrameSamplingStrategy(minimumInterval: 5)),
+        frameAnalysisService: VisionFrameAnalyzing? = VisionFrameAnalysisService()
     ) {
         self.startUseCase = startUseCase
         self.submitUseCase = submitUseCase
@@ -105,6 +109,7 @@ final class PracticeSessionViewModel: ObservableObject {
         self.speechService = speechService
         self.speechRecognitionService = speechRecognitionService
         self.frameCaptureService = frameCaptureService
+        self.frameAnalysisService = frameAnalysisService
 
         self.interviewType = interviewType
         self.recordingService.delegate = self
@@ -118,8 +123,6 @@ final class PracticeSessionViewModel: ObservableObject {
         elapsedSessionTimer?.invalidate()
         frameCaptureService?.teardownSession()
     }
-
-    // MARK: Derived / display properties
 
     var currentQuestionText: String {
         session?.currentQuestion.text ?? ""
@@ -153,7 +156,6 @@ final class PracticeSessionViewModel: ObservableObject {
     }
 
     func attach(coordinator: AppCoordinator<HomeRoute>) {
-        // Guard so re-appearances (e.g. after a sheet dismiss) don't redo setup
         guard homeCoordinator == nil else { return }
         self.homeCoordinator = coordinator
     }
@@ -357,7 +359,6 @@ extension PracticeSessionViewModel {
         switch error {
         case .questionLimitReached, .interviewTimeExpired, .sessionQuotaExceeded, .unauthorized:
             guard session != nil else {
-                //Nav to home
                 homeCoordinator?.popToRoot()
                 return
             }
@@ -392,8 +393,6 @@ extension PracticeSessionViewModel {
             print("Let's resumeAfterNetworkDrop: \(session!)")
             resumeUIState(for: restored)
         } catch {
-            // Don't route back through onError here — a failed resume attempt
-            // retrying itself would loop. Dead-end on .error is correct.
             screenState = .error(InterviewError.map(error))
         }
     }
@@ -403,6 +402,8 @@ extension PracticeSessionViewModel {
         submitTask?.cancel()
         stopEverythingForReconnect()
         capturedFrames.removeAll()
+        frameObservations.removeAll()
+        visualAnalysisState = .idle
         frameCaptureService?.teardownSession()
         guard let sessionId = session?.id else { return }
         try? await cancelUseCase.execute(sessionId: sessionId)
@@ -421,6 +422,10 @@ extension PracticeSessionViewModel {
             session?.feedback = finalFeedback
             session?.status = .completed
             screenState = .completed
+
+            if interviewType.interviewConfiguration.mode == .video {
+                Task { await self.runVisualAnalysisIfNeeded() }
+            }
         } catch {
             screenState = .error(error)
         }
@@ -447,13 +452,11 @@ extension PracticeSessionViewModel {
         frameCaptureService?.previewSession
     }
 
-    /// Best-effort: a camera failure here never blocks or fails the interview — it just
-    /// means this session proceeds audio-only (`isVideoReady` stays false).
     fileprivate func configureVideoIfNeeded() async {
         print("Configuring open the video...")
         guard let frameCaptureService, !frameCaptureService.isConfigured else {
             isVideoReady = frameCaptureService?.isConfigured ?? false
-            print("Viedo not ready Cause frameCaptureService isConfigured: \(String(describing: frameCaptureService?.isConfigured))")
+            print("Video not ready cause frameCaptureService isConfigured: \(String(describing: frameCaptureService?.isConfigured))")
             return
         }
         do {
@@ -463,6 +466,30 @@ extension PracticeSessionViewModel {
             print("Video capture unavailable, continuing audio-only: \(error)")
             isVideoReady = false
         }
+    }
+
+    /// Runs after the interview finishes. Never fails the interview itself — worst case,
+    /// visualAnalysisState ends up .failed and there's simply no video report later.
+    fileprivate func runVisualAnalysisIfNeeded() async {
+        guard let frameAnalysisService else {
+            visualAnalysisState = .failed
+            return
+        }
+        guard !capturedFrames.isEmpty else {
+            visualAnalysisState = .completed(framesAnalyzed: 0, framesSkipped: 0)
+            return
+        }
+
+        visualAnalysisState = .analyzing
+
+        // Hand the frames off and drop our copy immediately — we don't need the images
+        // themselves once Vision has extracted landmarks from them.
+        let framesToAnalyze = capturedFrames
+        capturedFrames.removeAll()
+
+        let result = await frameAnalysisService.analyze(frames: framesToAnalyze)
+        frameObservations = result.observations
+        visualAnalysisState = .completed(framesAnalyzed: result.framesAnalyzed, framesSkipped: result.framesSkipped)
     }
 }
 
@@ -540,8 +567,6 @@ extension PracticeSessionViewModel: SilenceDetectionServiceDelegate {
 extension PracticeSessionViewModel: VideoFrameCaptureServiceDelegate {
     nonisolated func videoFrameCaptureService(_ service: VideoFrameCaptureServicing, didFailWithError error: VideoCaptureError) {
         Task { @MainActor in
-            // Video is best-effort and never allowed to interrupt the interview itself —
-            // just stop treating this session as video-capable from here on.
             print("Video capture failed, continuing audio-only: \(error)")
             self.isVideoReady = false
         }
@@ -549,10 +574,6 @@ extension PracticeSessionViewModel: VideoFrameCaptureServiceDelegate {
 }
 
 // MARK: - SpeechPlaybackServiceDelegate
-// NOTE: as implemented today, SpeechPlaybackService never actually calls
-// didFinish/didFailWithError on this delegate (its AVSpeechSynthesizerDelegate
-// only resumes the internal continuation). These are kept for when that's
-// wired up, but beginAITurn's own do/catch is currently the real path.
 
 extension PracticeSessionViewModel: SpeechPlaybackServiceDelegate {
     nonisolated func speechPlaybackServiceDidStart(_ service: SpeechPlaybackService) {
