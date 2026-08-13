@@ -47,7 +47,6 @@ struct SessionHistroyItem: View {
             VStack(alignment: .leading,spacing: Spacing.s4) {
                 Text(session.title)
                     .font(Font.size14Bold)
-                    .foregroundStyle(Color.primaryNavy)
                 
                 Text("\(session.date) · \(session.perioudTime) · \(session.noOfQuestions) questions")
                     .font(Font.size12Medium)
@@ -64,7 +63,7 @@ struct SessionHistroyItem: View {
         .padding(.all, 16)
         .background {
             RoundedRectangle(cornerRadius: Radius.r16)
-                .fill(.white)
+                .fill(Color.gray400.opacity(0.08))
         }
     }
 }

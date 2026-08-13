@@ -25,7 +25,7 @@ extension InterviewFeedback {
                 icon: "target",
                 text: tip,
                 description: tip,
-                badgeLevel: index == 0 ? "High impact" : (index == 1 ? "Medium impact" : "Low impact")
+                badgeLevel: index == 0 ? "High impact" : (index == 1 ? "Medium" : "Low")
             )
         }
     }
