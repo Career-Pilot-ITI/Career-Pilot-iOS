@@ -27,7 +27,7 @@ struct OnBordingView: View {
                     OnBordingIdelState(vm: vm)
                     
                 case .loading:
-                    ProgressView()
+                    OnboardingLoadingView(vm: vm)
                     
                 case .error(let errorMessage) :
                     OnBoardingErrorState(vm: vm, errorMessage: errorMessage)
@@ -38,13 +38,16 @@ struct OnBordingView: View {
                 Spacer()
                 
                 // Bottom Part
-                CustomButton(
-                    isButtonEnabeld: vm.isButtonEnabeld,
-                    buttonTitle: vm.buttonTitle
-                ) {
-                    
-                    vm.navToNext()
+                if vm.screenState == .idel{
+                    CustomButton(
+                        isButtonEnabeld: vm.isButtonEnabeld,
+                        buttonTitle: vm.buttonTitle
+                    ) {
+                        
+                        vm.navToNext()
+                    }
                 }
+
             }
             .ignoresSafeArea(.keyboard)
             .toolbar(.hidden, for: .navigationBar)
@@ -56,6 +59,35 @@ struct OnBordingView: View {
                 vm.onApper()
             }
         }
+    }
+}
+private struct OnboardingLoadingView: View {
+    @ObservedObject var vm: OnBordingViewModel
+
+    var body: some View {
+        VStack(spacing: 24) {
+            ProgressView()
+                .controlSize(.large)
+                .tint(.accentColor)
+
+            VStack(spacing: 8) {
+                Text("Setting Things Up")
+                    .font(.headline)
+                    .foregroundColor(.primary)
+
+                Text(vm.currentView.screenDescription)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+        }
+        .padding(32)
+        .background(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .fill(Color(.secondarySystemGroupedBackground))
+                .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 4)
+        )
+        .padding(.horizontal, 24)
     }
 }
 

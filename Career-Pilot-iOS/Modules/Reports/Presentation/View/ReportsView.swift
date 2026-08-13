@@ -35,11 +35,9 @@ struct ReportsView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
 
         case .error(let message):
-            VStack(spacing: 12) {
-                Text(message).foregroundStyle(.red)
-                Button("Retry") { Task { await viewModel.loadSessions(forceRefresh: true) } }
+            ErrorStateView(message: message) {
+                Task { await viewModel.loadSessions(forceRefresh: true) }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
 
         case .loaded:
             sessionHistoryView(isLoadingMore: false)
@@ -79,5 +77,46 @@ struct ReportsView: View {
                 viewModel: DIContainer.shared.container.resolve(SessionDetailViewModel.self, argument: sessionId)!
             )
         }
+    }
+}
+
+private struct ErrorStateView: View {
+    let message: String
+    let retryAction: () -> Void
+    
+    var title: String = "Something went wrong"
+    var icon: String = "wifi.exclamationmark"
+
+    var body: some View {
+        VStack(spacing: 16) {
+            Image(systemName: icon)
+                .font(.system(size: 40))
+                .foregroundStyle(.secondary)
+            
+            VStack(spacing: 6) {
+                Text(title)
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+                
+                Text(message)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            
+            Button {
+                retryAction()
+            } label: {
+                Text("Retry")
+                    .font(.subheadline.weight(.semibold))
+                    .frame(maxWidth: 200)
+            }
+            .buttonStyle(.borderedProminent)
+            .controlSize(.regular)
+            .padding(.top, 4)
+        }
+        .padding(32)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
