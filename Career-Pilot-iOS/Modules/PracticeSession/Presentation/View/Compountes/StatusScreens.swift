@@ -194,7 +194,7 @@ struct SessionErrorView: View {
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.darkBackGround.ignoresSafeArea())
+        .background(Color.background.ignoresSafeArea())
     }
 }
 

@@ -26,7 +26,6 @@ struct QuestionBreakDownView: View {
 
                 Text("View per-question breakdown")
                     .font(Font.size16SemiBold)
-                    .foregroundStyle(Color.primaryNavy)
 
                 Spacer()
 
@@ -37,7 +36,7 @@ struct QuestionBreakDownView: View {
             .padding(.all, 16)
             .background {
                 RoundedRectangle(cornerRadius: Radius.r16)
-                    .fill(.white)
+                    .fill(Color.gray400.opacity(0.08))
             }
         }
     }

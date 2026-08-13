@@ -17,18 +17,17 @@ struct CoachFeedbackCard: View {
             VStack(alignment: .leading, spacing: Spacing.s4) {
                 Text("Coach Feedback")
                     .font(Font.size14Bold)
-                    .foregroundStyle(Color.primaryNavy)
 
                 Text(feedback)
                     .font(Font.size13Regular)
-                    .foregroundStyle(Color.gray600)
+                    .foregroundStyle(Color.gray400)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.all, 16)
         .background {
             RoundedRectangle(cornerRadius: Radius.r16)
-                .fill(.white)
+                .fill(Color.gray400.opacity(0.08))
         }
     }
 }

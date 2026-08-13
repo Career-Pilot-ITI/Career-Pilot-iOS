@@ -77,7 +77,7 @@ struct HomeView: View {
             .padding(.vertical, Spacing.s12)
         }
         .scrollIndicators(.hidden)
-        .background(Color(.systemGroupedBackground).ignoresSafeArea())
+        .background(Color(.background).ignoresSafeArea())
         .task {
             await viewModel.loadHome()
         }
@@ -182,6 +182,7 @@ private extension HomeView {
                     )
                 }
             }
+            
         }
     }
 }

@@ -72,7 +72,10 @@ struct CheckOutView: View {
             
             payButton
         }
+        .navigationTitle("Checkout")
         .padding(.horizontal, Spacing.s20)
+        .background(Color(.background).ignoresSafeArea())
+
     }
     
     @ViewBuilder
@@ -100,7 +103,7 @@ struct CheckOutView: View {
     // MARK: - Verifying / result content — takes over the WHOLE screen, not a cover
     private var waitingContent: some View {
         ZStack {
-            Color.primaryNavy.ignoresSafeArea()
+            Color.background.ignoresSafeArea()
             
             switch paymentVM.phase {
             case .verifyingPayment:

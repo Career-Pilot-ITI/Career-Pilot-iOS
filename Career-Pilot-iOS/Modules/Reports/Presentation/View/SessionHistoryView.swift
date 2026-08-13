@@ -9,12 +9,11 @@ struct SessionHistory: View {
 
     var body: some View {
         ZStack {
-            Color.lightBackGround.ignoresSafeArea()
+            Color.background.ignoresSafeArea()
 
             VStack(alignment: .leading) {
                 Text("Session History")
                     .font(Font.size22Bold)
-                    .foregroundStyle(Color.primaryNavy)
 
                 Text("\(sessionCount) sessions · Avg score \(Int(sessionAvgScore))")
                     .font(Font.size14Regular)
