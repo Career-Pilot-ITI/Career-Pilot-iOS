@@ -10,11 +10,10 @@ import SwiftUI
 struct ATSJobMatchView: View {
     @EnvironmentObject var coordinator: AppCoordinator<HomeRoute>
     @State private var jobLink: String = ""
-    @State private var cvUploaded: Bool = true
-    @StateObject private var viewmodel : ATSViewModel = ATSViewModel(getJobUseCase: GetJobByURLUseCase(repository: ATSRepository(remoteDataSource: ATSRemoteDataSource(networkService:URLSessionNetworkService()))),scoreJobUseCase: ScoreCVAgainstJobUseCase(repository: ATSRepository(remoteDataSource: ATSRemoteDataSource(networkService:URLSessionNetworkService()))),userRepo: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService()), localDataSource: UserLocalDataSourceImpl(coreData: CoreDataManager())))
+    @StateObject private var viewModel: ATSViewModel = DIContainer.shared.container.resolve(ATSViewModel.self)!
 
     private var isCompareEnabled: Bool {
-        !jobLink.trimmingCharacters(in: .whitespaces).isEmpty && cvUploaded && !viewmodel.isLoading
+        !jobLink.trimmingCharacters(in: .whitespaces).isEmpty && viewModel.cvUploaded && !viewModel.isLoading
     }
 
 
@@ -56,7 +55,7 @@ struct ATSJobMatchView: View {
                         .font(Font.size13Bold)
                         .foregroundStyle(Color.textPrimary)
 
-                    if viewmodel.cvUploaded {
+                    if viewModel.cvUploaded {
                         UploadedCVCard()
                     } else {
                         CvUploadingView(
@@ -75,10 +74,10 @@ struct ATSJobMatchView: View {
                 CustomButton(
                     isButtonEnabeld: isCompareEnabled,
                     showArrow: false,
-                    buttonTitle: viewmodel.isLoading ? "Comparing..." : "Compare Now",
+                    buttonTitle: viewModel.isLoading ? "Comparing..." : "Compare Now",
                     onClick: {
                         Task {
-                            let success = await viewmodel.fireRequest(jobURL: jobLink)
+                            let success = await viewModel.fireRequest(jobURL: jobLink)
                             if success {
                                 coordinator.push(.atsjobDescription)
                             }
@@ -89,9 +88,11 @@ struct ATSJobMatchView: View {
             .padding(.horizontal, Spacing.s20)
             .padding(.top, Spacing.s16)
             .task {
-                await viewmodel.isCvFound()
+                await viewModel.isCvFound()
             }
         }
+        // Inject the ViewModel into the environment so all ATS child screens share it
+        .environmentObject(viewModel)
     }
 }
 

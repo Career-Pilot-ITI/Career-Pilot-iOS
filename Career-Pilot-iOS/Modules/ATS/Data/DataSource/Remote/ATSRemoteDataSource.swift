@@ -10,6 +10,7 @@ import Foundation
 protocol ATSRemoteDataSourceProtocol {
     func getJobByURL(from url: String) async throws -> JobDetailsResponseDTO
     func scoreCvAgainstJob(for id: Int) async throws -> JobMatchResponseDTO
+    func generateCoverLetter(for id: Int) async throws -> CoverLetterResponseDTO
 }
 
 class ATSRemoteDataSource : ATSRemoteDataSourceProtocol {
@@ -28,5 +29,8 @@ class ATSRemoteDataSource : ATSRemoteDataSourceProtocol {
     func scoreCvAgainstJob(for id: Int) async throws -> JobMatchResponseDTO {
         return try await networkService.request(ATSEndPoint.scoreCVAgainstJob(id: id))
     }
-    
+
+    func generateCoverLetter(for id: Int) async throws -> CoverLetterResponseDTO {
+        return try await networkService.request(ATSEndPoint.generateCoverLetter(id: id))
+    }
 }

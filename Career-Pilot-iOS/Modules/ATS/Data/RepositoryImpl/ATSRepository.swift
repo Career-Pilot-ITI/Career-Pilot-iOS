@@ -25,5 +25,10 @@ class ATSRepository : ATSRepositoryProtocol {
         let result = dto.data.toEntity()
         return result
     }
-    
+
+    func generateCoverLetter(for id: Int) async throws -> CoverLetterEntity {
+        let dto = try await remoteDataSource.generateCoverLetter(for: id)
+        return dto.data.toEntity()
+    }
+
 }

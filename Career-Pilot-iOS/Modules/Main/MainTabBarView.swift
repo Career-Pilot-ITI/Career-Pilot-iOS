@@ -27,11 +27,11 @@ struct MainTabBarView: View {
                         case .atsJobMatch:
                             ATSJobMatchView()
                         case .atsjobDescription:
-                            JobDescriptionView(job: JobDescriptionModel.mock)
+                            JobDescriptionView()
                         case .coverLetter:
-                            CoverLetterView(data: CoverLetterData.sample)
+                            CoverLetterView()
                         case .atsJobmatchScore:
-                            JobMatchView(data: JobMatchData.sample)
+                            JobMatchView()
                         }
                     }
             }

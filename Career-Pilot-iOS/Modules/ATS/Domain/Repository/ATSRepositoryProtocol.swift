@@ -10,4 +10,5 @@ import Foundation
 protocol ATSRepositoryProtocol {
     func getJobByURL(from url: String) async throws -> JobEntity
     func scoreCvAgainstJob(for id: Int) async throws -> JobMatchEntity
+    func generateCoverLetter(for id: Int) async throws -> CoverLetterEntity
 }

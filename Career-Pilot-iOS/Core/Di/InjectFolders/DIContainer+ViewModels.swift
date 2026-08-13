@@ -133,6 +133,16 @@ extension DIContainer{
            )
         }
 
+        // MARK: - ATS ViewModel
+        container.register(ATSViewModel.self) { r in
+            ATSViewModel(
+                getJobUseCase: r.resolve(GetJobByURLUseCase.self)!,
+                scoreJobUseCase: r.resolve(ScoreCVAgainstJobUseCase.self)!,
+                generateCoverLetterUseCase: r.resolve(GenerateCoverLetterUseCase.self)!,
+                userRepo: r.resolve(UserDataRepo.self)!
+            )
+        }
+
     }
 } 
 //, updateUserDataUseCase: r.resolve(UpdateUserData.self)!

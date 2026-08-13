@@ -1,40 +1,49 @@
+//
+//  JobDescriptionView.swift
+//  Career-Pilot-iOS
+//
+
 import SwiftUI
 
 struct JobDescriptionView: View {
     @EnvironmentObject var coordinator: AppCoordinator<HomeRoute>
-    let job: JobDescriptionModel
+    @EnvironmentObject var viewModel: ATSViewModel
 
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.lightBackGround.ignoresSafeArea()
-            
-            ScrollView {
-                VStack(spacing: 16) {
-                    JobHeaderCard(job: job) {
-                        // open link
+
+            if let job = viewModel.jobDescriptionModel {
+                ScrollView {
+                    VStack(spacing: 16) {
+                        JobHeaderCard(job: job) {
+                            // open source link
+                        }
+                        OverViewCardView(job: job)
+                        JobDescriptionCardView(job: job)
+                        JobRequirementsCardView(job: job)
                     }
-                    OverViewCardView(job: job)
-                    JobDescriptionCardView(job:job)
-                    JobRequirementsCardView(job: job)
-                    
+                    .padding(16)
+                    .padding(.bottom, 90) // room for the sticky button
                 }
-                .padding(16)
-                .padding(.bottom, 90) // room for the sticky button
+                .scrollIndicators(.hidden)
+
+                startScoringButton
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 12)
+
+            } else {
+                ProgressView("Loading job…")
             }
-            .scrollIndicators(.hidden)
-            
-            startScoringButton
-                .padding(.horizontal, 16)
-                .padding(.bottom, 12)
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(Text("Job Description"))
     }
 
-    // MARK: Sticky button
+    // MARK: - Sticky Button
 
     private var startScoringButton: some View {
-        Button(action:  {
+        Button(action: {
             coordinator.push(.atsJobmatchScore)
         }) {
             Text("Start Scoring")
@@ -54,6 +63,7 @@ struct JobDescriptionView: View {
 
 #Preview {
     NavigationStack {
-        JobDescriptionView(job: .mock)
+        JobDescriptionView()
+            .environmentObject(AppCoordinator<HomeRoute>())
     }
 }
