@@ -79,7 +79,7 @@ struct SettingView: View {
                             .padding(.vertical, Spacing.s8)
                             .background(
                                 RoundedRectangle(cornerRadius: Radius.r12)
-                                    .fill(Color.background.opacity(0.8))
+                                    .fill(Color.gray400.opacity(0.08))
                             )
                         }
                         
@@ -112,8 +112,9 @@ struct SettingView: View {
                 }
             }
         }
+        .background(Color(.background).ignoresSafeArea())
         .task {
-            try? await viewModel.load()
+           await viewModel.load()
         }
     }
     

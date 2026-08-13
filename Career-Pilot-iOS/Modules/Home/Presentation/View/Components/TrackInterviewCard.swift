@@ -65,7 +65,7 @@ struct CareerCardView: View {
         }
         .padding(Spacing.s24)
         .frame(width: 200, height: 250)
-        .background(Color.background)
+        .background(Color.gray400.opacity(0.08))
         .cornerRadius(Radius.r24)
         .shadow(color: Color.black.opacity(0.05), radius: Radius.r16, x: 0, y: 5)
         .overlay(

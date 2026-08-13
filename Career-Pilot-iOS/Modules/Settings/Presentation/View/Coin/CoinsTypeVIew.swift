@@ -37,11 +37,11 @@ struct CoinsTypeVIew: View {
             .background(
                 RoundedRectangle(cornerRadius: Radius.r20)
                    
-                    .fill(isClicked ? Color.primary.opacity(0.06) : Color.gray200.opacity(0.06))
+                    .fill(isClicked ? Color.primary.opacity(0.06) : Color.gray400.opacity(0.06))
                     .overlay(
                         RoundedRectangle(cornerRadius: Radius.r20)
                            
-                            .stroke(isClicked ? Color.primary : Color.gray200, lineWidth: 1)
+                            .stroke(isClicked ? Color.primary : Color.gray400, lineWidth: 1)
                     )
             )
             .onTapGesture {
