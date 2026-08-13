@@ -35,7 +35,7 @@ struct SettingsCard: View {
             .frame(width: 44, height: 44)
             .background(
                 RoundedRectangle(cornerRadius: Radius.r12)
-                    .fill(Color.gray200.opacity(0.2))
+                    .fill(Color.gray200.opacity(0.8))
             )
     }
 }

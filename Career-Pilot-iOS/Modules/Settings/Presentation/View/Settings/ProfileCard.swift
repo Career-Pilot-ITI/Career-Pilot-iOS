@@ -34,7 +34,7 @@ struct ProfileCard: View {
             .padding([.vertical, .horizontal], Spacing.s12)
             .background(
                 RoundedRectangle(cornerRadius: Radius.r12)
-                    .fill(Color.gray200.opacity(0.2))
+                    .fill(Color.background.opacity(0.8))
             )
     }
 }

@@ -78,7 +78,7 @@ struct SettingView: View {
                             .padding(.vertical, Spacing.s8)
                             .background(
                                 RoundedRectangle(cornerRadius: Radius.r12)
-                                    .fill(Color.gray200.opacity(0.2))
+                                    .fill(Color.background.opacity(0.8))
                             )
                         }
                         

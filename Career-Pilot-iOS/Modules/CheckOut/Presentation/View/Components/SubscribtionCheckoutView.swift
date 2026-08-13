@@ -17,47 +17,50 @@ struct SubscribtionCheckoutView: View {
             HStack(spacing : 12){
                 customIcon(icon: "king")
                 VStack(alignment: .leading , spacing: 3){
-                    Text("Upgrading to").font(.size12Medium).foregroundColor(.gray400)
-                    Text("\(product)").font(.size18Bold).foregroundColor(.primaryNavy)
+                    Text("Upgrading to").font(.size12Medium)
+                    Text("\(product)").font(.size18Bold)
                     
                 }.frame(maxWidth:.infinity , alignment: .leading)
                 
               
             }
-            Divider().frame(height: 1).background(Color.gray400)
+            Divider().frame(height: 1)
             Group{
                 Spacer().frame(height:Spacing.s8)
                HStack{
-                   Text("Monthly price").font(.size14Medium).foregroundColor(.gray600)
+                   Text("Monthly price").font(.size14Medium)
                    Spacer()
-                   Text("EGP").font(.size16Medium).foregroundColor(.primaryNavy)
-                   Text("\(productPrice)").font(.size16Medium).foregroundColor(.primaryNavy)
+                   Text("EGP").font(.size16Medium)
+                   Text("\(productPrice)").font(.size16Medium)
                }
                 Spacer().frame(height:Spacing.s8)
                HStack{
-                   Text("Billing cycle").font(.size14Medium).foregroundColor(.gray600)
+                   Text("Billing cycle").font(.size14Medium)
                    Spacer()
                    
-                   Text("\(product)").font(.size16Medium).foregroundColor(.primaryNavy)
+                   Text("\(product)").font(.size16Medium)
                }
 
             }
             
-           Divider().frame(height: 1).background(Color.gray400)
+           Divider().frame(height: 1)
             
             Spacer().frame(height:Spacing.s16)
 
            HStack{
-               Text("Total").font(.size16Bold).foregroundColor(.primaryNavy)
+               Text("Total").font(.size16Bold)
                Spacer()
-               Text("EGP ").font(.size18Medium).foregroundColor(.activeColour)
-               Text("\(total)").font(.size18Medium).foregroundColor(.activeColour)
+               Text("EGP ").font(.size18Medium).foregroundColor(.primary)
+               Text("\(total)").font(.size18Medium).foregroundColor(.primary)
            }
             
 
             
-        }.padding(.horizontal , Spacing.s20).padding(.vertical , Spacing.s20).background(Color.white
-                                                                                         , in : RoundedRectangle(cornerRadius: Radius.r16 ))
+        }
+        .padding(.horizontal , Spacing.s20)
+        .padding(.vertical , Spacing.s20)
+        .background(
+            in : RoundedRectangle(cornerRadius: Radius.r16 ))
     }
     @ViewBuilder
      private func customIcon(icon: String) -> some View {

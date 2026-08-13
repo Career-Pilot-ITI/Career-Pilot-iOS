@@ -20,8 +20,8 @@ struct CoinsTypeVIew: View {
                 Text("\(coinNumber)").font(.size24Semibold)
                 Text("coins").font(.size16Bold)
                 Spacer()
-                Text("EGP").font(.size18Medium).foregroundColor(isClicked ? Color.primary : Color.gray200 )
-                Text("\(price)").font(.size18Medium).foregroundColor(isClicked ? Color.primary : Color.gray200)
+                Text("EGP").font(.size18Medium).foregroundColor(isClicked ? Color.primary : Color.gray600 )
+                Text("\(price)").font(.size18Medium).foregroundColor(isClicked ? Color.primary : Color.gray600)
             }
             Spacer().frame(height:Spacing.s4)
             HStack{

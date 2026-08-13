@@ -31,7 +31,7 @@ struct SupportAndLeagalSettingsView: View {
                 .padding(.vertical, Spacing.s8)
                 .background(
                     RoundedRectangle(cornerRadius: Radius.r24)
-                        .fill(Color.gray200.opacity(0.2))
+                        .fill(Color.background.opacity(0.8))
                 )
               
     }
