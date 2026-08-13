@@ -10,7 +10,7 @@ import SwiftUI
 struct Session: Identifiable , Hashable {
     let id: Int
     let title: String
-    let score: Double
+    let score: Double?
     let noOfQuestions: Int
     let perioudTime: String
     let date: String
@@ -19,7 +19,8 @@ struct Session: Identifiable , Hashable {
 struct SessionHistroyItem: View {
     let session : Session
     var color : Color {
-        switch session.score {
+        guard let score = session.score else { return Color.gray }
+        switch score {
         case 0..<50:
             return Color.red
         case 50..<80:
@@ -32,7 +33,7 @@ struct SessionHistroyItem: View {
     }
     var body: some View {
         HStack() {
-            Text("\(Int(session.score))")
+            Text(session.score.map { "\(Int($0))" } ?? "–")
                 .foregroundStyle(color)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 10)

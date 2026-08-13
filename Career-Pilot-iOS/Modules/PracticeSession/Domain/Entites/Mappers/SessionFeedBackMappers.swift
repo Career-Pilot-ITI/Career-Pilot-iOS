@@ -27,10 +27,10 @@ extension SessionQuestion {
     func toInterviewFeedbackQuestion() -> InterviewFeedbackQuestion {
         InterviewFeedbackQuestion(
             question: questionText,
-            transcript: userTranscript,
-            durationMs: durationMs,
-            speechRateWpm: Int(round(speechRateWpm)),
-            silenceRatio: silenceRatio,
+            transcript: userTranscript ?? "",
+            durationMs: durationMs ?? 0,
+            speechRateWpm: Int(round(speechRateWpm ?? 0 )) ,
+            silenceRatio: silenceRatio ?? 0,
             score: score?.toInterviewQuestionScore() ?? .empty
         )
     }

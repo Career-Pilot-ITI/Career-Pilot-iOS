@@ -37,6 +37,9 @@
 		41AD901E3016229900BDFDA0 /* ReportsInterviewSessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD901D3016229900BDFDA0 /* ReportsInterviewSessionDTO.swift */; };
 		41AD9020301623CC00BDFDA0 /* CurrentUserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD901F301623CC00BDFDA0 /* CurrentUserProvider.swift */; };
 		41AD90223016260600BDFDA0 /* Date+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD90213016260600BDFDA0 /* Date+Formatting.swift */; };
+		41AEC143302E16C1000EC6CE /* EmptySessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AEC142302E16C1000EC6CE /* EmptySessionsView.swift */; };
+		41AEC146302E1779000EC6CE /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 41AEC145302E1779000EC6CE /* Swinject */; };
+		41AEC149302E1790000EC6CE /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 41AEC148302E1790000EC6CE /* Shimmer */; };
 		41B138A13025EFAB00D1D053 /* PageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B138A03025EFAA00D1D053 /* PageResponse.swift */; };
 		41B138A33025EFE300D1D053 /* PaginatedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B138A23025EFE300D1D053 /* PaginatedResult.swift */; };
 		41B138A53025F00100D1D053 /* PaginationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B138A43025F00100D1D053 /* PaginationInfo.swift */; };
@@ -109,7 +112,6 @@
 		6117C02F300F9FD700CABEC6 /* StringsExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6117C02E300F9FD700CABEC6 /* StringsExtenstion.swift */; };
 		6117C031300FBCF900CABEC6 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6117C030300FBCF900CABEC6 /* Validation.swift */; };
 		612EEDE63018E96100E6733E /* UserDataRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE1A6F300BF0940033D1B5 /* UserDataRepo.swift */; };
-		612EEDF23018F55000E6733E /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 612EEDF13018F55000E6733E /* Shimmer */; };
 		612EEDF430192F0500E6733E /* GetUserSubscribtion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612EEDF330192F0500E6733E /* GetUserSubscribtion.swift */; };
 		612EEDF630194B7000E6733E /* SubscribitonsPriceDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612EEDF530194B7000E6733E /* SubscribitonsPriceDTO.swift */; };
 		61601FC43016441A00581229 /* UserSettingsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61601FC33016441A00581229 /* UserSettingsDTO.swift */; };
@@ -212,7 +214,6 @@
 		CE8AFF1D300718670064CC6C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1C300718670064CC6C /* Round.swift */; };
 		CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1E3007187D0064CC6C /* Spaces.swift */; };
 		CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF21300726660064CC6C /* PhoneTextField.swift */; };
-		CE92F09430276A14001E955D /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = CE92F09330276A14001E955D /* Swinject */; };
 		CEA4C08530143D6900CB5DD3 /* OnBoardingUser+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08430143D6900CB5DD3 /* OnBoardingUser+Mapping.swift */; };
 		CEA4C0883014528800CB5DD3 /* GetCurrentUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C0873014528800CB5DD3 /* GetCurrentUserUseCase.swift */; };
 		CEA4C08A30145B0900CB5DD3 /* TrackInterviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08930145B0900CB5DD3 /* TrackInterviewCard.swift */; };
@@ -311,7 +312,6 @@
 		D95C3BCB300EA1800042785F /* WaitingForAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCA300EA1800042785F /* WaitingForAnswerView.swift */; };
 		D95C3BCD300EA1A20042785F /* UserTrunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCC300EA1A20042785F /* UserTrunView.swift */; };
 		D95C3BCF300EA1C00042785F /* SubmitingAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCE300EA1C00042785F /* SubmitingAnswerView.swift */; };
-		D9634B0430286D4E0043BABB /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = D9634B0330286D4E0043BABB /* Swinject */; };
 		D970C9E4301560D3002F6269 /* MultipartFormDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9E3301560D3002F6269 /* MultipartFormDataBuilder.swift */; };
 		D970C9E6301566B3002F6269 /* UploadFileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9E5301566B3002F6269 /* UploadFileResponseDTO.swift */; };
 		D970C9EB301569F8002F6269 /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9EA301569F8002F6269 /* UserDataEndPoint.swift */; };
@@ -407,6 +407,7 @@
 		41AD901D3016229900BDFDA0 /* ReportsInterviewSessionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsInterviewSessionDTO.swift; sourceTree = "<group>"; };
 		41AD901F301623CC00BDFDA0 /* CurrentUserProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserProvider.swift; sourceTree = "<group>"; };
 		41AD90213016260600BDFDA0 /* Date+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatting.swift"; sourceTree = "<group>"; };
+		41AEC142302E16C1000EC6CE /* EmptySessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySessionsView.swift; sourceTree = "<group>"; };
 		41B138A03025EFAA00D1D053 /* PageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageResponse.swift; sourceTree = "<group>"; };
 		41B138A23025EFE300D1D053 /* PaginatedResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatedResult.swift; sourceTree = "<group>"; };
 		41B138A43025F00100D1D053 /* PaginationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationInfo.swift; sourceTree = "<group>"; };
@@ -744,8 +745,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				612EEDF23018F55000E6733E /* Shimmer in Frameworks */,
-				619B670A3029261900BAFA09 /* Swinject in Frameworks */,
+				41AEC149302E1790000EC6CE /* Shimmer in Frameworks */,
+				41AEC146302E1779000EC6CE /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -946,6 +947,7 @@
 				41BC7743300D3DA600E89C3F /* CoachFeedbackCard.swift */,
 				41BC7745300D3DCD00E89C3F /* TranscriptSnippetCard.swift */,
 				41BC774F300D4B1500E89C3F /* OverallScoreCardView.swift */,
+				41AEC142302E16C1000EC6CE /* EmptySessionsView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2510,8 +2512,8 @@
 			);
 			name = "Career-Pilot-iOS";
 			packageProductDependencies = (
-				612EEDF13018F55000E6733E /* Shimmer */,
-				619B67093029261900BAFA09 /* Swinject */,
+				41AEC145302E1779000EC6CE /* Swinject */,
+				41AEC148302E1790000EC6CE /* Shimmer */,
 			);
 			productName = "Career-Pilot-iOS";
 			productReference = D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */;
@@ -2586,8 +2588,8 @@
 			);
 			mainGroup = D93938D53004064400CF4372;
 			packageReferences = (
-				612EEDF03018F55000E6733E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
-				619B67083029261900BAFA09 /* XCRemoteSwiftPackageReference "Swinject" */,
+				41AEC144302E1779000EC6CE /* XCRemoteSwiftPackageReference "swinject" */,
+				41AEC147302E1790000EC6CE /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */,
 			);
 			productRefGroup = D93938DF3004064400CF4372 /* Products */;
 			projectDirPath = "";
@@ -2867,6 +2869,7 @@
 				41D69D16300A6CF100294D94 /* User.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
 				D970C9E6301566B3002F6269 /* UploadFileResponseDTO.swift in Sources */,
+				41AEC143302E16C1000EC6CE /* EmptySessionsView.swift in Sources */,
 				D95C3B99300E495C0042785F /* InterviewSessionEndPointes.swift in Sources */,
 				CEA4C0903014698600CB5DD3 /* SessionRowSkeleton.swift in Sources */,
 				CEC5AEC8302813D7000B5BDC /* ATSCard.swift in Sources */,
@@ -3311,34 +3314,34 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		612EEDF03018F55000E6733E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+		41AEC144302E1779000EC6CE /* XCRemoteSwiftPackageReference "swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer.git";
+			repositoryURL = "https://github.com/swinject/swinject";
+			requirement = {
+				kind = exactVersion;
+				version = 2.8.4;
+			};
+		};
+		41AEC147302E1790000EC6CE /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/swiftui-Shimmer";
 			requirement = {
 				kind = exactVersion;
 				version = 1.3.0;
 			};
 		};
-		619B67083029261900BAFA09 /* XCRemoteSwiftPackageReference "Swinject" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Swinject/Swinject.git";
-			requirement = {
-				kind = exactVersion;
-				version = 2.8.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		612EEDF13018F55000E6733E /* Shimmer */ = {
+		41AEC145302E1779000EC6CE /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 612EEDF03018F55000E6733E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
-			productName = Shimmer;
-		};
-		619B67093029261900BAFA09 /* Swinject */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 619B67083029261900BAFA09 /* XCRemoteSwiftPackageReference "Swinject" */;
+			package = 41AEC144302E1779000EC6CE /* XCRemoteSwiftPackageReference "swinject" */;
 			productName = Swinject;
+		};
+		41AEC148302E1790000EC6CE /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41AEC147302E1790000EC6CE /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */;
+			productName = Shimmer;
 		};
 /* End XCSwiftPackageProductDependency section */
 

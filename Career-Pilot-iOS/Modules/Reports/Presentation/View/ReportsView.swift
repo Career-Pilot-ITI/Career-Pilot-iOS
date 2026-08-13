@@ -30,9 +30,21 @@ struct ReportsView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
 
         case .empty:
-            Text("No sessions yet")
-                .foregroundStyle(Color.gray600)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            VStack(alignment: .leading) {
+                Text("Session History")
+                    .font(Font.size22Bold)
+                    .foregroundStyle(Color.primaryNavy)
+
+                Text("0 sessions · Avg score 0")
+                    .font(Font.size14Regular)
+                    .foregroundStyle(Color.gray600)
+                    .padding(.bottom, 16)
+                
+                EmptySessionsView()
+            }
+            .padding(.top, 16)
+            .padding(.horizontal, 24)
+            
 
         case .error(let message):
             ErrorStateView(message: message) {
@@ -52,7 +64,10 @@ struct ReportsView: View {
         VStack(spacing: 0) {
             SessionHistory(
                 sessionCount: viewModel.pagination?.totalElements ?? viewModel.sessions.count,
-                sessionAvgScore: viewModel.sessions.map(\.overallScore).reduce(0, +) / Double(max(viewModel.sessions.count, 1)),
+                sessionAvgScore: {
+                    let scores = viewModel.sessions.compactMap(\.overallScore)
+                    return scores.isEmpty ? 0 : scores.reduce(0, +) / Double(scores.count)
+                }(),
                 sessions: viewModel.sessions.map { $0.toUIModel() },
                 hasMore: viewModel.pagination?.hasMore ?? false,
                 onLoadMore: { Task { await viewModel.loadNextPage() } }

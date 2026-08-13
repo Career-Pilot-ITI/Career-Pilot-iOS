@@ -32,8 +32,8 @@ extension ReportsInterviewSessionDTO {
         entity.trackId = Int64(trackId)
         entity.trackName = trackName
         entity.status = status
-        entity.overallScore = overallScore
-        entity.durationSeconds = Int64(durationSeconds)
+        entity.overallScore = overallScore ?? 0
+        entity.durationSeconds = Int64(durationSeconds ?? 0)
         entity.targetDurationMinutes = Int64(targetDurationMinutes)
         entity.maxQuestions = Int64(maxQuestions)
         entity.startedAt = startedAt

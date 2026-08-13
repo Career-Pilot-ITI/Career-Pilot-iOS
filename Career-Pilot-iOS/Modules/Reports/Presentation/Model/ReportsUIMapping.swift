@@ -14,7 +14,7 @@ extension ReportsInterviewSession {
             title: trackName,
             score: overallScore,
             noOfQuestions: maxQuestions,
-            perioudTime: "\(durationSeconds / 60)m",
+            perioudTime: durationSeconds.map { "\($0 / 60)m" } ?? "–",
             date: createdAt.formattedRelative()
         )
     }
@@ -53,14 +53,18 @@ extension SessionFeedback {
 
 extension SessionQuestion {
     func toQuestionReview() -> QuestionReview {
-        QuestionReview(
+        let durationText: String = {
+            guard let ms = durationMs else { return "–" }
+            return "\(ms / 1000 / 60):\(String(format: "%02d", (ms / 1000) % 60))"
+        }()
+        return QuestionReview(
             questionNumber: questionOrder,
             questionText: questionText,
             score: Int(score?.overallScore ?? 0),
             fillerWordsCount: Int(score?.fillerWords ?? 0),
-            duration: "\(durationMs / 1000 / 60):\(String(format: "%02d", (durationMs / 1000) % 60))",
+            duration: durationText,
             coachFeedback: score?.coachingTip ?? "",
-            transcript: userTranscript,
+            transcript: userTranscript ?? "",
             flaggedWords: []
         )
     }
