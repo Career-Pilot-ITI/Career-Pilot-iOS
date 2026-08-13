@@ -50,6 +50,9 @@ final class PracticeSessionViewModel: ObservableObject {
     /// audio-only sessions.
     @Published private(set) var visualAnalysisState: VisualAnalysisState = .idle
 
+    /// Deterministic scoring computed from frameObservations once analysis completes.
+    @Published private(set) var presenceScore: InterviewPresenceScore?
+
     private var elapsedTimer: Timer?
     private var elapsedSessionTimer: Timer?
     private var aiTurnTask: Task<Void, Never>?
@@ -70,6 +73,7 @@ final class PracticeSessionViewModel: ObservableObject {
 
     private let frameCaptureService: VideoFrameCaptureServicing?
     private let frameAnalysisService: VisionFrameAnalyzing?
+    private let metricsEngine: VisualMetricsEngineProtocol
 
     private let silenceThreshold: Float = 0.08
 
@@ -95,7 +99,8 @@ final class PracticeSessionViewModel: ObservableObject {
         speechService: SpeechPlaybackServicing,
         speechRecognitionService: SpeechRecognitionServicing,
         frameCaptureService: VideoFrameCaptureServicing? = VideoFrameCaptureService(samplingStrategy: FrameSamplingStrategy(minimumInterval: 5)),
-        frameAnalysisService: VisionFrameAnalyzing? = VisionFrameAnalysisService()
+        frameAnalysisService: VisionFrameAnalyzing? = VisionFrameAnalysisService(),
+        metricsEngine: VisualMetricsEngineProtocol = VisualMetricsEngine()
     ) {
         self.startUseCase = startUseCase
         self.submitUseCase = submitUseCase
@@ -110,6 +115,7 @@ final class PracticeSessionViewModel: ObservableObject {
         self.speechRecognitionService = speechRecognitionService
         self.frameCaptureService = frameCaptureService
         self.frameAnalysisService = frameAnalysisService
+        self.metricsEngine = metricsEngine
 
         self.interviewType = interviewType
         self.recordingService.delegate = self
@@ -403,6 +409,7 @@ extension PracticeSessionViewModel {
         stopEverythingForReconnect()
         capturedFrames.removeAll()
         frameObservations.removeAll()
+        presenceScore = nil
         visualAnalysisState = .idle
         frameCaptureService?.teardownSession()
         guard let sessionId = session?.id else { return }
@@ -489,6 +496,7 @@ extension PracticeSessionViewModel {
 
         let result = await frameAnalysisService.analyze(frames: framesToAnalyze)
         frameObservations = result.observations
+        presenceScore = metricsEngine.calculateMetrics(from: result.observations)
         visualAnalysisState = .completed(framesAnalyzed: result.framesAnalyzed, framesSkipped: result.framesSkipped)
     }
 }

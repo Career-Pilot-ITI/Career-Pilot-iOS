@@ -320,6 +320,8 @@
 		D96D836B302E638200CDD5AC /* FrameObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D836A302E638200CDD5AC /* FrameObservation.swift */; };
 		D96D836D302E639500CDD5AC /* VisionFrameAnalyzing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D836C302E639500CDD5AC /* VisionFrameAnalyzing.swift */; };
 		D96D836F302E63A900CDD5AC /* VisionFrameAnalysisService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D836E302E63A900CDD5AC /* VisionFrameAnalysisService.swift */; };
+		D96D8371302E66A300CDD5AC /* VisualMetricsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D8370302E66A300CDD5AC /* VisualMetricsEngine.swift */; };
+		D96D8373302E66BE00CDD5AC /* InterviewPresenceScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D8372302E66BE00CDD5AC /* InterviewPresenceScore.swift */; };
 		D970C9E4301560D3002F6269 /* MultipartFormDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9E3301560D3002F6269 /* MultipartFormDataBuilder.swift */; };
 		D970C9E6301566B3002F6269 /* UploadFileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9E5301566B3002F6269 /* UploadFileResponseDTO.swift */; };
 		D970C9EB301569F8002F6269 /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9EA301569F8002F6269 /* UserDataEndPoint.swift */; };
@@ -702,6 +704,8 @@
 		D96D836A302E638200CDD5AC /* FrameObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameObservation.swift; sourceTree = "<group>"; };
 		D96D836C302E639500CDD5AC /* VisionFrameAnalyzing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionFrameAnalyzing.swift; sourceTree = "<group>"; };
 		D96D836E302E63A900CDD5AC /* VisionFrameAnalysisService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionFrameAnalysisService.swift; sourceTree = "<group>"; };
+		D96D8370302E66A300CDD5AC /* VisualMetricsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualMetricsEngine.swift; sourceTree = "<group>"; };
+		D96D8372302E66BE00CDD5AC /* InterviewPresenceScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewPresenceScore.swift; sourceTree = "<group>"; };
 		D970C9E3301560D3002F6269 /* MultipartFormDataBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataBuilder.swift; sourceTree = "<group>"; };
 		D970C9E5301566B3002F6269 /* UploadFileResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileResponseDTO.swift; sourceTree = "<group>"; };
 		D970C9EA301569F8002F6269 /* UserDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataEndPoint.swift; path = Generic/UserDataEndPoint.swift; sourceTree = "<group>"; };
@@ -2109,6 +2113,8 @@
 				D96D836A302E638200CDD5AC /* FrameObservation.swift */,
 				D96D836C302E639500CDD5AC /* VisionFrameAnalyzing.swift */,
 				D96D836E302E63A900CDD5AC /* VisionFrameAnalysisService.swift */,
+				D96D8370302E66A300CDD5AC /* VisualMetricsEngine.swift */,
+				D96D8372302E66BE00CDD5AC /* InterviewPresenceScore.swift */,
 			);
 			path = ImageAnalysis;
 			sourceTree = "<group>";
@@ -2780,6 +2786,7 @@
 				41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */,
 				6161D86E301585E800098A0C /* RefreshUserData.swift in Sources */,
 				41BE1A6E300BF0810033D1B5 /* OnBoardingUser.swift in Sources */,
+				D96D8371302E66A300CDD5AC /* VisualMetricsEngine.swift in Sources */,
 				61F33932301383FE00C94B89 /* ImageDownloader.swift in Sources */,
 				6169A7CA301044E5001FDC39 /* ProfileScreen.swift in Sources */,
 				41CE20E8300A5506005DC31F /* ToastView.swift in Sources */,
@@ -2984,6 +2991,7 @@
 				6169A7CC301044E5001FDC39 /* SettingsProfileTopView.swift in Sources */,
 				D9B614FF300D1D7C00552F85 /* TrackDTO.swift in Sources */,
 				61703F1F3026EB4500412A27 /* DIContainer+Sessions.swift in Sources */,
+				D96D8373302E66BE00CDD5AC /* InterviewPresenceScore.swift in Sources */,
 				D970C9E4301560D3002F6269 /* MultipartFormDataBuilder.swift in Sources */,
 				D9C187B33006618500BFF8E9 /* DIContainer.swift in Sources */,
 				6103DA3C301A228E008BC8BF /* UpdateUserData.swift in Sources */,
