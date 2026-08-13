@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		41833E4730101E9B0055D990 /* UpdateProfileRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41833E4630101E9B0055D990 /* UpdateProfileRequestDTO.swift */; };
+		419DE28A302E3D22007395C4 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 419DE289302E3D22007395C4 /* Swinject */; };
+		419DE28D302E3D4B007395C4 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 419DE28C302E3D4B007395C4 /* Shimmer */; };
 		41A7F6F8300BBB2A00FBE8EB /* LampGlitchModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7F6F7300BBB2A00FBE8EB /* LampGlitchModifier.swift */; };
 		41A7F6FB300BBDA000FBE8EB /* UserEntity+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7F6F9300BBDA000FBE8EB /* UserEntity+Mapping.swift */; };
 		41AC14EF30076D5500502158 /* CustomSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC14EE30076D5500502158 /* CustomSearchTextField.swift */; };
@@ -38,8 +40,6 @@
 		41AD9020301623CC00BDFDA0 /* CurrentUserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD901F301623CC00BDFDA0 /* CurrentUserProvider.swift */; };
 		41AD90223016260600BDFDA0 /* Date+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD90213016260600BDFDA0 /* Date+Formatting.swift */; };
 		41AEC143302E16C1000EC6CE /* EmptySessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AEC142302E16C1000EC6CE /* EmptySessionsView.swift */; };
-		41AEC146302E1779000EC6CE /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 41AEC145302E1779000EC6CE /* Swinject */; };
-		41AEC149302E1790000EC6CE /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 41AEC148302E1790000EC6CE /* Shimmer */; };
 		41B138A13025EFAB00D1D053 /* PageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B138A03025EFAA00D1D053 /* PageResponse.swift */; };
 		41B138A33025EFE300D1D053 /* PaginatedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B138A23025EFE300D1D053 /* PaginatedResult.swift */; };
 		41B138A53025F00100D1D053 /* PaginationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B138A43025F00100D1D053 /* PaginationInfo.swift */; };
@@ -179,7 +179,6 @@
 		61970B8830115725009D7E58 /* SubscriptionPlans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61970B8730115725009D7E58 /* SubscriptionPlans.swift */; };
 		61970B8E30115BE2009D7E58 /* CoinPack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61970B8D30115BE2009D7E58 /* CoinPack.swift */; };
 		61970B9030115C5F009D7E58 /* CoinsPackViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61970B8F30115C5F009D7E58 /* CoinsPackViewData.swift */; };
-		619B670A3029261900BAFA09 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 619B67093029261900BAFA09 /* Swinject */; };
 		61AD45A6300D608D00B70AFA /* SubscribtionCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AD45A5300D608D00B70AFA /* SubscribtionCheckoutView.swift */; };
 		61B48C19301A1384002AEAC9 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B48C18301A1384002AEAC9 /* ProfileViewModel.swift */; };
 		61D309163025AF1E0072734C /* SaveUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D309153025AF1E0072734C /* SaveUserData.swift */; };
@@ -745,8 +744,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41AEC149302E1790000EC6CE /* Shimmer in Frameworks */,
-				41AEC146302E1779000EC6CE /* Swinject in Frameworks */,
+				419DE28D302E3D4B007395C4 /* Shimmer in Frameworks */,
+				419DE28A302E3D22007395C4 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2512,8 +2511,8 @@
 			);
 			name = "Career-Pilot-iOS";
 			packageProductDependencies = (
-				41AEC145302E1779000EC6CE /* Swinject */,
-				41AEC148302E1790000EC6CE /* Shimmer */,
+				419DE289302E3D22007395C4 /* Swinject */,
+				419DE28C302E3D4B007395C4 /* Shimmer */,
 			);
 			productName = "Career-Pilot-iOS";
 			productReference = D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */;
@@ -2588,8 +2587,8 @@
 			);
 			mainGroup = D93938D53004064400CF4372;
 			packageReferences = (
-				41AEC144302E1779000EC6CE /* XCRemoteSwiftPackageReference "swinject" */,
-				41AEC147302E1790000EC6CE /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */,
+				419DE288302E3D21007395C4 /* XCRemoteSwiftPackageReference "swinject" */,
+				419DE28B302E3D4B007395C4 /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */,
 			);
 			productRefGroup = D93938DF3004064400CF4372 /* Products */;
 			projectDirPath = "";
@@ -3314,7 +3313,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		41AEC144302E1779000EC6CE /* XCRemoteSwiftPackageReference "swinject" */ = {
+		419DE288302E3D21007395C4 /* XCRemoteSwiftPackageReference "swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/swinject/swinject";
 			requirement = {
@@ -3322,7 +3321,7 @@
 				version = 2.8.4;
 			};
 		};
-		41AEC147302E1790000EC6CE /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */ = {
+		419DE28B302E3D4B007395C4 /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/markiv/swiftui-Shimmer";
 			requirement = {
@@ -3333,14 +3332,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		41AEC145302E1779000EC6CE /* Swinject */ = {
+		419DE289302E3D22007395C4 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 41AEC144302E1779000EC6CE /* XCRemoteSwiftPackageReference "swinject" */;
+			package = 419DE288302E3D21007395C4 /* XCRemoteSwiftPackageReference "swinject" */;
 			productName = Swinject;
 		};
-		41AEC148302E1790000EC6CE /* Shimmer */ = {
+		419DE28C302E3D4B007395C4 /* Shimmer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 41AEC147302E1790000EC6CE /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */;
+			package = 419DE28B302E3D4B007395C4 /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */;
 			productName = Shimmer;
 		};
 /* End XCSwiftPackageProductDependency section */

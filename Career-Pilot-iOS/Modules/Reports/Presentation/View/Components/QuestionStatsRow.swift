@@ -14,7 +14,7 @@ struct QuestionStatsRow: View {
         HStack(spacing: Spacing.s12) {
             StatCard(value: "\(question.score)", label: "Score", valueColor: Color.successColour)
             StatCard(value: "\(question.fillerWordsCount)", label: "Filler words", valueColor: Color.primaryYellow)
-            StatCard(value: question.duration, label: "Duration", valueColor: Color.primaryNavy)
+            StatCard(value: question.duration, label: "Duration", valueColor: Color.primary)
         }
     }
 }

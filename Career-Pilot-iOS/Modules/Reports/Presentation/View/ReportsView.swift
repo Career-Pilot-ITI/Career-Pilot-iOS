@@ -10,11 +10,14 @@ struct ReportsView: View {
     }
 
     var body: some View {
-        NavigationStack(path: $coordinator.path) {
-            content
-                .navigationDestination(for: ReportsRoute.self) { route in
-                    destination(for: route)
-                }
+        ZStack {
+            Color(.background).ignoresSafeArea()
+            NavigationStack(path: $coordinator.path) {
+                content
+                    .navigationDestination(for: ReportsRoute.self) { route in
+                        destination(for: route)
+                    }
+            }
         }
         .environmentObject(coordinator)
         .task {
