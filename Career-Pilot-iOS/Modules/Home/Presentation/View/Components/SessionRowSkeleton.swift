@@ -33,7 +33,7 @@ struct SessionRowSkeleton: View {
                 .frame(width: 50, height: 28)
         }
         .padding(Spacing.s16)
-        .background(Color.white)
+        .background(Color.background)
         .cornerRadius(Radius.r16)
         .overlay(
             RoundedRectangle(cornerRadius: Radius.r16)
