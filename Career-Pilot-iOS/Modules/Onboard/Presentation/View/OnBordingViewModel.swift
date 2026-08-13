@@ -285,6 +285,7 @@ class OnBordingViewModel: ObservableObject {
     }
 
     private func updateUser(_ user: OnBoardingUser) async throws -> User {
+        print("The user cv is already here \(user.cv)")
         let updatedUser = try await updateProfileUseCase.execute(user)
         print("✅ Profile updated successfully for user ID: \(updatedUser.id)")
        

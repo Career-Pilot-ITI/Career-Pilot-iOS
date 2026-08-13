@@ -76,7 +76,8 @@ struct ProfileForm: View {
                     .foregroundColor(.gray400)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                if userData.skills == nil {
+                if userData.skills == nil &&
+                    !userData.skills.isEmpty {
                      SkillsInputView(selectedSkills: skillNamesBinding)
                 } else {
                   
