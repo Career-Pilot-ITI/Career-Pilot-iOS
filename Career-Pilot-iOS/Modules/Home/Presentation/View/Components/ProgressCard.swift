@@ -35,7 +35,7 @@ struct ProgressCard: View {
             Image(systemName: "chevron.right").foregroundColor(.secondary)
         }
         .padding()
-        .background(Color.background)
+        .background(Color.gray400.opacity(0.08))
         .cornerRadius(16)
     }
 }
