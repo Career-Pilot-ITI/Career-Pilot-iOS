@@ -74,7 +74,7 @@ struct CheckOutView: View {
         }
         .navigationTitle("Checkout")
         .padding(.horizontal, Spacing.s20)
-        .background(Color(.background).ignoresSafeArea())
+        .background(Color.background.ignoresSafeArea())
 
     }
     

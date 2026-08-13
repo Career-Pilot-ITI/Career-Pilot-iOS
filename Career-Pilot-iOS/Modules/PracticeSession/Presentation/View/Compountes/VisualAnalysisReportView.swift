@@ -47,10 +47,10 @@ struct VisualAnalysisReportView: View {
                         )
 
                         MetricCard(
-                            icon: "figure.walk",
-                            title: "Body Movement",
-                            score: score.bodyMovement.score,
-                            detail: "\(score.bodyMovement.excessiveMovementEventCount) excessive movement events"
+                            icon: "face.smiling",
+                            title: "face Visibility",
+                            score: Int(score.faceVisibility.visibleRatio)	,
+                            detail: "\(score.bodyMovement.excessiveMovementEventCount) Face visibility movement events"
                         )
 
                         FaceVisibilityRow(metrics: score.faceVisibility)

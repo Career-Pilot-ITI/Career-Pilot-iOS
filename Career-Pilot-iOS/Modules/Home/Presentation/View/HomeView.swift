@@ -77,7 +77,7 @@ struct HomeView: View {
             .padding(.vertical, Spacing.s12)
         }
         .scrollIndicators(.hidden)
-        .background(Color(.background).ignoresSafeArea())
+        .background(Color.background.ignoresSafeArea())
         .task {
             await viewModel.loadHome()
         }

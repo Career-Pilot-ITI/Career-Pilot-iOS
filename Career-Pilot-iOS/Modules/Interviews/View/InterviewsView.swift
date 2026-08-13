@@ -34,7 +34,7 @@ struct InterviewsView: View {
         .padding(.horizontal)
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
-        .background(Color(.background))
+        .background(Color.background)
         .scrollIndicators(.hidden)
         .toolbar(.hidden, for: .tabBar)
     }
