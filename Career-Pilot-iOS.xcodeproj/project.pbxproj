@@ -322,6 +322,7 @@
 		D96D836F302E63A900CDD5AC /* VisionFrameAnalysisService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D836E302E63A900CDD5AC /* VisionFrameAnalysisService.swift */; };
 		D96D8371302E66A300CDD5AC /* VisualMetricsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D8370302E66A300CDD5AC /* VisualMetricsEngine.swift */; };
 		D96D8373302E66BE00CDD5AC /* InterviewPresenceScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D8372302E66BE00CDD5AC /* InterviewPresenceScore.swift */; };
+		D96D8375302E68C400CDD5AC /* VisualAnalysisReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D8374302E68C400CDD5AC /* VisualAnalysisReportView.swift */; };
 		D970C9E4301560D3002F6269 /* MultipartFormDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9E3301560D3002F6269 /* MultipartFormDataBuilder.swift */; };
 		D970C9E6301566B3002F6269 /* UploadFileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9E5301566B3002F6269 /* UploadFileResponseDTO.swift */; };
 		D970C9EB301569F8002F6269 /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9EA301569F8002F6269 /* UserDataEndPoint.swift */; };
@@ -706,6 +707,7 @@
 		D96D836E302E63A900CDD5AC /* VisionFrameAnalysisService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionFrameAnalysisService.swift; sourceTree = "<group>"; };
 		D96D8370302E66A300CDD5AC /* VisualMetricsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualMetricsEngine.swift; sourceTree = "<group>"; };
 		D96D8372302E66BE00CDD5AC /* InterviewPresenceScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewPresenceScore.swift; sourceTree = "<group>"; };
+		D96D8374302E68C400CDD5AC /* VisualAnalysisReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualAnalysisReportView.swift; sourceTree = "<group>"; };
 		D970C9E3301560D3002F6269 /* MultipartFormDataBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataBuilder.swift; sourceTree = "<group>"; };
 		D970C9E5301566B3002F6269 /* UploadFileResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileResponseDTO.swift; sourceTree = "<group>"; };
 		D970C9EA301569F8002F6269 /* UserDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataEndPoint.swift; path = Generic/UserDataEndPoint.swift; sourceTree = "<group>"; };
@@ -2074,6 +2076,7 @@
 				D920C24A300EFEB400AB7317 /* RecordingView.swift */,
 				D920C24E300EFEE200AB7317 /* StatusScreens.swift */,
 				D920C250300F001800AB7317 /* LoadingView.swift */,
+				D96D8374302E68C400CDD5AC /* VisualAnalysisReportView.swift */,
 			);
 			path = Compountes;
 			sourceTree = "<group>";
@@ -2821,6 +2824,7 @@
 				41BC7730300D1C5300E89C3F /* RadarMetricsLegend.swift in Sources */,
 				41A7F6F8300BBB2A00FBE8EB /* LampGlitchModifier.swift in Sources */,
 				D9B614F6300D1B8E00552F85 /* GetAllTrackesUseCase.swift in Sources */,
+				D96D8375302E68C400CDD5AC /* VisualAnalysisReportView.swift in Sources */,
 				CECC20D83007B60900DC450D /* AppStrings.swift in Sources */,
 				CEA4C0883014528800CB5DD3 /* GetCurrentUserUseCase.swift in Sources */,
 				D95C3BA0300E49D20042785F /* CancelInterviewUseCase.swift in Sources */,

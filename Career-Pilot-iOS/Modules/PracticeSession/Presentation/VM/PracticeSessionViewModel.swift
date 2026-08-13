@@ -51,7 +51,7 @@ final class PracticeSessionViewModel: ObservableObject {
     @Published private(set) var visualAnalysisState: VisualAnalysisState = .idle
 
     /// Deterministic scoring computed from frameObservations once analysis completes.
-    @Published private(set) var presenceScore: InterviewPresenceScore?
+    @Published private(set) var presenceScore: InterviewPresenceScore = InterviewPresenceScore.empty
 
     private var elapsedTimer: Timer?
     private var elapsedSessionTimer: Timer?
@@ -409,7 +409,7 @@ extension PracticeSessionViewModel {
         stopEverythingForReconnect()
         capturedFrames.removeAll()
         frameObservations.removeAll()
-        presenceScore = nil
+        presenceScore = InterviewPresenceScore.empty
         visualAnalysisState = .idle
         frameCaptureService?.teardownSession()
         guard let sessionId = session?.id else { return }
@@ -496,7 +496,7 @@ extension PracticeSessionViewModel {
 
         let result = await frameAnalysisService.analyze(frames: framesToAnalyze)
         frameObservations = result.observations
-        presenceScore = metricsEngine.calculateMetrics(from: result.observations)
+        presenceScore = metricsEngine.calculateMetrics(from: result.observations) ?? InterviewPresenceScore.empty
         visualAnalysisState = .completed(framesAnalyzed: result.framesAnalyzed, framesSkipped: result.framesSkipped)
     }
 }

@@ -121,3 +121,45 @@ struct InterviewPresenceScore: Equatable, Sendable {
     let bodyMovement: BodyMovementMetrics
     let faceVisibility: FaceVisibilityMetrics
 }
+
+extension InterviewPresenceScore {
+    static let empty = InterviewPresenceScore(
+        overallScore: 0,
+        eyeContact: EyeContactMetrics(
+            ratio: 0,
+            framesFaceVisible: 0,
+            framesLookingAtCamera: 0,
+            score: 0
+        ),
+        posture: PostureMetrics(
+            averageShoulderTiltDegrees: 0,
+            averageHeadOffset: 0,
+            stabilityScore: 0,
+            framesEvaluated: 0,
+            score: 0
+        ),
+        headMovement: HeadMovementMetrics(
+            averageAbsoluteYawDegrees: 0,
+            movementFrequencyPerMinute: 0,
+            lookingAwayEventCount: 0,
+            score: 0
+        ),
+        handMovement: HandMovementMetrics(
+            movementFrequencyPerMinute: 0,
+            averageAmplitude: 0,
+            inactivityRatio: 0,
+            score: 0
+        ),
+        bodyMovement: BodyMovementMetrics(
+            movementFrequencyPerMinute: 0,
+            averageJointDisplacement: 0,
+            excessiveMovementEventCount: 0,
+            score: 0
+        ),
+        faceVisibility: FaceVisibilityMetrics(
+            visibleRatio: 0,
+            totalFrames: 0,
+            framesFaceVisible: 0
+        )
+    )
+}
