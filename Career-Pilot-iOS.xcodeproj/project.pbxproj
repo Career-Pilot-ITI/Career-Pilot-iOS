@@ -212,7 +212,6 @@
 		CE8AFF1D300718670064CC6C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1C300718670064CC6C /* Round.swift */; };
 		CE8AFF1F3007187D0064CC6C /* Spaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF1E3007187D0064CC6C /* Spaces.swift */; };
 		CE8AFF22300726660064CC6C /* PhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AFF21300726660064CC6C /* PhoneTextField.swift */; };
-		CE92F09430276A14001E955D /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = CE92F09330276A14001E955D /* Swinject */; };
 		CEA4C08530143D6900CB5DD3 /* OnBoardingUser+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08430143D6900CB5DD3 /* OnBoardingUser+Mapping.swift */; };
 		CEA4C0883014528800CB5DD3 /* GetCurrentUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C0873014528800CB5DD3 /* GetCurrentUserUseCase.swift */; };
 		CEA4C08A30145B0900CB5DD3 /* TrackInterviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4C08930145B0900CB5DD3 /* TrackInterviewCard.swift */; };
@@ -311,7 +310,12 @@
 		D95C3BCB300EA1800042785F /* WaitingForAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCA300EA1800042785F /* WaitingForAnswerView.swift */; };
 		D95C3BCD300EA1A20042785F /* UserTrunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCC300EA1A20042785F /* UserTrunView.swift */; };
 		D95C3BCF300EA1C00042785F /* SubmitingAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95C3BCE300EA1C00042785F /* SubmitingAnswerView.swift */; };
-		D9634B0430286D4E0043BABB /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = D9634B0330286D4E0043BABB /* Swinject */; };
+		D96D8359302DEAD200CDD5AC /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D8358302DEAD200CDD5AC /* CameraPreviewView.swift */; };
+		D96D835C302DECF200CDD5AC /* VideoFrameCaptureServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D835B302DECF200CDD5AC /* VideoFrameCaptureServicing.swift */; };
+		D96D835E302DED3300CDD5AC /* VideoFrameCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D835D302DED3300CDD5AC /* VideoFrameCaptureService.swift */; };
+		D96D8360302DED6500CDD5AC /* CapturedFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D835F302DED6500CDD5AC /* CapturedFrame.swift */; };
+		D96D8362302DED7700CDD5AC /* FrameSamplingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D8361302DED7700CDD5AC /* FrameSamplingStrategy.swift */; };
+		D96D8364302DED8B00CDD5AC /* VideoCaptureError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D8363302DED8B00CDD5AC /* VideoCaptureError.swift */; };
 		D970C9E4301560D3002F6269 /* MultipartFormDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9E3301560D3002F6269 /* MultipartFormDataBuilder.swift */; };
 		D970C9E6301566B3002F6269 /* UploadFileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9E5301566B3002F6269 /* UploadFileResponseDTO.swift */; };
 		D970C9EB301569F8002F6269 /* UserDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9EA301569F8002F6269 /* UserDataEndPoint.swift */; };
@@ -684,6 +688,12 @@
 		D95C3BCA300EA1800042785F /* WaitingForAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForAnswerView.swift; sourceTree = "<group>"; };
 		D95C3BCC300EA1A20042785F /* UserTrunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTrunView.swift; sourceTree = "<group>"; };
 		D95C3BCE300EA1C00042785F /* SubmitingAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitingAnswerView.swift; sourceTree = "<group>"; };
+		D96D8358302DEAD200CDD5AC /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		D96D835B302DECF200CDD5AC /* VideoFrameCaptureServicing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFrameCaptureServicing.swift; sourceTree = "<group>"; };
+		D96D835D302DED3300CDD5AC /* VideoFrameCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFrameCaptureService.swift; sourceTree = "<group>"; };
+		D96D835F302DED6500CDD5AC /* CapturedFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedFrame.swift; sourceTree = "<group>"; };
+		D96D8361302DED7700CDD5AC /* FrameSamplingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameSamplingStrategy.swift; sourceTree = "<group>"; };
+		D96D8363302DED8B00CDD5AC /* VideoCaptureError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaptureError.swift; sourceTree = "<group>"; };
 		D970C9E3301560D3002F6269 /* MultipartFormDataBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataBuilder.swift; sourceTree = "<group>"; };
 		D970C9E5301566B3002F6269 /* UploadFileResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileResponseDTO.swift; sourceTree = "<group>"; };
 		D970C9EA301569F8002F6269 /* UserDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDataEndPoint.swift; path = Generic/UserDataEndPoint.swift; sourceTree = "<group>"; };
@@ -1914,6 +1924,7 @@
 				D95C3B9B300E49740042785F /* DataSources */,
 				D92853F53010176200F8CAC2 /* Mappers */,
 				D95C3B9A300E496E0042785F /* RepoImp */,
+				D96D835A302DECD700CDD5AC /* Service */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1952,6 +1963,7 @@
 		D95C3B8F300E48E10042785F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D96D8357302DEAC500CDD5AC /* Camera */,
 				D95C3BC7300EA14C0042785F /* Compountes */,
 				D95C3BC5300E7C4F0042785F /* PracticeSessionView.swift */,
 			);
@@ -2051,6 +2063,26 @@
 				D920C250300F001800AB7317 /* LoadingView.swift */,
 			);
 			path = Compountes;
+			sourceTree = "<group>";
+		};
+		D96D8357302DEAC500CDD5AC /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				D96D8358302DEAD200CDD5AC /* CameraPreviewView.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		D96D835A302DECD700CDD5AC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D96D835B302DECF200CDD5AC /* VideoFrameCaptureServicing.swift */,
+				D96D835D302DED3300CDD5AC /* VideoFrameCaptureService.swift */,
+				D96D835F302DED6500CDD5AC /* CapturedFrame.swift */,
+				D96D8361302DED7700CDD5AC /* FrameSamplingStrategy.swift */,
+				D96D8363302DED8B00CDD5AC /* VideoCaptureError.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		D970C9E7301567F2002F6269 /* DataSource */ = {
@@ -2769,6 +2801,7 @@
 				611259EC3028E8B800C5E9E7 /* Validator.swift in Sources */,
 				CEE62A83300910E90071F076 /* CustomNavigationBar.swift in Sources */,
 				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
+				D96D8360302DED6500CDD5AC /* CapturedFrame.swift in Sources */,
 				CEA4C08A30145B0900CB5DD3 /* TrackInterviewCard.swift in Sources */,
 				6169A7D3301044E5001FDC39 /* SupportAndLeagalSettingsView.swift in Sources */,
 				D999D5A83010ED0E00CF606B /* SessionStateDTOMapping.swift in Sources */,
@@ -2825,6 +2858,7 @@
 				D920C24F300EFEE200AB7317 /* StatusScreens.swift in Sources */,
 				CEC5AED23028197F000B5BDC /* InterviewTrackItem.swift in Sources */,
 				CECCDA3D300F5E230068620D /* UpdateProfileResponseDTO.swift in Sources */,
+				D96D8362302DED7700CDD5AC /* FrameSamplingStrategy.swift in Sources */,
 				CECC20E63007DB3D00DC450D /* PulsingIconBadge.swift in Sources */,
 				CECC20EC3007DD1D00DC450D /* WaitingStateComponents.swift in Sources */,
 				D92854083010188400F8CAC2 /* InterviewQuestionMapping.swift in Sources */,
@@ -2867,6 +2901,7 @@
 				41D69D16300A6CF100294D94 /* User.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
 				D970C9E6301566B3002F6269 /* UploadFileResponseDTO.swift in Sources */,
+				D96D8359302DEAD200CDD5AC /* CameraPreviewView.swift in Sources */,
 				D95C3B99300E495C0042785F /* InterviewSessionEndPointes.swift in Sources */,
 				CEA4C0903014698600CB5DD3 /* SessionRowSkeleton.swift in Sources */,
 				CEC5AEC8302813D7000B5BDC /* ATSCard.swift in Sources */,
@@ -2889,6 +2924,7 @@
 				D957B3013017EC2E00B0562A /* PaymentState.swift in Sources */,
 				D92853EF301006E900F8CAC2 /* FeedbackReportDTO.swift in Sources */,
 				CEE62A8B3009201C0071F076 /* ReportsView.swift in Sources */,
+				D96D835E302DED3300CDD5AC /* VideoFrameCaptureService.swift in Sources */,
 				618F82633010B71B0065331A /* SettingsEndpoint.swift in Sources */,
 				41B138A33025EFE300D1D053 /* PaginatedResult.swift in Sources */,
 				61970B7B30114F0F009D7E58 /* UserSessions.swift in Sources */,
@@ -2909,6 +2945,7 @@
 				D9B4B1B83011810E004909ED /* NewSession.swift in Sources */,
 				D95C3BB9300E4ABE0042785F /* ResumeInterviewUseCase.swift in Sources */,
 				41AD8FFC30161B8300BDFDA0 /* ReportsInterviewSessionDTO+Mapping.swift in Sources */,
+				D96D835C302DECF200CDD5AC /* VideoFrameCaptureServicing.swift in Sources */,
 				CE8AFF1D300718670064CC6C /* Round.swift in Sources */,
 				6169A7CE301044E5001FDC39 /* ProfileFormSettings.swift in Sources */,
 				D935DFFC3008045A009DF855 /* OnBordingViewModel.swift in Sources */,
@@ -2958,6 +2995,7 @@
 				D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */,
 				41BC7744300D3DA600E89C3F /* CoachFeedbackCard.swift in Sources */,
 				41BC7746300D3DCD00E89C3F /* TranscriptSnippetCard.swift in Sources */,
+				D96D8364302DED8B00CDD5AC /* VideoCaptureError.swift in Sources */,
 				41D69D07300A69E200294D94 /* VerifyOTPResponseDTO.swift in Sources */,
 				41AD8FF930161ACB00BDFDA0 /* SessionQuestion.swift in Sources */,
 				41AD901E3016229900BDFDA0 /* ReportsInterviewSessionDTO.swift in Sources */,

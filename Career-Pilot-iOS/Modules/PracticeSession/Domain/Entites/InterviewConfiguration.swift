@@ -5,13 +5,41 @@ enum InterviewMode: Hashable, Sendable {
     case video
 }
 
-enum InterviewType: Hashable, Sendable {
+enum InterviewType: Hashable {
     case classic
     case custom(
+        mode: InterviewMode,
         maxQuestions: Int,
         maxAnswerDuration: TimeInterval,
         maxInterviewDuration: TimeInterval
     )
+
+    var interviewConfiguration: InterviewConfiguration {
+        switch self {
+        case .classic:
+            return InterviewConfiguration(
+                mode:.video,
+                maxQuestions: 3,
+                maxAnswerDuration: 2,
+                maxInterviewDuration: 20,
+                silenceTimeout: 5
+            )
+
+        case let .custom(
+            mode,
+            maxQuestions,
+            maxAnswerDuration,
+            maxInterviewDuration
+        ):
+            return InterviewConfiguration(
+                mode: mode,
+                maxQuestions: maxQuestions,
+                maxAnswerDuration: maxAnswerDuration,
+                maxInterviewDuration: maxInterviewDuration,
+                silenceTimeout: 5
+            )
+        }
+    }
 }
 
 
