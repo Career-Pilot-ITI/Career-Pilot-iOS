@@ -111,10 +111,6 @@ final class PracticeSessionViewModel: ObservableObject {
         self.silenceService.delegate = self
         self.speechService.delegate = self
         self.frameCaptureService?.delegate = self
-        
-        Task{
-            await configureVideoIfNeeded()
-        }
     }
 
     deinit {
@@ -457,8 +453,7 @@ extension PracticeSessionViewModel {
         print("Configuring open the video...")
         guard let frameCaptureService, !frameCaptureService.isConfigured else {
             isVideoReady = frameCaptureService?.isConfigured ?? false
-            print("ConfigViedoResult:(1) \(isVideoReady)")
-            print("Cause frameCaptureService isConfigured: \(frameCaptureService?.isConfigured)")
+            print("Viedo not ready Cause frameCaptureService isConfigured: \(String(describing: frameCaptureService?.isConfigured))")
             return
         }
         do {
