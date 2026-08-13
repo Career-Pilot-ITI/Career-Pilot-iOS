@@ -7,9 +7,6 @@ struct SettingView: View {
     @StateObject private var authCoordinator = AppCoordinator<AuthRoute>()
     var body: some View {
         ZStack {
-            Color.gray100
-                .ignoresSafeArea()
-            
             switch viewModel.loadState {
             case .loading, .idle:
                 settingsSkeleton
@@ -34,7 +31,8 @@ struct SettingView: View {
                 ScrollView {
                     VStack(alignment: .leading) {
                         Group {
-                            Text("Settings").font(.system(size: 22, weight: .bold)).foregroundColor(.primaryNavy)
+                            Text("Settings")
+                                .font(.system(size: 22, weight: .bold))
                             ProfileCard(user: user)
                         }
                         Group {
@@ -68,7 +66,6 @@ struct SettingView: View {
                                         .foregroundColor(.errorColour)
                                     Text("Permanently delete account & data")
                                         .font(.caption)
-                                        .foregroundColor(.gray400)
                                 }
                                 
                                 Spacer()
@@ -81,7 +78,7 @@ struct SettingView: View {
                             .padding(.vertical, Spacing.s8)
                             .background(
                                 RoundedRectangle(cornerRadius: Radius.r12)
-                                    .fill(Color.white)
+                                    .fill(Color.gray200.opacity(0.2))
                             )
                         }
                         
@@ -101,11 +98,11 @@ struct SettingView: View {
                         .padding(.vertical, Spacing.s12)
                         .background(
                             RoundedRectangle(cornerRadius: Radius.r12)
-                                .fill(Color.errorColour.opacity(0.08))
+                                .fill(Color.errorColour.opacity(0.3))
                         )
                         .onTapGesture {
                             Task {
-                                try await viewModel
+                                 await viewModel
                                     .logout(appState: appState)
                                 authCoordinator.popToRoot()
                             }
