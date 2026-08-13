@@ -38,24 +38,23 @@ struct VisualAnalysisReportView: View {
                             score: score.headMovement.score,
                             detail: "\(score.headMovement.lookingAwayEventCount) looking-away events"
                         )
-
+                        
                         MetricCard(
                             icon: "hand.raised.fill",
                             title: "Hand Movement",
                             score: score.handMovement.score,
                             detail: handMovementDetail
                         )
-
+                        
                         MetricCard(
                             icon: "face.smiling",
                             title: "face Visibility",
-                            score: Int(score.faceVisibility.visibleRatio)	,
-                            detail: "\(score.bodyMovement.excessiveMovementEventCount) Face visibility movement events"
+                            score: (Int(score.faceVisibility.visibleRatio * 100))	,
+                            detail: "Face visible of the interview"
                         )
-
-                        FaceVisibilityRow(metrics: score.faceVisibility)
+                        
                     }
-
+                    
                     DisclaimerNote()
                 }
                 .padding(Spacing.s20)
@@ -191,21 +190,6 @@ private struct ProgressBar: View {
     }
 }
 
-private struct FaceVisibilityRow: View {
-    let metrics: FaceVisibilityMetrics
-
-    var body: some View {
-        HStack {
-            Image(systemName: "person.crop.circle")
-                .foregroundStyle(Color.gray400)
-            Text("Face visible for \(Int(metrics.visibleRatio * 100))% of the interview")
-                .font(.size12Regular)
-                .foregroundStyle(Color.gray400)
-            Spacer()
-        }
-        .padding(.horizontal, Spacing.s4)
-    }
-}
 
 private struct DisclaimerNote: View {
     var body: some View {
