@@ -90,7 +90,7 @@ final class PracticeSessionViewModel: ObservableObject {
         silenceService: SilenceDetectionServicing,
         speechService: SpeechPlaybackServicing,
         speechRecognitionService: SpeechRecognitionServicing,
-        frameCaptureService: VideoFrameCaptureServicing? = nil
+        frameCaptureService: VideoFrameCaptureServicing? = VideoFrameCaptureService(samplingStrategy: FrameSamplingStrategy(minimumInterval: 5))
     ) {
         self.startUseCase = startUseCase
         self.submitUseCase = submitUseCase
@@ -110,6 +110,10 @@ final class PracticeSessionViewModel: ObservableObject {
         self.silenceService.delegate = self
         self.speechService.delegate = self
         self.frameCaptureService?.delegate = self
+        
+        Task{
+            await configureVideoIfNeeded()
+        }
     }
 
     deinit {
@@ -449,8 +453,11 @@ extension PracticeSessionViewModel {
     /// Best-effort: a camera failure here never blocks or fails the interview — it just
     /// means this session proceeds audio-only (`isVideoReady` stays false).
     fileprivate func configureVideoIfNeeded() async {
+        print("Configuring open the video...")
         guard let frameCaptureService, !frameCaptureService.isConfigured else {
             isVideoReady = frameCaptureService?.isConfigured ?? false
+            print("ConfigViedoResult:(1) \(isVideoReady)")
+            print("Cause frameCaptureService isConfigured: \(frameCaptureService?.isConfigured)")
             return
         }
         do {
