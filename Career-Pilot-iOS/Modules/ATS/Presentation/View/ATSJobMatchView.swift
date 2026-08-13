@@ -11,7 +11,7 @@ struct ATSJobMatchView: View {
     @EnvironmentObject var coordinator: AppCoordinator<HomeRoute>
     @State private var jobLink: String = ""
     @State private var cvUploaded: Bool = true
-    @StateObject private var viewmodel : ATSViewModel = ATSViewModel(getJobUseCase: GetJobByURLUseCase(repository: ATSRepository(remoteDataSource: ATSRemoteDataSource(networkService:URLSessionNetworkService()))),scoreJobUseCase: ScoreCVAgainstJobUseCase(repository: ATSRepository(remoteDataSource: ATSRemoteDataSource(networkService:URLSessionNetworkService()))))
+    @StateObject private var viewmodel : ATSViewModel = ATSViewModel(getJobUseCase: GetJobByURLUseCase(repository: ATSRepository(remoteDataSource: ATSRemoteDataSource(networkService:URLSessionNetworkService()))),scoreJobUseCase: ScoreCVAgainstJobUseCase(repository: ATSRepository(remoteDataSource: ATSRemoteDataSource(networkService:URLSessionNetworkService()))),userRepo: UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService()), localDataSource: UserLocalDataSourceImpl(coreData: CoreDataManager())))
 
     private var isCompareEnabled: Bool {
         !jobLink.trimmingCharacters(in: .whitespaces).isEmpty && cvUploaded && !viewmodel.isLoading
@@ -56,7 +56,7 @@ struct ATSJobMatchView: View {
                         .font(Font.size13Bold)
                         .foregroundStyle(Color.textPrimary)
 
-                    if cvUploaded {
+                    if viewmodel.cvUploaded {
                         UploadedCVCard()
                     } else {
                         CvUploadingView(
@@ -89,15 +89,7 @@ struct ATSJobMatchView: View {
             .padding(.horizontal, Spacing.s20)
             .padding(.top, Spacing.s16)
             .task {
-                let userRepo = UserDataRepoImp(remoteDataSource: UserDataRemoteDataSourceImp(networkService: URLSessionNetworkService()), localDataSource: UserLocalDataSourceImpl(coreData: CoreDataManager()))
-                
-                do {
-                    let result = try  await userRepo.getCurrentUser()
-                    print("My User Result: \(result)")
-
-                }catch(let error){
-                    print("Error: \(error.localizedDescription)")
-                }
+                await viewmodel.isCvFound()
             }
         }
     }
