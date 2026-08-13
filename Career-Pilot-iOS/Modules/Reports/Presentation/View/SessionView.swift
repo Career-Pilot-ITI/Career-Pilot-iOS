@@ -26,26 +26,7 @@ struct SessionView: View {
                 Text(message).foregroundStyle(.red)
             case .loaded:
                 if let feedback = viewModel.feedback {
-                    ScrollView {
-                        VStack(spacing: Spacing.s16) {
-                            OverallScoreCardView(
-                                score: Int(feedback.overallScore),
-                                performanceLabel: performanceLabel(for: feedback.overallScore),
-                                percentileText: "Top 28% of users this week"
-                            )
-                            PerformanceBreakdownView(metrics: feedback.toRadarMetrics())
-                            QuestionBreakDownView(sessionId: sessionId)
-                            VStack(alignment: .leading, spacing: Spacing.s12) {
-                                Text("Coaching Suggestions")
-                                    .font(Font.size15Bold)
-                                    .foregroundStyle(Color.primaryNavy)
-                                CoachingSuggestionsListView(suggestions: feedback.toCoachingSuggestions())
-                            }
-                        }
-                        .padding(.top, 16)
-                    }
-                    .scrollIndicators(.hidden)
-                    .padding(.horizontal, 24)
+                    SessionFeedBackView(feedback: feedback.toInterviewFeedback(), sessionId: sessionId)
                 }
             }
         }
@@ -53,8 +34,55 @@ struct SessionView: View {
             await viewModel.loadFeedback()
         }
     }
+}
 
-    private func performanceLabel(for score: Double) -> String {
+
+struct SessionFeedBackView: View {
+    var feedback: InterviewFeedback
+    var sessionId: Int
+    var onBack: (() -> Void)? = nil
+
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        VStack {
+            HStack {
+                BackButton(text: "Back")
+                    .onTapGesture {
+                        if let onBack {
+                            onBack()
+                        } else {
+                            dismiss()
+                        }
+                    }
+                Spacer()
+            }
+            
+            ScrollView {
+                VStack(spacing: Spacing.s16) {
+                    OverallScoreCardView(
+                        score: Int(feedback.overallScore),
+                        performanceLabel: performanceLabel(for: Double(feedback.overallScore)),
+                        percentileText: "Top 28% of users this week"
+                    )
+                    PerformanceBreakdownView(metrics: feedback.toRadarMetrics())
+                    QuestionBreakDownView(sessionId: sessionId)
+                    VStack(alignment: .leading, spacing: Spacing.s12) {
+                        Text("Coaching Suggestions")
+                            .font(Font.size15Bold)
+                            .foregroundStyle(Color.primaryNavy)
+                        CoachingSuggestionsListView(suggestions: feedback.toCoachingSuggestions())
+                    }
+                }
+                .padding(.top, 16)
+            }
+        }
+        .scrollIndicators(.hidden)
+        .padding(.horizontal, 24)
+    }
+    
+    
+    func performanceLabel(for score: Double) -> String {
         switch score {
         case 85...: return "Strong Performance"
         case 65..<85: return "Good Performance"
@@ -62,6 +90,7 @@ struct SessionView: View {
         }
     }
 }
+
 //
 //#Preview {
 //    SessionView(metrics: [

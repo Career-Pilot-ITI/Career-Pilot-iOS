@@ -8,4 +8,11 @@
 import Foundation
 enum UseCaseError: Error {
     case invalidEmail
+    
+    var userMessage: String{
+        switch self{
+        case.invalidEmail:
+            return"Invalid Email"
+        }
+    }
 }

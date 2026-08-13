@@ -20,6 +20,7 @@ extension OnBoardingUser {
             id: id,
             phoneNumber: phoneNumber,
             profile: UserProfile(
+            
                 displayName: fullName,
                 username: userName,
                 email: email,

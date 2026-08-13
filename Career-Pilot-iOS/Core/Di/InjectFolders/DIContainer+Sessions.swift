@@ -11,6 +11,6 @@ extension DIContainer{
     func  registerSessions() {
         container.register(UserSession.self) { r in
             UserSession(getUserDataUseCase: r.resolve(GetUserDataUseCase.self)!, refreshUseCase: r.resolve(RefreshUserDataUseCase.self)!)
-        }
+        }.inObjectScope(.container)
     }
 }

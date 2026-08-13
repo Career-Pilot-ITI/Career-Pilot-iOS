@@ -30,6 +30,8 @@ final class UserSession: ObservableObject {
     }
     
     func update(_ newData: UserModelSettingsView) {
+        print("🟢 UserSession UPDATE")
+        print("Session ID:", ObjectIdentifier(self))
         userData = newData
     }
 }

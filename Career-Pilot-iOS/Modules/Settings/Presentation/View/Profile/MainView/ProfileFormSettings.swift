@@ -26,15 +26,16 @@ struct ProfileFormSettings: View {
                     Divider().background(Color.gray400).frame(height: 4)
 
                     CustomProfileTextField(icon: "email", title: "Email", text: $user.email)
+                    Spacer().frame(height: 2)
                     Divider().background(Color.gray400).frame(height: 4)
 
-                 CustomePhoneProfileTextField(icon: "phone"
-                                              , title: "PHONE NUMBER")
+                    CustomePhoneProfileTextField(icon: "phone", phoneNumber: $user.phoneNumber
+                                              , title: "PHONE NUMBER" )
                     Divider().background(Color.gray400).frame(height: 4)
                     CustomProfileTextField(icon: "tittle", title: "CURRENT ROLE / TITTLE", text: $user.title  )
-                    Divider().background(Color.gray400).frame(height: 4)
                 }
-                
+                Divider().background(Color.gray400).frame(height: 4)
+
                 ExperienceLevelSelector(selected: $user.experienceLevel )
                 
                 Divider().background(Color.gray400).frame(height: 4)

@@ -110,27 +110,27 @@ struct ATSCard: View {
 
 // MARK: - Preview
 
-#Preview {
-    VStack(spacing: Spacing.s16) {
-        ATSCard(
-            iconName: "scope",
-            title: "ATS Job Match",
-            badgeText: "NEW",
-            subtitle: "Paste a job link · See how your CV scores",
-            accentColor: .primaryTeal,
-            action: { print("Tapped ATS Job Match") }
-        )
-
-        ATSCard(
-            iconName: "doc.text.magnifyingglass",
-            title: "Resume Review",
-            subtitle: "Get instant AI feedback on your CV",
-            accentColor: .activeColour,
-            action: { print("Tapped Resume Review") }
-        )
-    }
-    .padding()
-    .background(Color(.systemGroupedBackground))
-}
+//#Preview {
+//    VStack(spacing: Spacing.s16) {
+//        ATSCard(
+//            iconName: "scope",
+//            title: "ATS Job Match",
+//            badgeText: "NEW",
+//            subtitle: "Paste a job link · See how your CV scores",
+//            accentColor: .primaryTeal,
+//            action: { print("Tapped ATS Job Match") }
+//        )
+//
+//        ATSCard(
+//            iconName: "doc.text.magnifyingglass",
+//            title: "Resume Review",
+//            subtitle: "Get instant AI feedback on your CV",
+//            accentColor: .activeColour,
+//            action: { print("Tapped Resume Review") }
+//        )
+//    }
+//    .padding()
+//    .background(Color(.systemGroupedBackground))
+//}
 
 

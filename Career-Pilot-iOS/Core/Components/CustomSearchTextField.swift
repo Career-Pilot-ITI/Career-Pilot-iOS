@@ -59,20 +59,20 @@ struct CustomSearchTextField: View {
     }
 }
 
-#Preview {
-    struct PreviewContainer: View {
-        @State private var query: String = ""
-
-        var body: some View {
-            VStack(spacing: 20) {
-                CustomSearchTextField(text: $query, placeholder: "Search tracks…")
-
-                CustomSearchTextField(text: .constant("React"), placeholder: "Search tracks…")
-            }
-            .padding()
-            .background(Color(.systemGroupedBackground))
-        }
-    }
-
-    return PreviewContainer()
-}
+//#Preview {
+//    struct PreviewContainer: View {
+//        @State private var query: String = ""
+//
+//        var body: some View {
+//            VStack(spacing: 20) {
+//                CustomSearchTextField(text: $query, placeholder: "Search tracks…")
+//
+//                CustomSearchTextField(text: .constant("React"), placeholder: "Search tracks…")
+//            }
+//            .padding()
+//            .background(Color(.systemGroupedBackground))
+//        }
+//    }
+//
+//    return PreviewContainer()
+//}

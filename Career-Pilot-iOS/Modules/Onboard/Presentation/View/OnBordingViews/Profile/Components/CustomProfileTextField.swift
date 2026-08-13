@@ -11,6 +11,7 @@ import SwiftUI
 struct CustomProfileTextField: View {
     var icon: String
     let title: String
+    var autocapitalization: TextInputAutocapitalization?
     @Binding var text: String
     var errorMessage: String? = nil // Optional error message string
     @FocusState private var isFocused: Bool
@@ -36,7 +37,7 @@ struct CustomProfileTextField: View {
                         .frame(height: shouldFloat ? nil : 0, alignment: .leading)
                         .clipped()
 
-                    TextField(title.uppercased(), text: $text)
+                    TextField(title.uppercased(), text: $text).textInputAutocapitalization(autocapitalization)
                         .font(shouldFloat ? .size13Semibold : .size14Medium)
                        
                         .focused($isFocused)

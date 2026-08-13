@@ -10,16 +10,15 @@ import SwiftUI
 struct OnBordingView: View {
     @EnvironmentObject var appState: AppState
     @StateObject var vm: OnBordingViewModel = DIContainer.shared.container.resolve(OnBordingViewModel.self)!
-
+    
     var body: some View {
          ZStack {
             Color.background
                     .ignoresSafeArea()
             VStack(alignment: .center, spacing: 14) {
                 
-                if vm.currentView != .ProfileView {
-                    OnBordingTopPart(vm: vm)
-                }
+                
+                OnBordingTopPart(vm: vm)
                 
                 Spacer()
                 // Onboarding Content
@@ -30,9 +29,11 @@ struct OnBordingView: View {
                 case .loading:
                     ProgressView()
                     
-                case .error(let error):
-                    OnBoardingErrorState(vm: vm, errorMessage: error.description)
+                case .error(let errorMessage) :
+                    OnBoardingErrorState(vm: vm, errorMessage: errorMessage)
+            
                 }
+           
                 
                 Spacer()
                 
@@ -41,6 +42,7 @@ struct OnBordingView: View {
                     isButtonEnabeld: vm.isButtonEnabeld,
                     buttonTitle: vm.buttonTitle
                 ) {
+                    
                     vm.navToNext()
                 }
             }
@@ -59,29 +61,29 @@ struct OnBordingView: View {
 
 private struct OnBordingTopPart: View {
     @ObservedObject var vm: OnBordingViewModel
-
+    
     var body: some View {
         HStack(spacing: 8) {
-
+            
             VStack {
                 if vm.currentView.rawValue != 0 {
-                    BackButton()
+                    BackButton(text: "Back")
                         .onTapGesture {
                             vm.backByStep()
                         }
                 }
-
+                
                 drawDotts
             }
-
+            
             Spacer()
-
+            
             Text("\(vm.currentView.rawValue + 1) of \(OnBordingViews.allCases.count)")
                 .foregroundColor(.gray400)
         }
         .padding()
     }
-
+    
     private var drawDotts: some View {
         HStack(spacing: 4) {
             ForEach(0..<OnBordingViews.allCases.count, id: \.self) { index in
@@ -101,10 +103,11 @@ private struct OnBordingTopPart: View {
 }
 
 struct BackButton: View {
+    let text: String
     var body: some View {
         HStack(spacing: 8) {
             Image(systemName: "arrow.left")
-            Text("Back")
+            Text(text)
         }
     }
 }

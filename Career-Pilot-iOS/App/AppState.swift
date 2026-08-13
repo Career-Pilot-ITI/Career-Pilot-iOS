@@ -34,5 +34,6 @@ final class AppState: ObservableObject {
     func logout() {
         print("👉 logout() called")
         isLoggedIn = false
+        isOnboadingSeen = false
     }
 }

@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct profile: View {
-    @ObservedObject var vm: OnBordingViewModel  
+    @ObservedObject var vm: OnBordingViewModel
+    @EnvironmentObject var toastManager: ToastManager
 
     var body: some View {
-        ScrollView{
+        ScrollView {
             VStack(spacing: 24) {
 
                 HeaderView()
 
-                ProfileForm(userData: $vm.userData)
+                ProfileForm(userData: $vm.userData , emailErrorMessage: $vm.emailErrorMessage)
                     .background(
                         RoundedRectangle(cornerRadius: Radius.r12)
                             .fill(Color.background)
@@ -27,9 +28,8 @@ struct profile: View {
                         x: 0,
                         y: 4
                     )
-
-                FreeSessionBanner()
                 
+                FreeSessionBanner()
             }
             .padding(.horizontal, Spacing.s20)
         }
@@ -39,23 +39,3 @@ struct profile: View {
 
     }
 }
-//struct profile_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PreviewWrapper()
-//    }
-//    
-//    struct PreviewWrapper: View {
-//        @State private var userData = UserData(
-//            email: "eyad@gmail.com",
-//            title: "developer",
-//            experienceLevel: "Senior",
-//            skills: [],
-//            firstName: "Eyad",
-//            lastName: "Waleed"
-//        )
-//        
-//        var body: some View {
-//            profile(userData: $userData)
-//        }
-//    }
-//}
