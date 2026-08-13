@@ -13,7 +13,7 @@ struct OnBordingView: View {
 
     var body: some View {
          ZStack {
-            Color.gray100
+            Color.background
                     .ignoresSafeArea()
             VStack(alignment: .center, spacing: 14) {
                 
@@ -92,7 +92,7 @@ private struct OnBordingTopPart: View {
                     )
                     .foregroundColor(
                         vm.isScreenIncludedToDrawAColor(index: index)
-                        ? .activeColour
+                        ? .primary
                         : .gray400.opacity(0.5)
                     )
             }
@@ -113,4 +113,9 @@ struct OnBordingView_Previews: PreviewProvider {
     static var previews: some View {
         OnBordingView()
     }
+}
+
+#Preview {
+    OnBordingView()
+        .environmentObject(AppState())
 }

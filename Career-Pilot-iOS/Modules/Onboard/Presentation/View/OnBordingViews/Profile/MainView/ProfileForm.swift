@@ -36,20 +36,24 @@ struct ProfileForm: View {
             }.frame( alignment: .center)
        
             Group{
-                CustomProfileTextField(icon: "PersonIcon", title: "Full Name", text: $userData.fullName)
+                CustomProfileTextField(icon: "profile", title: "Full Name", text: $userData.fullName)
                 Divider().background(Color.gray400).frame(height: 4)
 
                 CustomProfileTextField(icon: "email", title: "Email", text: $userData.email)
                 Divider().background(Color.gray400).frame(height: 4)
 
-                CustomProfileTextField(icon: "tittle", title: "CURRENT ROLE / TITTLE", text: $userData.title)
+                CustomProfileTextField(icon: "bag", title: "CURRENT ROLE / TITTLE", text: $userData.title)
                 Divider().background(Color.gray400).frame(height: 4)
 
-                CustomProfileTextField(icon: "ExperinceLevel", title: "EXPERIENCE LEVEL", text: $userData.experienceLevel)
+                CustomProfileTextField(icon: "experienceLevel", title: "EXPERIENCE LEVEL", text: $userData.experienceLevel)
 
                 Spacer().frame(height: Spacing.s20)
             }
-            Text("SKILLS DETECTED").font(.size14Semibold).foregroundColor(.gray400).frame(maxWidth: .infinity , alignment: .leading)
+            Text("SKILLS DETECTED")
+                .font(.size14Semibold)
+                .foregroundColor(.gray400)
+                .frame(maxWidth: .infinity , alignment: .leading)
+            
             if userData.cv == nil {
                 SkillsInputView(selectedSkills: skillNamesBinding)
             } else {
@@ -58,7 +62,7 @@ struct ProfileForm: View {
   
         }
         .padding([.vertical, .horizontal], Spacing.s20)
-        .foregroundColor(.lightBackGround)
+        .foregroundColor(.background)
     }
 
     @ViewBuilder
@@ -72,8 +76,32 @@ struct ProfileForm: View {
     }
 }
 
-//struct ProfileForm_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProfileForm(userData: .constant(UserData(email: "eyad@gmail.com", title: "Developer", experienceLevel: "Junior", skills: ["React", "Node.js", "TypeScript", "Python", "AWS", "System Design"], firstName: "Eyad", lastName: "Waleed")))
+//#Preview {
+//    struct ContainerView: View {
+//        @State private var userData = OnBoardingUser(
+//            email: "ahmed@example.com",
+//            title: "iOS Developer",
+//            avatarUrl: nil,
+//            avatarFileId: nil,
+//            gender: "Male",
+//            experienceLevel: "Mid-Level",
+//            skills: [
+//                Skill(skillName: "Swift", category: "Mobile", performanceScore: 90, timesAssessed: 5, lastAssessedAt: "2026-08-01"),
+//                Skill(skillName: "SwiftUI", category: "Mobile", performanceScore: 85, timesAssessed: 4, lastAssessedAt: "2026-08-10")
+//            ],
+//            profileImageData: nil,
+//            firstName: "Ahmed",
+//            lastName: "El-Sayyad",
+//            cv: nil,
+//            selectedTrack:nil
+//        )
+//
+//        var body: some View {
+//            ScrollView {
+//                ProfileForm(userData: $userData)
+//            }
+//        }
 //    }
+//
+//    return ContainerView()
 //}
