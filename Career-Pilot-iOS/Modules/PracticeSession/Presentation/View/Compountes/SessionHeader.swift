@@ -46,14 +46,23 @@ struct SessionHeader: View {
 struct QuestionCard: View {
     let text: String
 
+    private let minCardHeight: CGFloat = 100
+    private let maxCardHeight: CGFloat = 220
+
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.s8) {
             Text("QUESTION")
                 .font(.size12Semibold)
 
-            Text(text)
-                .font(.size14Regular)
-                .multilineTextAlignment(.leading)
+            ScrollView(showsIndicators: false) {
+                Text(text)
+                    .font(.size14Regular)
+                    .foregroundStyle(Color.gray100)
+                    .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .frame(minHeight: minCardHeight, maxHeight: maxCardHeight)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(Spacing.s16)

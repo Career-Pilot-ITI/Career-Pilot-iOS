@@ -11,7 +11,7 @@ struct ReportsView: View {
 
     var body: some View {
         ZStack {
-            Color(.background).ignoresSafeArea()
+            Color.background.ignoresSafeArea()
             NavigationStack(path: $coordinator.path) {
                 content
                     .navigationDestination(for: ReportsRoute.self) { route in

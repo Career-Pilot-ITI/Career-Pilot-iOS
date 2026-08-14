@@ -201,7 +201,10 @@ struct SessionErrorView: View {
 struct SessionCompletedView: View {
     let feedback: InterviewFeedback
     let sessionID: Int
+    let presenceScore: InterviewPresenceScore
+
     @EnvironmentObject private var homeCoordinator: AppCoordinator<HomeRoute>
+    @State private var showingPresenceSheet = false
 
     var body: some View {
         VStack(spacing: 20) {
@@ -221,10 +224,20 @@ struct SessionCompletedView: View {
             CustomButton(buttonTitle: "For More Details") {
                 homeCoordinator.push(.sessionFeedback(feedback: feedback, sessionId: sessionID))
             }
+
+            
+                CustomButton(showArrow: false, buttonTitle: "Body Language Analysis") {
+                    showingPresenceSheet = true
+                
+            }
+
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.darkBackGround.ignoresSafeArea())
+        .sheet(isPresented: $showingPresenceSheet) {
+                VisualAnalysisReportView(score: presenceScore)
+        }
     }
 }
 
@@ -232,7 +245,8 @@ struct SessionCompletedView_Previews: PreviewProvider {
     static var previews: some View {
         SessionCompletedView(
             feedback: .empty,
-            sessionID: 4
+            sessionID: 4,
+            presenceScore: InterviewPresenceScore.empty
         )
         .environmentObject(AppCoordinator<HomeRoute>())
     }

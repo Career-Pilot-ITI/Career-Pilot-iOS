@@ -112,7 +112,7 @@ struct SettingView: View {
                 }
             }
         }
-        .background(Color(.background).ignoresSafeArea())
+        .background(Color.background.ignoresSafeArea())
         .task {
            await viewModel.load()
         }

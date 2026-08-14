@@ -20,7 +20,7 @@ struct CoinView: View {
         .navigationTitle("Coins")
         .toolbar(.hidden, for: .tabBar)
         .padding(.horizontal , Spacing.s20)
-        .background(Color(.background).ignoresSafeArea())
+        .background(Color.background.ignoresSafeArea())
 
     }
 }

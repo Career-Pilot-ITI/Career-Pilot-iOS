@@ -85,16 +85,16 @@ struct SkillsInputView: View {
     }
     
 }
-
-#Preview {
-    struct ContainerView: View {
-        @State private var selectedSkills: [String] = ["Flutter", "SwiftUI"]
-
-        var body: some View {
-            SkillsInputView(selectedSkills: $selectedSkills)
-                .padding()
-        }
-    }
-
-    return ContainerView()
-}
+//
+//#Preview {
+//    struct ContainerView: View {
+//        @State private var selectedSkills: [String] = ["Flutter", "SwiftUI"]
+//
+//        var body: some View {
+//            SkillsInputView(selectedSkills: $selectedSkills)
+//                .padding()
+//        }
+//    }
+//
+//    return ContainerView()
+//}
