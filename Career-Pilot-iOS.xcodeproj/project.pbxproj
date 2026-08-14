@@ -259,6 +259,7 @@
 		CEE62A95300929830071F076 /* ProgressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A94300929830071F076 /* ProgressCard.swift */; };
 		CEE62A97300929960071F076 /* PracticeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A96300929960071F076 /* PracticeCard.swift */; };
 		CEE62A99300929A70071F076 /* SessionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A98300929A70071F076 /* SessionRow.swift */; };
+		CEF9E68D302EF21A0035F90B /* OverallProgressInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9E68C302EF21A0035F90B /* OverallProgressInfo.swift */; };
 		D920C24B300EFEB400AB7317 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920C24A300EFEB400AB7317 /* RecordingView.swift */; };
 		D920C24D300EFEC800AB7317 /* SessionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920C24C300EFEC800AB7317 /* SessionHeader.swift */; };
 		D920C24F300EFEE200AB7317 /* StatusScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920C24E300EFEE200AB7317 /* StatusScreens.swift */; };
@@ -634,6 +635,7 @@
 		CEE62A94300929830071F076 /* ProgressCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCard.swift; sourceTree = "<group>"; };
 		CEE62A96300929960071F076 /* PracticeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCard.swift; sourceTree = "<group>"; };
 		CEE62A98300929A70071F076 /* SessionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRow.swift; sourceTree = "<group>"; };
+		CEF9E68C302EF21A0035F90B /* OverallProgressInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallProgressInfo.swift; sourceTree = "<group>"; };
 		D920C24A300EFEB400AB7317 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
 		D920C24C300EFEC800AB7317 /* SessionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHeader.swift; sourceTree = "<group>"; };
 		D920C24E300EFEE200AB7317 /* StatusScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusScreens.swift; sourceTree = "<group>"; };
@@ -1763,6 +1765,7 @@
 			isa = PBXGroup;
 			children = (
 				CE12F3BF30093CE40083D66D /* SessionData.swift */,
+				CEF9E68C302EF21A0035F90B /* OverallProgressInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2823,6 +2826,7 @@
 				6117C02F300F9FD700CABEC6 /* StringsExtenstion.swift in Sources */,
 				D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */,
 				D95C3BC1300E4ACF0042785F /* StartInterviewUseCase.swift in Sources */,
+				CEF9E68D302EF21A0035F90B /* OverallProgressInfo.swift in Sources */,
 				D920C24F300EFEE200AB7317 /* StatusScreens.swift in Sources */,
 				CEC5AED23028197F000B5BDC /* InterviewTrackItem.swift in Sources */,
 				CECCDA3D300F5E230068620D /* UpdateProfileResponseDTO.swift in Sources */,

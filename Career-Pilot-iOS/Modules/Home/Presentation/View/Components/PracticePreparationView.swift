@@ -88,7 +88,7 @@ struct PracticePreparationView: View {
                 }
             }
             .padding(Spacing.s24)
-            .background(Color(.secondarySystemGroupedBackground))
+            .background(Color.gray.opacity(0.08))
             .cornerRadius(Radius.r24)
             .shadow(color: Color.black.opacity(0.04), radius: Radius.r16, x: 0, y: 5)
             .overlay(
@@ -124,7 +124,7 @@ struct PracticePreparationView: View {
                     .tint(accentColor)
             }
             .padding(Spacing.s16)
-            .background(Color(.secondarySystemGroupedBackground))
+            .background(Color.gray.opacity(0.08))
             .cornerRadius(Radius.r20)
             .shadow(color: Color.black.opacity(0.04), radius: Radius.r16, x: 0, y: 5)
             .overlay(
