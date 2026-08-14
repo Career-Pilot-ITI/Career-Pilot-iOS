@@ -1,57 +1,69 @@
 import SwiftUI
 
+enum Tab: Int, Hashable {
+    case home
+    case reports
+    case settings
+}
+
+@MainActor
 struct MainTabBarView: View {
     @StateObject private var homeCoordinator: AppCoordinator<HomeRoute> = AppCoordinator<HomeRoute>()
+    @State private var selectedTab: Tab = .home
+
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             // Tab 1: Home
             NavigationStack(path: $homeCoordinator.path) {
-                HomeView()
-                    .navigationDestination(for: HomeRoute.self) { route in
-                        switch route {
-                        case .sessionDetail(let metrics, let suggestions):
-                            Text("Session Detail View")
-                            
-                        case let .interviewPrep(trackName, trackId, interviewType):
-                            InterviewPrepContainerView(trackName: trackName, trackId: trackId, interviewType: interviewType)
-                        case let .practiceInterview(_, trackId, interviewType):
-                            PracticeSessionView(
-                                vm: DIContainer.shared.container.resolve(PracticeSessionViewModel.self)!,
-                                trackId: trackId,
-                                interviewType: interviewType
-                            )
-                        case .InterviewsView:
-                            InterviewsView()
-                        case .sessionFeedback(let feedBack, let sessionId):
-                            SessionFeedBackView(feedback: feedBack,sessionId: sessionId){
-                                homeCoordinator.popToRoot()
-                            }
-                                .navigationBarBackButtonHidden()
+
+                HomeView(onSeeAllSessionsTapped: {
+                    selectedTab = .reports
+                })
+                .navigationDestination(for: HomeRoute.self) { route in
+                    switch route {
+                    case .sessionDetail(let metrics, let suggestions):
+                        Text("Session Detail View")
+                        
+                    case let .interviewPrep(trackName, trackId, interviewType):
+                        InterviewPrepContainerView(trackName: trackName, trackId: trackId, interviewType: interviewType)
+                        
+                    case let .practiceInterview(_, trackId, interviewType):
+                        PracticeSessionView(
+                            vm: DIContainer.shared.container.resolve(PracticeSessionViewModel.self)!,
+                            trackId: trackId,
+                            interviewType: interviewType
+                        )
+                    case .InterviewsView:
+                        InterviewsView()
+                        
+                    case .sessionFeedback(let feedBack, let sessionId):
+                        SessionFeedBackView(feedback: feedBack, sessionId: sessionId) {
+                            homeCoordinator.popToRoot()
                         }
+                        .navigationBarBackButtonHidden()
                     }
+                }
             }
             .tabItem {
                 Label { Text("Home") } icon: { Image.AppIcon.home.renderingMode(.template) }
             }
-            .environmentObject(homeCoordinator) 
+            .tag(Tab.home)
+            .environmentObject(homeCoordinator)
 
-            
             // Tab 2: Reports
             ReportsView()
                 .tabItem {
                     Label { Text("Reports") } icon: { Image.AppIcon.report.renderingMode(.template) }
                 }
+                .tag(Tab.reports)
             
             // Tab 3: Settings
             SettingsTabView()
                 .tabItem {
                     Label { Text("Settings") } icon: { Image.AppIcon.settings.renderingMode(.template) }
                 }
+                .tag(Tab.settings)
         }
         .tint(Color.primary)
     }
 }
-
-//#Preview {
-//    MainTabBarView()
-//}

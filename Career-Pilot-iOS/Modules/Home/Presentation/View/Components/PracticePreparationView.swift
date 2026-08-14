@@ -58,6 +58,26 @@ struct PracticePreparationView: View {
                         .padding(.vertical, Spacing.s8)
                         .background(accentColor.opacity(0.12))
                         .cornerRadius(Radius.r8)
+            }
+            .padding(Spacing.s24)
+            .background(Color.gray.opacity(0.08))
+            .cornerRadius(Radius.r24)
+            .shadow(color: Color.black.opacity(0.04), radius: Radius.r16, x: 0, y: 5)
+            .overlay(
+                RoundedRectangle(cornerRadius: Radius.r24)
+                    .stroke(Color(.separator), lineWidth: 1)
+            )
+            
+            // Microphone Access Permission Bar
+            HStack(spacing: Spacing.s16) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: Radius.r16)
+                        .fill(Color.red.opacity(0.12))
+                        .frame(width: 48, height: 48)
+                    
+                    Image(systemName: "mic.fill")
+                        .foregroundColor(.red)
+                        .font(.size18Bold)
                 }
 
                 // Title Section
@@ -149,6 +169,29 @@ struct PracticePreparationView: View {
                     .background(isReadyToBegin ? .primary : Color(.systemGray4))
                     .cornerRadius(Radius.r16)
                     .shadow(color: isReadyToBegin ? .primary.opacity(0.3) : Color.clear, radius: Radius.r12, x: 0, y: 4)
+                
+                Toggle("", isOn: $isMicrophoneGranted)
+                    .labelsHidden()
+                    .tint(accentColor)
+            }
+            .padding(Spacing.s16)
+            .background(Color.gray.opacity(0.08))
+            .cornerRadius(Radius.r20)
+            .shadow(color: Color.black.opacity(0.04), radius: Radius.r16, x: 0, y: 5)
+            .overlay(
+                RoundedRectangle(cornerRadius: Radius.r20)
+                    .stroke(Color(.separator), lineWidth: 1)
+            )
+            
+            Spacer()
+            
+            // Action CTA Button
+            Button(action: onBegin) {
+                HStack(spacing: Spacing.s8) {
+                    Image(systemName: "mic.fill")
+                        .font(.size16Bold)
+                    Text("Begin Interview")
+                        .font(.size16Bold)
                 }
                 .disabled(!isReadyToBegin)
                 .padding(.bottom, Spacing.s16)

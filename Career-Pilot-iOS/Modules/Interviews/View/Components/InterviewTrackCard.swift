@@ -56,7 +56,7 @@ struct InterviewTrackCard: View {
 
     private var iconView: some View {
         RoundedRectangle(cornerRadius: Radius.r12, style: .continuous)
-            .fill(item.trackInterview.iconBackground)
+            .fill(Color.gray200)
             .frame(width: 44, height: 44)
             .overlay(
                 Image(systemName: item.trackInterview.iconName)
