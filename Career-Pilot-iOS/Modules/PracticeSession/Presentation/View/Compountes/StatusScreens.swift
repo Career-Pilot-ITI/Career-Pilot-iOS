@@ -236,9 +236,7 @@ struct SessionCompletedView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.darkBackGround.ignoresSafeArea())
         .sheet(isPresented: $showingPresenceSheet) {
-            if let presenceScore {
                 VisualAnalysisReportView(score: presenceScore)
-            }
         }
     }
 }
