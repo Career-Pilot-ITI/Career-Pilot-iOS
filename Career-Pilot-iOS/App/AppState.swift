@@ -29,6 +29,7 @@ final class AppState: ObservableObject {
     func markOnboardingSeen() {
         print("👉 markOnboardingSeen() called")
         isOnboadingSeen = true
+        print("The onboarding is seen Successfully")
     }
     
     func logout() {

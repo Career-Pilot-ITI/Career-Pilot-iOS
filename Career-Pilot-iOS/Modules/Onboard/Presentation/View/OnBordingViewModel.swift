@@ -105,10 +105,11 @@ class OnBordingViewModel: ObservableObject {
         }
         switch currentView {
         case .ProfileView:
+       
             return !userData.fullName.trimmingCharacters(in: .whitespaces).isEmpty &&
             !userData.email.trimmingCharacters(in: .whitespaces).isEmpty &&
             !userData.title.trimmingCharacters(in: .whitespaces).isEmpty &&
-            !userData.experienceLevel.trimmingCharacters(in: .whitespaces).isEmpty
+            !userData.experienceLevel.trimmingCharacters(in: .whitespaces).isEmpty && !(userData.experienceLevel == "No Level")
             
         case.ChooseTrackView:
             return selectedTrackInfo.selectedTrack != nil
@@ -210,8 +211,6 @@ class OnBordingViewModel: ObservableObject {
         selectedTrackInfo.selectedTrack = track
         userData.selectedTrack = track
     }
-    
-    
     //MARK: For Navigation
     func navToNext(){
         screenState = .idel
@@ -224,7 +223,6 @@ class OnBordingViewModel: ObservableObject {
             onNavToHomeScreen()
         }
     }
-    
     private func onNavToUploadCV(){
         if userData.selectedTrack != nil{
             currentView = .UploadCvView
@@ -272,7 +270,7 @@ class OnBordingViewModel: ObservableObject {
         screenState = .loading
         
         do {
-            print("User data is \(userData)")
+            print("User data in the view for the track  is \(userData.selectedTrack?.id)")
             let user = userData
             let updatedUser = try await updateUser(user)
             try await persistUser(updatedUser)

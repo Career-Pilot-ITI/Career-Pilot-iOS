@@ -32,7 +32,7 @@ struct ProfileCard: View {
             
         }.frame(maxWidth: .infinity).contentShape(Rectangle())
             .onTapGesture(perform: {
-                if(appState.isOnboardingSeen){
+                if(appState.isOnboadingSeen){
                     coordinator.push(.profileSettings)
                 }
         }).padding([.vertical, .horizontal], Spacing.s12)

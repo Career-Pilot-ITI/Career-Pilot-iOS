@@ -20,7 +20,7 @@ protocol APIEndpoint {
 
 extension APIEndpoint {
     var baseURL: String {
-        "https://career-pilot-backend-production.up.railway.app/"
+        "https://e39b-196-138-233-15.ngrok-free.app/"
     }
     var requiresAuthentication: Bool { false }
     var queryParameters: [URLQueryItem]? { nil }

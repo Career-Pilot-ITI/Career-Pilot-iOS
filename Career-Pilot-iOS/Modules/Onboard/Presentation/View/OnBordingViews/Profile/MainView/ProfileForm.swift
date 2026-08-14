@@ -76,14 +76,10 @@ struct ProfileForm: View {
                     .foregroundColor(.gray400)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                if userData.skills == nil &&
-                    !userData.skills.isEmpty {
-                     SkillsInputView(selectedSkills: skillNamesBinding)
+                if userData.skills.isEmpty {
+                    SkillsInputView(selectedSkills: skillNamesBinding)
                 } else {
-                  
-                    SkillDetection(skills: userData.skills.map {
-                       
-                        return $0.skillName })
+                    SkillDetection(skills: userData.skills.map { $0.skillName })
                 }
             }
             .padding(.top, Spacing.s12)

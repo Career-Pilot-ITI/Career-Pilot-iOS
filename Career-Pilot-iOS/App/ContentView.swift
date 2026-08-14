@@ -12,7 +12,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @StateObject private var toastManager = ToastManager()
     @StateObject private var coordinator = AppCoordinator<AuthRoute>()
-    @StateObject private var appState = AppState()
+    @StateObject private var appState = DIContainer.shared.container.resolve(AppState.self)!
     
     var body: some View {
         Group {
