@@ -6,12 +6,6 @@
 //
 
 import SwiftUI
-
-
-
-
-
-import SwiftUI
 import Shimmer
 
 struct ChoosePlanView: View {
@@ -25,14 +19,6 @@ struct ChoosePlanView: View {
                 planSkeleton
                 
             case .failure:
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Choose your plan")
-                        .font(.system(size: 24, weight: .bold))
-                        .foregroundColor(.primaryNavy)
-                    Text("Unlock your full interview potential.")
-                        .font(.size14Medium)
-                        .foregroundColor(.gray600)
-                }
                 Text("Couldn't load plans")
                     .foregroundColor(.errorColour)
                 

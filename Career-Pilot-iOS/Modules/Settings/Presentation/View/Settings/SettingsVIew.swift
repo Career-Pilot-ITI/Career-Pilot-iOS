@@ -39,7 +39,7 @@ struct SettingView: View {
                         }
                         Group {
                             Spacer().frame(height: Spacing.s12)
-                            Text("ACCOUNT").font(.size14Semibold).foregroundColor(.gray400)
+                            Text("Account").font(.size14Semibold).foregroundColor(.gray400)
                             Spacer().frame(height: Spacing.s6)
                             AccountSettingsView(user: user)
                             Spacer().frame(height: Spacing.s24)

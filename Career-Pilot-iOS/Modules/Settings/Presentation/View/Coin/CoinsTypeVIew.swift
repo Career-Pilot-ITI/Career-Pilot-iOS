@@ -10,6 +10,7 @@ import SwiftUI
 struct CoinsTypeVIew: View {
     @Binding var  isClicked : Bool
     var  price : String
+    var details : String
     var coinNumber : String
     var subTitle : String
     var onTap : () -> Void
@@ -25,7 +26,7 @@ struct CoinsTypeVIew: View {
             }
             Spacer().frame(height:Spacing.s4)
             HStack{
-                Text("Great for trying premium features").font(.size13Medium).foregroundColor(.gray600)
+                Text("\(details)").font(.size13Medium).foregroundColor(.gray600)
                 Spacer()
                 if(isClicked){
                     Image("clicked")
