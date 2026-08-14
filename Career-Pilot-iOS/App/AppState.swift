@@ -3,7 +3,7 @@
 //  Career-Pilot-iOS
 //
 //  Created by Moaz on 19/07/2026.
-// test 
+// test2
 
 import SwiftUI
 final class AppState: ObservableObject {
@@ -29,6 +29,7 @@ final class AppState: ObservableObject {
     func markOnboardingSeen() {
         print("👉 markOnboardingSeen() called")
         isOnboadingSeen = true
+        print("The onboarding is seen Successfully")
     }
     
     func logout() {

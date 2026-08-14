@@ -32,7 +32,7 @@ struct ProfileFormSettings: View {
                     CustomePhoneProfileTextField(icon: "phone", phoneNumber: $user.phoneNumber
                                               , title: "PHONE NUMBER" )
                     Divider().background(Color.gray400).frame(height: 4)
-                    CustomProfileTextField(icon: "tittle", title: "CURRENT ROLE / TITTLE", text: $user.title  )
+                    CustomProfileTextField(icon: "tittle", title: "CURRENT ROLE / TITTLE", text: $user.targetRole)
                 }
                 Divider().background(Color.gray400).frame(height: 4)
 

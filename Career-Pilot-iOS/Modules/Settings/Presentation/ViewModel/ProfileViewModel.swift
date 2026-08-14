@@ -58,6 +58,8 @@ class ProfileViewModel: ObservableObject {
                 return
                     }
             user.trackName = tracks.filter { user.trackId == $0.id }.compactMap { $0.title }.first ?? ""
+            print("the user trackName is \(user.trackName)")
+            print("the user trackName is \(user.trackId)")
             print("the user image is \(user.avatar)")
             await MainActor.run {
                 originalUser = user

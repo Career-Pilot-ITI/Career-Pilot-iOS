@@ -10,6 +10,8 @@ import SwiftUI
 struct ProfileCard: View {
     var user : UserModelSettingsView
     @EnvironmentObject var coordinator: AppCoordinator<SettingsRoute>
+    @EnvironmentObject  var appState : AppState
+
     var body: some View {
         HStack(spacing:16){
             if(user.avatar == nil){
@@ -30,9 +32,10 @@ struct ProfileCard: View {
             
         }.frame(maxWidth: .infinity).contentShape(Rectangle())
             .onTapGesture(perform: {
-            coordinator.push(.profile)
-        })
-            .padding([.vertical, .horizontal], Spacing.s12)
+                if(appState.isOnboadingSeen){
+                    coordinator.push(.profileSettings)
+                }
+        }).padding([.vertical, .horizontal], Spacing.s12)
             .background(
                 RoundedRectangle(cornerRadius: Radius.r12)
                     .fill(Color.gray400.opacity(0.08))

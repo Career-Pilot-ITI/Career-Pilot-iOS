@@ -24,6 +24,7 @@ struct CheckOutView: View {
                 waitingContent
             }
         }
+        .toolbar(.hidden, for: .tabBar)
         .sheet(isPresented: Binding(
             get: { paymentVM.checkoutURL != nil },
             set: { if !$0 { paymentVM.handleUserCancelled() } }
@@ -71,7 +72,7 @@ struct CheckOutView: View {
             Spacer()
             
             payButton
-        }
+        }.toolbar(.hidden , for: .tabBar)
         .navigationTitle("Checkout")
         .padding(.horizontal, Spacing.s20)
         .background(Color.background.ignoresSafeArea())
@@ -164,3 +165,4 @@ struct CheckOutView: View {
 //    ))
 //    }
 //}
+

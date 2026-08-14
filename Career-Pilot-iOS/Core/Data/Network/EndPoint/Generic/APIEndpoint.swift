@@ -36,7 +36,7 @@ extension APIEndpoint {
     static func encode<T: Encodable>(_ value: T, encoder: JSONEncoder = JSONEncoder()) -> Data? {
         try? encoder.encode(value)
     }
-    
+     
     static func decode<T: Decodable>(_ data: Data, decoder: JSONDecoder = JSONDecoder()) throws -> T {
         do {
             return try decoder.decode(T.self, from: data)
