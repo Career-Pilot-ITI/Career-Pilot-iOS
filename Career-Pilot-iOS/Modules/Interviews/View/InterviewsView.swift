@@ -71,7 +71,7 @@ struct InterviewsView: View {
     // MARK: - Content Section (Success State)
     private var contentSection: some View {
         ForEach(viewModel.filteredInterviews) { item in
-            InterviewTrackCard(item: item) {
+            InterviewTrackCard(item: item){
                 print("Tapped on \(item.id)")
                 coordinator.push(
                     .interviewPrep(
@@ -80,6 +80,9 @@ struct InterviewsView: View {
                         interviewType: .classic
                     )
                 )
+            }
+            onStartQuiz:{
+                
             }
             .listRowInsets(EdgeInsets(top: Spacing.s6, leading: 0, bottom: Spacing.s6, trailing: 0))
             .listRowSeparator(.hidden)

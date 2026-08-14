@@ -1,5 +1,3 @@
-//
-//  InterviewTrackItem.swift
 //  Career-Pilot-iOS
 //
 //  Created by Ahmed El-Sayyad Mohamed on 09/08/2026.
@@ -9,7 +7,10 @@ import SwiftUI
 
 struct InterviewTrackCard: View {
     let item: InterviewItem
-    let action: () -> Void
+    let onStartVoiceInterview: () -> Void
+    let onStartQuiz: () -> Void
+
+    @State private var showEntryOptions = false
 
     var body: some View {
         HStack(spacing: Spacing.s12) {
@@ -49,7 +50,17 @@ struct InterviewTrackCard: View {
                 .shadow(color: .primary.opacity(0.04), radius: 6, x: 0, y: 2)
         )
         .contentShape(Rectangle())
-        .onTapGesture(perform: action)
+        .onTapGesture { showEntryOptions = true }
+        .confirmationDialog(
+            "Start \(item.trackInterview.track.title)",
+            isPresented: $showEntryOptions,
+            titleVisibility: .visible
+        ) {
+            Button("Voice Interview") { onStartVoiceInterview() }
+            Button("Quiz Path") { onStartQuiz() }
+            Button("Cancel", role: .cancel) {}
+        }
+        
     }
 
     // MARK: - Pieces
@@ -68,7 +79,7 @@ struct InterviewTrackCard: View {
     private func pill(text: String, color: Color) -> some View {
         Text(text)
             .font(.size12Medium)
-            .foregroundColor(color)
+            .foregroundColor(.gray600)
             .padding(.horizontal, Spacing.s8)
             .padding(.vertical, 3)
             .background(Capsule().fill(color.opacity(0.15)))
