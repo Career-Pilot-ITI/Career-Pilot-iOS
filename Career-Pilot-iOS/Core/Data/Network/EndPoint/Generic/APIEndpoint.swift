@@ -3,7 +3,6 @@
 //  Career-Pilot-iOS
 //
 //  Created by Mohamed Magdy on 14/07/2026.
-//
 
 import Foundation
 
@@ -20,7 +19,7 @@ protocol APIEndpoint {
 
 extension APIEndpoint {
     var baseURL: String {
-        "https://e39b-196-138-233-15.ngrok-free.app/"
+        "https://career-pilot-backend-production.up.railway.app/"
     }
     var requiresAuthentication: Bool { false }
     var queryParameters: [URLQueryItem]? { nil }

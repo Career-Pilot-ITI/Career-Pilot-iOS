@@ -6,23 +6,24 @@
 
 import Foundation
 
-enum HomeState {
-    case idle
-    case loading
-    case success
-    case error(String)
-}
-
 @MainActor
 final class HomeViewModel: ObservableObject {
 
+    enum HomeState {
+        case idle
+        case loading
+        case success
+        case error(String)
+    }
+    
     // MARK: - Published Properties
 
     @Published var usedSessions: Double = 1.0
     @Published var totalSessions: Double = 3.0
 
-    @Published private(set) var recentSessions: [SessionData] = []
-    @Published private(set) var recommendedInterviews: [CareerItem] = []
+    @Published private(set) var progressInfo: OverallProgressInfo?
+    @Published private(set) var recommendedInterviews: [InterviewItem] = []
+    @Published private(set) var recentSessions: [HomeSessionInfo] = []
 
     @Published private(set) var user: User = .guest
 
@@ -36,13 +37,19 @@ final class HomeViewModel: ObservableObject {
     // MARK: - Dependencies
 
     private let getCurrentUserUseCase: GetCurrentUserUseCaseProtocol
-
+    private let getAllTracksUseCase: GetAllTrackesUseCase
+    private let getAllSessionUseCase: LoadSessionsUseCase
+    
     // MARK: - Initialization
 
     init(
-        getCurrentUserUseCase: GetCurrentUserUseCaseProtocol
+        getCurrentUserUseCase: GetCurrentUserUseCaseProtocol,
+        getAllTracksUseCase: GetAllTrackesUseCase,
+        getAllSessionUseCase: LoadSessionsUseCase
     ) {
         self.getCurrentUserUseCase = getCurrentUserUseCase
+        self.getAllTracksUseCase = getAllTracksUseCase
+        self.getAllSessionUseCase = getAllSessionUseCase
     }
 
     // MARK: - Home
@@ -81,30 +88,20 @@ final class HomeViewModel: ObservableObject {
 
     // MARK: - Recent Sessions
 
-    func loadRecentSessions() async {
+    func loadRecentSessions(forceRefresh: Bool = false) async {
         sessionsState = .loading
 
         do {
-            try await simulateNetworkDelay(seconds:2)
+            let result = try await getAllSessionUseCase.execute(LoadSessionsInput(page: 0, forceRefresh: forceRefresh))
+            let rawSessions = result.items
+            
+            let mappedRawSessions = rawSessions
+                    .map { ReportsInterviewSession.toHomeSessionInfo(from: $0) }
 
-            recentSessions = [
-                SessionData(
-                    score: 82,
-                    title: "Software Eng.",
-                    time: "Today, 2:14 PM · 18 min"
-                ),
-                SessionData(
-                    score: 74,
-                    title: "Software Eng.",
-                    time: "Yesterday, 10:30 AM · 22 min"
-                ),
-                SessionData(
-                    score: 68,
-                    title: "System Design",
-                    time: "Mon, 9:00 AM · 15 min"
-                )
-            ]
-
+            self.recentSessions = Array(mappedRawSessions.prefix(5))
+            
+            self.progressInfo = rawSessions.calculateOverallProgress()
+            
             sessionsState = .success
 
         } catch is CancellationError {
@@ -121,35 +118,12 @@ final class HomeViewModel: ObservableObject {
         tracksState = .loading
 
         do {
-            try await simulateNetworkDelay(seconds:2)
-
-            recommendedInterviews = [
-                CareerItem(
-                    iconName: "bolt.fill",
-                    title: "React Deep Dive",
-                    tagText: "Matches: React",
-                    durationText: "~15 min"
-                ),
-                CareerItem(
-                    iconName: "swift",
-                    title: "SwiftUI Architecture",
-                    tagText: "Matches: iOS",
-                    durationText: "~20 min"
-                ),
-                CareerItem(
-                    iconName: "server.rack",
-                    title: "Node.js Microservices",
-                    tagText: "Matches: Backend",
-                    durationText: "~30 min"
-                ),
-                CareerItem(
-                    iconName: "paintbrush.fill",
-                    title: "Design Systems 101",
-                    tagText: "Matches: UI/UX",
-                    durationText: "~10 min"
-                )
-            ]
-
+            let tracks = try await getAllTracksUseCase.execute(())
+            
+            let mappedItems = tracks.map { $0.toInterviewItem() }
+            
+            self.recommendedInterviews = Array(mappedItems.prefix(5))
+            
             tracksState = .success
 
         } catch is CancellationError {
@@ -160,7 +134,7 @@ final class HomeViewModel: ObservableObject {
         }
     }
 
-    // MARK: - Helpers
+//    // MARK: - Helpers
 
     private func simulateNetworkDelay(seconds:Int) async throws {
         try await Task.sleep(for: .seconds(seconds))

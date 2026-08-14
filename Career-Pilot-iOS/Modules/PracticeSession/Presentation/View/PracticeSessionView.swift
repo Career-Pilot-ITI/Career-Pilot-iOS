@@ -35,7 +35,7 @@ struct PracticeSessionView: View {
                 SubmittingAnswerView{
                     homeCoordinator.popToRoot()
                 }
-                
+                  
             case .reconnecting:
                 ReconnectingView{
                     homeCoordinator.popToRoot()

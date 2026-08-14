@@ -5,11 +5,9 @@ struct SettingView: View {
     @StateObject var viewModel: SettingsViewModel
     @EnvironmentObject var appState: AppState
     @StateObject private var authCoordinator = AppCoordinator<AuthRoute>()
+    
     var body: some View {
         ZStack {
-            Color.gray100
-                .ignoresSafeArea()
-            
             switch viewModel.loadState {
             case .loading, .idle:
                 settingsSkeleton
@@ -34,7 +32,8 @@ struct SettingView: View {
                 ScrollView {
                     VStack(alignment: .leading) {
                         Group {
-                            Text("Settings").font(.system(size: 22, weight: .bold)).foregroundColor(.primaryNavy)
+                            Text("Settings")
+                                .font(.system(size: 22, weight: .bold))
                             ProfileCard(user: user)
                         }
                         Group {
@@ -68,7 +67,6 @@ struct SettingView: View {
                                         .foregroundColor(.errorColour)
                                     Text("Permanently delete account & data")
                                         .font(.caption)
-                                        .foregroundColor(.gray400)
                                 }
                                 
                                 Spacer()
@@ -81,7 +79,7 @@ struct SettingView: View {
                             .padding(.vertical, Spacing.s8)
                             .background(
                                 RoundedRectangle(cornerRadius: Radius.r12)
-                                    .fill(Color.white)
+                                    .fill(Color.gray400.opacity(0.08))
                             )
                         }
                         
@@ -101,12 +99,11 @@ struct SettingView: View {
                         .padding(.vertical, Spacing.s12)
                         .background(
                             RoundedRectangle(cornerRadius: Radius.r12)
-                                .fill(Color.errorColour.opacity(0.08))
+                                .fill(Color.errorColour.opacity(0.3))
                         )
                         .onTapGesture {
                             Task {
-                                try await viewModel
-                                    .logout(appState: appState)
+                                await viewModel.logout(appState: appState)
                                 authCoordinator.popToRoot()
                             }
                         }
@@ -115,48 +112,70 @@ struct SettingView: View {
                 }
             }
         }
+        .background(Color(.background).ignoresSafeArea())
         .task {
-            try? await viewModel.load()
+           await viewModel.load()
         }
     }
     
-    // MARK: - Shimmering skeleton, mirroring the real layout's shape
+    // MARK: - Settings Skeleton View
     private var settingsSkeleton: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Spacing.s12) {
+                
                 // "Settings" title placeholder
-                RoundedRectangle(cornerRadius: 6)
-                    .fill(Color.gray200)
+                RoundedRectangle(cornerRadius: Radius.r6)
+                    .fill(Color(.systemGray5))
                     .frame(width: 120, height: 26)
                 
                 // Profile card placeholder
-                HStack(spacing: 12) {
+                HStack(spacing: Spacing.s16) {
                     Circle()
-                        .fill(Color.gray200)
+                        .fill(Color(.systemGray5))
                         .frame(width: 56, height: 56)
-                    VStack(alignment: .leading, spacing: 6) {
-                        RoundedRectangle(cornerRadius: 4).fill(Color.gray200).frame(width: 140, height: 16)
-                        RoundedRectangle(cornerRadius: 4).fill(Color.gray200).frame(width: 100, height: 12)
+                    
+                    VStack(alignment: .leading, spacing: Spacing.s8) {
+                        RoundedRectangle(cornerRadius: Radius.r6)
+                            .fill(Color(.systemGray5))
+                            .frame(width: 140, height: 16)
+                        
+                        RoundedRectangle(cornerRadius: Radius.r6)
+                            .fill(Color(.systemGray5))
+                            .frame(width: 100, height: 12)
                     }
                     Spacer()
                 }
                 .padding(Spacing.s16)
-                .background(RoundedRectangle(cornerRadius: Radius.r12).fill(Color.white))
+                .background(Color.background)
+                .cornerRadius(Radius.r16)
+                .overlay(
+                    RoundedRectangle(cornerRadius: Radius.r16)
+                        .stroke(Color(.systemGray6), lineWidth: 1)
+                )
                 
                 Spacer().frame(height: Spacing.s12)
                 
-                RoundedRectangle(cornerRadius: 4).fill(Color.gray200).frame(width: 80, height: 14)
+                // Section Title Placeholder
+                RoundedRectangle(cornerRadius: Radius.r6)
+                    .fill(Color(.systemGray5))
+                    .frame(width: 80, height: 14)
                 
                 // Account rows placeholder
                 VStack(spacing: 0) {
                     ForEach(0..<3, id: \.self) { index in
-                        HStack(spacing: 12) {
-                            RoundedRectangle(cornerRadius: Radius.r12)
-                                .fill(Color.gray200)
+                        HStack(spacing: Spacing.s16) {
+                            RoundedRectangle(cornerRadius: Radius.r14)
+                                .fill(Color(.systemGray5))
                                 .frame(width: 44, height: 44)
-                            VStack(alignment: .leading, spacing: 6) {
-                                RoundedRectangle(cornerRadius: 4).fill(Color.gray200).frame(width: 100, height: 14)
-                                RoundedRectangle(cornerRadius: 4).fill(Color.gray200).frame(width: 140, height: 12)
+                            
+                            VStack(alignment: .leading, spacing: Spacing.s8) {
+                                RoundedRectangle(cornerRadius: Radius.r6)
+                                    .fill(Color(.systemGray5))
+                                    .frame(width: 100, height: 14)
+                                
+                                RoundedRectangle(cornerRadius: Radius.r6)
+                                    .fill(Color(.systemGray5))
+                                    .frame(width: 140, height: 12)
                             }
                             Spacer()
                         }
@@ -167,21 +186,33 @@ struct SettingView: View {
                         }
                     }
                 }
-                .padding(.horizontal, Spacing.s16)
-                .background(RoundedRectangle(cornerRadius: Radius.r12).fill(Color.white))
+                .padding(Spacing.s16)
+                .background(Color.background)
+                .cornerRadius(Radius.r16)
+                .overlay(
+                    RoundedRectangle(cornerRadius: Radius.r16)
+                        .stroke(Color(.systemGray6), lineWidth: 1)
+                )
                 
                 Spacer().frame(height: Spacing.s24)
                 
-                RoundedRectangle(cornerRadius: 4).fill(Color.gray200).frame(width: 140, height: 14)
+                // Section Title Placeholder
+                RoundedRectangle(cornerRadius: Radius.r6)
+                    .fill(Color(.systemGray5))
+                    .frame(width: 140, height: 14)
                 
                 // Support & Legal rows placeholder
                 VStack(spacing: 0) {
                     ForEach(0..<2, id: \.self) { index in
-                        HStack(spacing: 12) {
-                            RoundedRectangle(cornerRadius: Radius.r12)
-                                .fill(Color.gray200)
+                        HStack(spacing: Spacing.s16) {
+                            RoundedRectangle(cornerRadius: Radius.r14)
+                                .fill(Color(.systemGray5))
                                 .frame(width: 44, height: 44)
-                            RoundedRectangle(cornerRadius: 4).fill(Color.gray200).frame(width: 160, height: 14)
+                            
+                            RoundedRectangle(cornerRadius: Radius.r6)
+                                .fill(Color(.systemGray5))
+                                .frame(width: 160, height: 14)
+                            
                             Spacer()
                         }
                         .padding(.vertical, Spacing.s8)
@@ -191,12 +222,16 @@ struct SettingView: View {
                         }
                     }
                 }
-                .padding(.horizontal, Spacing.s16)
-                .background(RoundedRectangle(cornerRadius: Radius.r12).fill(Color.white))
+                .padding(Spacing.s16)
+                .background(Color.background)
+                .cornerRadius(Radius.r16)
+                .overlay(
+                    RoundedRectangle(cornerRadius: Radius.r16)
+                        .stroke(Color(.systemGray6), lineWidth: 1)
+                )
             }
             .padding(Spacing.s24)
         }
-        .redacted(reason: .placeholder)
         .shimmering()
     }
 }

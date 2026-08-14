@@ -31,7 +31,7 @@ struct CustomProfileTextField: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(title.uppercased())
                         .font(.caption.bold())
-                        .foregroundColor(.gray600)
+                        .foregroundColor(.gray400)
                         .opacity(shouldFloat ? 1.0 : 0.0)
                         .frame(height: shouldFloat ? nil : 0, alignment: .leading)
                         .clipped()
@@ -39,7 +39,7 @@ struct CustomProfileTextField: View {
                     TextField(title.uppercased(), text: $text)
                         .textInputAutocapitalization(autocapitalization)
                         .font(shouldFloat ? .size13Semibold : .size14Medium)
-                        .foregroundColor(shouldFloat ? .primaryNavy : .gray400)
+                       
                         .focused($isFocused)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
@@ -67,17 +67,17 @@ struct CustomProfileTextField: View {
         if hasError {
             return .red
         }
-        return isFocused ? Color.activeColour : Color.gray400
+        return isFocused ? Color.primary : Color.gray200
     }
     
     @ViewBuilder
     private func customIcon(icon: String) -> some View {
         Image(icon)
-            .foregroundColor(.primaryNavy)
+            .foregroundColor(.white)
             .frame(width: 44, height: 44)
             .background(
                 RoundedRectangle(cornerRadius: Radius.r12)
-                    .fill(Color.primaryNavy.opacity(0.06))
+                    .fill(Color.primary.opacity(0.6))
             )
     }
 }

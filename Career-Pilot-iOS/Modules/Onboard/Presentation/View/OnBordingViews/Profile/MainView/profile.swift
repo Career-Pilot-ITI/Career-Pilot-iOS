@@ -15,12 +15,13 @@ struct profile: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
+
                 HeaderView()
 
                 ProfileForm(userData: $vm.userData , emailErrorMessage: $vm.emailErrorMessage)
                     .background(
                         RoundedRectangle(cornerRadius: Radius.r12)
-                            .fill(Color.white)
+                            .fill(Color.background)
                     )
                     .shadow(
                         color: Color.black.opacity(0.08),
@@ -34,8 +35,8 @@ struct profile: View {
             .padding(.horizontal, Spacing.s20)
         }
         .scrollIndicators(.hidden)
-        .background(Color.gray100)
+        .background(Color.background.opacity(0.4))
         .ignoresSafeArea(.keyboard)
-         
+
     }
 }

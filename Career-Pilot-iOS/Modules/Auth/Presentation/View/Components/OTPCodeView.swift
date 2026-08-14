@@ -51,7 +51,7 @@ struct OTPCodeView: View {
                 Button(action: handleResendTap) {
                     Text("Resend")
                         .font(.subheadline)
-                        .foregroundColor(secondsRemaining > 0 ? AppColors.OTPField.otpSecondaryText.opacity(0.5) : .white)
+                        .foregroundColor(secondsRemaining > 0 ? AppColors.OTPField.otpSecondaryText.opacity(0.5) : Color.primary)
                 }
                 .disabled(secondsRemaining > 0)
             }

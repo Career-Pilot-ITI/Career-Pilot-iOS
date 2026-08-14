@@ -31,21 +31,23 @@ struct CareerCardView: View {
             // Title
             Text(title)
                 .font(.size20Bold)
-                .foregroundColor(Color(red: 0.1, green: 0.12, blue: 0.2))
-                .lineLimit(3)
+                .lineLimit(2)
+                .multilineTextAlignment(.leading)
+                .fixedSize(horizontal: false, vertical: true)
             
             // Tag Pill
             Text(tagText)
                 .font(.size14Semibold)
+                .lineLimit(2)
+                .multilineTextAlignment(.leading)
+                .fixedSize(horizontal: false, vertical: true)
                 .foregroundColor(accentColor)
-                .padding(.horizontal, Spacing.s12)
+                .padding(.horizontal, Spacing.s4)
                 .padding(.vertical, Spacing.s6)
                 .background(
                     Capsule()
                         .fill(accentColor.opacity(0.12))
                 )
-            
-            Spacer()
             
             HStack {
                 Text(durationText)
@@ -66,7 +68,7 @@ struct CareerCardView: View {
         }
         .padding(Spacing.s24)
         .frame(width: 200, height: 250)
-        .background(Color.white)
+        .background(Color.gray400.opacity(0.08))
         .cornerRadius(Radius.r24)
         .shadow(color: Color.black.opacity(0.05), radius: Radius.r16, x: 0, y: 5)
         .overlay(

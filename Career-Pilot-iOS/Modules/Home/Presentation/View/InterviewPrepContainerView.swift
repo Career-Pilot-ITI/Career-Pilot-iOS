@@ -56,7 +56,7 @@ struct InterviewPrepContainerView: View {
                 )
             ],
             isMicrophoneGranted: $viewModel.microphoneEnabled,
-            accentColor: .orange,
+            accentColor: .primary,
             onCancel: {
                 coordinator.pop()
             },

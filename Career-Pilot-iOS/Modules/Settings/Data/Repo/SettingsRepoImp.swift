@@ -112,6 +112,7 @@ class SettingsRepoImp : SettingsRepo  {
     func logout() async throws{
         do{
             try await remote.logoutUser()
+            try await remote.logoutUser()
             try await local.deleteUserData()
             try authToken.clear()
         }catch{

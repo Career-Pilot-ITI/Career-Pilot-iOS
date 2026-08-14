@@ -7,8 +7,21 @@
 
 import Foundation
 
-enum OnBordingViews: Int, Hashable, CaseIterable{
-    case ChooseTrackView = 0, UploadCvView = 1, ProfileView = 2
+enum OnBordingViews: Int, Hashable, CaseIterable {
+    case ChooseTrackView = 0
+    case UploadCvView = 1
+    case ProfileView = 2
+    
+    var screenDescription: String {
+        switch self {
+        case .ChooseTrackView:
+            return "Choose the track that fits your career goals."
+        case .UploadCvView:
+            return "We are extracting your data to set up your personal profile details."
+        case .ProfileView:
+            return "Set up your personal profile details."
+        }
+    }
 }
 
 enum OnBordingScreenStates : Equatable{
@@ -142,10 +155,65 @@ class OnBordingViewModel: ObservableObject {
     }
 
 
+    private func handleError(error: NetworkError) {
+        
+        switch error {
+            
+        case .invalidURL:
+            screenState = .error("Something went wrong on our end. Please try again later.")
+            
+        case .noInternet:
+            screenState = .error("No internet connection. Please check your network and try again.")
+            
+        case .requestTimeout:
+            screenState = .error("The request timed out. Please try again.")
+            
+        case .unauthorized:
+            screenState = .error("You're not authorized to perform this action. Please log in again.")
+            
+        case .tokenExpired:
+            screenState = .error("Your session has expired. Please log in again.")
+            
+        case .decodingFailed:
+            screenState = .error("We couldn't process the server's response. Please try again.")
+            
+        case .encodingFailed:
+            screenState = .error("Something went wrong preparing your request. Please try again.")
+            
+        case .serverError(let statusCode, _):
+            switch statusCode {
+            case 400:
+                screenState = .error("Invalid request. Please check your input and try again.")
+            case 401:
+                screenState = .error("You're not authorized. Please log in again.")
+            case 403:
+                screenState = .error("You don't have permission to perform this action.")
+            case 404:
+                screenState = .error("The requested resource was not found.")
+            case 409, 500:
+                screenState = .error("This email is already registered. Try logging in instead.")
+            case 422:
+                screenState = .error("Some of the information you entered is invalid.")
+            case 429:
+                screenState = .error("Too many attempts. Please wait a moment and try again.")
+            case 501...599:
+                screenState = .error("Something went wrong on our servers. Please try again later.")
+            default:
+                screenState = .error("An unexpected error occurred (code \(statusCode)).")
+            }
+            
+        case .unknown:
+            screenState = .error("An unexpected error occurred. Please try again.")
+            
+        default:
+            screenState = .error(error.userMessage)
+        }
+        
+    }
 
     private func onCatchError(error: Error){
         if let networkError = error as? NetworkError{
-            screenState = .error(networkError.userMessage)
+            handleError(error: networkError)
         }else if let cvError = error as? UploadCVErrors{
             screenState = .error(cvError.description)
         } else if let validationError = error as? ProfileValidationError {

@@ -86,6 +86,8 @@ struct ProfileForm: View {
         }
         .padding(Spacing.s20)
         .foregroundColor(.lightBackGround)
+        .padding([.vertical, .horizontal], Spacing.s20)
+        .foregroundColor(.background)
     }
     
 

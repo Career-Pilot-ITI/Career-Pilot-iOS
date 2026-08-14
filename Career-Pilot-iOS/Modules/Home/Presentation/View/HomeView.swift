@@ -13,7 +13,8 @@ struct HomeView: View {
         DIContainer.shared.container.resolve(HomeViewModel.self)!
 
     @EnvironmentObject var coordinator: AppCoordinator<HomeRoute>
-
+    var onSeeAllSessionsTapped: (() -> Void)?
+    
     private let cardColors: [Color] = [
         .orange,
         .blue,
@@ -25,29 +26,22 @@ struct HomeView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 20) {
+            VStack(spacing: Spacing.s20) {
 
                 // MARK: - User / Header
-
                 userSection
 
                 // MARK: - Subscription
-
                 SubscriptionCard(
                     usedSessions: viewModel.usedSessions,
                     totalSessions: viewModel.totalSessions
                 )
 
                 // MARK: - Progress
-
-                ProgressCard(
-                    score: 88,
-                    progressLabel: "Good Progress",
-                    scoreChange: "▲ +6 from last week"
-                )
-
+                if let progressInfo = viewModel.progressInfo {
+                    ProgressCard(info: progressInfo)
+                }
                 // MARK: - Practice
-
                 PracticeCard(category: "Software Engineering") {
                     coordinator.push(
                         .interviewPrep(
@@ -59,7 +53,6 @@ struct HomeView: View {
                 }
 
                 // MARK: - ATS
-
                 ATSCard(
                     iconName: "scope",
                     title: "ATS Job Match",
@@ -73,18 +66,20 @@ struct HomeView: View {
                 )
 
                 // MARK: - Recommended Interviews
-
                 recommendedInterviewsSection
 
                 // MARK: - Recent Sessions
-
                 recentSessionsSection
             }
-            .padding()
+            .padding(.horizontal, Spacing.s16)
+            .padding(.vertical, Spacing.s12)
         }
         .scrollIndicators(.hidden)
-        .background(Color(.systemGroupedBackground))
+        .background(Color(.background).ignoresSafeArea())
         .task {
+            await viewModel.loadHome()
+        }
+        .refreshable {
             await viewModel.loadHome()
         }
     }
@@ -123,11 +118,12 @@ private extension HomeView {
     @ViewBuilder
     var recommendedInterviewsSection: some View {
 
-        VStack(spacing: 12) {
+        VStack(spacing: Spacing.s12) {
 
             HStack {
                 Text("Recommended For You")
                     .font(.headline)
+                    .foregroundColor(.primary)
 
                 Spacer()
 
@@ -135,7 +131,8 @@ private extension HomeView {
                     coordinator.push(.InterviewsView)
                 } label: {
                     Text("See all")
-                        .foregroundColor(.orange)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundColor(.accentColor)
                 }
             }
 
@@ -170,23 +167,29 @@ private extension HomeView {
                 ForEach(
                     Array(viewModel.recommendedInterviews.enumerated()),
                     id: \.offset
-                ) { index, item in
+                ) { index, track in
 
-                    let assignedColor =
-                        cardColors[index % cardColors.count]
+                    let assignedColor = cardColors[index % cardColors.count]
 
                     CareerCardView(
-                        iconName: item.iconName,
-                        title: item.title,
-                        tagText: item.tagText,
-                        durationText: item.durationText,
+                        iconName: track.iconName,
+                        title: track.title,
+                        tagText: track.tagText,
+                        durationText: track.durationText,
                         accentColor: assignedColor,
                         action: {
-                            print("Tapped on \(item.title)")
+                            print("Tapped on \(track.title)")
+                            coordinator.push(.interviewPrep(
+                                    trackName: track.title,
+                                    trackId: track.trackInterview.track.id,
+                                    interviewType: .classic
+                                )
+                            )
                         }
                     )
                 }
             }
+            
         }
     }
 }
@@ -198,16 +201,24 @@ private extension HomeView {
     @ViewBuilder
     var recentSessionsSection: some View {
 
-        VStack(spacing: 12) {
+        VStack(spacing: Spacing.s12) {
 
             HStack {
                 Text("Recent Sessions")
                     .font(.headline)
+                    .foregroundColor(.primary)
 
                 Spacer()
 
-                Text("See all")
-                    .foregroundColor(.orange)
+                Button {
+                    // Navigate to all recent sessions
+                    print("See all recent sessions")
+                    onSeeAllSessionsTapped?()
+                } label: {
+                    Text("See all")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundColor(.accentColor)
+                }
             }
 
             switch viewModel.sessionsState {
@@ -225,7 +236,7 @@ private extension HomeView {
     }
 
     var recentSessionsSkeleton: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: Spacing.s12) {
             ForEach(0..<3, id: \.self) { _ in
                 SessionRowSkeleton()
             }
@@ -233,15 +244,14 @@ private extension HomeView {
     }
 
     var recentSessionsContent: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: Spacing.s12) {
 
             ForEach(
                 Array(viewModel.recentSessions.enumerated()),
                 id: \.offset
             ) { index, session in
 
-                let assignedColor =
-                    cardColors[index % cardColors.count]
+                let assignedColor = cardColors[index % cardColors.count]
 
                 SessionRow(
                     score: session.score,
@@ -257,21 +267,25 @@ private extension HomeView {
     }
 }
 
-// MARK: - Error
+// MARK: - Error View
 
 private extension HomeView {
 
     func errorView(message: String) -> some View {
-        VStack(spacing: 8) {
-            Image(systemName: "exclamationmark.circle")
+        VStack(spacing: Spacing.s8) {
+            Image(systemName: "exclamationmark.triangle.fill")
                 .font(.title2)
+                .foregroundColor(.red)
 
             Text(message)
                 .font(.caption)
+                .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity)
-        .padding()
+        .padding(Spacing.s16)
+        .background(Color(.secondarySystemGroupedBackground))
+        .cornerRadius(Radius.r12)
     }
 }
 

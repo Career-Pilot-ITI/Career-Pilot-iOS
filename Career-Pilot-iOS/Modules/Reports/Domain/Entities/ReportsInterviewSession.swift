@@ -12,8 +12,8 @@ struct ReportsInterviewSession: Equatable, Identifiable {
     let trackId: Int
     let trackName: String
     let status: SessionStatus
-    let overallScore: Double
-    let durationSeconds: Int
+    let overallScore: Double?
+    let durationSeconds: Int?
     let targetDurationMinutes: Int
     let maxQuestions: Int
     let startedAt: Date?

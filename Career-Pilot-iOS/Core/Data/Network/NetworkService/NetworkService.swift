@@ -12,9 +12,53 @@ final class URLSessionNetworkService: NetworkService {
     private let session: URLSession
     private let decoder: JSONDecoder
     
-    init(session: URLSession = .shared, decoder: JSONDecoder = JSONDecoder()) {
+    init(session: URLSession = .shared, decoder: JSONDecoder = URLSessionNetworkService.makeDecoder()) {
         self.session = session
         self.decoder = decoder
+    }
+
+    private static func makeDecoder() -> JSONDecoder {
+        let decoder = JSONDecoder()
+
+        let fmtFraction: DateFormatter = {
+            let f = DateFormatter()
+            f.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
+            f.locale = Locale(identifier: "en_US_POSIX")
+            f.timeZone = TimeZone(secondsFromGMT: 0)
+            return f
+        }()
+        let fmtPlain: DateFormatter = {
+            let f = DateFormatter()
+            f.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            f.locale = Locale(identifier: "en_US_POSIX")
+            f.timeZone = TimeZone(secondsFromGMT: 0)
+            return f
+        }()
+        let iso8601WithFraction: ISO8601DateFormatter = {
+            let f = ISO8601DateFormatter()
+            f.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+            return f
+        }()
+        let iso8601Plain: ISO8601DateFormatter = {
+            let f = ISO8601DateFormatter()
+            f.formatOptions = [.withInternetDateTime]
+            return f
+        }()
+
+        decoder.dateDecodingStrategy = .custom { dec in
+            let container = try dec.singleValueContainer()
+            let string = try container.decode(String.self)
+            if let date = iso8601WithFraction.date(from: string) { return date }
+            if let date = iso8601Plain.date(from: string) { return date }
+            if let date = fmtFraction.date(from: string) { return date }
+            if let date = fmtPlain.date(from: string) { return date }
+            throw DecodingError.dataCorruptedError(
+                in: container,
+                debugDescription: "Cannot decode date string: \(string)"
+            )
+        }
+
+        return decoder
     }
     
     func request<T: Decodable>(_ endpoint: APIEndpoint) async throws -> T {

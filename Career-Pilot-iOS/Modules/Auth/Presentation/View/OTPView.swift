@@ -29,19 +29,16 @@ struct OTPView: View {
 
     var body: some View {
         ZStack {
-            Color.darkBackGround.ignoresSafeArea()
+            Color.background.ignoresSafeArea()
 
             VStack(alignment: .leading) {
                 Text("Enter your code")
-                    .foregroundStyle(.white)
                     .font(.size26Semibold)
                     .padding(.bottom, 8)
                 HStack {
                     Text("Sent to")
-                        .foregroundStyle(.white)
                         .font(.size14Regular)
                     Text(phoneNumber)
-                        .foregroundStyle(.white)
                         .font(.size14Regular)
                 }
                 .padding(.bottom, 36)
@@ -78,7 +75,6 @@ struct OTPView: View {
                         Text("Change number")
                     }
                     .font(.size14Regular)
-                    .foregroundColor(.white)
                 }
             }
         }

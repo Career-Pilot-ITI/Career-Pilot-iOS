@@ -36,10 +36,8 @@ struct PaymentMethod: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .font(.size14Semibold)
-                    .foregroundColor(.primaryNavy)
                 Text(subTitle)
                     .font(.size12Medium)
-                    .foregroundColor(.gray400)
             }
             
             Spacer()
@@ -47,7 +45,7 @@ struct PaymentMethod: View {
             ZStack {
                 Circle()
                     .stroke(isSelected ? Color.clear : Color.gray200, lineWidth: 1.5)
-                    .background(Circle().fill(isSelected ? Color.orange : Color.clear))
+                    .background(Circle().fill(isSelected ? Color.primary : Color.clear))
                     .frame(width: 28, height: 28)
                 
                 if isSelected {
@@ -60,11 +58,11 @@ struct PaymentMethod: View {
         .padding(16)
         .background(
             RoundedRectangle(cornerRadius: Radius.r16)
-                .fill(Color.white)
+                .foregroundColor(Color.background)
         )
         .overlay(
             RoundedRectangle(cornerRadius: Radius.r16)
-                .stroke(isSelected ? Color.orange : Color.clear, lineWidth: 1.5)
+                .stroke(isSelected ? Color.primary : Color.clear, lineWidth: 1.5)
         )
         .onTapGesture {
             onClick()

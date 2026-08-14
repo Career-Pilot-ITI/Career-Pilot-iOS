@@ -79,14 +79,11 @@ struct PageResponse<T: Decodable>: Decodable {
 
         var rawContent = try container.nestedUnkeyedContainer(forKey: .content)
         var decoded: [T] = []
-        var rawCopy = rawContent
         while !rawContent.isAtEnd {
-            if let rawValue = try? rawCopy.decode(AnyDecodable.self),
+            if let rawValue = try? rawContent.decode(AnyDecodable.self),
                let data = try? JSONSerialization.data(withJSONObject: rawValue.value),
                let element = try? JSONDecoder.pageDecoder.decode(T.self, from: data) {
                 decoded.append(element)
-            } else {
-                _ = try? rawContent.decode(AnyDecodable.self)
             }
         }
 
@@ -132,7 +129,50 @@ private struct AnyDecodable: Decodable {
 private extension JSONDecoder {
     static let pageDecoder: JSONDecoder = {
         let d = JSONDecoder()
-        d.dateDecodingStrategy = .iso8601
+
+        // Backend dates may arrive as:
+        //   "2026-08-10T15:49:06.440935"      (no TZ, fractional seconds)
+        //   "2026-08-10T15:49:06"              (no TZ, no fraction)
+        //   "2026-08-10T15:49:06.440935Z"      (with TZ)
+        //   "2026-08-10T15:49:06Z"             (with TZ, no fraction)
+        let fmtFraction: DateFormatter = {
+            let f = DateFormatter()
+            f.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
+            f.locale = Locale(identifier: "en_US_POSIX")
+            f.timeZone = TimeZone(secondsFromGMT: 0)
+            return f
+        }()
+        let fmtPlain: DateFormatter = {
+            let f = DateFormatter()
+            f.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            f.locale = Locale(identifier: "en_US_POSIX")
+            f.timeZone = TimeZone(secondsFromGMT: 0)
+            return f
+        }()
+        let iso8601WithFraction: ISO8601DateFormatter = {
+            let f = ISO8601DateFormatter()
+            f.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+            return f
+        }()
+        let iso8601Plain: ISO8601DateFormatter = {
+            let f = ISO8601DateFormatter()
+            f.formatOptions = [.withInternetDateTime]
+            return f
+        }()
+
+        d.dateDecodingStrategy = .custom { decoder in
+            let container = try decoder.singleValueContainer()
+            let string = try container.decode(String.self)
+            // Try ISO 8601 with TZ first, then fall back to no-TZ formats
+            if let date = iso8601WithFraction.date(from: string) { return date }
+            if let date = iso8601Plain.date(from: string) { return date }
+            if let date = fmtFraction.date(from: string) { return date }
+            if let date = fmtPlain.date(from: string) { return date }
+            throw DecodingError.dataCorruptedError(
+                in: container,
+                debugDescription: "Cannot decode date string: \(string)"
+            )
+        }
         return d
     }()
 }
