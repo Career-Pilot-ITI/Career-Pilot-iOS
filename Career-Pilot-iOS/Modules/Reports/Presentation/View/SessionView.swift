@@ -46,18 +46,6 @@ struct SessionFeedBackView: View {
 
     var body: some View {
         VStack {
-            HStack {
-                BackButton(text: "Back")
-                    .onTapGesture {
-                        if let onBack {
-                            onBack()
-                        } else {
-                            dismiss()
-                        }
-                    }
-                Spacer()
-            }
-            
             ScrollView {
                 VStack(spacing: Spacing.s16) {
                     OverallScoreCardView(
@@ -70,7 +58,6 @@ struct SessionFeedBackView: View {
                     VStack(alignment: .leading, spacing: Spacing.s12) {
                         Text("Coaching Suggestions")
                             .font(Font.size15Bold)
-                            .foregroundStyle(Color.primaryNavy)
                         CoachingSuggestionsListView(suggestions: feedback.toCoachingSuggestions())
                     }
                 }

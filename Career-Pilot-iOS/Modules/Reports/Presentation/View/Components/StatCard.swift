@@ -26,7 +26,7 @@ struct StatCard: View {
         .padding(.vertical, 16)
         .background {
             RoundedRectangle(cornerRadius: Radius.r16)
-                .fill(.white)
+                .fill(Color.gray400.opacity(0.08))
         }
     }
 }

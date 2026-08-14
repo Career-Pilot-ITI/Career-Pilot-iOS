@@ -15,7 +15,6 @@ struct TranscriptSnippetCard: View {
         VStack(alignment: .leading, spacing: Spacing.s12) {
             Text("Transcript Snippet")
                 .font(Font.size14Bold)
-                .foregroundStyle(Color.primaryNavy)
 
             Text("\"\(transcript)\"")
                 .font(Font.size13Regular)
@@ -40,7 +39,7 @@ struct TranscriptSnippetCard: View {
         .padding(.all, 16)
         .background {
             RoundedRectangle(cornerRadius: Radius.r16)
-                .fill(.white)
+                .fill(Color.gray400.opacity(0.08))
         }
     }
 }

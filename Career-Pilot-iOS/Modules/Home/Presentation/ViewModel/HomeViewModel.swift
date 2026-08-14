@@ -5,25 +5,25 @@
 //
 
 import Foundation
-import SwiftUI
-
-enum HomeState {
-    case idle
-    case loading
-    case success
-    case error(String)
-}
 
 @MainActor
 final class HomeViewModel: ObservableObject {
 
+    enum HomeState {
+        case idle
+        case loading
+        case success
+        case error(String)
+    }
+    
     // MARK: - Published Properties
 
     @Published var usedSessions: Double = 1.0
     @Published var totalSessions: Double = 3.0
 
-    @Published private(set) var recentSessions: [SessionData] = []
+    @Published private(set) var progressInfo: OverallProgressInfo?
     @Published private(set) var recommendedInterviews: [InterviewItem] = []
+    @Published private(set) var recentSessions: [HomeSessionInfo] = []
 
     @Published private(set) var user: User = .guest
 
@@ -39,6 +39,7 @@ final class HomeViewModel: ObservableObject {
     private let getCurrentUserUseCase: GetCurrentUserUseCaseProtocol
     private let getAllTracksUseCase: GetAllTrackesUseCase
     private let getAllSessionUseCase: LoadSessionsUseCase
+    
     // MARK: - Initialization
 
     init(
@@ -87,30 +88,20 @@ final class HomeViewModel: ObservableObject {
 
     // MARK: - Recent Sessions
 
-    func loadRecentSessions() async {
+    func loadRecentSessions(forceRefresh: Bool = false) async {
         sessionsState = .loading
 
         do {
-            try await simulateNetworkDelay(seconds:2)
-            try await getAllSessionUseCase.execute(<#T##input: LoadSessionsInput##LoadSessionsInput#>)
-            recentSessions = [
-                SessionData(
-                    score: 82,
-                    title: "Software Eng.",
-                    time: "Today, 2:14 PM · 18 min"
-                ),
-                SessionData(
-                    score: 74,
-                    title: "Software Eng.",
-                    time: "Yesterday, 10:30 AM · 22 min"
-                ),
-                SessionData(
-                    score: 68,
-                    title: "System Design",
-                    time: "Mon, 9:00 AM · 15 min"
-                )
-            ]
+            let result = try await getAllSessionUseCase.execute(LoadSessionsInput(page: 0, forceRefresh: forceRefresh))
+            let rawSessions = result.items
+            
+            let mappedRawSessions = rawSessions
+                    .map { ReportsInterviewSession.toHomeSessionInfo(from: $0) }
 
+            self.recentSessions = Array(mappedRawSessions.prefix(5))
+            
+            self.progressInfo = rawSessions.calculateOverallProgress()
+            
             sessionsState = .success
 
         } catch is CancellationError {
@@ -131,11 +122,7 @@ final class HomeViewModel: ObservableObject {
             
             let mappedItems = tracks.map { $0.toInterviewItem() }
             
-            self.recommendedInterviews = mappedItems
-            
-            self.recommendedInterviews.forEach { item in
-                print("Loaded interview item: \(item.title) (\(item.level.rawValue))")
-            }
+            self.recommendedInterviews = Array(mappedItems.prefix(5))
             
             tracksState = .success
 
@@ -147,7 +134,7 @@ final class HomeViewModel: ObservableObject {
         }
     }
 
-    // MARK: - Helpers
+//    // MARK: - Helpers
 
     private func simulateNetworkDelay(seconds:Int) async throws {
         try await Task.sleep(for: .seconds(seconds))

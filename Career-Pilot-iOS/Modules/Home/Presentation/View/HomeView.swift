@@ -13,7 +13,8 @@ struct HomeView: View {
         DIContainer.shared.container.resolve(HomeViewModel.self)!
 
     @EnvironmentObject var coordinator: AppCoordinator<HomeRoute>
-
+    var onSeeAllSessionsTapped: (() -> Void)?
+    
     private let cardColors: [Color] = [
         .orange,
         .blue,
@@ -37,12 +38,9 @@ struct HomeView: View {
                 )
 
                 // MARK: - Progress
-                ProgressCard(
-                    score: 88,
-                    progressLabel: "Good Progress",
-                    scoreChange: "▲ +6 from last week"
-                )
-
+                if let progressInfo = viewModel.progressInfo {
+                    ProgressCard(info: progressInfo)
+                }
                 // MARK: - Practice
                 PracticeCard(category: "Software Engineering") {
                     coordinator.push(
@@ -79,6 +77,9 @@ struct HomeView: View {
         .scrollIndicators(.hidden)
         .background(Color(.background).ignoresSafeArea())
         .task {
+            await viewModel.loadHome()
+        }
+        .refreshable {
             await viewModel.loadHome()
         }
     }
@@ -212,6 +213,7 @@ private extension HomeView {
                 Button {
                     // Navigate to all recent sessions
                     print("See all recent sessions")
+                    onSeeAllSessionsTapped?()
                 } label: {
                     Text("See all")
                         .font(.subheadline.weight(.semibold))

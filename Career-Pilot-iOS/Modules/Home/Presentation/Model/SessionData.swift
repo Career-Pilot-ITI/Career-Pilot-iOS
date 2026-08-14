@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct SessionData: Identifiable {
+struct HomeSessionInfo: Identifiable {
     let id = UUID()
     let score: Int
     let title: String
@@ -27,6 +27,16 @@ struct PracticeTip: Identifiable {
     let id = UUID()
     let stepNumber: String
     let text: String
+}
+
+extension ReportsInterviewSession {
+    static func toHomeSessionInfo(from session: ReportsInterviewSession) -> HomeSessionInfo {
+        HomeSessionInfo(
+            score: Int(session.overallScore ?? 0),
+            title: session.trackName,
+            time: "\(session.targetDurationMinutes) min"
+        )
+    }
 }
 
 extension InterviewTrack {
