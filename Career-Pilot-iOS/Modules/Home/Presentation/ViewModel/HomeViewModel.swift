@@ -38,14 +38,17 @@ final class HomeViewModel: ObservableObject {
 
     private let getCurrentUserUseCase: GetCurrentUserUseCaseProtocol
     private let getAllTracksUseCase: GetAllTrackesUseCase
+    private let getAllSessionUseCase: LoadSessionsUseCase
     // MARK: - Initialization
 
     init(
         getCurrentUserUseCase: GetCurrentUserUseCaseProtocol,
-        getAllTracksUseCase: GetAllTrackesUseCase
+        getAllTracksUseCase: GetAllTrackesUseCase,
+        getAllSessionUseCase: LoadSessionsUseCase
     ) {
         self.getCurrentUserUseCase = getCurrentUserUseCase
         self.getAllTracksUseCase = getAllTracksUseCase
+        self.getAllSessionUseCase = getAllSessionUseCase
     }
 
     // MARK: - Home
@@ -89,7 +92,7 @@ final class HomeViewModel: ObservableObject {
 
         do {
             try await simulateNetworkDelay(seconds:2)
-
+            try await getAllSessionUseCase.execute(<#T##input: LoadSessionsInput##LoadSessionsInput#>)
             recentSessions = [
                 SessionData(
                     score: 82,
