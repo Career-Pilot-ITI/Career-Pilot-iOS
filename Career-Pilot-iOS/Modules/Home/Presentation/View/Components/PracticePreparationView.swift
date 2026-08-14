@@ -27,7 +27,7 @@ struct PracticePreparationView: View {
     }
 
     var body: some View {
-        ScrollView{
+        ScrollView {
             VStack(alignment: .leading, spacing: Spacing.s24) {
 
                 Button(action: onCancel) {
@@ -58,38 +58,37 @@ struct PracticePreparationView: View {
                         .padding(.vertical, Spacing.s8)
                         .background(accentColor.opacity(0.12))
                         .cornerRadius(Radius.r8)
-            }
-            .padding(Spacing.s24)
-            .background(Color.gray.opacity(0.08))
-            .cornerRadius(Radius.r24)
-            .shadow(color: Color.black.opacity(0.04), radius: Radius.r16, x: 0, y: 5)
-            .overlay(
-                RoundedRectangle(cornerRadius: Radius.r24)
-                    .stroke(Color(.separator), lineWidth: 1)
-            )
-            
-            // Microphone Access Permission Bar
-            HStack(spacing: Spacing.s16) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: Radius.r16)
-                        .fill(Color.red.opacity(0.12))
-                        .frame(width: 48, height: 48)
-                    
-                    Image(systemName: "mic.fill")
-                        .foregroundColor(.red)
-                        .font(.size18Bold)
                 }
+                .padding(Spacing.s24)
+                .background(Color.gray.opacity(0.08))
+                .cornerRadius(Radius.r24)
+                .shadow(color: Color.black.opacity(0.04), radius: Radius.r16, x: 0, y: 5)
+                .overlay(
+                    RoundedRectangle(cornerRadius: Radius.r24)
+                        .stroke(Color(.separator), lineWidth: 1)
+                )
 
-                // Title Section
-                VStack(alignment: .leading, spacing: Spacing.s8) {
-                    Text(title)
-                        .font(.size26Semibold)
+                // Header icon + title/subtitle
+                HStack(spacing: Spacing.s16) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: Radius.r16)
+                            .fill(accentColor.opacity(0.12))
+                            .frame(width: 48, height: 48)
 
-                    Text(subtitle)
-                        .font(.size16Regular)
-                        .foregroundColor(.secondary)
+                        Image(systemName: selectedMode == .video ? "video.fill" : "mic.fill")
+                            .foregroundColor(accentColor)
+                            .font(.size18Bold)
+                    }
+
+                    VStack(alignment: .leading, spacing: Spacing.s8) {
+                        Text(title)
+                            .font(.size26Semibold)
+
+                        Text(subtitle)
+                            .font(.size16Regular)
+                            .foregroundColor(.secondary)
+                    }
                 }
-
 
                 // Tips Card Container
                 VStack(alignment: .leading, spacing: Spacing.s6) {
@@ -129,7 +128,7 @@ struct PracticePreparationView: View {
                     x: 0,
                     y: 5
                 )
-                
+
                 // Mode Selection
                 InterviewModeSelector(selectedMode: $selectedMode, accentColor: accentColor)
 
@@ -153,7 +152,7 @@ struct PracticePreparationView: View {
                     )
                 }
 
-                Spacer()
+                Spacer(minLength: Spacing.s24)
 
                 // Action CTA Button
                 Button(action: onBegin) {
@@ -166,46 +165,21 @@ struct PracticePreparationView: View {
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .frame(height: 56)
-                    .background(isReadyToBegin ? .primary : Color(.systemGray4))
+                    .background(isReadyToBegin ? accentColor : Color(.systemGray4))
                     .cornerRadius(Radius.r16)
-                    .shadow(color: isReadyToBegin ? .primary.opacity(0.3) : Color.clear, radius: Radius.r12, x: 0, y: 4)
-                
-                Toggle("", isOn: $isMicrophoneGranted)
-                    .labelsHidden()
-                    .tint(accentColor)
-            }
-            .padding(Spacing.s16)
-            .background(Color.gray.opacity(0.08))
-            .cornerRadius(Radius.r20)
-            .shadow(color: Color.black.opacity(0.04), radius: Radius.r16, x: 0, y: 5)
-            .overlay(
-                RoundedRectangle(cornerRadius: Radius.r20)
-                    .stroke(Color(.separator), lineWidth: 1)
-            )
-            
-            Spacer()
-            
-            // Action CTA Button
-            Button(action: onBegin) {
-                HStack(spacing: Spacing.s8) {
-                    Image(systemName: "mic.fill")
-                        .font(.size16Bold)
-                    Text("Begin Interview")
-                        .font(.size16Bold)
+                    .shadow(color: isReadyToBegin ? accentColor.opacity(0.3) : Color.clear, radius: Radius.r12, x: 0, y: 4)
                 }
                 .disabled(!isReadyToBegin)
-                .padding(.bottom, Spacing.s16)
+                .animation(.easeInOut, value: selectedMode)
             }
             .padding(.horizontal, Spacing.s24)
-            .background(Color(.systemGroupedBackground).ignoresSafeArea())
-            .animation(.easeInOut, value: selectedMode)
+            .padding(.bottom, Spacing.s16)
         }
+        .background(Color(.systemGroupedBackground).ignoresSafeArea())
     }
 }
 
-/// Shared row for microphone/camera access, factored out since both look identical
-/// apart from icon/title/binding.
-private struct PermissionBar: View {
+struct PermissionBar: View {
     let icon: String
     let title: String
     let isGranted: Bool
@@ -216,11 +190,11 @@ private struct PermissionBar: View {
         HStack(spacing: Spacing.s16) {
             ZStack {
                 RoundedRectangle(cornerRadius: Radius.r16)
-                    .fill(Color.red.opacity(0.12))
+                    .fill((isGranted ? Color.green : accentColor).opacity(0.12))
                     .frame(width: 48, height: 48)
 
                 Image(systemName: icon)
-                    .foregroundColor(.red)
+                    .foregroundColor(isGranted ? .green : accentColor)
                     .font(.size18Bold)
             }
 
