@@ -14,7 +14,7 @@ class TriggerCvOptimizeUseCase: UseCase {
         self.repository = repository
     }
     
-    func execute(_ input: Int) async throws -> AiJobEntity {
-        try await repository.triggerCvOptimize(workspaceId: input)
+    func execute(_ input: Int) async throws -> CvOptimizeResponse {
+        try await repository.optimizeCV(workspaceId: input)
     }
 }

@@ -5,12 +5,15 @@
 //  Created by Moaz on 11/08/2026.
 //
 
+import Foundation
+
 struct JobDescriptionModel {
     let companyInitial: String
     let title: String
     let company: String
     let location: String
     let workMode: String
+    let postingURL: URL?
 
     let employmentType: String
     let experienceLevel: String
@@ -32,6 +35,7 @@ struct JobDescriptionModel {
         company: "Google",
         location: "Cairo, EG",
         workMode: "Hybrid",
+        postingURL: URL(string: "https://careers.google.com")!,
         employmentType: "Full-time",
         experienceLevel: "Senior (5+ yrs)",
         postedText: "2 days ago",

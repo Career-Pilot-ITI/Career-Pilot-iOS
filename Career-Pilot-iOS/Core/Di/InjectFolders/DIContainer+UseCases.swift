@@ -148,8 +148,8 @@ extension DIContainer{
             TriggerCvOptimizeUseCase(repository: r.resolve(ATSRepositoryProtocol.self)!)
         }
 
-        container.register(PollCvOptimizeJobUseCase.self) { r in
-            PollCvOptimizeJobUseCase(repository: r.resolve(ATSRepositoryProtocol.self)!)
+        container.register(PollCvOptimizeUseCase.self) { r in
+            PollCvOptimizeUseCase(repository: r.resolve(ATSRepositoryProtocol.self)!)
         }
 
     }

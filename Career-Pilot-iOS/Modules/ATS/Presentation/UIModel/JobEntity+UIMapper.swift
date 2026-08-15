@@ -19,6 +19,7 @@ extension JobEntity {
             company: companyName,
             location: location,
             workMode: employmentType,
+            postingURL: usablePostingURL,
             employmentType: employmentType,
             experienceLevel: seniorityLevel,
             postedText: postedLabel,
@@ -31,5 +32,12 @@ extension JobEntity {
             technologies: technologies,
             technologiesCount: technologies.count
         )
+    }
+
+    private var usablePostingURL: URL? {
+        [sourceUrl, applicationUrl].first { url in
+            guard let scheme = url.scheme?.lowercased() else { return false }
+            return scheme == "https" || scheme == "http"
+        }
     }
 }

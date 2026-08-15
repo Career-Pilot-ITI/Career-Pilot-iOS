@@ -7,14 +7,11 @@
 
 import Foundation
 
-extension AiJobDataDTO {
-    func toEntity() -> AiJobEntity {
-        AiJobEntity(
-            id: id,
-            workspaceId: workspaceId,
-            type: AiJobType(rawDTO: type),
-            status: AiJobStatus(rawDTO: status),
-            progressPercentage: progressPercentage ?? 0,
+extension CvOptimizeDataDTO {
+    func toEntity() -> CvOptimizeResponse {
+        CvOptimizeResponse(
+            status: CvOptimizeStatus(rawDTO: status ?? ""),
+            progressPercentage: progressPercentage ?? progress ?? 0,
             currentStep: currentStep ?? "",
             errorMessage: errorMessage,
             createdAt: createdAt ?? "",

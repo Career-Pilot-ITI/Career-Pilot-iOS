@@ -9,21 +9,19 @@ import Foundation
 
 // MARK: - Top-level response envelope
 
-struct AiJobResponseDTO: Decodable {
+struct CvOptimizeResponseDTO: Decodable {
     let success: Bool?
     let message: String?
     let timestamp: String?
-    let data: AiJobDataDTO
+    let data: CvOptimizeDataDTO
 }
 
 // MARK: - AI Job data
 
-struct AiJobDataDTO: Decodable {
-    let id: Int
-    let workspaceId: Int
-    let type: String
-    let status: String
+struct CvOptimizeDataDTO: Decodable {
+    let status: String?
     let progressPercentage: Int?
+    let progress: Int?
     let currentStep: String?
     let errorMessage: String?
     let createdAt: String?

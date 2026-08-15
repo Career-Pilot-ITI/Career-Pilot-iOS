@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Enums
 
-enum AiJobStatus: String {
+enum CvOptimizeStatus: String {
     case pending    = "PENDING"
     case processing = "PROCESSING"
     case completed  = "COMPLETED"
@@ -19,26 +19,14 @@ enum AiJobStatus: String {
     case unknown
     
     init(rawDTO: String) {
-        self = AiJobStatus(rawValue: rawDTO) ?? .unknown
-    }
-}
-
-enum AiJobType: String {
-    case cvOptimize = "CV_OPTIMIZE"
-    case unknown
-    
-    init(rawDTO: String) {
-        self = AiJobType(rawValue: rawDTO) ?? .unknown
+        self = CvOptimizeStatus(rawValue: rawDTO) ?? .unknown
     }
 }
 
 // MARK: - AI Job Entity
 
-struct AiJobEntity {
-    let id: Int
-    let workspaceId: Int
-    let type: AiJobType
-    let status: AiJobStatus
+struct CvOptimizeResponse {
+    let status: CvOptimizeStatus
     let progressPercentage: Int
     let currentStep: String
     let errorMessage: String?

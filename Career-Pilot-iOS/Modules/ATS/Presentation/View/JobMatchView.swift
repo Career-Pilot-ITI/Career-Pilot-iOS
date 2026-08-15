@@ -11,6 +11,8 @@ struct JobMatchView: View {
     @EnvironmentObject var coordinator: AppCoordinator<HomeRoute>
     @EnvironmentObject var viewModel: ATSViewModel
     var onBuyCoins: () -> Void = {}
+    @State private var selectedPostingURL: URL?
+    @State private var isShowingPosting = false
 
     var body: some View {
         ZStack {
@@ -24,7 +26,12 @@ struct JobMatchView: View {
                     ScrollView {
                         VStack(spacing: Radius.r16) {
                             if let job = viewModel.jobDescriptionModel {
-                                JobHeaderCard(job: job) { }
+                                JobHeaderCard(job: job, onOpenLink: job.postingURL.map { url in
+                                    {
+                                        selectedPostingURL = url
+                                        isShowingPosting = true
+                                    }
+                                })
                             }
 
                             MatchScoreCardView(
@@ -87,6 +94,12 @@ struct JobMatchView: View {
         }
         .navigationTitle("Job Match")
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $isShowingPosting) {
+            if let selectedPostingURL {
+                JobPostingSafariView(url: selectedPostingURL)
+                    .ignoresSafeArea()
+            }
+        }
         .task {
             // Only score if we don't already have results
             guard viewModel.jobMatchData == nil else { return }

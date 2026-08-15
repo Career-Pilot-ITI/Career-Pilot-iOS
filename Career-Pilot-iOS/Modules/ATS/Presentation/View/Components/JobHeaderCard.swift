@@ -5,6 +5,7 @@
 //  Created by Moaz on 09/08/2026.
 
 import SwiftUI
+import SafariServices
 
 struct JobHeaderCard: View {
     let job: JobDescriptionModel
@@ -44,8 +45,23 @@ struct JobHeaderCard: View {
         }
         .shadow(color: Color.black.opacity(0.06), radius: 12, x: 0, y: 4)
         .shadow(color: Color.black.opacity(0.03), radius: 2, x: 0, y: 1)
-        
+        .contentShape(Rectangle())
+        .onTapGesture {
+            onOpenLink?()
+        }
+        .accessibilityAddTraits(onOpenLink == nil ? [] : .isButton)
+        .accessibilityHint(onOpenLink == nil ? "" : "Opens the job posting")
     }
+}
+
+struct JobPostingSafariView: UIViewControllerRepresentable {
+    let url: URL
+
+    func makeUIViewController(context: Context) -> SFSafariViewController {
+        SFSafariViewController(url: url)
+    }
+
+    func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {}
 }
 
 #Preview {

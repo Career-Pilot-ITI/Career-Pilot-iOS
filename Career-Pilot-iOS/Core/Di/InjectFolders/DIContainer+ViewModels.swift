@@ -158,7 +158,7 @@ extension DIContainer{
         container.register(CvOptimizeViewModel.self) { r in
             CvOptimizeViewModel(
                 triggerUseCase: r.resolve(TriggerCvOptimizeUseCase.self)!,
-                pollUseCase: r.resolve(PollCvOptimizeJobUseCase.self)!
+                pollUseCase: r.resolve(PollCvOptimizeUseCase.self)!
             )
         }.inObjectScope(.container)
 

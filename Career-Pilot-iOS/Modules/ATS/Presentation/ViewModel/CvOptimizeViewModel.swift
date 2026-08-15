@@ -56,7 +56,7 @@ class CvOptimizeViewModel: ObservableObject {
     // MARK: - Dependencies
 
     private let triggerUseCase: TriggerCvOptimizeUseCase
-    private let pollUseCase: PollCvOptimizeJobUseCase
+    private let pollUseCase: PollCvOptimizeUseCase
 
     // MARK: - Polling internals
 
@@ -65,18 +65,27 @@ class CvOptimizeViewModel: ObservableObject {
     private var lastKnownPercentage: Int = 0
 
     /// Configuration
-    private let pollInterval: UInt64 = 2_000_000_000   // 2 seconds in nanoseconds
-    private let maxPollCount: Int = 90                  // ~3 minutes
-    private let stillWorkingThreshold: TimeInterval = 12 // seconds
+    private let pollInterval: UInt64
+    private let maxPollCount: Int
+    private let stillWorkingThreshold: TimeInterval
+    private let completionDelay: UInt64
 
     // MARK: - Init
 
     init(
         triggerUseCase: TriggerCvOptimizeUseCase,
-        pollUseCase: PollCvOptimizeJobUseCase
+        pollUseCase: PollCvOptimizeUseCase,
+        pollInterval: UInt64 = 2_000_000_000,
+        maxPollCount: Int = 90,
+        stillWorkingThreshold: TimeInterval = 12,
+        completionDelay: UInt64 = 800_000_000
     ) {
         self.triggerUseCase = triggerUseCase
         self.pollUseCase = pollUseCase
+        self.pollInterval = pollInterval
+        self.maxPollCount = maxPollCount
+        self.stillWorkingThreshold = stillWorkingThreshold
+        self.completionDelay = completionDelay
     }
 
     // MARK: - Public Actions
@@ -96,30 +105,27 @@ class CvOptimizeViewModel: ObservableObject {
 
         do {
             // Trigger the job
-            let initialJob = try await triggerUseCase.execute(workspaceId)
-            let jobId = initialJob.id
+            let initialResponse = try await triggerUseCase.execute(workspaceId)
 
-            // Check if already completed (unlikely but possible)
-            if initialJob.status == .completed, let result = initialJob.result {
-                animateProgress(to: 100)
-                state = .completed(result)
-                return
-            }
-
-            if initialJob.status == .failed {
+            if initialResponse.status == .failed {
                 state = .failed(
-                    message: initialJob.errorMessage
+                    message: initialResponse.errorMessage
                         ?? "Something went wrong — your coins have been refunded."
                 )
                 return
             }
 
-            // Update initial progress
-            updateProgress(initialJob)
+            if initialResponse.status == .completed || initialResponse.progressPercentage >= 100 {
+                complete(with: initialResponse)
+                return
+            }
 
-            // Start polling loop
+            // Update initial progress
+            updateProgress(initialResponse)
+
+            // The backend uses this same POST endpoint for both starting and polling.
             pollingTask = Task { [weak self] in
-                await self?.pollLoop(workspaceId: workspaceId, jobId: jobId)
+                await self?.pollLoop(workspaceId: workspaceId)
             }
 
         } catch {
@@ -142,7 +148,7 @@ class CvOptimizeViewModel: ObservableObject {
 
     // MARK: - Polling Loop
 
-    private func pollLoop(workspaceId: Int, jobId: Int) async {
+    private func pollLoop(workspaceId: Int) async {
         for iteration in 0..<maxPollCount {
             // Check cancellation
             guard !Task.isCancelled else {
@@ -162,40 +168,28 @@ class CvOptimizeViewModel: ObservableObject {
 
             // Poll the status
             do {
-                let job = try await pollUseCase.execute(
-                    PollJobInput(workspaceId: workspaceId, jobId: jobId)
-                )
+                let response = try await pollUseCase.execute(workspaceId)
 
-                switch job.status {
-                case .completed:
-                    if let result = job.result {
-                        animateProgress(to: 100)
-                        // Small delay so the user sees 100% before transitioning
-                        try? await Task.sleep(nanoseconds: 800_000_000)
-                        guard !Task.isCancelled else { return }
-                        state = .completed(result)
-                    } else {
-                        state = .failed(
-                            message: "Optimization completed but results were empty. Please try again."
-                        )
-                    }
-                    return
-
-                case .failed:
+                if response.status == .failed {
                     state = .failed(
-                        message: job.errorMessage
+                        message: response.errorMessage
                             ?? "Something went wrong — your coins have been refunded."
                     )
                     return
 
-                case .pending, .processing, .unknown:
-                    updateProgress(job)
+                if response.status == .completed || response.progressPercentage >= 100 {
+                    complete(with: response)
+                    return
                 }
 
+                updateProgress(response)
+
             } catch {
-                // Network error during polling — don't fail immediately, just log
                 print("CvOptimize: Poll error at iteration \(iteration): \(error)")
-                // Continue polling — transient network errors shouldn't kill the loop
+                guard isRetryable(error) else {
+                    state = .failed(message: errorMessage(for: error))
+                    return
+                }
             }
 
             // Check "still working" threshold
@@ -210,8 +204,8 @@ class CvOptimizeViewModel: ObservableObject {
 
     // MARK: - Progress Helpers
 
-    private func updateProgress(_ job: AiJobEntity) {
-        let newPercentage = job.progressPercentage
+    private func updateProgress(_ response: CvOptimizeResponse) {
+        let newPercentage = min(max(response.progressPercentage, 0), 100)
 
         if newPercentage != lastKnownPercentage {
             lastKnownPercentage = newPercentage
@@ -219,8 +213,31 @@ class CvOptimizeViewModel: ObservableObject {
             showStillWorking = false
         }
 
-        state = .inProgress(percentage: newPercentage, step: job.currentStep)
+        state = .inProgress(percentage: newPercentage, step: response.currentStep)
         animateProgress(to: newPercentage)
+    }
+
+    private func complete(with response: CvOptimizeResponse) {
+        guard let result = response.result else {
+            state = .failed(message: "Optimization completed but results were empty. Please try again.")
+            return
+        }
+
+        animateProgress(to: 100)
+        pollingTask = Task { [weak self] in
+            try? await Task.sleep(nanoseconds: self?.completionDelay ?? 0)
+            guard !Task.isCancelled else { return }
+            self?.state = .completed(result)
+        }
+    }
+
+    private func isRetryable(_ error: Error) -> Bool {
+        (error as? NetworkError)?.isRetryable ?? false
+    }
+
+    private func errorMessage(for error: Error) -> String {
+        (error as? NetworkError)?.userMessage
+            ?? "Couldn't continue CV optimization. Please try again."
     }
 
     private func animateProgress(to target: Int) {

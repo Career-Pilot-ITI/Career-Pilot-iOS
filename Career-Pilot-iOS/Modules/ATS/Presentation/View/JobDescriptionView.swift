@@ -8,6 +8,8 @@ import SwiftUI
 struct JobDescriptionView: View {
     @EnvironmentObject var coordinator: AppCoordinator<HomeRoute>
     @EnvironmentObject var viewModel: ATSViewModel
+    @State private var selectedPostingURL: URL?
+    @State private var isShowingPosting = false
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -16,9 +18,12 @@ struct JobDescriptionView: View {
             if let job = viewModel.jobDescriptionModel {
                 ScrollView {
                     VStack(spacing: 16) {
-                        JobHeaderCard(job: job) {
-                            // open source link
-                        }
+                        JobHeaderCard(job: job, onOpenLink: job.postingURL.map { url in
+                            {
+                                selectedPostingURL = url
+                                isShowingPosting = true
+                            }
+                        })
                         OverViewCardView(job: job)
                         JobDescriptionCardView(job: job)
                         JobRequirementsCardView(job: job)
@@ -38,6 +43,12 @@ struct JobDescriptionView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(Text("Job Description"))
+        .sheet(isPresented: $isShowingPosting) {
+            if let selectedPostingURL {
+                JobPostingSafariView(url: selectedPostingURL)
+                    .ignoresSafeArea()
+            }
+        }
     }
 
     // MARK: - Sticky Button

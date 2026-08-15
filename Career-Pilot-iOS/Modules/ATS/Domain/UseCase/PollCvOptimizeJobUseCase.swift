@@ -7,22 +7,14 @@
 
 import Foundation
 
-struct PollJobInput: Hashable {
-    let workspaceId: Int
-    let jobId: Int
-}
-
-class PollCvOptimizeJobUseCase: UseCase {
+class PollCvOptimizeUseCase: UseCase {
     private let repository: ATSRepositoryProtocol
     
     init(repository: ATSRepositoryProtocol) {
         self.repository = repository
     }
     
-    func execute(_ input: PollJobInput) async throws -> AiJobEntity {
-        try await repository.pollCvOptimizeJobStatus(
-            workspaceId: input.workspaceId,
-            jobId: input.jobId
-        )
+    func execute(_ workspaceId: Int) async throws -> CvOptimizeResponse {
+        try await repository.optimizeCV(workspaceId: workspaceId)
     }
 }
