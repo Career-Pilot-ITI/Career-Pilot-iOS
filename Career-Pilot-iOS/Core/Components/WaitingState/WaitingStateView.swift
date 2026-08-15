@@ -28,7 +28,7 @@ struct WaitingStateView: View {
 
                 Text(title)
                     .font(.title2.bold())
-//                    .foregroundStyle(.white)
+                    .foregroundColor(.secondary)
 
                 if let subtitle {
 

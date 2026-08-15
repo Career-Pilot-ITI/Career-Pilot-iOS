@@ -24,6 +24,7 @@ enum PracticeSessionViewModelFactory {
         let progressService = InterviewProgressService()
 
         let configuration = InterviewConfiguration(
+            mode: .audio,
             maxQuestions: 3,
             maxAnswerDuration: 240,   // 4 minutes per answer
             maxInterviewDuration: 120, // 30 minutes total

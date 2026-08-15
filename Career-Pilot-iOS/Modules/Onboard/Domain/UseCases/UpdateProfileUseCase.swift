@@ -40,6 +40,9 @@ final class UpdateProfileUseCase: UseCase {
                 print("the error \(error)")
             }
         }
+        
+        print("The sending user to the saving point to save user is \(mutableUser)")
+        print("The user cv is \(mutableUser.cv?.absoluteString)")
 
         return try await onBordingRepo.updateProfile(user: mutableUser.toUser())
     }

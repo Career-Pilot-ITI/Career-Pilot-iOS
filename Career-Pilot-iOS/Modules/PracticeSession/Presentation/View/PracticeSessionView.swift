@@ -42,7 +42,7 @@ struct PracticeSessionView: View {
                 }
                 
             case .completed:
-                SessionCompletedView(feedback: vm.feedback, sessionID: Int(vm.session?.id ?? "0") ?? 0)
+                SessionCompletedView(feedback: vm.feedback, sessionID: Int(vm.session?.id ?? "0") ?? 0, presenceScore: vm.presenceScore ?? InterviewPresenceScore.empty)
                 
             case .error(let error):
                 SessionErrorView(errorMessage: error.localizedDescription,

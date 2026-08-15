@@ -49,7 +49,7 @@ extension DIContainer{
         container.register(InterviewPrepViewModel.self) { resolver in
             InterviewPrepViewModel(
                 permissionManager: resolver.resolve(
-                    MicrophonePermissionManaging.self
+                    PermissionManaging.self
                 )!
             )
         }

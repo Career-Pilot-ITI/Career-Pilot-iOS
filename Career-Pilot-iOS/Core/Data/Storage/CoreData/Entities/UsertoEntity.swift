@@ -27,7 +27,7 @@ extension User {
 extension UserProfile {
 
     func toEntity(in context: NSManagedObjectContext) -> UserProfileEntity {
-
+     print("Saving the user track id in the database is equal = \(trackId)")
         let entity = UserProfileEntity(context: context)
 
         entity.displayName = displayName

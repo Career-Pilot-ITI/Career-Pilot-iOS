@@ -19,7 +19,7 @@ struct CvResumeSettingsProfile: View {
                 Button(action: { showUploadSheet = true }) {
                     HStack {
                         Image("download_icon")
-                        Text("\(cv)")
+                        Text("upload your cv")
                             .font(.size12Bold)
                     }
                     .padding(.horizontal, Spacing.s16)
@@ -36,7 +36,7 @@ struct CvResumeSettingsProfile: View {
                 HStack {
                     customIcon(icon: "paper", color: nil)
                     VStack(alignment: .leading) {
-                        Text("resume file name").font(.size12Bold).foregroundColor(.primaryNavy)
+                        Text(cv.split(separator: "/").last.map(String.init)!).font(.size12Bold).foregroundColor(.primaryNavy)
                         Text("Uploaded data & time & size").font(.size14Regular).foregroundColor(.gray400)
                     }
                     Spacer()

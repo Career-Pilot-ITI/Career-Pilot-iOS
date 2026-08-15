@@ -54,13 +54,13 @@ struct ProgressCard: View {
     }
 }
 
-#Preview {
-    ProgressCard(
-        info: OverallProgressInfo(
-            currentScore: 88,
-            scoreDifference: 6
-        )
-    )
-    .padding()
-    .background(Color.black)
-}
+// #Preview {
+//     ProgressCard(
+//         info: OverallProgressInfo(
+//             currentScore: 88,
+//             scoreDifference: 6
+//         )
+//     )
+//     .padding()
+//     .background(Color.black)
+// }
