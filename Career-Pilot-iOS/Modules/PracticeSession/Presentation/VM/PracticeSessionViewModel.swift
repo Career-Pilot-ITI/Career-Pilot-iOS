@@ -428,11 +428,12 @@ extension PracticeSessionViewModel {
             let finalFeedback = try await finishUseCase.execute(finishInterviewRequest: FinishInterviewRequest(sessionID: sessionId))
             session?.feedback = finalFeedback
             session?.status = .completed
-            screenState = .completed
 
             if interviewType.interviewConfiguration.mode == .video {
-                Task { await self.runVisualAnalysisIfNeeded() }
+                await runVisualAnalysisIfNeeded()
             }
+
+            screenState = .completed
         } catch {
             screenState = .error(error)
         }
