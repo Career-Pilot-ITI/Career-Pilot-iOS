@@ -60,21 +60,22 @@ struct ChoosePlanView: View {
                 Spacer()
                 
                 Button(action: {
-                    guard let currentPlan = viewModel.currentPlan else { return }
-                    let item = CheckoutDisplayInfo.subscription(
-                        plan: currentPlan.label,
-                        monthlyPrice: currentPlan.price,
-                        billingCycle: "Monthly",
-                        total: currentPlan.price,
-                        checkoutItem: CheckoutItem.subscription(planType: currentPlan.type)
-                    )
-                    coordinator.push(.checkout(item: item))
+                    Task {
+                        await viewModel.handlePrimaryAction { checkoutItem in
+                            coordinator.push(.checkout(item: checkoutItem))
+                        }
+                    }
                 }) {
                     HStack {
-                        Text(viewModel.buttonTitle)
-                            .font(.size16Bold)
-                        if !viewModel.isSelectedPlanCurrent {
-                            Image(systemName: "arrow.right")
+                        if viewModel.isPerformingAction {
+                            ProgressView()
+                                .tint(.white)
+                        } else {
+                            Text(viewModel.buttonTitle)
+                                .font(.size16Bold)
+                            if !viewModel.isSelectedPlanCurrent && viewModel.selectedPlan != .free {
+                                Image(systemName: "arrow.right")
+                            }
                         }
                     }
                     .foregroundColor(viewModel.isSelectedPlanCurrent ? .gray400 : .white)
@@ -84,7 +85,7 @@ struct ChoosePlanView: View {
                         Capsule().fill(viewModel.isSelectedPlanCurrent ? Color.gray100 : Color.orange)
                     )
                 }
-                .disabled(viewModel.isSelectedPlanCurrent)
+                .disabled(viewModel.isSelectedPlanCurrent || viewModel.isPerformingAction)
             }
         }
         .padding(20)

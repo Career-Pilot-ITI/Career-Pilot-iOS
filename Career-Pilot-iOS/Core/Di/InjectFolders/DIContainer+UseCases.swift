@@ -129,6 +129,10 @@ extension DIContainer{
             r in
             SaveUserDataUsecase(repo: r.resolve(SettingsRepoImp.self)!)
         }
+        container .register(DowngradeUserSubscription.self){
+            r in
+            DowngradeUserSubscription(repo: r.resolve(SettingsRepoImp.self)!  )
+        }
 
         // MARK: - ATS Use Cases
         container.register(GetJobByURLUseCase.self) { r in

@@ -13,6 +13,8 @@ enum SettingsEndpoint : APIEndpoint{
     case updateUserData(UpdateProfileRequestDTO)
     case updataUserCv
     case updateUserAvatar(AvatarUploadDTO)
+    case getCurrentSubscribtion
+    case downgradeSubscribtion
     
     var path: String{
         switch self {
@@ -28,6 +30,11 @@ enum SettingsEndpoint : APIEndpoint{
             return "api/v1/files/upload"
         case .updataUserCv:
             return "api/v1/updateCv"
+        case .getCurrentSubscribtion:
+            return "api/v1/subscriptions/current"
+        case .downgradeSubscribtion:
+            return "api/v1/subscriptions/downgrade"
+            
         }
     }
     
@@ -35,19 +42,18 @@ enum SettingsEndpoint : APIEndpoint{
         switch self {
         case.getUserData  :
             return .get
-            
-        case .getSubscribtionsPrice:
+        case .getSubscribtionsPrice, .getCurrentSubscribtion :
             return .get
         case .updateUserData , .updataUserCv :
             return .patch
-        case  .logout , .updateUserAvatar :
+        case  .logout , .updateUserAvatar ,.downgradeSubscribtion:
             return .post
             
         }
     }
     var body: Data? {
         switch self {
-        case .getUserData ,.logout ,.getSubscribtionsPrice , .updataUserCv  :
+        case .getUserData ,.logout ,.getSubscribtionsPrice , .updataUserCv , .getCurrentSubscribtion , .downgradeSubscribtion:
             return nil
         case .updateUserData(let userData):
             return Self.encode(userData)
@@ -77,7 +83,7 @@ enum SettingsEndpoint : APIEndpoint{
             tokenString = ""
         }
         switch self {
-        case .getUserData , .logout , .getSubscribtionsPrice , .updateUserData(_) , .updataUserCv :
+        case .getUserData , .logout , .getSubscribtionsPrice , .updateUserData(_) , .updataUserCv , .getCurrentSubscribtion , .downgradeSubscribtion:
           return  [
                 "Content-Type": "application/json",
                 "Authorization": "Bearer \(tokenString)"
