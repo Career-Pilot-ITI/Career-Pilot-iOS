@@ -40,7 +40,13 @@ struct ProfileFormSettings: View {
                 
                 Divider().background(Color.gray400).frame(height: 4)
                 TrackSelector(options: tracks, selected: $user.trackName  )
-            }.padding(.vertical, Spacing.s20).padding(.horizontal , Spacing.s16).background(Color.white , in : RoundedRectangle(cornerRadius: Radius.r16)).shadow(
+            }
+            .padding(.vertical, Spacing.s20)
+            .padding(.horizontal , Spacing.s16)
+            .background(
+                Color.background ,
+                in : RoundedRectangle(cornerRadius: Radius.r16))
+                .shadow(
                 color: Color.black.opacity(0.08),
                 radius: 12,
                 x: 0,

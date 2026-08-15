@@ -39,7 +39,7 @@ struct CustomProfileTextField: View {
                     TextField(title.uppercased(), text: $text)
                         .textInputAutocapitalization(autocapitalization)
                         .font(shouldFloat ? .size13Semibold : .size14Medium)
-                       
+                        .foregroundColor(.gray600)
                         .focused($isFocused)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     

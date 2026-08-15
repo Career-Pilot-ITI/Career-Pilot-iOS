@@ -150,6 +150,61 @@ private struct ReportsLoadMoreSkeletonView: View {
     }
 }
 
+private struct ReportsHistorySkeletonView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            SkeletonPill(width: 160, height: 24)
+            SkeletonPill(width: 150, height: 16)
+                .padding(.top, 8)
+                .padding(.bottom, 16)
+
+            ScrollView {
+                VStack(spacing: Spacing.s12) {
+                    ForEach(0..<4, id: \.self) { _ in
+                        ReportsSessionRowSkeletonView()
+                    }
+                }
+            }
+        }
+        .padding(.top, 16)
+        .padding(.horizontal, 24)
+    }
+}
+
+private struct ReportsSessionRowSkeletonView: View {
+    var body: some View {
+        HStack(spacing: Spacing.s12) {
+            SkeletonBlock(height: 52, cornerRadius: Radius.r14)
+                .frame(width: 52)
+
+            VStack(alignment: .leading, spacing: Spacing.s8) {
+                SkeletonPill(width: 150, height: 16)
+                SkeletonPill(width: 100, height: 12)
+            }
+
+            Spacer()
+
+            SkeletonPill(width: 44, height: 28)
+        }
+        .padding(Spacing.s16)
+        .background(Color.background)
+        .clipShape(RoundedRectangle(cornerRadius: Radius.r16, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)
+                .stroke(Color(.systemGray6), lineWidth: 1)
+        }
+    }
+}
+
+private struct ReportsLoadMoreSkeletonView: View {
+    var body: some View {
+        SkeletonBlock(height: 44, cornerRadius: Radius.r12)
+            .padding(.top, 8)
+            .padding(.horizontal, 24)
+            .padding(.bottom, 12)
+    }
+}
+
 private struct ErrorStateView: View {
     let message: String
     let retryAction: () -> Void

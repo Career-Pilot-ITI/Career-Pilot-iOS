@@ -84,6 +84,8 @@ final class PracticeSessionViewModel: ObservableObject {
 
     /// Result of the post-interview analysis. Empty until visualAnalysisState reaches .completed.
     private(set) var frameObservations: [FrameObservation] = []
+    
+    private(set) var hasStarted = false
 
     init(
         interviewType: InterviewType = .classic,
@@ -170,8 +172,12 @@ final class PracticeSessionViewModel: ObservableObject {
 // MARK: - Lifecycle (start / AI turn / resume UI)
 
 extension PracticeSessionViewModel {
+    
 
     func start(trackId: Int, interviewType: InterviewType) async {
+        guard !hasStarted else { return }
+        hasStarted = true
+
         self.interviewType = interviewType
 
         startSessionTimer()
@@ -189,7 +195,7 @@ extension PracticeSessionViewModel {
             screenState = .error(error)
         }
     }
-
+    
     fileprivate func applyNewSession(_ newSession: NewSession) {
         session = InterviewSession(
             id: String(newSession.sessionId),
@@ -427,12 +433,13 @@ extension PracticeSessionViewModel {
         do {
             let finalFeedback = try await finishUseCase.execute(finishInterviewRequest: FinishInterviewRequest(sessionID: sessionId))
             session?.feedback = finalFeedback
-            session?.status = .completed
-            screenState = .completed
-
+            print("type of interveiw: \(interviewType.interviewConfiguration.mode)")
             if interviewType.interviewConfiguration.mode == .video {
-                Task { await self.runVisualAnalysisIfNeeded() }
+                print("Start analyzing video")
+                await runVisualAnalysisIfNeeded()
             }
+
+            screenState = .completed
         } catch {
             screenState = .error(error)
         }
@@ -478,6 +485,7 @@ extension PracticeSessionViewModel {
     /// Runs after the interview finishes. Never fails the interview itself — worst case,
     /// visualAnalysisState ends up .failed and there's simply no video report later.
     fileprivate func runVisualAnalysisIfNeeded() async {
+        print("Start visual analysis")
         guard let frameAnalysisService else {
             visualAnalysisState = .failed
             return
@@ -495,9 +503,11 @@ extension PracticeSessionViewModel {
         capturedFrames.removeAll()
 
         let result = await frameAnalysisService.analyze(frames: framesToAnalyze)
+        print("Resutl of analysis: \(result)")
         frameObservations = result.observations
         presenceScore = metricsEngine.calculateMetrics(from: result.observations) ?? InterviewPresenceScore.empty
         visualAnalysisState = .completed(framesAnalyzed: result.framesAnalyzed, framesSkipped: result.framesSkipped)
+        
     }
 }
 

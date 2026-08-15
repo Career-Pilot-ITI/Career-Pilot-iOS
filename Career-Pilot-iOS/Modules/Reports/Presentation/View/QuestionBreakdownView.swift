@@ -59,17 +59,21 @@ private struct QuestionBreakdownSkeletonView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: Spacing.s16) {
                 SkeletonPill(width: 210, height: 24)
+
                 HStack(spacing: Spacing.s8) {
                     SkeletonPill(width: 56, height: 36)
                     SkeletonPill(width: 56, height: 36)
                     SkeletonPill(width: 56, height: 36)
                 }
+
                 SkeletonBlock(height: 100)
+
                 HStack(spacing: Spacing.s12) {
                     ForEach(0..<3, id: \.self) { _ in
                         SkeletonBlock(height: 76)
                     }
                 }
+
                 SkeletonBlock(height: 96)
                 SkeletonBlock(height: 164)
             }
