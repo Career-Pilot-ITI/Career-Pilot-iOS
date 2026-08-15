@@ -238,6 +238,9 @@ extension PracticeSessionViewModel {
             beginAITurn(question: session.currentQuestion)
         case .waitingForAnswer:
             beginWaitingForAnswer()
+            
+            
+            
         case .recording:
             beginAITurn(question: session.currentQuestion)
         case .completed:
