@@ -19,7 +19,7 @@ enum CvOptimizeStatus: String {
     case unknown
     
     init(rawDTO: String) {
-        self = CvOptimizeStatus(rawValue: rawDTO) ?? .unknown
+        self = CvOptimizeStatus(rawValue: rawDTO.uppercased()) ?? .unknown
     }
 }
 

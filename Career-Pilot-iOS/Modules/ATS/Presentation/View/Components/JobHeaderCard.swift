@@ -49,6 +49,7 @@ struct JobHeaderCard: View {
         .onTapGesture {
             onOpenLink?()
         }
+        .allowsHitTesting(onOpenLink != nil)
         .accessibilityAddTraits(onOpenLink == nil ? [] : .isButton)
         .accessibilityHint(onOpenLink == nil ? "" : "Opens the job posting")
     }

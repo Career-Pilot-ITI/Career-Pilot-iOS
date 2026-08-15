@@ -116,7 +116,7 @@ class CvOptimizeViewModel: ObservableObject {
             }
 
             if initialResponse.status == .completed || initialResponse.progressPercentage >= 100 {
-                complete(with: initialResponse)
+                await complete(with: initialResponse)
                 return
             }
 
@@ -171,14 +171,15 @@ class CvOptimizeViewModel: ObservableObject {
                 let response = try await pollUseCase.execute(workspaceId)
 
                 if response.status == .failed {
-                    state = .failed(
-                        message: response.errorMessage
-                            ?? "Something went wrong — your coins have been refunded."
-                    )
-                    return
+                state = .failed(
+                    message: response.errorMessage
+                        ?? "Something went wrong — your coins have been refunded."
+                )
+                return
+                }
 
                 if response.status == .completed || response.progressPercentage >= 100 {
-                    complete(with: response)
+                    await complete(with: response)
                     return
                 }
 
@@ -217,18 +218,16 @@ class CvOptimizeViewModel: ObservableObject {
         animateProgress(to: newPercentage)
     }
 
-    private func complete(with response: CvOptimizeResponse) {
+    private func complete(with response: CvOptimizeResponse) async {
         guard let result = response.result else {
             state = .failed(message: "Optimization completed but results were empty. Please try again.")
             return
         }
 
         animateProgress(to: 100)
-        pollingTask = Task { [weak self] in
-            try? await Task.sleep(nanoseconds: self?.completionDelay ?? 0)
-            guard !Task.isCancelled else { return }
-            self?.state = .completed(result)
-        }
+        try? await Task.sleep(nanoseconds: completionDelay)
+        guard !Task.isCancelled else { return }
+        state = .completed(result)
     }
 
     private func isRetryable(_ error: Error) -> Bool {
