@@ -50,15 +50,14 @@ struct MainTabBarView: View {
                             JobMatchView(onBuyCoins: {
                                 homeCoordinator.popToRoot()
                                 settingsDeepLink = .coin
-                                selectedTab = 2
+                                selectedTab = .settings
                             })
                         case .cvOptimizeProgress:
                             CvOptimizeProgressView()
                         case .cvOptimizeResults:
                             CvOptimizeResultsView()
-
- 
-                }
+                        }
+                    }
             }
             .tabItem {
                 Label { Text("Home") } icon: { Image.AppIcon.home.renderingMode(.template) }
