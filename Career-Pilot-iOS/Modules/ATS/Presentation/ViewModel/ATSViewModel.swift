@@ -18,6 +18,8 @@ class ATSViewModel: ObservableObject {
     @Published var isScoringLoading: Bool = false
     /// True while `generateCoverLetter` is in progress
     @Published var isCoverLetterLoading: Bool = false
+    /// True while CV upload is in progress
+    @Published var isUploadingCv: Bool = false
 
     @Published var errorMessage: String?
     @Published var cvUploaded: Bool = false
@@ -35,6 +37,7 @@ class ATSViewModel: ObservableObject {
     private let getJobUseCase: GetJobByURLUseCase
     private let scoreJobUseCase: ScoreCVAgainstJobUseCase
     private let generateCoverLetterUseCase: GenerateCoverLetterUseCase
+    private let uploadCvUseCase: UploadCvUseCase
     private let userRepo: UserDataRepo
 
     // MARK: - Init
@@ -43,11 +46,13 @@ class ATSViewModel: ObservableObject {
         getJobUseCase: GetJobByURLUseCase,
         scoreJobUseCase: ScoreCVAgainstJobUseCase,
         generateCoverLetterUseCase: GenerateCoverLetterUseCase,
+        uploadCvUseCase: UploadCvUseCase,
         userRepo: UserDataRepo
     ) {
         self.getJobUseCase = getJobUseCase
         self.scoreJobUseCase = scoreJobUseCase
         self.generateCoverLetterUseCase = generateCoverLetterUseCase
+        self.uploadCvUseCase = uploadCvUseCase
         self.userRepo = userRepo
     }
 
@@ -127,6 +132,20 @@ class ATSViewModel: ObservableObject {
             cvUploaded = !(profile?.cvURL ?? "").isEmpty
         } catch {
             print("isCvFound error: \(error)")
+        }
+    }
+
+    /// Uploads a CV file picked by the user, then refreshes the CV status.
+    func uploadCv(url: URL) async {
+        isUploadingCv = true
+        errorMessage = nil
+        defer { isUploadingCv = false }
+
+        do {
+            _ = try await uploadCvUseCase.execute(UploadCvRequest(cv: url))
+            cvUploaded = true
+        } catch {
+            errorMessage = "Couldn't upload your CV. Please try again."
         }
     }
 }

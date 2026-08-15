@@ -11,6 +11,7 @@ struct ATSJobMatchView: View {
     @EnvironmentObject var coordinator: AppCoordinator<HomeRoute>
     @EnvironmentObject var viewModel: ATSViewModel
     @State private var jobLink: String = ""
+    @State private var showCvUploadSheet: Bool = false
 
     private var isCompareEnabled: Bool {
         !jobLink.trimmingCharacters(in: .whitespaces).isEmpty && viewModel.cvUploaded && !viewModel.isLoading
@@ -55,7 +56,16 @@ struct ATSJobMatchView: View {
                         .font(Font.size13Bold)
                         .foregroundStyle(Color.textPrimary)
 
-                    if viewModel.cvUploaded {
+                    if viewModel.isUploadingCv {
+                        HStack(spacing: 12) {
+                            ProgressView()
+                            Text("Uploading CV…")
+                                .font(Font.size14Regular)
+                                .foregroundStyle(Color.textSecondary)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 200)
+                    } else if viewModel.cvUploaded {
                         UploadedCVCard()
                     } else {
                         CvUploadingView(
@@ -63,6 +73,9 @@ struct ATSJobMatchView: View {
                             baseSentance: "Upload your CV",
                             subSentanceOne: "PDF or DOC · Max 10 MB"
                         )
+                        .onTapGesture {
+                            showCvUploadSheet = true
+                        }
                     }
                 }
                 .padding(.bottom, 20)
@@ -89,6 +102,14 @@ struct ATSJobMatchView: View {
             .padding(.top, Spacing.s16)
             .task {
                 await viewModel.isCvFound()
+            }
+            .sheet(isPresented: $showCvUploadSheet) {
+                CvUploadSheet { pickedURL in
+                    Task {
+                        await viewModel.uploadCv(url: pickedURL)
+                    }
+                }
+                .presentationDetents([.medium])
             }
         }
     }
