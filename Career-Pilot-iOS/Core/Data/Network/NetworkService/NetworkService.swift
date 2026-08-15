@@ -118,7 +118,13 @@ final class URLSessionNetworkService: NetworkService {
             
             guard (200...299).contains(httpResponse.statusCode) else {
                 logRawJSON(data, label: "Server Error Body")
-                throw NetworkError.serverError(statusCode: httpResponse.statusCode, data: data)
+                let errorResponse = try? decoder.decode(APIErrorResponse.self, from: data)
+                let message = errorResponse?.message?.trimmingCharacters(in: .whitespacesAndNewlines)
+                throw NetworkError.serverError(
+                    statusCode: httpResponse.statusCode,
+                    data: data,
+                    message: message?.isEmpty == false ? message : nil
+                )
             }
             
             return data
@@ -139,9 +145,26 @@ final class URLSessionNetworkService: NetworkService {
     
     // MARK: - Logging Helpers
     
+//    private func logRawJSON(_ data: Data, label: String) {
+//        if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []),
+//           let prettyData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted),
+//           let prettyString = String(data: prettyData, encoding: .utf8) {
+//            print("📦 [\(label)]:\n\(prettyString)")
+//        } else if let rawString = String(data: data, encoding: .utf8), !rawString.isEmpty {
+//            print("📦 [\(label) (Raw)]:\n\(rawString)")
+//        } else {
+//            print("📦 [\(label)]: <Empty Body>")
+//        }
+//    }
+    
     private func logRawJSON(_ data: Data, label: String) {
+        let options: JSONSerialization.WritingOptions = [
+            .prettyPrinted,
+            .withoutEscapingSlashes // Prevents '/' from being escaped as '\/'
+        ]
+        
         if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []),
-           let prettyData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted),
+           let prettyData = try? JSONSerialization.data(withJSONObject: jsonObject, options: options),
            let prettyString = String(data: prettyData, encoding: .utf8) {
             print("📦 [\(label)]:\n\(prettyString)")
         } else if let rawString = String(data: data, encoding: .utf8), !rawString.isEmpty {
@@ -150,7 +173,6 @@ final class URLSessionNetworkService: NetworkService {
             print("📦 [\(label)]: <Empty Body>")
         }
     }
-    
     private func logDecodingError<T>(_ error: DecodingError, targetType: T.Type) {
         print("❌ [DECODE ERROR] Failed decoding \(targetType)")
         switch error {

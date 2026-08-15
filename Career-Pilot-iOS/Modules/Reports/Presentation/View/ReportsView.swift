@@ -95,7 +95,6 @@ struct ReportsView: View {
         }
     }
 }
-
 private struct ReportsHistorySkeletonView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {

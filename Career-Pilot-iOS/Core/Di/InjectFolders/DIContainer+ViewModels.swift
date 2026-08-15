@@ -142,6 +142,26 @@ extension DIContainer{
            )
         }
 
+        // MARK: - ATS ViewModel
+        container.register(ATSViewModel.self) { r in
+            ATSViewModel(
+                getJobUseCase: r.resolve(GetJobByURLUseCase.self)!,
+                scoreJobUseCase: r.resolve(ScoreCVAgainstJobUseCase.self)!,
+                generateCoverLetterUseCase: r.resolve(GenerateCoverLetterUseCase.self)!,
+                uploadCvUseCase: r.resolve(UploadCvUseCase.self)!,
+                userRepo: r.resolve(UserDataRepo.self)!,
+                toastManager: .shared
+            )
+        }.inObjectScope(.container)
+
+        // MARK: - CV Optimize ViewModel
+        container.register(CvOptimizeViewModel.self) { r in
+            CvOptimizeViewModel(
+                triggerUseCase: r.resolve(TriggerCvOptimizeUseCase.self)!,
+                pollUseCase: r.resolve(PollCvOptimizeUseCase.self)!
+            )
+        }.inObjectScope(.container)
+
     }
 } 
 //, updateUserDataUseCase: r.resolve(UpdateUserData.self)!

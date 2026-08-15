@@ -72,7 +72,7 @@ final class AuthenticatedNetworkService: NetworkService {
     // MARK: - Helpers
 
     private func isUnauthorized(_ error: Error) -> Bool {
-        if case NetworkError.serverError(let code, _) = error, code == 401 {
+        if case NetworkError.serverError(let code, _, _) = error, code == 401 {
             return true
         }
         if case NetworkError.tokenExpired = error { return true }

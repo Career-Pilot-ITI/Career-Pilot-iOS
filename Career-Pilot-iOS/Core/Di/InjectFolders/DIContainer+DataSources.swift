@@ -67,5 +67,10 @@ extension DIContainer{
             CheckoutRemoteDataSourceImp(checkOutNetworkService: r.resolve(NetworkService.self, name: "base")!)
         }
 
+        // MARK: - ATS Data Source
+        container.register(ATSRemoteDataSourceProtocol.self) { r in
+            ATSRemoteDataSource(networkService: r.resolve(NetworkService.self, name: "authenticated")!)
+        }
+
     }
 }
