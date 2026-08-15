@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsTabView: View {
     @StateObject private var settingsCoordinator = AppCoordinator<SettingsRoute>()
+    @Binding var deepLink: SettingsRoute?
     var body: some View {
         NavigationStack(path: $settingsCoordinator.path) {
             SettingView(viewModel:DIContainer.shared.container.resolve(SettingsViewModel.self)!).environmentObject(settingsCoordinator)
@@ -18,7 +19,10 @@ struct SettingsTabView: View {
             
             
                 
-        }.environmentObject(settingsCoordinator)
+        }
+        .environmentObject(settingsCoordinator)
+        .onAppear(perform: openDeepLinkIfNeeded)
+        .onChange(of: deepLink) { _ in openDeepLinkIfNeeded() }
         
     }
         
@@ -36,3 +40,11 @@ struct SettingsTabView: View {
                 ProfileScreen(viewModel: DIContainer.shared.container.resolve(ProfileViewModel.self)!)
             }
         }}
+
+private extension SettingsTabView {
+    func openDeepLinkIfNeeded() {
+        guard let deepLink else { return }
+        settingsCoordinator.push(deepLink)
+        self.deepLink = nil
+    }
+}

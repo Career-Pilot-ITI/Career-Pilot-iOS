@@ -21,9 +21,12 @@ class ATSRepository : ATSRepositoryProtocol {
     }
     
     func scoreCvAgainstJob(for id: Int) async throws -> JobMatchEntity {
-        let dto = try await remoteDataSource.scoreCvAgainstJob(for: id)
-        let result = dto.data.toEntity()
-        return result
+        do {
+            let dto = try await remoteDataSource.scoreCvAgainstJob(for: id)
+            return dto.data.toEntity()
+        } catch {
+            throw ATSScoringError(error: error)
+        }
     }
 
     func generateCoverLetter(for id: Int) async throws -> CoverLetterEntity {

@@ -13,14 +13,7 @@ struct CoverLetterView: View {
     var body: some View {
         Group {
             if viewModel.isCoverLetterLoading {
-                VStack(spacing: 16) {
-                    ProgressView()
-                        .scaleEffect(1.5)
-                    Text("Generating cover letter…")
-                        .font(Font.size14Regular)
-                        .foregroundStyle(Color.textSecondary)
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                CoverLetterSkeletonView()
                 .background(Color.screenBackground.ignoresSafeArea())
 
             } else if let data = viewModel.coverLetterData {
@@ -57,8 +50,7 @@ struct CoverLetterView: View {
                 .background(Color.screenBackground.ignoresSafeArea())
 
             } else {
-                ProgressView("Loading…")
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                CoverLetterSkeletonView()
                     .background(Color.screenBackground.ignoresSafeArea())
             }
         }
@@ -67,6 +59,21 @@ struct CoverLetterView: View {
             guard viewModel.coverLetterData == nil else { return }
             await viewModel.generateCoverLetter()
         }
+    }
+}
+
+private struct CoverLetterSkeletonView: View {
+    var body: some View {
+        ScrollView {
+            VStack(spacing: Radius.r16) {
+                SkeletonBlock(height: 440)
+                SkeletonBlock(height: 180)
+                SkeletonBlock(height: 56)
+            }
+            .padding(.horizontal, 16)
+            .padding(.bottom, 24)
+        }
+        .scrollIndicators(.hidden)
     }
 }
 

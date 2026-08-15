@@ -74,7 +74,13 @@ final class URLSessionNetworkService: NetworkService {
             
             guard (200...299).contains(httpResponse.statusCode) else {
                 logRawJSON(data, label: "Server Error Body")
-                throw NetworkError.serverError(statusCode: httpResponse.statusCode, data: data)
+                let errorResponse = try? decoder.decode(APIErrorResponse.self, from: data)
+                let message = errorResponse?.message?.trimmingCharacters(in: .whitespacesAndNewlines)
+                throw NetworkError.serverError(
+                    statusCode: httpResponse.statusCode,
+                    data: data,
+                    message: message?.isEmpty == false ? message : nil
+                )
             }
             
             return data

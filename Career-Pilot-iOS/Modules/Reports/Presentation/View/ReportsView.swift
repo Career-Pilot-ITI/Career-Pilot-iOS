@@ -26,8 +26,7 @@ struct ReportsView: View {
     private var content: some View {
         switch viewModel.state {
         case .idle, .loading:
-            ProgressView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            ReportsHistorySkeletonView()
 
         case .empty:
             Text("No sessions yet")
@@ -60,8 +59,7 @@ struct ReportsView: View {
                 onLoadMore: { Task { await viewModel.loadNextPage() } }
             )
             if isLoadingMore {
-                ProgressView()
-                    .padding(.bottom, 12)
+                ReportsLoadMoreSkeletonView()
             }
         }
     }
@@ -79,5 +77,51 @@ struct ReportsView: View {
                 viewModel: DIContainer.shared.container.resolve(SessionDetailViewModel.self, argument: sessionId)!
             )
         }
+    }
+}
+
+private struct ReportsHistorySkeletonView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            SkeletonPill(width: 160, height: 24)
+            SkeletonPill(width: 150, height: 16)
+                .padding(.top, 8)
+                .padding(.bottom, 16)
+            ScrollView {
+                VStack(spacing: Spacing.s12) {
+                    ForEach(0..<4, id: \.self) { _ in
+                        ReportsSessionRowSkeletonView()
+                    }
+                }
+            }
+        }
+        .padding(.top, 16)
+        .padding(.horizontal, 24)
+    }
+}
+
+private struct ReportsSessionRowSkeletonView: View {
+    var body: some View {
+        HStack(spacing: Spacing.s12) {
+            SkeletonPill(width: 44, height: 36)
+            VStack(alignment: .leading, spacing: Spacing.s8) {
+                SkeletonPill(width: 150, height: 16)
+                SkeletonPill(width: 190, height: 12)
+            }
+            Spacer()
+            SkeletonPill(width: 18, height: 18)
+        }
+        .padding(16)
+        .background(Color.gray400.opacity(0.08))
+        .clipShape(RoundedRectangle(cornerRadius: Radius.r16, style: .continuous))
+    }
+}
+
+private struct ReportsLoadMoreSkeletonView: View {
+    var body: some View {
+        SkeletonBlock(height: 44, cornerRadius: Radius.r12)
+            .padding(.top, 8)
+            .padding(.horizontal, 24)
+            .padding(.bottom, 12)
     }
 }

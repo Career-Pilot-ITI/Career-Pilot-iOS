@@ -59,7 +59,7 @@ extension InterviewError {
             case .noInternet, .requestTimeout:
                 return .networkUnavailable
                 
-            case .serverError(let statusCode, _):
+            case .serverError(let statusCode, _, _):
                 switch statusCode {
                 case 401...403:
                     return .unauthorized

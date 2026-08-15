@@ -39,3 +39,35 @@ struct SectionScoreEntity {
     let score: Int
     let feedback: String
 }
+
+struct ATSScoringError: Error, LocalizedError, Equatable {
+    let statusCode: Int?
+    let serverMessage: String?
+
+    init(networkError: NetworkError) {
+        if case let .serverError(statusCode, _, message) = networkError {
+            self.statusCode = statusCode
+            self.serverMessage = message
+        } else {
+            self.statusCode = nil
+            self.serverMessage = nil
+        }
+    }
+
+    init(error: Error) {
+        if let networkError = error as? NetworkError {
+            self.init(networkError: networkError)
+        } else {
+            self.statusCode = nil
+            self.serverMessage = nil
+        }
+    }
+
+    var isInsufficientCoins: Bool {
+        statusCode == 400 && serverMessage?.localizedCaseInsensitiveContains("coin") == true
+    }
+
+    var errorDescription: String? {
+        serverMessage ?? "Couldn't score your CV. Please try again."
+    }
+}

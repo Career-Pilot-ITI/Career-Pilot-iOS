@@ -22,6 +22,7 @@ class ATSViewModel: ObservableObject {
     @Published var isUploadingCv: Bool = false
 
     @Published var errorMessage: String?
+    @Published private(set) var scoringError: ATSScoringError?
     @Published var cvUploaded: Bool = false
 
     /// Raw domain entity — kept for workspaceID access in downstream calls
@@ -86,6 +87,7 @@ class ATSViewModel: ObservableObject {
 
         isScoringLoading = true
         errorMessage = nil
+        scoringError = nil
         defer { isScoringLoading = false }
 
         do {
@@ -93,8 +95,13 @@ class ATSViewModel: ObservableObject {
             if let job = currentJob {
                 jobMatchData = entity.toUIModel(job: job)
             }
+        } catch let error as ATSScoringError {
+            scoringError = error
+            errorMessage = error.errorDescription
         } catch {
-            errorMessage = "Couldn't score your CV. Please try again."
+            let scoringError = ATSScoringError(error: error)
+            self.scoringError = scoringError
+            errorMessage = scoringError.errorDescription
         }
     }
 

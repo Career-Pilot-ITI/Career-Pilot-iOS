@@ -33,7 +33,7 @@ struct JobDescriptionView: View {
                     .padding(.bottom, 12)
 
             } else {
-                ProgressView("Loading job…")
+                JobDescriptionSkeletonView()
             }
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -56,6 +56,22 @@ struct JobDescriptionView: View {
                         .fill(Color.orange)
                 )
         }
+    }
+}
+
+private struct JobDescriptionSkeletonView: View {
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 16) {
+                SkeletonBlock(height: 112)
+                SkeletonBlock(height: 150)
+                SkeletonBlock(height: 260)
+                SkeletonBlock(height: 220)
+            }
+            .padding(16)
+            .padding(.bottom, 90)
+        }
+        .scrollIndicators(.hidden)
     }
 }
 

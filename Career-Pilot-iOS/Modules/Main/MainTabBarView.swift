@@ -4,8 +4,10 @@ struct MainTabBarView: View {
     @StateObject private var homeCoordinator: AppCoordinator<HomeRoute> = AppCoordinator<HomeRoute>()
     @StateObject private var atsViewModel: ATSViewModel = DIContainer.shared.container.resolve(ATSViewModel.self)!
     @StateObject private var cvOptimizeViewModel: CvOptimizeViewModel = DIContainer.shared.container.resolve(CvOptimizeViewModel.self)!
+    @State private var selectedTab = 0
+    @State private var settingsDeepLink: SettingsRoute?
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             // Tab 1: Home
             NavigationStack(path: $homeCoordinator.path) {
                 HomeView()
@@ -33,7 +35,11 @@ struct MainTabBarView: View {
                         case .coverLetter:
                             CoverLetterView()
                         case .atsJobmatchScore:
-                            JobMatchView()
+                            JobMatchView(onBuyCoins: {
+                                homeCoordinator.popToRoot()
+                                settingsDeepLink = .coin
+                                selectedTab = 2
+                            })
                         case .cvOptimizeProgress:
                             CvOptimizeProgressView()
                         case .cvOptimizeResults:
@@ -44,6 +50,7 @@ struct MainTabBarView: View {
             .tabItem {
                 Label { Text("Home") } icon: { Image.AppIcon.home.renderingMode(.template) }
             }
+            .tag(0)
             .environmentObject(homeCoordinator)
             .environmentObject(atsViewModel)
             .environmentObject(cvOptimizeViewModel)
@@ -51,15 +58,17 @@ struct MainTabBarView: View {
             
             // Tab 2: Reports
             ReportsView()
-                .tabItem {
-                    Label { Text("Reports") } icon: { Image.AppIcon.report.renderingMode(.template) }
-                }
+            .tabItem {
+                Label { Text("Reports") } icon: { Image.AppIcon.report.renderingMode(.template) }
+            }
+            .tag(1)
             
             // Tab 3: Settings
-            SettingsTabView()
+            SettingsTabView(deepLink: $settingsDeepLink)
                 .tabItem {
                     Label { Text("Settings") } icon: { Image.AppIcon.settings.renderingMode(.template) }
                 }
+                .tag(2)
         }
         .tint(Color.primary)
     }

@@ -28,7 +28,11 @@ struct OnBordingView: View {
                     OnBordingIdelState(vm: vm)
                     
                 case .loading:
-                    ProgressView()
+                    VStack(spacing: Spacing.s16) {
+                        SkeletonPill(width: 180, height: 24)
+                        SkeletonBlock(height: 180)
+                        SkeletonPill(width: 240, height: 16)
+                    }
                     
                 case .error(let errorMessage):
                     OnBoardingErrorState(vm: vm, errorMessage: errorMessage)

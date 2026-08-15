@@ -20,7 +20,7 @@ struct QuestionBreakdownView: View {
             Color.lightBackGround.ignoresSafeArea()
             switch viewModel.state {
             case .idle, .loading:
-                ProgressView()
+                QuestionBreakdownSkeletonView()
             case .error(let message):
                 Text(message).foregroundStyle(.red)
             case .loaded:
@@ -52,6 +52,32 @@ struct QuestionBreakdownView: View {
         .task {
             await viewModel.loadFeedback()
         }
+    }
+}
+
+private struct QuestionBreakdownSkeletonView: View {
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: Spacing.s16) {
+                SkeletonPill(width: 210, height: 24)
+                HStack(spacing: Spacing.s8) {
+                    SkeletonPill(width: 56, height: 36)
+                    SkeletonPill(width: 56, height: 36)
+                    SkeletonPill(width: 56, height: 36)
+                }
+                SkeletonBlock(height: 100)
+                HStack(spacing: Spacing.s12) {
+                    ForEach(0..<3, id: \.self) { _ in
+                        SkeletonBlock(height: 76)
+                    }
+                }
+                SkeletonBlock(height: 96)
+                SkeletonBlock(height: 164)
+            }
+            .padding(.horizontal, 24)
+            .padding(.top, 8)
+        }
+        .scrollIndicators(.hidden)
     }
 }
 

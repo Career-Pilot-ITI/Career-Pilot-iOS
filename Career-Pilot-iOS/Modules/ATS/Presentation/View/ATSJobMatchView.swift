@@ -57,14 +57,7 @@ struct ATSJobMatchView: View {
                         .foregroundStyle(Color.textPrimary)
 
                     if viewModel.isUploadingCv {
-                        HStack(spacing: 12) {
-                            ProgressView()
-                            Text("Uploading CV…")
-                                .font(Font.size14Regular)
-                                .foregroundStyle(Color.textSecondary)
-                        }
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 200)
+                        CVUploadSkeletonView()
                     } else if viewModel.cvUploaded {
                         UploadedCVCard()
                     } else {
@@ -113,6 +106,25 @@ struct ATSJobMatchView: View {
                 .presentationDetents([.medium])
             }
         }
+    }
+}
+
+private struct CVUploadSkeletonView: View {
+    var body: some View {
+        HStack(spacing: 12) {
+            SkeletonBlock(height: 48, cornerRadius: Radius.r12)
+                .frame(width: 48)
+            VStack(alignment: .leading, spacing: Spacing.s8) {
+                SkeletonPill(width: 160, height: 16)
+                SkeletonPill(width: 130, height: 12)
+            }
+            Spacer()
+            SkeletonBlock(height: 28, cornerRadius: 14)
+                .frame(width: 28)
+        }
+        .padding(16)
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: Radius.r16, style: .continuous))
     }
 }
 
