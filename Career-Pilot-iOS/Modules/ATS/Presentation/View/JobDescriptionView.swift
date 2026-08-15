@@ -33,7 +33,11 @@ struct JobDescriptionView: View {
                 }
                 .scrollIndicators(.hidden)
 
-                startScoringButton
+                CustomButton(
+                    showArrow: false,
+                    buttonTitle: "Start Scoring") {
+                        coordinator.push(.atsJobmatchScore)
+                    }
                     .padding(.horizontal, 16)
                     .padding(.bottom, 12)
 
@@ -51,23 +55,6 @@ struct JobDescriptionView: View {
         }
     }
 
-    // MARK: - Sticky Button
-
-    private var startScoringButton: some View {
-        Button(action: {
-            coordinator.push(.atsJobmatchScore)
-        }) {
-            Text("Start Scoring")
-                .font(.headline)
-                .foregroundStyle(.white)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 16)
-                .background(
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(Color.orange)
-                )
-        }
-    }
 }
 
 private struct JobDescriptionSkeletonView: View {

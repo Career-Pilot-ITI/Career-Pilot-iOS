@@ -22,7 +22,6 @@ struct OverViewItem: View {
                     .foregroundStyle(.secondary)
                 Text(value)
                     .font(Font.size13Bold)
-                    .foregroundStyle(Color.textPrimary)
 
             }
         }

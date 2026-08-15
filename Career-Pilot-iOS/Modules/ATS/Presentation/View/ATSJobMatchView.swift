@@ -30,7 +30,6 @@ struct ATSJobMatchView: View {
                 VStack(alignment: .leading, spacing: Spacing.s4) {
                     Text("Compare CV to Job")
                         .font(Font.size24Bold)
-                        .foregroundStyle(Color.textPrimary)
 
                     Text("Paste a job posting link — we'll score your CV against it instantly.")
                         .font(Font.size14Regular)
@@ -41,7 +40,6 @@ struct ATSJobMatchView: View {
                 VStack(alignment: .leading, spacing: Spacing.s8) {
                     Text("Job Posting Link")
                         .font(Font.size13Bold)
-                        .foregroundStyle(Color.textPrimary)
 
                     JobLinkTextField(link: $jobLink)
 
@@ -54,7 +52,6 @@ struct ATSJobMatchView: View {
                 VStack(alignment: .leading, spacing: Spacing.s8) {
                     Text("CV on File")
                         .font(Font.size13Bold)
-                        .foregroundStyle(Color.textPrimary)
 
                     if viewModel.isUploadingCv {
                         CVUploadSkeletonView()
