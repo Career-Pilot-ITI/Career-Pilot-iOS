@@ -10,7 +10,7 @@ import SwiftUI
 struct CoinsValueView: View {
     @ObservedObject var viewModel: CoinViewModel
     @EnvironmentObject var coordinator:  AppCoordinator<SettingsRoute>
-
+   let details = ["Greate for typing permium features" ,"Best value for regular practitioners" , "Power users & intensive prep"]
       
     var body: some View {
            VStack(spacing: 16) {
@@ -27,19 +27,20 @@ struct CoinsValueView: View {
                        .foregroundColor(.errorColour)
                    
                case .success(let packs):
-                   ForEach(packs) { pack in
+                   ForEach(Array(zip(packs, details)), id: \.0.id) { pack  , detail in
                        CoinsTypeVIew(
                            isClicked: Binding(
                                get: { viewModel.selectedID == pack.id },
                                set: { if $0 { viewModel.select(pack) } }
                            ),
-                           price: pack.price,
+                           price: pack.price, details: detail,
                            coinNumber: pack.coinsValue,
                            subTitle: pack.subTitle,
+                    
                            onTap: { viewModel.select(pack) }
                        )
                        .shadow(
-                           color: viewModel.selectedID == pack.id ? Color.activeColour.opacity(0.08) : Color.black.opacity(0.18),
+                           color: viewModel.selectedID == pack.id ? Color.primary.opacity(0.08) : Color.black.opacity(0.18),
                            radius: 12,
                            x: 0,
                            y: 4

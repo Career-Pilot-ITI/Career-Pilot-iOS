@@ -13,80 +13,117 @@ final class InterviewPrepViewModel: ObservableObject {
     // MARK: - Published Properties
 
     @Published var microphoneEnabled = false
+    @Published var cameraEnabled = false
+
     @Published var showSettingsAlert = false
     @Published var showOpenSettingsConfirmation = false
 
+    @Published var selectedMode: InterviewMode = .audio
+
+    private var pendingPermission: AppPermission = .microphone
+
     // MARK: - Dependencies
 
-    private let permissionManager: MicrophonePermissionManaging
+    private let permissionManager: PermissionManaging
 
     // MARK: - Initialization
 
-    init(
-        permissionManager: MicrophonePermissionManaging
-    ) {
+    init(permissionManager: PermissionManaging) {
         self.permissionManager = permissionManager
     }
 
     // MARK: - Lifecycle
 
-    func onAppear() {
-        refreshMicrophonePermission()
+    func onAppear(initialMode: InterviewMode) {
+        selectedMode = initialMode
+        refreshScreenPermissions()
     }
 
-    // MARK: - Permission
-
-    func refreshMicrophonePermission() {
-        microphoneEnabled =
-            permissionManager.permissionStatus() == .granted
+    func refreshScreenPermissions() {
+        microphoneEnabled = permissionManager.status(for: .microphone).isGranted
+        cameraEnabled = permissionManager.status(for: .camera).isGranted
     }
+
+    // MARK: - Toggle entry points
+    // Called directly from a custom Binding's `set` — NOT from .onChange —
+    // so setEnabled()'s own writes below never re-trigger this method.
 
     func microphoneToggleChanged(_ enabled: Bool) {
-
-        if enabled {
-            handleMicrophoneEnable()
-        } else {
-            handleMicrophoneDisable()
-        }
+        enabled ? handleEnable(.microphone) : handleDisable(.microphone)
     }
 
-    private func handleMicrophoneEnable() {
+    func cameraToggleChanged(_ enabled: Bool) {
+        enabled ? handleEnable(.camera) : handleDisable(.camera)
+    }
 
-        switch permissionManager.permissionStatus() {
+    // MARK: - Shared permission flow
 
+    private func handleEnable(_ permission: AppPermission) {
+        switch permissionManager.status(for: permission) {
         case .granted:
-            microphoneEnabled = true
+            setEnabled(true, for: permission)
 
-        case .undetermined:
-
-            permissionManager.requestPermission { [weak self] granted in
+        case .notDetermined:
+            permissionManager.requestPermission(for: permission) { [weak self] granted in
                 guard let self else { return }
-
                 Task { @MainActor in
-                    self.microphoneEnabled = granted
-
+                    self.setEnabled(granted, for: permission)
                     if !granted {
-                        self.showSettingsAlert = true
+                        self.presentSettingsAlert(for: permission)
                     }
                 }
             }
 
         case .denied:
-            microphoneEnabled = false
-            showSettingsAlert = true
-
-        @unknown default:
-            microphoneEnabled = false
+            setEnabled(false, for: permission)
+            presentSettingsAlert(for: permission)
         }
     }
 
-    private func handleMicrophoneDisable() {
-
+    private func handleDisable(_ permission: AppPermission) {
         // iOS doesn't allow disabling an individual permission
         // programmatically. The user must change it from Settings.
-        showOpenSettingsConfirmation = true
+        // Keep the UI switch showing "on" until the user confirms.
+        setEnabled(true, for: permission)
+        presentDisableConfirmation(for: permission)
+    }
 
-        // Keep the UI switch enabled until the user confirms.
-        microphoneEnabled = true
+    private func setEnabled(_ enabled: Bool, for permission: AppPermission) {
+        switch permission {
+        case .microphone: microphoneEnabled = enabled
+        case .camera: cameraEnabled = enabled
+        }
+    }
+
+    // MARK: - Modal presentation (mutually exclusive by construction)
+
+    private func presentSettingsAlert(for permission: AppPermission) {
+        pendingPermission = permission
+        showOpenSettingsConfirmation = false
+        showSettingsAlert = true
+    }
+
+    private func presentDisableConfirmation(for permission: AppPermission) {
+        pendingPermission = permission
+        showSettingsAlert = false
+        showOpenSettingsConfirmation = true
+    }
+
+    // MARK: - Alert/dialog copy, permission-aware
+
+    var pendingPermissionIsCamera: Bool {
+        pendingPermission == .camera
+    }
+
+    var settingsAlertMessage: String {
+        pendingPermissionIsCamera
+            ? "Please enable camera access in Settings to continue."
+            : "Please enable microphone access in Settings to continue."
+    }
+
+    var disableConfirmationMessage: String {
+        pendingPermissionIsCamera
+            ? "Camera permission can only be disabled from the Settings app."
+            : "Microphone permission can only be disabled from the Settings app."
     }
 }

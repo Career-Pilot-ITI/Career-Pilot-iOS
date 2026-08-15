@@ -22,7 +22,7 @@ struct CustomSearchTextField: View {
  
             TextField(placeholder, text: $text)
                 .focused($isFocused)
-                .foregroundColor(.gray600)
+                .foregroundColor(.gray400)
                 .autocorrectionDisabled(true)
                 .submitLabel(.search)
                 .tint(.primary)
@@ -44,13 +44,13 @@ struct CustomSearchTextField: View {
             RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)
                 .fill(Color(.secondarySystemBackground))
                 .shadow(
-                    color: .black.opacity(colorScheme == .dark ? 0 : 0.06),
+                    color: .primary.opacity(0.2),
                     radius: 8, x: 0, y: 3
                 )
         }
         .overlay {
             RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)
-                .stroke(Color.primary.opacity(isFocused ? 0.12 : 0), lineWidth: 1.5)
+                .stroke(Color.primary.opacity(isFocused ? 0.3 : 0), lineWidth: 1.5)
                 
         }
         .animation(.easeIn(duration: 0.2), value: isFocused)
@@ -59,20 +59,20 @@ struct CustomSearchTextField: View {
     }
 }
 
-#Preview {
-    struct PreviewContainer: View {
-        @State private var query: String = ""
-
-        var body: some View {
-            VStack(spacing: 20) {
-                CustomSearchTextField(text: $query, placeholder: "Search tracks…")
-
-                CustomSearchTextField(text: .constant("React"), placeholder: "Search tracks…")
-            }
-            .padding()
-            .background(Color(.systemGroupedBackground))
-        }
-    }
-
-    return PreviewContainer()
-}
+//#Preview {
+//    struct PreviewContainer: View {
+//        @State private var query: String = ""
+//
+//        var body: some View {
+//            VStack(spacing: 20) {
+//                CustomSearchTextField(text: $query, placeholder: "Search tracks…")
+//
+//                CustomSearchTextField(text: .constant("React"), placeholder: "Search tracks…")
+//            }
+//            .padding()
+//            .background(Color(.systemGroupedBackground))
+//        }
+//    }
+//
+//    return PreviewContainer()
+//}

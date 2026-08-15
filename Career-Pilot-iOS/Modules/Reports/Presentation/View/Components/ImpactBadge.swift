@@ -9,15 +9,27 @@ import SwiftUI
 
 struct ImpactBadge: View {
     let level: String
+    var badgeColor : Color {
+        switch level {
+        case "High impact":
+            return Color.red
+        case "Medium":
+            return Color.primaryYellow
+        case "Low":
+            return Color.successColour
+        default :
+            return Color.gray
+        }
+    }
     var body: some View {
         Text(level)
             .font(Font.size12Bold)
-            .foregroundStyle(Color.activeColour)
+            .foregroundStyle(badgeColor)
             .padding(.horizontal,8)
             .padding(.vertical,2)
             .background {
                 Capsule()
-                    .fill(Color.activeColour)
+                    .fill(badgeColor)
                     .opacity(0.12)
             }
     }

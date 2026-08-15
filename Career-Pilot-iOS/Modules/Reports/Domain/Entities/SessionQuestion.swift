@@ -12,11 +12,11 @@ struct SessionQuestion: Equatable, Identifiable {
     let sessionId: Int
     let questionText: String
     let questionOrder: Int
-    let userTranscript: String
-    let durationMs: Int
-    let speechRateWpm: Double
-    let avgPauseMs: Double
-    let silenceRatio: Double
+    let userTranscript: String?
+    let durationMs: Int?
+    let speechRateWpm: Double?
+    let avgPauseMs: Double?
+    let silenceRatio: Double?
     let createdAt: Date
     let completedAt: Date?
     /// Optional: a question may not have a score yet (e.g. session still in progress).

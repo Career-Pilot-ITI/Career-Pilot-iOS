@@ -1,16 +1,26 @@
 import SwiftUI
 
+enum Tab: Int, Hashable {
+    case home
+    case reports
+    case settings
+}
+
+@MainActor
 struct MainTabBarView: View {
     @StateObject private var homeCoordinator: AppCoordinator<HomeRoute> = AppCoordinator<HomeRoute>()
     @StateObject private var atsViewModel: ATSViewModel = DIContainer.shared.container.resolve(ATSViewModel.self)!
     @StateObject private var cvOptimizeViewModel: CvOptimizeViewModel = DIContainer.shared.container.resolve(CvOptimizeViewModel.self)!
-    @State private var selectedTab = 0
     @State private var settingsDeepLink: SettingsRoute?
+    @State private var selectedTab: Tab = .home
+
     var body: some View {
         TabView(selection: $selectedTab) {
             // Tab 1: Home
             NavigationStack(path: $homeCoordinator.path) {
-                HomeView()
+                HomeView(onSeeAllSessionsTapped: {
+                    selectedTab = .reports
+                })
                     .navigationDestination(for: HomeRoute.self) { route in
                         switch route {
                         case .sessionDetail(let metrics, let suggestions):
@@ -27,7 +37,9 @@ struct MainTabBarView: View {
                         case .InterviewsView:
                             InterviewsView()
                         case .sessionFeedback(let feedBack, let sessionId):
-                            SessionFeedBackView(feedback: feedBack,sessionId: sessionId)
+                            SessionFeedBackView(feedback: feedBack, sessionId: sessionId) {
+                            homeCoordinator.popToRoot()
+                            }.navigationBarBackButtonHidden()
                         case .atsJobMatch:
                             ATSJobMatchView()
                         case .atsjobDescription:
@@ -44,36 +56,32 @@ struct MainTabBarView: View {
                             CvOptimizeProgressView()
                         case .cvOptimizeResults:
                             CvOptimizeResultsView()
-                        }
-                    }
+
+ 
+                }
             }
             .tabItem {
                 Label { Text("Home") } icon: { Image.AppIcon.home.renderingMode(.template) }
             }
-            .tag(0)
+            .tag(Tab.home)
             .environmentObject(homeCoordinator)
             .environmentObject(atsViewModel)
             .environmentObject(cvOptimizeViewModel)
 
-            
             // Tab 2: Reports
             ReportsView()
-            .tabItem {
-                Label { Text("Reports") } icon: { Image.AppIcon.report.renderingMode(.template) }
-            }
-            .tag(1)
+                .tabItem {
+                    Label { Text("Reports") } icon: { Image.AppIcon.report.renderingMode(.template) }
+                }
+                .tag(Tab.reports)
             
             // Tab 3: Settings
             SettingsTabView(deepLink: $settingsDeepLink)
                 .tabItem {
                     Label { Text("Settings") } icon: { Image.AppIcon.settings.renderingMode(.template) }
                 }
-                .tag(2)
+                .tag(Tab.settings)
         }
         .tint(Color.primary)
     }
 }
-
-//#Preview {
-//    MainTabBarView()
-//}

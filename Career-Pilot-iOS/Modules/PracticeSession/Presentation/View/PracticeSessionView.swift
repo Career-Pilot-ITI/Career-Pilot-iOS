@@ -18,7 +18,9 @@ struct PracticeSessionView: View {
         Group {
             switch vm.screenState {
             case .loading:
-                LoadingView()
+                LoadingView{
+                    homeCoordinator.popToRoot()
+                }
                 
             case .aiTurn:
                 AITurnView(vm: vm)
@@ -30,13 +32,17 @@ struct PracticeSessionView: View {
                 RecordingView(vm: vm, silenceWarning: silenceWarning)
                 
             case .submittingAnswer:
-                SubmittingAnswerView()
-                
+                SubmittingAnswerView{
+                    homeCoordinator.popToRoot()
+                }
+                  
             case .reconnecting:
-                ReconnectingView()
+                ReconnectingView{
+                    homeCoordinator.popToRoot()
+                }
                 
             case .completed:
-                SessionCompletedView(feedback: vm.feedback, sessionID: Int(vm.session?.id ?? "0") ?? 0)
+                SessionCompletedView(feedback: vm.feedback, sessionID: Int(vm.session?.id ?? "0") ?? 0, presenceScore: vm.presenceScore ?? InterviewPresenceScore.empty)
                 
             case .error(let error):
                 SessionErrorView(errorMessage: error.localizedDescription,
@@ -50,6 +56,9 @@ struct PracticeSessionView: View {
                 })
 
             }
+        }
+        .onAppear {
+            vm.attach(coordinator: homeCoordinator)
         }
         .task {
             await vm.start(trackId: trackId, interviewType: interviewType)

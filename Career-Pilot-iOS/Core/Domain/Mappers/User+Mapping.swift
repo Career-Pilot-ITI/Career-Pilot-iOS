@@ -76,8 +76,7 @@ extension Skill {
 extension User {
     func toUpdateProfileRequestDTO(
         avatarFileId: Int? = nil,
-        cvFileId: Int? = nil,
-        trackId: Int? = nil
+        cvFileId: Int? = nil
     ) -> UpdateProfileRequestDTO {
         UpdateProfileRequestDTO(
             username: profile.username,
@@ -100,7 +99,7 @@ extension User {
             timezone: profile.timezone,
             termsAccepted: profile.termsAccepted,
             onboardingCompleted: profile.onboardingCompleted,
-            trackId: trackId
+            trackId: profile.trackId
         )
     }
 }

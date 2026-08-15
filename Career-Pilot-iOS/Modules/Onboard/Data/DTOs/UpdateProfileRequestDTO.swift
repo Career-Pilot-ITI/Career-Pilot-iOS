@@ -8,7 +8,7 @@
 import Foundation
 
 struct UpdateProfileRequestDTO: Encodable {
-    let username: String?
+    var username: String?
     let email: String
     let displayName: String
     let avatarUrl: String

@@ -12,13 +12,13 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @StateObject private var toastManager = ToastManager()
     @StateObject private var coordinator = AppCoordinator<AuthRoute>()
-    @StateObject private var appState = AppState()
+    @StateObject private var appState = DIContainer.shared.container.resolve(AppState.self)!
     
     var body: some View {
         Group {
-            if appState.isOnboadingSeen && appState.isLoggedIn{
+            if appState.isOnboadingSeen && appState.isLoggedIn {
                 MainTabBarView()
-            } else  {
+            } else {
                 NavigationStack(path: $coordinator.path) {
                     if !appState.isLoggedIn {
                         PhoneEntryView()
@@ -32,15 +32,13 @@ struct ContentView: View {
                             }
                     }
                 }
-
             }
         }
         .environmentObject(coordinator)
         .environmentObject(appState)
-        .environmentObject(ToastManager.shared)
-        .toast(ToastManager.shared)
+        .environmentObject(toastManager) // (Using your local @StateObject instance)
+        .toast(toastManager)
     }
-    
     @MainActor
     @ViewBuilder
     private func destination(for route: AuthRoute) -> some View {

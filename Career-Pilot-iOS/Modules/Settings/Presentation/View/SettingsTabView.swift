@@ -36,7 +36,7 @@ struct SettingsTabView: View {
                 ChoosePlanView(viewModel: DIContainer.shared.container.resolve(SubscriptionViewModel.self)!)
             case .coin:
                 CoinView()
-            case .profile :
+            case .profileSettings :
                 ProfileScreen(viewModel: DIContainer.shared.container.resolve(ProfileViewModel.self)!)
             }
         }}

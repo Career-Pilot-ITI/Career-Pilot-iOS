@@ -13,7 +13,6 @@ struct SettingsProfileTopView: View {
     
     var body: some View {
         HStack {
-            Text("Edit Profile")
             Spacer()
             Button(action: onSave) {
                 Text("Save")

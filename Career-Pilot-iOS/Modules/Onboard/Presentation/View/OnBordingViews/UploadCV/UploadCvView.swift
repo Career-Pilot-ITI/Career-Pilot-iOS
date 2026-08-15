@@ -20,8 +20,8 @@ struct UploadCvView: View {
             topView
             
             CvUploadingView(didUpload: vm.cvViewInfo.isSelected,
-                            baseSentance: vm.cvViewInfo.isSelected ? "\(vm.cvViewInfo.cvTitle ?? "No Name For The Cv")" : "Tap to upload your CV",
-                            subSentanceOne: vm.cvViewInfo.isSelected ? "Size: \(String(format: "%.2f MB",vm.cvViewInfo.cvSize ?? 0.0))" : "PDF or DOC · Max 10 MB")
+                baseSentance: vm.cvViewInfo.isSelected ? "\(vm.cvViewInfo.cvTitle ?? "No Name For The Cv")" : "Tap to upload your CV",
+                subSentanceOne: vm.cvViewInfo.isSelected ? "Size: \(String(format: "%.2f MB",vm.cvViewInfo.cvSize ?? 0.0))" : "PDF or DOC · Max 10 MB")
             .onTapGesture {
                 isImporterPresented = true
             }
@@ -45,6 +45,7 @@ struct UploadCvView: View {
             
             Spacer()
         }
+        .padding(.horizontal, Spacing.s12)
         .fileImporter(isPresented: $isImporterPresented, allowedContentTypes: [.pdf,docxType]){ result in
             vm.onCvResult(result: result)
         }

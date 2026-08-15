@@ -16,7 +16,7 @@ struct SendingOTPCodeView: View {
 
     var body: some View {
         ZStack {
-            Color.darkBackGround.ignoresSafeArea()
+            Color.background.ignoresSafeArea()
             VStack(spacing: 24) {
                 Spacer()
                 CallingWaitingScreen(phoneNumber: phoneNumber)

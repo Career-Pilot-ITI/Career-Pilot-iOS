@@ -15,19 +15,15 @@ struct ChooseTrackView: View {
     var body: some View {
         VStack {
             Spacer()
-
             VStack(alignment: .leading, spacing: 12) {
                 Text("Choose your Track")
                     .font(.system(size: 24, weight: .bold))
-
                 Text("We'll tailor questions and feedback for your role.")
                     .font(.system(size: 14, weight: .regular))
-
                 CustomSearchTextField(
                     text: $textFieldInput,
                     placeholder: "Search tracks…"
                 )
-
                 if vm.selectedTrackInfo.traks.isEmpty {
                     VStack(alignment: .center, spacing: 16) {
                         Text("No tracks available")
@@ -76,9 +72,9 @@ struct ChooseTrackView: View {
     }
 }
 
-#Preview {
-    let vm = DIContainer.shared.container.resolve(OnBordingViewModel.self)!
-    vm.getAllTracks()
-
-    return ChooseTrackView(vm: vm)
-}
+//#Preview {
+//    let vm = DIContainer.shared.container.resolve(OnBordingViewModel.self)!
+//    vm.getAllTracks()
+//
+//    return ChooseTrackView(vm: vm)
+//}

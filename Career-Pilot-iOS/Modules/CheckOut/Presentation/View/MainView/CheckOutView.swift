@@ -24,6 +24,7 @@ struct CheckOutView: View {
                 waitingContent
             }
         }
+        .toolbar(.hidden, for: .tabBar)
         .sheet(isPresented: Binding(
             get: { paymentVM.checkoutURL != nil },
             set: { if !$0 { paymentVM.handleUserCancelled() } }
@@ -63,7 +64,6 @@ struct CheckOutView: View {
             
             Text("PAYMENT METHOD")
                 .font(.size14Semibold)
-                .foregroundColor(.gray400)
             
             Spacer().frame(height: Spacing.s8)
             
@@ -72,9 +72,11 @@ struct CheckOutView: View {
             Spacer()
             
             payButton
-        }
+        }.toolbar(.hidden , for: .tabBar)
+        .navigationTitle("Checkout")
         .padding(.horizontal, Spacing.s20)
-        .background(Color.gray100)
+        .background(Color.background.ignoresSafeArea())
+
     }
     
     @ViewBuilder
@@ -95,14 +97,14 @@ struct CheckOutView: View {
                     .padding(.vertical, 16)
             }
         }
-        .background(Capsule().fill(Color.orange))
+        .background(Capsule().fill(Color.primary))
         .disabled(paymentVM.phase == .creatingCheckout)
     }
     
     // MARK: - Verifying / result content — takes over the WHOLE screen, not a cover
     private var waitingContent: some View {
         ZStack {
-            Color.primaryNavy.ignoresSafeArea()
+            Color.background.ignoresSafeArea()
             
             switch paymentVM.phase {
             case .verifyingPayment:
@@ -163,3 +165,4 @@ struct CheckOutView: View {
 //    ))
 //    }
 //}
+

@@ -6,13 +6,13 @@
 //
 import SwiftUI
 
-import SwiftUI
-
 struct CustomProfileTextField: View {
     var icon: String
     let title: String
+    var autocapitalization: TextInputAutocapitalization?
     @Binding var text: String
-    var errorMessage: String? = nil // Optional error message string
+    var errorMessage: String? = nil
+    
     @FocusState private var isFocused: Bool
     
     private var shouldFloat: Bool {
@@ -24,63 +24,62 @@ struct CustomProfileTextField: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            HStack(spacing: 12) {
+        VStack(alignment: .leading, spacing: Spacing.s4) {
+            HStack(spacing: Spacing.s12) {
                 customIcon(icon: icon)
                 
-                VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: 2) {
                     Text(title.uppercased())
                         .font(.caption.bold())
-                        .foregroundColor(.gray600)
+                        .foregroundColor(.gray400)
                         .opacity(shouldFloat ? 1.0 : 0.0)
                         .frame(height: shouldFloat ? nil : 0, alignment: .leading)
                         .clipped()
-
+                    
                     TextField(title.uppercased(), text: $text)
+                        .textInputAutocapitalization(autocapitalization)
                         .font(shouldFloat ? .size13Semibold : .size14Medium)
-                        .foregroundColor(shouldFloat ? .primaryNavy : .gray400)
+                       
                         .focused($isFocused)
-                        .frame(width: 210)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Divider()
-                        .frame(width: 210, height: 1)
+                        .frame(height: 1)
                         .background(dividerColor)
                 }
                 .animation(.easeOut(duration: 0.2), value: shouldFloat)
             }
-            .padding(.vertical, Spacing.s12)
+            .padding(.vertical, Spacing.s8)
             
             // Error Message View
             if let error = errorMessage, !error.isEmpty {
                 Text(error)
                     .font(.caption)
                     .foregroundColor(.red)
-                    .padding(.leading, 56) // Aligns text nicely past the 44px icon + 12px spacing
+                    .padding(.leading, 56) // 44px icon + 12px spacing alignment
+                    .transition(.opacity.combined(with: .move(edge: .top)))
             }
         }
+        .animation(.easeInOut(duration: 0.2), value: errorMessage)
     }
     
     private var dividerColor: Color {
         if hasError {
             return .red
         }
-        return isFocused ? Color.activeColour : Color.gray400
+        return isFocused ? Color.primary : Color.gray200
     }
     
     @ViewBuilder
     private func customIcon(icon: String) -> some View {
         Image(icon)
-            .foregroundColor(.primaryNavy)
+            .foregroundColor(.white)
             .frame(width: 44, height: 44)
             .background(
                 RoundedRectangle(cornerRadius: Radius.r12)
-                    .fill(Color.primaryNavy.opacity(0.06))
+                    .fill(Color.primary.opacity(0.6))
             )
     }
 }
-//struct CustomProfileTextField_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CustomProfileTextField()
-//    }
-//}
+
 

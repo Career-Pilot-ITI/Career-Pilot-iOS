@@ -16,8 +16,8 @@ struct CoinPackCheckOutView: View {
             HStack(spacing : 12){
                 customIcon(icon: "star.fill")
                 VStack(alignment: .leading , spacing: 3){
-                    Text("Purches").font(.size12Medium).foregroundColor(.gray400)
-                    Text("\(product)").font(.size18Bold).foregroundColor(.primaryNavy)
+                    Text("Purches").font(.size12Medium)
+                    Text("\(product)").font(.size18Bold)
                     
                 }.frame(maxWidth:.infinity , alignment: .leading)
                 
@@ -27,24 +27,24 @@ struct CoinPackCheckOutView: View {
             Group{
                 Spacer().frame(height:Spacing.s8)
                HStack{
-                   Text("Price per pack").font(.size14Medium).foregroundColor(.gray600)
+                   Text("Price per pack").font(.size14Medium)
                    Spacer()
-                   Text("EGP").font(.size16Medium).foregroundColor(.primaryNavy)
-                   Text("\(productPrice)").font(.size16Medium).foregroundColor(.primaryNavy)
+                   Text("EGP").font(.size16Medium)
+                   Text("\(productPrice)").font(.size16Medium)
                }
                 Spacer().frame(height:Spacing.s8)
                HStack{
-                   Text("Coins included").font(.size14Medium).foregroundColor(.gray600)
+                   Text("Coins included").font(.size14Medium)
                    Spacer()
                    
-                   Text("\(product)").font(.size16Medium).foregroundColor(.primaryNavy)
+                   Text("\(product)").font(.size16Medium)
                }
                 Spacer().frame(height:Spacing.s8)
 
                HStack{
-                   Text("Expire").font(.size14Medium).foregroundColor(.gray600)
+                   Text("Expire").font(.size14Medium)
                    Spacer()
-                   Text("Never").font(.size16Medium).foregroundColor(.primaryNavy)
+                   Text("Never").font(.size16Medium)
                }
             }
             
@@ -53,15 +53,15 @@ struct CoinPackCheckOutView: View {
             Spacer().frame(height:Spacing.s16)
 
            HStack{
-               Text("Total").font(.size16Bold).foregroundColor(.primaryNavy)
+               Text("Total").font(.size16Bold)
                Spacer()
-               Text("EGP ").font(.size18Medium).foregroundColor(.activeColour)
-               Text("\(total)").font(.size18Medium).foregroundColor(.activeColour)
+               Text("EGP ").font(.size18Medium).foregroundColor(.primary)
+               Text("\(total)").font(.size18Medium).foregroundColor(.primary)
            }
             
 
             
-        }.padding(.horizontal , Spacing.s20).padding(.vertical , Spacing.s20).background(Color.white
+        }.padding(.horizontal , Spacing.s20).padding(.vertical , Spacing.s20).background(Color.background.opacity(0.4)
                                                                                          , in : RoundedRectangle(cornerRadius: Radius.r16 ))
     }
     @ViewBuilder

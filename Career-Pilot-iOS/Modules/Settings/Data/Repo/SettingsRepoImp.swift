@@ -10,7 +10,7 @@ class SettingsRepoImp : SettingsRepo  {
     var remote : SettingsRemote
     var local : SettingsLocalDataSource
     var authToken : AuthTokenStoring
-    init(remote: SettingsRemote ,  local : SettingsLocalDataSource , authToken : AuthTokenStoring) {
+    init(remote: SettingsRemote ,  local : SettingsLocalDataSource,authToken : AuthTokenStoring) {
         self.remote = remote
         self.local = local
         self.authToken = authToken
@@ -21,8 +21,12 @@ class SettingsRepoImp : SettingsRepo  {
             var user = cachedUser.toUserSettingsDomain()
             
             // 1. Safely unwrap and clean the avatar URL string
-            if let rawAvatarURL = cachedUser.profile?.avatarURL {
-                let cleanedPath = rawAvatarURL.replacingOccurrences(of: "\\", with: "")
+            if let rawAvatarURL = cachedUser.profile?.avatarURL ,
+               !(cachedUser.profile?.avatarURL!.isEmpty)!{
+                var cleanedPath = rawAvatarURL.replacingOccurrences(of: "\\", with: "")
+                if(cleanedPath.first == "/" && SettingsEndpoint.getUserData.baseURL.last == "/"){
+                    cleanedPath.removeFirst()
+                }
                 let fullURLString = "\(SettingsEndpoint.getUserData.baseURL)\(cleanedPath)"
                 
                 print("getting the avatar \(fullURLString)")
@@ -32,9 +36,13 @@ class SettingsRepoImp : SettingsRepo  {
                     user.avatar = avatarData
                 }
             }
-            
-            print("The user is returned avatar \(user.avatar)")
-            return user
+            guard let avatarUser = user.avatar else {
+                print("The user avatar is null please look at u code")
+                return user
+            }
+            print("The user avatar that downloaded is \(avatarUser)")
+                  
+                    return user
         }
 
 
@@ -46,7 +54,8 @@ class SettingsRepoImp : SettingsRepo  {
             let remoteUser = try await remote.getUserData()
             let cachedUser = try await local.saveUserData(user: remoteUser)
             var user = cachedUser.toUserSettingsDomain()
-            if let rawAvatarURL = cachedUser.profile?.avatarURL {
+            print("The user avatar is found = \(user.avatarURL)")
+            if let rawAvatarURL = cachedUser.profile?.avatarURL ,  !(cachedUser.profile?.avatarURL!.isEmpty)! {
                 let cleanedPath = rawAvatarURL.replacingOccurrences(of: "\\", with: "")
                 let fullURLString = "\(SettingsEndpoint.getUserData.baseURL)\(cleanedPath)"
                 
@@ -57,6 +66,12 @@ class SettingsRepoImp : SettingsRepo  {
                     user.avatar = avatarData
                 }
             }
+            guard let avatarUser = user.avatar else {
+                print("The user avatar is null please look at u code")
+                throw NSError(domain: "UserDataError", code: -1, userInfo: [NSLocalizedDescriptionKey: "User avatar is missing"])
+            }
+            print("The user avatar that downloaded is \(avatarUser)")
+
             
             return user
         } catch {
@@ -64,7 +79,6 @@ class SettingsRepoImp : SettingsRepo  {
             throw error
         }
     }
-
     private func downloadAvatarData(from urlString: String?) async throws -> Data? {
         guard let urlString = urlString, !urlString.isEmpty, let url = URL(string: urlString) else {
             return nil
@@ -73,7 +87,6 @@ class SettingsRepoImp : SettingsRepo  {
         let data = try await ImageLoader.loadImage(from: URL(string :urlString)!)
         return data
     }
-                                
     func refreshUserData() async throws   {
             do {
                 let remoteUser = try await remote.getUserData()
@@ -86,7 +99,6 @@ class SettingsRepoImp : SettingsRepo  {
                 throw error
             }
         }
-    
     func getUserSubscription() async -> PlanType {
         do{
             let cachedUser = try await local.fetchUserData()
@@ -97,19 +109,17 @@ class SettingsRepoImp : SettingsRepo  {
             return .free
         }
     }
-    
     func logout() async throws{
         do{
             try await remote.logoutUser()
-            try authToken.clear()
+            try await remote.logoutUser()
             try await local.deleteUserData()
-            
+            try authToken.clear()
         }catch{
             print("error in the repor for the logout \(error)")
             throw error
         }
     }
-    
     func getSubscription() async throws -> [SubscriptionPlan] {
         do{
            let response = try await remote.getSubscription()
@@ -130,7 +140,6 @@ class SettingsRepoImp : SettingsRepo  {
  
         
     }
-    
     func getCoins() -> [CoinPack] {
         return   [
             CoinPack(coinsValue: "100", price: "29", subTitle: "Great for trying premium features"),
@@ -160,7 +169,6 @@ class SettingsRepoImp : SettingsRepo  {
              throw error
         }
     }
-   
     func saveUserData(user: UserSettingsDTO) async throws {
         try await local.saveUserData(user: user)
     }

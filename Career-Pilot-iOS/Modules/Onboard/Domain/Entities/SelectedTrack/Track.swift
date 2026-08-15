@@ -13,3 +13,15 @@ struct Track: Identifiable {
     let description: String
     let isActive: Bool
 }
+
+extension Track {
+    func toInterviewItem() -> InterviewItem {
+        let level = InterviewLevel.inferLevel(from: self.title)
+        let trackInterview = InterviewTrack.makeTrack(from: self)
+        
+        return InterviewItem(
+            trackInterview: trackInterview,
+            level: level
+        )
+    }
+}

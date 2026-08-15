@@ -33,11 +33,11 @@ extension SessionQuestionDTO {
         entity.sessionId = Int64(sessionId)
         entity.questionText = questionText
         entity.questionOrder = Int64(questionOrder)
-        entity.userTranscript = userTranscript
-        entity.durationMs = Int64(durationMs)
-        entity.speechRateWpm = speechRateWpm
-        entity.avgPauseMs = avgPauseMs
-        entity.silenceRatio = silenceRatio
+        entity.userTranscript = userTranscript ?? ""
+        entity.durationMs = Int64(durationMs ?? 0)
+        entity.speechRateWpm = speechRateWpm ?? 0
+        entity.avgPauseMs = avgPauseMs ?? 0
+        entity.silenceRatio = silenceRatio ?? 0
         entity.createdAt = createdAt
         entity.completedAt = completedAt
         entity.feedback = feedback

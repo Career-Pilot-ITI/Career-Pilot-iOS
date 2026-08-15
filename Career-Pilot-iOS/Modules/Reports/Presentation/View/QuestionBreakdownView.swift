@@ -30,7 +30,6 @@ struct QuestionBreakdownView: View {
                         VStack(alignment: .leading, spacing: Spacing.s16) {
                             Text("Question Breakdown")
                                 .font(Font.size22Bold)
-                                .foregroundStyle(Color.primaryNavy)
                             QuestionTabSelector(questions: questions, selectedIndex: $selectedIndex)
                             if questions.indices.contains(selectedIndex) {
                                 let question = questions[selectedIndex]

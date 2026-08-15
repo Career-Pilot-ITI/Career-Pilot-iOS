@@ -50,7 +50,7 @@ enum SettingsRoute : Hashable {
     case checkout(item: CheckoutDisplayInfo)
     case subscribtion
     case coin
-    case profile
+    case profileSettings
 }
 
 enum ReportsRoute: Hashable {

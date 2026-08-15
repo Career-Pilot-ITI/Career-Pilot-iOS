@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 struct RecordingView: View {
     @ObservedObject var vm: PracticeSessionViewModel
     let silenceWarning: SilenceWarning?
@@ -26,15 +25,25 @@ struct RecordingView: View {
             }
 
             Spacer()
+            //vm.isVideoReady
+            if vm.isVideoReady, let session = vm.cameraSession {
+                CameraPreviewView(session: session)
+                    .clipShape(RoundedRectangle(cornerRadius: Radius.r16))
+                    .frame(height: 280)
+                    .overlay(alignment: .topTrailing) {
+                        RecordingBadge(timeText: elapsedTimeText)
+                            .padding(Spacing.s12)
+                    }
+            } else {
+                WaitingStateView(
+                    icon: "mic.fill",
+                    tint: .primary,
+                    state: .recording,
+                    title: elapsedTimeText
+                )
 
-            WaitingStateView(
-                icon: "mic.fill",
-                tint: .primary,
-                state: .recording,
-                title: elapsedTimeText
-            )
-
-            SoundWaveView(color: .primary)
+                SoundWaveView(color: .primary)
+            }
 
             Spacer()
 
@@ -58,6 +67,24 @@ struct RecordingView: View {
     }
 }
 
+/// Small recording-time overlay badge for the camera preview.
+private struct RecordingBadge: View {
+    let timeText: String
+
+    var body: some View {
+        HStack(spacing: Spacing.s8) {
+            Circle()
+                .fill(Color.red)
+                .frame(width: 8, height: 8)
+            Text(timeText)
+                .font(.size12Regular)
+                .foregroundStyle(.white)
+        }
+        .padding(.horizontal, Spacing.s12)
+        .padding(.vertical, Spacing.s8)
+        .background(.black.opacity(0.45), in: Capsule())
+    }
+}
 
 private struct SilenceWarningBanner: View {
     let remainingSeconds: Int

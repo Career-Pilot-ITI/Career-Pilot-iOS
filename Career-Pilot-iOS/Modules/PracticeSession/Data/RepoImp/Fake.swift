@@ -46,6 +46,7 @@ final class StubInterviewRepository: InterviewRepository, @unchecked Sendable {
             questions: [question],
             answers: [],
             configuration: InterviewConfiguration(
+                mode: .audio,
                 maxQuestions: 3,
                 maxAnswerDuration: 240,
                 maxInterviewDuration: 1800,

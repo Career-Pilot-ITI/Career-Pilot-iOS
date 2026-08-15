@@ -16,7 +16,6 @@ class GetUserDataUseCase{
             print("I excuted with not problem ")
             let response = try await settingsRepo.fetchUserData()
             var userVeiw =  response.toUserModelSettingsView()
-        
            return userVeiw
             
         }

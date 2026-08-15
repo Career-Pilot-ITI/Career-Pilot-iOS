@@ -37,7 +37,7 @@ struct SessionRow: View {
             }
         }
         .padding()
-        .background(Color.white)
+        .background(Color.gray400.opacity(0.08))
         .cornerRadius(16)
     }
 }

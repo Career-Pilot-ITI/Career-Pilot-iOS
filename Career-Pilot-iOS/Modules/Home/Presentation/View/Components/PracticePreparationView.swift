@@ -4,7 +4,7 @@
 //
 //  Created by Ahmed El-Sayyad Mohamed on 25/07/2026.
 //
-
+import Foundation
 import SwiftUI
 
 struct PracticePreparationView: View {
@@ -13,144 +13,213 @@ struct PracticePreparationView: View {
     let title: String
     let subtitle: String
     let tips: [PracticeTip]
-    
+
+    @Binding var selectedMode: InterviewMode
     @Binding var isMicrophoneGranted: Bool
-    
+    @Binding var isCameraGranted: Bool
+
     let accentColor: Color
     let onCancel: () -> Void
     let onBegin: () -> Void
-    
+
+    private var isReadyToBegin: Bool {
+        isMicrophoneGranted && (selectedMode == .audio || isCameraGranted)
+    }
+
     var body: some View {
-        VStack(alignment: .leading, spacing: Spacing.s24) {
-            
-            Button(action: onCancel) {
-                HStack(spacing: Spacing.s8) {
-                    Image(systemName: "xmark")
-                        .font(.size16Bold)
-                    Text("Cancel")
-                        .font(.size16Medium)
-                }
-                .foregroundColor(Color(red: 0.2, green: 0.24, blue: 0.3))
-            }
-            .padding(.top, Spacing.s8)
-            
-            HStack(spacing: Spacing.s12) {
-                Text(categoryText)
-                    .font(.size14Semibold)
-                    .foregroundColor(Color(red: 0.2, green: 0.24, blue: 0.3))
-                    .padding(.horizontal, Spacing.s12)
-                    .padding(.vertical, Spacing.s8)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(Radius.r8)
-                
-                Text(metadataText)
-                    .font(.size14Semibold)
-                    .foregroundColor(accentColor)
-                    .padding(.horizontal, Spacing.s12)
-                    .padding(.vertical, Spacing.s8)
-                    .background(accentColor.opacity(0.12))
-                    .cornerRadius(Radius.r8)
-            }
-            
-            VStack(alignment: .leading, spacing: Spacing.s8) {
-                Text(title)
-                    .font(.size26Semibold)
-                    .foregroundColor(Color(red: 0.1, green: 0.12, blue: 0.2))
-                
-                Text(subtitle)
-                    .font(.size16Regular)
-                    .foregroundColor(.secondary)
-            }
-            
-            VStack(alignment: .leading, spacing: Spacing.s16) {
-                ForEach(Array(tips.enumerated()), id: \.offset) { index, tip in
-                    HStack(alignment: .top, spacing: Spacing.s16) {
-                        Text(tip.stepNumber)
-                            .font(.size14Bold)
-                            .foregroundColor(accentColor)
-                            .frame(width: 28, height: 28)
-                            .background(accentColor.opacity(0.15))
-                            .cornerRadius(Radius.r8)
-                        
-                        Text(tip.text)
+        ScrollView {
+            VStack(alignment: .leading, spacing: Spacing.s24) {
+
+                Button(action: onCancel) {
+                    HStack(spacing: Spacing.s8) {
+                        Image(systemName: "xmark")
+                            .font(.size16Bold)
+                        Text("Cancel")
                             .font(.size16Medium)
-                            .foregroundColor(Color(red: 0.15, green: 0.18, blue: 0.25))
-                            .fixedSize(horizontal: false, vertical: true)
-                        
-                        Spacer()
                     }
-                    
-                    if index < tips.count - 1 {
-                        Divider()
-                            .background(Color(.systemGray6))
+                    .foregroundColor(.secondary)
+                }
+                .padding(.top, Spacing.s8)
+
+                // Header Tags
+                HStack(spacing: Spacing.s12) {
+                    Text(categoryText)
+                        .font(.size14Semibold)
+                        .foregroundColor(.primary)
+                        .padding(.horizontal, Spacing.s12)
+                        .padding(.vertical, Spacing.s8)
+                        .background(Color(.tertiarySystemGroupedBackground))
+                        .cornerRadius(Radius.r8)
+
+                    Text(metadataText)
+                        .font(.size14Semibold)
+                        .foregroundColor(accentColor)
+                        .padding(.horizontal, Spacing.s12)
+                        .padding(.vertical, Spacing.s8)
+                        .background(accentColor.opacity(0.12))
+                        .cornerRadius(Radius.r8)
+                }
+                .padding(Spacing.s24)
+                .background(Color.gray.opacity(0.08))
+                .cornerRadius(Radius.r24)
+                .shadow(color: Color.black.opacity(0.04), radius: Radius.r16, x: 0, y: 5)
+                .overlay(
+                    RoundedRectangle(cornerRadius: Radius.r24)
+                        .stroke(Color(.separator), lineWidth: 1)
+                )
+
+                // Header icon + title/subtitle
+                HStack(spacing: Spacing.s16) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: Radius.r16)
+                            .fill(accentColor.opacity(0.12))
+                            .frame(width: 48, height: 48)
+
+                        Image(systemName: selectedMode == .video ? "video.fill" : "mic.fill")
+                            .foregroundColor(accentColor)
+                            .font(.size18Bold)
+                    }
+
+                    VStack(alignment: .leading, spacing: Spacing.s8) {
+                        Text(title)
+                            .font(.size26Semibold)
+
+                        Text(subtitle)
+                            .font(.size16Regular)
+                            .foregroundColor(.secondary)
                     }
                 }
-            }
-            .padding(Spacing.s24)
-            .background(Color.white)
-            .cornerRadius(Radius.r24)
-            .shadow(color: Color.black.opacity(0.03), radius: Radius.r16, x: 0, y: 5)
-            .overlay(
-                RoundedRectangle(cornerRadius: Radius.r24)
-                    .stroke(Color(.systemGray6), lineWidth: 1)
-            )
-            
-            HStack(spacing: Spacing.s16) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: Radius.r16)
-                        .fill(Color.red.opacity(0.12))
-                        .frame(width: 48, height: 48)
-                    
-                    Image(systemName: "mic.fill")
-                        .foregroundColor(.red)
-                        .font(.size18Bold)
+
+                // Tips Card Container
+                VStack(alignment: .leading, spacing: Spacing.s6) {
+                    ForEach(Array(tips.enumerated()), id: \.offset) { index, tip in
+                        VStack(spacing: Spacing.s16) {
+                            HStack(alignment: .top, spacing: Spacing.s8) {
+                                Text(tip.stepNumber)
+                                    .font(.size15Bold)
+                                    .frame(width: 28, height: 28)
+                                    .background(accentColor.opacity(0.15))
+                                    .clipShape(RoundedRectangle(cornerRadius: Radius.r8))
+
+                                Text(tip.text)
+                                    .font(.size16Medium)
+                                    .foregroundColor(.primary)
+                                    .multilineTextAlignment(.leading)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+
+                            if index < tips.count - 1 {
+                                Divider()
+                            }
+                        }
+                    }
                 }
-                
-                VStack(alignment: .leading, spacing: Spacing.s4) {
-                    Text("Microphone Access")
-                        .font(.size16Bold)
-                        .foregroundColor(Color(red: 0.1, green: 0.12, blue: 0.2))
-                    
-                    Text("Required to practice")
-                        .font(.size14Medium)
-                        .foregroundColor(.red.opacity(0.8))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(Spacing.s24)
+                .background(Color(.secondarySystemGroupedBackground))
+                .clipShape(RoundedRectangle(cornerRadius: Radius.r24))
+                .overlay(
+                    RoundedRectangle(cornerRadius: Radius.r24)
+                        .stroke(Color(.separator), lineWidth: 1)
+                )
+                .shadow(
+                    color: Color.black.opacity(0.04),
+                    radius: Radius.r16,
+                    x: 0,
+                    y: 5
+                )
+
+                // Mode Selection
+                InterviewModeSelector(selectedMode: $selectedMode, accentColor: accentColor)
+
+                // Microphone Access Permission Bar
+                PermissionBar(
+                    icon: "mic.fill",
+                    title: "Microphone Access",
+                    isGranted: isMicrophoneGranted,
+                    accentColor: accentColor,
+                    isOn: $isMicrophoneGranted
+                )
+
+                // Camera Access Permission Bar — only relevant for video interviews
+                if selectedMode == .video {
+                    PermissionBar(
+                        icon: "video.fill",
+                        title: "Camera Access",
+                        isGranted: isCameraGranted,
+                        accentColor: accentColor,
+                        isOn: $isCameraGranted
+                    )
                 }
-                
-                Spacer()
-                
-                Toggle("", isOn: $isMicrophoneGranted)
-                    .labelsHidden()
-                    .tint(accentColor)
-            }
-            .padding(Spacing.s16)
-            .background(Color.white)
-            .cornerRadius(Radius.r20)
-            .shadow(color: Color.black.opacity(0.03), radius: Radius.r16, x: 0, y: 5)
-            .overlay(
-                RoundedRectangle(cornerRadius: Radius.r20)
-                    .stroke(Color(.systemGray6), lineWidth: 1)
-            )
-            
-            Spacer()
-            
-            Button(action: onBegin) {
-                HStack(spacing: Spacing.s8) {
-                    Image(systemName: "mic.fill")
-                        .font(.size16Bold)
-                    Text("Begin Interview")
-                        .font(.size16Bold)
+
+                Spacer(minLength: Spacing.s24)
+
+                // Action CTA Button
+                Button(action: onBegin) {
+                    HStack(spacing: Spacing.s8) {
+                        Image(systemName: selectedMode == .video ? "video.fill" : "mic.fill")
+                            .font(.size16Bold)
+                        Text("Begin Interview")
+                            .font(.size16Bold)
+                    }
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 56)
+                    .background(isReadyToBegin ? accentColor : Color(.systemGray4))
+                    .cornerRadius(Radius.r16)
+                    .shadow(color: isReadyToBegin ? accentColor.opacity(0.3) : Color.clear, radius: Radius.r12, x: 0, y: 4)
                 }
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
-                .frame(height: 56)
-                .background(isMicrophoneGranted ? accentColor : Color(.systemGray4))
-                .cornerRadius(Radius.r16)
-                .shadow(color: isMicrophoneGranted ? accentColor.opacity(0.3) : Color.clear, radius: Radius.r12, x: 0, y: 4)
+                .disabled(!isReadyToBegin)
+                .animation(.easeInOut, value: selectedMode)
             }
-            .disabled(!isMicrophoneGranted) 
+            .padding(.horizontal, Spacing.s24)
             .padding(.bottom, Spacing.s16)
         }
-        .padding(.horizontal, Spacing.s24)
-        .background(Color(.systemGroupedBackground))
+        .background(Color(.systemGroupedBackground).ignoresSafeArea())
+    }
+}
+
+struct PermissionBar: View {
+    let icon: String
+    let title: String
+    let isGranted: Bool
+    let accentColor: Color
+    @Binding var isOn: Bool
+
+    var body: some View {
+        HStack(spacing: Spacing.s16) {
+            ZStack {
+                RoundedRectangle(cornerRadius: Radius.r16)
+                    .fill((isGranted ? Color.green : accentColor).opacity(0.12))
+                    .frame(width: 48, height: 48)
+
+                Image(systemName: icon)
+                    .foregroundColor(isGranted ? .green : accentColor)
+                    .font(.size18Bold)
+            }
+
+            VStack(alignment: .leading, spacing: Spacing.s4) {
+                Text(title)
+                    .font(.size16Bold)
+
+                Text(isGranted ? "Access Granted" : "Required to practice")
+                    .font(.size14Medium)
+                    .foregroundColor(isGranted ? .green : .red)
+            }
+
+            Spacer()
+
+            Toggle("", isOn: $isOn)
+                .labelsHidden()
+                .tint(accentColor)
+        }
+        .padding(Spacing.s16)
+        .background(Color(.secondarySystemGroupedBackground))
+        .cornerRadius(Radius.r20)
+        .shadow(color: Color.black.opacity(0.04), radius: Radius.r16, x: 0, y: 5)
+        .overlay(
+            RoundedRectangle(cornerRadius: Radius.r20)
+                .stroke(Color(.separator), lineWidth: 1)
+        )
     }
 }

@@ -15,6 +15,9 @@ extension OnBoardingUser {
         isNewUser: Bool = true
     ) -> User {
         let userName = fullName.replacingOccurrences(of: " ", with: "")
+        if let userTaskId = selectedTrack?.id  {
+            print("The user track id is \(String(describing: selectedTrack?.id))")
+        }
 
         return User(
             id: id,

@@ -23,7 +23,7 @@ struct UserModelSettingsView: Equatable {
     var cvUrl: URL?
     var username: String
     var avatarURL: URL?
-    var targetRole: String?
+    var targetRole: String
     var industry: String?
     var trackName: String
     var trackId: Int

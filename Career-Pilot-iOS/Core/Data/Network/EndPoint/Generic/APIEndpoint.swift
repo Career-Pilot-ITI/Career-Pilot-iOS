@@ -3,7 +3,6 @@
 //  Career-Pilot-iOS
 //
 //  Created by Mohamed Magdy on 14/07/2026.
-//
 
 import Foundation
 
@@ -38,7 +37,7 @@ extension APIEndpoint {
         encoder.outputFormatting.insert(.withoutEscapingSlashes)
         return try? encoder.encode(value)
     }
-    
+     
     static func decode<T: Decodable>(_ data: Data, decoder: JSONDecoder = JSONDecoder()) throws -> T {
         do {
             return try decoder.decode(T.self, from: data)
