@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+import MessageUI
 
 struct CoverLetterView: View {
     @EnvironmentObject var viewModel: ATSViewModel
@@ -14,6 +15,8 @@ struct CoverLetterView: View {
     @State private var editableBody = ""
     @State private var editDraft = ""
     @State private var isEditing = false
+    @State private var mailDraft: MailDraft?
+    @State private var showNoMailAccountAlert = false
 
     var body: some View {
         Group {
@@ -105,6 +108,16 @@ struct CoverLetterView: View {
                     }
             }
         }
+        .sheet(item: $mailDraft) { draft in
+            MailComposeView(draft: draft) {
+                mailDraft = nil
+            }
+        }
+        .alert("No Mail Account Configured", isPresented: $showNoMailAccountAlert) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("Gmail isn't installed and no Mail account is configured on this device. Set up an account in Mail and try again.")
+        }
     }
 
     private func displayedData(from data: CoverLetterData) -> CoverLetterData {
@@ -139,18 +152,53 @@ struct CoverLetterView: View {
             return
         }
 
-        var mailComponents = URLComponents()
-        mailComponents.scheme = "mailto"
-        mailComponents.path = recipient
-        mailComponents.queryItems = [
-            URLQueryItem(name: "subject", value: subject),
-            URLQueryItem(name: "body", value: body)
-        ]
-
-        if let mailURL = mailComponents.url {
-            UIApplication.shared.open(mailURL)
+        if MFMailComposeViewController.canSendMail() {
+            mailDraft = MailDraft(recipient: recipient, subject: subject, body: body)
         } else {
-            toastManager.show("Couldn't open an email app.", type: .error)
+            showNoMailAccountAlert = true
+        }
+    }
+}
+
+private struct MailDraft: Identifiable {
+    let id = UUID()
+    let recipient: String
+    let subject: String
+    let body: String
+}
+
+private struct MailComposeView: UIViewControllerRepresentable {
+    let draft: MailDraft
+    let onFinish: () -> Void
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(onFinish: onFinish)
+    }
+
+    func makeUIViewController(context: Context) -> MFMailComposeViewController {
+        let composer = MFMailComposeViewController()
+        composer.mailComposeDelegate = context.coordinator
+        composer.setToRecipients(draft.recipient.isEmpty ? nil : [draft.recipient])
+        composer.setSubject(draft.subject)
+        composer.setMessageBody(draft.body, isHTML: false)
+        return composer
+    }
+
+    func updateUIViewController(_ uiViewController: MFMailComposeViewController, context: Context) {}
+
+    final class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
+        private let onFinish: () -> Void
+
+        init(onFinish: @escaping () -> Void) {
+            self.onFinish = onFinish
+        }
+
+        func mailComposeController(
+            _ controller: MFMailComposeViewController,
+            didFinishWith result: MFMailComposeResult,
+            error: Error?
+        ) {
+            onFinish()
         }
     }
 }
