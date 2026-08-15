@@ -53,6 +53,21 @@ extension DIContainer{
                 )!
             )
         }
+        
+        
+        container.register(PathLearnViewModel.self) { (_, trackId: String, trackTitle: String) in
+            PathLearnViewModel(trackId: trackId, trackTitle: trackTitle)
+        }
+        container.register(QuizViewModel.self) { (_, trackId: String, trackTitle: String,subtopicId:String, subtopicTitle:String) in
+            QuizViewModel(
+                trackId: trackId,
+                trackTitle: trackTitle,
+                subtopicId: subtopicId,
+                subtopicTitle: subtopicTitle)
+        }
+        
+        
+        
 //        // MARK: - PracticeSession
 //        container.register(PracticeSessionViewModel.self) { resolver in
 //            

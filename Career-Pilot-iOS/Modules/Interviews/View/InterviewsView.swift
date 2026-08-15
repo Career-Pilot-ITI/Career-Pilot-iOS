@@ -82,7 +82,12 @@ struct InterviewsView: View {
                 )
             }
             onStartQuiz:{
-                
+                coordinator.push(
+                        .pathLearn(
+                            trackId: String(item.trackInterview.track.id),
+                            trackName: item.trackInterview.track.title
+                        )
+                )
             }
             .listRowInsets(EdgeInsets(top: Spacing.s6, leading: 0, bottom: Spacing.s6, trailing: 0))
             .listRowSeparator(.hidden)

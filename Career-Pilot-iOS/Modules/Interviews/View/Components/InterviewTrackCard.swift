@@ -56,7 +56,7 @@ struct InterviewTrackCard: View {
             isPresented: $showEntryOptions,
             titleVisibility: .visible
         ) {
-            Button("Voice Interview") { onStartVoiceInterview() }
+            Button("Interview") { onStartVoiceInterview() }
             Button("Quiz Path") { onStartQuiz() }
             Button("Cancel", role: .cancel) {}
         }

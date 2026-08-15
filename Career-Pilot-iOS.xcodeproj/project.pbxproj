@@ -260,10 +260,26 @@
 		CEE62A97300929960071F076 /* PracticeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A96300929960071F076 /* PracticeCard.swift */; };
 		CEE62A99300929A70071F076 /* SessionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE62A98300929A70071F076 /* SessionRow.swift */; };
 		CEF9E68D302EF21A0035F90B /* OverallProgressInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9E68C302EF21A0035F90B /* OverallProgressInfo.swift */; };
-		CEF9E690302F5D690035F90B /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = CEF9E68F302F5D690035F90B /* FirebaseAI */; };
-		CEF9E692302F5D690035F90B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CEF9E691302F5D690035F90B /* FirebaseAuth */; };
-		CEF9E694302F5D690035F90B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CEF9E693302F5D690035F90B /* FirebaseFirestore */; };
 		CEF9E696302F5E2F0035F90B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEF9E695302F5E2F0035F90B /* GoogleService-Info.plist */; };
+		CEF9E6A4302F64D90035F90B /* SubtopicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9E6A3302F64D90035F90B /* SubtopicEntity.swift */; };
+		CEF9E6A6302F65190035F90B /* QuizRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9E6A5302F65190035F90B /* QuizRepositoryProtocol.swift */; };
+		CEF9E6A8302F65830035F90B /* GetSubtopicsWithProgressUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9E6A7302F65830035F90B /* GetSubtopicsWithProgressUseCase.swift */; };
+		CEF9E6AA302F65B00035F90B /* SubmitQuizUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9E6A9302F65B00035F90B /* SubmitQuizUseCase.swift */; };
+		CEF9E6AC302F66070035F90B /* SubtopicDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9E6AB302F66070035F90B /* SubtopicDTO.swift */; };
+		CEF9E6AE302F66770035F90B /* SubtopicProgressDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9E6AD302F66770035F90B /* SubtopicProgressDTO.swift */; };
+		CEF9E6B0302F669A0035F90B /* QuizQuestionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9E6AF302F669A0035F90B /* QuizQuestionDTO.swift */; };
+		CEF9E6B2302F66CB0035F90B /* FirestoreQuizRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9E6B1302F66CB0035F90B /* FirestoreQuizRemoteDataSource.swift */; };
+		CEF9E6B4302F676F0035F90B /* GeminiAIRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9E6B3302F676F0035F90B /* GeminiAIRemoteDataSource.swift */; };
+		CEF9E6B6302F67BA0035F90B /* QuizRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9E6B5302F67BA0035F90B /* QuizRepositoryImpl.swift */; };
+		CEF9E6B8302F68F40035F90B /* PathLearnViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9E6B7302F68F40035F90B /* PathLearnViewModel.swift */; };
+		CEF9E6BB302F69310035F90B /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9E6BA302F69310035F90B /* QuizViewModel.swift */; };
+		CEF9E6BF302F69730035F90B /* PathLearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9E6BE302F69730035F90B /* PathLearnView.swift */; };
+		CEF9E6C2302F69A40035F90B /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9E6C1302F69A40035F90B /* QuizView.swift */; };
+		CEF9E6CE302F8DA00035F90B /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = CEF9E6CD302F8DA00035F90B /* FirebaseAI */; };
+		CEF9E6D0302F8DA00035F90B /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = CEF9E6CF302F8DA00035F90B /* FirebaseAppCheck */; };
+		CEF9E6D2302F8DA00035F90B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CEF9E6D1302F8DA00035F90B /* FirebaseAuth */; };
+		CEF9E6D4302F8DA00035F90B /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = CEF9E6D3302F8DA00035F90B /* FirebaseCore */; };
+		CEF9E6D6302F8DA00035F90B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CEF9E6D5302F8DA00035F90B /* FirebaseFirestore */; };
 		D920C24B300EFEB400AB7317 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920C24A300EFEB400AB7317 /* RecordingView.swift */; };
 		D920C24D300EFEC800AB7317 /* SessionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920C24C300EFEC800AB7317 /* SessionHeader.swift */; };
 		D920C24F300EFEE200AB7317 /* StatusScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920C24E300EFEE200AB7317 /* StatusScreens.swift */; };
@@ -641,6 +657,20 @@
 		CEE62A98300929A70071F076 /* SessionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRow.swift; sourceTree = "<group>"; };
 		CEF9E68C302EF21A0035F90B /* OverallProgressInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallProgressInfo.swift; sourceTree = "<group>"; };
 		CEF9E695302F5E2F0035F90B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CEF9E6A3302F64D90035F90B /* SubtopicEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtopicEntity.swift; sourceTree = "<group>"; };
+		CEF9E6A5302F65190035F90B /* QuizRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRepositoryProtocol.swift; sourceTree = "<group>"; };
+		CEF9E6A7302F65830035F90B /* GetSubtopicsWithProgressUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSubtopicsWithProgressUseCase.swift; sourceTree = "<group>"; };
+		CEF9E6A9302F65B00035F90B /* SubmitQuizUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitQuizUseCase.swift; sourceTree = "<group>"; };
+		CEF9E6AB302F66070035F90B /* SubtopicDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtopicDTO.swift; sourceTree = "<group>"; };
+		CEF9E6AD302F66770035F90B /* SubtopicProgressDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtopicProgressDTO.swift; sourceTree = "<group>"; };
+		CEF9E6AF302F669A0035F90B /* QuizQuestionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionDTO.swift; sourceTree = "<group>"; };
+		CEF9E6B1302F66CB0035F90B /* FirestoreQuizRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreQuizRemoteDataSource.swift; sourceTree = "<group>"; };
+		CEF9E6B3302F676F0035F90B /* GeminiAIRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiAIRemoteDataSource.swift; sourceTree = "<group>"; };
+		CEF9E6B5302F67BA0035F90B /* QuizRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRepositoryImpl.swift; sourceTree = "<group>"; };
+		CEF9E6B7302F68F40035F90B /* PathLearnViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathLearnViewModel.swift; sourceTree = "<group>"; };
+		CEF9E6BA302F69310035F90B /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
+		CEF9E6BE302F69730035F90B /* PathLearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathLearnView.swift; sourceTree = "<group>"; };
+		CEF9E6C1302F69A40035F90B /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		D920C24A300EFEB400AB7317 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
 		D920C24C300EFEC800AB7317 /* SessionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHeader.swift; sourceTree = "<group>"; };
 		D920C24E300EFEE200AB7317 /* StatusScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusScreens.swift; sourceTree = "<group>"; };
@@ -751,11 +781,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEF9E6D0302F8DA00035F90B /* FirebaseAppCheck in Frameworks */,
+				CEF9E6D2302F8DA00035F90B /* FirebaseAuth in Frameworks */,
 				419DE28D302E3D4B007395C4 /* Shimmer in Frameworks */,
 				419DE28A302E3D22007395C4 /* Swinject in Frameworks */,
-				CEF9E690302F5D690035F90B /* FirebaseAI in Frameworks */,
-				CEF9E694302F5D690035F90B /* FirebaseFirestore in Frameworks */,
-				CEF9E692302F5D690035F90B /* FirebaseAuth in Frameworks */,
+				CEF9E6D4302F8DA00035F90B /* FirebaseCore in Frameworks */,
+				CEF9E6CE302F8DA00035F90B /* FirebaseAI in Frameworks */,
+				CEF9E6D6302F8DA00035F90B /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1716,6 +1748,147 @@
 			path = Reports;
 			sourceTree = "<group>";
 		};
+		CEF9E697302F63C40035F90B /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9E698302F63E80035F90B /* Data */,
+				CEF9E699302F63F10035F90B /* Domain */,
+				CEF9E69A302F63F80035F90B /* Presentation */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		CEF9E698302F63E80035F90B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9E6A0302F64590035F90B /* Repositories */,
+				CEF9E69F302F644A0035F90B /* DataSources */,
+				CEF9E69E302F643D0035F90B /* Models */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		CEF9E699302F63F10035F90B /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9E69D302F64300035F90B /* UseCases */,
+				CEF9E69C302F641B0035F90B /* Repositories */,
+				CEF9E69B302F64160035F90B /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		CEF9E69A302F63F80035F90B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9E6A2302F64920035F90B /* Quiz */,
+				CEF9E6A1302F64820035F90B /* PathLearn */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		CEF9E69B302F64160035F90B /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9E6A3302F64D90035F90B /* SubtopicEntity.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		CEF9E69C302F641B0035F90B /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9E6A5302F65190035F90B /* QuizRepositoryProtocol.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		CEF9E69D302F64300035F90B /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9E6A7302F65830035F90B /* GetSubtopicsWithProgressUseCase.swift */,
+				CEF9E6A9302F65B00035F90B /* SubmitQuizUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		CEF9E69E302F643D0035F90B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9E6AB302F66070035F90B /* SubtopicDTO.swift */,
+				CEF9E6AD302F66770035F90B /* SubtopicProgressDTO.swift */,
+				CEF9E6AF302F669A0035F90B /* QuizQuestionDTO.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CEF9E69F302F644A0035F90B /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9E6B1302F66CB0035F90B /* FirestoreQuizRemoteDataSource.swift */,
+				CEF9E6B3302F676F0035F90B /* GeminiAIRemoteDataSource.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		CEF9E6A0302F64590035F90B /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9E6B5302F67BA0035F90B /* QuizRepositoryImpl.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		CEF9E6A1302F64820035F90B /* PathLearn */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9E6BC302F69440035F90B /* ViewModel */,
+				CEF9E6BD302F69650035F90B /* View */,
+			);
+			path = PathLearn;
+			sourceTree = "<group>";
+		};
+		CEF9E6A2302F64920035F90B /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9E6B9302F69210035F90B /* ViewModel */,
+				CEF9E6C0302F698F0035F90B /* View */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		CEF9E6B9302F69210035F90B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9E6BA302F69310035F90B /* QuizViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CEF9E6BC302F69440035F90B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9E6B7302F68F40035F90B /* PathLearnViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CEF9E6BD302F69650035F90B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9E6BE302F69730035F90B /* PathLearnView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEF9E6C0302F698F0035F90B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9E6C1302F69A40035F90B /* QuizView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		CEFA6F7D30085B0600A89A83 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -2233,6 +2406,7 @@
 		D9C1878430065A4800BFF8E9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CEF9E697302F63C40035F90B /* Quiz */,
 				CEC5AEC9302818A5000B5BDC /* Interviews */,
 				6165A1E8300B406D0085E3FD /* CheckOut */,
 				D95C3B8A300E48730042785F /* PracticeSession */,
@@ -2525,9 +2699,11 @@
 			packageProductDependencies = (
 				419DE289302E3D22007395C4 /* Swinject */,
 				419DE28C302E3D4B007395C4 /* Shimmer */,
-				CEF9E68F302F5D690035F90B /* FirebaseAI */,
-				CEF9E691302F5D690035F90B /* FirebaseAuth */,
-				CEF9E693302F5D690035F90B /* FirebaseFirestore */,
+				CEF9E6CD302F8DA00035F90B /* FirebaseAI */,
+				CEF9E6CF302F8DA00035F90B /* FirebaseAppCheck */,
+				CEF9E6D1302F8DA00035F90B /* FirebaseAuth */,
+				CEF9E6D3302F8DA00035F90B /* FirebaseCore */,
+				CEF9E6D5302F8DA00035F90B /* FirebaseFirestore */,
 			);
 			productName = "Career-Pilot-iOS";
 			productReference = D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */;
@@ -2604,7 +2780,7 @@
 			packageReferences = (
 				419DE288302E3D21007395C4 /* XCRemoteSwiftPackageReference "swinject" */,
 				419DE28B302E3D4B007395C4 /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */,
-				CEF9E68E302F5D690035F90B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CEF9E6CC302F8DA00035F90B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = D93938DF3004064400CF4372 /* Products */;
 			projectDirPath = "";
@@ -2667,6 +2843,7 @@
 				41C6A23A30080AE10035EFBF /* SuccessOTPCodeView.swift in Sources */,
 				41D69D18300A6D0100294D94 /* AuthTokens.swift in Sources */,
 				612EEDF630194B7000E6733E /* SubscribitonsPriceDTO.swift in Sources */,
+				CEF9E6B8302F68F40035F90B /* PathLearnViewModel.swift in Sources */,
 				41C6A23E30083FDB0035EFBF /* PhoneEntryView.swift in Sources */,
 				41AD901930161FAA00BDFDA0 /* ReportsUIMapping.swift in Sources */,
 				D9868B41300FD22600B84CD6 /* SpeechRecognitionService.swift in Sources */,
@@ -2687,8 +2864,10 @@
 				616320D6301091DB00F417C9 /* UserSettingsDomain.swift in Sources */,
 				CECCDA30300F1E460068620D /* UpdateProfileUseCase.swift in Sources */,
 				D98A79733008DB2F00DFDC6B /* ChooseTrackView.swift in Sources */,
+				CEF9E6A6302F65190035F90B /* QuizRepositoryProtocol.swift in Sources */,
 				41D69D09300A6A0B00294D94 /* AuthTokensDTO.swift in Sources */,
 				41BE1A68300BEF820033D1B5 /* CvUplodingApiResponse+Mapping.swift in Sources */,
+				CEF9E6BF302F69730035F90B /* PathLearnView.swift in Sources */,
 				61D8F2F6300760680088F170 /* ProfileForm.swift in Sources */,
 				61970B863011539B009D7E58 /* PlanType.swift in Sources */,
 				D98A79793008EB9200DFDC6B /* ChoseTrackViewInfo.swift in Sources */,
@@ -2706,6 +2885,7 @@
 				6169A7B230103051001FDC39 /* UserError.swift in Sources */,
 				D957B3043017EC6100B0562A /* TrackSelector.swift in Sources */,
 				CE767FEA3028AD03008A27C2 /* InterviewPrepViewModel.swift in Sources */,
+				CEF9E6AE302F66770035F90B /* SubtopicProgressDTO.swift in Sources */,
 				61D8F2E6300750FC0088F170 /* profile.swift in Sources */,
 				D9B4B1BD301195B3004909ED /* ApiRequestesDTO.swift in Sources */,
 				41AD901130161E3800BDFDA0 /* ClearReportsUseCase.swift in Sources */,
@@ -2721,6 +2901,7 @@
 				CEE62A8730091FD10071F076 /* MainTabBarView.swift in Sources */,
 				41A7F6FB300BBDA000FBE8EB /* UserEntity+Mapping.swift in Sources */,
 				41AD8FF03016145200BDFDA0 /* ReportsRepository.swift in Sources */,
+				CEF9E6AC302F66070035F90B /* SubtopicDTO.swift in Sources */,
 				D95C3BC6300E7C4F0042785F /* PracticeSessionView.swift in Sources */,
 				41AD8FF730161AA900BDFDA0 /* SessionFeedback.swift in Sources */,
 				41D69D4E300B4A0F00294D94 /* ClearSessionUseCase.swift in Sources */,
@@ -2757,8 +2938,11 @@
 				618C29FC30145E160099BF69 /* CheckoutRepoImplementation.swift in Sources */,
 				D98A79753008DFD800DFDC6B /* Track.swift in Sources */,
 				D9B614E8300CF49400552F85 /* DIContainer+Repositories.swift in Sources */,
+				CEF9E6B6302F67BA0035F90B /* QuizRepositoryImpl.swift in Sources */,
+				CEF9E6C2302F69A40035F90B /* QuizView.swift in Sources */,
 				CEB622133010405800027035 /* UsertoEntity.swift in Sources */,
 				41BC772C300D197900E89C3F /* PerformanceBreakdownView.swift in Sources */,
+				CEF9E6AA302F65B00035F90B /* SubmitQuizUseCase.swift in Sources */,
 				61F339283013566C00C94B89 /* UserModelSettingsView.swift in Sources */,
 				41BC7720300D126E00E89C3F /* ImpactBadge.swift in Sources */,
 				61F3392A30135E5400C94B89 /* SettingsLocalDataSource.swift in Sources */,
@@ -2795,6 +2979,7 @@
 				CECC20D63007AD4E00DC450D /* CountryPickerSheet.swift in Sources */,
 				41BE1A7C300BF4540033D1B5 /* AuthRepositoryProtocol.swift in Sources */,
 				41BC771E300D119A00E89C3F /* CoachingSuggestionItemView.swift in Sources */,
+				CEF9E6A4302F64D90035F90B /* SubtopicEntity.swift in Sources */,
 				41D69D20300A6E1200294D94 /* VerifyOTPRequestDTO.swift in Sources */,
 				616320CC301090F900F417C9 /* LogoutUsecase.swift in Sources */,
 				41BE1A64300BEF510033D1B5 /* UserDTO.swift in Sources */,
@@ -2814,6 +2999,7 @@
 				CED18895300B096300B15B81 /* Userdefaultsmanager.swift in Sources */,
 				61970B9030115C5F009D7E58 /* CoinsPackViewData.swift in Sources */,
 				6169A7D2301044E5001FDC39 /* SettingsCard.swift in Sources */,
+				CEF9E6BB302F69310035F90B /* QuizViewModel.swift in Sources */,
 				61D8F2F8300761200088F170 /* CustomProfileTextField.swift in Sources */,
 				41BC7724300D173100E89C3F /* CoachingSuggestionsListView.swift in Sources */,
 				6182BB5B300C72F7001157B8 /* SkillsInputView.swift in Sources */,
@@ -2833,11 +3019,14 @@
 				D9B614EC300CF50000552F85 /* DIContainer+ViewModels.swift in Sources */,
 				41AD9020301623CC00BDFDA0 /* CurrentUserProvider.swift in Sources */,
 				D970C9EB301569F8002F6269 /* UserDataEndPoint.swift in Sources */,
+				CEF9E6B0302F669A0035F90B /* QuizQuestionDTO.swift in Sources */,
 				41BC773A300D3A9500E89C3F /* SessionHistoryListView.swift in Sources */,
 				618C29F530145CFA0099BF69 /* CheckoutUsecase.swift in Sources */,
+				CEF9E6B2302F66CB0035F90B /* FirestoreQuizRemoteDataSource.swift in Sources */,
 				41C6A23C30080BDA0035EFBF /* OTPView.swift in Sources */,
 				41B138A13025EFAB00D1D053 /* PageResponse.swift in Sources */,
 				6117C02F300F9FD700CABEC6 /* StringsExtenstion.swift in Sources */,
+				CEF9E6A8302F65830035F90B /* GetSubtopicsWithProgressUseCase.swift in Sources */,
 				D98A797F3009084000DFDC6B /* OnBordingErrorState.swift in Sources */,
 				D95C3BC1300E4ACF0042785F /* StartInterviewUseCase.swift in Sources */,
 				CEF9E68D302EF21A0035F90B /* OverallProgressInfo.swift in Sources */,
@@ -2946,6 +3135,7 @@
 				D920C24D300EFEC800AB7317 /* SessionHeader.swift in Sources */,
 				D999D5AD301130B300CF606B /* ApiRequestes.swift in Sources */,
 				6182BB4F300C519B001157B8 /* ProfilePhoto.swift in Sources */,
+				CEF9E6B4302F676F0035F90B /* GeminiAIRemoteDataSource.swift in Sources */,
 				41D69D50300B4A2200294D94 /* LoadSessionUseCase.swift in Sources */,
 				D9285400301017E100F8CAC2 /* SubmitAnswerResponseDTO.swift in Sources */,
 				41AD900230161BDD00BDFDA0 /* QuestionScoreDTO+Mapping.swift in Sources */,
@@ -3347,12 +3537,12 @@
 				version = 1.3.0;
 			};
 		};
-		CEF9E68E302F5D690035F90B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		CEF9E6CC302F8DA00035F90B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 11.0.0;
+				kind = exactVersion;
+				version = 12.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -3368,19 +3558,29 @@
 			package = 419DE28B302E3D4B007395C4 /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */;
 			productName = Shimmer;
 		};
-		CEF9E68F302F5D690035F90B /* FirebaseAI */ = {
+		CEF9E6CD302F8DA00035F90B /* FirebaseAI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CEF9E68E302F5D690035F90B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = CEF9E6CC302F8DA00035F90B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAI;
 		};
-		CEF9E691302F5D690035F90B /* FirebaseAuth */ = {
+		CEF9E6CF302F8DA00035F90B /* FirebaseAppCheck */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CEF9E68E302F5D690035F90B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = CEF9E6CC302F8DA00035F90B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		CEF9E6D1302F8DA00035F90B /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEF9E6CC302F8DA00035F90B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		CEF9E693302F5D690035F90B /* FirebaseFirestore */ = {
+		CEF9E6D3302F8DA00035F90B /* FirebaseCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CEF9E68E302F5D690035F90B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = CEF9E6CC302F8DA00035F90B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		CEF9E6D5302F8DA00035F90B /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEF9E6CC302F8DA00035F90B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */
