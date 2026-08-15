@@ -33,7 +33,7 @@ extension DIContainer{
         // homeViewModel
         container.register(HomeViewModel.self){ r in
             HomeViewModel(
-                getCurrentUserUseCase: r.resolve(GetCurrentUserUseCaseProtocol.self)!,
+                userSession: r.resolve(UserSession.self)!,
                 getAllTracksUseCase: r.resolve(GetAllTrackesUseCase.self)!,
                 getAllSessionUseCase: r.resolve(LoadSessionsUseCase.self)!
                 
@@ -119,7 +119,8 @@ extension DIContainer{
         container.register(SubscriptionViewModel.self) { r in
             SubscriptionViewModel(
                 getPlansUseCase: r.resolve(GetSubscribtionPlan.self)!,
-                getUserSubscribtion: r.resolve(GetUserSubscribtion.self)!
+                getUserSubscribtion: r.resolve(GetUserSubscribtion.self)!, downgrade:
+                    r.resolve(DowngradeUserSubscription.self)!, userSession: r.resolve(UserSession.self)!
             )
         }
 

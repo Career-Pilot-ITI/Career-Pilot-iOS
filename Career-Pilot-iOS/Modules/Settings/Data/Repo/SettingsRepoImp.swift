@@ -99,14 +99,16 @@ class SettingsRepoImp : SettingsRepo  {
                 throw error
             }
         }
-    func getUserSubscription() async -> PlanType {
+    func getUserSubscription() async -> UserSubscribtionDomain {
         do{
-            let cachedUser = try await local.fetchUserData()
+            let subscribtionUser = try await remote.getUserSubscription()
+            print("Subscribtion of the user : \(subscribtionUser)")
+            return subscribtionUser.toDomain()
           
-            return PlanType(rawValue: cachedUser?.profile?.subscriptionTier?.capitalized ?? "Free") ?? .free
+            
         }catch{
             print("Error")
-            return .free
+            return UserSubscribtionDomain(tier: .free, isActive: true, startedAt: "", renewalDate: "", cancelledAt: "", pendingTier: "")
         }
     }
     func logout() async throws{
@@ -125,11 +127,11 @@ class SettingsRepoImp : SettingsRepo  {
            let response = try await remote.getSubscription()
             return     [
                 SubscriptionPlan(type: .free, price: "0", label: "Free Plan",
-                     features: ["3 sessions / month", "Basic score report", "Standard feedback"]),
+                     features: ["3 sessions / month for reocord intreview only", "No ATS", "No video interview"]),
                 SubscriptionPlan(type: .plus, price: "\(response.PLUS)" , label: "Plus Plan",
-                     features: ["12 sessions / month", "Detailed radar chart", "Priority AI feedback", "Coaching tips library"]),
+                     features: ["Record sessions are open", "ATS is open", "Quiz sessions are open", "No video internview"]),
                 SubscriptionPlan(type: .pro, price: "\(response.PRO)", label: "Pro Plan",
-                     features: ["Unlimited sessions", "Instant feedback", "All tracks unlocked", "1:1 coaching session"])
+                     features: ["Record sessions are open", "ATS is open", "Quiz sessions are open", "Video interivew is opened"])
             ]
             
         }catch{
@@ -160,7 +162,6 @@ class SettingsRepoImp : SettingsRepo  {
     }
     func updateUserProfileAvatar(avatarUploadRequestDTO: AvatarUploadDTO) async throws -> AvatarResponseDTO {
         do{
-            print("The image do not have any error ")
 
             return try await remote.updateUserProfileAvatar(avatarUploadRequestDTO: avatarUploadRequestDTO)
             
@@ -171,5 +172,8 @@ class SettingsRepoImp : SettingsRepo  {
     }
     func saveUserData(user: UserSettingsDTO) async throws {
         try await local.saveUserData(user: user)
+    }
+    func downgradeUserSubscription() async throws {
+        try await remote.downgradeUserSubscribtion()
     }
 }
