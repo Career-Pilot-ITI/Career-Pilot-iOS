@@ -55,12 +55,14 @@ struct ATSScoringError: Error, LocalizedError, Equatable {
     }
 
     init(error: Error) {
-        if let networkError = error as? NetworkError {
-            self.init(networkError: networkError)
-        } else {
-            self.statusCode = nil
-            self.serverMessage = nil
+        if case let .serverError(statusCode, _, message)? = error as? NetworkError {
+            self.statusCode = statusCode
+            self.serverMessage = message
+            return
         }
+
+        self.statusCode = nil
+        self.serverMessage = nil
     }
 
     var isInsufficientCoins: Bool {
