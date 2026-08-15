@@ -47,6 +47,18 @@
 		41A3B7A0302CCF47003C2F2A /* OverViewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B79F302CCF47003C2F2A /* OverViewCardView.swift */; };
 		41A3B7A2302CD010003C2F2A /* JobDescriptionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B7A1302CD010003C2F2A /* JobDescriptionCardView.swift */; };
 		41A3B7A4302CD188003C2F2A /* JobRequirementsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B7A3302CD188003C2F2A /* JobRequirementsCardView.swift */; };
+		41A5C6D6302FF43B003E3D78 /* AiJobResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5C6D5302FF43B003E3D78 /* AiJobResponseDTO.swift */; };
+		41A5C6D8302FF451003E3D78 /* AiJobDTO+Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5C6D7302FF451003E3D78 /* AiJobDTO+Mapper.swift */; };
+		41A5C6DA302FF46B003E3D78 /* CvOptimizeEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5C6D9302FF46B003E3D78 /* CvOptimizeEndPoint.swift */; };
+		41A5C6DD302FF493003E3D78 /* PollCvOptimizeJobUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5C6DB302FF493003E3D78 /* PollCvOptimizeJobUseCase.swift */; };
+		41A5C6DE302FF493003E3D78 /* TriggerCvOptimizeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5C6DC302FF493003E3D78 /* TriggerCvOptimizeUseCase.swift */; };
+		41A5C6E0302FF49C003E3D78 /* AiJobEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5C6DF302FF49C003E3D78 /* AiJobEntity.swift */; };
+		41A5C6E2302FF4B2003E3D78 /* CvOptimizeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5C6E1302FF4B2003E3D78 /* CvOptimizeViewModel.swift */; };
+		41A5C6E5302FF4D5003E3D78 /* CvOptimizeResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5C6E3302FF4D5003E3D78 /* CvOptimizeResultsView.swift */; };
+		41A5C6E6302FF4D5003E3D78 /* CvOptimizeProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5C6E4302FF4D5003E3D78 /* CvOptimizeProgressView.swift */; };
+		41A5C6E9302FF4FF003E3D78 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 41A5C6E8302FF4FF003E3D78 /* Shimmer */; };
+		41A5C6EC302FF511003E3D78 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 41A5C6EB302FF511003E3D78 /* Swinject */; };
+		41A5C6EE302FF58E003E3D78 /* CvOptimizeResultsComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5C6ED302FF58E003E3D78 /* CvOptimizeResultsComponents.swift */; };
 		41A5E1CF3028930C00558D9B /* JobPostingLinkTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5E1CE3028930C00558D9B /* JobPostingLinkTextField.swift */; };
 		41A7F6F8300BBB2A00FBE8EB /* LampGlitchModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7F6F7300BBB2A00FBE8EB /* LampGlitchModifier.swift */; };
 		41A7F6FB300BBDA000FBE8EB /* UserEntity+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7F6F9300BBDA000FBE8EB /* UserEntity+Mapping.swift */; };
@@ -77,8 +89,6 @@
 		41AD901E3016229900BDFDA0 /* ReportsInterviewSessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD901D3016229900BDFDA0 /* ReportsInterviewSessionDTO.swift */; };
 		41AD9020301623CC00BDFDA0 /* CurrentUserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD901F301623CC00BDFDA0 /* CurrentUserProvider.swift */; };
 		41AD90223016260600BDFDA0 /* Date+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD90213016260600BDFDA0 /* Date+Formatting.swift */; };
-		41AEC130302DCF01000EC6CE /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 41AEC12F302DCF01000EC6CE /* Shimmer */; };
-		41AEC133302DCF15000EC6CE /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 41AEC132302DCF15000EC6CE /* Swinject */; };
 		41AEC135302DCFB9000EC6CE /* CoverLetterResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AEC134302DCFB9000EC6CE /* CoverLetterResponseDTO.swift */; };
 		41AEC137302DCFCD000EC6CE /* CoverLetterDTO+Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AEC136302DCFCD000EC6CE /* CoverLetterDTO+Mapper.swift */; };
 		41AEC139302DCFE3000EC6CE /* CoverLetterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AEC138302DCFE3000EC6CE /* CoverLetterEntity.swift */; };
@@ -473,6 +483,16 @@
 		41A3B79F302CCF47003C2F2A /* OverViewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewCardView.swift; sourceTree = "<group>"; };
 		41A3B7A1302CD010003C2F2A /* JobDescriptionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDescriptionCardView.swift; sourceTree = "<group>"; };
 		41A3B7A3302CD188003C2F2A /* JobRequirementsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRequirementsCardView.swift; sourceTree = "<group>"; };
+		41A5C6D5302FF43B003E3D78 /* AiJobResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AiJobResponseDTO.swift; sourceTree = "<group>"; };
+		41A5C6D7302FF451003E3D78 /* AiJobDTO+Mapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AiJobDTO+Mapper.swift"; sourceTree = "<group>"; };
+		41A5C6D9302FF46B003E3D78 /* CvOptimizeEndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvOptimizeEndPoint.swift; sourceTree = "<group>"; };
+		41A5C6DB302FF493003E3D78 /* PollCvOptimizeJobUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollCvOptimizeJobUseCase.swift; sourceTree = "<group>"; };
+		41A5C6DC302FF493003E3D78 /* TriggerCvOptimizeUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerCvOptimizeUseCase.swift; sourceTree = "<group>"; };
+		41A5C6DF302FF49C003E3D78 /* AiJobEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AiJobEntity.swift; sourceTree = "<group>"; };
+		41A5C6E1302FF4B2003E3D78 /* CvOptimizeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvOptimizeViewModel.swift; sourceTree = "<group>"; };
+		41A5C6E3302FF4D5003E3D78 /* CvOptimizeResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvOptimizeResultsView.swift; sourceTree = "<group>"; };
+		41A5C6E4302FF4D5003E3D78 /* CvOptimizeProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvOptimizeProgressView.swift; sourceTree = "<group>"; };
+		41A5C6ED302FF58E003E3D78 /* CvOptimizeResultsComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvOptimizeResultsComponents.swift; sourceTree = "<group>"; };
 		41A5E1CE3028930C00558D9B /* JobPostingLinkTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPostingLinkTextField.swift; sourceTree = "<group>"; };
 		41A7F6F7300BBB2A00FBE8EB /* LampGlitchModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampGlitchModifier.swift; sourceTree = "<group>"; };
 		41A7F6F9300BBDA000FBE8EB /* UserEntity+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+Mapping.swift"; sourceTree = "<group>"; };
@@ -857,9 +877,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41AEC130302DCF01000EC6CE /* Shimmer in Frameworks */,
+				41A5C6E9302FF4FF003E3D78 /* Shimmer in Frameworks */,
 				41BFB979302B71B20010C447 /* Shimmer in Frameworks */,
-				41AEC133302DCF15000EC6CE /* Swinject in Frameworks */,
+				41A5C6EC302FF511003E3D78 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -902,6 +922,7 @@
 		414B4BD0302B512900B66FA7 /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
+				41A5C6D5302FF43B003E3D78 /* AiJobResponseDTO.swift */,
 				41AEC134302DCFB9000EC6CE /* CoverLetterResponseDTO.swift */,
 				414B4BD4302B534F00B66FA7 /* JobDTO.swift */,
 				414B4BD6302B539700B66FA7 /* JobDetailsResponseDTO.swift */,
@@ -913,6 +934,7 @@
 		414B4BD1302B515D00B66FA7 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				41A5C6D9302FF46B003E3D78 /* CvOptimizeEndPoint.swift */,
 				414B4BD2302B519800B66FA7 /* ATSEndPoint.swift */,
 				414B4BD8302B540E00B66FA7 /* ATSRemoteDataSource.swift */,
 			);
@@ -948,6 +970,7 @@
 		414B4BE1302B55A800B66FA7 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				41A5C6DF302FF49C003E3D78 /* AiJobEntity.swift */,
 				41AEC138302DCFE3000EC6CE /* CoverLetterEntity.swift */,
 				414B4BE2302B55BB00B66FA7 /* JobEntity.swift */,
 				41A3B791302CAA63003C2F2A /* JobMatchEntity.swift */,
@@ -958,6 +981,7 @@
 		414B4BE4302B563000B66FA7 /* Mappers */ = {
 			isa = PBXGroup;
 			children = (
+				41A5C6D7302FF451003E3D78 /* AiJobDTO+Mapper.swift */,
 				41AEC136302DCFCD000EC6CE /* CoverLetterDTO+Mapper.swift */,
 				414B4BE5302B563D00B66FA7 /* JobDTO+Mapper.swift */,
 				41A3B793302CAAAB003C2F2A /* JobMatch+Mapper.swift */,
@@ -969,6 +993,8 @@
 			isa = PBXGroup;
 			children = (
 				41AEC13A302DCFF0000EC6CE /* GenerateCoverLetterUseCase.swift */,
+				41A5C6DB302FF493003E3D78 /* PollCvOptimizeJobUseCase.swift */,
+				41A5C6DC302FF493003E3D78 /* TriggerCvOptimizeUseCase.swift */,
 				414B4BE8302B579000B66FA7 /* GetJobByURLUseCase.swift */,
 				41A3B795302CAC90003C2F2A /* ScoreCVAgainstJobUseCase.swift */,
 			);
@@ -978,6 +1004,7 @@
 		414B4BEA302B59B400B66FA7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				41A5C6E1302FF4B2003E3D78 /* CvOptimizeViewModel.swift */,
 				414B4BEB302B59CE00B66FA7 /* ATSViewModel.swift */,
 			);
 			path = ViewModel;
@@ -1139,6 +1166,8 @@
 				41897C7F3028B60300654888 /* SuggestedResumeEditsView.swift */,
 				41BFB97A302B72560010C447 /* JobDescriptionView.swift */,
 				41BFB98C302B7BD20010C447 /* JobMatchView.swift */,
+				41A5C6E4302FF4D5003E3D78 /* CvOptimizeProgressView.swift */,
+				41A5C6E3302FF4D5003E3D78 /* CvOptimizeResultsView.swift */,
 				41A3B785302C9D8D003C2F2A /* CoverLetterView.swift */,
 			);
 			path = View;
@@ -1147,6 +1176,7 @@
 		41B4EFF03027B10D00AE0804 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				41A5C6ED302FF58E003E3D78 /* CvOptimizeResultsComponents.swift */,
 				416EA7663027D2EE00EDCB6E /* JobLinkShareTipView.swift */,
 				41A5E1CE3028930C00558D9B /* JobPostingLinkTextField.swift */,
 				41897C663028A99900654888 /* UploadedCVCard.swift */,
@@ -2802,8 +2832,8 @@
 			name = "Career-Pilot-iOS";
 			packageProductDependencies = (
 				612EEDF13018F55000E6733E /* Shimmer */,
-				41AEC12F302DCF01000EC6CE /* Shimmer */,
-				41AEC132302DCF15000EC6CE /* Swinject */,
+				41A5C6E8302FF4FF003E3D78 /* Shimmer */,
+				41A5C6EB302FF511003E3D78 /* Swinject */,
 			);
 			productName = "Career-Pilot-iOS";
 			productReference = D93938DE3004064400CF4372 /* Career-Pilot-iOS.app */;
@@ -2878,8 +2908,8 @@
 			);
 			mainGroup = D93938D53004064400CF4372;
 			packageReferences = (
-				41AEC12E302DCF01000EC6CE /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */,
-				41AEC131302DCF15000EC6CE /* XCRemoteSwiftPackageReference "swinject" */,
+				41A5C6E7302FF4FF003E3D78 /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */,
+				41A5C6EA302FF511003E3D78 /* XCRemoteSwiftPackageReference "swinject" */,
 			);
 			productRefGroup = D93938DF3004064400CF4372 /* Products */;
 			projectDirPath = "";
@@ -2942,6 +2972,7 @@
 				61F33938301397A800C94B89 /* UserCard.swift in Sources */,
 				41C6A23A30080AE10035EFBF /* SuccessOTPCodeView.swift in Sources */,
 				414B4BE3302B55BB00B66FA7 /* JobEntity.swift in Sources */,
+				41A5C6DE302FF493003E3D78 /* TriggerCvOptimizeUseCase.swift in Sources */,
 				414B4BE0302B557000B66FA7 /* ATSRepositoryProtocol.swift in Sources */,
 				41D69D18300A6D0100294D94 /* AuthTokens.swift in Sources */,
 				612EEDF630194B7000E6733E /* SubscribitonsPriceDTO.swift in Sources */,
@@ -2977,6 +3008,7 @@
 				414B4BD5302B534F00B66FA7 /* JobDTO.swift in Sources */,
 				618C2A03301461F30099BF69 /* CheckoutRemoteDataSource.swift in Sources */,
 				41BC7740300D3D1800E89C3F /* StatCard.swift in Sources */,
+				41A5C6E2302FF4B2003E3D78 /* CvOptimizeViewModel.swift in Sources */,
 				41AEC137302DCFCD000EC6CE /* CoverLetterDTO+Mapper.swift in Sources */,
 				41AD8FED301613D300BDFDA0 /* ReportsEndpoint.swift in Sources */,
 				41AD901630161EFA00BDFDA0 /* SessionDetailViewModel.swift in Sources */,
@@ -2999,9 +3031,11 @@
 				D99D97583012969C00F2A7C2 /* User+Mapping.swift in Sources */,
 				D9720DBA3017CD0B00A33A99 /* NetworkResponseDTO.swift in Sources */,
 				41C6A2403008609C0035EFBF /* AppRoute.swift in Sources */,
+				41A5C6EE302FF58E003E3D78 /* CvOptimizeResultsComponents.swift in Sources */,
 				41AD900D30161E1000BDFDA0 /* LoadSessionFeedbackUseCase.swift in Sources */,
 				41BC772E300D19A100E89C3F /* RadarMetricChip.swift in Sources */,
 				41AD8FF330161A4E00BDFDA0 /* ReportsInterviewSession.swift in Sources */,
+				41A5C6D6302FF43B003E3D78 /* AiJobResponseDTO.swift in Sources */,
 				61724A033017D8D1003C4781 /* SettingsTabView.swift in Sources */,
 				61AD45A6300D608D00B70AFA /* SubscribtionCheckoutView.swift in Sources */,
 				41833E4730101E9B0055D990 /* UpdateProfileRequestDTO.swift in Sources */,
@@ -3032,6 +3066,7 @@
 				41CE20E8300A5506005DC31F /* ToastView.swift in Sources */,
 				41BE1A78300BF42E0033D1B5 /* AuthRemoteDataSource.swift in Sources */,
 				6169A7C7301044E5001FDC39 /* ExperinceLevelSelector.swift in Sources */,
+				41A5C6D8302FF451003E3D78 /* AiJobDTO+Mapper.swift in Sources */,
 				D935DFFA30080448009DF855 /* OnBordingView.swift in Sources */,
 				CE767FE830286EB3008A27C2 /* InterviewsViewModel.swift in Sources */,
 				41BFB98F302B7BEF0010C447 /* SectionBreakdownView.swift in Sources */,
@@ -3085,6 +3120,7 @@
 				41897C7C3028B54600654888 /* ActionButtons.swift in Sources */,
 				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
 				41897C783028B46800654888 /* SectionHeader.swift in Sources */,
+				41A5C6E6302FF4D5003E3D78 /* CvOptimizeProgressView.swift in Sources */,
 				CEA4C08A30145B0900CB5DD3 /* TrackInterviewCard.swift in Sources */,
 				6169A7D3301044E5001FDC39 /* SupportAndLeagalSettingsView.swift in Sources */,
 				D999D5A83010ED0E00CF606B /* SessionStateDTOMapping.swift in Sources */,
@@ -3176,6 +3212,7 @@
 				616D8482301B3B9B0003CF76 /* CvUploadSheet.swift in Sources */,
 				41C6A238300804650035EFBF /* SoundWaveView.swift in Sources */,
 				CEA4C08E3014676600CB5DD3 /* CareerCardSkeletonView.swift in Sources */,
+				41A5C6DD302FF493003E3D78 /* PollCvOptimizeJobUseCase.swift in Sources */,
 				D98A797D300903BF00DFDC6B /* UploadeCvErrors.swift in Sources */,
 				D99D9756301282E000F2A7C2 /* String+Extension.swift in Sources */,
 				D95C3BCB300EA1800042785F /* WaitingForAnswerView.swift in Sources */,
@@ -3198,6 +3235,7 @@
 				41AEC13B302DCFF0000EC6CE /* GenerateCoverLetterUseCase.swift in Sources */,
 				41D69D16300A6CF100294D94 /* User.swift in Sources */,
 				D9C187AA30065C8700BFF8E9 /* AuthViewModel.swift in Sources */,
+				41A5C6E5302FF4D5003E3D78 /* CvOptimizeResultsView.swift in Sources */,
 				D970C9E6301566B3002F6269 /* UploadFileResponseDTO.swift in Sources */,
 				D95C3B99300E495C0042785F /* InterviewSessionEndPointes.swift in Sources */,
 				CEA4C0903014698600CB5DD3 /* SessionRowSkeleton.swift in Sources */,
@@ -3258,6 +3296,7 @@
 				414B4BE9302B579000B66FA7 /* GetJobByURLUseCase.swift in Sources */,
 				CE3F0AF8302B76A700EF10EB /* WrapChips.swift in Sources */,
 				D920C24B300EFEB400AB7317 /* RecordingView.swift in Sources */,
+				41A5C6E0302FF49C003E3D78 /* AiJobEntity.swift in Sources */,
 				41BFB987302B7B650010C447 /* ActionButtonsView.swift in Sources */,
 				D9B614EA300CF4A100552F85 /* DIContainer+UseCases.swift in Sources */,
 				CEC5AECC302818EC000B5BDC /* InterviewsView.swift in Sources */,
@@ -3304,6 +3343,7 @@
 				D9C187AF300660D100BFF8E9 /* APIEndpoint.swift in Sources */,
 				41BC7744300D3DA600E89C3F /* CoachFeedbackCard.swift in Sources */,
 				41BC7746300D3DCD00E89C3F /* TranscriptSnippetCard.swift in Sources */,
+				41A5C6DA302FF46B003E3D78 /* CvOptimizeEndPoint.swift in Sources */,
 				41897C743028B35600654888 /* JobHeaderCard.swift in Sources */,
 				41A3B7A2302CD010003C2F2A /* JobDescriptionCardView.swift in Sources */,
 				41D69D07300A69E200294D94 /* VerifyOTPResponseDTO.swift in Sources */,
@@ -3662,7 +3702,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		41AEC12E302DCF01000EC6CE /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */ = {
+		41A5C6E7302FF4FF003E3D78 /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/markiv/swiftui-Shimmer";
 			requirement = {
@@ -3670,7 +3710,7 @@
 				version = 1.3.0;
 			};
 		};
-		41AEC131302DCF15000EC6CE /* XCRemoteSwiftPackageReference "swinject" */ = {
+		41A5C6EA302FF511003E3D78 /* XCRemoteSwiftPackageReference "swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/swinject/swinject";
 			requirement = {
@@ -3681,14 +3721,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		41AEC12F302DCF01000EC6CE /* Shimmer */ = {
+		41A5C6E8302FF4FF003E3D78 /* Shimmer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 41AEC12E302DCF01000EC6CE /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */;
+			package = 41A5C6E7302FF4FF003E3D78 /* XCRemoteSwiftPackageReference "swiftui-Shimmer" */;
 			productName = Shimmer;
 		};
-		41AEC132302DCF15000EC6CE /* Swinject */ = {
+		41A5C6EB302FF511003E3D78 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 41AEC131302DCF15000EC6CE /* XCRemoteSwiftPackageReference "swinject" */;
+			package = 41A5C6EA302FF511003E3D78 /* XCRemoteSwiftPackageReference "swinject" */;
 			productName = Swinject;
 		};
 		612EEDF13018F55000E6733E /* Shimmer */ = {

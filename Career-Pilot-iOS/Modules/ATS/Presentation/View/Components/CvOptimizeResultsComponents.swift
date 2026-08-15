@@ -7,22 +7,6 @@
 
 import SwiftUI
 
-// MARK: - Track Chip
-
-struct TrackChip: View {
-    let name: String
-
-    var body: some View {
-        Text(name)
-            .font(Font.size12Semibold)
-            .foregroundStyle(Color.accentTeal)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 6)
-            .background(Color.accentTealBackground)
-            .clipShape(Capsule())
-    }
-}
-
 // MARK: - Score Ring (small, for section headers)
 
 struct SectionScoreRing: View {
