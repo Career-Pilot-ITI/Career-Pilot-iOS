@@ -40,6 +40,7 @@ class ATSViewModel: ObservableObject {
     private let generateCoverLetterUseCase: GenerateCoverLetterUseCase
     private let uploadCvUseCase: UploadCvUseCase
     private let userRepo: UserDataRepo
+    private let toastManager: ToastManager
 
     // MARK: - Init
 
@@ -48,13 +49,15 @@ class ATSViewModel: ObservableObject {
         scoreJobUseCase: ScoreCVAgainstJobUseCase,
         generateCoverLetterUseCase: GenerateCoverLetterUseCase,
         uploadCvUseCase: UploadCvUseCase,
-        userRepo: UserDataRepo
+        userRepo: UserDataRepo,
+        toastManager: ToastManager
     ) {
         self.getJobUseCase = getJobUseCase
         self.scoreJobUseCase = scoreJobUseCase
         self.generateCoverLetterUseCase = generateCoverLetterUseCase
         self.uploadCvUseCase = uploadCvUseCase
         self.userRepo = userRepo
+        self.toastManager = toastManager
     }
 
     // MARK: - Actions
@@ -72,7 +75,10 @@ class ATSViewModel: ObservableObject {
             jobDescriptionModel = entity.toDescriptionModel()
             return true
         } catch {
-            errorMessage = "Couldn't fetch that job posting. Please check the link and try again."
+            presentError(
+                (error as? NetworkError)?.userMessage
+                    ?? "Couldn't fetch that job posting. Please check the link and try again."
+            )
             return false
         }
     }
@@ -81,7 +87,7 @@ class ATSViewModel: ObservableObject {
     /// Requires `currentJob` to be set first.
     func scoreCv() async {
         guard let workspaceId = currentJob?.workspaceID else {
-            errorMessage = "No job loaded. Please fetch a job first."
+            presentError("No job loaded. Please fetch a job first.")
             return
         }
 
@@ -97,11 +103,11 @@ class ATSViewModel: ObservableObject {
             }
         } catch let error as ATSScoringError {
             scoringError = error
-            errorMessage = error.errorDescription
+            presentError(error.errorDescription ?? "Couldn't score your CV. Please try again.")
         } catch {
             let scoringError = ATSScoringError(error: error)
             self.scoringError = scoringError
-            errorMessage = scoringError.errorDescription
+            presentError(scoringError.errorDescription ?? "Couldn't score your CV. Please try again.")
         }
     }
 
@@ -109,7 +115,7 @@ class ATSViewModel: ObservableObject {
     /// Requires `currentJob` to be set first.
     func generateCoverLetter() async {
         guard let workspaceId = currentJob?.workspaceID else {
-            errorMessage = "No job loaded. Please fetch a job first."
+            presentError("No job loaded. Please fetch a job first.")
             return
         }
 
@@ -128,7 +134,10 @@ class ATSViewModel: ObservableObject {
             )
             coverLetterData = entity.toUIModel(userContact: contact)
         } catch {
-            errorMessage = "Couldn't generate the cover letter. Please try again."
+            presentError(
+                (error as? NetworkError)?.userMessage
+                    ?? "Couldn't generate the cover letter. Please try again."
+            )
         }
     }
 
@@ -138,7 +147,7 @@ class ATSViewModel: ObservableObject {
             let profile = try await userRepo.getCurrentUser()?.profile
             cvUploaded = !(profile?.cvURL ?? "").isEmpty
         } catch {
-            print("isCvFound error: \(error)")
+            presentError((error as? NetworkError)?.userMessage ?? "Couldn't check your CV. Please try again.")
         }
     }
 
@@ -152,7 +161,15 @@ class ATSViewModel: ObservableObject {
             _ = try await uploadCvUseCase.execute(UploadCvRequest(cv: url))
             cvUploaded = true
         } catch {
-            errorMessage = "Couldn't upload your CV. Please try again."
+            presentError(
+                (error as? NetworkError)?.userMessage
+                    ?? "Couldn't upload your CV. Please try again."
+            )
         }
+    }
+
+    private func presentError(_ message: String) {
+        errorMessage = message
+        toastManager.show(message, type: .error)
     }
 }

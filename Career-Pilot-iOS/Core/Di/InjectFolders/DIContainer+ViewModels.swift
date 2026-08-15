@@ -140,7 +140,8 @@ extension DIContainer{
                 scoreJobUseCase: r.resolve(ScoreCVAgainstJobUseCase.self)!,
                 generateCoverLetterUseCase: r.resolve(GenerateCoverLetterUseCase.self)!,
                 uploadCvUseCase: r.resolve(UploadCvUseCase.self)!,
-                userRepo: r.resolve(UserDataRepo.self)!
+                userRepo: r.resolve(UserDataRepo.self)!,
+                toastManager: .shared
             )
         }.inObjectScope(.container)
 
