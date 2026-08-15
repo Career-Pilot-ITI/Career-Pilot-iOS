@@ -84,6 +84,8 @@ final class PracticeSessionViewModel: ObservableObject {
 
     /// Result of the post-interview analysis. Empty until visualAnalysisState reaches .completed.
     private(set) var frameObservations: [FrameObservation] = []
+    
+    private(set) var hasStarted = false
 
     init(
         interviewType: InterviewType = .classic,
@@ -170,8 +172,12 @@ final class PracticeSessionViewModel: ObservableObject {
 // MARK: - Lifecycle (start / AI turn / resume UI)
 
 extension PracticeSessionViewModel {
+    
 
     func start(trackId: Int, interviewType: InterviewType) async {
+        guard !hasStarted else { return }
+        hasStarted = true
+
         self.interviewType = interviewType
 
         startSessionTimer()
@@ -189,7 +195,7 @@ extension PracticeSessionViewModel {
             screenState = .error(error)
         }
     }
-
+    
     fileprivate func applyNewSession(_ newSession: NewSession) {
         session = InterviewSession(
             id: String(newSession.sessionId),

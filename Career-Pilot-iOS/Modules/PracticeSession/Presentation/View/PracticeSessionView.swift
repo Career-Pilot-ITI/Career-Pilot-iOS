@@ -61,6 +61,7 @@ struct PracticeSessionView: View {
             vm.attach(coordinator: homeCoordinator)
         }
         .task {
+            print(".task")
             await vm.start(trackId: trackId, interviewType: interviewType)
         }
         .navigationBarBackButtonHidden()

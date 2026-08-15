@@ -66,6 +66,7 @@ struct SessionFeedBackView: View {
         }
         .scrollIndicators(.hidden)
         .padding(.horizontal, 24)
+        
     }
     
     

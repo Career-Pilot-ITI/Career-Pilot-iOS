@@ -40,7 +40,6 @@ struct MainTabBarView: View {
                         SessionFeedBackView(feedback: feedBack, sessionId: sessionId) {
                             homeCoordinator.popToRoot()
                         }
-                        .navigationBarBackButtonHidden()
                     }
                 }
             }
