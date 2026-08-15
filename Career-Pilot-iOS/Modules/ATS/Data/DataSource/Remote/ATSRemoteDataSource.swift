@@ -11,6 +11,8 @@ protocol ATSRemoteDataSourceProtocol {
     func getJobByURL(from url: String) async throws -> JobDetailsResponseDTO
     func scoreCvAgainstJob(for id: Int) async throws -> JobMatchResponseDTO
     func generateCoverLetter(for id: Int) async throws -> CoverLetterResponseDTO
+    func triggerCvOptimize(workspaceId: Int) async throws -> AiJobResponseDTO
+    func pollCvOptimizeJobStatus(workspaceId: Int, jobId: Int) async throws -> AiJobResponseDTO
 }
 
 class ATSRemoteDataSource : ATSRemoteDataSourceProtocol {
@@ -32,5 +34,17 @@ class ATSRemoteDataSource : ATSRemoteDataSourceProtocol {
 
     func generateCoverLetter(for id: Int) async throws -> CoverLetterResponseDTO {
         return try await networkService.request(ATSEndPoint.generateCoverLetter(id: id))
+    }
+
+    func triggerCvOptimize(workspaceId: Int) async throws -> AiJobResponseDTO {
+        return try await networkService.request(
+            CvOptimizeEndPoint.triggerOptimize(workspaceId: workspaceId)
+        )
+    }
+
+    func pollCvOptimizeJobStatus(workspaceId: Int, jobId: Int) async throws -> AiJobResponseDTO {
+        return try await networkService.request(
+            CvOptimizeEndPoint.pollJobStatus(workspaceId: workspaceId, jobId: jobId)
+        )
     }
 }

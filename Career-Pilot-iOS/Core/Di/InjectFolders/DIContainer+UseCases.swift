@@ -143,6 +143,15 @@ extension DIContainer{
             GenerateCoverLetterUseCase(repository: r.resolve(ATSRepositoryProtocol.self)!)
         }
 
+        // MARK: - CV Optimize Use Cases
+        container.register(TriggerCvOptimizeUseCase.self) { r in
+            TriggerCvOptimizeUseCase(repository: r.resolve(ATSRepositoryProtocol.self)!)
+        }
+
+        container.register(PollCvOptimizeJobUseCase.self) { r in
+            PollCvOptimizeJobUseCase(repository: r.resolve(ATSRepositoryProtocol.self)!)
+        }
+
     }
     
 }

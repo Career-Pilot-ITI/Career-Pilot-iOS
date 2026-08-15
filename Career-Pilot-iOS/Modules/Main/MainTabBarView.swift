@@ -3,6 +3,7 @@ import SwiftUI
 struct MainTabBarView: View {
     @StateObject private var homeCoordinator: AppCoordinator<HomeRoute> = AppCoordinator<HomeRoute>()
     @StateObject private var atsViewModel: ATSViewModel = DIContainer.shared.container.resolve(ATSViewModel.self)!
+    @StateObject private var cvOptimizeViewModel: CvOptimizeViewModel = DIContainer.shared.container.resolve(CvOptimizeViewModel.self)!
     var body: some View {
         TabView {
             // Tab 1: Home
@@ -33,6 +34,10 @@ struct MainTabBarView: View {
                             CoverLetterView()
                         case .atsJobmatchScore:
                             JobMatchView()
+                        case .cvOptimizeProgress:
+                            CvOptimizeProgressView()
+                        case .cvOptimizeResults:
+                            CvOptimizeResultsView()
                         }
                     }
             }
@@ -41,6 +46,7 @@ struct MainTabBarView: View {
             }
             .environmentObject(homeCoordinator)
             .environmentObject(atsViewModel)
+            .environmentObject(cvOptimizeViewModel)
 
             
             // Tab 2: Reports

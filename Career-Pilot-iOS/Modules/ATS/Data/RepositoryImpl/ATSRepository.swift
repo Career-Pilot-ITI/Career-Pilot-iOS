@@ -31,4 +31,14 @@ class ATSRepository : ATSRepositoryProtocol {
         return dto.data.toEntity()
     }
 
+    func triggerCvOptimize(workspaceId: Int) async throws -> AiJobEntity {
+        let dto = try await remoteDataSource.triggerCvOptimize(workspaceId: workspaceId)
+        return dto.data.toEntity()
+    }
+
+    func pollCvOptimizeJobStatus(workspaceId: Int, jobId: Int) async throws -> AiJobEntity {
+        let dto = try await remoteDataSource.pollCvOptimizeJobStatus(workspaceId: workspaceId, jobId: jobId)
+        return dto.data.toEntity()
+    }
+
 }

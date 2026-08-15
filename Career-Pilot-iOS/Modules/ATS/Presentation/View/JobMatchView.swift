@@ -71,7 +71,9 @@ struct JobMatchView: View {
 
                             RecommendationsCard(recommendations: data.recommendations)
 
-                            ActionButtonsView(onGenerateCoverLetter: {
+                            ActionButtonsView(onApplyEdits: {
+                                coordinator.push(.cvOptimizeProgress)
+                            }, onGenerateCoverLetter: {
                                 coordinator.push(.coverLetter)
                             })
                             .padding(.top, 4)

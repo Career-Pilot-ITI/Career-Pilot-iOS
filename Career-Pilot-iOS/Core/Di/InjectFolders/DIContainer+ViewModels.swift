@@ -143,6 +143,14 @@ extension DIContainer{
             )
         }.inObjectScope(.container)
 
+        // MARK: - CV Optimize ViewModel
+        container.register(CvOptimizeViewModel.self) { r in
+            CvOptimizeViewModel(
+                triggerUseCase: r.resolve(TriggerCvOptimizeUseCase.self)!,
+                pollUseCase: r.resolve(PollCvOptimizeJobUseCase.self)!
+            )
+        }.inObjectScope(.container)
+
     }
 } 
 //, updateUserDataUseCase: r.resolve(UpdateUserData.self)!
