@@ -429,9 +429,14 @@ extension PracticeSessionViewModel {
             session?.feedback = finalFeedback
             session?.status = .completed
             screenState = .completed
-
+            
             if interviewType.interviewConfiguration.mode == .video {
-                Task { await self.runVisualAnalysisIfNeeded() }
+                print("Tirgger runVisualAnalysisIfNeeded")
+                Task { await self.runVisualAnalysisIfNeeded()
+                    screenState = .completed
+                }
+            }else{
+                screenState = .completed
             }
         } catch {
             screenState = .error(error)
@@ -478,6 +483,7 @@ extension PracticeSessionViewModel {
     /// Runs after the interview finishes. Never fails the interview itself — worst case,
     /// visualAnalysisState ends up .failed and there's simply no video report later.
     fileprivate func runVisualAnalysisIfNeeded() async {
+        print("Start visual analysis")
         guard let frameAnalysisService else {
             visualAnalysisState = .failed
             return
@@ -498,6 +504,7 @@ extension PracticeSessionViewModel {
         frameObservations = result.observations
         presenceScore = metricsEngine.calculateMetrics(from: result.observations) ?? InterviewPresenceScore.empty
         visualAnalysisState = .completed(framesAnalyzed: result.framesAnalyzed, framesSkipped: result.framesSkipped)
+        
     }
 }
 
