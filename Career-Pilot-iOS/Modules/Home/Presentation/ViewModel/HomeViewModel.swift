@@ -97,10 +97,18 @@ final class HomeViewModel: ObservableObject {
         } catch is CancellationError {
             return
         } catch {
-            userState = .error(error.localizedDescription)
+            userState = .error(getErrorMessage(error: error))
         }
     }
     
+
+    private func getErrorMessage(error: Error) -> String{
+        if let networkError = error as? NetworkError{
+            return networkError.userMessage
+        }
+        return error.localizedDescription
+    }
+
     // MARK: - Recent Sessions
     func loadRecentSessions(forceRefresh: Bool = false) async {
         sessionsState = .loading
@@ -118,7 +126,7 @@ final class HomeViewModel: ObservableObject {
         } catch is CancellationError {
             return
         } catch {
-            sessionsState = .error(error.localizedDescription)
+            userState = .error(getErrorMessage(error: error))
         }
     }
     
@@ -134,9 +142,10 @@ final class HomeViewModel: ObservableObject {
         } catch is CancellationError {
             return
         } catch {
-            tracksState = .error(error.localizedDescription)
+            userState = .error(getErrorMessage(error: error))
         }
     }
 }
+
 
 
