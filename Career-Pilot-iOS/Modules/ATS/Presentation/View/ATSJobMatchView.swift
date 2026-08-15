@@ -73,6 +73,7 @@ struct ATSJobMatchView: View {
                             baseSentance: "Upload your CV",
                             subSentanceOne: "PDF or DOC · Max 10 MB"
                         )
+                        .frame(maxWidth: .infinity, alignment: .center)
                         .onTapGesture {
                             showCvUploadSheet = true
                         }
