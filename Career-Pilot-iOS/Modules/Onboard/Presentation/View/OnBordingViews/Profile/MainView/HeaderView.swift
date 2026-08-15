@@ -13,14 +13,12 @@ struct HeaderView: View {
                 Image("check")
                 Text("Ready to go!")
                     .font(.size16Bold)
-                    .foregroundColor(.activeColour)
             }
             
             Spacer().frame(height: Spacing.s8)
             
             Text("Your profile is set up")
                 .font(.size24Semibold)
-                .foregroundColor(.primaryNavy)
             
             Spacer().frame(height: Spacing.s4)
             
