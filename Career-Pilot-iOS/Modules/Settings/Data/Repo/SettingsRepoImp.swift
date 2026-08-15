@@ -15,69 +15,83 @@ class SettingsRepoImp : SettingsRepo  {
         self.local = local
         self.authToken = authToken
     }
-    func fetchUserData() async throws -> UserSettingsDomain {
-        print("I've  enter in the fetching phase ")
+
+    public func fetchUserData() async throws -> UserSettingsDomain {
+        print("I've entered in the fetching phase")
+        
+        // 1. Try fetching from Local Storage
         if let cachedUser = try await local.fetchUserData() {
-            var user = cachedUser.toUserSettingsDomain()
+            var domainUser = cachedUser.toUserSettingsDomain()
             
-            // 1. Safely unwrap and clean the avatar URL string
-            if let rawAvatarURL = cachedUser.profile?.avatarURL ,
-               !(cachedUser.profile?.avatarURL!.isEmpty)!{
-                var cleanedPath = rawAvatarURL.replacingOccurrences(of: "\\", with: "")
-                if(cleanedPath.first == "/" && SettingsEndpoint.getUserData.baseURL.last == "/"){
-                    cleanedPath.removeFirst()
-                }
-                let fullURLString = "\(SettingsEndpoint.getUserData.baseURL)\(cleanedPath)"
-                
-                print("getting the avatar \(fullURLString)")
-                
-                // 2. Pass the final string (or a valid URL) to your download method
-                if let avatarData = try? await downloadAvatarData(from: fullURLString) {
-                    user.avatar = avatarData
-                }
+            if let avatarData = await processAvatar(for: cachedUser.profile?.avatarURL) {
+                domainUser.avatar = avatarData
+                print("The user avatar that was downloaded is \(avatarData)")
+            } else {
+                print("The user avatar is null or failed to download")
             }
-            guard let avatarUser = user.avatar else {
-                print("The user avatar is null please look at u code")
-                return user
-            }
-            print("The user avatar that downloaded is \(avatarUser)")
-                  
-                    return user
+            
+            return domainUser
         }
 
+        // 2. Fallback to Remote API
+        print("The user is not saved in Core Data; fetching from remote")
+        return try await refreshUserData()
+    }
 
-
-
+    /// Forces a remote fetch from the API, updates Core Data, and returns the updated user data.
+      func refreshUserData() async throws -> UserSettingsDomain {
         do {
-            print("The user  is not saved in the core data going to remote  ")
-
+            print("Fetching fresh user data from remote API")
             let remoteUser = try await remote.getUserData()
             let cachedUser = try await local.saveUserData(user: remoteUser)
-            var user = cachedUser.toUserSettingsDomain()
-            print("The user avatar is found = \(user.avatarURL)")
-            if let rawAvatarURL = cachedUser.profile?.avatarURL ,  !(cachedUser.profile?.avatarURL!.isEmpty)! {
-                let cleanedPath = rawAvatarURL.replacingOccurrences(of: "\\", with: "")
-                let fullURLString = "\(SettingsEndpoint.getUserData.baseURL)\(cleanedPath)"
-                
-                print("getting the avatar \(fullURLString)")
-                
-                // 2. Pass the final string (or a valid URL) to your download method
-                if let avatarData = try? await downloadAvatarData(from: fullURLString) {
-                    user.avatar = avatarData
-                }
-            }
-            guard let avatarUser = user.avatar else {
-                print("The user avatar is null please look at u code")
-                throw NSError(domain: "UserDataError", code: -1, userInfo: [NSLocalizedDescriptionKey: "User avatar is missing"])
-            }
-            print("The user avatar that downloaded is \(avatarUser)")
-
+            var domainUser = cachedUser.toUserSettingsDomain()
             
-            return user
+            print("The user avatar URL found = \(String(describing: domainUser.avatarURL))")
+            
+            if let avatarData = await processAvatar(for: cachedUser.profile?.avatarURL) {
+                domainUser.avatar = avatarData
+                print("The user avatar that was downloaded is \(avatarData)")
+                return domainUser
+            } else {
+                print("The user avatar is null; throwing error")
+                throw NSError(
+                    domain: "UserDataError",
+                    code: -1,
+                    userInfo: [NSLocalizedDescriptionKey: "User avatar is missing or could not be downloaded"]
+                )
+            }
         } catch {
-            print("Error in getting saved user in core data \(error)")
+            print("Error refreshing user data: \(error)")
             throw error
         }
+    }
+
+    // MARK: - Private Helper Methods
+
+    /// Cleans raw avatar URL path and downloads image data asynchronously.
+    private func processAvatar(for rawAvatarURL: String?) async -> Data? {
+        guard let rawAvatarURL = rawAvatarURL, !rawAvatarURL.isEmpty else {
+            return nil
+        }
+        
+        guard let fullURLString = buildFullAvatarURL(from: rawAvatarURL) else {
+            return nil
+        }
+        
+        print("Getting avatar from: \(fullURLString)")
+        return try? await downloadAvatarData(from: fullURLString)
+    }
+
+    /// Constructs a well-formed URL string by cleaning escape characters and duplicate slashes.
+    private func buildFullAvatarURL(from rawPath: String) -> String? {
+        var cleanedPath = rawPath.replacingOccurrences(of: "\\", with: "")
+        let baseURL = SettingsEndpoint.getUserData.baseURL
+        
+        if cleanedPath.hasPrefix("/") && baseURL.hasSuffix("/") {
+            cleanedPath.removeFirst()
+        }
+        
+        return "\(baseURL)\(cleanedPath)"
     }
     private func downloadAvatarData(from urlString: String?) async throws -> Data? {
         guard let urlString = urlString, !urlString.isEmpty, let url = URL(string: urlString) else {
@@ -87,18 +101,6 @@ class SettingsRepoImp : SettingsRepo  {
         let data = try await ImageLoader.loadImage(from: URL(string :urlString)!)
         return data
     }
-    func refreshUserData() async throws   {
-            do {
-                let remoteUser = try await remote.getUserData()
-                let cachedUser = try await local.saveUserData(user: remoteUser)
-                var user = cachedUser.toUserSettingsDomain()
-           
-               
-            } catch {
-                print("Error in refreshing user data: \(error)")
-                throw error
-            }
-        }
     func getUserSubscription() async -> UserSubscribtionDomain {
         do{
             let subscribtionUser = try await remote.getUserSubscription()
@@ -113,8 +115,6 @@ class SettingsRepoImp : SettingsRepo  {
     }
     func logout() async throws{
         do{
-            try await remote.logoutUser()
-            try await remote.logoutUser()
             try await local.deleteUserData()
             try authToken.clear()
         }catch{
