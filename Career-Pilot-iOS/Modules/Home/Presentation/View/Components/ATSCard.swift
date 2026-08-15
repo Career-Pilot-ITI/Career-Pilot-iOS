@@ -34,18 +34,23 @@ struct ATSCard: View {
 
 
     var body: some View {
-        Button(action: action) {
-            HStack(spacing: Spacing.s12) {
-                iconView
-                textStack
-                Spacer(minLength: Spacing.s8)
-                chevron
+        NavigationLink(destination: {
+            ATSJobMatchView()
+        }, label: {
+            Button(action: action) {
+                HStack(spacing: Spacing.s12) {
+                    iconView
+                    textStack
+                    Spacer(minLength: Spacing.s8)
+                    chevron
+                }
+                .padding(Spacing.s16)
+                .background(background)
+                .overlay(border)
             }
-            .padding(Spacing.s16)
-            .background(background)
-            .overlay(border)
-        }
-        .buttonStyle(.plain)
+            .buttonStyle(.plain)
+        
+        })
     }
 
 
@@ -66,6 +71,7 @@ struct ATSCard: View {
             HStack(spacing: Spacing.s8) {
                 Text(title)
                     .font(.size16Bold)
+                    .foregroundColor(Color.textPrimary)
 
                 if let badgeText {
                     badgePill(badgeText)
@@ -73,9 +79,10 @@ struct ATSCard: View {
             }
 
             Text(subtitle)
-                .font(.size14Regular)
-                .foregroundColor(AppColors.secondaryText)
+                .font(.size12Regular)
+                .foregroundColor(Color.textSecondary)
                 .lineLimit(2)
+                .multilineTextAlignment(.leading)
                 .fixedSize(horizontal: false, vertical: true)
         }
     }

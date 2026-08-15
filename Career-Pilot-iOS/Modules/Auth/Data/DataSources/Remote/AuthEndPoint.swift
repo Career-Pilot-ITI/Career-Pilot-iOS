@@ -40,7 +40,6 @@ enum AuthEndPoint: APIEndpoint {
         ["Content-Type": "application/json"]
     }
 
-    /// The refresh call must NOT carry the expired access token.
     var requiresAuthentication: Bool { false }
 }
 

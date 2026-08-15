@@ -65,5 +65,10 @@ extension DIContainer{
             )
         }
 
+        // MARK: - ATS Repository
+        container.register(ATSRepositoryProtocol.self) { r in
+            ATSRepository(remoteDataSource: r.resolve(ATSRemoteDataSourceProtocol.self)!)
+        }
+
     }
 }

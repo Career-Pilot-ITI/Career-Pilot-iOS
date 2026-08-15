@@ -180,7 +180,7 @@ class OnBordingViewModel: ObservableObject {
         case .encodingFailed:
             screenState = .error("Something went wrong preparing your request. Please try again.")
             
-        case .serverError(let statusCode, _):
+        case .serverError(let statusCode, _, _):
             switch statusCode {
             case 400:
                 screenState = .error("Invalid request. Please check your input and try again.")

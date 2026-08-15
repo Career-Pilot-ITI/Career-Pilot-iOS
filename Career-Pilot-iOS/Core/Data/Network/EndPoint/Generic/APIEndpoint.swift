@@ -20,6 +20,7 @@ protocol APIEndpoint {
 extension APIEndpoint {
     var baseURL: String {
         "https://career-pilot-backend-production.up.railway.app/"
+//        "https://5c9f-156-204-115-254.ngrok-free.app"
     }
     var requiresAuthentication: Bool { false }
     var queryParameters: [URLQueryItem]? { nil }
@@ -34,7 +35,8 @@ extension APIEndpoint {
 
     /// Convenience for building a payload endpoint without hand-rolling JSONEncoder calls everywhere.
     static func encode<T: Encodable>(_ value: T, encoder: JSONEncoder = JSONEncoder()) -> Data? {
-        try? encoder.encode(value)
+        encoder.outputFormatting.insert(.withoutEscapingSlashes)
+        return try? encoder.encode(value)
     }
      
     static func decode<T: Decodable>(_ data: Data, decoder: JSONDecoder = JSONDecoder()) throws -> T {

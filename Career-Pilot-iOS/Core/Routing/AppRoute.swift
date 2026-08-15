@@ -26,6 +26,12 @@ enum HomeRoute: Hashable {
     case InterviewsView
     case practiceInterview(trackName: String, trackId: Int, interviewType: InterviewType)
     case sessionFeedback(feedback: InterviewFeedback, sessionId: Int)
+    case atsJobMatch
+    case atsjobDescription
+    case coverLetter
+    case atsJobmatchScore
+    case cvOptimizeProgress
+    case cvOptimizeResults
 }
 
 enum   CheckoutDisplayInfo : Hashable {
