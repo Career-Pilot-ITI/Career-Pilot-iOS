@@ -427,17 +427,13 @@ extension PracticeSessionViewModel {
         do {
             let finalFeedback = try await finishUseCase.execute(finishInterviewRequest: FinishInterviewRequest(sessionID: sessionId))
             session?.feedback = finalFeedback
-            session?.status = .completed
-            screenState = .completed
-            
+            print("type of interveiw: \(interviewType.interviewConfiguration.mode)")
             if interviewType.interviewConfiguration.mode == .video {
-                print("Tirgger runVisualAnalysisIfNeeded")
-                Task { await self.runVisualAnalysisIfNeeded()
-                    screenState = .completed
-                }
-            }else{
-                screenState = .completed
+                print("Start analyzing video")
+                await runVisualAnalysisIfNeeded()
             }
+
+            screenState = .completed
         } catch {
             screenState = .error(error)
         }
@@ -501,6 +497,7 @@ extension PracticeSessionViewModel {
         capturedFrames.removeAll()
 
         let result = await frameAnalysisService.analyze(frames: framesToAnalyze)
+        print("Resutl of analysis: \(result)")
         frameObservations = result.observations
         presenceScore = metricsEngine.calculateMetrics(from: result.observations) ?? InterviewPresenceScore.empty
         visualAnalysisState = .completed(framesAnalyzed: result.framesAnalyzed, framesSkipped: result.framesSkipped)
