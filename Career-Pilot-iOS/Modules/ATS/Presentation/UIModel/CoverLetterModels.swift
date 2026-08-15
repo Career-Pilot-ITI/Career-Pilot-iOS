@@ -17,6 +17,40 @@ struct CoverLetterData {
     let paragraphs: [String]
     let signature: SignatureContact
     let nextSteps: [Recommendation]
+
+    var bodyText: String {
+        paragraphs.joined(separator: "\n\n")
+    }
+
+    func replacingBodyText(_ bodyText: String) -> CoverLetterData {
+        let paragraphs = bodyText
+            .components(separatedBy: "\n\n")
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+
+        return CoverLetterData(
+            paragraphs: paragraphs.isEmpty ? self.paragraphs : paragraphs,
+            signature: signature,
+            nextSteps: nextSteps
+        )
+    }
+
+    static func fallback(
+        jobTitle: String,
+        companyName: String,
+        signature: SignatureContact
+    ) -> CoverLetterData {
+        CoverLetterData(
+            paragraphs: [
+                "Dear Hiring Manager,",
+                "I am writing to express my interest in the \(jobTitle) position at \(companyName). My experience and enthusiasm for delivering thoughtful, high-quality work would allow me to contribute meaningfully to your team.",
+                "I would welcome the opportunity to discuss how my skills and background align with this role. Thank you for your time and consideration.",
+                "Sincerely,"
+            ],
+            signature: signature,
+            nextSteps: []
+        )
+    }
 }
 
 extension CoverLetterData {

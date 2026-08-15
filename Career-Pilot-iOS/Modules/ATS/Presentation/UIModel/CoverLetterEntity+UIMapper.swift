@@ -22,7 +22,7 @@ extension CoverLetterEntity {
         }
 
         return CoverLetterData(
-            paragraphs: paragraphs.isEmpty ? [content] : paragraphs,
+            paragraphs: paragraphs,
             signature: userContact,
             nextSteps: recommendations
         )

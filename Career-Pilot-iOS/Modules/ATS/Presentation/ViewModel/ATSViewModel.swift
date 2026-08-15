@@ -132,7 +132,15 @@ class ATSViewModel: ObservableObject {
                 email: profile?.email ?? "",
                 phone: ""
             )
-            coverLetterData = entity.toUIModel(userContact: contact)
+            if entity.content.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                coverLetterData = .fallback(
+                    jobTitle: currentJob?.title ?? "this role",
+                    companyName: currentJob?.companyName ?? "your company",
+                    signature: contact
+                )
+            } else {
+                coverLetterData = entity.toUIModel(userContact: contact)
+            }
         } catch {
             presentError(
                 (error as? NetworkError)?.userMessage
@@ -165,6 +173,21 @@ class ATSViewModel: ObservableObject {
                 (error as? NetworkError)?.userMessage
                     ?? "Couldn't upload your CV. Please try again."
             )
+        }
+    }
+
+    func practiceTrackId() async -> Int? {
+        do {
+            let user = try await userRepo.getCurrentUser()
+            guard let trackId = user?.profile.trackId,
+                  trackId > 0 else {
+                presentError("Choose a career track before starting a practice session.")
+                return nil
+            }
+            return trackId
+        } catch {
+            presentError("Couldn't prepare your practice session. Please try again.")
+            return nil
         }
     }
 

@@ -77,6 +77,18 @@ struct JobMatchView: View {
                                 coordinator.push(.cvOptimizeProgress)
                             }, onGenerateCoverLetter: {
                                 coordinator.push(.coverLetter)
+                            }, onStartPractice: {
+                                Task {
+                                    guard let trackId = await viewModel.practiceTrackId() else { return }
+                                    let jobTitle = viewModel.currentJob?.title ?? "this job"
+                                    coordinator.push(
+                                        .practiceInterview(
+                                            trackName: jobTitle,
+                                            trackId: trackId,
+                                            interviewType: .classic
+                                        )
+                                    )
+                                }
                             })
                             .padding(.top, 4)
                         }
