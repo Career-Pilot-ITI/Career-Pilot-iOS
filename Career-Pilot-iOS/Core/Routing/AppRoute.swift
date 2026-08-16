@@ -30,6 +30,13 @@ enum HomeRoute: Hashable {
     case sessionDetail(sessionId: Int)
     case subscribtion
     case InterviewsView
+    case atsJobMatch
+    case atsjobDescription
+    case coverLetter
+    case atsJobmatchScore
+    case cvOptimizeProgress
+    case cvOptimizeResults
+    case subscriptionView
 }
 
 enum CheckoutDisplayInfo : Hashable {

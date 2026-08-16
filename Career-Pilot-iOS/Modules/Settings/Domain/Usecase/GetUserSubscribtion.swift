@@ -11,8 +11,8 @@ class GetUserSubscribtion {
     init(settingsRepo: SettingsRepo) {
         self.settingsRepo = settingsRepo
     }
-    func execute() async  -> PlanType{
-             return await settingsRepo.getUserSubscription()
+    func execute() async  -> UserSubscribtionDomain{
+             return try await settingsRepo.getUserSubscription()
        
     }
 

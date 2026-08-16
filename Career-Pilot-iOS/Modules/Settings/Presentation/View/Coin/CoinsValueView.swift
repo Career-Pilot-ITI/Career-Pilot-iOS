@@ -16,7 +16,11 @@ struct CoinsValueView: View {
            VStack(spacing: 16) {
                switch viewModel.packsState {
                case .idle, .loading:
-                   ProgressView()
+                   VStack(spacing: 16) {
+                       ForEach(0..<3, id: \.self) { _ in
+                           SkeletonBlock(height: 96)
+                       }
+                   }
                    
                case .failure:
                    Text("Couldn't load coin packs")

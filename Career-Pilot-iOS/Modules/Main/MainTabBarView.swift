@@ -9,13 +9,15 @@ enum Tab: Int, Hashable {
 @MainActor
 struct MainTabBarView: View {
     @StateObject private var homeCoordinator: AppCoordinator<HomeRoute> = AppCoordinator<HomeRoute>()
+    @StateObject private var atsViewModel: ATSViewModel = DIContainer.shared.container.resolve(ATSViewModel.self)!
+    @StateObject private var cvOptimizeViewModel: CvOptimizeViewModel = DIContainer.shared.container.resolve(CvOptimizeViewModel.self)!
+    @State private var settingsDeepLink: SettingsRoute?
     @State private var selectedTab: Tab = .home
 
     var body: some View {
         TabView(selection: $selectedTab) {
             // Tab 1: Home
             NavigationStack(path: $homeCoordinator.path) {
-
                 HomeView(onSeeAllSessionsTapped: {
                     selectedTab = .reports
                 })
@@ -54,6 +56,8 @@ struct MainTabBarView: View {
             }
             .tag(Tab.home)
             .environmentObject(homeCoordinator)
+            .environmentObject(atsViewModel)
+            .environmentObject(cvOptimizeViewModel)
 
             // Tab 2: Reports
             ReportsView()
@@ -63,7 +67,7 @@ struct MainTabBarView: View {
                 .tag(Tab.reports)
             
             // Tab 3: Settings
-            SettingsTabView()
+            SettingsTabView(deepLink: $settingsDeepLink)
                 .tabItem {
                     Label { Text("Settings") } icon: { Image.AppIcon.settings.renderingMode(.template) }
                 }

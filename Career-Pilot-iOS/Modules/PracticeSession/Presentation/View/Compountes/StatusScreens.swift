@@ -205,6 +205,7 @@ struct SessionCompletedView: View {
 
     @EnvironmentObject private var homeCoordinator: AppCoordinator<HomeRoute>
     @State private var showingPresenceSheet = false
+    @StateObject var vm: PracticeSessionViewModel
 
     var body: some View {
         VStack(spacing: 20) {
@@ -225,10 +226,10 @@ struct SessionCompletedView: View {
                 homeCoordinator.push(.sessionFeedback(feedback: feedback, sessionId: sessionID))
             }
 
-            
+            if vm.interviewType.interviewConfiguration.mode == .video {
                 CustomButton(showArrow: false, buttonTitle: "Body Language Analysis") {
                     showingPresenceSheet = true
-                
+                }
             }
 
             Spacer()
@@ -241,13 +242,13 @@ struct SessionCompletedView: View {
     }
 }
 
-struct SessionCompletedView_Previews: PreviewProvider {
-    static var previews: some View {
-        SessionCompletedView(
-            feedback: .empty,
-            sessionID: 4,
-            presenceScore: InterviewPresenceScore.empty
-        )
-        .environmentObject(AppCoordinator<HomeRoute>())
-    }
-}
+//struct SessionCompletedView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SessionCompletedView(
+//            feedback: .empty,
+//            sessionID: 4,
+//            presenceScore: InterviewPresenceScore.empty
+//        )
+//        .environmentObject(AppCoordinator<HomeRoute>())
+//    }
+//}

@@ -7,6 +7,12 @@
 
 import Foundation
 
+struct APIErrorResponse: Decodable {
+    let message: String?
+    let success: Bool?
+    let timestamp: String?
+}
+
 enum NetworkError: Error, LocalizedError {
     case invalidURL
     case noInternet
@@ -15,7 +21,7 @@ enum NetworkError: Error, LocalizedError {
     case tokenExpired          // Token expired, need re-auth
     case decodingFailed(Error)
     case encodingFailed(Error)
-    case serverError(statusCode: Int, data: Data?)
+    case serverError(statusCode: Int, data: Data?, message: String?)
     case unknown(Error)
 
     var errorDescription: String? {
@@ -34,7 +40,7 @@ enum NetworkError: Error, LocalizedError {
             return "Failed to decode response"
         case .encodingFailed:
             return "Failed to encode request body"
-        case .serverError(let code, _):
+        case .serverError(let code, _, _):
             return "Server error: \(code)"
         case .unknown(let error):
             return error.localizedDescription
@@ -58,8 +64,8 @@ enum NetworkError: Error, LocalizedError {
             return "We received an unexpected response. Please try again."
         case .encodingFailed:
             return "Something went wrong preparing your request. Please try again."
-        case .serverError(let statusCode, let data):
-            return Self.userMessage(for: statusCode, data: data)
+        case .serverError(let statusCode, let data, let message):
+            return message ?? Self.userMessage(for: statusCode, data: data)
         case .unknown:
             return "Something went wrong. Please try again."
         }
@@ -70,13 +76,18 @@ enum NetworkError: Error, LocalizedError {
         switch self {
         case .noInternet, .requestTimeout:
             return true
-        case .serverError(let statusCode, _):
+        case .serverError(let statusCode, _, _):
             return statusCode == 429 || (500...504).contains(statusCode)
         case .unknown:
             return true
         default:
             return false
         }
+    }
+
+    var serverMessage: String? {
+        guard case .serverError(_, _, let message) = self else { return nil }
+        return message
     }
 
     // MARK: - Private Helpers

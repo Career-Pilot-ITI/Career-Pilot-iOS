@@ -125,11 +125,36 @@ extension DIContainer{
                 checkoutRepo: r.resolve(CheckoutRepoImplementation.self)!
             )
         }
-        container .register( SaveUserDataUsecase.self){
+        container.register(SaveUserDataUsecase.self){
             r in
             SaveUserDataUsecase(repo: r.resolve(SettingsRepoImp.self)!)
         }
+        container .register(DowngradeUserSubscription.self){
+            r in
+            DowngradeUserSubscription(repo: r.resolve(SettingsRepoImp.self)!  )
+        }
+
+        // MARK: - ATS Use Cases
+        container.register(GetJobByURLUseCase.self) { r in
+            GetJobByURLUseCase(repository: r.resolve(ATSRepositoryProtocol.self)!)
+        }
+
+        container.register(ScoreCVAgainstJobUseCase.self) { r in
+            ScoreCVAgainstJobUseCase(repository: r.resolve(ATSRepositoryProtocol.self)!)
+        }
+
+        container.register(GenerateCoverLetterUseCase.self) { r in
+            GenerateCoverLetterUseCase(repository: r.resolve(ATSRepositoryProtocol.self)!)
+        }
+
+        // MARK: - CV Optimize Use Cases
+        container.register(TriggerCvOptimizeUseCase.self) { r in
+            TriggerCvOptimizeUseCase(repository: r.resolve(ATSRepositoryProtocol.self)!)
+        }
+
+        container.register(PollCvOptimizeUseCase.self) { r in
+            PollCvOptimizeUseCase(repository: r.resolve(ATSRepositoryProtocol.self)!)
+        }
 
     }
-    
 }

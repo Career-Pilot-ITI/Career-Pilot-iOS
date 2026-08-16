@@ -15,4 +15,7 @@ protocol SettingsRemote{
     
     func updateUserProfileAvatar(avatarUploadRequestDTO : AvatarUploadDTO)async throws -> AvatarResponseDTO
     
+    func getUserSubscription() async throws -> SubscriptionDTO
+    func downgradeUserSubscribtion() async throws
+    
 }
