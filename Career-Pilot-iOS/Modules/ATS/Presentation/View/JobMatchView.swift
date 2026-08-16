@@ -7,12 +7,16 @@
 
 import SwiftUI
 
+private struct IdentifiableURL: Identifiable {
+    let id = UUID()
+    let url: URL
+}
+
 struct JobMatchView: View {
     @EnvironmentObject var coordinator: AppCoordinator<HomeRoute>
     @EnvironmentObject var viewModel: ATSViewModel
     var onBuyCoins: () -> Void = {}
-    @State private var selectedPostingURL: URL?
-    @State private var isShowingPosting = false
+    @State private var selectedPostingURL: IdentifiableURL?
 
     var body: some View {
         ZStack {
@@ -28,8 +32,7 @@ struct JobMatchView: View {
                             if let job = viewModel.jobDescriptionModel {
                                 JobHeaderCard(job: job, onOpenLink: job.postingURL.map { url in
                                     {
-                                        selectedPostingURL = url
-                                        isShowingPosting = true
+                                        selectedPostingURL = IdentifiableURL(url: url)
                                     }
                                 })
                             }
@@ -106,11 +109,8 @@ struct JobMatchView: View {
         }
         .navigationTitle("Job Match")
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $isShowingPosting) {
-            if let selectedPostingURL {
-                JobPostingSafariView(url: selectedPostingURL)
-                    .ignoresSafeArea()
-            }
+        .sheet(item: $selectedPostingURL) { identifiable in
+            JobPostingSafariView(url: identifiable.url)
         }
         .task {
             // Only score if we don't already have results
