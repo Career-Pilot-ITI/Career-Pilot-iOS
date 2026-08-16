@@ -70,6 +70,24 @@ enum SettingsEndpoint : APIEndpoint{
             true
         }
     var headers: [String: String] {
+        let tokenString :String
+        do {
+                  
+                  if let tokens = try KeychainAuthTokenStore().loadTokens() {
+                      print("Token is \(tokens.accessToken)")
+                      tokenString = tokens.accessToken
+                      
+                  } else {
+                      tokenString = ""
+                      print("Token is not found")
+
+                  }
+              } catch {
+                  tokenString = ""
+              }
+
+
+
         switch self {
         case .getUserData , .logout , .getSubscribtionsPrice , .updateUserData(_) , .updataUserCv , .getCurrentSubscribtion , .downgradeSubscribtion ,.cancelSubscribtion  :
           return  [
