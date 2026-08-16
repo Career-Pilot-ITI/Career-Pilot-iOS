@@ -45,15 +45,15 @@ struct PracticePreparationView: View {
                 HStack(spacing: Spacing.s12) {
                     Text(categoryText)
                         .font(.size14Semibold)
-                        .foregroundColor(.primary)
+//                        .foregroundColor(.primary)
                         .padding(.horizontal, Spacing.s12)
                         .padding(.vertical, Spacing.s8)
                         .background(Color(.tertiarySystemGroupedBackground))
                         .cornerRadius(Radius.r8)
-
+                    Spacer()
                     Text(metadataText)
                         .font(.size14Semibold)
-                        .foregroundColor(accentColor)
+//                        .foregroundColor(accentColor)
                         .padding(.horizontal, Spacing.s12)
                         .padding(.vertical, Spacing.s8)
                         .background(accentColor.opacity(0.12))
@@ -76,7 +76,7 @@ struct PracticePreparationView: View {
                             .frame(width: 48, height: 48)
 
                         Image(systemName: selectedMode == .video ? "video.fill" : "mic.fill")
-                            .foregroundColor(accentColor)
+                            .foregroundColor(.primary)
                             .font(.size18Bold)
                     }
 
@@ -100,7 +100,7 @@ struct PracticePreparationView: View {
                                     .frame(width: 28, height: 28)
                                     .background(accentColor.opacity(0.15))
                                     .clipShape(RoundedRectangle(cornerRadius: Radius.r8))
-
+                                Spacer()
                                 Text(tip.text)
                                     .font(.size16Medium)
                                     .foregroundColor(.primary)
@@ -175,7 +175,6 @@ struct PracticePreparationView: View {
             .padding(.horizontal, Spacing.s24)
             .padding(.bottom, Spacing.s16)
         }
-        .background(Color(.systemGroupedBackground).ignoresSafeArea())
     }
 }
 
