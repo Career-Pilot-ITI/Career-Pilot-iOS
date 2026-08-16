@@ -172,8 +172,7 @@ class ATSViewModel: ObservableObject {
 
     /// Uploads a CV file picked by the user, then refreshes the CV status.
     func uploadCv(url: URL) async {
-        let user = try? await userRepo.getCurrentUser()
-        guard user != nil else {
+        guard var user = try? await userRepo.getCurrentUser() else {
             presentError("Please log in again before uploading your CV.")
             return
         }
@@ -183,7 +182,34 @@ class ATSViewModel: ObservableObject {
         defer { isUploadingCv = false }
 
         do {
-            _ = try await uploadCvUseCase.execute(UploadCvRequest(cv: url))
+            let response = try await uploadCvUseCase.execute(UploadCvRequest(cv: url))
+            let serverCvURL = response.userData.cv?.absoluteString ?? ""
+
+            user.profile = UserProfile(
+                displayName: user.profile.displayName,
+                username: user.profile.username,
+                email: user.profile.email,
+                avatarURL: user.profile.avatarURL,
+                gender: user.profile.gender,
+                dateOfBirth: user.profile.dateOfBirth,
+                targetRole: user.profile.targetRole,
+                industry: user.profile.industry,
+                experienceLevel: user.profile.experienceLevel,
+                currentJobTitle: user.profile.currentJobTitle,
+                yearsOfExperience: user.profile.yearsOfExperience,
+                cvURL: serverCvURL,
+                skills: user.profile.skills,
+                targetCompanies: user.profile.targetCompanies,
+                educationLevel: user.profile.educationLevel,
+                timezone: user.profile.timezone,
+                termsAccepted: user.profile.termsAccepted,
+                subscriptionTier: user.profile.subscriptionTier,
+                coinBalance: user.profile.coinBalance,
+                onboardingCompleted: user.profile.onboardingCompleted,
+                trackId: user.profile.trackId
+            )
+            try? await userRepo.saveUser(user)
+
             cvUploaded = true
             cvFileName = url.lastPathComponent
             cvUploadDate = Date()
