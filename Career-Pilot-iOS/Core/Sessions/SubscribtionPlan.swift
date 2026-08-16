@@ -47,6 +47,7 @@ final class SubscriptionAccessManager: SubscriptionAccessManaging {
             self.currentPlan = .free
             return
         }
+        print("the tire string is \(tierString)")
         self.currentPlan = PlanType(rawValue: tierString) ?? .free
     }
     

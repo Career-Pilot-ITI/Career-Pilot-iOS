@@ -32,14 +32,13 @@ class SettingsRepoImp : SettingsRepo  {
             
             return domainUser
         }
-
         // 2. Fallback to Remote API
         print("The user is not saved in Core Data; fetching from remote")
         return try await refreshUserData()
     }
 
     /// Forces a remote fetch from the API, updates Core Data, and returns the updated user data.
-      func refreshUserData() async throws -> UserSettingsDomain {
+    func refreshUserData() async throws -> UserSettingsDomain {
         do {
             print("Fetching fresh user data from remote API")
             let remoteUser = try await remote.getUserData()
@@ -48,18 +47,17 @@ class SettingsRepoImp : SettingsRepo  {
             
             print("The user avatar URL found = \(String(describing: domainUser.avatarURL))")
             
+            // A missing or failed-to-download avatar is NOT a failure case — most users,
+            // especially brand-new ones, simply don't have a profile photo set yet.
+            // Only genuine fetch/save errors above should cause this to throw.
             if let avatarData = await processAvatar(for: cachedUser.profile?.avatarURL) {
                 domainUser.avatar = avatarData
                 print("The user avatar that was downloaded is \(avatarData)")
-                return domainUser
             } else {
-                print("The user avatar is null; throwing error")
-                throw NSError(
-                    domain: "UserDataError",
-                    code: -1,
-                    userInfo: [NSLocalizedDescriptionKey: "User avatar is missing or could not be downloaded"]
-                )
+                print("The user avatar is null or failed to download; continuing without it")
             }
+            
+            return domainUser
         } catch {
             print("Error refreshing user data: \(error)")
             throw error
@@ -93,14 +91,18 @@ class SettingsRepoImp : SettingsRepo  {
         
         return "\(baseURL)\(cleanedPath)"
     }
+
     private func downloadAvatarData(from urlString: String?) async throws -> Data? {
         guard let urlString = urlString, !urlString.isEmpty, let url = URL(string: urlString) else {
             return nil
         }
         
-        let data = try await ImageLoader.loadImage(from: URL(string :urlString)!)
+        let data = try await ImageLoader.loadImage(from: URL(string: urlString)!)
         return data
     }
+
+
+
     func getUserSubscription() async -> UserSubscribtionDomain {
         do{
             let subscribtionUser = try await remote.getUserSubscription()

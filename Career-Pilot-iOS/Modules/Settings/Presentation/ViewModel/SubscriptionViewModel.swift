@@ -20,7 +20,8 @@ final class SubscriptionViewModel: ObservableObject  {
         didSet { updateButtonTitle() }
     }
     @Published var buttonTitle: String = ""
-    
+    private var cancellables = Set<AnyCancellable>()
+
     // MARK: - Published Properties (My Subscription Status & Actions)
     @Published var currentSubscriptionInfo: UserSubscribtionDomain?
     @Published var isCancelled: Bool = false
@@ -47,6 +48,13 @@ final class SubscriptionViewModel: ObservableObject  {
         self.getUserSubscribtion = getUserSubscribtion
         self.cancelUserSubscribtion = cancelUserSubscribtion
         self.userSession = userSession
+        userSession.$userData
+            .dropFirst()
+            .compactMap { $0 }
+            .sink { [weak self] _ in
+                Task { await self?.loadPlans() }
+            }
+            .store(in: &cancellables)
     }
     
     // MARK: - Computed Properties (Choose Plan Screen)
@@ -236,3 +244,6 @@ extension SubscriptionViewModel: Hashable {
         hasher.combine(ObjectIdentifier(self))
     }
 }
+
+
+
