@@ -76,7 +76,7 @@ final class InterviewPrepViewModel: ObservableObject {
 
     func subscriptionAlertHomeTapped() {
         showSubscriptionRequiredAlert = false
-        coordinator?.popToRoot()
+        coordinator?.push(.subscriptionView)
     }
 
     var subscriptionRequiredMessage: String {

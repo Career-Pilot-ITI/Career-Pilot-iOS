@@ -74,15 +74,20 @@ struct InterviewPrepContainerView: View {
         } message: {
             Text(viewModel.disableConfirmationMessage)
         }
-        .alert(
-            "Upgrade Required",
-            isPresented: $viewModel.showSubscriptionRequiredAlert
-        ) {
-            Button("Home") { viewModel.subscriptionAlertHomeTapped() }
-            Button("Cancel", role: .cancel) { viewModel.subscriptionAlertCancelTapped() }
-        } message: {
-            Text(viewModel.subscriptionRequiredMessage)
-        }
+        .fancyAlert(
+            isPresented: $viewModel.showSubscriptionRequiredAlert,
+            icon: "crown.fill",
+            title: "Upgrade Required",
+            message: viewModel.subscriptionRequiredMessage,
+            buttons: [
+                FancyAlertButton(title: "Subscription Screen", style: .primary) {
+                    viewModel.subscriptionAlertHomeTapped()
+                },
+                FancyAlertButton(title: "Cancel", style: .secondary) {
+                    viewModel.subscriptionAlertCancelTapped()
+                }
+            ]
+        )
     }
 
     private func resolvedInterviewType() -> InterviewType {
