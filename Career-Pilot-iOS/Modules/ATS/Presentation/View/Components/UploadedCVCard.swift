@@ -34,9 +34,9 @@ struct UploadedCVCard: View {
         .shadow(color: Color.black.opacity(0.03), radius: 2, x: 0, y: 1)
     }
 }
-
-#Preview {
-    UploadedCVCard()
-        .padding()
-        .background(Color(white: 0.95))
-}
+//
+//#Preview {
+//    UploadedCVCard()
+//        .padding()
+//        .background(Color(white: 0.95))
+//}

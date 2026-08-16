@@ -124,7 +124,7 @@ private struct CVUploadSkeletonView: View {
         .clipShape(RoundedRectangle(cornerRadius: Radius.r16, style: .continuous))
     }
 }
-
-#Preview {
-    ATSJobMatchView()
-}
+//
+//#Preview {
+//    ATSJobMatchView()
+//}
