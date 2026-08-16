@@ -84,7 +84,6 @@ struct SectionBreakdownCard: View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Section Breakdown")
                 .font(Font.size14Bold)
-                .foregroundColor(Color.textPrimary)
 
             VStack(spacing: 18) {
                 ForEach(sections) { section in

@@ -51,7 +51,7 @@ extension InterviewTrack {
                 iconName: "apple.logo",
                 iconColor: .primary,
                 iconBackground: Color.primary.opacity(0.12),
-                tag: "Matches: Swift & SwiftUI",
+                tag: "Swift & SwiftUI",
                 tagColor: .primary
             )
             
@@ -61,7 +61,7 @@ extension InterviewTrack {
                 iconName: "phone.fill",
                 iconColor: .primary,
                 iconBackground: Color.primary.opacity(0.12),
-                tag: "Matches: Kotlin & Compose",
+                tag: "Kotlin & Compose",
                 tagColor: .primary
             )
             
@@ -71,7 +71,7 @@ extension InterviewTrack {
                 iconName: "desktopcomputer",
                 iconColor: .primary,
                 iconBackground: Color.primary.opacity(0.12),
-                tag: "Matches: React & Web",
+                tag: "React & Web",
                 tagColor: .primary
             )
             
@@ -81,7 +81,7 @@ extension InterviewTrack {
                 iconName: "server.rack",
                 iconColor: .primary,
                 iconBackground: Color.primary.opacity(0.12),
-                tag: "Matches: Node.js & Databases",
+                tag: "Node.js & Databases",
                 tagColor: .primary
             )
             
@@ -91,7 +91,7 @@ extension InterviewTrack {
                 iconName: "desktopcomputer",
                 iconColor: .primary,
                 iconBackground: Color.primary.opacity(0.12),
-                tag: "Matches: Web & API",
+                tag: "Web & API",
                 tagColor: .primary
             )
             
@@ -101,7 +101,7 @@ extension InterviewTrack {
                 iconName: "chart.bar.fill",
                 iconColor: .primary,
                 iconBackground: Color.primary.opacity(0.12),
-                tag: "Matches: SQL & Python",
+                tag: "SQL & Python",
                 tagColor: .primary
             )
             
@@ -111,7 +111,7 @@ extension InterviewTrack {
                 iconName: "cylinder.split.1x2.fill",
                 iconColor: .primary,
                 iconBackground: Color.primary.opacity(0.12),
-                tag: "Matches: Spark & Pipelines",
+                tag: "Spark & Pipelines",
                 tagColor: .primary
             )
             
@@ -121,7 +121,7 @@ extension InterviewTrack {
                 iconName: "brain.head.profile",
                 iconColor: .primary,
                 iconBackground: Color.primary.opacity(0.12),
-                tag: "Matches: PyTorch & Models",
+                tag: "PyTorch & Models",
                 tagColor: .primary
             )
             
@@ -131,7 +131,7 @@ extension InterviewTrack {
                 iconName: "checkmark.seal.fill",
                 iconColor: .primary,
                 iconBackground: Color.primary.opacity(0.12),
-                tag: "Matches: Automation & Testing",
+                tag: "Automation & Testing",
                 tagColor: .primary
             )
             
@@ -141,7 +141,7 @@ extension InterviewTrack {
                 iconName: "shield.checkered",
                 iconColor: .primary,
                 iconBackground: Color.primary.opacity(0.12),
-                tag: "Matches: Security & Auth",
+                tag: "Security & Auth",
                 tagColor: .primary
             )
             
@@ -151,7 +151,7 @@ extension InterviewTrack {
                 iconName: "cloud.fill",
                 iconColor: .primary,
                 iconBackground: Color.primary.opacity(0.12),
-                tag: "Matches: Docker & K8s",
+                tag: "Docker & K8s",
                 tagColor: .primary
             )
             
@@ -161,7 +161,7 @@ extension InterviewTrack {
                 iconName: "briefcase.fill",
                 iconColor: .primary,
                 iconBackground: Color.primary.opacity(0.12),
-                tag: "Matches: General",
+                tag: "General",
                 tagColor: .primary
             )
         }

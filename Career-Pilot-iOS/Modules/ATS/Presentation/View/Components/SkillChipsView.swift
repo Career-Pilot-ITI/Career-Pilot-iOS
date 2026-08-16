@@ -62,7 +62,6 @@ struct SkillChipsCard: View {
             HStack {
                 Text(title)
                     .font(Font.size14Bold)
-                    .foregroundColor(Color.textPrimary)
                 Spacer()
                 if let badgeText {
                     Text(badgeText)

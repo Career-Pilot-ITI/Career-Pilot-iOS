@@ -18,7 +18,7 @@ struct ATSFeatureBadge: View {
 
             Text("ATS JOB MATCH")
                 .font(Font.size13Bold)
-                .tracking(0.5)
+                .foregroundStyle(Color.textPrimary)
         }
     }
 }

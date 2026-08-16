@@ -157,12 +157,14 @@ final class SubscriptionViewModel: ObservableObject  {
     func handlePrimaryAction(onNavigateToCheckout: (CheckoutDisplayInfo) -> Void) async {
         switch primaryAction {
         case .currentPlan:
+            print("It's the same plane")
             break
             
         case .downgradeToFree:
             await performCancelSubscription()
             
         case .checkout(let displayInfo):
+            print("onNavigateToCheckout")
             onNavigateToCheckout(displayInfo)
         }
     }

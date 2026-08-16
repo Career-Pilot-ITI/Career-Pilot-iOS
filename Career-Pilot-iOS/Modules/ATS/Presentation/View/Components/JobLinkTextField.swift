@@ -19,10 +19,11 @@ struct JobLinkTextField: View {
                 .keyboardType(.URL)
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
+                .foregroundStyle(Color.textPrimary)
                 .overlay(alignment: .leading) {
                     if link.isEmpty {
                         Text("https://linkedin.com/jobs/view/...")
-                            .foregroundStyle(Color.textSecondary)
+                            .foregroundStyle(Color.textPrimary)
                             .font(Font.size13Regular)
 //                            .padding(.leading, 12)
                             .allowsHitTesting(false)

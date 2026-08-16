@@ -12,7 +12,15 @@ struct MatchScoreCardView: View {
     let label: String
     let matchedCount: Int
     let missingCount: Int
-
+    
+    
+    private var colorScore : Color {
+        switch score {
+        case 0..<60: return .matchRed
+        case 60..<80: return .matchOrange
+        default: return .matchGreen
+        }
+    }
     private var progress: CGFloat {
         CGFloat(score) / 100.0
     }
@@ -28,16 +36,16 @@ struct MatchScoreCardView: View {
             HStack(spacing: 20) {
                 ZStack {
                     Circle()
-                        .stroke(Color.matchOrange.opacity(0.15), lineWidth: 8)
+                        .stroke(colorScore.opacity(0.15), lineWidth: 8)
 
                     Circle()
                         .trim(from: 0, to: progress)
-                        .stroke(Color.matchOrange, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                        .stroke(colorScore, style: StrokeStyle(lineWidth: 8, lineCap: .round))
                         .rotationEffect(.degrees(-90))
 
                     Text("\(score)")
                         .font(.system(size: 28, weight: .bold))
-                        .foregroundColor(.primary)
+                        .foregroundColor(colorScore)
                 }
                 .frame(width: 72, height: 72)
 
@@ -49,7 +57,6 @@ struct MatchScoreCardView: View {
 
                     Text(label)
                         .font(Font.size18Bold)
-                        .foregroundColor(Color.textPrimary)
 
                     HStack(spacing: 14) {
                         Label("\(matchedCount) matched", systemImage: "checkmark")
@@ -69,11 +76,11 @@ struct MatchScoreCardView: View {
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
                     Capsule()
-                        .fill(Color.matchRed.opacity(0.25))
+                        .fill(colorScore.opacity(0.15))
                         .frame(height: 6)
 
                     Capsule()
-                        .fill(Color.matchOrange)
+                        .fill(colorScore)
                         .frame(width: geo.size.width * barSplit, height: 6)
                 }
             }

@@ -27,21 +27,7 @@ enum CvOptimizeEndPoint: APIEndpoint {
     var body: Data? { nil }
     
     var headers: [String: String] {
-        let tokenString: String
-        do {
-            if let tokens = try KeychainAuthTokenStore().loadTokens() {
-                tokenString = tokens.accessToken
-            } else {
-                tokenString = ""
-            }
-        } catch {
-            tokenString = ""
-        }
-        
-        return [
-            "Content-Type": "application/json",
-            "Authorization": "Bearer \(tokenString)"
-        ]
+        return ["Content-Type": "application/json"]
     }
     
     var requiresAuthentication: Bool { true }

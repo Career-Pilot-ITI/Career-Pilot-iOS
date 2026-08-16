@@ -58,23 +58,8 @@ enum UserDataEndpoints: APIEndpoint {
     }
 
     var headers: [String: String] {
-        let tokenString: String
-        do {
-            
-            if let tokens = try KeychainAuthTokenStore().loadTokens() {
-                tokenString = tokens.accessToken
-                
-            } else {
-                tokenString = ""
-                print("Token is not found")
-
-            }
-        } catch {
-            tokenString = ""
-        }
        return [
-            "Content-Type": "multipart/form-data; boundary=\(boundary)",
-            "Authorization": "Bearer \(tokenString)"
+            "Content-Type": "multipart/form-data; boundary=\(boundary)"
         ]
     }
 }

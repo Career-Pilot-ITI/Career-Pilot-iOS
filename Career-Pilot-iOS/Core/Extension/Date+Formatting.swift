@@ -19,9 +19,21 @@ extension Date {
         return Self.relativeFormatter.string(from: self)
     }
 
+    /// Returns a upload-style string like "Uploaded 12 Jun 2025"
+    var formattedUploadDate: String {
+        "Uploaded " + Self.uploadDateFormatter.string(from: self)
+    }
+
     private static let relativeFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEE d MMM" 
+        formatter.dateFormat = "EEE d MMM"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
+
+    private static let uploadDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMM yyyy"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()

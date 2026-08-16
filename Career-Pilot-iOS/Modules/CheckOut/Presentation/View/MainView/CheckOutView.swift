@@ -4,6 +4,11 @@
 //
 //  Created by Eyad waleed on 18/07/2026.
 //
+//  NOTE: This view is reused from two different navigation stacks
+//  (Settings tab, and the video-upsell path off Home). It must NOT
+//  hardcode which coordinator/Route type presented it — the caller
+//  decides what "leave checkout" means for its own stack.
+//
 
 import SwiftUI
 
@@ -12,14 +17,14 @@ struct CheckOutView: View {
     let checkoutDisplayInfo: CheckoutDisplayInfo
     @State private var selectedPaymentMethod: String = "paymob"
     @StateObject var paymentVM: PaymentViewModel
-    @EnvironmentObject var coordinator: AppCoordinator<SettingsRoute>
-    
+    let onFinished: () -> Void
+
     var body: some View {
         Group {
             switch paymentVM.phase {
             case .idle, .creatingCheckout, .awaitingUserPayment:
                 checkoutForm
-                
+
             case .verifyingPayment, .succeeded, .failed:
                 waitingContent
             }
@@ -36,14 +41,14 @@ struct CheckOutView: View {
             }
         }
     }
-    
+
     // MARK: - The normal checkout screen (summary + pay button)
     private var checkoutForm: some View {
         VStack(alignment: .leading) {
             CheckOutTopView()
-            
+
             Spacer().frame(height: Spacing.s20)
-            
+
             switch checkoutDisplayInfo {
             case .subscription(let plan, let monthlyPrice, _, let total, _):
                 SubscribtionCheckoutView(
@@ -51,7 +56,7 @@ struct CheckOutView: View {
                     productPrice: monthlyPrice,
                     total: total
                 )
-                
+
             case .coinPack(let name, let pricePerPack, _, let total, _):
                 CoinPackCheckOutView(
                     product: name,
@@ -59,18 +64,18 @@ struct CheckOutView: View {
                     total: total
                 )
             }
-            
+
             Spacer().frame(height: Spacing.s20)
-            
+
             Text("PAYMENT METHOD")
                 .font(.size14Semibold)
-            
+
             Spacer().frame(height: Spacing.s8)
-            
+
             PaymentMethod(selectedMethod: $selectedPaymentMethod)
-            
+
             Spacer()
-            
+
             payButton
         }.toolbar(.hidden , for: .tabBar)
         .navigationTitle("Checkout")
@@ -78,7 +83,7 @@ struct CheckOutView: View {
         .background(Color.background.ignoresSafeArea())
 
     }
-    
+
     @ViewBuilder
     private var payButton: some View {
         Button(action: {
@@ -100,12 +105,12 @@ struct CheckOutView: View {
         .background(Capsule().fill(Color.primary))
         .disabled(paymentVM.phase == .creatingCheckout)
     }
-    
+
     // MARK: - Verifying / result content — takes over the WHOLE screen, not a cover
     private var waitingContent: some View {
         ZStack {
             Color.background.ignoresSafeArea()
-            
+
             switch paymentVM.phase {
             case .verifyingPayment:
                 WaitingStateView(
@@ -114,7 +119,7 @@ struct CheckOutView: View {
                     title: "Confirming your payment",
                     subtitle: "This usually takes a few seconds. Please don't close the app."
                 )
-                
+
             case .succeeded:
                 WaitingStateView(
                     icon: "checkmark.circle",
@@ -123,9 +128,9 @@ struct CheckOutView: View {
                     title: "Payment successful!",
                     subtitle: "Your account has been updated.",
                     actionTitle: "Done",
-                    action: { goBackToOrigin() }
+                    action: { onFinished() }
                 )
-                
+
             case .failed(let message):
                 WaitingStateView(
                     icon: "xmark.circle",
@@ -134,17 +139,13 @@ struct CheckOutView: View {
                     title: "Payment could not be confirmed",
                     subtitle: message,
                     actionTitle: "Try Again",
-                    action: { goBackToOrigin() }
+                    action: { onFinished() }
                 )
-                
+
             default:
                 EmptyView()
             }
         }
-    }
-    
-    private func goBackToOrigin() {
-        coordinator.pop()
     }
 }
 
@@ -165,4 +166,3 @@ struct CheckOutView: View {
 //    ))
 //    }
 //}
-

@@ -31,7 +31,9 @@ struct SettingsTabView: View {
         private func settingsDestination(for route: SettingsRoute) -> some View {
             switch route {
             case .checkout(let item):
-                CheckOutView(checkoutDisplayInfo: item, paymentVM: DIContainer.shared.container.resolve(PaymentViewModel.self)!)
+                CheckOutView(checkoutDisplayInfo: item, paymentVM: DIContainer.shared.container.resolve(PaymentViewModel.self)!){
+                    settingsCoordinator.popToRoot()
+                }
             case .subscribtion:
                   SubscriptionView(viewModel:DIContainer.shared.container.resolve(SubscriptionViewModel.self)! )
             case .coin:
