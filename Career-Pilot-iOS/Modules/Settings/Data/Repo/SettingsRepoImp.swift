@@ -144,9 +144,9 @@ class SettingsRepoImp : SettingsRepo  {
     }
     func getCoins() -> [CoinPack] {
         return   [
-            CoinPack(coinsValue: "100", price: "29", subTitle: "Great for trying premium features"),
-            CoinPack(coinsValue: "500", price: "119", subTitle: "Best value for regular practitioners"),
-            CoinPack(coinsValue: "1000", price: "199", subTitle: "Power users & intensive prep")
+            CoinPack(coinsValue: "50", price: "20", subTitle: "Great for trying premium features"),
+            CoinPack(coinsValue: "120", price: "90", subTitle: "Best value for regular practitioners"),
+            CoinPack(coinsValue: "300", price: "170", subTitle: "Power users & intensive prep")
         ]
     }
     func updateUserProfile(updateProfileRequestDTO: UpdateProfileRequestDTO) async throws {
