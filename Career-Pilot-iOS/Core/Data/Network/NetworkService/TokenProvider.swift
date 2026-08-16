@@ -25,9 +25,14 @@ final class AuthTokenProvider: TokenProviding {
             throw NetworkError.unauthorized
         }
 
-        print("------------------------------------------")
-        print("🔑 [TOKEN PROVIDER] Access token loaded (expires in \(tokens.expiresIn)s)")
-        print("------------------------------------------")
+        let buffer: TimeInterval = 60
+        let expiresAt = Date().addingTimeInterval(TimeInterval(tokens.expiresIn))
+        guard expiresAt > Date().addingTimeInterval(buffer) else {
+            print("🔑 [TOKEN PROVIDER] Access token expired or expiring soon — refresh required")
+            throw NetworkError.tokenExpired
+        }
+
+        print("🔑 [TOKEN PROVIDER] Access token loaded; expires in \(tokens.expiresIn)s")
 
         return tokens.accessToken
     }

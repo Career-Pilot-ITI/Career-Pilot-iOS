@@ -36,7 +36,11 @@ extension DIContainer{
         
         // KeychainAuthTokenStore
         container.register(AuthTokenStoring.self) { r in
-            KeychainAuthTokenStore(keychain: r.resolve(KeychainManaging.self)!)
+            KeychainAuthTokenStore(
+                keychain: r.resolve(KeychainManaging.self)!,
+                refreshService: r.resolve(NetworkService.self, name: "base"),
+                refreshActor: r.resolve(TokenRefreshActor.self)
+            )
         }.inObjectScope(.container)
         
         // Token Provider

@@ -59,18 +59,6 @@ enum CheckoutEndpointService : APIEndpoint{
     }
     
     var headers: [String : String]  {
-        let tokenString: String
-        do {
-            
-            if let tokens = try KeychainAuthTokenStore().loadTokens() {
-                tokenString = tokens.accessToken
-            } else {
-                tokenString = ""
-            }
-        } catch {
-            tokenString = ""
-        }
-        return ["Content-Type": "application/json" ,
-         "Authorization": "Bearer \(tokenString)"
-]}
+        return ["Content-Type": "application/json"]
+    }
 }
