@@ -76,7 +76,7 @@ final class PaymentViewModel: ObservableObject {
             // Try to verify payment
             do {
                 let isConfirmed = try await verifyPaymentUseCase.execute(item: item)
-                if isConfirmed {
+                if !isConfirmed {
                     phase = .succeeded
                     
                     do {
