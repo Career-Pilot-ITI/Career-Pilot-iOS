@@ -153,6 +153,7 @@ class ATSViewModel: ObservableObject {
 
     /// Checks whether the user has a CV on file.
     func isCvFound() async {
+        isUploadingCv = false
         do {
             let profile = try await userRepo.getCurrentUser()?.profile
             let cvURL = profile?.cvURL ?? ""
@@ -160,6 +161,9 @@ class ATSViewModel: ObservableObject {
             if cvUploaded {
                 cvFileName = (cvURL as NSString).lastPathComponent
                 cvUploadDate = Date()
+            } else {
+                cvFileName = ""
+                cvUploadDate = nil
             }
         } catch {
             presentError((error as? NetworkError)?.userMessage ?? "Couldn't check your CV. Please try again.")
@@ -168,6 +172,12 @@ class ATSViewModel: ObservableObject {
 
     /// Uploads a CV file picked by the user, then refreshes the CV status.
     func uploadCv(url: URL) async {
+        let user = try? await userRepo.getCurrentUser()
+        guard user != nil else {
+            presentError("Please log in again before uploading your CV.")
+            return
+        }
+
         isUploadingCv = true
         errorMessage = nil
         defer { isUploadingCv = false }

@@ -115,6 +115,11 @@ class SettingsRepoImp : SettingsRepo  {
     }
     func logout() async throws{
         do{
+            try await remote.logoutUser()
+        }catch{
+            print("Remote logout failed (continuing with local cleanup): \(error)")
+        }
+        do{
             try await local.deleteUserData()
             try authToken.clear()
         }catch{
