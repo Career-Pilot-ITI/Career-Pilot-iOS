@@ -17,10 +17,13 @@ final class InterviewPrepViewModel: ObservableObject {
 
     @Published var showSettingsAlert = false
     @Published var showOpenSettingsConfirmation = false
+    @Published var showSubscriptionRequiredAlert = false
 
     @Published var selectedMode: InterviewMode = .audio
 
     private var pendingPermission: AppPermission = .microphone
+    var coordinator: AppCoordinator<HomeRoute>?
+    var subscriptionAccessManaging: any SubscriptionAccessManaging
 
     // MARK: - Dependencies
 
@@ -28,20 +31,56 @@ final class InterviewPrepViewModel: ObservableObject {
 
     // MARK: - Initialization
 
-    init(permissionManager: PermissionManaging) {
+    init(permissionManager: PermissionManaging, subscriptionAccessManaging: any SubscriptionAccessManaging) {
         self.permissionManager = permissionManager
+        self.subscriptionAccessManaging = subscriptionAccessManaging
     }
 
     // MARK: - Lifecycle
 
-    func onAppear(initialMode: InterviewMode) {
+    func onAppear(initialMode: InterviewMode, coordinator: AppCoordinator<HomeRoute>) {
         selectedMode = initialMode
+        self.coordinator = coordinator
         refreshScreenPermissions()
+    }
+
+    func onBeginInterview(trackName: String, trackId: Int, interviewType: InterviewType) {
+        let videoModeIsAccessible = selectedMode == .video && subscriptionAccessManaging.canAccess(.videoSession)
+        let canProceed = videoModeIsAccessible || selectedMode == .audio
+
+        guard canProceed else {
+            showSubscriptionRequiredAlert = true
+            return
+        }
+
+        coordinator?.push(
+            .practiceInterview(
+                trackName: trackName,
+                trackId: trackId,
+                interviewType: interviewType
+            )
+        )
     }
 
     func refreshScreenPermissions() {
         microphoneEnabled = permissionManager.status(for: .microphone).isGranted
         cameraEnabled = permissionManager.status(for: .camera).isGranted
+    }
+
+    // MARK: - Subscription alert actions
+    // Called from the view's alert buttons.
+
+    func subscriptionAlertCancelTapped() {
+        showSubscriptionRequiredAlert = false
+    }
+
+    func subscriptionAlertHomeTapped() {
+        showSubscriptionRequiredAlert = false
+        coordinator?.popToRoot()
+    }
+
+    var subscriptionRequiredMessage: String {
+        "Video interview sessions require an active subscription. Upgrade to continue, or switch back to audio mode."
     }
 
     // MARK: - Toggle entry points

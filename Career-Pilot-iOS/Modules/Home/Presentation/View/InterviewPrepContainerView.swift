@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+
 struct InterviewPrepContainerView: View {
 
     @EnvironmentObject var coordinator: AppCoordinator<HomeRoute>
@@ -43,12 +44,12 @@ struct InterviewPrepContainerView: View {
             ),
             accentColor: .primary,
             onCancel: { coordinator.pop() },
-            onBegin: { beginInterview() }
+            onBegin: { viewModel.onBeginInterview(trackName: trackName, trackId: trackId, interviewType: resolvedInterviewType()) }
         )
         .navigationBarHidden(true)
         .toolbar(.hidden, for: .tabBar)
         .onAppear {
-            viewModel.onAppear(initialMode: interviewType.interviewConfiguration.mode)
+            viewModel.onAppear(initialMode: interviewType.interviewConfiguration.mode, coordinator: coordinator)
         }
         .onChange(of: scenePhase) { phase in
             guard phase == .active else { return }
@@ -73,16 +74,15 @@ struct InterviewPrepContainerView: View {
         } message: {
             Text(viewModel.disableConfirmationMessage)
         }
-    }
-
-    private func beginInterview() {
-        coordinator.push(
-            .practiceInterview(
-                trackName: trackName,
-                trackId: trackId,
-                interviewType: resolvedInterviewType()
-            )
-        )
+        .alert(
+            "Upgrade Required",
+            isPresented: $viewModel.showSubscriptionRequiredAlert
+        ) {
+            Button("Home") { viewModel.subscriptionAlertHomeTapped() }
+            Button("Cancel", role: .cancel) { viewModel.subscriptionAlertCancelTapped() }
+        } message: {
+            Text(viewModel.subscriptionRequiredMessage)
+        }
     }
 
     private func resolvedInterviewType() -> InterviewType {
