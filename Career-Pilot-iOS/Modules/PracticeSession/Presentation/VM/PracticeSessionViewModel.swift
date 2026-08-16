@@ -78,7 +78,8 @@ final class PracticeSessionViewModel: ObservableObject {
     private let silenceThreshold: Float = 0.08
 
     private var homeCoordinator: AppCoordinator<HomeRoute>?
-    private var interviewType: InterviewType
+    var interviewType: InterviewType
+    var trackId: Int?
 
     private(set) var capturedFrames: [CapturedFrame] = []
 
@@ -174,12 +175,19 @@ final class PracticeSessionViewModel: ObservableObject {
 extension PracticeSessionViewModel {
     
 
-    func start(trackId: Int, interviewType: InterviewType) async {
+    func onStart(trackId: Int, interviewType: InterviewType) async {
         guard !hasStarted else { return }
         hasStarted = true
+        
+        await start(trackId: trackId, interviewType: interviewType)
+
+    }
+    
+    func start(trackId: Int, interviewType: InterviewType) async {
 
         self.interviewType = interviewType
-
+        self.trackId = trackId
+        
         startSessionTimer()
         screenState = .loading
 
@@ -194,7 +202,9 @@ extension PracticeSessionViewModel {
         } catch {
             screenState = .error(error)
         }
+
     }
+    
     
     fileprivate func applyNewSession(_ newSession: NewSession) {
         session = InterviewSession(
@@ -375,8 +385,16 @@ extension PracticeSessionViewModel {
                 return
             }
             await finish()
+            
+        case.sessionNotFound:
+            guard let trackId = trackId else{
+                screenState = .error(error)
+                return
+            }
+            print("Try to start the session again")
+            await start(trackId: trackId, interviewType: interviewType)
 
-        case .networkUnavailable, .serverError, .unknown, .invalidState, .sessionNotFound:
+        case .networkUnavailable, .serverError, .unknown, .invalidState:
             guard session != nil else {
                 await resumeAfterNetworkDrop()
                 return

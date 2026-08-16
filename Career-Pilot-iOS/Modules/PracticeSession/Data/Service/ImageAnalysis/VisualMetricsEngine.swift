@@ -88,17 +88,25 @@ private extension VisualMetricsEngine {
 // MARK: - Eye contact
 
 private extension VisualMetricsEngine {
-    func isLookingAtCamera(_ face: FaceObservation) -> Bool {
-        let yawDegrees = (face.yaw ?? 0).radiansToDegrees
-        let pitchDegrees = (face.pitch ?? 0).radiansToDegrees
+    /// Returns nil when Vision couldn't estimate yaw/pitch for this frame — that frame is
+    /// excluded from the eye-contact ratio rather than defaulted to "looking at camera".
+    /// Treating an unmeasured frame as a pass was the root cause of eye contact reading
+    /// ~100% almost every session: pitch in particular is frequently unavailable, and
+    /// `?? 0` was silently scoring every one of those frames as perfect.
+    func isLookingAtCamera(_ face: FaceObservation) -> Bool? {
+        guard let yaw = face.yaw, let pitch = face.pitch else { return nil }
+        let yawDegrees = yaw.radiansToDegrees
+        let pitchDegrees = pitch.radiansToDegrees
         return abs(yawDegrees) <= configuration.eyeContactYawThresholdDegrees
             && abs(pitchDegrees) <= configuration.eyeContactPitchThresholdDegrees
     }
 
     func calculateEyeContact(_ observations: [FrameObservation]) -> EyeContactMetrics {
         let facesVisible = observations.compactMap { $0.face }
-        let lookingCount = facesVisible.filter(isLookingAtCamera).count
-        let ratio = facesVisible.isEmpty ? 0 : Double(lookingCount) / Double(facesVisible.count)
+        // Only frames where pose could actually be measured count toward the ratio.
+        let evaluable = facesVisible.compactMap(isLookingAtCamera)
+        let lookingCount = evaluable.filter { $0 }.count
+        let ratio = evaluable.isEmpty ? 0 : Double(lookingCount) / Double(evaluable.count)
 
         return EyeContactMetrics(
             ratio: ratio,
@@ -112,9 +120,14 @@ private extension VisualMetricsEngine {
 // MARK: - Posture
 
 private extension VisualMetricsEngine {
-    /// A single frame's posture reading: shoulder tilt (degrees) and head horizontal offset
-    /// (fraction of shoulder width). Nil when the frame doesn't have enough body landmarks.
-    func postureReading(for body: BodyObservation) -> (tiltDegrees: Double, headOffset: Double)? {
+    /// A single frame's posture reading. `headOffset` is nil when the nose landmark wasn't
+    /// detected, so a missing landmark isn't silently scored as "perfectly centered".
+    struct PostureReading {
+        let tiltDegrees: Double
+        let headOffset: Double?
+    }
+
+    func postureReading(for body: BodyObservation) -> PostureReading? {
         guard let left = body.joints[.leftShoulder], let right = body.joints[.rightShoulder] else {
             return nil
         }
@@ -125,11 +138,11 @@ private extension VisualMetricsEngine {
         let tiltDegrees = abs(tiltRadians.radiansToDegrees)
 
         guard let head = body.joints[.nose] else {
-            return (tiltDegrees, 0)
+            return PostureReading(tiltDegrees: tiltDegrees, headOffset: nil)
         }
         let shoulderCenterX = (left.x + right.x) / 2
         let headOffset = abs(head.x - shoulderCenterX) / shoulderWidth
-        return (tiltDegrees, headOffset)
+        return PostureReading(tiltDegrees: tiltDegrees, headOffset: headOffset)
     }
 
     func calculatePosture(_ observations: [FrameObservation]) -> PostureMetrics {
@@ -139,16 +152,20 @@ private extension VisualMetricsEngine {
         }
 
         let tilts = readings.map(\.tiltDegrees)
-        let offsets = readings.map(\.headOffset)
+        let offsets = readings.compactMap(\.headOffset)
         let averageTilt = tilts.average
-        let averageOffset = offsets.average
+        // If the nose was rarely/never detected, don't reward that gap with a "perfectly
+        // centered" default (0). Fall back to the threshold itself, which is score-neutral
+        // rather than score-flattering.
+        let averageOffset = offsets.isEmpty ? configuration.postureHeadOffsetThreshold : offsets.average
 
         // Stability: lower variance in tilt/offset across the interview means a steadier
         // posture. Variance is unbounded, so it's compressed into 0...100 via a decay curve
         // rather than a raw linear penalty (keeps a single outlier frame from tanking the
-        // whole score).
+        // whole score). Offset variance only reflects frames where offset was actually
+        // measured; if none were, it contributes 0 rather than fabricating a value.
         let tiltVariance = tilts.variance
-        let offsetVariance = offsets.variance
+        let offsetVariance = offsets.isEmpty ? 0 : offsets.variance
         let stability = 100 * exp(-(tiltVariance / 40 + offsetVariance / 0.02))
         let stabilityScore = Int(stability.rounded().clamped(to: 0...100))
 
@@ -181,11 +198,15 @@ private extension VisualMetricsEngine {
             totalDuration += last.timestamp - first.timestamp
 
             var previousYaw: Double?
-            var wasLookingAway = false
+            // nil = not yet evaluated / unknown for this run, not "was looking at camera".
+            var wasLookingAway: Bool?
 
             for frame in facedFrames {
-                guard let face = frame.face else { continue }
-                let yawDegrees = (face.yaw ?? 0).radiansToDegrees
+                // Yaw must actually be measured to count toward movement deltas — a missing
+                // yaw defaulted to 0 was previously read as "held perfectly still", which
+                // suppressed movement events and inflated the score.
+                guard let face = frame.face, let yaw = face.yaw else { continue }
+                let yawDegrees = yaw.radiansToDegrees
                 yawValues.append(abs(yawDegrees))
 
                 if let previousYaw, abs(yawDegrees - previousYaw) >= configuration.headMovementDeltaThresholdDegrees {
@@ -193,8 +214,8 @@ private extension VisualMetricsEngine {
                 }
                 previousYaw = yawDegrees
 
-                let isLookingAway = !isLookingAtCamera(face)
-                if isLookingAway && !wasLookingAway {
+                guard let isLookingAway = isLookingAtCamera(face).map({ !$0 }) else { continue }
+                if isLookingAway && wasLookingAway != true {
                     lookingAwayEvents += 1
                 }
                 wasLookingAway = isLookingAway
@@ -263,7 +284,13 @@ private extension VisualMetricsEngine {
         let inactivityPenalty = inactivityRatio > configuration.handInactivityPenaltyThreshold
             ? (inactivityRatio - configuration.handInactivityPenaltyThreshold) * 200
             : 0
-        let score = Int((100 - belowBandPenalty - aboveBandPenalty - inactivityPenalty).rounded().clamped(to: 0...100))
+        // Hands weren't detected at all for this interview (no wrist/index-tip track ever
+        // built) — that's a visibility problem, not "hands were perfectly still in the good
+        // way". Previously this silently produced a 100 score via the empty-array defaults.
+        let handsNeverDetected = totalPairs == 0
+        let score = handsNeverDetected
+            ? 0
+            : Int((100 - belowBandPenalty - aboveBandPenalty - inactivityPenalty).rounded().clamped(to: 0...100))
 
         return HandMovementMetrics(
             movementFrequencyPerMinute: frequencyPerMinute,
@@ -281,6 +308,7 @@ private extension VisualMetricsEngine {
         var displacements: [Double] = []
         var movementEvents = 0
         var excessiveEvents = 0
+        var comparablePairs = 0
         var totalDuration: TimeInterval = 0
 
         for segment in segments {
@@ -298,6 +326,7 @@ private extension VisualMetricsEngine {
                 let currentJoints = bodyFrames[i].1.joints
                 let sharedJoints = Set(previousJoints.keys).intersection(currentJoints.keys)
                 guard !sharedJoints.isEmpty else { continue }
+                comparablePairs += 1
 
                 let totalDisplacement = sharedJoints.reduce(0.0) { partial, joint in
                     partial + currentJoints[joint]!.distance(to: previousJoints[joint]!)
@@ -316,7 +345,11 @@ private extension VisualMetricsEngine {
 
         let frequencyPerMinute = totalDuration > 0 ? Double(movementEvents) / (totalDuration / 60) : 0
         let excessivePenalty = Double(excessiveEvents) * 6
-        let score = Int((100 - excessivePenalty).rounded().clamped(to: 0...100))
+        // Body pose was never comparable across any two frames (body never detected, or
+        // never detected in two consecutive frames within a segment) — score that as
+        // unmeasured rather than a perfect 100 via the empty-array default.
+        let bodyNeverDetected = comparablePairs == 0
+        let score = bodyNeverDetected ? 0 : Int((100 - excessivePenalty).rounded().clamped(to: 0...100))
 
         return BodyMovementMetrics(
             movementFrequencyPerMinute: frequencyPerMinute,

@@ -18,7 +18,7 @@ enum InterviewType: Hashable {
         switch self {
         case .classic:
             return InterviewConfiguration(
-                mode:.video,
+                mode:.audio,
                 maxQuestions: 3,
                 maxAnswerDuration: 2,
                 maxInterviewDuration: 20,
