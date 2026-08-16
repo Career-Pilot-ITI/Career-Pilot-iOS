@@ -99,6 +99,6 @@ struct MatchScoreCardView: View {
     }
 }
 
-#Preview {
-    MatchScoreCardView(score: 78, label: "Good Match", matchedCount: 8, missingCount: 5)
-}
+//#Preview {
+//    MatchScoreCardView(score: 78, label: "Good Match", matchedCount: 8, missingCount: 5)
+//}

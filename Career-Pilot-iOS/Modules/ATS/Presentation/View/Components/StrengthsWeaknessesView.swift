@@ -85,11 +85,11 @@ struct WeaknessesCard: View {
     }
 }
 
-#Preview {
-    VStack(spacing: 16) {
-        StrengthsCard(strengths: JobMatchData.sample.strengths)
-        WeaknessesCard(weaknesses: JobMatchData.sample.weaknesses)
-    }
-    .padding()
-    .background(Color.screenBackground)
-}
+//#Preview {
+//    VStack(spacing: 16) {
+//        StrengthsCard(strengths: JobMatchData.sample.strengths)
+//        WeaknessesCard(weaknesses: JobMatchData.sample.weaknesses)
+//    }
+//    .padding()
+//    .background(Color.screenBackground)
+//}

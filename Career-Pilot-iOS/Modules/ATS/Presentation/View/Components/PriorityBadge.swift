@@ -39,12 +39,12 @@ struct PriorityBadge: View {
     }
 }
  
-#Preview {
-    HStack {
-        PriorityBadge(priority: .high)
-        PriorityBadge(priority: .medium, customText: "Medium impact")
-        PriorityBadge(priority: .low , customText: "low")
-    }
-    .padding()
-}
- 
+//#Preview {
+//    HStack {
+//        PriorityBadge(priority: .high)
+//        PriorityBadge(priority: .medium, customText: "Medium impact")
+//        PriorityBadge(priority: .low , customText: "low")
+//    }
+//    .padding()
+//}
+// 

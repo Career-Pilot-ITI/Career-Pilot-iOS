@@ -51,8 +51,8 @@ struct RecommendationsCard: View {
     }
 }
 
-#Preview {
-    RecommendationsCard(recommendations: JobMatchData.sample.recommendations)
-        .padding()
-        .background(Color.screenBackground)
-}
+//#Preview {
+//    RecommendationsCard(recommendations: JobMatchData.sample.recommendations)
+//        .padding()
+//        .background(Color.screenBackground)
+//}

@@ -98,7 +98,11 @@ final class URLSessionNetworkService: NetworkService {
         print("----------------------------------------------------------------------")
         print("🚀 [REQUEST] \(urlRequest.httpMethod ?? "GET") -> \(url.absoluteString)")
         if !endpoint.headers.isEmpty {
-            print("🔹 [HEADERS] \(endpoint.headers)")
+            var safeHeaders = endpoint.headers
+            if safeHeaders["Authorization"] != nil {
+                safeHeaders["Authorization"] = "Bearer <redacted>"
+            }
+            print("🔹 [HEADERS] \(safeHeaders)")
         }
         if let body = endpoint.body {
             logRawJSON(body, label: "Request Body")

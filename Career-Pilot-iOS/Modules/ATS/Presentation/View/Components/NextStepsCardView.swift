@@ -47,8 +47,8 @@ struct NextStepsCard: View {
     }
 }
 
-#Preview {
-    NextStepsCard(steps: CoverLetterData.sample.nextSteps)
-        .padding()
-        .background(Color.screenBackground)
-}
+//#Preview {
+//    NextStepsCard(steps: CoverLetterData.sample.nextSteps)
+//        .padding()
+//        .background(Color.screenBackground)
+//}

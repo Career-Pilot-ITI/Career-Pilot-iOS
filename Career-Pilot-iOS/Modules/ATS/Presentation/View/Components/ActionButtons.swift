@@ -58,14 +58,14 @@ struct IconLabelButton: View {
     }
 }
 
-#Preview {
-    VStack(spacing: 12) {
-        Button { } label: { IconLabelButton(systemImage: "pencil", title: "Apply Suggested Edits") }
-            .buttonStyle(PrimaryActionButtonStyle())
-        Button { } label: { IconLabelButton(systemImage: "envelope", title: "Generate Cover Letter") }
-            .buttonStyle(OutlineActionButtonStyle())
-        Button { } label: { IconLabelButton(systemImage: "mic.fill", title: "Start Practice Session for this job") }
-            .buttonStyle(OutlineActionButtonStyle(tint: Color.accentOrange))
-    }
-    .padding()
-}
+//#Preview {
+//    VStack(spacing: 12) {
+//        Button { } label: { IconLabelButton(systemImage: "pencil", title: "Apply Suggested Edits") }
+//            .buttonStyle(PrimaryActionButtonStyle())
+//        Button { } label: { IconLabelButton(systemImage: "envelope", title: "Generate Cover Letter") }
+//            .buttonStyle(OutlineActionButtonStyle())
+//        Button { } label: { IconLabelButton(systemImage: "mic.fill", title: "Start Practice Session for this job") }
+//            .buttonStyle(OutlineActionButtonStyle(tint: Color.accentOrange))
+//    }
+//    .padding()
+//}

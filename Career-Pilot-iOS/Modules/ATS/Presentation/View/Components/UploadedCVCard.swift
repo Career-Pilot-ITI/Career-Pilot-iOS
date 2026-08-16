@@ -37,12 +37,9 @@ struct UploadedCVCard: View {
         .shadow(color: Color.black.opacity(0.03), radius: 2, x: 0, y: 1)
     }
 }
-
-#Preview {
-    UploadedCVCard(
-        fileName: "resume_sarah_chen.pdf",
-        uploadDate: Date(timeIntervalSince1970: 1_750_000_000)
-    )
-    .padding()
-    .background(Color(white: 0.95))
-}
+//
+//#Preview {
+//    UploadedCVCard()
+//        .padding()
+//        .background(Color(white: 0.95))
+//}

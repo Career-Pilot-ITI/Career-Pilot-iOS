@@ -39,27 +39,7 @@ enum ATSEndPoint : APIEndpoint {
     }
     
     var headers: [String: String] {
-        let tokenString: String
-        do {
-            
-            if let tokens = try KeychainAuthTokenStore().loadTokens() {
-                print("Token is \(tokens.accessToken)")
-                tokenString = tokens.accessToken
-                
-            } else {
-                tokenString = ""
-                print("Token is not found")
-
-            }
-        } catch {
-            tokenString = ""
-        }
-        
-        return [
-              "Content-Type": "application/json",
-              "Authorization": "Bearer \(tokenString)"
-        ]
-
+        return ["Content-Type": "application/json"]
     }
    
     var requiresAuthentication: Bool { true }

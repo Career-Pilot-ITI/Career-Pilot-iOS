@@ -36,7 +36,11 @@ extension DIContainer{
         
         // KeychainAuthTokenStore
         container.register(AuthTokenStoring.self) { r in
-            KeychainAuthTokenStore(keychain: r.resolve(KeychainManaging.self)!)
+            KeychainAuthTokenStore(
+                keychain: r.resolve(KeychainManaging.self)!,
+                refreshService: r.resolve(NetworkService.self, name: "base"),
+                refreshActor: r.resolve(TokenRefreshActor.self)
+            )
         }.inObjectScope(.container)
         
         // Token Provider
@@ -99,6 +103,14 @@ extension DIContainer{
         container.register(SpeechRecognitionServicing.self) { _ in
             SpeechRecognitionService()
         }
+        
+        //SubscriptionAccessManaging
+        container.register((any SubscriptionAccessManaging).self) { r in
+            SubscriptionAccessManager(userSession: r.resolve(UserSession.self)!)
+        }
 
+        container.register(UserSession.self) { r in
+            UserSession(getUserDataUseCase: r.resolve(GetUserDataUseCase.self)!, refreshUseCase: r.resolve(RefreshUserDataUseCase.self)!)
+        }
     }
 }

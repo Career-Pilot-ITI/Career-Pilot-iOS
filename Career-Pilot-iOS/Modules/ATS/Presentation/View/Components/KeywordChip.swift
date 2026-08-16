@@ -26,10 +26,10 @@ struct KeywordChip: View {
 }
  
  
-#Preview {
-    FlowLayout {
-        ForEach(["React", "TypeScript", "Node.js", "System Design", "AWS"], id: \.self) { KeywordChip(text: $0) }
-    }
-    .padding()
-}
- 
+//#Preview {
+//    FlowLayout {
+//        ForEach(["React", "TypeScript", "Node.js", "System Design", "AWS"], id: \.self) { KeywordChip(text: $0) }
+//    }
+//    .padding()
+//}
+// 

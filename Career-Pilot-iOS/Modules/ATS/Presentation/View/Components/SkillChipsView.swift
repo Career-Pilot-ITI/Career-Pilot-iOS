@@ -94,31 +94,31 @@ struct SkillChipsCard: View {
         
     }
 }
-
-#Preview {
-    VStack(spacing: 16) {
-        SkillChipsCard(
-            title: "Matched Requirements",
-            badgeText: "8 of 12 keywords",
-            badgeColor: .matchGreen,
-            items: ["React", "TypeScript", "Node.js", "System Design", "AWS", "REST APIs", "Leadership", "Agile"],
-            status: .matched
-        )
-        SkillChipsCard(
-            title: "Missing Required Skills",
-            badgeText: "8 of 12 keywords",
-            badgeColor: .matchRed,
-            items: ["Agile", "Agile", "Agile", "Agile", "Agile", "Agile"],
-            status: .missingRequired
-        )
-        SkillChipsCard(
-            title: "Missing Preferred Skills",
-            badgeText: "8 of 12 keywords",
-            badgeColor: .matchAmber,
-            items: ["Terraform"],
-            status: .missingPreferred
-        )
-    }
-    .padding()
-    .background(Color.screenBackground)
-}
+//
+//#Preview {
+//    VStack(spacing: 16) {
+//        SkillChipsCard(
+//            title: "Matched Requirements",
+//            badgeText: "8 of 12 keywords",
+//            badgeColor: .matchGreen,
+//            items: ["React", "TypeScript", "Node.js", "System Design", "AWS", "REST APIs", "Leadership", "Agile"],
+//            status: .matched
+//        )
+//        SkillChipsCard(
+//            title: "Missing Required Skills",
+//            badgeText: "8 of 12 keywords",
+//            badgeColor: .matchRed,
+//            items: ["Agile", "Agile", "Agile", "Agile", "Agile", "Agile"],
+//            status: .missingRequired
+//        )
+//        SkillChipsCard(
+//            title: "Missing Preferred Skills",
+//            badgeText: "8 of 12 keywords",
+//            badgeColor: .matchAmber,
+//            items: ["Terraform"],
+//            status: .missingPreferred
+//        )
+//    }
+//    .padding()
+//    .background(Color.screenBackground)
+//}
