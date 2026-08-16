@@ -42,7 +42,7 @@ struct PracticeSessionView: View {
                 }
                 
             case .completed:
-                SessionCompletedView(feedback: vm.feedback, sessionID: Int(vm.session?.id ?? "0") ?? 0, presenceScore: vm.presenceScore ?? InterviewPresenceScore.empty)
+                SessionCompletedView(feedback: vm.feedback, sessionID: Int(vm.session?.id ?? "0") ?? 0, presenceScore: vm.presenceScore, vm: vm )
                 
             case .error(let error):
                 SessionErrorView(errorMessage: error.localizedDescription,
@@ -62,7 +62,7 @@ struct PracticeSessionView: View {
         }
         .task {
             print(".task")
-            await vm.start(trackId: trackId, interviewType: interviewType)
+            await vm.onStart(trackId: trackId, interviewType: interviewType)
         }
         .navigationBarBackButtonHidden()
         .toolbar(.hidden, for: .tabBar)
