@@ -74,20 +74,23 @@ struct ATSJobMatchView: View {
                 JobLinkShareTipView()
 
                 Spacer()
-
-                CustomButton(
-                    isButtonEnabeld: isCompareEnabled,
-                    showArrow: false,
-                    buttonTitle: viewModel.isLoading ? "Comparing..." : "Compare Now",
-                    onClick: {
-                        Task {
-                            let success = await viewModel.fireRequest(jobURL: jobLink)
-                            if success {
-                                coordinator.push(.atsjobDescription)
+                HStack {
+                    Spacer()
+                    CustomButton(
+                        isButtonEnabeld: isCompareEnabled,
+                        showArrow: false,
+                        buttonTitle: viewModel.isLoading ? "Comparing..." : "Compare Now",
+                        onClick: {
+                            Task {
+                                let success = await viewModel.fireRequest(jobURL: jobLink)
+                                if success {
+                                    coordinator.push(.atsjobDescription)
+                                }
                             }
                         }
-                    }
-                )
+                    )
+                    Spacer()
+                }
             }
             .padding(.horizontal, Spacing.s20)
             .padding(.top, Spacing.s16)
