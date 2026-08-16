@@ -42,6 +42,7 @@ class ATSViewModel: ObservableObject {
     private let generateCoverLetterUseCase: GenerateCoverLetterUseCase
     private let uploadCvUseCase: UploadCvUseCase
     private let userRepo: UserDataRepo
+    private let userSession: UserSession
     private let toastManager: ToastManager
 
     // MARK: - Init
@@ -52,6 +53,7 @@ class ATSViewModel: ObservableObject {
         generateCoverLetterUseCase: GenerateCoverLetterUseCase,
         uploadCvUseCase: UploadCvUseCase,
         userRepo: UserDataRepo,
+        userSession: UserSession,
         toastManager: ToastManager
     ) {
         self.getJobUseCase = getJobUseCase
@@ -59,6 +61,7 @@ class ATSViewModel: ObservableObject {
         self.generateCoverLetterUseCase = generateCoverLetterUseCase
         self.uploadCvUseCase = uploadCvUseCase
         self.userRepo = userRepo
+        self.userSession = userSession
         self.toastManager = toastManager
     }
 
@@ -209,6 +212,7 @@ class ATSViewModel: ObservableObject {
                 trackId: user.profile.trackId
             )
             try? await userRepo.saveUser(user)
+            try? await userSession.reload()
 
             cvUploaded = true
             cvFileName = url.lastPathComponent
