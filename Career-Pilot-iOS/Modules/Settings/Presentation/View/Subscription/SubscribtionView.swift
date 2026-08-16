@@ -4,29 +4,24 @@
 //
 //  Created by Eyad waleed on 20/07/2026.
 //
-//  NOTE: This view is reused from two different navigation stacks
-//  (Settings tab, and the video-upsell path off Home). It must NOT
-//  hardcode which coordinator/Route type presented it — the caller
-//  decides what "go to checkout" means for its own stack.
-//
 
 import SwiftUI
 import Shimmer
 
 struct ChoosePlanView: View {
-    @StateObject var viewModel: SubscriptionViewModel
-    let onCheckout: (CheckoutDisplayInfo) -> Void
-
+    @StateObject var viewModel: SubscriptionViewModel 
+    @EnvironmentObject var coordinator: AppCoordinator<SettingsRoute>
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             switch viewModel.plansState {
             case .idle, .loading:
                 planSkeleton
-
+                
             case .failure:
                 Text("Couldn't load plans")
                     .foregroundColor(.errorColour)
-
+                
             case .success(let plans):
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Choose your plan")
@@ -36,7 +31,7 @@ struct ChoosePlanView: View {
                         .font(.size14Medium)
                         .foregroundColor(.gray600)
                 }
-
+                
                 HStack(spacing: 8) {
                     ForEach(plans) { plan in
                         Text(plan.label.replacingOccurrences(of: " Plan", with: ""))
@@ -57,17 +52,17 @@ struct ChoosePlanView: View {
                             }
                     }
                 }
-
+                
                 if let currentPlan = viewModel.currentPlan {
                     planDetailCard(currentPlan)
                 }
-
+                
                 Spacer()
-
+                
                 Button(action: {
                     Task {
                         await viewModel.handlePrimaryAction { checkoutItem in
-                            onCheckout(checkoutItem)
+                            coordinator.push(.checkout(item: checkoutItem))
                         }
                     }
                 }) {
@@ -99,7 +94,7 @@ struct ChoosePlanView: View {
             await viewModel.loadPlans()
         }
     }
-
+    
     // MARK: - Shimmering skeleton, including the header
     private var planSkeleton: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -112,7 +107,7 @@ struct ChoosePlanView: View {
                     .fill(Color.gray200)
                     .frame(width: 220, height: 14)
             }
-
+            
             // Tabs placeholder
             HStack(spacing: 8) {
                 ForEach(0..<3, id: \.self) { _ in
@@ -122,17 +117,17 @@ struct ChoosePlanView: View {
                         .frame(height: 38)
                 }
             }
-
+            
             // Detail card placeholder
             VStack(alignment: .leading, spacing: 16) {
                 RoundedRectangle(cornerRadius: 6)
                     .fill(Color.gray200)
                     .frame(width: 140, height: 32)
-
+                
                 RoundedRectangle(cornerRadius: 4)
                     .fill(Color.gray200)
                     .frame(width: 100, height: 14)
-
+                
                 VStack(alignment: .leading, spacing: 12) {
                     ForEach(0..<4, id: \.self) { _ in
                         HStack(spacing: 10) {
@@ -145,9 +140,9 @@ struct ChoosePlanView: View {
             .padding(20)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(RoundedRectangle(cornerRadius: Radius.r16).fill(Color.gray200))
-
+            
             Spacer()
-
+            
             // Button placeholder
             Capsule()
                 .fill(Color.gray200)
@@ -157,7 +152,7 @@ struct ChoosePlanView: View {
         .redacted(reason: .placeholder)
         .shimmering()
     }
-
+    
     @ViewBuilder
     private func planDetailCard(_ plan: SubscriptionPlan) -> some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -166,12 +161,12 @@ struct ChoosePlanView: View {
                 Text(plan.price).font(.system(size: 32, weight: .bold)).foregroundColor(.white)
                 Text("/mo").font(.size14Medium).foregroundColor(.gray400)
             }
-
+            
             HStack(spacing: 6) {
                 Circle().fill(plan.type.accentColor).frame(width: 6, height: 6)
                 Text(plan.label).font(.size14Semibold).foregroundColor(plan.type.accentColor)
             }
-
+            
             VStack(alignment: .leading, spacing: 12) {
                 ForEach(plan.features, id: \.self) { feature in
                     HStack(spacing: 10) {

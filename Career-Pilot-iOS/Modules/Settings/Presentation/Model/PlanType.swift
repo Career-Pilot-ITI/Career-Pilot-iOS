@@ -8,9 +8,9 @@
 import Foundation
 import SwiftUI
 enum PlanType: String, CaseIterable {
-    case free = "free"
-    case plus = "plus"
-    case pro = "pro"
+    case free = "Free"
+    case plus = "Plus"
+    case pro = "Pro"
 }
 extension PlanType {
     var accentColor: Color {

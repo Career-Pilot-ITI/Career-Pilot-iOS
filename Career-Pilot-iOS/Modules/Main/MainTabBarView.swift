@@ -9,8 +9,6 @@ enum Tab: Int, Hashable {
 @MainActor
 struct MainTabBarView: View {
     @StateObject private var homeCoordinator: AppCoordinator<HomeRoute> = AppCoordinator<HomeRoute>()
-    @StateObject private var settingsCoordinator: AppCoordinator<SettingsRoute> = AppCoordinator<SettingsRoute>()
-
     @StateObject private var atsViewModel: ATSViewModel = DIContainer.shared.container.resolve(ATSViewModel.self)!
     @StateObject private var cvOptimizeViewModel: CvOptimizeViewModel = DIContainer.shared.container.resolve(CvOptimizeViewModel.self)!
     @State private var settingsDeepLink: SettingsRoute?
@@ -27,7 +25,7 @@ struct MainTabBarView: View {
                         switch route {
                         case .sessionDetail(let metrics, let suggestions):
                             Text("Session Detail View")
-
+                            
                         case let .interviewPrep(trackName, trackId, interviewType):
                             InterviewPrepContainerView(trackName: trackName, trackId: trackId, interviewType: interviewType)
                         case let .practiceInterview(_, trackId, interviewType):
@@ -58,22 +56,8 @@ struct MainTabBarView: View {
                             CvOptimizeProgressView()
                         case .cvOptimizeResults:
                             CvOptimizeResultsView()
-                        case .subscriptionView:
-                            // Pushes onto homeCoordinator — the stack actually
-                            // visible in this tab — not settingsCoordinator.
-                            ChoosePlanView(
-                                viewModel: DIContainer.shared.container.resolve(SubscriptionViewModel.self)!
-                            ) { checkoutItem in
-                                homeCoordinator.push(.checkout(item: checkoutItem))
-                            }
-                        case .checkout(let item):
-                            CheckOutView(
-                                checkoutDisplayInfo: item,
-                                paymentVM: DIContainer.shared.container.resolve(PaymentViewModel.self)!
-                            ) {
-                                print("Back to root")
-                                homeCoordinator.popToRoot()
-                            }
+                        case.subscriptionView:
+                            ChoosePlanView(viewModel: DIContainer.shared.container.resolve(SubscriptionViewModel.self)!)
                         }
                     }
             }
@@ -82,7 +66,6 @@ struct MainTabBarView: View {
             }
             .tag(Tab.home)
             .environmentObject(homeCoordinator)
-            .environmentObject(settingsCoordinator)
             .environmentObject(atsViewModel)
             .environmentObject(cvOptimizeViewModel)
 
@@ -92,7 +75,7 @@ struct MainTabBarView: View {
                     Label { Text("Reports") } icon: { Image.AppIcon.report.renderingMode(.template) }
                 }
                 .tag(Tab.reports)
-
+            
             // Tab 3: Settings
             SettingsTabView(deepLink: $settingsDeepLink)
                 .tabItem {
