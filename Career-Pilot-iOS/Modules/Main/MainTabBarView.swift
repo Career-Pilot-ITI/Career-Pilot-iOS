@@ -71,7 +71,8 @@ struct MainTabBarView: View {
                                 checkoutDisplayInfo: item,
                                 paymentVM: DIContainer.shared.container.resolve(PaymentViewModel.self)!
                             ) {
-                                homeCoordinator.pop()
+                                print("Back to root")
+                                homeCoordinator.popToRoot()
                             }
                         }
                     }
