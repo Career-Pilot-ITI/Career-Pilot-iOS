@@ -181,7 +181,7 @@ private struct JobMatchSkeletonView: View {
             Spacer()
         }
         .padding(20)
-        .background(Color.white)
+        .background(Color.cardBackground.opacity(0.2))
         .clipShape(RoundedRectangle(cornerRadius: Radius.r16, style: .continuous))
     }
 
@@ -196,7 +196,7 @@ private struct JobMatchSkeletonView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
-        .background(Color.white)
+        .background(Color.cardBackground.opacity(0.2))
         .clipShape(RoundedRectangle(cornerRadius: Radius.r16, style: .continuous))
     }
 }

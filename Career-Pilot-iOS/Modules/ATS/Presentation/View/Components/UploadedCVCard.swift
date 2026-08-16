@@ -7,6 +7,7 @@
 import SwiftUI
 
 struct UploadedCVCard: View {
+    let titleOf
     var body: some View {
         HStack(alignment: .center, spacing: 12) {
             StatusBadge(badge: "doc.text", color: Color.activeColour)

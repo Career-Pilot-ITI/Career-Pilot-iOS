@@ -14,11 +14,10 @@ struct RecommendationsCard: View {
         VStack(alignment: .leading, spacing: 14) {
             Text("Recommendations")
                 .font(Font.size14Bold)
-                .foregroundColor(Color.textPrimary)
 
             VStack(spacing: 12) {
                 ForEach(recommendations) { rec in
-                    HStack(alignment: .center, spacing: Spacing.s12) {
+                    HStack(alignment: .top, spacing: Spacing.s12) {
                         ZStack {
                             RoundedRectangle(cornerRadius: Radius.r6)
                                 .fill(.teal.opacity(0.12))

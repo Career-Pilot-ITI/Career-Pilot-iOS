@@ -54,15 +54,15 @@ struct SkeletonBlock: View {
     var height: CGFloat
     var cornerRadius: CGFloat = 16
     var isActive: Bool = true
-    
+
     var body: some View {
         RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
             .fill(
                 LinearGradient(
                     colors: [
-                        Color(.systemGray6),
-                        Color(.systemGray5).opacity(0.6),
-                        Color(.systemGray6)
+                        Color.primary.opacity(0.08),
+                        Color.primary.opacity(0.04),
+                        Color.primary.opacity(0.08)
                     ],
                     startPoint: .leading,
                     endPoint: .trailing
@@ -73,15 +73,14 @@ struct SkeletonBlock: View {
     }
 }
 
-
 struct SkeletonPill: View {
     var width: CGFloat
     var height: CGFloat = 22
     var isActive: Bool = true
-    
+
     var body: some View {
         RoundedRectangle(cornerRadius: height / 2, style: .continuous)
-            .fill(Color(.systemGray6))
+            .fill(Color.primary.opacity(0.08))
             .frame(width: width, height: height)
             .shimmering(isActive: isActive)
     }

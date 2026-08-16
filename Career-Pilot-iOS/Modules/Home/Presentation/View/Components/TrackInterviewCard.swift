@@ -4,7 +4,6 @@
 //
 //  Created by Ahmed El-Sayyad Mohamed on 25/07/2026.
 //
-
 import SwiftUI
 
 struct CareerCardView: View {
@@ -14,48 +13,49 @@ struct CareerCardView: View {
     let durationText: String
     let accentColor: Color
     let action: () -> Void
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.s12) {
-            
+
             ZStack {
                 RoundedRectangle(cornerRadius: Radius.r16)
                     .fill(accentColor.opacity(0.12))
-                
+
                 Image(systemName: iconName)
                     .font(.size18Bold)
                     .foregroundColor(accentColor)
             }
             .frame(width: 56, height: 56)
-            
-            // Title
+
             Text(title)
                 .font(.size20Bold)
                 .lineLimit(2)
                 .multilineTextAlignment(.leading)
-                .fixedSize(horizontal: false, vertical: true)
-            
-            // Tag Pill
+                .frame(height: 52, alignment: .top)
+                .fixedSize(horizontal: false, vertical: false)
+
             Text(tagText)
                 .font(.size14Semibold)
-                .lineLimit(2)
-                .multilineTextAlignment(.leading)
-                .fixedSize(horizontal: false, vertical: true)
+                .lineLimit(1)
+                .truncationMode(.tail)
                 .foregroundColor(accentColor)
-                .padding(.horizontal, Spacing.s4)
+                .padding(.horizontal, Spacing.s8)
                 .padding(.vertical, Spacing.s6)
                 .background(
                     Capsule()
                         .fill(accentColor.opacity(0.12))
                 )
-            
+
+            Spacer(minLength: 0)
+
             HStack {
                 Text(durationText)
                     .font(.size16Medium)
                     .foregroundColor(.secondary)
-                
+                    .lineLimit(1)
+
                 Spacer()
-                
+
                 Button(action: action) {
                     Image(systemName: "chevron.right")
                         .font(.size16Bold)

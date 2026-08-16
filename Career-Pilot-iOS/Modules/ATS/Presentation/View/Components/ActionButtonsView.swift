@@ -21,7 +21,7 @@ struct ActionButtonsView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 15)
             }
-            .background(Color.matchOrange)
+            .background(Color.primary)
             .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
 
             Button(action: onGenerateCoverLetter) {
