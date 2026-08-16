@@ -52,6 +52,6 @@ struct JobPostingLinkTextField: View {
     }
 }
 
-#Preview {
-    JobPostingLinkTextField(text: .constant(""), placeholder: "https://linkedin.com/jobs/view/…")
-}
+//#Preview {
+//    JobPostingLinkTextField(text: .constant(""), placeholder: "https://linkedin.com/jobs/view/…")
+//}

@@ -31,6 +31,6 @@ struct JobDescriptionCardView: View {
     }
 }
 
-#Preview {
-    JobDescriptionCardView(job: JobDescriptionModel.mock)
-}
+//#Preview {
+//    JobDescriptionCardView(job: JobDescriptionModel.mock)
+//}

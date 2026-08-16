@@ -23,7 +23,7 @@ struct ATSFeatureBadge: View {
     }
 }
 
-#Preview {
-    ATSFeatureBadge()
-        .padding()
-}
+//#Preview {
+//    ATSFeatureBadge()
+//        .padding()
+//}

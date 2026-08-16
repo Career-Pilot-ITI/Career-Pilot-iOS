@@ -47,16 +47,16 @@ struct SuggestedEditCard: View {
     }
 }
 
-#Preview {
-    SuggestedEditCard(edit: SuggestedEdit.mockSingle)
-        .padding()
-}
-
-private extension SuggestedEdit {
-    static let mockSingle = SuggestedEdit(
-        icon: .skills,
-        title: "Add Kubernetes to Skills",
-        impact: .high,
-        description: "The role requires container orchestration. Add Kubernetes to your Skills section and briefly mention any hands-on experience."
-    )
-}
+//#Preview {
+//    SuggestedEditCard(edit: SuggestedEdit.mockSingle)
+//        .padding()
+//}
+//
+//private extension SuggestedEdit {
+//    static let mockSingle = SuggestedEdit(
+//        icon: .skills,
+//        title: "Add Kubernetes to Skills",
+//        impact: .high,
+//        description: "The role requires container orchestration. Add Kubernetes to your Skills section and briefly mention any hands-on experience."
+//    )
+//}

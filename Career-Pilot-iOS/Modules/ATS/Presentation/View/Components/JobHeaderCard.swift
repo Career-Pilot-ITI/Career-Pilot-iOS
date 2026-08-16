@@ -65,9 +65,9 @@ struct JobPostingSafariView: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {}
 }
 
-#Preview {
-    JobHeaderCard(job: JobDescriptionModel.mock, onOpenLink: {
-        //
-    })
-        .padding()
-}
+//#Preview {
+//    JobHeaderCard(job: JobDescriptionModel.mock, onOpenLink: {
+//        //
+//    })
+//        .padding()
+//}

@@ -106,9 +106,9 @@ struct SectionBreakdownCard: View {
         }
     }
 }
-
-#Preview {
-    SectionBreakdownCard(sections: JobMatchData.sample.sectionScores)
-        .padding()
-        .background(Color.screenBackground)
-}
+//
+//#Preview {
+//    SectionBreakdownCard(sections: JobMatchData.sample.sectionScores)
+//        .padding()
+//        .background(Color.screenBackground)
+//}
