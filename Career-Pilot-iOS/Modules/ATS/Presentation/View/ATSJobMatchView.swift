@@ -55,8 +55,11 @@ struct ATSJobMatchView: View {
 
                     if viewModel.isUploadingCv {
                         CVUploadSkeletonView()
-                    } else if viewModel.cvUploaded {
-                        UploadedCVCard()
+                    } else if viewModel.cvUploaded, let uploadDate = viewModel.cvUploadDate {
+                        UploadedCVCard(
+                            fileName: viewModel.cvFileName,
+                            uploadDate: uploadDate
+                        )
                     } else {
                         CvUploadingView(
                             didUpload: false,

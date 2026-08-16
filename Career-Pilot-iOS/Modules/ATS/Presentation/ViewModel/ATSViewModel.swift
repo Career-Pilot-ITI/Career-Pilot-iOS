@@ -24,6 +24,8 @@ class ATSViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published private(set) var scoringError: ATSScoringError?
     @Published var cvUploaded: Bool = false
+    @Published var cvFileName: String = ""
+    @Published var cvUploadDate: Date?
 
     /// Raw domain entity — kept for workspaceID access in downstream calls
     @Published var currentJob: JobEntity?
@@ -153,7 +155,12 @@ class ATSViewModel: ObservableObject {
     func isCvFound() async {
         do {
             let profile = try await userRepo.getCurrentUser()?.profile
-            cvUploaded = !(profile?.cvURL ?? "").isEmpty
+            let cvURL = profile?.cvURL ?? ""
+            cvUploaded = !cvURL.isEmpty
+            if cvUploaded {
+                cvFileName = (cvURL as NSString).lastPathComponent
+                cvUploadDate = Date()
+            }
         } catch {
             presentError((error as? NetworkError)?.userMessage ?? "Couldn't check your CV. Please try again.")
         }
@@ -168,6 +175,8 @@ class ATSViewModel: ObservableObject {
         do {
             _ = try await uploadCvUseCase.execute(UploadCvRequest(cv: url))
             cvUploaded = true
+            cvFileName = url.lastPathComponent
+            cvUploadDate = Date()
         } catch {
             presentError(
                 (error as? NetworkError)?.userMessage

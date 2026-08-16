@@ -7,16 +7,18 @@
 import SwiftUI
 
 struct UploadedCVCard: View {
-    let titleOf
+    let fileName: String
+    let uploadDate: Date
+
     var body: some View {
         HStack(alignment: .center, spacing: 12) {
             StatusBadge(badge: "doc.text", color: Color.activeColour)
 
             VStack(alignment: .leading, spacing: Spacing.s4) {
-                Text("resume_sarah_chen.pdf")
+                Text(fileName)
                     .font(Font.size14Bold)
 
-                Text("Uploaded 12 Jun 2025 · 284 KB")
+                Text(uploadDate.formattedUploadDate)
                     .font(Font.size12Regular)
             }
             Spacer()
@@ -37,7 +39,10 @@ struct UploadedCVCard: View {
 }
 
 #Preview {
-    UploadedCVCard()
-        .padding()
-        .background(Color(white: 0.95))
+    UploadedCVCard(
+        fileName: "resume_sarah_chen.pdf",
+        uploadDate: Date(timeIntervalSince1970: 1_750_000_000)
+    )
+    .padding()
+    .background(Color(white: 0.95))
 }
