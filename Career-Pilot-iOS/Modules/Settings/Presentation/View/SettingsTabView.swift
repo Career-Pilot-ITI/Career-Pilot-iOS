@@ -35,13 +35,15 @@ struct SettingsTabView: View {
                     settingsCoordinator.popToRoot()
                 }
             case .subscribtion:
-                ChoosePlanView(viewModel: DIContainer.shared.container.resolve(SubscriptionViewModel.self)!){ checkoutDisplayInfo in
-                    settingsCoordinator.push(.checkout(item: checkoutDisplayInfo))
-                }
+                  SubscriptionView(viewModel:DIContainer.shared.container.resolve(SubscriptionViewModel.self)! )
             case .coin:
                 CoinView()
             case .profileSettings :
                 ProfileScreen(viewModel: DIContainer.shared.container.resolve(ProfileViewModel.self)!)
+            case .userSubscribtion:
+                MySubscriptionView(viewModel:DIContainer.shared.container.resolve(SubscriptionViewModel.self)! )
+            case .subscriptionPlans (let vm):
+                ChoosePlanView(viewModel: vm)
             }
         }}
 

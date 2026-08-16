@@ -120,8 +120,7 @@ extension DIContainer{
         container.register(SubscriptionViewModel.self) { r in
             SubscriptionViewModel(
                 getPlansUseCase: r.resolve(GetSubscribtionPlan.self)!,
-                getUserSubscribtion: r.resolve(GetUserSubscribtion.self)!, downgrade:
-                    r.resolve(DowngradeUserSubscription.self)!, userSession: r.resolve(UserSession.self)!
+                getUserSubscribtion: r.resolve(GetUserSubscribtion.self)!,  cancelUserSubscribtion: r.resolve(CancelSubscription.self)!, userSession: r.resolve(UserSession.self)!
             )
         }
 

@@ -94,7 +94,7 @@ struct SkillChipsCard: View {
         
     }
 }
-//
+
 //#Preview {
 //    VStack(spacing: 16) {
 //        SkillChipsCard(

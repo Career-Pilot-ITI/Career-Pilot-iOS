@@ -48,11 +48,13 @@ enum   CheckoutDisplayInfo : Hashable {
     }
 }
 
-enum SettingsRoute : Hashable {
+enum SettingsRoute : Hashable {    
     case checkout(item: CheckoutDisplayInfo)
     case subscribtion
     case coin
     case profileSettings
+    case userSubscribtion
+    case subscriptionPlans( vm : SubscriptionViewModel)
 }
 
 enum ReportsRoute: Hashable {

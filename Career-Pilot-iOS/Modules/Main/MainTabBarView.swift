@@ -63,9 +63,7 @@ struct MainTabBarView: View {
                             // visible in this tab — not settingsCoordinator.
                             ChoosePlanView(
                                 viewModel: DIContainer.shared.container.resolve(SubscriptionViewModel.self)!
-                            ) { checkoutItem in
-                                homeCoordinator.push(.checkout(item: checkoutItem))
-                            }
+                            ) 
                         case .checkout(let item):
                             CheckOutView(
                                 checkoutDisplayInfo: item,

@@ -49,7 +49,7 @@ struct ScoreProgressBar: View {
         .frame(height: 6)
     }
 }
-
+//
 //#Preview {
 //    VStack(spacing: 24) {
 //        ScoreRingView(score: 73)

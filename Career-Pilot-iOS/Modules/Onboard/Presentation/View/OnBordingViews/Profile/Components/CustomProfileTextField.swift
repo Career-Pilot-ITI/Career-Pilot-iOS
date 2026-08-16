@@ -5,7 +5,6 @@
 //  Created by Eyad waleed on 15/07/2026.
 //
 import SwiftUI
-
 struct CustomProfileTextField: View {
     var icon: String
     let title: String

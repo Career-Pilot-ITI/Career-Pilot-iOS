@@ -15,6 +15,7 @@ enum SettingsEndpoint : APIEndpoint{
     case updateUserAvatar(AvatarUploadDTO)
     case getCurrentSubscribtion
     case downgradeSubscribtion
+    case cancelSubscribtion
     
     var path: String{
         switch self {
@@ -34,6 +35,8 @@ enum SettingsEndpoint : APIEndpoint{
             return "api/v1/subscriptions/current"
         case .downgradeSubscribtion:
             return "api/v1/subscriptions/downgrade"
+        case .cancelSubscribtion:
+            return "api/v1/subscriptions/cancel"
             
         }
     }
@@ -46,14 +49,14 @@ enum SettingsEndpoint : APIEndpoint{
             return .get
         case .updateUserData , .updataUserCv :
             return .patch
-        case  .logout , .updateUserAvatar ,.downgradeSubscribtion:
+        case  .logout , .updateUserAvatar ,.downgradeSubscribtion , .cancelSubscribtion:
             return .post
             
         }
     }
     var body: Data? {
         switch self {
-        case .getUserData ,.logout ,.getSubscribtionsPrice , .updataUserCv , .getCurrentSubscribtion , .downgradeSubscribtion:
+        case .getUserData ,.logout ,.getSubscribtionsPrice , .updataUserCv , .getCurrentSubscribtion , .downgradeSubscribtion ,.cancelSubscribtion:
             return nil
         case .updateUserData(let userData):
             return Self.encode(userData)
@@ -67,12 +70,39 @@ enum SettingsEndpoint : APIEndpoint{
             true
         }
     var headers: [String: String] {
+        let tokenString :String
+        do {
+                  
+                  if let tokens = try KeychainAuthTokenStore().loadTokens() {
+                      print("Token is \(tokens.accessToken)")
+                      tokenString = tokens.accessToken
+                      
+                  } else {
+                      tokenString = ""
+                      print("Token is not found")
+
+                  }
+              } catch {
+                  tokenString = ""
+              }
+
+
+
         switch self {
-        case .getUserData , .logout , .getSubscribtionsPrice , .updateUserData(_) , .updataUserCv , .getCurrentSubscribtion , .downgradeSubscribtion:
-            return ["Content-Type": "application/json"]
-        case .updateUserAvatar(let avatar):
-            return ["Content-Type": "multipart/form-data; boundary=\(avatar.boundry)"]
+        case .getUserData , .logout , .getSubscribtionsPrice , .updateUserData(_) , .updataUserCv , .getCurrentSubscribtion , .downgradeSubscribtion ,.cancelSubscribtion  :
+          return  [
+                "Content-Type": "application/json",
+                "Authorization": "Bearer \(tokenString)"
+            ]
+        case .updateUserAvatar(let avatar) :
+          return  [
+            "Content-Type": "multipart/form-data; boundary=\(avatar.boundry)",
+                "Authorization": "Bearer \(tokenString)"
+            ]
+     
         }
+
+
     }
     
     private func buildMultipartBody(dto: AvatarUploadDTO) -> Data {
