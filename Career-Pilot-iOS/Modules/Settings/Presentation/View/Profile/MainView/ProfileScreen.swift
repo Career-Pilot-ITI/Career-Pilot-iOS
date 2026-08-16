@@ -11,6 +11,7 @@ import Shimmer
 struct ProfileScreen: View {
     @StateObject var viewModel: ProfileViewModel
     @EnvironmentObject var toastManager: ToastManager
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         ScrollView {
@@ -20,15 +21,16 @@ struct ProfileScreen: View {
                 
             case .failure(let error):
                 if let editableUser = Binding($viewModel.editableUser) {
-                             errorState(error, user: editableUser)
-                         }
+                    errorState(error, user: editableUser)
+                }
             case .success:
                 if let editableUser = Binding($viewModel.editableUser) {
                     successContent(editableUser)
                 }
             }
         }
-        .background(Color.gray100)
+        .toolbar(.hidden, for: .navigationBar)
+        .background(Color.background)
         .navigationBarBackButtonHidden(viewModel.load == .loading || viewModel.load == .idle)
         .task {
             await viewModel.loadAllScreenData()
@@ -47,15 +49,30 @@ struct ProfileScreen: View {
     @ViewBuilder
     private func successContent(_ user: Binding<UserModelSettingsView>) -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            SettingsProfileTopView(
-                isSaveEnabled: viewModel.hasChanges,
-                onSave: {
-                    Task {
-                        await viewModel.updateUserData()
-                    }
+            
+            // Header with Back Button and Save Action
+            HStack(spacing: Spacing.s12) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundColor(.primaryNavy)
                 }
-            )
-            Spacer().frame(height: Spacing.s8)
+                
+                SettingsProfileTopView(
+                    isSaveEnabled: viewModel.hasChanges,
+                    onSave: {
+                        Task {
+                            await viewModel.updateUserData()
+                        }
+                    }
+                )
+            }
+            
+            Spacer()
+                .foregroundColor(.gray400)
+                .frame(height: Spacing.s8)
             
             Group {
                 ProfileFormSettings(user: user, tracks: viewModel.tracks ?? []) { data in
@@ -91,16 +108,27 @@ struct ProfileScreen: View {
     }
     
     @ViewBuilder
-    private func errorState(_ error: Error  , user : Binding<UserModelSettingsView> ) -> some View {
-        if let validationError = error as? ProfileValidationError {
+    private func errorState(_ error: Error, user: Binding<UserModelSettingsView>) -> some View {
+        if error is ProfileValidationError {
             successContent(user)
         } else {
-            genericErrorContent(
-                icon: "exclamationmark.triangle.fill",
-                iconColor: .errorColour,
-                title: "Couldn't load your profile",
-                message: error.localizedDescription
-            )
+            VStack(alignment: .leading, spacing: Spacing.s16) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundColor(.primary)
+                }
+                
+                genericErrorContent(
+                    icon: "exclamationmark.triangle.fill",
+                    iconColor: .errorColour,
+                    title: "Couldn't load your profile",
+                    message: error.localizedDescription
+                )
+            }
+            .padding(.horizontal, Spacing.s16)
         }
     }
     
@@ -126,39 +154,64 @@ struct ProfileScreen: View {
         .frame(maxWidth: .infinity, minHeight: 400)
     }
     
+    // MARK: - Profile Skeleton
     private var profileSkeleton: some View {
         VStack(alignment: .leading, spacing: 16) {
+            
             HStack {
-                RoundedRectangle(cornerRadius: 4).fill(Color.gray200).frame(width: 100, height: 18)
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color(.systemGray4))
+                    .frame(width: 100, height: 18)
+                
                 Spacer()
-                RoundedRectangle(cornerRadius: 4).fill(Color.gray200).frame(width: 50, height: 18)
+                
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color(.systemGray5))
+                    .frame(width: 50, height: 18)
             }
             
             VStack(spacing: 0) {
                 ForEach(0..<4, id: \.self) { index in
                     HStack(spacing: 12) {
-                        RoundedRectangle(cornerRadius: Radius.r12).fill(Color.gray200).frame(width: 44, height: 44)
+                        RoundedRectangle(cornerRadius: Radius.r12)
+                            .fill(Color(.systemGray5))
+                            .frame(width: 44, height: 44)
+                        
                         VStack(alignment: .leading, spacing: 6) {
-                            RoundedRectangle(cornerRadius: 4).fill(Color.gray200).frame(width: 80, height: 12)
-                            RoundedRectangle(cornerRadius: 4).fill(Color.gray200).frame(width: 160, height: 14)
+                            RoundedRectangle(cornerRadius: 4)
+                                .fill(Color(.systemGray4))
+                                .frame(width: 70, height: 12)
+                            
+                            RoundedRectangle(cornerRadius: 4)
+                                .fill(Color(.systemGray5))
+                                .frame(width: [140.0, 170.0, 110.0, 150.0][index], height: 14)
                         }
+                        
                         Spacer()
                     }
                     .padding(.vertical, 12)
-                    if index != 3 { Divider() }
+                    
+                    if index != 3 {
+                        Divider()
+                            .padding(.leading, 56)
+                    }
                 }
             }
             .padding(.horizontal, 16)
-            .background(RoundedRectangle(cornerRadius: Radius.r12).fill(Color.white))
+            .background(
+                RoundedRectangle(cornerRadius: Radius.r12)
+                    .fill(Color(.secondarySystemGroupedBackground))
+            )
             
-            RoundedRectangle(cornerRadius: 4).fill(Color.gray200).frame(width: 100, height: 14)
+            RoundedRectangle(cornerRadius: 4)
+                .fill(Color(.systemGray4))
+                .frame(width: 100, height: 14)
             
             RoundedRectangle(cornerRadius: Radius.r12)
-                .fill(Color.white)
+                .fill(Color(.secondarySystemGroupedBackground))
                 .frame(height: 72)
         }
         .padding(.horizontal, Spacing.s16)
-        .redacted(reason: .placeholder)
         .shimmering()
     }
 }

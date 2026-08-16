@@ -24,11 +24,11 @@ struct CvResumeSettingsProfile: View {
                     }
                     .padding(.horizontal, Spacing.s16)
                     .padding(.vertical, Spacing.s16)
-                    .foregroundStyle(Color.primaryNavy)
+                    .foregroundStyle(Color.primary)
                 }
                 .frame(maxWidth: .infinity)
                 .background(
-                    Color.primaryNavy.opacity(0.06),
+                    Color.primary.opacity(0.06),
                     in: RoundedRectangle(cornerRadius: Radius.r16)
                 )
                 
@@ -36,7 +36,7 @@ struct CvResumeSettingsProfile: View {
                 HStack {
                     customIcon(icon: "paper", color: nil)
                     VStack(alignment: .leading) {
-                        Text(cv.split(separator: "/").last.map(String.init)!).font(.size12Bold).foregroundColor(.primaryNavy)
+                        Text(cv.split(separator: "/").last.map(String.init)!).font(.size12Bold).foregroundColor(.primary)
                         Text("Uploaded data & time & size").font(.size14Regular).foregroundColor(.gray400)
                     }
                     Spacer()
@@ -51,11 +51,11 @@ struct CvResumeSettingsProfile: View {
                     }
                     .padding(.horizontal, Spacing.s16)
                     .padding(.vertical, Spacing.s16)
-                    .foregroundStyle(Color.primaryNavy)
+                    .foregroundStyle(Color.primary)
                 }
                 .frame(maxWidth: .infinity)
                 .background(
-                    Color.primaryNavy.opacity(0.06),
+                    Color.primary.opacity(0.06),
                     in: RoundedRectangle(cornerRadius: Radius.r16)
                 )
                 
@@ -66,7 +66,7 @@ struct CvResumeSettingsProfile: View {
         }
         .padding(.vertical, Spacing.s20)
         .padding(.horizontal, Spacing.s20)
-        .background(Color.white, in: RoundedRectangle(cornerRadius: Radius.r16))
+        .background(Color.background, in: RoundedRectangle(cornerRadius: Radius.r16))
         .shadow(color: Color.black.opacity(0.08), radius: 12, x: 0, y: 4)
         .sheet(isPresented: $showUploadSheet) {
             CvUploadSheet(onCVPicked: { url in
@@ -78,7 +78,7 @@ struct CvResumeSettingsProfile: View {
     
     @ViewBuilder
     private func customIcon(icon: String, color: Color?) -> some View {
-        let resolvedColor = color ?? .activeColour
+        let resolvedColor = color ?? .primary
         
         Image(icon)
             .resizable()

@@ -5,6 +5,7 @@ struct SettingView: View {
     @StateObject var viewModel: SettingsViewModel
     @EnvironmentObject var appState: AppState
     @StateObject private var authCoordinator = AppCoordinator<AuthRoute>()
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     
     var body: some View {
         ZStack {
@@ -36,11 +37,18 @@ struct SettingView: View {
                                 .font(.system(size: 22, weight: .bold))
                             ProfileCard(user: user)
                         }
+                        
                         Group {
                             Spacer().frame(height: Spacing.s12)
                             Text("Account").font(.size14Semibold).foregroundColor(.gray400)
                             Spacer().frame(height: Spacing.s6)
                             AccountSettingsView(user: user)
+                            
+                            Spacer().frame(height: Spacing.s24)
+                            Text("Preferences").font(.size14Semibold).foregroundColor(.gray400)
+                            Spacer().frame(height: Spacing.s6)
+                            ThemeToggleRow()
+                            
                             Spacer().frame(height: Spacing.s24)
                             Text("Support & Legal").font(.size14Semibold).foregroundColor(.gray400)
                             Spacer().frame(height: Spacing.s6)
@@ -53,7 +61,8 @@ struct SettingView: View {
                             Spacer().frame(height: Spacing.s6)
                             
                             HStack(spacing: 12) {
-                                Image(systemName: "trash.fill")
+                                Image(systemName: "shield.slash.fill")
+                                    .font(.system(size: 18, weight: .semibold))
                                     .foregroundColor(.errorColour)
                                     .frame(width: 44, height: 44)
                                     .background(
@@ -67,6 +76,7 @@ struct SettingView: View {
                                         .foregroundColor(.errorColour)
                                     Text("Permanently delete account & data")
                                         .font(.caption)
+                                        .foregroundColor(.gray400)
                                 }
                                 
                                 Spacer()
@@ -89,6 +99,7 @@ struct SettingView: View {
                             Spacer()
                             HStack(spacing: 8) {
                                 Image(systemName: "rectangle.portrait.and.arrow.right")
+                                    .font(.system(size: 16, weight: .semibold))
                                     .foregroundColor(.errorColour)
                                 Text("Sign Out")
                                     .font(.size14Medium)
@@ -99,7 +110,7 @@ struct SettingView: View {
                         .padding(.vertical, Spacing.s12)
                         .background(
                             RoundedRectangle(cornerRadius: Radius.r12)
-                                .fill(Color.errorColour.opacity(0.3))
+                                .fill(Color.errorColour.opacity(0.2))
                         )
                         .onTapGesture {
                             Task {
@@ -113,8 +124,9 @@ struct SettingView: View {
             }
         }
         .background(Color.background.ignoresSafeArea())
+        .preferredColorScheme(isDarkMode ? .dark : .light)
         .task {
-           await viewModel.load()
+            await viewModel.load()
         }
     }
     
@@ -123,12 +135,10 @@ struct SettingView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: Spacing.s12) {
                 
-                // "Settings" title placeholder
                 RoundedRectangle(cornerRadius: Radius.r6)
                     .fill(Color(.systemGray5))
                     .frame(width: 120, height: 26)
                 
-                // Profile card placeholder
                 HStack(spacing: Spacing.s16) {
                     Circle()
                         .fill(Color(.systemGray5))
@@ -233,5 +243,47 @@ struct SettingView: View {
             .padding(Spacing.s24)
         }
         .shimmering()
+    }
+}
+
+// MARK: - Theme Toggle Row Component (XIX Styled)
+struct ThemeToggleRow: View {
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
+
+    var body: some View {
+        HStack(spacing: 12) {
+            ZStack {
+                RoundedRectangle(cornerRadius: Radius.r14)
+                    .fill(isDarkMode ? Color.indigo.opacity(0.18) : Color.orange.opacity(0.18))
+                    .frame(width: 44, height: 44)
+
+                Image(systemName: isDarkMode ? "moon.stars.fill" : "sun.max.fill")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundColor(isDarkMode ? .indigo : .orange)
+            }
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text("Dark Mode")
+                    .font(.size14Medium)
+                    .foregroundColor(.primary)
+
+                Text(isDarkMode ? "Enabled" : "Disabled")
+                    .font(.caption)
+                    .foregroundColor(.gray400)
+            }
+
+            Spacer()
+
+            Toggle("", isOn: $isDarkMode)
+                .labelsHidden()
+                .tint(.accentColor)
+        }
+        .padding(Spacing.s16)
+        .background(Color.background)
+        .cornerRadius(Radius.r16)
+        .overlay(
+            RoundedRectangle(cornerRadius: Radius.r16)
+                .stroke(Color(.systemGray6), lineWidth: 1)
+        )
     }
 }
