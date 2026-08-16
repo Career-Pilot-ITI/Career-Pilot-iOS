@@ -30,7 +30,11 @@ struct MainTabBarView: View {
                         )
                         
                     case let .interviewPrep(trackName, trackId, interviewType):
-                        InterviewPrepContainerView(trackName: trackName, trackId: trackId, interviewType: interviewType)
+                        InterviewPrepContainerView(
+                            trackName: trackName,
+                            trackId: trackId,
+                            interviewType: interviewType
+                        )
                         
                     case let .practiceInterview(_, trackId, interviewType):
                         PracticeSessionView(
@@ -38,6 +42,7 @@ struct MainTabBarView: View {
                             trackId: trackId,
                             interviewType: interviewType
                         )
+                        
                     case .InterviewsView:
                         InterviewsView()
                         
@@ -46,8 +51,31 @@ struct MainTabBarView: View {
                             homeCoordinator.popToRoot()
                         }
                         .navigationBarBackButtonHidden()
-                    case .subscribtion:
+                        
+                    case .subscribtion, .subscriptionView:
                         ChoosePlanView(viewModel: DIContainer.shared.container.resolve(SubscriptionViewModel.self)!)
+                        
+                    case .atsJobMatch:
+                        ATSJobMatchView()
+                        
+                    case .atsjobDescription:
+                        JobDescriptionView()
+                        
+                    case .coverLetter:
+                        CoverLetterView()
+                        
+                    case .atsJobmatchScore:
+                        JobMatchView(onBuyCoins: {
+                            homeCoordinator.popToRoot()
+                            settingsDeepLink = .coin
+                            selectedTab = .settings
+                        })
+                        
+                    case .cvOptimizeProgress:
+                        CvOptimizeProgressView()
+                        
+                    case .cvOptimizeResults:
+                        CvOptimizeResultsView()
                     }
                 }
             }
