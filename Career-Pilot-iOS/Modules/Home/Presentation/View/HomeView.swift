@@ -66,10 +66,17 @@ struct HomeView: View {
                 )
 
                 // MARK: - Recommended Interviews
-                recommendedInterviewsSection
 
+                if !viewModel.recommendedInterviews.isEmpty {
+                    recommendedInterviewsSection
+                }
+                
                 // MARK: - Recent Sessions
-                recentSessionsSection
+
+                if !viewModel.recentSessions.isEmpty {
+                    recentSessionsSection
+                }
+               
             }
             .padding(.horizontal, Spacing.s16)
             .padding(.vertical, Spacing.s12)
@@ -119,22 +126,28 @@ private extension HomeView {
     var recommendedInterviewsSection: some View {
 
         VStack(spacing: Spacing.s12) {
+            switch viewModel.tracksState {
+                case .idle, .loading ,.success:
+                    HStack {
+                        Text("Recommended For You")
+                            .font(.headline)
+                            .foregroundColor(.primary)
 
-            HStack {
-                Text("Recommended For You")
-                    .font(.headline)
-                    .foregroundColor(.primary)
+                        Spacer()
 
-                Spacer()
-
-                Button {
-                    coordinator.push(.InterviewsView)
-                } label: {
-                    Text("See all")
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundColor(.accentColor)
-                }
+                        Button {
+                            coordinator.push(.InterviewsView)
+                        } label: {
+                            Text("See all")
+                                .font(.subheadline.weight(.semibold))
+                                .foregroundColor(.accentColor)
+                        }
+                    }
+                case .error(_) :
+                    EmptyView()
+                    
             }
+          
 
             switch viewModel.tracksState {
 
@@ -145,7 +158,7 @@ private extension HomeView {
                 recommendedInterviewsContent
 
             case .error(let message):
-                errorView(message: message)
+                errorView(message: "Some Thing Went Wrong")
             }
         }
     }
@@ -202,23 +215,29 @@ private extension HomeView {
     var recentSessionsSection: some View {
 
         VStack(spacing: Spacing.s12) {
+            
+            switch viewModel.tracksState {
+                case .idle, .loading ,.success:
+                HStack {
+                    Text("Recent Sessions")
+                        .font(.headline)
+                        .foregroundColor(.primary)
 
-            HStack {
-                Text("Recent Sessions")
-                    .font(.headline)
-                    .foregroundColor(.primary)
+                    Spacer()
 
-                Spacer()
-
-                Button {
-                    // Navigate to all recent sessions
-                    print("See all recent sessions")
-                    onSeeAllSessionsTapped?()
-                } label: {
-                    Text("See all")
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundColor(.accentColor)
+                    Button {
+                        // Navigate to all recent sessions
+                        print("See all recent sessions")
+                        onSeeAllSessionsTapped?()
+                    } label: {
+                        Text("See all")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundColor(.accentColor)
+                    }
                 }
+                case .error(_) :
+                    EmptyView()
+                    
             }
 
             switch viewModel.sessionsState {
@@ -230,7 +249,7 @@ private extension HomeView {
                 recentSessionsContent
 
             case .error(let message):
-                errorView(message: message)
+                errorView(message: "Some Thing Went Wrong")
             }
         }
     }
@@ -284,8 +303,6 @@ private extension HomeView {
         }
         .frame(maxWidth: .infinity)
         .padding(Spacing.s16)
-        .background(Color(.secondarySystemGroupedBackground))
-        .cornerRadius(Radius.r12)
     }
 }
 
