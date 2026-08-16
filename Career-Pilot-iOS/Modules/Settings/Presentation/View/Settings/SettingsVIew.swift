@@ -19,7 +19,7 @@ struct SettingView: View {
                         .foregroundColor(.errorColour)
                     Text("There is an error")
                         .font(.size16Bold)
-                        .foregroundColor(.primaryNavy)
+                        .foregroundColor(.primary)
                     Text(error.localizedDescription)
                         .font(.caption)
                         .foregroundColor(.gray400)

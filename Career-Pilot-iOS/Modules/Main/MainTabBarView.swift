@@ -21,8 +21,11 @@ struct MainTabBarView: View {
                 })
                 .navigationDestination(for: HomeRoute.self) { route in
                     switch route {
-                    case .sessionDetail(let metrics, let suggestions):
-                        Text("Session Detail View")
+                    case .sessionDetail(let sessionId):
+                        SessionView(
+                            sessionId: sessionId,
+                            viewModel: DIContainer.shared.container.resolve(SessionDetailViewModel.self, argument: sessionId)!
+                        )
                         
                     case let .interviewPrep(trackName, trackId, interviewType):
                         InterviewPrepContainerView(trackName: trackName, trackId: trackId, interviewType: interviewType)
@@ -41,6 +44,8 @@ struct MainTabBarView: View {
                             homeCoordinator.popToRoot()
                         }
                         .navigationBarBackButtonHidden()
+                    case .subscribtion:
+                        ChoosePlanView(viewModel: DIContainer.shared.container.resolve(SubscriptionViewModel.self)!)
                     }
                 }
             }

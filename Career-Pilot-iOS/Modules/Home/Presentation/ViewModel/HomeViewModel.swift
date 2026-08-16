@@ -18,8 +18,8 @@ final class HomeViewModel: ObservableObject {
     
     // MARK: - Published Properties
 
-    @Published var usedSessions: Double = 1.0
-    @Published var totalSessions: Double = 3.0
+//    @Published var usedSessions: Double = 1.0
+//    @Published var totalSessions: Double = 3.0
 
     @Published private(set) var progressInfo: OverallProgressInfo?
     @Published private(set) var recommendedInterviews: [InterviewItem] = []

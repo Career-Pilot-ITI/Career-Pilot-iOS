@@ -32,10 +32,9 @@ struct HomeView: View {
                 userSection
 
                 // MARK: - Subscription
-                SubscriptionCard(
-                    usedSessions: viewModel.usedSessions,
-                    totalSessions: viewModel.totalSessions
-                )
+                SubscriptionCard {
+                    coordinator.push(.subscribtion)
+                }
 
                 // MARK: - Progress
                 if let progressInfo = viewModel.progressInfo {
@@ -157,7 +156,7 @@ private extension HomeView {
             case .success:
                 recommendedInterviewsContent
 
-            case .error(let message):
+            case .error(_):
                 errorView(message: "Some Thing Went Wrong")
             }
         }
@@ -200,6 +199,15 @@ private extension HomeView {
                             )
                         }
                     )
+                    .onTapGesture {
+                        print("Tapped on \(track.title)")
+                        coordinator.push(.interviewPrep(
+                                trackName: track.title,
+                                trackId: track.trackInterview.track.id,
+                                interviewType: .classic
+                            )
+                        )
+                    }
                 }
             }
             
@@ -248,7 +256,7 @@ private extension HomeView {
             case .success:
                 recentSessionsContent
 
-            case .error(let message):
+            case .error(_):
                 errorView(message: "Some Thing Went Wrong")
             }
         }
@@ -279,8 +287,13 @@ private extension HomeView {
                     iconColor: assignedColor,
                     action: {
                         print("Tapped on \(session.title)")
+                        coordinator.push(.sessionDetail(sessionId: session.id))
                     }
-                )
+                ).onTapGesture{
+                    
+                    print("Tapped on \(session.title)")
+                    coordinator.push(.sessionDetail(sessionId: session.id))
+                }
             }
         }
     }

@@ -17,6 +17,7 @@ struct SessionRow: View {
     var body: some View {
         HStack {
             Text("\(score)")
+                .frame(width: 24, height: 24)
                 .bold()
                 .padding(10)
                 .background(iconColor.opacity(0.1))

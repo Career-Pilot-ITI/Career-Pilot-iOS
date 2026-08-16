@@ -24,8 +24,8 @@ struct AccountSettingsView: View {
         
         var items: [AccountItem] {
             [
-                AccountItem(icon: "Subscription", title: "Subscription", subtitle: "\(user.subscriptionPlan)", route: .subscribtion),
-                AccountItem(icon: "Favourite", title: "Coin Balance", subtitle: "\(user.coinBalance)", route: .coin)
+                AccountItem(icon: "king", title: "Subscription", subtitle: "\(user.subscriptionPlan)", route: .subscribtion),
+                AccountItem(icon: "coin", title: "Coin Balance", subtitle: "\(user.coinBalance)", route: .coin)
             ]
         }
 

@@ -29,15 +29,16 @@ struct CustomNavigationBar: View {
             HStack(alignment: .bottom,spacing:12){
                 
                 HStack(spacing: 4) {
-                    Image.AppIcon.star
-                        .foregroundColor(.primary)
-                    
+                    Image.AppIcon.coin
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        
                     Text("\(userScore)")
                         .fontWeight(.semibold)
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 8)
-                .background(.primary.opacity(0.1))
+                .background(Color.primary.opacity(0.1))
                 .cornerRadius(20)
                 
                 // Notification Button
