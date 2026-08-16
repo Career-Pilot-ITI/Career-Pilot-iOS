@@ -67,36 +67,12 @@ enum SettingsEndpoint : APIEndpoint{
             true
         }
     var headers: [String: String] {
-        let tokenString: String
-        do {
-            
-            if let tokens = try KeychainAuthTokenStore().loadTokens() {
-                print("Token is \(tokens.accessToken)")
-                tokenString = tokens.accessToken
-                
-            } else {
-                tokenString = ""
-                print("Token is not found")
-
-            }
-        } catch {
-            tokenString = ""
-        }
         switch self {
         case .getUserData , .logout , .getSubscribtionsPrice , .updateUserData(_) , .updataUserCv , .getCurrentSubscribtion , .downgradeSubscribtion:
-          return  [
-                "Content-Type": "application/json",
-                "Authorization": "Bearer \(tokenString)"
-            ]
-        case .updateUserAvatar(let avatar) :
-          return  [
-            "Content-Type": "multipart/form-data; boundary=\(avatar.boundry)",
-                "Authorization": "Bearer \(tokenString)"
-            ]
-     
+            return ["Content-Type": "application/json"]
+        case .updateUserAvatar(let avatar):
+            return ["Content-Type": "multipart/form-data; boundary=\(avatar.boundry)"]
         }
-
-
     }
     
     private func buildMultipartBody(dto: AvatarUploadDTO) -> Data {

@@ -42,8 +42,18 @@ class AuthRepositoryImpl: AuthRepositoryProtocol {
             return nil
         }
 
-        guard tokens.expiresIn > 0 else {
-            // Tokens are present but expired.
+        let buffer: TimeInterval = 60
+        let expiresAt = Date().addingTimeInterval(TimeInterval(tokens.expiresIn))
+        if expiresAt <= Date().addingTimeInterval(buffer) {
+            // Access token expired or about to expire — attempt refresh
+            let refreshed = try await tokenStore.refreshTokensIfNeeded()
+            guard refreshed else {
+                try? await clearSession()
+                return nil
+            }
+        }
+
+        guard let refreshedTokens = try tokenStore.loadTokens() else {
             try? await clearSession()
             return nil
         }
@@ -54,7 +64,7 @@ class AuthRepositoryImpl: AuthRepositoryProtocol {
             return nil
         }
 
-        return VerifyOTPResult(authTokens: tokens, user: user)
+        return VerifyOTPResult(authTokens: refreshedTokens, user: user)
     }
 
     func clearSession() async throws {

@@ -43,10 +43,17 @@ final class AuthenticatedNetworkService: NetworkService {
             if isUnauthorized(error) {
                 print("⚠️ [AUTH SERVICE] 401 received — attempting silent refresh")
                 try await performRefresh()
-                // Retry once with new token
                 let retried = try await addAuthIfNeeded(to: endpoint)
                 print("🔁 [AUTH SERVICE] Retrying request after refresh")
-                return try await baseService.request(retried)
+                do {
+                    return try await baseService.request(retried)
+                } catch {
+                    if isUnauthorized(error) {
+                        print("❌ [AUTH SERVICE] Retry also received 401 — session invalid")
+                        throw NetworkError.tokenExpired
+                    }
+                    throw error
+                }
             }
             throw error
         }
@@ -62,7 +69,15 @@ final class AuthenticatedNetworkService: NetworkService {
                 try await performRefresh()
                 let retried = try await addAuthIfNeeded(to: endpoint)
                 print("🔁 [AUTH SERVICE] Retrying request after refresh")
-                try await baseService.request(retried)
+                do {
+                    try await baseService.request(retried)
+                } catch {
+                    if isUnauthorized(error) {
+                        print("❌ [AUTH SERVICE] Retry also received 401 — session invalid")
+                        throw NetworkError.tokenExpired
+                    }
+                    throw error
+                }
             } else {
                 throw error
             }
@@ -83,7 +98,6 @@ final class AuthenticatedNetworkService: NetworkService {
     private func performRefresh() async throws {
         do {
             let newTokens = try await refreshActor.refresh {
-                // Read the current refresh token
                 let refreshToken = try self.tokenStore.loadTokens()?.refreshToken
                 guard let refreshToken else {
                     print("❌ [TOKEN REFRESH] No refresh token available — forcing logout")
@@ -99,10 +113,19 @@ final class AuthenticatedNetworkService: NetworkService {
                 return tokens
             }
 
-            // Persist the new tokens so subsequent requests pick them up
-            try tokenStore.save(newTokens)
-            print("✅ [TOKEN REFRESH] New tokens persisted")
+            do {
+                try tokenStore.save(newTokens)
+                print("✅ [TOKEN REFRESH] New tokens persisted")
+            } catch {
+                print("❌ [TOKEN REFRESH] Failed to persist tokens: \(error.localizedDescription) — forcing logout")
+                try? tokenStore.clear()
+                await onForceLogout()
+                throw NetworkError.tokenExpired
+            }
         } catch {
+            if case NetworkError.tokenExpired = error {
+                throw error
+            }
             print("❌ [TOKEN REFRESH] Refresh failed: \(error.localizedDescription) — forcing logout")
             try? tokenStore.clear()
             await onForceLogout()

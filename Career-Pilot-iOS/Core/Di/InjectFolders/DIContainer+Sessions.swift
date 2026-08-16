@@ -12,9 +12,5 @@ extension DIContainer{
         container.register(UserSession.self) { r in
             UserSession(getUserDataUseCase: r.resolve(GetUserDataUseCase.self)!, refreshUseCase: r.resolve(RefreshUserDataUseCase.self)!)
         }.inObjectScope(.container)
-        container.register(AppState.self){
-            r in AppState()
-        }.inObjectScope(.container)
-        
     }
 }
