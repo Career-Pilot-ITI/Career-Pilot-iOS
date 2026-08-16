@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-private struct IdentifiableURL: Identifiable {
+struct IdentifiableURL: Identifiable {
     let id = UUID()
     let url: URL
 }

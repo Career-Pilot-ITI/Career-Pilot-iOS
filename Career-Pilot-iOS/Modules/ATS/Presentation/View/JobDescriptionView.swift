@@ -8,8 +8,7 @@ import SwiftUI
 struct JobDescriptionView: View {
     @EnvironmentObject var coordinator: AppCoordinator<HomeRoute>
     @EnvironmentObject var viewModel: ATSViewModel
-    @State private var selectedPostingURL: URL?
-    @State private var isShowingPosting = false
+    @State private var selectedPostingURL: IdentifiableURL?
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -20,8 +19,7 @@ struct JobDescriptionView: View {
                     VStack(spacing: 16) {
                         JobHeaderCard(job: job, onOpenLink: job.postingURL.map { url in
                             {
-                                selectedPostingURL = url
-                                isShowingPosting = true
+                                selectedPostingURL = IdentifiableURL(url: url)
                             }
                         })
                         OverViewCardView(job: job)
@@ -47,11 +45,8 @@ struct JobDescriptionView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(Text("Job Description"))
-        .sheet(isPresented: $isShowingPosting) {
-            if let selectedPostingURL {
-                JobPostingSafariView(url: selectedPostingURL)
-                    .ignoresSafeArea()
-            }
+        .sheet(item: $selectedPostingURL) { identifiable in
+            JobPostingSafariView(url: identifiable.url)
         }
     }
 
