@@ -50,7 +50,8 @@ extension DIContainer{
             InterviewPrepViewModel(
                 permissionManager: resolver.resolve(
                     PermissionManaging.self
-                )!
+                )!,
+                subscriptionAccessManaging: resolver.resolve((any SubscriptionAccessManaging).self)!
             )
         }
 //        // MARK: - PracticeSession

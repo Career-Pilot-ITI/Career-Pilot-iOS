@@ -99,6 +99,14 @@ extension DIContainer{
         container.register(SpeechRecognitionServicing.self) { _ in
             SpeechRecognitionService()
         }
+        
+        //SubscriptionAccessManaging
+        container.register((any SubscriptionAccessManaging).self) { r in
+            SubscriptionAccessManager(userSession: r.resolve(UserSession.self)!)
+        }
 
+        container.register(UserSession.self) { r in
+            UserSession(getUserDataUseCase: r.resolve(GetUserDataUseCase.self)!, refreshUseCase: r.resolve(RefreshUserDataUseCase.self)!)
+        }
     }
 }

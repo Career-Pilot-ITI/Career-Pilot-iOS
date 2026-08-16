@@ -32,6 +32,7 @@ enum HomeRoute: Hashable {
     case atsJobmatchScore
     case cvOptimizeProgress
     case cvOptimizeResults
+    case subscriptionView
 }
 
 enum   CheckoutDisplayInfo : Hashable {

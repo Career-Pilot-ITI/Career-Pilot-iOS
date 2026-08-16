@@ -35,6 +35,8 @@
 		41897C803028B60300654888 /* SuggestedResumeEditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41897C7F3028B60300654888 /* SuggestedResumeEditsView.swift */; };
 		419DE28A302E3D22007395C4 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 419DE289302E3D22007395C4 /* Swinject */; };
 		419DE28D302E3D4B007395C4 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 419DE28C302E3D4B007395C4 /* Shimmer */; };
+		419DE28A302E3D22007395C4 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 419DE289302E3D22007395C4 /* Swinject */; };
+		419DE28D302E3D4B007395C4 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 419DE28C302E3D4B007395C4 /* Shimmer */; };
 		41A3B784302C9D44003C2F2A /* CoverLetterModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B783302C9D44003C2F2A /* CoverLetterModels.swift */; };
 		41A3B786302C9D8D003C2F2A /* CoverLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B785302C9D8D003C2F2A /* CoverLetterView.swift */; };
 		41A3B788302C9DB8003C2F2A /* SendEmailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B787302C9DB8003C2F2A /* SendEmailButton.swift */; };
@@ -362,6 +364,7 @@
 		D93938F83004064600CF4372 /* Career_Pilot_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93938F73004064600CF4372 /* Career_Pilot_iOSTests.swift */; };
 		D93939023004064600CF4372 /* Career_Pilot_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93939013004064600CF4372 /* Career_Pilot_iOSUITests.swift */; };
 		D93939043004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93939033004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift */; };
+		D94F0A013031FB0200EA0B50 /* FancyAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94F0A003031FB0200EA0B50 /* FancyAlertView.swift */; };
 		D957B3003017E9AC00B0562A /* UploadedFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970C9EC30156B68002F6269 /* UploadedFile.swift */; };
 		D957B3013017EC2E00B0562A /* PaymentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6124908E3014ED98000401CF /* PaymentState.swift */; };
 		D957B3023017EC4100B0562A /* CheckoutRemoteDataSourceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C2A04301461FB0099BF69 /* CheckoutRemoteDataSourceImp.swift */; };
@@ -832,6 +835,7 @@
 		D93938FD3004064600CF4372 /* Career-Pilot-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Career-Pilot-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93939013004064600CF4372 /* Career_Pilot_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career_Pilot_iOSUITests.swift; sourceTree = "<group>"; };
 		D93939033004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career_Pilot_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D94F0A003031FB0200EA0B50 /* FancyAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyAlertView.swift; sourceTree = "<group>"; };
 		D95C3B98300E495C0042785F /* InterviewSessionEndPointes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewSessionEndPointes.swift; sourceTree = "<group>"; };
 		D95C3B9D300E49BF0042785F /* AudioRecordingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecordingService.swift; sourceTree = "<group>"; };
 		D95C3B9F300E49D20042785F /* CancelInterviewUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelInterviewUseCase.swift; sourceTree = "<group>"; };
@@ -1677,6 +1681,7 @@
 		6182BB50300C662C001157B8 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				D94F09FF3031FAC000EA0B50 /* Alert */,
 				6182BB51300C679D001157B8 /* UiKitWrappers */,
 			);
 			path = Presentation;
@@ -2284,6 +2289,14 @@
 				D93939033004064600CF4372 /* Career_Pilot_iOSUITestsLaunchTests.swift */,
 			);
 			path = "Career-Pilot-iOSUITests";
+			sourceTree = "<group>";
+		};
+		D94F09FF3031FAC000EA0B50 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				D94F0A003031FB0200EA0B50 /* FancyAlertView.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		D95C3B8A300E48730042785F /* PracticeSession */ = {
@@ -3074,6 +3087,7 @@
 				CECC20DA3007BE6800DC450D /* PhoneFieldViewModel.swift in Sources */,
 				617DF223300DF5F80046297B /* ChoosePlanView.swift in Sources */,
 				41BC774A300D3E5F00E89C3F /* QuestionBreakdownView.swift in Sources */,
+				D94F0A013031FB0200EA0B50 /* FancyAlertView.swift in Sources */,
 				414B4BEC302B59CE00B66FA7 /* ATSViewModel.swift in Sources */,
 				41B4EFF23027B17100AE0804 /* ATSJobMatchView.swift in Sources */,
 				CE8AFF18300712FC0064CC6C /* Font.swift in Sources */,
@@ -3670,7 +3684,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Career-Pilot-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = H7HG3GMXWA;
+				DEVELOPMENT_TEAM = 9YWQZ5JYLT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Career-Pilot-iOS/Info.plist";
@@ -3705,7 +3719,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Career-Pilot-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = H7HG3GMXWA;
+				DEVELOPMENT_TEAM = 5PGGXHFM2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Career-Pilot-iOS/Info.plist";
@@ -3718,6 +3732,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -18,6 +18,21 @@ struct VisualAnalysisReportView: View {
                     OverallScoreHeader(score: score.overallScore)
 
                     VStack(spacing: Spacing.s12) {
+                        
+                        MetricCard(
+                            icon: "face.smiling",
+                            title: "face Visibility",
+                            score: (Int(score.faceVisibility.visibleRatio * 100))    ,
+                            detail: "Face visible of the interview"
+                        )
+                        
+                        MetricCard(
+                            icon: "figure.stand",
+                            title: "Body Movments",
+                            score: score.bodyMovement.score,
+                            detail: "Stability \(score.posture.stabilityScore)%"
+                        )
+
                         MetricCard(
                             icon: "eye.fill",
                             title: "Eye Contact",
@@ -25,12 +40,6 @@ struct VisualAnalysisReportView: View {
                             detail: "\(Int(score.eyeContact.ratio * 100))% of visible time looking at camera"
                         )
 
-                        MetricCard(
-                            icon: "figure.stand",
-                            title: "Posture",
-                            score: score.posture.score,
-                            detail: "Stability \(score.posture.stabilityScore)%"
-                        )
 
                         MetricCard(
                             icon: "arrow.left.arrow.right",
@@ -45,14 +54,6 @@ struct VisualAnalysisReportView: View {
                             score: score.handMovement.score,
                             detail: handMovementDetail
                         )
-                        
-                        MetricCard(
-                            icon: "face.smiling",
-                            title: "face Visibility",
-                            score: (Int(score.faceVisibility.visibleRatio * 100))	,
-                            detail: "Face visible of the interview"
-                        )
-                        
                     }
                     
                     DisclaimerNote()

@@ -56,6 +56,8 @@ struct MainTabBarView: View {
                             CvOptimizeProgressView()
                         case .cvOptimizeResults:
                             CvOptimizeResultsView()
+                        case.subscriptionView:
+                            ChoosePlanView(viewModel: DIContainer.shared.container.resolve(SubscriptionViewModel.self)!)
                         }
                     }
             }
