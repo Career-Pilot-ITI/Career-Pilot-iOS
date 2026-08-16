@@ -14,7 +14,7 @@ struct CvOptimizeProgressView: View {
 
     var body: some View {
         ZStack {
-            Color.lightBackGround.ignoresSafeArea()
+            Color.background.ignoresSafeArea()
 
             switch viewModel.state {
             case .idle, .starting:
@@ -65,7 +65,7 @@ struct CvOptimizeProgressView: View {
         VStack(spacing: 20) {
             ProgressView()
                 .scaleEffect(1.5)
-                .tint(Color.activeColour)
+                .tint(Color.primary)
 
             Text("Starting CV optimization…")
                 .font(Font.size16Medium)
@@ -88,7 +88,7 @@ struct CvOptimizeProgressView: View {
                 Circle()
                     .trim(from: 0, to: viewModel.displayedProgress / 100.0)
                     .stroke(
-                        Color.activeColour,
+                        Color.primary,
                         style: StrokeStyle(lineWidth: 10, lineCap: .round)
                     )
                     .frame(width: 160, height: 160)
@@ -105,9 +105,8 @@ struct CvOptimizeProgressView: View {
             VStack(spacing: 8) {
                 Text(step)
                     .font(Font.size16Medium)
-                    .foregroundStyle(Color.textPrimary)
                     .multilineTextAlignment(.center)
-                    .id(step) // forces transition on text change
+                    .id(step)
                     .transition(.opacity.combined(with: .move(edge: .bottom)))
                     .animation(.easeInOut(duration: 0.5), value: step)
 
@@ -152,7 +151,6 @@ struct CvOptimizeProgressView: View {
 
             Text("Optimization Failed")
                 .font(Font.size20Bold)
-                .foregroundStyle(Color.textPrimary)
 
             Text(message)
                 .font(Font.size14Regular)
@@ -201,7 +199,6 @@ struct CvOptimizeProgressView: View {
 
             Text("Taking Longer Than Expected")
                 .font(Font.size20Bold)
-                .foregroundStyle(Color.textPrimary)
 
             Text("The optimization is still running on our servers. Please try again in a moment.")
                 .font(Font.size14Regular)
