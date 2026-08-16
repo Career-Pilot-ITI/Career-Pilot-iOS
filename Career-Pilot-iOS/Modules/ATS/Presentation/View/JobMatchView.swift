@@ -201,6 +201,6 @@ private struct JobMatchSkeletonView: View {
     }
 }
 
-#Preview {
-    JobMatchView()
-}
+//#Preview {
+//    JobMatchView()
+//}

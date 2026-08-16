@@ -37,6 +37,6 @@ struct JobLinkShareTipView: View {
     }
 }
 
-#Preview {
-    JobLinkShareTipView()
-}
+//#Preview {
+//    JobLinkShareTipView()
+//}

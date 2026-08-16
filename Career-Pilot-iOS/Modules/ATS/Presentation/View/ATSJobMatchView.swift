@@ -125,6 +125,6 @@ private struct CVUploadSkeletonView: View {
     }
 }
 
-#Preview {
-    ATSJobMatchView()
-}
+//#Preview {
+//    ATSJobMatchView()
+//}

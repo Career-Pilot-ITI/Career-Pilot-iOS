@@ -55,12 +55,12 @@ struct ContactChip: View {
     }
 }
 
-#Preview {
-    HStack {
-        ContactChip(text: "Sarah Chen", kind: .name)
-        ContactChip(text: "sarah@email.com", kind: .email)
-        ContactChip(text: "+20 10 1234 5678", kind: .phone)
-    }
-    .padding()
-    .background(Color.screenBackground)
-}
+//#Preview {
+//    HStack {
+//        ContactChip(text: "Sarah Chen", kind: .name)
+//        ContactChip(text: "sarah@email.com", kind: .email)
+//        ContactChip(text: "+20 10 1234 5678", kind: .phone)
+//    }
+//    .padding()
+//    .background(Color.screenBackground)
+//}

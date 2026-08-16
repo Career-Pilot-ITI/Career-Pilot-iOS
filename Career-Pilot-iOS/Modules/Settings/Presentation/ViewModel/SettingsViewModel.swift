@@ -22,27 +22,18 @@ final class SettingsViewModel: ObservableObject {
         self.userSession = userSession
         self.logout = logout
 
-        // Listen to future changes
         userSession.$userData
             .compactMap { $0 }
             .sink { [weak self] user in
-                print("🔵 Settings received user:", user as Any)
-                         print(
-                             "🔵 Settings Session ID:",
-                             ObjectIdentifier(userSession)
-                         )
                 self?.loadState = .success(user)
             }
             .store(in: &cancellables)
     }
-
     func load() async {
         loadState = .loading
 
         do {
             try await userSession.loadIfNeeded()
-
-            // Return the current user through loadState
             guard let user = userSession.userData else {
                 return
             }
@@ -53,7 +44,6 @@ final class SettingsViewModel: ObservableObject {
             loadState = .failure(error)
         }
     }
-
     func logout(appState: AppState) async {
         do {
             try await logout.execute()

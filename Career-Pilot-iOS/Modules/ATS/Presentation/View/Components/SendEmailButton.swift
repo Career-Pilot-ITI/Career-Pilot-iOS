@@ -22,8 +22,8 @@ struct SendEmailButton: View {
     }
 }
 
-#Preview {
-    SendEmailButton()
-        .padding()
-        .background(Color.screenBackground)
-}
+//#Preview {
+//    SendEmailButton()
+//        .padding()
+//        .background(Color.screenBackground)
+//}

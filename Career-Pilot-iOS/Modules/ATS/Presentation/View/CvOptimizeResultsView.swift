@@ -138,6 +138,6 @@ private struct StatPill: View {
     }
 }
 
-#Preview {
-    CvOptimizeResultsView()
-}
+//#Preview {
+//    CvOptimizeResultsView()
+//}

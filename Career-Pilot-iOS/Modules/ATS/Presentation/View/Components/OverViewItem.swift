@@ -30,6 +30,6 @@ struct OverViewItem: View {
 }
 
 
-#Preview {
-    OverViewItem(icon: "briefcase.fill", label: "Employment Type", value: "ss")
-}
+//#Preview {
+//    OverViewItem(icon: "briefcase.fill", label: "Employment Type", value: "ss")
+//}

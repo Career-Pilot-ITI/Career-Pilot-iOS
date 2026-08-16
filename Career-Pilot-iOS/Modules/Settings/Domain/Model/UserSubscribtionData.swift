@@ -11,7 +11,7 @@ struct UserSubscribtionDomain {
     let isActive: Bool
     let startedAt: String
     let renewalDate: String?
-    let cancelledAt: String?
+    var cancelledAt: String?
     let pendingTier: String?
 }
 

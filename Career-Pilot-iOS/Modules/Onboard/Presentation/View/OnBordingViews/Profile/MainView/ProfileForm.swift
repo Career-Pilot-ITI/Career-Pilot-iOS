@@ -76,7 +76,7 @@ struct ProfileForm: View {
                     .foregroundColor(.gray400)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                if userData.skills.isEmpty {
+                if userData.skills.isEmpty || userData.skills.count > 6 {
                     SkillsInputView(selectedSkills: skillNamesBinding)
                 } else {
                     SkillDetection(skills: userData.skills.map { $0.skillName })

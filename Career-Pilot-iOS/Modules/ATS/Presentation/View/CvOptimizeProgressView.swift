@@ -229,6 +229,6 @@ struct CvOptimizeProgressView: View {
     }
 }
 
-#Preview {
-    CvOptimizeProgressView()
-}
+//#Preview {
+//    CvOptimizeProgressView()
+//}

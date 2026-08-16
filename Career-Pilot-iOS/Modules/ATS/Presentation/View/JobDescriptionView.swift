@@ -75,9 +75,4 @@ private struct JobDescriptionSkeletonView: View {
 
 // MARK: - Preview
 
-#Preview {
-    NavigationStack {
-        JobDescriptionView()
-            .environmentObject(AppCoordinator<HomeRoute>())
-    }
-}
+

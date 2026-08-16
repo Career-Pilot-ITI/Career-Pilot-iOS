@@ -53,13 +53,13 @@ struct MissingRequirementRow: View {
     }
 }
 
-#Preview {
-    VStack(spacing: 0) {
-        SectionHeader(title: "Missing Requirements", trailingText: "4 priority keywords")
-        Divider().background(Color.separator)
-        MissingRequirementRow(keyword: RequirementKeyword(name: "Kubernetes", priority: .high))
-        Divider().background(Color.separator)
-        MissingRequirementRow(keyword: RequirementKeyword(name: "GraphQL", priority: .medium))
-    }
-    .padding()
-}
+//#Preview {
+//    VStack(spacing: 0) {
+//        SectionHeader(title: "Missing Requirements", trailingText: "4 priority keywords")
+//        Divider().background(Color.separator)
+//        MissingRequirementRow(keyword: RequirementKeyword(name: "Kubernetes", priority: .high))
+//        Divider().background(Color.separator)
+//        MissingRequirementRow(keyword: RequirementKeyword(name: "GraphQL", priority: .medium))
+//    }
+//    .padding()
+//}

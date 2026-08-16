@@ -49,12 +49,12 @@ struct ScoreProgressBar: View {
         .frame(height: 6)
     }
 }
-
-#Preview {
-    VStack(spacing: 24) {
-        ScoreRingView(score: 73)
-        ScoreProgressBar(progress: 0.73)
-            .padding(.horizontal)
-    }
-    .padding()
-}
+//
+//#Preview {
+//    VStack(spacing: 24) {
+//        ScoreRingView(score: 73)
+//        ScoreProgressBar(progress: 0.73)
+//            .padding(.horizontal)
+//    }
+//    .padding()
+//}

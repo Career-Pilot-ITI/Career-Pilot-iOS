@@ -47,10 +47,10 @@ struct SuggestedEditCard: View {
     }
 }
 
-#Preview {
-    SuggestedEditCard(edit: SuggestedEdit.mockSingle)
-        .padding()
-}
+//#Preview {
+//    SuggestedEditCard(edit: SuggestedEdit.mockSingle)
+//        .padding()
+//}
 
 private extension SuggestedEdit {
     static let mockSingle = SuggestedEdit(

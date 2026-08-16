@@ -9,18 +9,22 @@ import SwiftUI
 import Shimmer
 
 struct ChoosePlanView: View {
-    @StateObject var viewModel: SubscriptionViewModel 
-    @EnvironmentObject var coordinator: AppCoordinator<SettingsRoute>
-    
+    @StateObject var viewModel: SubscriptionViewModel
+       @EnvironmentObject var coordinator: AppCoordinator<SettingsRoute>
+
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             switch viewModel.plansState {
             case .idle, .loading:
                 planSkeleton
-                
             case .failure:
-                Text("Couldn't load plans")
-                    .foregroundColor(.errorColour)
+                RetryableErrorView(
+                    title: "Couldn't load plans",
+                    message: "Please check your connection and try again.",
+                    onRetry: {
+                        Task { await viewModel.loadPlans() }
+                    }
+                )
                 
             case .success(let plans):
                 VStack(alignment: .leading, spacing: 4) {
@@ -60,10 +64,16 @@ struct ChoosePlanView: View {
                 Spacer()
                 
                 Button(action: {
-                    Task {
-                        await viewModel.handlePrimaryAction { checkoutItem in
-                            coordinator.push(.checkout(item: checkoutItem))
-                        }
+                    switch viewModel.primaryAction {
+                    case .currentPlan:
+                        break
+                        
+                    case .downgradeToFree:
+                        guard !viewModel.isCancelled else { return }   // already cancelled — nothing to do
+                        viewModel.showCancelAlert = true                // ask for confirmation first
+                        
+                    case .checkout(let displayInfo):
+                        coordinator.push(.checkout(item: displayInfo))
                     }
                 }) {
                     HStack {
@@ -82,10 +92,14 @@ struct ChoosePlanView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
                     .background(
-                        Capsule().fill(viewModel.isSelectedPlanCurrent ? Color.gray100 : Color.orange)
+                        Capsule().fill(viewModel.isSelectedPlanCurrent ? Color.gray100 : viewModel.selectedPlan == .free && viewModel.isCancelled == true ? Color.gray400 : Color.orange)
                     )
                 }
-                .disabled(viewModel.isSelectedPlanCurrent || viewModel.isPerformingAction)
+                .disabled(
+                    viewModel.isSelectedPlanCurrent ||
+                    viewModel.isPerformingAction ||
+                    viewModel.isDowngradeAlreadyCancelled
+                )
             }
         }
         .padding(20)
@@ -93,9 +107,19 @@ struct ChoosePlanView: View {
         .task {
             await viewModel.loadPlans()
         }
+        .alert("Cancel Subscription?", isPresented: $viewModel.showCancelAlert) {
+            Button("Keep Subscription", role: .cancel) {}
+            Button("Yes, Cancel", role: .destructive) {
+                Task {
+                    await viewModel.performCancelSubscription()
+                }
+            }
+        } message: {
+            Text("Are you sure you want to cancel your subscription? You will still retain all \(viewModel.activeUserPlan.rawValue.capitalized) Plan features until \(viewModel.formattedRenewalDate).")
+        }
+        
     }
-    
-    // MARK: - Shimmering skeleton, including the header
+    // MARK: - Shimmring skeleton, including the header
     private var planSkeleton: some View {
         VStack(alignment: .leading, spacing: 20) {
             // Header placeholder

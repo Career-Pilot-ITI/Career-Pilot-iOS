@@ -67,7 +67,7 @@ private struct StatusPill: View {
     }
 }
 
-#Preview {
-    MatchScoreCard(score: 73, matchLabel: "Good Match", matchedCount: 8, missingCount: 5)
-        .padding()
-}
+//#Preview {
+//    MatchScoreCard(score: 73, matchLabel: "Good Match", matchedCount: 8, missingCount: 5)
+//        .padding()
+//}

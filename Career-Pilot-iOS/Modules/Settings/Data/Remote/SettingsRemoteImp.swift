@@ -7,6 +7,8 @@
 
 import Foundation
 class SettingsRemoteImp : SettingsRemote{
+
+    
     var apiService: NetworkService
     
     init(apiService: NetworkService) {
@@ -79,6 +81,15 @@ class SettingsRemoteImp : SettingsRemote{
             return try await apiService.request(endpoint)
         }catch{
             print("problem in the downgrade")
+           throw error
+        }
+    }
+    func cancelSubscribtion() async throws {
+        let endpoint = SettingsEndpoint.cancelSubscribtion
+        do{
+            return try await apiService.request(endpoint)
+        }catch{
+            print("problem in the Cancel")
            throw error
         }
     }

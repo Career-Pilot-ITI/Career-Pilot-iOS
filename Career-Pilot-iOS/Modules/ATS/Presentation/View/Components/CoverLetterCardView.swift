@@ -78,10 +78,10 @@ struct CoverLetterCardView: View {
     }
 }
 
-#Preview {
-    ScrollView {
-        CoverLetterCardView(data: .sample)
-            .padding()
-    }
-    .background(Color.screenBackground)
-}
+//#Preview {
+//    ScrollView {
+//        CoverLetterCardView(data: .sample)
+//            .padding()
+//    }
+//    .background(Color.screenBackground)
+//}

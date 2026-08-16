@@ -176,4 +176,8 @@ class SettingsRepoImp : SettingsRepo  {
     func downgradeUserSubscription() async throws {
         try await remote.downgradeUserSubscribtion()
     }
+    func cancelUserSubscription() async throws {
+        try await remote.cancelSubscribtion()
+
+    }
 }

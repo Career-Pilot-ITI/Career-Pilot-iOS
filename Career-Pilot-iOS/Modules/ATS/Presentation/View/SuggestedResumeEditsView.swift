@@ -58,8 +58,8 @@ struct SuggestedResumeEditsView: View {
     }
 }
 
-#Preview {
-    NavigationStack {
-        SuggestedResumeEditsView(jobMatch: .mock)
-    }
-}
+//#Preview {
+//    NavigationStack {
+//        SuggestedResumeEditsView(jobMatch: .mock)
+//    }
+//}

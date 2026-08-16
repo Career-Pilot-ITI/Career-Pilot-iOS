@@ -9,9 +9,11 @@ import Foundation
 import Combine
 
 @MainActor
-final class SubscriptionViewModel: ObservableObject {
-    // MARK: - Published Properties
+final class SubscriptionViewModel: ObservableObject  {
+    
+    // MARK: - Published Properties (Plans & Selection)
     @Published var plansState: LoadState<[SubscriptionPlan]> = .idle
+    @Published var subscribationShown : LoadState<UserSubscribtionDomain> = .idle
     @Published var isPerformingAction: Bool = false
     @Published var actionError: Error?
     @Published var selectedPlan: PlanType? {
@@ -19,27 +21,35 @@ final class SubscriptionViewModel: ObservableObject {
     }
     @Published var buttonTitle: String = ""
     
-    // MARK: - Private Properties
+    // MARK: - Published Properties (My Subscription Status & Actions)
+    @Published var currentSubscriptionInfo: UserSubscribtionDomain?
+    @Published var isCancelled: Bool = false
+    @Published var showCancelAlert: Bool = false
+    @Published var isCancelling: Bool = false
+    
+    // MARK: - Dependencies
     private let getPlansUseCase: GetSubscribtionPlan
     private let getUserSubscribtion: GetUserSubscribtion
-    private let downgrade: DowngradeUserSubscription
+    private let cancelUserSubscribtion: CancelSubscription
     private let userSession: UserSession
+    
+    // MARK: - Private State
     private var fetchedUserPlan: PlanType?
     
     // MARK: - Init
     init(
         getPlansUseCase: GetSubscribtionPlan,
         getUserSubscribtion: GetUserSubscribtion,
-        downgrade: DowngradeUserSubscription,
+        cancelUserSubscribtion: CancelSubscription,
         userSession: UserSession
     ) {
         self.getPlansUseCase = getPlansUseCase
         self.getUserSubscribtion = getUserSubscribtion
-        self.downgrade = downgrade
+        self.cancelUserSubscribtion = cancelUserSubscribtion
         self.userSession = userSession
     }
     
-    // MARK: - Computed Properties
+    // MARK: - Computed Properties (Choose Plan Screen)
     var currentPlan: SubscriptionPlan? {
         plansState.value?.first { $0.type == selectedPlan }
     }
@@ -79,58 +89,104 @@ final class SubscriptionViewModel: ObservableObject {
         return .currentPlan
     }
     
+    // MARK: - Computed Properties (My Subscription Screen)
+    var activeUserPlan: PlanType {
+        fetchedUserPlan ?? .free
+    }
+    
+    var formattedStartDate: String {
+        guard let dateString = currentSubscriptionInfo?.startedAt else { return "N/A" }
+        return formatServerDate(dateString)
+    }
+    
+    var formattedRenewalDate: String {
+        guard let dateString = currentSubscriptionInfo?.renewalDate else { return "N/A" }
+        return formatServerDate(dateString)
+    }
+    
+    var planFeatures: [String] {
+        activeUserPlan.includedFeatures
+    }
+    
     // MARK: - Public Methods
     func loadPlans() async {
         plansState = .loading
         do {
-            let plans = try await getPlansUseCase.execute()
-            let userPlan = try await getUserSubscribtion.execute()
-            selectedPlan = userPlan.tier
-            fetchedUserPlan = userPlan.tier
-            updateButtonTitle()
+            async let plansTask = getPlansUseCase.execute()
+            async let userPlanTask = getUserSubscribtion.execute()
+            
+            let (plans, userPlan) = try await (plansTask, userPlanTask)
+            applyUserPlan(userPlan)
             plansState = .success(plans)
         } catch {
             plansState = .failure(error)
         }
     }
-    
-    /// Main entry point for the primary CTA button in the View
+
+    // New — dedicated to MySubscriptionView
+    func loadMySubscription() async {
+        subscribationShown = .loading
+        do {
+            print("I've entered here ")
+            let userPlan = try await getUserSubscribtion.execute()
+            print("The user plan is \(userPlan.tier)")
+
+            applyUserPlan(userPlan)
+            print("The user plan is \(userPlan.tier)")
+            subscribationShown = .success(userPlan)
+        } catch {
+            subscribationShown = .failure(error)
+        }
+    }
+
+    private func applyUserPlan(_ userPlan: UserSubscribtionDomain) {
+        currentSubscriptionInfo = userPlan
+        selectedPlan = userPlan.tier
+        fetchedUserPlan = userPlan.tier
+        isCancelled = !(userPlan.cancelledAt?.isEmpty ?? true)
+        updateButtonTitle()
+    }
     func handlePrimaryAction(onNavigateToCheckout: (CheckoutDisplayInfo) -> Void) async {
         switch primaryAction {
         case .currentPlan:
             break
             
         case .downgradeToFree:
-            await performDowngradeToFree()
+            await performCancelSubscription()
             
         case .checkout(let displayInfo):
             onNavigateToCheckout(displayInfo)
         }
     }
-    
-    private func performDowngradeToFree() async {
-        isPerformingAction = true
-        actionError = nil
-        
-        do {
-            _ = try await downgrade.execute()
-            
-            fetchedUserPlan = .free
-            selectedPlan = .free
-            
-            if var updatedUserData = userSession.userData {
-                updatedUserData.subscriptionPlan = PlanType.free.rawValue
-                userSession.userData = updatedUserData
-            }
-            
-            updateButtonTitle()
-        } catch {
-            actionError = error
+    var isDowngradeAlreadyCancelled: Bool {
+        if case .downgradeToFree = primaryAction {
+            return isCancelled
         }
-        
-        isPerformingAction = false
+        return false
     }
     
+    func performCancelSubscription() async {
+        guard !isCancelled else { return }   // don't cancel an already-cancelled subscription
+        
+        isCancelling = true
+        defer { isCancelling = false }
+        
+        do {
+            _ = try await cancelUserSubscribtion.execute()
+            isCancelled = true
+            
+            if var current = currentSubscriptionInfo {
+                current.cancelledAt = current.renewalDate
+                currentSubscriptionInfo = current
+            }
+            
+            ToastManager.shared.show("Subscription cancelled. Access remains active until \(formattedRenewalDate).")
+        } catch {
+            actionError = error
+            ToastManager.shared.show("Failed to cancel subscription: \(error.localizedDescription)")
+        }
+    }
+   
     private func updateButtonTitle() {
         guard let selectedPlan else {
             buttonTitle = ""
@@ -140,9 +196,43 @@ final class SubscriptionViewModel: ObservableObject {
         if isSelectedPlanCurrent {
             buttonTitle = "Current Plan"
         } else if selectedPlan == .free {
-            buttonTitle = "Go back to Free"
+            if self.isCancelled == true
+            {
+                buttonTitle = "You already will be on free"
+            }
+            else {
+                buttonTitle = "Go back to Free"
+            }
         } else {
             buttonTitle = "Upgrade to \(selectedPlan.rawValue.capitalized)"
         }
+    }
+    
+    private func formatServerDate(_ rawDate: String) -> String {
+        let isoFormatter = ISO8601DateFormatter()
+        isoFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        
+        var parsedDate = isoFormatter.date(from: rawDate)
+        if parsedDate == nil {
+            let standardISO = ISO8601DateFormatter()
+            parsedDate = standardISO.date(from: rawDate)
+        }
+        
+        guard let date = parsedDate else { return rawDate }
+        
+        let displayFormatter = DateFormatter()
+        displayFormatter.dateStyle = .medium
+        displayFormatter.timeStyle = .none
+        return displayFormatter.string(from: date)
+    }
+}
+
+
+extension SubscriptionViewModel: Hashable {
+    nonisolated static func == (lhs: SubscriptionViewModel, rhs: SubscriptionViewModel) -> Bool {
+        lhs === rhs
+    }
+    nonisolated func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
     }
 }
