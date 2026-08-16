@@ -13,13 +13,12 @@ struct ExperienceLevelSelector: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            Image(systemName: "chart.bar.fill")
-                .foregroundColor(.primaryNavy)
+            Image("experienceLevel")
                 .frame(width: 44, height: 44)
                 .background(
                     RoundedRectangle(cornerRadius: Radius.r12)
-                        .fill(Color.primaryNavy.opacity(0.06))
-                )
+                        .fill(Color.primary.opacity(0.6))
+                ).padding(.trailing,8)
             
             VStack(alignment: .leading, spacing: 8) {
                 Text("EXPERIENCE LEVEL")
@@ -42,7 +41,8 @@ struct ExperienceLevelSelector: View {
                             }
                     }
                 }
-            }
+            }.frame(maxWidth: .infinity)
+            Spacer()
         }
     }
 }

@@ -60,7 +60,7 @@ struct ProfileForm: View {
             }
             
             CustomProfileTextField(
-                icon: "tittle",
+                icon: "bag",
                 title: "Current Role / Title",
                 autocapitalization: .never,
                 text: $userData.title
@@ -84,7 +84,7 @@ struct ProfileForm: View {
             }
             .padding(.top, Spacing.s12)
         }
-        .padding(Spacing.s20)
+        .padding(Spacing.s4)
         .foregroundColor(.lightBackGround)
         .padding([.vertical, .horizontal], Spacing.s20)
         .foregroundColor(.background)
