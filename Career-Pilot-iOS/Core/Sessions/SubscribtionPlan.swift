@@ -37,6 +37,7 @@ final class SubscriptionAccessManager: SubscriptionAccessManaging {
         userSession.$userData
             .receive(on: RunLoop.main)
             .sink { [weak self] userData in
+                print("New plan is \(userData?.subscriptionPlan)")
                 self?.updateCurrentPlan(from: userData)
             }
             .store(in: &cancellables)
@@ -44,10 +45,13 @@ final class SubscriptionAccessManager: SubscriptionAccessManaging {
     
     private func updateCurrentPlan(from userData: UserModelSettingsView?) {
         guard let tierString = userData?.toUserSettingsDomain().subscriptionTier else {
+            print("Make it free: \(userData?.toUserSettingsDomain())")
             self.currentPlan = .free
             return
         }
-        self.currentPlan = PlanType(rawValue: tierString) ?? .free
+        print("tierString: \(tierString)")
+        self.currentPlan = PlanType(rawValue: tierString.lowercased()) ?? .free
+        print("CurrenPlan1: \(self.currentPlan)")
     }
     
     func canAccess(_ feature: AppFeature) -> Bool {
@@ -59,6 +63,7 @@ final class SubscriptionAccessManager: SubscriptionAccessManaging {
             return currentPlan == .plus || currentPlan == .pro
             
         case .videoSession:
+            print("Currnet plan is: \(currentPlan)")
             return currentPlan == .pro
         }
     }
