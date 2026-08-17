@@ -32,10 +32,13 @@ struct SettingsCard: View {
     }
     private func CustomIcon(icon: String) -> some View {
         Image(icon)
-            .frame(width: 44, height: 44)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 22, height: 22)
+            .padding(10)
             .background(
                 RoundedRectangle(cornerRadius: Radius.r12)
-                    .fill(Color.gray200.opacity(0.08))
+                    .fill(Color.gray600.opacity(0.1))
             )
     }
 }

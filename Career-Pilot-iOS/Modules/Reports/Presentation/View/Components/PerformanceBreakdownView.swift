@@ -16,9 +16,14 @@ struct PerformanceBreakdownView: View {
                 .foregroundStyle(Color.gray600)
                 .padding(.bottom, 4)
             
-            PerformanceRadarChart(metrics: metrics)
-                .frame(height: 300)
-                .padding(.bottom, 12)
+            HStack{
+                Spacer()
+                    PerformanceRadarChart(metrics: metrics)
+                        .frame(height: 300)
+                        .padding(.bottom, 12)
+                    Spacer()
+            }
+           
             
             RadarMetricsLegend(metrics: metrics)
         }

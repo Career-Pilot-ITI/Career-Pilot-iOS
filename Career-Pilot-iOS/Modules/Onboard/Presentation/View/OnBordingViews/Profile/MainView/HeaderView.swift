@@ -10,17 +10,15 @@ struct HeaderView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(spacing: Spacing.s12) {
-                Image("check")
+                Image("clicked")
                 Text("Ready to go!")
                     .font(.size16Bold)
-                    .foregroundColor(.activeColour)
             }
             
             Spacer().frame(height: Spacing.s8)
             
             Text("Your profile is set up")
                 .font(.size24Semibold)
-                .foregroundColor(.primaryNavy)
             
             Spacer().frame(height: Spacing.s4)
             

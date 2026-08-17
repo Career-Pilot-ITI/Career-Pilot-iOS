@@ -9,6 +9,7 @@ import SwiftUI
 
 extension Image {
     struct AppIcon {
+        static let coin = Image("coin")
         static let star = Image("star")
         static let bell = Image("bell")
         static let home = Image("home")

@@ -32,10 +32,9 @@ struct HomeView: View {
                 userSection
 
                 // MARK: - Subscription
-                SubscriptionCard(
-                    usedSessions: viewModel.usedSessions,
-                    totalSessions: viewModel.totalSessions
-                )
+                SubscriptionCard {
+                    coordinator.push(.subscribtion)
+                }
 
                 // MARK: - Progress
                 if let progressInfo = viewModel.progressInfo {
@@ -76,10 +75,17 @@ struct HomeView: View {
                 )
 
                 // MARK: - Recommended Interviews
-                recommendedInterviewsSection
 
+                if !viewModel.recommendedInterviews.isEmpty {
+                    recommendedInterviewsSection
+                }
+                
                 // MARK: - Recent Sessions
-                recentSessionsSection
+
+                if !viewModel.recentSessions.isEmpty {
+                    recentSessionsSection
+                }
+               
             }
             .padding(.horizontal, Spacing.s16)
             .padding(.vertical, Spacing.s12)
@@ -129,22 +135,28 @@ private extension HomeView {
     var recommendedInterviewsSection: some View {
 
         VStack(spacing: Spacing.s12) {
+            switch viewModel.tracksState {
+                case .idle, .loading ,.success:
+                    HStack {
+                        Text("Recommended For You")
+                            .font(.headline)
+                            .foregroundColor(.primary)
 
-            HStack {
-                Text("Recommended For You")
-                    .font(.headline)
-                    .foregroundColor(.primary)
+                        Spacer()
 
-                Spacer()
-
-                Button {
-                    coordinator.push(.InterviewsView)
-                } label: {
-                    Text("See all")
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundColor(.accentColor)
-                }
+                        Button {
+                            coordinator.push(.InterviewsView)
+                        } label: {
+                            Text("See all")
+                                .font(.subheadline.weight(.semibold))
+                                .foregroundColor(.accentColor)
+                        }
+                    }
+                case .error(_) :
+                    EmptyView()
+                    
             }
+          
 
             switch viewModel.tracksState {
 
@@ -154,8 +166,8 @@ private extension HomeView {
             case .success:
                 recommendedInterviewsContent
 
-            case .error(let message):
-                errorView(message: message)
+            case .error(_):
+                errorView(message: "Some Thing Went Wrong")
             }
         }
     }
@@ -209,6 +221,15 @@ private extension HomeView {
                             )
                         }
                     )
+                    .onTapGesture {
+                        print("Tapped on \(track.title)")
+                        coordinator.push(.interviewPrep(
+                                trackName: track.title,
+                                trackId: track.trackInterview.track.id,
+                                interviewType: .classic
+                            )
+                        )
+                    }
                 }
             }
         }
@@ -223,23 +244,29 @@ private extension HomeView {
     var recentSessionsSection: some View {
 
         VStack(spacing: Spacing.s12) {
+            
+            switch viewModel.tracksState {
+                case .idle, .loading ,.success:
+                HStack {
+                    Text("Recent Sessions")
+                        .font(.headline)
+                        .foregroundColor(.primary)
 
-            HStack {
-                Text("Recent Sessions")
-                    .font(.headline)
-                    .foregroundColor(.primary)
+                    Spacer()
 
-                Spacer()
-
-                Button {
-                    // Navigate to all recent sessions
-                    print("See all recent sessions")
-                    onSeeAllSessionsTapped?()
-                } label: {
-                    Text("See all")
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundColor(.accentColor)
+                    Button {
+                        // Navigate to all recent sessions
+                        print("See all recent sessions")
+                        onSeeAllSessionsTapped?()
+                    } label: {
+                        Text("See all")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundColor(.accentColor)
+                    }
                 }
+                case .error(_) :
+                    EmptyView()
+                    
             }
 
             switch viewModel.sessionsState {
@@ -250,8 +277,8 @@ private extension HomeView {
             case .success:
                 recentSessionsContent
 
-            case .error(let message):
-                errorView(message: message)
+            case .error(_):
+                errorView(message: "Some Thing Went Wrong")
             }
         }
     }
@@ -281,8 +308,13 @@ private extension HomeView {
                     iconColor: assignedColor,
                     action: {
                         print("Tapped on \(session.title)")
+                        coordinator.push(.sessionDetail(sessionId: session.id))
                     }
-                )
+                ).onTapGesture{
+                    
+                    print("Tapped on \(session.title)")
+                    coordinator.push(.sessionDetail(sessionId: session.id))
+                }
             }
         }
     }
@@ -305,8 +337,6 @@ private extension HomeView {
         }
         .frame(maxWidth: .infinity)
         .padding(Spacing.s16)
-        .background(Color(.secondarySystemGroupedBackground))
-        .cornerRadius(Radius.r12)
     }
 }
 

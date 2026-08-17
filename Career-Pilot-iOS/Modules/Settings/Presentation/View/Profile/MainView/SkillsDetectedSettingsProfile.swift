@@ -13,8 +13,15 @@ struct SkillsDetectedSettingsProfile: View {
         VStack(){
             SkillDetection(skills: skills)
             Text("Skills update automatically when you re-upload your CV. They can't be edited directly.").font(.size13Medium).foregroundStyle(Color.gray400)
-        }.padding(.vertical , Spacing.s20).padding(.horizontal , Spacing.s20).background(Color.white , in : RoundedRectangle(cornerRadius: Radius.r16
-                                                                                          )).padding(.horizontal , Spacing.s20)
+        }
+        .padding(.vertical , Spacing.s20)
+        .padding(.horizontal , Spacing.s20)
+        .background(Color.background ,
+            in : RoundedRectangle(
+            cornerRadius: Radius.r16
+            )
+        )
+        .padding(.horizontal , Spacing.s20)
     }
     @ViewBuilder
     private func SkillDetection(skills: [String]) -> some View {

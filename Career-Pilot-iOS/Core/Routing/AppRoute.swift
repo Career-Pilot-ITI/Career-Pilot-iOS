@@ -21,14 +21,21 @@ enum AuthRoute: Hashable {
 }
 
 enum HomeRoute: Hashable {
-    case sessionDetail(metrics: [RadarMetric], suggestions: [CoachingSuggestion])
+    
+//    case sessionDetail(metrics: [RadarMetric], suggestions: [CoachingSuggestion])
+    
     case interviewPrep(trackName: String, trackId: Int, interviewType: InterviewType)
-    case InterviewsView
     case practiceInterview(trackName: String, trackId: Int, interviewType: InterviewType)
     case sessionFeedback(feedback: InterviewFeedback, sessionId: Int)
+<<<<<<< HEAD
     
     case pathLearn(trackId: String, trackName: String)
     case quiz(trackId: String, trackTitle: String, subtopicId: String, subtopicTitle: String)
+=======
+    case sessionDetail(sessionId: Int)
+    case subscribtion
+    case InterviewsView
+>>>>>>> develop
     case atsJobMatch
     case atsjobDescription
     case coverLetter
@@ -39,7 +46,7 @@ enum HomeRoute: Hashable {
     case checkout(item: CheckoutDisplayInfo)
 }
 
-enum   CheckoutDisplayInfo : Hashable {
+enum CheckoutDisplayInfo : Hashable {
     case subscription(plan: String, monthlyPrice: String, billingCycle: String, total: String, checkoutItem: CheckoutItem)
     case coinPack(name: String, pricePerPack: String, coinsIncluded: String, total: String, checkoutItem: CheckoutItem)
     

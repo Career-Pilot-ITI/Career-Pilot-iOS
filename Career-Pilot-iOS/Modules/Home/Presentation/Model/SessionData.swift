@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct HomeSessionInfo: Identifiable {
-    let id = UUID()
+    let id : Int
     let score: Int
     let title: String
     let time: String
@@ -32,6 +32,7 @@ struct PracticeTip: Identifiable {
 extension ReportsInterviewSession {
     static func toHomeSessionInfo(from session: ReportsInterviewSession) -> HomeSessionInfo {
         HomeSessionInfo(
+            id: session.id,
             score: Int(session.overallScore ?? 0),
             title: session.trackName,
             time: "\(session.targetDurationMinutes) min"

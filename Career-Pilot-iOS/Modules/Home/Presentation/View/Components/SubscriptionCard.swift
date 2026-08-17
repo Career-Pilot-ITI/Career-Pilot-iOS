@@ -8,34 +8,35 @@
 import SwiftUI
 
 struct SubscriptionCard: View {
-    var usedSessions: Double
-    var totalSessions: Double
-    
+//    var usedSessions: Double
+//    var totalSessions: Double
+    let onClickUpgrade: () -> Void
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 8) {
-                Text("FREE TRIAL")
+                Text("FREE Plan")
                     .font(.caption)
                     .fontWeight(.bold)
                     .opacity(0.9)
                 
-                Text("\(Int(totalSessions - usedSessions)) free session remaining")
+                Text("Upgrade to open more features")
                     .font(.headline)
                 
-                ProgressView(value: usedSessions, total: totalSessions)
-                    .tint(.white)
-                    .scaleEffect(x: 1, y: 1.5, anchor: .center)
-                
-                Text("\(Int(usedSessions)) of \(Int(totalSessions)) free sessions used")
-                    .font(.caption2)
-                    .opacity(0.8)
+//                Text("\(Int(totalSessions - usedSessions)) free session remaining")
+//                    .font(.headline)
+//                
+//                ProgressView(value: usedSessions, total: totalSessions)
+//                    .tint(.white)
+//                    .scaleEffect(x: 1, y: 1.5, anchor: .center)
+//                
+//                Text("\(Int(usedSessions)) of \(Int(totalSessions)) free sessions used")
+//                    .font(.caption2)
+//                    .opacity(0.8)
             }
             
             Spacer()
             
-            Button(action: {
-                // Handle upgrade logic
-            }) {
+            Button(action: onClickUpgrade) {
                 Text("Upgrade")
                 .fontWeight(.semibold)
                 .foregroundColor(.white)

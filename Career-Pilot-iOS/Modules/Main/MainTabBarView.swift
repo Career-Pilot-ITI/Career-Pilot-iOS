@@ -33,83 +33,69 @@ struct MainTabBarView: View {
                 })
                 .navigationDestination(for: HomeRoute.self) { route in
                     switch route {
-                    case .sessionDetail(let metrics, let suggestions):
-                        Text("Session Detail View")
-
+                    case .sessionDetail(let sessionId):
+                        SessionView(
+                            sessionId: sessionId,
+                            viewModel: DIContainer.shared.container.resolve(SessionDetailViewModel.self, argument: sessionId)!
+                        )
+                        
                     case let .interviewPrep(trackName, trackId, interviewType):
                         InterviewPrepContainerView(
                             trackName: trackName,
                             trackId: trackId,
                             interviewType: interviewType
                         )
-
+                        
                     case let .practiceInterview(_, trackId, interviewType):
                         PracticeSessionView(
                             vm: DIContainer.shared.container.resolve(PracticeSessionViewModel.self)!,
                             trackId: trackId,
                             interviewType: interviewType
                         )
-
+                        
                     case .InterviewsView:
                         InterviewsView()
-
-                    case .sessionFeedback(let feedback, let sessionId):
-                        SessionFeedBackView(feedback: feedback, sessionId: sessionId) {
+                        
+                    case .sessionFeedback(let feedBack, let sessionId):
+                        SessionFeedBackView(feedback: feedBack, sessionId: sessionId) {
                             homeCoordinator.popToRoot()
                         }
                         .navigationBarBackButtonHidden()
-
+                        
                     case .atsJobMatch:
                         ATSJobMatchView()
-
+                        
                     case .atsjobDescription:
                         JobDescriptionView()
-
+                        
                     case .coverLetter:
                         CoverLetterView()
-
+                        
                     case .atsJobmatchScore:
                         JobMatchView(onBuyCoins: {
                             homeCoordinator.popToRoot()
                             settingsDeepLink = .coin
                             selectedTab = .settings
                         })
-
+                        
                     case .cvOptimizeProgress:
                         CvOptimizeProgressView()
-
+                        
                     case .cvOptimizeResults:
                         CvOptimizeResultsView()
-
-                    case .subscriptionView:
+                        
+                    case .subscribtion, .subscriptionView:
                         ChoosePlanView(
                             viewModel: DIContainer.shared.container.resolve(SubscriptionViewModel.self)!
                         )
-
+                        
                     case .checkout(let item):
                         CheckOutView(
                             checkoutDisplayInfo: item,
                             paymentVM: DIContainer.shared.container.resolve(PaymentViewModel.self)!
                         ) {
-                            print("Back to root")
                             homeCoordinator.popToRoot()
                         }
-
-                    case let .pathLearn(trackId, trackName):
-                        PathLearnView(
-                            viewModel: DIContainer.shared.container.resolve(
-                                PathLearnViewModel.self,
-                                arguments: String(trackId), trackName
-                            )!
-                        )
-
-                    case let .quiz(trackId, trackTitle, subtopicId, subtopicTitle):
-                        QuizView(
-                            viewModel: DIContainer.shared.container.resolve(
-                                QuizViewModel.self,
-                                arguments: trackId, trackTitle, subtopicId, subtopicTitle
-                            )!
-                        )
                     }
                 }
             }

@@ -1,7 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Icon-19.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "Icon (9).png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,11 +22,21 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Icon-11.png",
+      "filename" : "Icon-14.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -31,6 +51,16 @@
       "scale" : "2x"
     },
     {
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
       "idiom" : "universal",
       "scale" : "3x"
     },

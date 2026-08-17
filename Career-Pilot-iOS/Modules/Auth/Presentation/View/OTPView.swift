@@ -32,9 +32,11 @@ struct OTPView: View {
             Color.background.ignoresSafeArea()
 
             VStack(alignment: .leading) {
+                
                 Text("Enter your code")
                     .font(.size26Semibold)
                     .padding(.bottom, 8)
+                
                 HStack {
                     Text("Sent to")
                         .font(.size14Regular)
