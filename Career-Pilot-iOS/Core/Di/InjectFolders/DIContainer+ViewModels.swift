@@ -160,7 +160,8 @@ extension DIContainer{
         container.register(CvOptimizeViewModel.self) { r in
             CvOptimizeViewModel(
                 triggerUseCase: r.resolve(TriggerCvOptimizeUseCase.self)!,
-                pollUseCase: r.resolve(PollCvOptimizeUseCase.self)!
+                pollUseCase: r.resolve(PollCvOptimizeUseCase.self)!,
+                toastManager: .shared
             )
         }.inObjectScope(.container)
 

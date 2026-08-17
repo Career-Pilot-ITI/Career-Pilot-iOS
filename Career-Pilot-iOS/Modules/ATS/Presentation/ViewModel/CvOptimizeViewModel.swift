@@ -57,6 +57,7 @@ class CvOptimizeViewModel: ObservableObject {
 
     private let triggerUseCase: TriggerCvOptimizeUseCase
     private let pollUseCase: PollCvOptimizeUseCase
+    private let toastManager: ToastManager
 
     // MARK: - Polling internals
 
@@ -75,6 +76,7 @@ class CvOptimizeViewModel: ObservableObject {
     init(
         triggerUseCase: TriggerCvOptimizeUseCase,
         pollUseCase: PollCvOptimizeUseCase,
+        toastManager: ToastManager,
         pollInterval: UInt64 = 2_000_000_000,
         maxPollCount: Int = 90,
         stillWorkingThreshold: TimeInterval = 12,
@@ -82,6 +84,7 @@ class CvOptimizeViewModel: ObservableObject {
     ) {
         self.triggerUseCase = triggerUseCase
         self.pollUseCase = pollUseCase
+        self.toastManager = toastManager
         self.pollInterval = pollInterval
         self.maxPollCount = maxPollCount
         self.stillWorkingThreshold = stillWorkingThreshold
@@ -108,10 +111,10 @@ class CvOptimizeViewModel: ObservableObject {
             let initialResponse = try await triggerUseCase.execute(workspaceId)
 
             if initialResponse.status == .failed {
-                state = .failed(
-                    message: initialResponse.errorMessage
-                        ?? "Something went wrong — your coins have been refunded."
-                )
+                let message = initialResponse.errorMessage
+                    ?? "Something went wrong — your coins have been refunded."
+                state = .failed(message: message)
+                toastManager.show(message, type: .error)
                 return
             }
 
@@ -129,9 +132,9 @@ class CvOptimizeViewModel: ObservableObject {
             }
 
         } catch {
-            state = .failed(
-                message: "Couldn't start CV optimization. Please check your connection and try again."
-            )
+            let message = "Couldn't start CV optimization. Please check your connection and try again."
+            state = .failed(message: message)
+            toastManager.show(message, type: .error)
         }
     }
 
@@ -171,11 +174,11 @@ class CvOptimizeViewModel: ObservableObject {
                 let response = try await pollUseCase.execute(workspaceId)
 
                 if response.status == .failed {
-                state = .failed(
-                    message: response.errorMessage
+                    let message = response.errorMessage
                         ?? "Something went wrong — your coins have been refunded."
-                )
-                return
+                    state = .failed(message: message)
+                    toastManager.show(message, type: .error)
+                    return
                 }
 
                 if response.status == .completed || response.progressPercentage >= 100 {
@@ -188,7 +191,9 @@ class CvOptimizeViewModel: ObservableObject {
             } catch {
                 print("CvOptimize: Poll error at iteration \(iteration): \(error)")
                 guard isRetryable(error) else {
-                    state = .failed(message: errorMessage(for: error))
+                    let message = errorMessage(for: error)
+                    state = .failed(message: message)
+                    toastManager.show(message, type: .error)
                     return
                 }
             }
@@ -200,6 +205,7 @@ class CvOptimizeViewModel: ObservableObject {
         // Max polls exceeded
         if !Task.isCancelled {
             state = .timeout
+            toastManager.show("Optimization is taking longer than expected. Please try again.", type: .error)
         }
     }
 
@@ -220,7 +226,9 @@ class CvOptimizeViewModel: ObservableObject {
 
     private func complete(with response: CvOptimizeResponse) async {
         guard let result = response.result else {
-            state = .failed(message: "Optimization completed but results were empty. Please try again.")
+            let message = "Optimization completed but results were empty. Please try again."
+            state = .failed(message: message)
+            toastManager.show(message, type: .error)
             return
         }
 
