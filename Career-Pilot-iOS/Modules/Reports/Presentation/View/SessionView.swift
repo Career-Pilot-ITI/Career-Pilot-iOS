@@ -30,6 +30,7 @@ struct SessionView: View {
                 }
             }
         }
+        .toolbar(.hidden,for: .tabBar)
         .task {
             await viewModel.loadFeedback()
         }

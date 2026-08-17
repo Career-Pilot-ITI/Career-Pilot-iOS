@@ -34,7 +34,7 @@ struct ExperienceLevelSelector: View {
                             .padding(.vertical, 10)
                             .background(
                                 Capsule()
-                                    .fill(selected == option ? Color.primaryNavy : Color.gray100)
+                                    .fill(selected == option ? Color.primary : Color.gray100)
                             )
                             .onTapGesture {
                                 selected = option

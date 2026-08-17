@@ -104,6 +104,7 @@ struct ChoosePlanView: View {
                 )
             }
         }
+        .toolbar(.hidden,for: .tabBar)
         .padding(20)
         .background(Color.background)
         .task {
@@ -182,6 +183,7 @@ struct ChoosePlanView: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 52)
         }
+        .toolbar(.hidden,for: .tabBar)
         .shimmering()
     }
 

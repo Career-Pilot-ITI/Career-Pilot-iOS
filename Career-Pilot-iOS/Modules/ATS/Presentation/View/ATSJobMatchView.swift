@@ -120,6 +120,7 @@ struct ATSJobMatchView: View {
                     Spacer()
                 }
             }
+            .toolbar(.hidden,for: .tabBar)
             .padding(.horizontal, Spacing.s20)
             .padding(.top, Spacing.s16)
             .task {
