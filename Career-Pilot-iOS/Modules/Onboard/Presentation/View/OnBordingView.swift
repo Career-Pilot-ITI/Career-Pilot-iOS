@@ -149,8 +149,4 @@ struct OnBordingView_Previews: PreviewProvider {
         OnBordingView()
     }
 }
-//
-//#Preview {
-//    OnBordingView()
-//        .environmentObject(AppState())
-//}
+
