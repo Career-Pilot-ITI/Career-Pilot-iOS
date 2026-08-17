@@ -151,6 +151,7 @@ extension DIContainer{
                 generateCoverLetterUseCase: r.resolve(GenerateCoverLetterUseCase.self)!,
                 uploadCvUseCase: r.resolve(UploadCvUseCase.self)!,
                 userRepo: r.resolve(UserDataRepo.self)!,
+                userSession: r.resolve(UserSession.self)!,
                 toastManager: .shared
             )
         }.inObjectScope(.container)

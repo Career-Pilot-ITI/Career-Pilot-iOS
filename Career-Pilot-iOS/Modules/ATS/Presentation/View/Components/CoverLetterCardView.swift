@@ -73,7 +73,7 @@ struct CoverLetterCardView: View {
             }
         }
         .padding(16)
-        .background(Color.cardBackground)
+        .background(Color.gray400.opacity(0.08))
         .clipShape(RoundedRectangle(cornerRadius: Radius.r16, style: .continuous))
     }
 }

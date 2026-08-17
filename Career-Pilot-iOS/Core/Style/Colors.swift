@@ -67,6 +67,9 @@ extension Color {
    static let primaryTeal = Color("Teal")
    static let primaryTealLight = Color("TealLight")
    static let primaryNavy = Color("PrimaryNavy")
+   static let primaryNavyCardBackGround = Color("PrimaryNavyCardBackGround")
+   static let chipColorSelected = Color("ChipColorSelected")
+   static let chipColor = Color("ChipColor")
    static let tealAccent = Color(red: 0.31, green: 0.86, blue: 0.76)
 
    static let priorityHigh = Color(hex: "FF5A5A")
@@ -105,7 +108,9 @@ extension Color {
     static let greenCardBg = Color.matchGreen.opacity(0.10)
     static let amberCardBg = Color.matchAmber.opacity(0.10)
     
-    
+    static let trackBackground = Color.white.opacity(0.15)
+    static let textOnCard = Color.white
+    static let textOnCardSecondary = Color.white.opacity(0.5)
 }
 
 

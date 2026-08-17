@@ -67,7 +67,7 @@ struct OverallScoreCardView: View {
             RoundedRectangle(cornerRadius: Radius.r16)
                 .fill(
                     LinearGradient(
-                        colors: [Color.primaryNavy, Color.primaryNavy.opacity(0.85)],
+                        colors: [Color.primaryNavyCardBackGround, Color.primaryNavyCardBackGround.opacity(0.85)],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )
