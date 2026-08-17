@@ -98,7 +98,7 @@ struct ProfilePhoto: View {
             .sheet(isPresented: $showImagePickerDialog) {
                 PhotoPicker(selectedImage: $image)
             }
-            .onChange(of: image) { _, newImage in
+            .onChange(of: image) { newImage in
                 guard let newImage = newImage, let data = newImage.jpegData(compressionQuality: 0.8) else { return }
                 onImagePicked(data)
             }

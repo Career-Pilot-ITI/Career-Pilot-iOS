@@ -137,8 +137,9 @@ final class SubscriptionViewModel: ObservableObject  {
         do {
             print("I've entered here ")
             let userPlan = try await getUserSubscribtion.execute()
+            print("the user plan total is \(userPlan)")
             print("The user plan is \(userPlan.tier)")
-
+             
             applyUserPlan(userPlan)
             print("The user plan is \(userPlan.tier)")
             subscribationShown = .success(userPlan)
