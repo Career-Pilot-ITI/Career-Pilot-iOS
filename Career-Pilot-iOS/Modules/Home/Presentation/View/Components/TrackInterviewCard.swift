@@ -13,11 +13,15 @@ struct CareerCardView: View {
     let tagText: String
     let durationText: String
     let accentColor: Color
-    let action: () -> Void
+    let onStartInterview: () -> Void
+    let onStartQuiz: () -> Void
+    
+    @State private var showEntryOptions = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.s12) {
             
+            // Icon
             ZStack {
                 RoundedRectangle(cornerRadius: Radius.r16)
                     .fill(accentColor.opacity(0.12))
@@ -56,7 +60,7 @@ struct CareerCardView: View {
                 
                 Spacer()
                 
-                Button(action: action) {
+                Button(action: { showEntryOptions = true }) {
                     Image(systemName: "chevron.right")
                         .font(.size16Bold)
                         .foregroundColor(.white)
@@ -75,5 +79,14 @@ struct CareerCardView: View {
             RoundedRectangle(cornerRadius: Radius.r24)
                 .stroke(Color(.systemGray6), lineWidth: 1)
         )
+        .confirmationDialog(
+            "Start \(title)",
+            isPresented: $showEntryOptions,
+            titleVisibility: .visible
+        ) {
+            Button("Interview") { onStartInterview() }
+            Button("Quiz Path") { onStartQuiz() }
+            Button("Cancel", role: .cancel) {}
+        }
     }
 }

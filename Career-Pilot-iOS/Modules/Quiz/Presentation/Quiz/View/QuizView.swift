@@ -49,7 +49,6 @@ private extension QuizView {
         }
     }
 
-    // MARK: Progress bar — tracks position through the quiz
 
     var progressBar: some View {
         let fraction = viewModel.questions.isEmpty
@@ -72,6 +71,7 @@ private extension QuizView {
         .padding(.bottom, Spacing.s16)
     }
 
+    // MARK: Loading State
 
     var loadingView: some View {
         VStack(alignment: .leading, spacing: Spacing.s20) {
@@ -86,7 +86,7 @@ private extension QuizView {
             VStack(spacing: Spacing.s12) {
                 ForEach(0..<4, id: \.self) { _ in
                     RoundedRectangle(cornerRadius: Spacing.s8)
-                        .fill(Color.gray100)
+                        .fill(Color.gray200)
                         .frame(height: 52)
                 }
             }
@@ -106,7 +106,6 @@ private extension QuizView {
         }
     }
 
-    // MARK: Completed
 
     var completedView: some View {
         let total = viewModel.questions.count
@@ -114,66 +113,150 @@ private extension QuizView {
         let fraction = total == 0 ? 0 : Double(score) / Double(total)
         let isStrong = fraction >= 0.7
 
-        return VStack(spacing: Spacing.s24) {
-            Spacer()
+        return VStack(spacing: 0) {
+            ScrollView {
+                VStack(spacing: Spacing.s24) {
+                    ZStack {
+                        Circle()
+                            .stroke(Color.gray400, lineWidth: 8)
+                            .frame(width: 120, height: 120)
 
-            ZStack {
-                Circle()
-                    .stroke(Color.gray200, lineWidth: 8)
-                    .frame(width: 120, height: 120)
+                        Circle()
+                            .trim(from: 0, to: fraction)
+                            .stroke(
+                                isStrong ? AppColors.success : AppColors.error,
+                                style: StrokeStyle(lineWidth: 8, lineCap: .round)
+                            )
+                            .frame(width: 120, height: 120)
+                            .rotationEffect(.degrees(-90))
+                            .animation(.easeOut(duration: 0.7), value: fraction)
 
-                Circle()
-                    .trim(from: 0, to: fraction)
-                    .stroke(
-                        isStrong ? AppColors.success : AppColors.error,
-                        style: StrokeStyle(lineWidth: 8, lineCap: .round)
-                    )
-                    .frame(width: 120, height: 120)
-                    .rotationEffect(.degrees(-90))
-                    .animation(.easeOut(duration: 0.7), value: fraction)
+                        VStack(spacing: 2) {
+                            Text("\(score)/\(total)")
+                                .font(.size20Semibold)
+                                .foregroundColor(AppColors.primaryText)
+                            Text("\(Int(fraction * 100))%")
+                                .font(.size12Regular)
+                                .foregroundColor(AppColors.secondaryText)
+                        }
+                    }
+                    .padding(.top, Spacing.s24)
 
-                VStack(spacing: 2) {
-                    Text("\(score)/\(total)")
-                        .font(.size20Semibold)
-                        .foregroundColor(AppColors.primaryText)
-                    Text("\(Int(fraction * 100))%")
-                        .font(.size12Regular)
-                        .foregroundColor(AppColors.secondaryText)
+                    VStack(spacing: Spacing.s6) {
+                        Text(isStrong ? "Nice work!" : "Quiz Completed")
+                            .font(.size24Semibold)
+                            .foregroundColor(AppColors.primaryText)
+
+                        Text(isStrong
+                             ? "You've got a solid grasp of \(viewModel.subtopicTitle)."
+                             : "Review \(viewModel.subtopicTitle) and give it another shot.")
+                            .font(.size14Regular)
+                            .foregroundColor(AppColors.secondaryText)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, Spacing.s24)
+                    }
+
+                    reviewList
                 }
+                .padding(.bottom, Spacing.s16)
             }
-
-            VStack(spacing: Spacing.s6) {
-                Text(isStrong ? "Nice work!" : "Quiz Completed")
-                    .font(.size24Semibold)
-                    .foregroundColor(AppColors.primaryText)
-
-                Text(isStrong
-                     ? "You've got a solid grasp of \(viewModel.subtopicTitle)."
-                     : "Review \(viewModel.subtopicTitle) and give it another shot.")
-                    .font(.size14Regular)
-                    .foregroundColor(AppColors.secondaryText)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, Spacing.s24)
-            }
-
-            Spacer()
 
             Button {
                 coordinator.pop()
             } label: {
                 Text("Done")
                     .font(.size16Bold)
+                    .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, Spacing.s12)
                     .background(Color.primary)
-                    .foregroundColor(.white)
                     .cornerRadius(Spacing.s8)
             }
+            .padding(.top, Spacing.s12)
             .padding(.bottom, Spacing.s12)
         }
     }
 
-    // MARK: Question content
+    // MARK: Review list — per-question breakdown, correct vs picked answer
+
+    var reviewList: some View {
+        VStack(alignment: .leading, spacing: Spacing.s12) {
+            Text("Review Answers")
+                .font(.size15Bold)
+                .foregroundColor(AppColors.primaryText)
+                .padding(.horizontal, Spacing.s4)
+
+            ForEach(Array(viewModel.questions.enumerated()), id: \.offset) { index, question in
+                reviewRow(question: question, index: index)
+            }
+        }
+        .padding(.horizontal, Spacing.s4)
+    }
+
+    func reviewRow(question: QuestionEntity, index: Int) -> some View {
+        let picked: Int? = viewModel.selectedAnswers[index]
+        let correctIdx: Int = question.correctIndex
+        let isCorrect: Bool = picked == correctIdx
+
+        let fillColor: Color = isCorrect
+            ? AppColors.success.opacity(0.08)
+            : AppColors.error.opacity(0.08)
+
+        let strokeColor: Color = isCorrect
+            ? AppColors.success.opacity(0.4)
+            : AppColors.error.opacity(0.4)
+
+        return VStack(alignment: .leading, spacing: Spacing.s8) {
+            Text("\(index + 1). \(question.questionText)")
+                .font(.size14Bold)
+                .foregroundColor(AppColors.primaryText)
+                .fixedSize(horizontal: false, vertical: true)
+
+            ForEach(0..<question.options.count, id: \.self) { optIdx -> AnyView in
+                AnyView(
+                    reviewOptionRow(
+                        text: question.options[optIdx],
+                        optIdx: optIdx,
+                        picked: picked,
+                        correctIdx: correctIdx
+                    )
+                )
+            }
+        }
+        .padding(Spacing.s16)
+        .background(
+            RoundedRectangle(cornerRadius: Spacing.s12, style: .continuous)
+                .fill(fillColor)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: Spacing.s12, style: .continuous)
+                .stroke(strokeColor, lineWidth: 1)
+        )
+    }
+
+    @ViewBuilder
+    func reviewOptionRow(text: String, optIdx: Int, picked: Int?, correctIdx: Int) -> some View {
+        let isCorrectOption = optIdx == correctIdx
+        let isPickedWrong = optIdx == picked && picked != correctIdx
+
+        HStack(spacing: Spacing.s8) {
+            Image(systemName: isCorrectOption ? "checkmark.circle.fill" : (isPickedWrong ? "xmark.circle.fill" : "circle"))
+                .foregroundColor(
+                    isCorrectOption ? AppColors.success : (isPickedWrong ? AppColors.error : AppColors.secondaryText)
+                )
+
+            Text(text)
+                .font(.size13Regular)
+                .foregroundColor(
+                    isCorrectOption ? AppColors.success : (isPickedWrong ? AppColors.error : AppColors.secondaryText)
+                )
+                .fixedSize(horizontal: false, vertical: true)
+
+            Spacer(minLength: 0)
+        }
+    }
+
+    // MARK: Question Content
 
     var questionContentView: some View {
         let currentQ = viewModel.questions[viewModel.currentIndex]
@@ -182,7 +265,7 @@ private extension QuizView {
         return VStack(alignment: .leading, spacing: Spacing.s16) {
             Text("Question \(viewModel.currentIndex + 1) of \(viewModel.questions.count)")
                 .font(.size13Semibold)
-                .foregroundColor(Color.gray600)
+                .foregroundColor(AppColors.secondaryText)
 
             Text(currentQ.questionText)
                 .font(.size18Bold)
@@ -203,7 +286,6 @@ private extension QuizView {
     var questionTransition: AnyTransition {
         AnyTransition.opacity.combined(with: .move(edge: .trailing))
     }
-
 
     func optionsList(currentQ: QuestionEntity, selected: Int?) -> some View {
         ScrollView {
@@ -227,12 +309,12 @@ private extension QuizView {
 
                     Text(optionLabel(for: index))
                         .font(.size14Bold)
-                        .foregroundColor(isSelected ? .white : AppColors.secondaryText)
+                        .foregroundColor(isSelected ? .white : .gray)
                 }
 
                 Text(text)
                     .font(.size15Medium)
-                    .foregroundColor(isSelected ? .white : AppColors.primaryText)
+                    .foregroundColor(isSelected ? .white : .gray600)
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
 
@@ -250,7 +332,7 @@ private extension QuizView {
             )
             .overlay(
                 RoundedRectangle(cornerRadius: Spacing.s12, style: .continuous)
-                    .stroke(isSelected ? Color.clear : Color.gray200, lineWidth: 1)
+                    .stroke(isSelected ? Color.clear : Color.gray600, lineWidth: 1)
             )
         }
         .buttonStyle(.plain)
@@ -262,7 +344,7 @@ private extension QuizView {
         return String(Character(scalar))
     }
 
-    // MARK: Next / Submit
+    // MARK: Action Button
 
     @ViewBuilder
     func actionButton(selected: Int?) -> some View {
@@ -279,7 +361,7 @@ private extension QuizView {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, Spacing.s12)
                     .background(isDisabled ? Color.gray200 : Color.primary)
-                    .foregroundColor(isDisabled ? Color.gray400 : .white)
+                    .foregroundColor(isDisabled ? .gray : .white)
                     .cornerRadius(Spacing.s8)
             }
             .disabled(isDisabled)
@@ -301,14 +383,14 @@ private extension QuizView {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, Spacing.s12)
                 .background(isDisabled ? Color.gray200 : Color.primary)
-                .foregroundColor(isDisabled ? Color.gray400 : .white)
+                .foregroundColor(isDisabled ? AppColors.secondaryText : .white)
                 .cornerRadius(Spacing.s8)
             }
             .disabled(isDisabled)
         }
     }
 
-    // MARK: Error
+    // MARK: Error State
 
     func errorView(_ error: String) -> some View {
         VStack(spacing: Spacing.s16) {

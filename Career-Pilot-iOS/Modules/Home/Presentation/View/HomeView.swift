@@ -42,15 +42,26 @@ struct HomeView: View {
                     ProgressCard(info: progressInfo)
                 }
                 // MARK: - Practice
-                PracticeCard(category: "Software Engineering") {
-                    coordinator.push(
-                        .interviewPrep(
-                            trackName: "Software Engineering",
-                            trackId: viewModel.user.profile.trackId,
-                            interviewType: .classic
+                PracticeCard(
+                    category: "SOFTWARE ENGINEERING",
+                    onStartInterview: {
+                        coordinator.push(
+                            .interviewPrep(
+                                trackName: "SOFTWARE ENGINEERING",
+                                trackId: viewModel.user.profile.trackId,
+                                interviewType: .classic
+                            )
                         )
-                    )
-                }
+                    },
+                    onStartQuiz:{
+                        coordinator.push(
+                                .pathLearn(
+                                    trackId: String(viewModel.user.profile.trackId),
+                                    trackName: "SOFTWARE ENGINEERING"
+                                )
+                        )
+                    } 
+                )
 
                 // MARK: - ATS
                 ATSCard(
@@ -159,11 +170,10 @@ private extension HomeView {
             }
         }
     }
-
     var recommendedInterviewsContent: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: Spacing.s16) {
-
+                
                 ForEach(
                     Array(viewModel.recommendedInterviews.enumerated()),
                     id: \.offset
@@ -177,19 +187,31 @@ private extension HomeView {
                         tagText: track.tagText,
                         durationText: track.durationText,
                         accentColor: assignedColor,
-                        action: {
-                            print("Tapped on \(track.title)")
-                            coordinator.push(.interviewPrep(
+                        onStartInterview: {
+                            coordinator.push(
+                                .interviewPrep(
                                     trackName: track.title,
                                     trackId: track.trackInterview.track.id,
-                                    interviewType: .classic
+                                    interviewType: .custom(
+                                        mode: .audio,
+                                        maxQuestions: track.level.duration/10,
+                                        maxAnswerDuration: 3,
+                                        maxInterviewDuration: TimeInterval(track.level.duration),
+                                    )
+                                )
+                            )
+                        },
+                        onStartQuiz: {
+                            coordinator.push(
+                                .pathLearn(
+                                    trackId: String(track.trackInterview.track.id),
+                                    trackName: track.title
                                 )
                             )
                         }
                     )
                 }
             }
-            
         }
     }
 }

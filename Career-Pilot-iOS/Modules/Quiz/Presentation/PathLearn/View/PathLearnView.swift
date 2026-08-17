@@ -17,6 +17,7 @@ struct PathLearnView: View {
 
     var body: some View {
         contentView
+            .toolbar(.hidden)
             .navigationTitle(viewModel.trackTitle)
             .navigationBarTitleDisplayMode(.inline)
             .background(Color.background.ignoresSafeArea())
@@ -43,8 +44,7 @@ private extension PathLearnView {
         }
     }
 
-    // MARK: Progress header — the signature element: this is a path, show the walk so far
-
+  
     var progressHeader: some View {
         let total = viewModel.subtopics.count
         let completed = viewModel.subtopics.filter(\.isCompleted).count
@@ -92,12 +92,11 @@ private extension PathLearnView {
         .padding(.top, Spacing.s12)
     }
 
-    // MARK: Loading — real skeleton shaped like the eventual content
 
     var loadingView: some View {
         VStack(spacing: Spacing.s12) {
             RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)
-                .fill(Color.gray400.opacity(0.06))
+                .fill(Color.gray600.opacity(0.06))
                 .frame(height: 84)
                 .padding(.horizontal, Spacing.s16)
                 .padding(.top, Spacing.s12)
@@ -114,15 +113,15 @@ private extension PathLearnView {
     var subtopicSkeletonRow: some View {
         HStack(spacing: Spacing.s16) {
             Circle()
-                .fill(Color.gray200)
+                .fill(Color.gray600)
                 .frame(width: 22, height: 22)
 
             VStack(alignment: .leading, spacing: Spacing.s6) {
                 RoundedRectangle(cornerRadius: 4)
-                    .fill(Color.gray200)
+                    .fill(Color.gray400)
                     .frame(width: 160, height: 14)
                 RoundedRectangle(cornerRadius: 4)
-                    .fill(Color.gray200)
+                    .fill(Color.gray400)
                     .frame(width: 90, height: 10)
             }
             Spacer()
@@ -180,7 +179,7 @@ private extension PathLearnView {
         VStack(spacing: Spacing.s16) {
             ZStack {
                 Circle()
-                    .fill(Color.gray200)
+                    .fill(Color.gray400)
                     .frame(width: 64, height: 64)
                 Image(systemName: "signpost.right.and.left")
                     .font(.system(size: 24))
@@ -249,7 +248,7 @@ private extension PathLearnView {
 
                     Image(systemName: subtopic.isCompleted ? "checkmark" : "circle")
                         .font(.system(size: subtopic.isCompleted ? 14 : 8, weight: .bold))
-                        .foregroundColor(subtopic.isCompleted ? AppColors.success : AppColors.secondaryText)
+                        .foregroundColor(subtopic.isCompleted ? AppColors.success : Color.gray600)
                         .animation(.spring(response: 0.35, dampingFraction: 0.6), value: subtopic.isCompleted)
                 }
 
