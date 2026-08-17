@@ -44,12 +44,14 @@ struct CvOptimizeProgressView: View {
             }
         }
         .task {
-            guard viewModel.state == .idle || viewModel.state == .timeout else { return }
+            print("I came here hi in the loading")
+            guard viewModel.state == .idle || viewModel.state == .timeout else {return }
             if let workspaceId = atsViewModel.currentJob?.workspaceID {
                 await viewModel.startOptimize(workspaceId: workspaceId)
             }
         }
         .onDisappear {
+            print("I've cancelled the polling")
             viewModel.cancelPolling()
         }
         .onChange(of: viewModel.state) { newState in

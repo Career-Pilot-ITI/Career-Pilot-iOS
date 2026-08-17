@@ -96,8 +96,10 @@ class OnBordingViewModel: ObservableObject {
     func onCvResult(result: Result<URL,Error>){
         switch result{
         case.success(let cvURL):
+            print("Success")
             didSelectCV(cvURL: cvURL)
-        case.failure(_):
+        case.failure(let error):
+            print("Failure: \(error.localizedDescription)")
             screenState = .error(UploadCVErrors.CanNotUploadCv.description)
         }
     }
@@ -135,6 +137,7 @@ class OnBordingViewModel: ObservableObject {
     
     private func didSelectCV(cvURL: URL){
         //For UplodingCV View
+        print("didSelectCV")
         extractName_SizeOfTheCv(cvUrl: cvURL)
         cvViewInfo.isSelected = true
         //UserData
@@ -150,6 +153,7 @@ class OnBordingViewModel: ObservableObject {
             let fileSizeInMB = fileSizeInBytes / (1024 * 1024)
             cvViewInfo.cvSize = fileSizeInMB
         }catch{
+            print("Error in extracting name and size of the CV®")
             onCatchError(error: error)
         }
     }
@@ -307,6 +311,7 @@ class OnBordingViewModel: ObservableObject {
         Task{
             do{
                 screenState = .loading
+                print("Start anaylsis cv")
                 try await uploadUserCv(userCV: userCV)
                 currentView = .ProfileView
                 screenState = .idel
