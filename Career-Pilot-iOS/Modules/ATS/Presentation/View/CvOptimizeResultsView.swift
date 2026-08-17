@@ -45,7 +45,6 @@ struct CvOptimizeResultsView: View {
         }
         .navigationTitle("CV Optimization")
         .navigationBarTitleDisplayMode(.inline)
-        .toast(ToastManager.shared)
     }
 
     // MARK: - Header

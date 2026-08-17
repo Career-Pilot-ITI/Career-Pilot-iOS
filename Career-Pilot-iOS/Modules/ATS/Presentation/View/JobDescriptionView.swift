@@ -48,7 +48,6 @@ struct JobDescriptionView: View {
         .sheet(item: $selectedPostingURL) { identifiable in
             JobPostingSafariView(url: identifiable.url)
         }
-        .toast(ToastManager.shared)
     }
 
 }

@@ -118,7 +118,6 @@ struct CoverLetterView: View {
         } message: {
             Text("Gmail isn't installed and no Mail account is configured on this device. Set up an account in Mail and try again.")
         }
-        .toast(ToastManager.shared)
     }
 
     private func displayedData(from data: CoverLetterData) -> CoverLetterData {

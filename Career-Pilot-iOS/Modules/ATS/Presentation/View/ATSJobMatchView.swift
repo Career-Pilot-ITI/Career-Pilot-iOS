@@ -13,8 +13,26 @@ struct ATSJobMatchView: View {
     @State private var jobLink: String = ""
     @State private var showCvUploadSheet: Bool = false
 
+    private var isLinkedInJobURL: Bool {
+        let trimmed = jobLink.trimmingCharacters(in: .whitespaces)
+        guard let url = URL(string: trimmed),
+              let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+            return false
+        }
+        let host = components.host?.lowercased() ?? ""
+        let path = components.path
+        return (host == "www.linkedin.com" || host == "linkedin.com")
+            && path.hasPrefix("/jobs/view/")
+            && path.replacingOccurrences(of: "/jobs/view/", with: "")
+                .drop(while: { $0 == "/" })
+                .allSatisfy { $0.isNumber }
+            && !path.replacingOccurrences(of: "/jobs/view/", with: "")
+                .drop(while: { $0 == "/" })
+                .isEmpty
+    }
+
     private var isCompareEnabled: Bool {
-        !jobLink.trimmingCharacters(in: .whitespaces).isEmpty && viewModel.cvUploaded && !viewModel.isLoading
+        isLinkedInJobURL && viewModel.cvUploaded && !viewModel.isLoading
     }
 
 
@@ -43,9 +61,15 @@ struct ATSJobMatchView: View {
 
                     JobLinkTextField(link: $jobLink)
 
-                    Text("Supports LinkedIn, Indeed, Wuzzuf, Glassdoor, and direct job-page URLs.")
-                        .font(Font.size12Regular)
-                        .foregroundStyle(Color.textSecondary)
+                    if !jobLink.isEmpty && !isLinkedInJobURL {
+                        Text("Please enter a valid LinkedIn job URL, e.g. https://www.linkedin.com/jobs/view/12345678/")
+                            .font(Font.size12Regular)
+                            .foregroundStyle(Color.matchRed)
+                    } else {
+                        Text("Supports LinkedIn job posting URLs only.")
+                            .font(Font.size12Regular)
+                            .foregroundStyle(Color.textSecondary)
+                    }
                 }
                 .padding(.bottom, 22)
 
@@ -84,6 +108,7 @@ struct ATSJobMatchView: View {
                         showArrow: false,
                         buttonTitle: viewModel.isLoading ? "Comparing..." : "Compare Now",
                         onClick: {
+                            guard isLinkedInJobURL else { return }
                             Task {
                                 let success = await viewModel.fireRequest(jobURL: jobLink)
                                 if success {
@@ -109,7 +134,6 @@ struct ATSJobMatchView: View {
                 .presentationDetents([.medium])
             }
         }
-        .toast(ToastManager.shared)
     }
 }
 
