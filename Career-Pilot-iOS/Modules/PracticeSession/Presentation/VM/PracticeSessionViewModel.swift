@@ -143,7 +143,7 @@ final class PracticeSessionViewModel: ObservableObject {
     }
 
     var totalQuestions: Int {
-        (session?.configuration.maxQuestions ?? 0) - 1
+        (session?.configuration.maxQuestions ?? 0)
     }
 
     var questionsRemaining: Int {
@@ -346,6 +346,7 @@ extension PracticeSessionViewModel {
                 session = updatedSession
 
                 if updatedSession.status == .completed {
+                    await finish()
                     screenState = .completed
                 } else {
                     beginAITurn(question: updatedSession.currentQuestion)
