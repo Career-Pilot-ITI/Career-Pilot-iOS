@@ -43,7 +43,9 @@ struct SettingsTabView: View {
             case .userSubscribtion:
                 MySubscriptionView(viewModel:DIContainer.shared.container.resolve(SubscriptionViewModel.self)! )
             case .subscriptionPlans (let vm):
-                ChoosePlanView(viewModel: vm)
+                ChoosePlanView(viewModel: DIContainer.shared.container.resolve(SubscriptionViewModel.self)!){ checkoutDisplayInfo in
+                    settingsCoordinator.push(.checkout(item: checkoutDisplayInfo))
+                }
             }
         }}
 
