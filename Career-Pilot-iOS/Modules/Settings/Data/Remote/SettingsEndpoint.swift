@@ -13,6 +13,9 @@ enum SettingsEndpoint : APIEndpoint{
     case updateUserData(UpdateProfileRequestDTO)
     case updataUserCv
     case updateUserAvatar(AvatarUploadDTO)
+    case getCurrentSubscribtion
+    case downgradeSubscribtion
+    case cancelSubscribtion
     
     var path: String{
         switch self {
@@ -28,6 +31,13 @@ enum SettingsEndpoint : APIEndpoint{
             return "api/v1/files/upload"
         case .updataUserCv:
             return "api/v1/updateCv"
+        case .getCurrentSubscribtion:
+            return "api/v1/subscriptions/current"
+        case .downgradeSubscribtion:
+            return "api/v1/subscriptions/downgrade"
+        case .cancelSubscribtion:
+            return "api/v1/subscriptions/cancel"
+            
         }
     }
     
@@ -35,19 +45,18 @@ enum SettingsEndpoint : APIEndpoint{
         switch self {
         case.getUserData  :
             return .get
-            
-        case .getSubscribtionsPrice:
+        case .getSubscribtionsPrice, .getCurrentSubscribtion :
             return .get
         case .updateUserData , .updataUserCv :
             return .patch
-        case  .logout , .updateUserAvatar :
+        case  .logout , .updateUserAvatar ,.downgradeSubscribtion , .cancelSubscribtion:
             return .post
             
         }
     }
     var body: Data? {
         switch self {
-        case .getUserData ,.logout ,.getSubscribtionsPrice , .updataUserCv  :
+        case .getUserData ,.logout ,.getSubscribtionsPrice , .updataUserCv , .getCurrentSubscribtion , .downgradeSubscribtion ,.cancelSubscribtion:
             return nil
         case .updateUserData(let userData):
             return Self.encode(userData)
@@ -61,23 +70,26 @@ enum SettingsEndpoint : APIEndpoint{
             true
         }
     var headers: [String: String] {
-        let tokenString: String
+        let tokenString :String
         do {
-            
-            if let tokens = try KeychainAuthTokenStore().loadTokens() {
-                print("Token is \(tokens.accessToken)")
-                tokenString = tokens.accessToken
-                
-            } else {
-                tokenString = ""
-                print("Token is not found")
+                  
+                  if let tokens = try KeychainAuthTokenStore().loadTokens() {
+                      print("Token is \(tokens.accessToken)")
+                      tokenString = tokens.accessToken
+                      
+                  } else {
+                      tokenString = ""
+                      print("Token is not found")
 
-            }
-        } catch {
-            tokenString = ""
-        }
+                  }
+              } catch {
+                  tokenString = ""
+              }
+
+
+
         switch self {
-        case .getUserData , .logout , .getSubscribtionsPrice , .updateUserData(_) , .updataUserCv :
+        case .getUserData , .logout , .getSubscribtionsPrice , .updateUserData(_) , .updataUserCv , .getCurrentSubscribtion , .downgradeSubscribtion ,.cancelSubscribtion  :
           return  [
                 "Content-Type": "application/json",
                 "Authorization": "Bearer \(tokenString)"

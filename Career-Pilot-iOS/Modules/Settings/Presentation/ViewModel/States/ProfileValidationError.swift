@@ -43,9 +43,9 @@ enum ProfileValidator {
             errors.append(.invalidEmail)
         }
         
-        if !Validator.isNotEmpty(user.currentJobTitle) {
-            errors.append(.emptyJobTitle)
-        }
+//        if !Validator.isNotEmpty(user.currentJobTitle) {
+//            errors.append(.emptyJobTitle)
+//        }
         
         if !errors.isEmpty {
             throw errors.count == 1 ? errors[0] : ProfileValidationError.multiple(errors)

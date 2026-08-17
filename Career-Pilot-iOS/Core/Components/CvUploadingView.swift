@@ -54,6 +54,6 @@ struct CvUploadingView: View {
 
 struct CvUploadingView_Previews: PreviewProvider {
     static var previews: some View {
-        CvUploadingView(didUpload: true, baseSentance: "Tap to upload your CV", subSentanceOne: "PDF or DOC · Max 10 MB")
+        CvUploadingView(didUpload: false, baseSentance: "Tap to upload your CV", subSentanceOne: "PDF or DOC · Max 10 MB")
     }
 }

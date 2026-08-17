@@ -18,6 +18,7 @@ struct VerifyPaymentUseCaseImp: VerifyPaymentUseCase {
         switch item {
         case .subscription(let planType):
             let subscription = try await checkoutRepo.getUserSubscription()
+            print("subscription = \(subscription.tier == planType) ")
             return subscription.tier == planType
             
         case .coinPack(let coinsAmount):

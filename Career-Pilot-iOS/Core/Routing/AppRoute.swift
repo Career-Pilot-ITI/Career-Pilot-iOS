@@ -29,6 +29,14 @@ enum HomeRoute: Hashable {
     
     case pathLearn(trackId: String, trackName: String)
     case quiz(trackId: String, trackTitle: String, subtopicId: String, subtopicTitle: String)
+    case atsJobMatch
+    case atsjobDescription
+    case coverLetter
+    case atsJobmatchScore
+    case cvOptimizeProgress
+    case cvOptimizeResults
+    case subscriptionView
+    case checkout(item: CheckoutDisplayInfo)
 }
 
 enum   CheckoutDisplayInfo : Hashable {
@@ -43,11 +51,13 @@ enum   CheckoutDisplayInfo : Hashable {
     }
 }
 
-enum SettingsRoute : Hashable {
+enum SettingsRoute : Hashable {    
     case checkout(item: CheckoutDisplayInfo)
     case subscribtion
     case coin
     case profileSettings
+    case userSubscribtion
+    case subscriptionPlans( vm : SubscriptionViewModel)
 }
 
 enum ReportsRoute: Hashable {

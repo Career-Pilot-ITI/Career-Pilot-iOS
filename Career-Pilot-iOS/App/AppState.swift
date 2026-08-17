@@ -6,6 +6,7 @@
 // test2
 
 import SwiftUI
+@MainActor
 final class AppState: ObservableObject {
     @AppStorage("isLoggedIn") var isLoggedIn: Bool = false {
         willSet {

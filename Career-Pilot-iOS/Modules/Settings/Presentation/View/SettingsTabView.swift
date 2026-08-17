@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsTabView: View {
     @StateObject private var settingsCoordinator = AppCoordinator<SettingsRoute>()
+    @Binding var deepLink: SettingsRoute?
     var body: some View {
         NavigationStack(path: $settingsCoordinator.path) {
             SettingView(viewModel:DIContainer.shared.container.resolve(SettingsViewModel.self)!).environmentObject(settingsCoordinator)
@@ -18,7 +19,10 @@ struct SettingsTabView: View {
             
             
                 
-        }.environmentObject(settingsCoordinator)
+        }
+        .environmentObject(settingsCoordinator)
+        .onAppear(perform: openDeepLinkIfNeeded)
+        .onChange(of: deepLink) { _ in openDeepLinkIfNeeded() }
         
     }
         
@@ -27,12 +31,26 @@ struct SettingsTabView: View {
         private func settingsDestination(for route: SettingsRoute) -> some View {
             switch route {
             case .checkout(let item):
-                CheckOutView(checkoutDisplayInfo: item, paymentVM: DIContainer.shared.container.resolve(PaymentViewModel.self)!)
+                CheckOutView(checkoutDisplayInfo: item, paymentVM: DIContainer.shared.container.resolve(PaymentViewModel.self)!){
+                    settingsCoordinator.popToRoot()
+                }
             case .subscribtion:
-                ChoosePlanView(viewModel: DIContainer.shared.container.resolve(SubscriptionViewModel.self)!)
+                  SubscriptionView(viewModel:DIContainer.shared.container.resolve(SubscriptionViewModel.self)! )
             case .coin:
                 CoinView()
             case .profileSettings :
                 ProfileScreen(viewModel: DIContainer.shared.container.resolve(ProfileViewModel.self)!)
+            case .userSubscribtion:
+                MySubscriptionView(viewModel:DIContainer.shared.container.resolve(SubscriptionViewModel.self)! )
+            case .subscriptionPlans (let vm):
+                ChoosePlanView(viewModel: vm)
             }
         }}
+
+private extension SettingsTabView {
+    func openDeepLinkIfNeeded() {
+        guard let deepLink else { return }
+        settingsCoordinator.push(deepLink)
+        self.deepLink = nil
+    }
+}

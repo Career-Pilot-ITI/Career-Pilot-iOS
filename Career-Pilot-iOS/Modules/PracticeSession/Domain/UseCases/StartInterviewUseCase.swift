@@ -16,11 +16,6 @@ final class StartInterviewUseCase: StartInterviewUseCaseProtocol {
     
     func execute(interviewConfiguration: InterviewConfiguration,trackId: Int) async throws -> NewSession {
         do {
-            
-            let tokenProvieder: TokenProviding = AuthTokenProvider(tokenStore: KeychainAuthTokenStore())
-            
-            print("Token: \(try await tokenProvieder.getAccessToken())")
-            
             var startInterviewSessionRequest = StartInterviewSessionRequest(trackId: trackId, questionCount: interviewConfiguration.maxQuestions, durationMinutes: Int(interviewConfiguration.maxInterviewDuration))
             
             print("The Reeues was with trackId : \(startInterviewSessionRequest.trackId)")

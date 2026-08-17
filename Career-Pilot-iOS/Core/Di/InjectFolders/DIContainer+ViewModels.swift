@@ -33,7 +33,7 @@ extension DIContainer{
         // homeViewModel
         container.register(HomeViewModel.self){ r in
             HomeViewModel(
-                getCurrentUserUseCase: r.resolve(GetCurrentUserUseCaseProtocol.self)!,
+                userSession: r.resolve(UserSession.self)!,
                 getAllTracksUseCase: r.resolve(GetAllTrackesUseCase.self)!,
                 getAllSessionUseCase: r.resolve(LoadSessionsUseCase.self)!
                 
@@ -50,7 +50,8 @@ extension DIContainer{
             InterviewPrepViewModel(
                 permissionManager: resolver.resolve(
                     PermissionManaging.self
-                )!
+                )!,
+                subscriptionAccessManaging: resolver.resolve((any SubscriptionAccessManaging).self)!
             )
         }
         
@@ -134,7 +135,7 @@ extension DIContainer{
         container.register(SubscriptionViewModel.self) { r in
             SubscriptionViewModel(
                 getPlansUseCase: r.resolve(GetSubscribtionPlan.self)!,
-                getUserSubscribtion: r.resolve(GetUserSubscribtion.self)!
+                getUserSubscribtion: r.resolve(GetUserSubscribtion.self)!,  cancelUserSubscribtion: r.resolve(CancelSubscription.self)!, userSession: r.resolve(UserSession.self)!
             )
         }
 
@@ -156,6 +157,26 @@ extension DIContainer{
             ProfileViewModel(updateUserDataUseCase:UpdateUserData(repo: r.resolve(SettingsRepoImp.self)!) , getTracks:r.resolve(GetAllTrackesUseCase.self)! , uploadCvUseCase:r.resolve(UploadCvUseCase.self)! , saveUsercase:r.resolve(SaveUserDataUsecase.self)! , userSession:r.resolve(UserSession.self)! 
            )
         }
+
+        // MARK: - ATS ViewModel
+        container.register(ATSViewModel.self) { r in
+            ATSViewModel(
+                getJobUseCase: r.resolve(GetJobByURLUseCase.self)!,
+                scoreJobUseCase: r.resolve(ScoreCVAgainstJobUseCase.self)!,
+                generateCoverLetterUseCase: r.resolve(GenerateCoverLetterUseCase.self)!,
+                uploadCvUseCase: r.resolve(UploadCvUseCase.self)!,
+                userRepo: r.resolve(UserDataRepo.self)!,
+                toastManager: .shared
+            )
+        }.inObjectScope(.container)
+
+        // MARK: - CV Optimize ViewModel
+        container.register(CvOptimizeViewModel.self) { r in
+            CvOptimizeViewModel(
+                triggerUseCase: r.resolve(TriggerCvOptimizeUseCase.self)!,
+                pollUseCase: r.resolve(PollCvOptimizeUseCase.self)!
+            )
+        }.inObjectScope(.container)
 
     }
 } 

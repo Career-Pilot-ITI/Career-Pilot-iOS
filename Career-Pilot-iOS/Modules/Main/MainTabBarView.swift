@@ -15,9 +15,15 @@ enum Tab: Int, Hashable {
 
 @MainActor
 struct MainTabBarView: View {
-    @StateObject private var homeCoordinator = AppCoordinator<HomeRoute>()
-    @State private var selectedTab: Tab = .home
+    @StateObject private var homeCoordinator: AppCoordinator<HomeRoute> = AppCoordinator<HomeRoute>()
+    @StateObject private var settingsCoordinator: AppCoordinator<SettingsRoute> = AppCoordinator<SettingsRoute>()
+
+    @StateObject private var atsViewModel: ATSViewModel = DIContainer.shared.container.resolve(ATSViewModel.self)!
+    @StateObject private var cvOptimizeViewModel: CvOptimizeViewModel = DIContainer.shared.container.resolve(CvOptimizeViewModel.self)!
     
+    @State private var settingsDeepLink: SettingsRoute?
+    @State private var selectedTab: Tab = .home
+
     var body: some View {
         TabView(selection: $selectedTab) {
             // MARK: - Tab 1: Home
@@ -26,95 +32,110 @@ struct MainTabBarView: View {
                     selectedTab = .reports
                 })
                 .navigationDestination(for: HomeRoute.self) { route in
-                    destinationView(for: route)
+                    switch route {
+                    case .sessionDetail(let metrics, let suggestions):
+                        Text("Session Detail View")
+
+                    case let .interviewPrep(trackName, trackId, interviewType):
+                        InterviewPrepContainerView(
+                            trackName: trackName,
+                            trackId: trackId,
+                            interviewType: interviewType
+                        )
+
+                    case let .practiceInterview(_, trackId, interviewType):
+                        PracticeSessionView(
+                            vm: DIContainer.shared.container.resolve(PracticeSessionViewModel.self)!,
+                            trackId: trackId,
+                            interviewType: interviewType
+                        )
+
+                    case .InterviewsView:
+                        InterviewsView()
+
+                    case .sessionFeedback(let feedback, let sessionId):
+                        SessionFeedBackView(feedback: feedback, sessionId: sessionId) {
+                            homeCoordinator.popToRoot()
+                        }
+                        .navigationBarBackButtonHidden()
+
+                    case .atsJobMatch:
+                        ATSJobMatchView()
+
+                    case .atsjobDescription:
+                        JobDescriptionView()
+
+                    case .coverLetter:
+                        CoverLetterView()
+
+                    case .atsJobmatchScore:
+                        JobMatchView(onBuyCoins: {
+                            homeCoordinator.popToRoot()
+                            settingsDeepLink = .coin
+                            selectedTab = .settings
+                        })
+
+                    case .cvOptimizeProgress:
+                        CvOptimizeProgressView()
+
+                    case .cvOptimizeResults:
+                        CvOptimizeResultsView()
+
+                    case .subscriptionView:
+                        ChoosePlanView(
+                            viewModel: DIContainer.shared.container.resolve(SubscriptionViewModel.self)!
+                        )
+
+                    case .checkout(let item):
+                        CheckOutView(
+                            checkoutDisplayInfo: item,
+                            paymentVM: DIContainer.shared.container.resolve(PaymentViewModel.self)!
+                        ) {
+                            print("Back to root")
+                            homeCoordinator.popToRoot()
+                        }
+
+                    case let .pathLearn(trackId, trackName):
+                        PathLearnView(
+                            viewModel: DIContainer.shared.container.resolve(
+                                PathLearnViewModel.self,
+                                arguments: String(trackId), trackName
+                            )!
+                        )
+
+                    case let .quiz(trackId, trackTitle, subtopicId, subtopicTitle):
+                        QuizView(
+                            viewModel: DIContainer.shared.container.resolve(
+                                QuizViewModel.self,
+                                arguments: trackId, trackTitle, subtopicId, subtopicTitle
+                            )!
+                        )
+                    }
                 }
             }
-            .environmentObject(homeCoordinator)
             .tabItem {
-                Label {
-                    Text("Home")
-                } icon: {
-                    Image.AppIcon.home.renderingMode(.template)
-                }
+                Label { Text("Home") } icon: { Image.AppIcon.home.renderingMode(.template) }
             }
             .tag(Tab.home)
-            
+            .environmentObject(homeCoordinator)
+            .environmentObject(settingsCoordinator)
+            .environmentObject(atsViewModel)
+            .environmentObject(cvOptimizeViewModel)
+
             // MARK: - Tab 2: Reports
-            NavigationStack {
-                ReportsView()
-            }
-            .tabItem {
-                Label {
-                    Text("Reports")
-                } icon: {
-                    Image.AppIcon.report.renderingMode(.template)
+            ReportsView()
+                .tabItem {
+                    Label { Text("Reports") } icon: { Image.AppIcon.report.renderingMode(.template) }
                 }
-            }
-            .tag(Tab.reports)
-            
+                .tag(Tab.reports)
+
             // MARK: - Tab 3: Settings
-            NavigationStack {
-                SettingsTabView()
-            }
-            .tabItem {
-                Label {
-                    Text("Settings")
-                } icon: {
-                    Image.AppIcon.settings.renderingMode(.template)
+            SettingsTabView(deepLink: $settingsDeepLink)
+                .tabItem {
+                    Label { Text("Settings") } icon: { Image.AppIcon.settings.renderingMode(.template) }
                 }
-            }
-            .tag(Tab.settings)
+                .tag(Tab.settings)
         }
         .tint(Color.primary)
-    }
-}
-
-// MARK: - Route Destination Builder
-private extension MainTabBarView {
-    @ViewBuilder
-    func destinationView(for route: HomeRoute) -> some View {
-        switch route {
-        case .sessionDetail(let metrics, let suggestions):
-            Text("Session Detail View")
-                
-        case let .interviewPrep(trackName, trackId, interviewType):
-            InterviewPrepContainerView(
-                trackName: trackName,
-                trackId: trackId,
-                interviewType: interviewType
-            )
-            
-        case let .practiceInterview(_, trackId, interviewType):
-            PracticeSessionView(
-                vm: DIContainer.shared.container.resolve(PracticeSessionViewModel.self)!,
-                trackId: trackId,
-                interviewType: interviewType
-            )
-            
-        case .InterviewsView:
-            InterviewsView()
-            
-        case .sessionFeedback(let feedback, let sessionId):
-            SessionFeedBackView(feedback: feedback, sessionId: sessionId) {
-                homeCoordinator.popToRoot()
-            }
-            .navigationBarBackButtonHidden()
-            
-        case let .pathLearn(trackId, trackName):
-            PathLearnView(
-                viewModel: DIContainer.shared.container.resolve(
-                    PathLearnViewModel.self,
-                    arguments: String(trackId), trackName
-                )!
-            )
-            
-        case let .quiz(trackId, trackTitle, subtopicId, subtopicTitle):
-            QuizView(
-                viewModel: DIContainer.shared.container.resolve(
-                    QuizViewModel.self,
-                    arguments: trackId, trackTitle, subtopicId, subtopicTitle
-                )!
-            )
-        }
     }
 }

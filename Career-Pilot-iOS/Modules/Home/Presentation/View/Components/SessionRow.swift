@@ -19,9 +19,13 @@ struct SessionRow: View {
             Text("\(score)")
                 .bold()
                 .padding(10)
-                .background(iconColor.opacity(0.1))
-                .foregroundColor(iconColor)
-                .cornerRadius(8)
+                .frame(width: 40, height: 40)
+                .background {
+                    RoundedRectangle(cornerRadius: Radius.r8)
+                        .fill(iconColor.opacity(0.1))
+                }
+                .foregroundStyle(iconColor)
+               
             
             VStack(alignment: .leading) {
                 Text(title).font(.subheadline).bold()

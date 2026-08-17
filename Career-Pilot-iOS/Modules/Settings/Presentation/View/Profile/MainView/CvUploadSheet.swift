@@ -38,15 +38,12 @@ struct CvUploadSheet: View {
             
             Spacer()
             
-            Button(action: { isImporterPresented = true }) {
-                Text(didPick ? "Choose a different file" : "Select File")
-                    .font(.size16Bold)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 16)
-                    .background(Capsule().fill(Color.orange))
-            }
-            .padding(.horizontal)
+            CustomButton(
+                isButtonEnabeld: true,
+                showArrow: false,
+                buttonTitle: didPick ? "Choose a different file" : "Select File") {
+                    isImporterPresented = true
+                }
         }
         .padding(.vertical, 20)
         .fileImporter(isPresented: $isImporterPresented, allowedContentTypes: [.pdf, docxType]) { result in

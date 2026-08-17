@@ -51,8 +51,6 @@ enum AppColors {
 extension Color {
    static let background = Color("Background")
    static let primary  = Color("Primary")
-    
-    
    static let darkBackGround = Color("NavyDark")
    static let lightBackGround = Color("Background")
    static let successColour = Color("Success")
@@ -69,6 +67,44 @@ extension Color {
    static let primaryTealLight = Color("TealLight")
    static let primaryNavy = Color("PrimaryNavy")
    static let tealAccent = Color(red: 0.31, green: 0.86, blue: 0.76)
+
+   static let priorityHigh = Color(hex: "FF5A5A")
+   static let priorityHighBackground = Color(hex: "FF5A5A").opacity(0.14)
+   static let priorityMedium = Color(hex: "FFB03A")
+   static let priorityMediumBackground = Color(hex: "FFB03A").opacity(0.14)
+   static let priorityLow = Color.white.opacity(0.45)
+   static let priorityLowBackground = Color.white.opacity(0.08)
+    
+    static let accentTeal = Color(hex: "2DD9B9")
+    static let accentTealBackground = Color(hex: "2DD9B9").opacity(0.14)
+ 
+    static let accentOrange = Color(hex: "FF6B35")
+    
+    static let textPrimary = Color("PrimaryNavy")
+    static let textSecondary = Color("Gray600")
+    static let textTertiary = Color("Gray400")
+    
+//    static let cardBackground = Color.white
+    static let cardBackgroundSecondary = Color(hex: "16161D")
+    static let separator = Color.white.opacity(0.08)
+    
+    
+    static let matchOrange = Color(red: 0.98, green: 0.42, blue: 0.24)
+    static let matchGreen = Color(red: 0.20, green: 0.72, blue: 0.42)
+    static let matchRed = Color(red: 0.93, green: 0.31, blue: 0.31)
+    static let matchAmber = Color(red: 0.95, green: 0.62, blue: 0.18)
+ 
+    static let cardBackground = Color(.secondarySystemBackground)
+    static let screenBackground = Color(.systemGroupedBackground)
+ 
+    static let greenChipBg = Color.matchGreen.opacity(0.12)
+    static let redChipBg = Color.matchRed.opacity(0.10)
+    static let amberChipBg = Color.matchAmber.opacity(0.12)
+ 
+    static let greenCardBg = Color.matchGreen.opacity(0.10)
+    static let amberCardBg = Color.matchAmber.opacity(0.10)
+    
+    
 }
 
 

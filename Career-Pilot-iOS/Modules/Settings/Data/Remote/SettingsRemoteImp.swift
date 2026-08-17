@@ -7,6 +7,8 @@
 
 import Foundation
 class SettingsRemoteImp : SettingsRemote{
+
+    
     var apiService: NetworkService
     
     init(apiService: NetworkService) {
@@ -41,6 +43,14 @@ class SettingsRemoteImp : SettingsRemote{
         print("user Data response = \(response)")
         return try await apiService.request(endpoint)
     }
+    func getUserSubscription() async throws -> SubscriptionDTO {
+        let endpoint = SettingsEndpoint.getCurrentSubscribtion
+
+        var response = try await apiService.request(endpoint)
+        print("user Data response = \(response)")
+        return try await apiService.request(endpoint)
+        
+    }
     func getCoins() async {
         print("Here is the coin")
     }
@@ -64,5 +74,23 @@ class SettingsRemoteImp : SettingsRemote{
         let endpoint = SettingsEndpoint.updateUserAvatar(avatarUploadRequestDTO)
         return try await apiService.request(endpoint)
         
+    }
+    func downgradeUserSubscribtion() async throws {
+        let endpoint = SettingsEndpoint.downgradeSubscribtion
+        do{
+            return try await apiService.request(endpoint)
+        }catch{
+            print("problem in the downgrade")
+           throw error
+        }
+    }
+    func cancelSubscribtion() async throws {
+        let endpoint = SettingsEndpoint.cancelSubscribtion
+        do{
+            return try await apiService.request(endpoint)
+        }catch{
+            print("problem in the Cancel")
+           throw error
+        }
     }
 }

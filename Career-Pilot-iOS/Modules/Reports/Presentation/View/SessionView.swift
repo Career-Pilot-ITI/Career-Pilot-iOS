@@ -21,7 +21,7 @@ struct SessionView: View {
             Color.lightBackGround.ignoresSafeArea()
             switch viewModel.state {
             case .idle, .loading:
-                ProgressView()
+                SessionFeedbackSkeletonView()
             case .error(let message):
                 Text(message).foregroundStyle(.red)
             case .loaded:
@@ -33,6 +33,26 @@ struct SessionView: View {
         .task {
             await viewModel.loadFeedback()
         }
+    }
+}
+
+private struct SessionFeedbackSkeletonView: View {
+    var body: some View {
+        ScrollView {
+            VStack(spacing: Spacing.s16) {
+                SkeletonBlock(height: 116)
+                SkeletonBlock(height: 390)
+                SkeletonBlock(height: 56)
+                VStack(alignment: .leading, spacing: Spacing.s12) {
+                    SkeletonPill(width: 150, height: 16)
+                    SkeletonBlock(height: 96)
+                    SkeletonBlock(height: 96)
+                }
+            }
+            .padding(.top, 16)
+            .padding(.horizontal, 24)
+        }
+        .scrollIndicators(.hidden)
     }
 }
 
@@ -66,6 +86,7 @@ struct SessionFeedBackView: View {
         }
         .scrollIndicators(.hidden)
         .padding(.horizontal, 24)
+        
     }
     
     

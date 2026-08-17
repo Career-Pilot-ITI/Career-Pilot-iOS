@@ -12,21 +12,24 @@ final class UserSession: ObservableObject {
     @Published var userData: UserModelSettingsView?
     
     private let getUserDataUseCase: GetUserDataUseCase
-    private let refreshUseCase : RefreshUserDataUseCase
+    private let refreshUseCase: RefreshUserDataUseCase
     
-    init(getUserDataUseCase: GetUserDataUseCase,refreshUseCase : RefreshUserDataUseCase) {
+    init(getUserDataUseCase: GetUserDataUseCase, refreshUseCase: RefreshUserDataUseCase) {
         self.getUserDataUseCase = getUserDataUseCase
         self.refreshUseCase = refreshUseCase
     }
     
     func loadIfNeeded() async throws {
         guard userData == nil else { return }
-        userData = try await getUserDataUseCase.execute()
+        
+        let domainData = try await getUserDataUseCase.execute()
+        self.userData = domainData
     }
     
     func reload() async throws {
-        try await refreshUseCase.execute()
-        userData = try await getUserDataUseCase.execute()
+        let domainData = try await refreshUseCase.execute()
+      
+        self.userData = domainData.toUserModelSettingsView()
     }
     
     func update(_ newData: UserModelSettingsView) {

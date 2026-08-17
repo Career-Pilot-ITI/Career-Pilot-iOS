@@ -55,7 +55,7 @@ extension DIContainer{
         
         // MARK: - Settings Data Sources
         container.register(SettingsRemoteImp.self) { r in
-            SettingsRemoteImp(apiService: r.resolve(NetworkService.self, name: "base")!)
+            SettingsRemoteImp(apiService: r.resolve(NetworkService.self, name: "authenticated")!)
         }
 
         container.register(SettingsLocalDataSourceImp.self) { r in
@@ -64,7 +64,12 @@ extension DIContainer{
 
         // MARK: - Checkout Data Source
         container.register(CheckoutRemoteDataSourceImp.self) { r in
-            CheckoutRemoteDataSourceImp(checkOutNetworkService: r.resolve(NetworkService.self, name: "base")!)
+            CheckoutRemoteDataSourceImp(checkOutNetworkService: r.resolve(NetworkService.self, name: "authenticated")!)
+        }
+
+        // MARK: - ATS Data Source
+        container.register(ATSRemoteDataSourceProtocol.self) { r in
+            ATSRemoteDataSource(networkService: r.resolve(NetworkService.self, name: "authenticated")!)
         }
 
     }

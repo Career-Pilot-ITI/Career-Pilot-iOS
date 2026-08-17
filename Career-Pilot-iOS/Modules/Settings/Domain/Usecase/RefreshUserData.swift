@@ -6,20 +6,24 @@
 //
 
 import Foundation
+
 class RefreshUserDataUseCase {
-    var settingsRepo : SettingsRepo
+    private let settingsRepo: SettingsRepo
+    
     init(settingsRepo: SettingsRepo) {
         self.settingsRepo = settingsRepo
     }
-    func execute() async {
-        
+    
+    func execute() async throws -> UserSettingsDomain {
         do {
-            try await settingsRepo.refreshUserData()
+            return try await settingsRepo.refreshUserData()
+        } catch let networkError as NetworkError {
+          
+            print("Refresh user data failed with network error: \(networkError.userMessage)")
+            throw networkError
+        } catch {
+            print("Refresh user data failed with unknown error: \(error)")
+            throw NetworkError.unknown(error)
         }
-        catch{
-            print("Shows error refresh \(error)")
-        }
-       
     }
-
 }
