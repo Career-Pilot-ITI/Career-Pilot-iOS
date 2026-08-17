@@ -37,7 +37,7 @@ struct JobHeaderCard: View {
                 .foregroundStyle(.secondary)
         }
         .padding(16)
-        .background(Color.gray400.opacity(0.08))
+        .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: Radius.r16))
         .overlay {
             RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)

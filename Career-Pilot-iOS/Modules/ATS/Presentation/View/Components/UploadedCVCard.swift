@@ -27,7 +27,7 @@ struct UploadedCVCard: View {
         .padding(.all, 16)
         .background {
             RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)
-            .fill(Color.gray400.opacity(0.08))
+                .fill(.white)
         }
         .overlay {
             RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)

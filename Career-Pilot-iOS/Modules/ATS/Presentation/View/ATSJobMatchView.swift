@@ -20,7 +20,7 @@ struct ATSJobMatchView: View {
 
     var body: some View {
         ZStack {
-            Color.lightBackGround.ignoresSafeArea()
+            Color.background.ignoresSafeArea()
 
             VStack(alignment: .leading) {
                 ATSFeatureBadge()
