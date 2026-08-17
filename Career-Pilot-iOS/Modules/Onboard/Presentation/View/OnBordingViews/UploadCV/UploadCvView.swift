@@ -44,7 +44,7 @@ struct UploadCvView: View {
             }
             
             Spacer()
-        }
+        }        
         .padding(.horizontal, Spacing.s12)
         .fileImporter(isPresented: $isImporterPresented, allowedContentTypes: [.pdf,docxType]){ result in
             vm.onCvResult(result: result)

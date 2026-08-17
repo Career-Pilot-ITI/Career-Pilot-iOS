@@ -147,6 +147,7 @@ struct ProfileScreen: View {
                 .padding(.horizontal)
             
             Button("Try Again") {
+                
                 Task { await viewModel.loadAllScreenData() }
             }
             .padding(.top, 8)
