@@ -217,6 +217,7 @@ class ATSViewModel: ObservableObject {
             cvUploaded = true
             cvFileName = url.lastPathComponent
             cvUploadDate = Date()
+            toastManager.show("CV uploaded successfully.", type: .success)
         } catch {
             presentError(
                 (error as? NetworkError)?.userMessage
