@@ -15,7 +15,8 @@ import Shimmer
 
 struct ChoosePlanView: View {
     @StateObject var viewModel: SubscriptionViewModel
-       @EnvironmentObject var coordinator: AppCoordinator<SettingsRoute>
+//       @EnvironmentObject var coordinator: AppCoordinator<SettingsRoute>
+    let onCheckout: (CheckoutDisplayInfo) -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -78,7 +79,7 @@ struct ChoosePlanView: View {
                         viewModel.showCancelAlert = true                // ask for confirmation first
                         
                     case .checkout(let displayInfo):
-                        coordinator.push(.checkout(item: displayInfo))
+                        onCheckout(displayInfo)
                     }
                 }) {
                     HStack {

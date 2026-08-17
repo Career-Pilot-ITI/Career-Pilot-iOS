@@ -143,7 +143,7 @@ final class PracticeSessionViewModel: ObservableObject {
     }
 
     var totalQuestions: Int {
-        (session?.configuration.maxQuestions ?? 0)
+        (session?.configuration.maxQuestions ?? 0) - 1
     }
 
     var questionsRemaining: Int {
