@@ -51,6 +51,7 @@ enum AppColors {
 extension Color {
    static let background = Color("Background")
    static let primary  = Color("Primary")
+   static let cardBackground = Color("CardBackground")
    static let darkBackGround = Color("NavyDark")
    static let lightBackGround = Color("Background")
    static let successColour = Color("Success")
@@ -94,7 +95,7 @@ extension Color {
     static let matchRed = Color(red: 0.93, green: 0.31, blue: 0.31)
     static let matchAmber = Color(red: 0.95, green: 0.62, blue: 0.18)
  
-    static let cardBackground = Color(.secondarySystemBackground)
+//    static let cardBackground = Color(.secondarySystemBackground)
     static let screenBackground = Color(.systemGroupedBackground)
  
     static let greenChipBg = Color.matchGreen.opacity(0.12)

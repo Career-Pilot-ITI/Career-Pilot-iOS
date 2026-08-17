@@ -83,7 +83,7 @@ struct SkillChipsCard: View {
             }
         }
         .padding(16)
-        .background(.white)
+        .background(Color.gray400.opacity(0.08))
         .clipShape(RoundedRectangle(cornerRadius: Radius.r16))
         .overlay {
             RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)

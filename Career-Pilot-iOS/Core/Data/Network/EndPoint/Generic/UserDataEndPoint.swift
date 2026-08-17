@@ -8,7 +8,7 @@
 import Foundation
 
 enum FileTypes: String {
-    case CVs = "cvs", Avatars = "avatars", Resumes = "resumes", Audio = "audio"
+    case CVs = "cvs", Avatars = "avatars", Resumes = "resumes", Audio = "audios"
 }
 
 enum UserDataEndpoints: APIEndpoint {
