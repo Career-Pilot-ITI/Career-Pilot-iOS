@@ -76,7 +76,11 @@ struct PhoneEntryView: View {
                         }
 
                         let phoneNumber = phoneFieldViewModel.rawPhoneNumber()
-                        coordinator.push(.sendingOTPScreen(phoneNumber: phoneNumber.removingLeadingPlus()))
+                        coordinator.push(
+                            .sendingOTPScreen(
+                                phoneNumber:phoneNumber.removingLeadingPlus()
+                            )
+                        )
                     }
                     .disabled(!phoneFieldViewModel.canProceed)
                     .opacity(phoneFieldViewModel.canProceed ? 1 : 0.5)

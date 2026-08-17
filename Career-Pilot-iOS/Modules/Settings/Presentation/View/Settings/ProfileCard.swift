@@ -16,7 +16,6 @@ struct ProfileCard: View {
         HStack(spacing:16){
             if(user.avatar == nil){
                 Image("colorfulIcon")
-
             }
             else{
                 Image(uiImage: user.avatar!).resizable().scaledToFill().frame(width: 40, height: 40).clipShape(Circle())

@@ -64,11 +64,11 @@ private struct ModeCard: View {
                 VStack(alignment: .leading, spacing: Spacing.s4) {
                     Text(title)
                         .font(Font.size15Bold)
-                        .foregroundColor(.primary)
+//                        .foregroundColor(.primary)
 
                     Text(subtitle)
                         .font(.size13Regular)
-                        .foregroundColor(.secondary)
+//                        .foregroundColor(.secondary)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)

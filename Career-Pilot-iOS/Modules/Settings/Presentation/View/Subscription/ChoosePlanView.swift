@@ -35,7 +35,7 @@ struct ChoosePlanView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Choose your plan")
                         .font(.system(size: 24, weight: .bold))
-                        .foregroundColor(.primaryNavy)
+                        .foregroundColor(.primary)
                     Text("Unlock your full interview potential.")
                         .font(.size14Medium)
                         .foregroundColor(.gray600)
@@ -45,14 +45,14 @@ struct ChoosePlanView: View {
                     ForEach(plans) { plan in
                         Text(plan.label.replacingOccurrences(of: " Plan", with: ""))
                             .font(.size14Semibold)
-                            .foregroundColor(viewModel.selectedPlan == plan.type ? .white : .gray400)
+                            .foregroundColor(viewModel.selectedPlan == plan.type ? .white : .gray600)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 10)
                             .background(
-                                Capsule().fill(viewModel.selectedPlan == plan.type ? Color.primaryNavy : Color.white)
+                                Capsule().fill(viewModel.selectedPlan == plan.type ? Color.primary : Color.gray100)
                             )
                             .overlay(
-                                Capsule().stroke(Color.gray200, lineWidth: viewModel.selectedPlan == plan.type ? 0 : 1)
+                                Capsule().stroke(Color.gray400, lineWidth: viewModel.selectedPlan == plan.type ? 0 : 1)
                             )
                             .onTapGesture {
                                 withAnimation(.easeOut(duration: 0.2)) {
@@ -108,7 +108,7 @@ struct ChoosePlanView: View {
             }
         }
         .padding(20)
-        .background(Color.gray100)
+        .background(Color.background)
         .task {
             await viewModel.loadPlans()
         }
@@ -127,13 +127,15 @@ struct ChoosePlanView: View {
     // MARK: - Shimmring skeleton, including the header
     private var planSkeleton: some View {
         VStack(alignment: .leading, spacing: 20) {
+            
             // Header placeholder
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: 8) {
                 RoundedRectangle(cornerRadius: 6)
-                    .fill(Color.gray200)
+                    .fill(Color(.systemGray4))
                     .frame(width: 180, height: 26)
+                
                 RoundedRectangle(cornerRadius: 4)
-                    .fill(Color.gray200)
+                    .fill(Color(.systemGray5))
                     .frame(width: 220, height: 14)
             }
 
@@ -141,7 +143,7 @@ struct ChoosePlanView: View {
             HStack(spacing: 8) {
                 ForEach(0..<3, id: \.self) { _ in
                     Capsule()
-                        .fill(Color.gray200)
+                        .fill(Color(.systemGray5))
                         .frame(maxWidth: .infinity)
                         .frame(height: 38)
                 }
@@ -150,18 +152,23 @@ struct ChoosePlanView: View {
             // Detail card placeholder
             VStack(alignment: .leading, spacing: 16) {
                 RoundedRectangle(cornerRadius: 6)
-                    .fill(Color.gray200)
+                    .fill(Color(.systemGray3))
                     .frame(width: 140, height: 32)
 
                 RoundedRectangle(cornerRadius: 4)
-                    .fill(Color.gray200)
+                    .fill(Color(.systemGray4))
                     .frame(width: 100, height: 14)
 
                 VStack(alignment: .leading, spacing: 12) {
-                    ForEach(0..<4, id: \.self) { _ in
+                    ForEach(0..<4, id: \.self) { index in
                         HStack(spacing: 10) {
-                            Circle().fill(Color.gray200).frame(width: 16, height: 16)
-                            RoundedRectangle(cornerRadius: 4).fill(Color.gray200).frame(height: 14)
+                            Circle()
+                                .fill(Color(.systemGray4))
+                                .frame(width: 16, height: 16)
+                            
+                            RoundedRectangle(cornerRadius: 4)
+                                .fill(Color(.systemGray5))
+                                .frame(width: index % 2 == 0 ? 180 : 130, height: 14)
                         }
                     }
                 }
@@ -174,11 +181,10 @@ struct ChoosePlanView: View {
 
             // Button placeholder
             Capsule()
-                .fill(Color.gray200)
+                .fill(Color(.systemGray4))
                 .frame(maxWidth: .infinity)
                 .frame(height: 52)
         }
-        .redacted(reason: .placeholder)
         .shimmering()
     }
 

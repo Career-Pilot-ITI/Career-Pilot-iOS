@@ -17,7 +17,10 @@ struct CoinsTypeVIew: View {
     var body: some View {
         VStack(alignment:.leading){
             HStack(spacing:8){
-                Image("coin").font(.size24Semibold).foregroundColor(.primary)
+                Image("coin")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .font(.size24Semibold).foregroundColor(.primary)
                 Text("\(coinNumber)").font(.size24Semibold)
                 Text("coins").font(.size16Bold)
                 Spacer()

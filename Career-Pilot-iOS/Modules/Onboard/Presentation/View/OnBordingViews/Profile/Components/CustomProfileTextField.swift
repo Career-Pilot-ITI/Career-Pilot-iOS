@@ -30,7 +30,6 @@ struct CustomProfileTextField: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(title.uppercased())
                         .font(.caption.bold())
-                        .foregroundColor(.gray400)
                         .opacity(shouldFloat ? 1.0 : 0.0)
                         .frame(height: shouldFloat ? nil : 0, alignment: .leading)
                         .clipped()
@@ -48,14 +47,14 @@ struct CustomProfileTextField: View {
                 }
                 .animation(.easeOut(duration: 0.2), value: shouldFloat)
             }
-            .padding(.vertical, Spacing.s8)
+            .padding(.vertical, Spacing.s12)
             
             // Error Message View
             if let error = errorMessage, !error.isEmpty {
                 Text(error)
                     .font(.caption)
                     .foregroundColor(.red)
-                    .padding(.leading, 56) // 44px icon + 12px spacing alignment
+                    .padding(.leading, 56) 
                     .transition(.opacity.combined(with: .move(edge: .top)))
             }
         }

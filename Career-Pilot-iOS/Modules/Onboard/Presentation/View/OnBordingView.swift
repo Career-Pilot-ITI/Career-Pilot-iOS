@@ -17,7 +17,6 @@ struct OnBordingView: View {
                     .ignoresSafeArea()
             VStack(alignment: .center, spacing: 14) {
                 
-                
                 OnBordingTopPart(vm: vm)
                 
                 Spacer()
@@ -34,7 +33,6 @@ struct OnBordingView: View {
             
                 }
            
-                
                 Spacer()
                 
                 // Bottom Part
@@ -68,7 +66,6 @@ private struct OnboardingLoadingView: View {
         VStack(spacing: 24) {
             ProgressView()
                 .controlSize(.large)
-                .tint(.accentColor)
 
             VStack(spacing: 8) {
                 Text("Setting Things Up")
@@ -77,7 +74,6 @@ private struct OnboardingLoadingView: View {
 
                 Text(vm.currentView.screenDescription)
                     .font(.subheadline)
-                    .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
             }
         }

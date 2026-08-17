@@ -45,8 +45,6 @@ struct ProgressCard: View {
             
             Spacer()
             
-            Image(systemName: "chevron.right")
-                .foregroundColor(.secondary)
         }
         .padding()
         .background(Color.gray.opacity(0.08))
