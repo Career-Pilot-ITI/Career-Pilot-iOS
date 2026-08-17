@@ -35,8 +35,6 @@
 		41897C803028B60300654888 /* SuggestedResumeEditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41897C7F3028B60300654888 /* SuggestedResumeEditsView.swift */; };
 		419DE28A302E3D22007395C4 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 419DE289302E3D22007395C4 /* Swinject */; };
 		419DE28D302E3D4B007395C4 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 419DE28C302E3D4B007395C4 /* Shimmer */; };
-		419DE28A302E3D22007395C4 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 419DE289302E3D22007395C4 /* Swinject */; };
-		419DE28D302E3D4B007395C4 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 419DE28C302E3D4B007395C4 /* Shimmer */; };
 		41A3B784302C9D44003C2F2A /* CoverLetterModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B783302C9D44003C2F2A /* CoverLetterModels.swift */; };
 		41A3B786302C9D8D003C2F2A /* CoverLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B785302C9D8D003C2F2A /* CoverLetterView.swift */; };
 		41A3B788302C9DB8003C2F2A /* SendEmailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3B787302C9DB8003C2F2A /* SendEmailButton.swift */; };
@@ -3684,7 +3682,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Career-Pilot-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 9YWQZ5JYLT;
+				DEVELOPMENT_TEAM = 5PGGXHFM2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Career-Pilot-iOS/Info.plist";
@@ -3719,7 +3717,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Career-Pilot-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 9YWQZ5JYLT;
+				DEVELOPMENT_TEAM = 5PGGXHFM2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Career-Pilot-iOS/Info.plist";
@@ -3732,7 +3730,6 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
