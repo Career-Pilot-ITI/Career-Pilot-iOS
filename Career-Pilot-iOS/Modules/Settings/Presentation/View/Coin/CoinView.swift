@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CoinView: View {
-    @StateObject var viewModel: CoinViewModel = CoinViewModel(getCoinPacksUseCase: GetCoinsPlans(settingsRepo: SettingsRepoImp(remote: SettingsRemoteImp(apiService: URLSessionNetworkService()), local: SettingsLocalDataSourceImp(coreDataManager: CoreDataManager()), authToken: KeychainAuthTokenStore())))
+    @StateObject var viewModel: CoinViewModel = CoinViewModel(getCoinPacksUseCase: GetCoinsPlans(settingsRepo: DIContainer.shared.container.resolve(SettingsRepoImp.self)!))
     
     var body: some View {
         VStack(spacing : 0 ){

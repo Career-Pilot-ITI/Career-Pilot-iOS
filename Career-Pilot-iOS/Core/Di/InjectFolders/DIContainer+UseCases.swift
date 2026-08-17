@@ -155,6 +155,10 @@ extension DIContainer{
         container.register(PollCvOptimizeUseCase.self) { r in
             PollCvOptimizeUseCase(repository: r.resolve(ATSRepositoryProtocol.self)!)
         }
+        container.register(CancelSubscription.self){
+            r in
+            CancelSubscription(repo: r.resolve(SettingsRepoImp.self)!)
+        }
 
     }
 }

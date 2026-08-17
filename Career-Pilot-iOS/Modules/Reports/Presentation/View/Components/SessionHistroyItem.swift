@@ -37,6 +37,7 @@ struct SessionHistroyItem: View {
                 .foregroundStyle(color)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 10)
+                .frame(width: 40, height: 40)
                 .background {
                     RoundedRectangle(cornerRadius: 	Radius.r13)
                         .fill(color)

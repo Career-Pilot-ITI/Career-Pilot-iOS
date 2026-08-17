@@ -17,5 +17,6 @@ protocol SettingsRemote{
     
     func getUserSubscription() async throws -> SubscriptionDTO
     func downgradeUserSubscribtion() async throws
+    func cancelSubscribtion() async throws
     
 }

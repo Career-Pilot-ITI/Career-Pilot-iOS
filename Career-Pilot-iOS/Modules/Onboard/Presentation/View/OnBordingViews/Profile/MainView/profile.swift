@@ -33,7 +33,9 @@ struct profile: View {
                 FreeSessionBanner()
             }
             .padding(.horizontal, Spacing.s20)
-        }
+        }.onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),to: nil , from: nil , for: nil)
+        }.scrollDismissesKeyboard(.interactively)
         .scrollIndicators(.hidden)
         .background(Color.background.opacity(0.4))
         .ignoresSafeArea(.keyboard)

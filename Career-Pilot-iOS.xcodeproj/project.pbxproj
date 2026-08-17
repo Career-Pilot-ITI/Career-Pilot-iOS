@@ -184,6 +184,7 @@
 		614A48D830308C6A00E0C02A /* SubscriptionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614A48D730308C6A00E0C02A /* SubscriptionDTO.swift */; };
 		614A48DA3030924400E0C02A /* UserSubscribtionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614A48D93030924400E0C02A /* UserSubscribtionData.swift */; };
 		614A48DC3030A5C200E0C02A /* DowngradeUserSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614A48DB3030A5C200E0C02A /* DowngradeUserSubscription.swift */; };
+		615373DB3031B68F0091B5B6 /* SubscriptionUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615373DA3031B68F0091B5B6 /* SubscriptionUserView.swift */; };
 		6155109730304FBE009AE9D4 /* SubscribtionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6155109630304FBD009AE9D4 /* SubscribtionPlan.swift */; };
 		61601FC43016441A00581229 /* UserSettingsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61601FC33016441A00581229 /* UserSettingsDTO.swift */; };
 		61601FC630164C5E00581229 /* UserWalletBalanceDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61601FC530164C5E00581229 /* UserWalletBalanceDTO.swift */; };
@@ -224,8 +225,9 @@
 		616D8480301B344A0003CF76 /* AvatarResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616D847F301B344A0003CF76 /* AvatarResponseDTO.swift */; };
 		616D8482301B3B9B0003CF76 /* CvUploadSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616D8481301B3B9B0003CF76 /* CvUploadSheet.swift */; };
 		61703F1F3026EB4500412A27 /* DIContainer+Sessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61703F1E3026EB4500412A27 /* DIContainer+Sessions.swift */; };
+		6171C8603031C92000698F6C /* CancelSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6171C85F3031C92000698F6C /* CancelSubscription.swift */; };
 		61724A033017D8D1003C4781 /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61724A023017D8D1003C4781 /* SettingsTabView.swift */; };
-		617DF223300DF5F80046297B /* SubscribtionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DF222300DF5F80046297B /* SubscribtionView.swift */; };
+		617DF223300DF5F80046297B /* ChoosePlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DF222300DF5F80046297B /* ChoosePlanView.swift */; };
 		6182BB4F300C519B001157B8 /* ProfilePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6182BB4E300C519B001157B8 /* ProfilePhoto.swift */; };
 		6182BB53300C67BB001157B8 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6182BB52300C67BB001157B8 /* ImagePicker.swift */; };
 		6182BB55300C67DF001157B8 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6182BB54300C67DF001157B8 /* PhotoPicker.swift */; };
@@ -252,6 +254,9 @@
 		61970B9030115C5F009D7E58 /* CoinsPackViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61970B8F30115C5F009D7E58 /* CoinsPackViewData.swift */; };
 		61AD45A6300D608D00B70AFA /* SubscribtionCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AD45A5300D608D00B70AFA /* SubscribtionCheckoutView.swift */; };
 		61B48C19301A1384002AEAC9 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B48C18301A1384002AEAC9 /* ProfileViewModel.swift */; };
+		61C401B3303201A4003E704D /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C401B2303201A4003E704D /* SubscriptionView.swift */; };
+		61C401B530320291003E704D /* ReteryUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C401B430320291003E704D /* ReteryUIView.swift */; };
+		61C401B730322BB2003E704D /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C401B630322BB2003E704D /* Error+Extension.swift */; };
 		61D309163025AF1E0072734C /* SaveUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D309153025AF1E0072734C /* SaveUserData.swift */; };
 		61D8F2E6300750FC0088F170 /* profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8F2E5300750FC0088F170 /* profile.swift */; };
 		61D8F2F03007523E0088F170 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8F2EF3007523E0088F170 /* HeaderView.swift */; };
@@ -641,6 +646,7 @@
 		614A48D730308C6A00E0C02A /* SubscriptionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDTO.swift; sourceTree = "<group>"; };
 		614A48D93030924400E0C02A /* UserSubscribtionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSubscribtionData.swift; sourceTree = "<group>"; };
 		614A48DB3030A5C200E0C02A /* DowngradeUserSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DowngradeUserSubscription.swift; sourceTree = "<group>"; };
+		615373DA3031B68F0091B5B6 /* SubscriptionUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionUserView.swift; sourceTree = "<group>"; };
 		6155109630304FBD009AE9D4 /* SubscribtionPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribtionPlan.swift; sourceTree = "<group>"; };
 		61601FC33016441A00581229 /* UserSettingsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsDTO.swift; sourceTree = "<group>"; };
 		61601FC530164C5E00581229 /* UserWalletBalanceDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWalletBalanceDTO.swift; sourceTree = "<group>"; };
@@ -684,8 +690,9 @@
 		616D847F301B344A0003CF76 /* AvatarResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarResponseDTO.swift; sourceTree = "<group>"; };
 		616D8481301B3B9B0003CF76 /* CvUploadSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvUploadSheet.swift; sourceTree = "<group>"; };
 		61703F1E3026EB4500412A27 /* DIContainer+Sessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+Sessions.swift"; sourceTree = "<group>"; };
+		6171C85F3031C92000698F6C /* CancelSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelSubscription.swift; sourceTree = "<group>"; };
 		61724A023017D8D1003C4781 /* SettingsTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
-		617DF222300DF5F80046297B /* SubscribtionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribtionView.swift; sourceTree = "<group>"; };
+		617DF222300DF5F80046297B /* ChoosePlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePlanView.swift; sourceTree = "<group>"; };
 		6182BB4E300C519B001157B8 /* ProfilePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhoto.swift; sourceTree = "<group>"; };
 		6182BB52300C67BB001157B8 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		6182BB54300C67DF001157B8 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
@@ -713,6 +720,9 @@
 		61970B8F30115C5F009D7E58 /* CoinsPackViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsPackViewData.swift; sourceTree = "<group>"; };
 		61AD45A5300D608D00B70AFA /* SubscribtionCheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribtionCheckoutView.swift; sourceTree = "<group>"; };
 		61B48C18301A1384002AEAC9 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		61C401B2303201A4003E704D /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
+		61C401B430320291003E704D /* ReteryUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReteryUIView.swift; sourceTree = "<group>"; };
+		61C401B630322BB2003E704D /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		61D309153025AF1E0072734C /* SaveUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUserData.swift; sourceTree = "<group>"; };
 		61D8F2E5300750FC0088F170 /* profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profile.swift; sourceTree = "<group>"; };
 		61D8F2EF3007523E0088F170 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -1462,6 +1472,7 @@
 				6103DA3B301A228E008BC8BF /* UpdateUserData.swift */,
 				61D309153025AF1E0072734C /* SaveUserData.swift */,
 				614A48DB3030A5C200E0C02A /* DowngradeUserSubscription.swift */,
+				6171C85F3031C92000698F6C /* CancelSubscription.swift */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -1780,7 +1791,10 @@
 		618F82643010E79B0065331A /* Subscription */ = {
 			isa = PBXGroup;
 			children = (
-				617DF222300DF5F80046297B /* SubscribtionView.swift */,
+				617DF222300DF5F80046297B /* ChoosePlanView.swift */,
+				615373DA3031B68F0091B5B6 /* SubscriptionUserView.swift */,
+				61C401B2303201A4003E704D /* SubscriptionView.swift */,
+				61C401B430320291003E704D /* ReteryUIView.swift */,
 			);
 			path = Subscription;
 			sourceTree = "<group>";
@@ -2869,6 +2883,7 @@
 				6117C02E300F9FD700CABEC6 /* StringsExtenstion.swift */,
 				D99D9755301282E000F2A7C2 /* String+Extension.swift */,
 				41AD90213016260600BDFDA0 /* Date+Formatting.swift */,
+				61C401B630322BB2003E704D /* Error+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -3068,7 +3083,7 @@
 				41AD8FE53016130900BDFDA0 /* QuestionScoreDTO.swift in Sources */,
 				41D69D63300B553F00294D94 /* Career_Pilot_iOS.xcdatamodeld in Sources */,
 				CECC20DA3007BE6800DC450D /* PhoneFieldViewModel.swift in Sources */,
-				617DF223300DF5F80046297B /* SubscribtionView.swift in Sources */,
+				617DF223300DF5F80046297B /* ChoosePlanView.swift in Sources */,
 				41BC774A300D3E5F00E89C3F /* QuestionBreakdownView.swift in Sources */,
 				D94F0A013031FB0200EA0B50 /* FancyAlertView.swift in Sources */,
 				414B4BEC302B59CE00B66FA7 /* ATSViewModel.swift in Sources */,
@@ -3094,6 +3109,7 @@
 				41AEC139302DCFE3000EC6CE /* CoverLetterEntity.swift in Sources */,
 				D9868B41300FD22600B84CD6 /* SpeechRecognitionService.swift in Sources */,
 				D95C3BBC300E4AC60042785F /* SpeechPlaybackService.swift in Sources */,
+				61C401B730322BB2003E704D /* Error+Extension.swift in Sources */,
 				CEE62A95300929830071F076 /* ProgressCard.swift in Sources */,
 				61D8F303300780C50088F170 /* FreeSessionBanner.swift in Sources */,
 				D935DFFF30082AA9009DF855 /* UploadCvView.swift in Sources */,
@@ -3232,12 +3248,14 @@
 				41C05287301A7DA6003885A1 /* RefreshTokenResponseDTO.swift in Sources */,
 				41BC7732300D31C900E89C3F /* SessionView.swift in Sources */,
 				41BC7752300D9A8D00E89C3F /* AppState.swift in Sources */,
+				6171C8603031C92000698F6C /* CancelSubscription.swift in Sources */,
 				61970B8E30115BE2009D7E58 /* CoinPack.swift in Sources */,
 				611259EC3028E8B800C5E9E7 /* Validator.swift in Sources */,
 				CEE62A83300910E90071F076 /* CustomNavigationBar.swift in Sources */,
 				41897C7C3028B54600654888 /* ActionButtons.swift in Sources */,
 				CECC20D23007AD2800DC450D /* PhoneValidator.swift in Sources */,
 				41897C783028B46800654888 /* SectionHeader.swift in Sources */,
+				615373DB3031B68F0091B5B6 /* SubscriptionUserView.swift in Sources */,
 				41A5C6E6302FF4D5003E3D78 /* CvOptimizeProgressView.swift in Sources */,
 				D96D8360302DED6500CDD5AC /* CapturedFrame.swift in Sources */,
 				CEA4C08A30145B0900CB5DD3 /* TrackInterviewCard.swift in Sources */,
@@ -3273,6 +3291,7 @@
 				CED18895300B096300B15B81 /* Userdefaultsmanager.swift in Sources */,
 				61970B9030115C5F009D7E58 /* CoinsPackViewData.swift in Sources */,
 				6169A7D2301044E5001FDC39 /* SettingsCard.swift in Sources */,
+				61C401B530320291003E704D /* ReteryUIView.swift in Sources */,
 				61D8F2F8300761200088F170 /* CustomProfileTextField.swift in Sources */,
 				41A3B79E302CCCA6003C2F2A /* OverViewItem.swift in Sources */,
 				41BC7724300D173100E89C3F /* CoachingSuggestionsListView.swift in Sources */,
@@ -3394,6 +3413,7 @@
 				41AEC141302DD015000EC6CE /* JobMatchEntity+UIMapper.swift in Sources */,
 				616320D03010918200F417C9 /* GetUserData.swift in Sources */,
 				614A48DA3030924400E0C02A /* UserSubscribtionData.swift in Sources */,
+				61C401B3303201A4003E704D /* SubscriptionView.swift in Sources */,
 				D9B614EE300CF50D00552F85 /* DIContainer+Services.swift in Sources */,
 				D96D836B302E638200CDD5AC /* FrameObservation.swift in Sources */,
 				61F33936301395DC00C94B89 /* Items.swift in Sources */,
@@ -3658,10 +3678,11 @@
 		D93939083004064600CF4372 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Career-Pilot-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 9YWQZ5JYLT;
+				DEVELOPMENT_TEAM = 5PGGXHFM2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Career-Pilot-iOS/Info.plist";
@@ -3682,6 +3703,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.iti.Career-Pilot-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3691,10 +3713,11 @@
 		D93939093004064600CF4372 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Career-Pilot-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 9YWQZ5JYLT;
+				DEVELOPMENT_TEAM = 5PGGXHFM2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Career-Pilot-iOS/Info.plist";
@@ -3715,6 +3738,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.iti.Career-Pilot-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -51,8 +51,6 @@ enum AppColors {
 extension Color {
    static let background = Color("Background")
    static let primary  = Color("Primary")
-    
-    
    static let darkBackGround = Color("NavyDark")
    static let lightBackGround = Color("Background")
    static let successColour = Color("Success")

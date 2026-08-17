@@ -20,7 +20,7 @@ struct ATSJobMatchView: View {
 
     var body: some View {
         ZStack {
-            Color.lightBackGround.ignoresSafeArea()
+            Color.background.ignoresSafeArea()
 
             VStack(alignment: .leading) {
                 ATSFeatureBadge()
@@ -55,8 +55,11 @@ struct ATSJobMatchView: View {
 
                     if viewModel.isUploadingCv {
                         CVUploadSkeletonView()
-                    } else if viewModel.cvUploaded {
-                        UploadedCVCard()
+                    } else if viewModel.cvUploaded, let uploadDate = viewModel.cvUploadDate {
+                        UploadedCVCard(
+                            fileName: viewModel.cvFileName,
+                            uploadDate: uploadDate
+                        )
                     } else {
                         CvUploadingView(
                             didUpload: false,

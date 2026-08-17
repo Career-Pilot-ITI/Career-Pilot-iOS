@@ -17,4 +17,5 @@ protocol  SettingsRepo{
     func saveUserData  ( user : UserSettingsDTO )async throws
     func downgradeUserSubscription() async throws
     func refreshUserData() async throws -> UserSettingsDomain
+    func cancelUserSubscription () async throws 
 }

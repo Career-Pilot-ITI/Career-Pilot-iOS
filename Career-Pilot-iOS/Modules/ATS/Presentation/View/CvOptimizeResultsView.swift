@@ -13,7 +13,7 @@ struct CvOptimizeResultsView: View {
 
     var body: some View {
         ZStack {
-            Color.lightBackGround.ignoresSafeArea()
+            Color.background.ignoresSafeArea()
 
             if let result = viewModel.completedResult {
                 ScrollView {

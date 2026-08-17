@@ -62,7 +62,6 @@ struct SkillChipsCard: View {
             HStack {
                 Text(title)
                     .font(Font.size14Bold)
-                    .foregroundColor(Color.textPrimary)
                 Spacer()
                 if let badgeText {
                     Text(badgeText)
@@ -84,7 +83,7 @@ struct SkillChipsCard: View {
             }
         }
         .padding(16)
-        .background(Color.gray400.opacity(0.08))
+        .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: Radius.r16))
         .overlay {
             RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)
@@ -95,7 +94,7 @@ struct SkillChipsCard: View {
         
     }
 }
-//
+
 //#Preview {
 //    VStack(spacing: 16) {
 //        SkillChipsCard(

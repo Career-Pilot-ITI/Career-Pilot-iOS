@@ -48,7 +48,6 @@ final class HomeViewModel: ObservableObject {
         self.getAllTracksUseCase = getAllTracksUseCase
         self.getAllSessionUseCase = getAllSessionUseCase
         
-        // 🔄 Automatically listen for any changes to the user session
         bindUserSession()
     }
     
@@ -85,8 +84,10 @@ final class HomeViewModel: ObservableObject {
     
     // MARK: - User
     func loadUser() async {
-        // If user is already available in UserSession, we don't need to show loading
+      print("The user is loading")
         if userSession.userData != nil {
+            print("The user is here \(userSession.userData)")
+
             userState = .success
             return
         }
@@ -95,10 +96,14 @@ final class HomeViewModel: ObservableObject {
         do {
             // Trigger refresh via userSession if not loaded yet
             try await userSession.reload()
+            print("UserData is \(userSession.userData)")
+
             userState = .success
         } catch is CancellationError {
+            print("There is error in here ")
             return
         } catch {
+            print("There is error in here ")
             userState = .error(getErrorMessage(error: error))
         }
     }

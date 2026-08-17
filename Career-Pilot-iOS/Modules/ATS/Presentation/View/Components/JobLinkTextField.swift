@@ -19,10 +19,11 @@ struct JobLinkTextField: View {
                 .keyboardType(.URL)
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
+                .foregroundStyle(Color.textPrimary)
                 .overlay(alignment: .leading) {
                     if link.isEmpty {
                         Text("https://linkedin.com/jobs/view/...")
-                            .foregroundStyle(Color.textSecondary)
+                            .foregroundStyle(Color.textPrimary)
                             .font(Font.size13Regular)
 //                            .padding(.leading, 12)
                             .allowsHitTesting(false)
@@ -32,7 +33,7 @@ struct JobLinkTextField: View {
         .padding(Spacing.s16)
         .background {
             RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)
-                .fill(Color.gray400.opacity(0.08))
+                .fill(.white)
         }
         .overlay {
             RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)
