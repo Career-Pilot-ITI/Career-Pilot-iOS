@@ -73,7 +73,7 @@ private struct ModeCard: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(Spacing.s16)
-            .background(Color(.secondarySystemGroupedBackground))
+            .background(.background.opacity(0.1))
             .cornerRadius(Radius.r16)
             .overlay(
                 RoundedRectangle(cornerRadius: Radius.r16)
