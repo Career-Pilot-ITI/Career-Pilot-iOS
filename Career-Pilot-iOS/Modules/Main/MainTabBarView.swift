@@ -96,6 +96,21 @@ struct MainTabBarView: View {
                         ) {
                             homeCoordinator.popToRoot()
                         }
+                    case let .pathLearn(trackId, trackName):
+                        PathLearnView(
+                            viewModel: DIContainer.shared.container.resolve(
+                                PathLearnViewModel.self,
+                                arguments: String(trackId), trackName
+                            )!
+                        )
+
+                    case let .quiz(trackId, trackTitle, subtopicId, subtopicTitle):
+                        QuizView(
+                            viewModel: DIContainer.shared.container.resolve(
+                                QuizViewModel.self,
+                                arguments: trackId, trackTitle, subtopicId, subtopicTitle
+                            )!
+                        )
                     }
                 }
             }

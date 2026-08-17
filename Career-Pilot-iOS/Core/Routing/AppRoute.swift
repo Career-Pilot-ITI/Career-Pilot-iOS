@@ -27,15 +27,12 @@ enum HomeRoute: Hashable {
     case interviewPrep(trackName: String, trackId: Int, interviewType: InterviewType)
     case practiceInterview(trackName: String, trackId: Int, interviewType: InterviewType)
     case sessionFeedback(feedback: InterviewFeedback, sessionId: Int)
-<<<<<<< HEAD
     
     case pathLearn(trackId: String, trackName: String)
     case quiz(trackId: String, trackTitle: String, subtopicId: String, subtopicTitle: String)
-=======
     case sessionDetail(sessionId: Int)
     case subscribtion
     case InterviewsView
->>>>>>> develop
     case atsJobMatch
     case atsjobDescription
     case coverLetter

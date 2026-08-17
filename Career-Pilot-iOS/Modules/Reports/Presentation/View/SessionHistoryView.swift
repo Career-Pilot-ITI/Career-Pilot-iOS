@@ -42,6 +42,7 @@ struct SessionHistory: View {
                        }
                    }
                }
+                .scrollIndicators(.hidden)
             }
             .padding(.top, 16)
             .padding(.horizontal, 24)

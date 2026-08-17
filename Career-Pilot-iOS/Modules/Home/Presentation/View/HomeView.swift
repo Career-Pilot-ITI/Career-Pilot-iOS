@@ -221,15 +221,6 @@ private extension HomeView {
                             )
                         }
                     )
-                    .onTapGesture {
-                        print("Tapped on \(track.title)")
-                        coordinator.push(.interviewPrep(
-                                trackName: track.title,
-                                trackId: track.trackInterview.track.id,
-                                interviewType: .classic
-                            )
-                        )
-                    }
                 }
             }
         }
