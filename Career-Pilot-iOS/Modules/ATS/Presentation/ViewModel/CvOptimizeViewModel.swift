@@ -47,6 +47,11 @@ class CvOptimizeViewModel: ObservableObject {
     @Published var displayedProgress: Double = 0
     @Published var showStillWorking: Bool = false
 
+    /// Tracks whether optimization has completed in the current session.
+    /// Used by the view to distinguish "returning from results" (skip reset)
+    /// from "fresh entry from parent" (reset and start new optimization).
+    private(set) var hasCompletedInSession: Bool = false
+
     /// The completed result, extracted for easy access by the results screen.
     var completedResult: CvOptimizationResult? {
         if case .completed(let result) = state { return result }
@@ -97,6 +102,7 @@ class CvOptimizeViewModel: ObservableObject {
         cancelPolling()
 
         // Reset state
+        hasCompletedInSession = false
         state = .starting
         displayedProgress = 0
         showStillWorking = false
@@ -139,6 +145,12 @@ class CvOptimizeViewModel: ObservableObject {
     func cancelPolling() {
         pollingTask?.cancel()
         pollingTask = nil
+    }
+
+    /// Clears the completion flag when navigating away from the progress screen.
+    /// Called from onDisappear when the view is popped (not when pushing to results).
+    func clearCompletedFlag() {
+        hasCompletedInSession = false
     }
 
     /// Retries by re-triggering the optimize job from scratch.
@@ -227,6 +239,7 @@ class CvOptimizeViewModel: ObservableObject {
         animateProgress(to: 100)
         try? await Task.sleep(nanoseconds: completionDelay)
         guard !Task.isCancelled else { return }
+        hasCompletedInSession = true
         state = .completed(result)
     }
 
