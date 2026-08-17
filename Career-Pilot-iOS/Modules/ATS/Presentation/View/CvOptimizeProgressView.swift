@@ -45,18 +45,7 @@ struct CvOptimizeProgressView: View {
         }
         .task {
             print("I came here hi in the loading")
-            guard viewModel.state == .idle || viewModel.state == .timeout else {
-                if(viewModel.state == .idle ){
-                    print("viewModel state is idle")
-
-                }
-                else if(viewModel.state == .timeout){
-                    print("viewModel state is timeout")
-                }
-                else{
-                    print("unkown state")
-                }
-                return }
+            guard viewModel.state == .idle || viewModel.state == .timeout else {return }
             if let workspaceId = atsViewModel.currentJob?.workspaceID {
                 await viewModel.startOptimize(workspaceId: workspaceId)
             }
