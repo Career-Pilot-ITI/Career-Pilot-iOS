@@ -54,6 +54,7 @@ struct CvOptimizeProgressView: View {
             print("I've cancelled the polling")
             viewModel.cancelPolling()
         }
+        .toast(ToastManager.shared)
         .onChange(of: viewModel.state) { newState in
             if case .completed = newState {
                 coordinator.push(.cvOptimizeResults)

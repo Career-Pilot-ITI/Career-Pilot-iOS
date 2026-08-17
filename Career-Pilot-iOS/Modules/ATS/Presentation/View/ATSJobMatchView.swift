@@ -109,6 +109,7 @@ struct ATSJobMatchView: View {
                 .presentationDetents([.medium])
             }
         }
+        .toast(ToastManager.shared)
     }
 }
 

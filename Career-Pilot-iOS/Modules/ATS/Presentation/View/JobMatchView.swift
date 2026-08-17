@@ -112,6 +112,7 @@ struct JobMatchView: View {
         .sheet(item: $selectedPostingURL) { identifiable in
             JobPostingSafariView(url: identifiable.url)
         }
+        .toast(ToastManager.shared)
         .task {
             // Only score if we don't already have results
             guard viewModel.jobMatchData == nil else { return }

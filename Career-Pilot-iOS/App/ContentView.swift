@@ -10,7 +10,6 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @StateObject private var toastManager = ToastManager()
     @StateObject private var coordinator = AppCoordinator<AuthRoute>()
     @StateObject private var appState = DIContainer.shared.container.resolve(AppState.self)!
     
@@ -36,8 +35,8 @@ struct ContentView: View {
         }
         .environmentObject(coordinator)
         .environmentObject(appState)
-        .environmentObject(toastManager) // (Using your local @StateObject instance)
-        .toast(toastManager)
+        .environmentObject(ToastManager.shared)
+        .toast(ToastManager.shared)
     }
     @MainActor
     @ViewBuilder
