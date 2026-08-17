@@ -154,8 +154,6 @@ class OnBordingViewModel: ObservableObject {
             cvViewInfo.cvSize = fileSizeInMB
         }catch{
             print("Error in extracting name and size of the CV®")
-            cvViewInfo.isSelected = false
-
             onCatchError(error: error)
         }
     }
