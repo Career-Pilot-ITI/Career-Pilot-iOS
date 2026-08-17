@@ -23,7 +23,7 @@ struct RetryableErrorView: View {
             
             Text(title)
                 .font(.size16Bold)
-                .foregroundColor(.primaryNavy)
+                .foregroundColor(.primary)
             
             Text(message)
                 .font(.caption)
