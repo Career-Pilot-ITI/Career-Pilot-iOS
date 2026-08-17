@@ -161,6 +161,7 @@ final class PracticeSessionViewModel: ObservableObject {
             print("No Feedback yet")
             return InterviewFeedback.empty
         }
+        print("Feedback is: \(feedback)")
         return feedback
     }
 

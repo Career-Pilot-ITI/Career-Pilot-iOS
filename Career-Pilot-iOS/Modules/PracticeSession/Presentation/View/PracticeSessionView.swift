@@ -26,7 +26,7 @@ struct PracticeSessionView: View {
                 AITurnView(vm: vm)
                 
             case .waitingForAnswer:
-                WaitingForAnswerView(vm: vm) // Probelm with nav to this state
+                WaitingForAnswerView(vm: vm) 
                 
             case .recording(let silenceWarning):
                 RecordingView(vm: vm, silenceWarning: silenceWarning)
