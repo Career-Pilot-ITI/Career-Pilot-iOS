@@ -127,7 +127,7 @@ class OnBordingViewModel: ObservableObject {
         case.ChooseTrackView:
             return selectedTrackInfo.selectedTrack != nil
         case .UploadCvView:
-            return cvViewInfo.isSelected
+        return cvViewInfo.isSelected
         }
     }
     

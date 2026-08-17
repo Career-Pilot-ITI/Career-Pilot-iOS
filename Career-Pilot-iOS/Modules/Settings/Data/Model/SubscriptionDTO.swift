@@ -18,8 +18,10 @@ struct SubscriptionDTO: Decodable {
 extension SubscriptionDTO {
     /// Maps the network DTO to your domain model
     func toDomain() -> UserSubscribtionDomain {
-        UserSubscribtionDomain(
-            tier: PlanType(rawValue: tier.lowercased().capitalized) ?? .free,
+        print("the user is having plan \(tier.lowercased().capitalized)")
+        print("the user subscribtion tier is \(PlanType(rawValue: tier.lowercased().capitalized))")
+        return UserSubscribtionDomain(
+            tier: PlanType(rawValue: tier.lowercased()) ?? .free,
             isActive: isActive,
             startedAt: startedAt,
             renewalDate: renewalDate,
