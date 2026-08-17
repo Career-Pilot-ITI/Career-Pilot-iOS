@@ -12,7 +12,7 @@ struct JobDescriptionView: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            Color.lightBackGround.ignoresSafeArea()
+            Color.background.ignoresSafeArea()
 
             if let job = viewModel.jobDescriptionModel {
                 ScrollView {
