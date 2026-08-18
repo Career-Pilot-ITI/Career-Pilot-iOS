@@ -60,7 +60,6 @@ struct MainTabBarView: View {
                         SessionFeedBackView(feedback: feedBack, sessionId: sessionId) {
                             homeCoordinator.popToRoot()
                         }
-                        .navigationBarBackButtonHidden()
                         
                     case .atsJobMatch:
                         ATSJobMatchView()
@@ -87,14 +86,16 @@ struct MainTabBarView: View {
                     case .subscribtion, .subscriptionView:
                         ChoosePlanView(
                             viewModel: DIContainer.shared.container.resolve(SubscriptionViewModel.self)!
-                        )
+                        ) { checkoutItem in
+                            homeCoordinator.push(.checkout(item: checkoutItem))
+                        }
                         
                     case .checkout(let item):
                         CheckOutView(
                             checkoutDisplayInfo: item,
                             paymentVM: DIContainer.shared.container.resolve(PaymentViewModel.self)!
                         ) {
-                            homeCoordinator.popToRoot()
+                            homeCoordinator.pop()
                         }
                     case let .pathLearn(trackId, trackName):
                         PathLearnView(

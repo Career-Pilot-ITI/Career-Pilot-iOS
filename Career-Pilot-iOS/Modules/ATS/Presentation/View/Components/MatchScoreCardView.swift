@@ -87,7 +87,7 @@ struct MatchScoreCardView: View {
             .frame(height: 6)
         }
         .padding(20)
-        .background(.white)
+        .background(Color.gray400.opacity(0.08))
         .clipShape(RoundedRectangle(cornerRadius: Radius.r16))
         .overlay {
             RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)

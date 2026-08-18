@@ -39,6 +39,8 @@ struct profile: View {
         .scrollIndicators(.hidden)
         .background(Color.background.opacity(0.4))
         .ignoresSafeArea(.keyboard)
+        .navigationBarBackButtonHidden(vm.screenState == .loading)
+
 
     }
 }

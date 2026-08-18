@@ -38,6 +38,6 @@ struct WaitingForAnswerView: View {
         .padding(.horizontal, Spacing.s20)
         .padding(.top, Spacing.s16)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.darkBackGround.ignoresSafeArea())
+        .background(Color.background.ignoresSafeArea())
     }
 }

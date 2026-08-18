@@ -60,6 +60,7 @@ struct SubscribtionCheckoutView: View {
         .padding(.horizontal , Spacing.s20)
         .padding(.vertical , Spacing.s20)
         .background(
+            .background.opacity(0.1),
             in : RoundedRectangle(cornerRadius: Radius.r16 ))
     }
     @ViewBuilder

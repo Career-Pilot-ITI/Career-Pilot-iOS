@@ -161,6 +161,7 @@ final class PracticeSessionViewModel: ObservableObject {
             print("No Feedback yet")
             return InterviewFeedback.empty
         }
+        print("Feedback is: \(feedback)")
         return feedback
     }
 
@@ -346,6 +347,7 @@ extension PracticeSessionViewModel {
                 session = updatedSession
 
                 if updatedSession.status == .completed {
+                    await finish()
                     screenState = .completed
                 } else {
                     beginAITurn(question: updatedSession.currentQuestion)

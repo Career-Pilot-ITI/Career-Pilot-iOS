@@ -41,26 +41,15 @@ struct HomeView: View {
                     ProgressCard(info: progressInfo)
                 }
                 // MARK: - Practice
-                PracticeCard(
-                    category: "SOFTWARE ENGINEERING",
-                    onStartInterview: {
-                        coordinator.push(
-                            .interviewPrep(
-                                trackName: "SOFTWARE ENGINEERING",
-                                trackId: viewModel.user.profile.trackId,
-                                interviewType: .classic
-                            )
+                PracticeCard(category: viewModel.trackName) {
+                    coordinator.push(
+                        .interviewPrep(
+                            trackName: viewModel.trackName,
+                            trackId: viewModel.user.profile.trackId,
+                            interviewType: .classic
                         )
-                    },
-                    onStartQuiz:{
-                        coordinator.push(
-                                .pathLearn(
-                                    trackId: String(viewModel.user.profile.trackId),
-                                    trackName: "SOFTWARE ENGINEERING"
-                                )
-                        )
-                    } 
-                )
+                    )
+                }
 
                 // MARK: - ATS
                 ATSCard(

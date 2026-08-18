@@ -20,7 +20,7 @@ struct JobHeaderCard: View {
                     .frame(width: 48, height: 48)
                 Text(job.companyInitial)
                     .font(Font.size20Bold)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.gray400.opacity(0.08))
             }
 
             VStack(alignment: .leading, spacing: Spacing.s4) {
@@ -37,7 +37,7 @@ struct JobHeaderCard: View {
                 .foregroundStyle(.secondary)
         }
         .padding(16)
-        .background(Color.white)
+        .background(Color.gray400.opacity(0.08))
         .clipShape(RoundedRectangle(cornerRadius: Radius.r16))
         .overlay {
             RoundedRectangle(cornerRadius: Radius.r16, style: .continuous)

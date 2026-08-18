@@ -27,7 +27,10 @@ struct SubscriptionView: View {
                     )
             case .success(let info):
                 if info.tier == .free {
-                    ChoosePlanView(viewModel: viewModel)
+                    ChoosePlanView(viewModel: viewModel){ checkoutDisplayInfo in
+                        coordinator.push(.checkout(item: checkoutDisplayInfo))
+                    }
+
                 } else {
                     MySubscriptionView(viewModel: viewModel)
                 }

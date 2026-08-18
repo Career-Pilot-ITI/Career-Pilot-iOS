@@ -113,7 +113,6 @@ struct SessionNavButton: View {
             Label(action.title, systemImage: action.icon)
                 .font(.size13Semibold)
                 .labelStyle(.titleAndIcon)
-                .foregroundStyle(action.tint)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 6)
                 .background(Capsule().fill(action.tint.opacity(0.12)))
@@ -145,7 +144,7 @@ struct SubmittingAnswerView: View {
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.darkBackGround.ignoresSafeArea())
+        .background(Color.background.ignoresSafeArea())
     }
 }
 
@@ -168,7 +167,7 @@ struct ReconnectingView: View {
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.darkBackGround.ignoresSafeArea())
+        .background(Color.background.ignoresSafeArea())
     }
 }
 
@@ -235,7 +234,7 @@ struct SessionCompletedView: View {
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.darkBackGround.ignoresSafeArea())
+        .background(Color.background.ignoresSafeArea())
         .sheet(isPresented: $showingPresenceSheet) {
                 VisualAnalysisReportView(score: presenceScore)
         }

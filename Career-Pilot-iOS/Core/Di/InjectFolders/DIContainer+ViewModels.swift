@@ -166,6 +166,7 @@ extension DIContainer{
                 generateCoverLetterUseCase: r.resolve(GenerateCoverLetterUseCase.self)!,
                 uploadCvUseCase: r.resolve(UploadCvUseCase.self)!,
                 userRepo: r.resolve(UserDataRepo.self)!,
+                userSession: r.resolve(UserSession.self)!,
                 toastManager: .shared
             )
         }.inObjectScope(.container)
@@ -174,7 +175,8 @@ extension DIContainer{
         container.register(CvOptimizeViewModel.self) { r in
             CvOptimizeViewModel(
                 triggerUseCase: r.resolve(TriggerCvOptimizeUseCase.self)!,
-                pollUseCase: r.resolve(PollCvOptimizeUseCase.self)!
+                pollUseCase: r.resolve(PollCvOptimizeUseCase.self)!,
+                toastManager: .shared
             )
         }.inObjectScope(.container)
 

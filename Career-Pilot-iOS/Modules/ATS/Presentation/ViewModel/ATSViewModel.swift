@@ -42,6 +42,7 @@ class ATSViewModel: ObservableObject {
     private let generateCoverLetterUseCase: GenerateCoverLetterUseCase
     private let uploadCvUseCase: UploadCvUseCase
     private let userRepo: UserDataRepo
+    private let userSession: UserSession
     private let toastManager: ToastManager
 
     // MARK: - Init
@@ -52,6 +53,7 @@ class ATSViewModel: ObservableObject {
         generateCoverLetterUseCase: GenerateCoverLetterUseCase,
         uploadCvUseCase: UploadCvUseCase,
         userRepo: UserDataRepo,
+        userSession: UserSession,
         toastManager: ToastManager
     ) {
         self.getJobUseCase = getJobUseCase
@@ -59,6 +61,7 @@ class ATSViewModel: ObservableObject {
         self.generateCoverLetterUseCase = generateCoverLetterUseCase
         self.uploadCvUseCase = uploadCvUseCase
         self.userRepo = userRepo
+        self.userSession = userSession
         self.toastManager = toastManager
     }
 
@@ -153,6 +156,7 @@ class ATSViewModel: ObservableObject {
 
     /// Checks whether the user has a CV on file.
     func isCvFound() async {
+        isUploadingCv = false
         do {
             let profile = try await userRepo.getCurrentUser()?.profile
             let cvURL = profile?.cvURL ?? ""
@@ -160,6 +164,9 @@ class ATSViewModel: ObservableObject {
             if cvUploaded {
                 cvFileName = (cvURL as NSString).lastPathComponent
                 cvUploadDate = Date()
+            } else {
+                cvFileName = ""
+                cvUploadDate = nil
             }
         } catch {
             presentError((error as? NetworkError)?.userMessage ?? "Couldn't check your CV. Please try again.")
@@ -168,15 +175,49 @@ class ATSViewModel: ObservableObject {
 
     /// Uploads a CV file picked by the user, then refreshes the CV status.
     func uploadCv(url: URL) async {
+        guard var user = try? await userRepo.getCurrentUser() else {
+            presentError("Please log in again before uploading your CV.")
+            return
+        }
+
         isUploadingCv = true
         errorMessage = nil
         defer { isUploadingCv = false }
 
         do {
-            _ = try await uploadCvUseCase.execute(UploadCvRequest(cv: url))
+            let response = try await uploadCvUseCase.execute(UploadCvRequest(cv: url))
+            let serverCvURL = response.userData.cv?.absoluteString ?? ""
+
+            user.profile = UserProfile(
+                displayName: user.profile.displayName,
+                username: user.profile.username,
+                email: user.profile.email,
+                avatarURL: user.profile.avatarURL,
+                gender: user.profile.gender,
+                dateOfBirth: user.profile.dateOfBirth,
+                targetRole: user.profile.targetRole,
+                industry: user.profile.industry,
+                experienceLevel: user.profile.experienceLevel,
+                currentJobTitle: user.profile.currentJobTitle,
+                yearsOfExperience: user.profile.yearsOfExperience,
+                cvURL: serverCvURL,
+                skills: user.profile.skills,
+                targetCompanies: user.profile.targetCompanies,
+                educationLevel: user.profile.educationLevel,
+                timezone: user.profile.timezone,
+                termsAccepted: user.profile.termsAccepted,
+                subscriptionTier: user.profile.subscriptionTier,
+                coinBalance: user.profile.coinBalance,
+                onboardingCompleted: user.profile.onboardingCompleted,
+                trackId: user.profile.trackId
+            )
+            try? await userRepo.saveUser(user)
+            try? await userSession.reload()
+
             cvUploaded = true
             cvFileName = url.lastPathComponent
             cvUploadDate = Date()
+            toastManager.show("CV uploaded successfully.", type: .success)
         } catch {
             presentError(
                 (error as? NetworkError)?.userMessage

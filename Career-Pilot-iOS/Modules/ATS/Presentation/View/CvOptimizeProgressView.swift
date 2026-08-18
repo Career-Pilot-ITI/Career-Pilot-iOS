@@ -18,7 +18,7 @@ struct CvOptimizeProgressView: View {
 
             switch viewModel.state {
             case .idle, .starting:
-                startingView
+                progressView(step: nil)
 
             case .inProgress(_, let step):
                 progressView(step: step)
@@ -36,21 +36,27 @@ struct CvOptimizeProgressView: View {
         .navigationTitle("CV Optimize")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-            // Reset state when entering the progress screen fresh
-            // (e.g., user tapped "Apply Suggested Edits" again)
-            if case .completed = viewModel.state {
-                viewModel.state = .idle
-                viewModel.displayedProgress = 0
-            }
+            // Reset transient state on fresh entry so .task starts a new optimization.
+            // hasCompletedInSession is true only when returning from results (onDisappear
+            // did not fire because we pushed, not popped). In that case, skip the reset
+            // to avoid auto-push loop. When entering fresh from parent, onDisappear
+            // cleared the flag, so we reset and start a new optimization.
+            if viewModel.hasCompletedInSession { return }
+            viewModel.state = .idle
+            viewModel.displayedProgress = 0
+            viewModel.showStillWorking = false
         }
         .task {
-            guard viewModel.state == .idle || viewModel.state == .timeout else { return }
+            print("I came here hi in the loading")
+            guard viewModel.state == .idle || viewModel.state == .timeout else {return }
             if let workspaceId = atsViewModel.currentJob?.workspaceID {
                 await viewModel.startOptimize(workspaceId: workspaceId)
             }
         }
         .onDisappear {
+            print("I've cancelled the polling")
             viewModel.cancelPolling()
+            viewModel.clearCompletedFlag()
         }
         .onChange(of: viewModel.state) { newState in
             if case .completed = newState {
@@ -59,23 +65,9 @@ struct CvOptimizeProgressView: View {
         }
     }
 
-    // MARK: - Starting
+    // MARK: - Progress
 
-    private var startingView: some View {
-        VStack(spacing: 20) {
-            ProgressView()
-                .scaleEffect(1.5)
-                .tint(Color.primary)
-
-            Text("Starting CV optimization…")
-                .font(Font.size16Medium)
-                .foregroundStyle(Color.textSecondary)
-        }
-    }
-
-    // MARK: - In Progress
-
-    private func progressView(step: String) -> some View {
+    private func progressView(step: String?) -> some View {
         VStack(spacing: 32) {
             Spacer()
 
@@ -95,20 +87,32 @@ struct CvOptimizeProgressView: View {
                     .rotationEffect(.degrees(-90))
                     .animation(.easeInOut(duration: 1.0), value: viewModel.displayedProgress)
 
-                Text("\(Int(viewModel.displayedProgress))%")
-                    .font(Font.size32Bold)
-                    .foregroundStyle(Color.textPrimary)
-                    .contentTransition(.numericText())
+                if let step {
+                    Text("\(Int(viewModel.displayedProgress))%")
+                        .font(Font.size32Bold)
+                        .foregroundStyle(Color.textPrimary)
+                        .contentTransition(.numericText())
+                } else {
+                    ProgressView()
+                        .scaleEffect(1.2)
+                        .tint(Color.primary)
+                }
             }
 
             // Step text with crossfade
             VStack(spacing: 8) {
-                Text(step)
-                    .font(Font.size16Medium)
-                    .multilineTextAlignment(.center)
-                    .id(step)
-                    .transition(.opacity.combined(with: .move(edge: .bottom)))
-                    .animation(.easeInOut(duration: 0.5), value: step)
+                if let step {
+                    Text(step)
+                        .font(Font.size16Medium)
+                        .multilineTextAlignment(.center)
+                        .id(step)
+                        .transition(.opacity.combined(with: .move(edge: .bottom)))
+                        .animation(.easeInOut(duration: 0.5), value: step)
+                } else {
+                    Text("Starting CV optimization…")
+                        .font(Font.size16Medium)
+                        .foregroundStyle(Color.textSecondary)
+                }
 
                 if viewModel.showStillWorking {
                     Text("Still working on it — this can take a minute…")

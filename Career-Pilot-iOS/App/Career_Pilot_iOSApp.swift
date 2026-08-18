@@ -40,6 +40,13 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct Career_Pilot_iOSApp: App {
+    let persistenceController = PersistenceController.shared
+    @StateObject private var appState = AppState()
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
+
+    init() {
+            let state = AppState()
+            _appState = StateObject(wrappedValue: state)
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
@@ -114,6 +121,8 @@ struct Career_Pilot_iOSApp: App {
             print("❌ [FIREBASE AI] ERROR")
             print("❌ \(error)")
             print("------------------------------------------")
+                .preferredColorScheme(isDarkMode ? .dark : .light)
+
         }
     }
 }

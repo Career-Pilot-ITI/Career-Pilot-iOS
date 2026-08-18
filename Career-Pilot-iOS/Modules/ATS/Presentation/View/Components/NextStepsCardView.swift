@@ -12,9 +12,13 @@ struct NextStepsCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Next Steps")
-                .font(.system(size: 15, weight: .semibold))
-                .foregroundColor(.primary)
+            HStack {
+                Text("Next Steps")
+                    .font(.system(size: 15, weight: .semibold))
+                    .foregroundColor(.primary)
+                
+                Spacer()
+            }
 
             VStack(spacing: 12) {
                 ForEach(steps) { step in
@@ -42,7 +46,7 @@ struct NextStepsCard: View {
             }
         }
         .padding(16)
-        .background(Color.cardBackground)
+        .background(Color.gray400.opacity(0.08))
         .clipShape(RoundedRectangle(cornerRadius: Radius.r16, style: .continuous))
     }
 }

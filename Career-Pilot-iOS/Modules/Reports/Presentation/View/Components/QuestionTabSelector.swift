@@ -38,7 +38,7 @@ struct QuestionTabSelector: View {
                         .padding(.vertical, 10)
                         .background {
                             Capsule()
-                                .fill(selectedIndex == index ? Color.primaryNavy : Color.white)
+                                .fill(selectedIndex == index ? Color.chipColorSelected : Color.gray400.opacity(0.08))
                         }
                 }
             }

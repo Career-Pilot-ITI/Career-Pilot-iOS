@@ -50,6 +50,7 @@ struct OnBordingView: View {
             .ignoresSafeArea(.keyboard)
             .toolbar(.hidden, for: .navigationBar)
             .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(vm.screenState == .loading)
             .navigationDestination(isPresented: $vm.navToHomeScreen) {
                 MainTabBarView()
             }
@@ -95,10 +96,13 @@ private struct OnBordingTopPart: View {
             
             VStack {
                 if vm.currentView.rawValue != 0 {
-                    BackButton(text: "Back")
-                        .onTapGesture {
-                            vm.backByStep()
-                        }
+                    if(vm.screenState != .loading){
+                        BackButton(text: "Back")
+                            .onTapGesture {
+                                vm.backByStep()
+                            }
+                    }
+                  
                 }
                 
                 drawDotts
@@ -145,8 +149,4 @@ struct OnBordingView_Previews: PreviewProvider {
         OnBordingView()
     }
 }
-//
-//#Preview {
-//    OnBordingView()
-//        .environmentObject(AppState())
-//}
+
