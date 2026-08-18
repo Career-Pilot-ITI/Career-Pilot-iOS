@@ -18,7 +18,7 @@ struct SessionView: View {
 
     var body: some View {
         ZStack {
-            Color.lightBackGround.ignoresSafeArea()
+            Color.background.ignoresSafeArea()
             switch viewModel.state {
             case .idle, .loading:
                 SessionFeedbackSkeletonView()

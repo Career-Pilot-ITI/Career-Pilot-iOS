@@ -56,7 +56,7 @@ struct RecordingView: View {
         .padding(.horizontal, Spacing.s20)
         .padding(.top, Spacing.s16)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.darkBackGround.ignoresSafeArea())
+        .background(Color.background.ignoresSafeArea())
         .animation(.easeInOut, value: silenceWarning)
     }
 
@@ -98,10 +98,8 @@ private struct SilenceWarningBanner: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text("Silence detected")
                     .font(.size13Semibold)
-                    .foregroundStyle(Color.gray100)
                 Text("Moving to next question in \(remainingSeconds)s")
                     .font(.size12Regular)
-                    .foregroundStyle(Color.gray400)
             }
 
             Spacer()

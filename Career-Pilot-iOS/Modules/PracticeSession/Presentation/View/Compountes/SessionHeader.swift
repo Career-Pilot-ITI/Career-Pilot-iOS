@@ -53,11 +53,12 @@ struct QuestionCard: View {
         VStack(alignment: .leading, spacing: Spacing.s8) {
             Text("QUESTION")
                 .font(.size12Semibold)
+                .foregroundStyle(Color.white)
 
             ScrollView(showsIndicators: false) {
                 Text(text)
                     .font(.size14Regular)
-                    .foregroundStyle(Color.gray100)
+                    .foregroundStyle(Color.white)
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
