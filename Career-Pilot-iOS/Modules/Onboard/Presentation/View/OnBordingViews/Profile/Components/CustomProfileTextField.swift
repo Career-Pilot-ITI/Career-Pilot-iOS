@@ -30,6 +30,7 @@ struct CustomProfileTextField: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(title.uppercased())
                         .font(.caption.bold())
+                        .foregroundColor(.gray600)
                         .opacity(shouldFloat ? 1.0 : 0.0)
                         .frame(height: shouldFloat ? nil : 0, alignment: .leading)
                         .clipped()
@@ -43,6 +44,7 @@ struct CustomProfileTextField: View {
                     
                     Divider()
                         .frame(height: 1)
+                        .foregroundColor(.gray600)
                         .background(dividerColor)
                 }
                 .animation(.easeOut(duration: 0.2), value: shouldFloat)
