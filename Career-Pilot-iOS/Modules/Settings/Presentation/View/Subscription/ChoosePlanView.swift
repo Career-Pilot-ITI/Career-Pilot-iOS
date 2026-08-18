@@ -4,11 +4,7 @@
 //
 //  Created by Eyad waleed on 20/07/2026.
 //
-//  NOTE: This view is reused from two different navigation stacks
-//  (Settings tab, and the video-upsell path off Home). It must NOT
-//  hardcode which coordinator/Route type presented it — the caller
-//  decides what "go to checkout" means for its own stack.
-//
+
 
 import SwiftUI
 import Shimmer
@@ -98,7 +94,7 @@ struct ChoosePlanView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
                     .background(
-                        Capsule().fill(viewModel.isSelectedPlanCurrent ? Color.gray100 : viewModel.selectedPlan == .free && viewModel.isCancelled == true ? Color.gray400 : Color.orange)
+                        Capsule().fill(viewModel.isSelectedPlanCurrent ? Color.gray100 : viewModel.selectedPlan == .free && viewModel.isCancelled == true ? Color.gray400 : .primary)
                     )
                 }
                 .disabled(
@@ -108,6 +104,7 @@ struct ChoosePlanView: View {
                 )
             }
         }
+        .toolbar(.hidden,for: .tabBar)
         .padding(20)
         .background(Color.background)
         .task {
@@ -186,6 +183,7 @@ struct ChoosePlanView: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 52)
         }
+        .toolbar(.hidden,for: .tabBar)
         .shimmering()
     }
 
@@ -194,7 +192,7 @@ struct ChoosePlanView: View {
         VStack(alignment: .leading, spacing: 16) {
             HStack(alignment: .firstTextBaseline, spacing: 4) {
                 Text("EGP").font(.size14Medium).foregroundColor(.gray400)
-                Text(plan.price).font(.system(size: 32, weight: .bold)).foregroundColor(.white)
+                Text(plan.price).font(.system(size: 32, weight: .bold))
                 Text("/mo").font(.size14Medium).foregroundColor(.gray400)
             }
 
@@ -211,7 +209,6 @@ struct ChoosePlanView: View {
                             .font(.system(size: 14))
                         Text(feature)
                             .font(.size14Medium)
-                            .foregroundColor(.white)
                     }
                     if feature != plan.features.last {
                         Divider().background(Color.white.opacity(0.15))
@@ -221,6 +218,13 @@ struct ChoosePlanView: View {
         }
         .padding(20)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(RoundedRectangle(cornerRadius: Radius.r16).fill(Color.primaryNavy))
+        .background(
+                    RoundedRectangle(cornerRadius: Radius.r16)
+                        .fill(Color(.tertiarySystemGroupedBackground))
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: Radius.r16)
+                        .stroke(Color(.separator), lineWidth: 1)
+                )
     }
 }

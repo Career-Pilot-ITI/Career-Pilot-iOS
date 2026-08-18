@@ -29,7 +29,7 @@ struct ProfileScreen: View {
                 }
             }
         }
-        .toolbar(.hidden, for: .navigationBar)
+        .toolbar(.hidden,for: .tabBar)
         .background(Color.background)
         .navigationBarBackButtonHidden(viewModel.load == .loading || viewModel.load == .idle)
         .task {

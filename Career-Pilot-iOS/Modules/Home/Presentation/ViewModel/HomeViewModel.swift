@@ -25,6 +25,7 @@ final class HomeViewModel: ObservableObject {
     @Published private(set) var recommendedInterviews: [InterviewItem] = []
     @Published private(set) var recentSessions: [HomeSessionInfo] = []
     @Published private(set) var user: User = .guest
+    @Published var trackName: String = "SoftWare Engineer"
     
     // MARK: - States
     private var hasLoadedHome = false
@@ -51,24 +52,7 @@ final class HomeViewModel: ObservableObject {
         bindUserSession()
     }
     
-    // MARK: - Bindings
-    private func bindUserSession() {
-        userSession.$userData
-            .receive(on: RunLoop.main)
-            .sink { [weak self] updatedUser in
-                guard let self = self else { return }
-                
-                if let updatedUser = updatedUser {
-                    // Update user (map to domain User if needed)
-                    self.user = updatedUser.toUserSettingsDomain().toUser()
-                    self.userState = .success
-                } else {
-                    self.user = .guest
-                    self.userState = .idle
-                }
-            }
-            .store(in: &cancellables)
-    }
+
     
     // MARK: - Home
     func loadHome() async {
@@ -80,6 +64,8 @@ final class HomeViewModel: ObservableObject {
         async let interviewsTask: Void = loadRecommendedInterviews()
         
         _ = await (userTask, sessionsTask, interviewsTask)
+       
+        self.getTrackName()
     }
     
     // MARK: - User
@@ -138,6 +124,29 @@ final class HomeViewModel: ObservableObject {
     }
     
     // MARK: - Recommended Interviews
+
+
+    // MARK: - Bindings
+    private func bindUserSession() {
+        userSession.$userData
+            .receive(on: RunLoop.main)
+            .sink { [weak self] updatedUser in
+                guard let self = self else { return }
+                
+                if let updatedUser = updatedUser {
+                    // Update user
+                    self.user = updatedUser.toUserSettingsDomain().toUser()
+                    self.userState = .success
+                } else {
+                    self.user = .guest
+                    self.userState = .idle
+                }
+                
+                self.getTrackName()
+            }
+            .store(in: &cancellables)
+    }
+
     func loadRecommendedInterviews() async {
         tracksState = .loading
         do {
@@ -146,13 +155,26 @@ final class HomeViewModel: ObservableObject {
             
             self.recommendedInterviews = Array(mappedItems.prefix(5))
             tracksState = .success
+            
+            self.getTrackName()
         } catch is CancellationError {
             return
         } catch {
             userState = .error(getErrorMessage(error: error))
         }
     }
-}
 
+    // MARK: - Helper Methods
+    func getTrackName() {
+        let matchingTrack = self.recommendedInterviews.first {
+            $0.trackInterview.track.id == user.profile.trackId
+        }
+        
+        if let title = matchingTrack?.trackInterview.track.title, !title.isEmpty {
+            self.trackName = title
+        }
+    }
+    
+}
 
 

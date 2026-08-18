@@ -11,7 +11,8 @@ import SwiftUI
 struct Career_Pilot_iOSApp: App {
     let persistenceController = PersistenceController.shared
     @StateObject private var appState = AppState()
-    
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
+
     init() {
             let state = AppState()
             _appState = StateObject(wrappedValue: state)
@@ -25,6 +26,8 @@ struct Career_Pilot_iOSApp: App {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(appState)
+                .preferredColorScheme(isDarkMode ? .dark : .light)
+
         }
     }
 }

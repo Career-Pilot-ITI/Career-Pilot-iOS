@@ -41,10 +41,10 @@ struct HomeView: View {
                     ProgressCard(info: progressInfo)
                 }
                 // MARK: - Practice
-                PracticeCard(category: "Software Engineering") {
+                PracticeCard(category: viewModel.trackName) {
                     coordinator.push(
                         .interviewPrep(
-                            trackName: "Software Engineering",
+                            trackName: viewModel.trackName,
                             trackId: viewModel.user.profile.trackId,
                             interviewType: .classic
                         )

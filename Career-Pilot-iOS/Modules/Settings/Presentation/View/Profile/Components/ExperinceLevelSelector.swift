@@ -29,7 +29,7 @@ struct ExperienceLevelSelector: View {
                             .frame(maxWidth: .infinity) // Makes all 3 pills equal width & fill space
                             .background(
                                 Capsule()
-                                    .fill(selected == option ? Color.primaryNavy : Color.gray100)
+                                    .fill(selected == option ? Color.primary : Color.gray100)
                             )
                             .onTapGesture {
                                 selected = option

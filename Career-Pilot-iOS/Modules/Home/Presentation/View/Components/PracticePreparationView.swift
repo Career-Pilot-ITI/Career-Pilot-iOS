@@ -105,7 +105,6 @@ struct PracticePreparationView: View {
                                     Spacer()
                                     Text(tip.text)
                                         .font(.size16Medium)
-                                        .foregroundColor(.primary)
                                         .multilineTextAlignment(.leading)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 }
@@ -118,7 +117,7 @@ struct PracticePreparationView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(Spacing.s24)
-                    .background(Color(.secondarySystemGroupedBackground))
+                    .background(.background.opacity(0.1))
                     .clipShape(RoundedRectangle(cornerRadius: Radius.r24))
                     .overlay(
                         RoundedRectangle(cornerRadius: Radius.r24)
@@ -217,7 +216,7 @@ struct PermissionBar: View {
                 .tint(accentColor)
         }
         .padding(Spacing.s16)
-        .background(Color(.secondarySystemGroupedBackground))
+        .background(.background.opacity(0.1))
         .cornerRadius(Radius.r20)
         .shadow(color: Color.black.opacity(0.04), radius: Radius.r16, x: 0, y: 5)
         .overlay(

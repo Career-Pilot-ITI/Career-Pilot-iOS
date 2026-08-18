@@ -5,14 +5,12 @@ struct SettingView: View {
     @StateObject var viewModel: SettingsViewModel
     @EnvironmentObject var appState: AppState
     @StateObject private var authCoordinator = AppCoordinator<AuthRoute>()
-    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
 
     var body: some View {
         ZStack {
             content
         }
         .background(Color.background.ignoresSafeArea())
-        .preferredColorScheme(isDarkMode ? .dark : .light)
         .task {
             await viewModel.load()
         }
