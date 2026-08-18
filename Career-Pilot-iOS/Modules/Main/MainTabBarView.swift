@@ -17,6 +17,7 @@ enum Tab: Int, Hashable {
 struct MainTabBarView: View {
     @StateObject private var homeCoordinator: AppCoordinator<HomeRoute> = AppCoordinator<HomeRoute>()
     @StateObject private var settingsCoordinator: AppCoordinator<SettingsRoute> = AppCoordinator<SettingsRoute>()
+    @StateObject private var reportsCoordinator: AppCoordinator<ReportsRoute> = AppCoordinator<ReportsRoute>()
 
     @StateObject private var atsViewModel: ATSViewModel = DIContainer.shared.container.resolve(ATSViewModel.self)!
     @StateObject private var cvOptimizeViewModel: CvOptimizeViewModel = DIContainer.shared.container.resolve(CvOptimizeViewModel.self)!
@@ -36,14 +37,22 @@ struct MainTabBarView: View {
                     case .sessionDetail(let sessionId):
                         SessionView(
                             sessionId: sessionId,
-                            viewModel: DIContainer.shared.container.resolve(SessionDetailViewModel.self, argument: sessionId)!
+                            viewModel: DIContainer.shared.container.resolve(SessionDetailViewModel.self, argument: sessionId)!,
+                            onBreakdownTap: {
+                                homeCoordinator.pop()
+                                selectedTab = .reports
+                                reportsCoordinator.push(.sessionDetail(sessionId: sessionId))
+                                reportsCoordinator.push(.questionBreakdown(sessionId: sessionId))
+                            }
                         )
                         
-                    case let .interviewPrep(trackName, trackId, interviewType):
+                    case let .interviewPrep(trackName, trackId, interviewType, jobId, jobTitle):
                         InterviewPrepContainerView(
                             trackName: trackName,
                             trackId: trackId,
-                            interviewType: interviewType
+                            interviewType: interviewType,
+                            jobId: jobId,
+                            jobTitle: jobTitle
                         )
                         
                     case let .practiceInterview(_, trackId, interviewType):
@@ -57,9 +66,17 @@ struct MainTabBarView: View {
                         InterviewsView()
                         
                     case .sessionFeedback(let feedBack, let sessionId):
-                        SessionFeedBackView(feedback: feedBack, sessionId: sessionId) {
-                            homeCoordinator.popToRoot()
-                        }
+                        SessionFeedBackView(
+                            feedback: feedBack,
+                            sessionId: sessionId,
+                            onBack: { homeCoordinator.popToRoot() },
+                            onBreakdownTap: {
+                                homeCoordinator.pop()
+                                selectedTab = .reports
+                                reportsCoordinator.push(.sessionDetail(sessionId: sessionId))
+                                reportsCoordinator.push(.questionBreakdown(sessionId: sessionId))
+                            }
+                        )
                         
                     case .atsJobMatch:
                         ATSJobMatchView()
@@ -124,8 +141,8 @@ struct MainTabBarView: View {
             .environmentObject(atsViewModel)
             .environmentObject(cvOptimizeViewModel)
 
-            // MARK: - Tab 2: Reports
-            ReportsView()
+            // Tab 2: Reports
+            ReportsView(coordinator: reportsCoordinator)
                 .tabItem {
                     Label { Text("Reports") } icon: { Image.AppIcon.report.renderingMode(.template) }
                 }

@@ -66,7 +66,9 @@ struct HomeView: View {
                     badgeText: "NEW",
                     subtitle: "Paste a job link · See how your CV scores",
                     accentColor: .primaryTeal,
-                    action: {        coordinator.push(.atsJobMatch)   // whatever case your HomeRoute enum defines
+                    action: {
+                        viewModel.onAtsClick()
+//                        coordinator.push(.atsJobMatch)   // whatever case your HomeRoute enum defines
 
                     }
                 )
@@ -87,6 +89,23 @@ struct HomeView: View {
             .padding(.horizontal, Spacing.s16)
             .padding(.vertical, Spacing.s12)
         }
+        .onAppear{
+            viewModel.onAppear(coordinator: coordinator)
+        }
+        .fancyAlert(
+            isPresented: $viewModel.showSubscriptionRequiredAlert,
+            icon: "crown.fill",
+            title: "Upgrade Required",
+            message: viewModel.subscriptionRequiredMessage,
+            buttons: [
+                FancyAlertButton(title: "Subscription Screen", style: .primary) {
+                    viewModel.subscriptionAlertHomeTapped()
+                },
+                FancyAlertButton(title: "Cancel", style: .secondary) {
+                    viewModel.subscriptionAlertCancelTapped()
+                }
+            ]
+        )
         .scrollIndicators(.hidden)
         .background(Color.background.ignoresSafeArea())
         .task {

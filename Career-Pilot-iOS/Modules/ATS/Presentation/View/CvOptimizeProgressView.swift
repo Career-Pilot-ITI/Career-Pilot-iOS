@@ -63,6 +63,20 @@ struct CvOptimizeProgressView: View {
                 coordinator.push(.cvOptimizeResults)
             }
         }
+        .operationGuard(
+            isOperationActive: Binding(
+                get: {
+                    switch viewModel.state {
+                    case .starting, .inProgress: return true
+                    default: return false
+                    }
+                },
+                set: { (_: Bool) in }
+            ),
+            onCancel: {
+                viewModel.cancelPolling()
+            }
+        )
     }
 
     // MARK: - Progress

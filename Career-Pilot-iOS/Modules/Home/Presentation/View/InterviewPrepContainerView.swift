@@ -19,11 +19,13 @@ struct InterviewPrepContainerView: View {
     let trackName: String
     let trackId: Int
     let interviewType: InterviewType
+    let jobId: Int?
+    let jobTitle: String?
 
     var body: some View {
 
         PracticePreparationView(
-            categoryText: trackName,
+            categoryText: jobTitle ?? trackName,
             metadataText: "\(interviewType.interviewConfiguration.maxQuestions) Questions · ~\(interviewType.interviewConfiguration.maxInterviewDuration) min",
             title: "Ready to practice?",
             subtitle: "Before we begin, a few quick tips.",

@@ -2,10 +2,11 @@ import SwiftUI
 
 @MainActor
 struct ReportsView: View {
-    @StateObject private var coordinator = AppCoordinator<ReportsRoute>()
     @StateObject private var viewModel: ReportsListViewModel
+    @ObservedObject var coordinator: AppCoordinator<ReportsRoute>
 
-    init(viewModel: ReportsListViewModel = DIContainer.shared.container.resolve(ReportsListViewModel.self)!) {
+    init(coordinator: AppCoordinator<ReportsRoute>, viewModel: ReportsListViewModel = DIContainer.shared.container.resolve(ReportsListViewModel.self)!) {
+        self._coordinator = ObservedObject(wrappedValue: coordinator)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
@@ -86,7 +87,8 @@ struct ReportsView: View {
         case .sessionDetail(let sessionId):
             SessionView(
                 sessionId: sessionId,
-                viewModel: DIContainer.shared.container.resolve(SessionDetailViewModel.self, argument: sessionId)!
+                viewModel: DIContainer.shared.container.resolve(SessionDetailViewModel.self, argument: sessionId)!,
+                onBreakdownTap: { coordinator.push(.questionBreakdown(sessionId: sessionId)) }
             )
         case .questionBreakdown(let sessionId):
             QuestionBreakdownView(

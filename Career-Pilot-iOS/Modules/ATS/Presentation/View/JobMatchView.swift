@@ -82,13 +82,15 @@ struct JobMatchView: View {
                                 coordinator.push(.coverLetter)
                             }, onStartPractice: {
                                 Task {
-                                    guard let trackId = await viewModel.practiceTrackId() else { return }
-                                    let jobTitle = viewModel.currentJob?.title ?? "this job"
+                                    let trackId = await viewModel.atsTrackId()
+                                    let job = viewModel.currentJob
                                     coordinator.push(
-                                        .practiceInterview(
-                                            trackName: jobTitle,
+                                        .interviewPrep(
+                                            trackName: job?.title ?? "this job",
                                             trackId: trackId,
-                                            interviewType: .classic
+                                            interviewType: .classic,
+                                            jobId: job?.id,
+                                            jobTitle: job?.title
                                         )
                                     )
                                 }
@@ -117,6 +119,7 @@ struct JobMatchView: View {
             guard viewModel.jobMatchData == nil else { return }
             await viewModel.scoreCv()
         }
+        .operationGuard(isOperationActive: $viewModel.isScoringLoading)
     }
 
     @ViewBuilder
