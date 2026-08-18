@@ -82,7 +82,7 @@ struct JobMatchView: View {
                                 coordinator.push(.coverLetter)
                             }, onStartPractice: {
                                 Task {
-                                    guard let trackId = await viewModel.practiceTrackId() else { return }
+                                    let trackId = await viewModel.atsTrackId()
                                     let job = viewModel.currentJob
                                     coordinator.push(
                                         .interviewPrep(
