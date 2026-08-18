@@ -49,6 +49,14 @@ struct HomeView: View {
                             interviewType: .classic
                         )
                     )
+                } onStartQuiz: {
+                    coordinator.push(
+                          .pathLearn(
+                              trackId: String(viewModel.user.profile.trackId),
+                              trackName: viewModel.trackName
+                          )
+                    )
+                    
                 }
 
                 // MARK: - ATS
