@@ -43,7 +43,7 @@ struct OTPCodeView: View {
                 .contentShape(Rectangle())
                 .onTapGesture { isFocused = true }
             }
-            .padding(.top, 8)
+            .padding(12)
 
             HStack {
                 resendText
