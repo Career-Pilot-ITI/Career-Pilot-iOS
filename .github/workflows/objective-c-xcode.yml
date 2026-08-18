@@ -1,0 +1,78 @@
+name: Xcode - Build and Analyze
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+jobs:
+  build:
+    name: Build and analyse default scheme using xcodebuild command
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set Default Scheme
+        run: |
+          scheme_list=$(xcodebuild -list -json | tr -d "\n")
+          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['schemes'][0]")
+          echo $default | cat >default
+          echo Using default scheme: $default
+
+      - name: Show available simulators
+        run: xcrun simctl list devices available
+
+      - name: Build and Analyze
+        env:
+          scheme: ${{ 'default' }}
+        run: |
+          if [ $scheme = default ]; then scheme=$(cat default); fi
+
+          if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then
+            filetype_parameter="workspace"
+            file_to_build="`ls -A | grep -i \\.xcworkspace\$`"
+          else
+            filetype_parameter="project"
+            file_to_build="`ls -A | grep -i \\.xcodeproj\$`"
+          fi
+          file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
+
+          echo "Scheme: $scheme"
+          echo "File to build: $file_to_build ($filetype_parameter)"
+
+          # Dynamically pick the first available iPhone simulator instead of hardcoding one
+          device_udid=$(xcrun simctl list devices available -j \
+            | ruby -rjson -e '
+                data = JSON.parse(STDIN.read)
+                devices = data["devices"].values.flatten
+                iphone = devices.find { |d| d["name"].start_with?("iPhone") }
+                puts iphone ? iphone["udid"] : ""
+              ')
+
+          if [ -z "$device_udid" ]; then
+            echo "No available iPhone simulator found!"
+            exit 1
+          fi
+          echo "Using simulator UDID: $device_udid"
+
+          set -o pipefail && xcodebuild clean build analyze \
+            -scheme "$scheme" \
+            -"$filetype_parameter" "$file_to_build" \
+            -destination "id=$device_udid" \
+            CODE_SIGNING_ALLOWED=NO \
+            2>&1 | tee raw_build.log | xcpretty
+          exit_code=${PIPESTATUS[0]}
+
+          if [ $exit_code -ne 0 ]; then
+            echo "----- BUILD FAILED: last 300 lines of raw log -----"
+            tail -n 300 raw_build.log
+          fi
+
+          exit $exit_code
+
+      - name: Upload raw build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw-build-log
+          path: raw_build.log

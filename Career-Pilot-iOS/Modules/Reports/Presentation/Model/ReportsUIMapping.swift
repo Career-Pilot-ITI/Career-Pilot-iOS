@@ -1,0 +1,71 @@
+//
+//  ReportsUIMapping.swift
+//  Career-Pilot-iOS
+//
+//  Created by Moaz on 26/07/2026.
+//
+
+import SwiftUI
+
+extension ReportsInterviewSession {
+    func toUIModel() -> Session {
+        Session(
+            id: id,
+            title: trackName,
+            score: overallScore,
+            noOfQuestions: maxQuestions,
+            perioudTime: durationSeconds.map { "\($0 / 60)m" } ?? "–",
+            date: createdAt.formattedRelative()
+        )
+    }
+}
+
+extension SessionFeedback {
+    func toRadarMetrics() -> [RadarMetric] {
+        [
+            RadarMetric(label: "Clarity",      value: clarityScore,           color: colorFor(clarityScore)),
+            RadarMetric(label: "Confidence",   value: confidenceScore,        color: colorFor(confidenceScore)),
+            RadarMetric(label: "Pacing",       value: pacingScore,            color: colorFor(pacingScore)),
+            RadarMetric(label: "Filler Words", value: fillerWordsScore,       color: colorFor(fillerWordsScore)),
+            RadarMetric(label: "Content",      value: contentRelevanceScore,  color: colorFor(contentRelevanceScore))
+        ]
+    }
+
+    func toCoachingSuggestions() -> [CoachingSuggestion] {
+        coachingTips.enumerated().map { index, tip in
+            CoachingSuggestion(
+                icon: "target",
+                text: tip,
+                description: tip,
+                badgeLevel: index == 0 ? "High impact" : (index == 1 ? "Medium impact" : "Low impact")
+            )
+        }
+    }
+
+    func toQuestionReviews() -> [QuestionReview] {
+        questions.map { $0.toQuestionReview() }
+    }
+
+    private func colorFor(_ value: Double) -> Color {
+        value >= 80 ? .green : .orange
+    }
+}
+
+extension SessionQuestion {
+    func toQuestionReview() -> QuestionReview {
+        let durationText: String = {
+            guard let ms = durationMs else { return "–" }
+            return "\(ms / 1000 / 60):\(String(format: "%02d", (ms / 1000) % 60))"
+        }()
+        return QuestionReview(
+            questionNumber: questionOrder,
+            questionText: questionText,
+            score: Int(score?.overallScore ?? 0),
+            fillerWordsCount: Int(score?.fillerWords ?? 0),
+            duration: durationText,
+            coachFeedback: score?.coachingTip ?? "",
+            transcript: userTranscript ?? "",
+            flaggedWords: []
+        )
+    }
+}

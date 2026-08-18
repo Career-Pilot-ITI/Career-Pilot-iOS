@@ -1,0 +1,22 @@
+//
+//  SettingsRemote.swift
+//  Career-Pilot-iOS
+//
+//  Created by Eyad waleed on 22/07/2026.
+//
+
+import Foundation
+protocol SettingsRemote{
+    func logoutUser() async throws
+    func getUserData() async throws ->UserSettingsDTO
+    func getSubscription() async throws -> SubscribitonsPriceDTO
+    func getCoins() async
+    func updateUserProfile(updateProfileRequestDTO: UpdateProfileRequestDTO) async throws -> UpdateProfileResponseDTO
+    
+    func updateUserProfileAvatar(avatarUploadRequestDTO : AvatarUploadDTO)async throws -> AvatarResponseDTO
+    
+    func getUserSubscription() async throws -> SubscriptionDTO
+    func downgradeUserSubscribtion() async throws
+    func cancelSubscribtion() async throws
+    
+}

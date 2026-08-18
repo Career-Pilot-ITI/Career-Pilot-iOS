@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Career-Pilot-iOS
+
+  Created by Ahmed El-Sayyad Mohamed on 15/07/2026.
+  
+*/
+
+"common.cancel" = "Cancel";
+"common.done" = "Done";
+"common.ok" = "OK";
+"phone_field.placeholder" = "1X XXXX XXXX";
+"phone_field.error_invalid" = "Invalid phone number";
+"phone_field.helper_default" = "Enter your mobile number";
+"phone_field.select_country" = "Select Country";

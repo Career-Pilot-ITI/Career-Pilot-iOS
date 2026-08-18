@@ -1,0 +1,46 @@
+
+//
+//  profile.swift
+//  Career-Pilot-iOS
+//
+//  Created by Eyad waleed on 15/07/2026.
+//
+
+import SwiftUI
+
+struct profile: View {
+    @ObservedObject var vm: OnBordingViewModel
+    @EnvironmentObject var toastManager: ToastManager
+
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 24) {
+
+                HeaderView()
+
+                ProfileForm(userData: $vm.userData , emailErrorMessage: $vm.emailErrorMessage)
+                    .background(
+                        RoundedRectangle(cornerRadius: Radius.r12)
+                            .fill(Color.background)
+                    )
+                    .shadow(
+                        color: Color.black.opacity(0.08),
+                        radius: 12,
+                        x: 0,
+                        y: 4
+                    )
+                
+                FreeSessionBanner()
+            }
+            .padding(.horizontal, Spacing.s20)
+        }.onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),to: nil , from: nil , for: nil)
+        }.scrollDismissesKeyboard(.interactively)
+        .scrollIndicators(.hidden)
+        .background(Color.background.opacity(0.4))
+        .ignoresSafeArea(.keyboard)
+        .navigationBarBackButtonHidden(vm.screenState == .loading)
+
+
+    }
+}

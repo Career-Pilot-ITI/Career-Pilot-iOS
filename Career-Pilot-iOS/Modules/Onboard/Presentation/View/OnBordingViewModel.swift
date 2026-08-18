@@ -1,0 +1,411 @@
+//
+//  OnBordingViewModel.swift
+//  Career-Pilot-iOS
+//
+//  Created by Mohamed Magdy on 15/07/2026.
+//
+
+import Foundation
+
+enum OnBordingViews: Int, Hashable, CaseIterable {
+    case ChooseTrackView = 0
+    case UploadCvView = 1
+    case ProfileView = 2
+    
+    var screenDescription: String {
+        switch self {
+        case .ChooseTrackView:
+            return "Choose the track that fits your career goals."
+        case .UploadCvView:
+            return "We are extracting your data to set up your personal profile details."
+        case .ProfileView:
+            return "Set up your personal profile details."
+        }
+    }
+}
+
+enum OnBordingScreenStates : Equatable{
+    case idel, loading, error(String)
+    
+    var isError: Bool{
+        switch self{
+        case.error(_):
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+@MainActor
+class OnBordingViewModel: ObservableObject {
+    private var appState: AppState
+    @Published var currentView: OnBordingViews = .ChooseTrackView
+    @Published var screenState: OnBordingScreenStates = .loading
+    @Published var navToHomeScreen: Bool = false
+    @Published var emailErrorMessage: String? = nil
+    @Published var tittleErrorMessage : String? = nil
+    @Published var exprinceLevelErrorMessage : String? = nil
+    @Published var fullNameErrorMessage : String? = nil
+    //For ChooseTrack View
+    @Published var selectedTrackInfo: SelectedTrackViewInfo = SelectedTrackViewInfo()
+    
+    //For UploadCV View
+    @Published var cvViewInfo: CvViewInfo = CvViewInfo(isSelected: false)
+    
+    //For Profie View
+    @Published var userData: OnBoardingUser = OnBoardingUser(email: "", title: "", experienceLevel: "", skills:[], firstName: "", lastName: "")
+    
+    //UseCases
+    var uploadCvUseCase: UploadCvUseCase
+    var getAllTracksUseCase: GetAllTrackesUseCase
+    private let updateProfileUseCase: UpdateProfileUseCase
+
+    private let saveUserUseCase: SaveUserUseCase
+
+    init(appState: AppState, 
+         uploadCvUseCase: UploadCvUseCase, 
+         getAllTracksUseCase: GetAllTrackesUseCase,
+         updateProfileUseCase: UpdateProfileUseCase,
+         saveUserUseCase: SaveUserUseCase
+         ) {
+        self.appState = appState
+        self.uploadCvUseCase = uploadCvUseCase
+        self.getAllTracksUseCase = getAllTracksUseCase
+        self.updateProfileUseCase = updateProfileUseCase
+        self.saveUserUseCase = saveUserUseCase
+    }
+    
+    //MARK: OnAppers
+    func onApper(){
+        getAllTracks()
+    }
+    
+    func onTryAgin(){
+        switch currentView {
+        case .ChooseTrackView:
+            getAllTracks()
+        case .UploadCvView:
+            screenState = .idel
+        case .ProfileView:
+            screenState = .idel
+        }
+    }
+    
+    //MARK: For Uploding CV
+    func onCvResult(result: Result<URL,Error>){
+        switch result{
+        case.success(let cvURL):
+            print("Success")
+            didSelectCV(cvURL: cvURL)
+        case.failure(let error):
+            print("Failure: \(error.localizedDescription)")
+            screenState = .error(UploadCVErrors.CanNotUploadCv.description)
+        }
+    }
+    
+    
+    //For Bottom Button
+    var buttonTitle: String {
+        switch currentView{
+        case.ProfileView:
+            return "Start Practising"
+        default:
+            return "Continue"
+        }
+    }
+    var isButtonEnabeld: Bool {
+        if screenState.isError{
+            return false
+        }
+        switch currentView {
+        case .ProfileView:
+       
+            return !userData.fullName.trimmingCharacters(in: .whitespaces).isEmpty &&
+            !userData.email.trimmingCharacters(in: .whitespaces).isEmpty &&
+            !userData.title.trimmingCharacters(in: .whitespaces).isEmpty &&
+            !userData.experienceLevel.trimmingCharacters(in: .whitespaces).isEmpty && !(userData.experienceLevel == "No Level")
+            
+        case.ChooseTrackView:
+            return selectedTrackInfo.selectedTrack != nil
+        case .UploadCvView:
+        return cvViewInfo.isSelected
+        }
+    }
+    
+    
+    
+    private func didSelectCV(cvURL: URL){
+        //For UplodingCV View
+        print("didSelectCV")
+        extractName_SizeOfTheCv(cvUrl: cvURL)
+        cvViewInfo.isSelected = true
+        //UserData
+        userData.cv = cvURL
+    }
+    
+    private func extractName_SizeOfTheCv(cvUrl: URL){
+        do{
+            let values = try cvUrl.resourceValues(forKeys: [.nameKey, .fileSizeKey])
+            
+            cvViewInfo.cvTitle = values.name
+            let fileSizeInBytes = Double(values.fileSize ?? 0)
+            let fileSizeInMB = fileSizeInBytes / (1024 * 1024)
+            cvViewInfo.cvSize = fileSizeInMB
+        }catch{
+            print("Error in extracting name and size of the CV®")
+            onCatchError(error: error)
+        }
+    }
+
+
+    private func handleError(error: NetworkError) {
+        
+        switch error {
+            
+        case .invalidURL:
+            screenState = .error("Something went wrong on our end. Please try again later.")
+            
+        case .noInternet:
+            screenState = .error("No internet connection. Please check your network and try again.")
+            
+        case .requestTimeout:
+            screenState = .error("The request timed out. Please try again.")
+            
+        case .unauthorized:
+            screenState = .error("You're not authorized to perform this action. Please log in again.")
+            
+        case .tokenExpired:
+            screenState = .error("Your session has expired. Please log in again.")
+            
+        case .decodingFailed:
+            screenState = .error("We couldn't process the server's response. Please try again.")
+            
+        case .encodingFailed:
+            screenState = .error("Something went wrong preparing your request. Please try again.")
+            
+        case .serverError(let statusCode, _, _):
+            switch statusCode {
+            case 400:
+                screenState = .error("Invalid request. Please check your input and try again.")
+            case 401:
+                screenState = .error("You're not authorized. Please log in again.")
+            case 403:
+                screenState = .error("You don't have permission to perform this action.")
+            case 404:
+                screenState = .error("The requested resource was not found.")
+            case 409, 500:
+                screenState = .error("This email is already registered. Try logging in instead.")
+            case 422:
+                screenState = .error("Some of the information you entered is invalid.")
+            case 429:
+                screenState = .error("Too many attempts. Please wait a moment and try again.")
+            case 501...599:
+                screenState = .error("Something went wrong on our servers. Please try again later.")
+            default:
+                screenState = .error("An unexpected error occurred (code \(statusCode)).")
+            }
+            
+        case .unknown:
+            screenState = .error("An unexpected error occurred. Please try again.")
+            
+        default:
+            screenState = .error(error.userMessage)
+        }
+        
+    }
+
+    private func onCatchError(error: Error){
+        if let networkError = error as? NetworkError{
+            handleError(error: networkError)
+        }else if let cvError = error as? UploadCVErrors{
+            screenState = .error(cvError.description)
+        } else if let validationError = error as? ProfileValidationError {
+            screenState = .idel
+                switch validationError {
+                case .emptyEmail:
+                    emailErrorMessage = validationError.errorDescription
+                case .emptyFullName:
+                    fullNameErrorMessage = validationError.errorDescription
+                case .exprinceLevel:
+                    exprinceLevelErrorMessage = validationError.errorDescription
+                case .emptyJobTitle:
+                    tittleErrorMessage = validationError.errorDescription
+                case .invalidEmail: 
+                    emailErrorMessage = validationError.errorDescription
+                default:
+                    ToastManager.shared.show("Please fill all required fields.")
+                }
+            
+            
+        }else if let useCaseError = error as? UseCaseError{
+            screenState = .error(useCaseError.userMessage)
+        }
+        else {
+            screenState = .error(error.localizedDescription)
+        }
+    }
+    
+    func didRemoveSelectedCV(){
+        userData.cv = nil
+        cvViewInfo.isSelected = false
+    }
+    
+    //MARK: For ChoseTrack
+    func getAllTracks() {
+        
+        Task{
+            do{
+                screenState = .loading
+                selectedTrackInfo.traks = try await getAllTracksUseCase.execute(())
+                selectedTrackInfo.filteredTracks = selectedTrackInfo.traks
+                screenState = .idel
+            }catch{
+                onCatchError(error: error)
+            }
+        }
+    }
+    
+    func filterTrackes(query: String){
+        
+        //With empty text filed case
+        if query.isEmpty{
+            selectedTrackInfo.filteredTracks = selectedTrackInfo.traks
+            return
+        }
+        
+        selectedTrackInfo.filteredTracks = selectedTrackInfo.traks.filter { track in
+            track.title.localizedCaseInsensitiveContains(query)
+        }
+    }
+    
+    func selectThisTrack(track: Track){
+        selectedTrackInfo.selectedTrack = track
+        userData.selectedTrack = track
+    }
+    //MARK: For Navigation
+    func navToNext(){
+        screenState = .idel
+        switch currentView{
+        case.ChooseTrackView:
+            onNavToUploadCV()
+        case.UploadCvView:
+            onNavToProvileView()
+        case.ProfileView:
+            onNavToHomeScreen()
+        }
+    }
+    private func onNavToUploadCV(){
+        if userData.selectedTrack != nil{
+            currentView = .UploadCvView
+        }
+    }
+    
+    private func onNavToProvileView(){
+        guard let userCV = userData.cv else{
+            //If the user skip uploading the cv
+            currentView = .ProfileView
+            return
+        }
+        
+        Task{
+            do{
+                screenState = .loading
+                print("Start anaylsis cv")
+                try await uploadUserCv(userCV: userCV)
+                currentView = .ProfileView
+                screenState = .idel
+                print("Now on ProfileView")
+            }catch{
+                onCatchError(error: error)
+            }
+        }
+    }
+    
+    private func uploadUserCv(userCV: URL) async throws {
+        let cvResponse = try await self.uploadCvUseCase.execute(UploadCvRequest(cv: userCV))
+        let oldUserData = userData
+        
+        userData = cvResponse.userData
+        userData.selectedTrack = oldUserData.selectedTrack
+        print("The number or retuned skills is \(userData.skills.count)")
+        print("the skill first value is \(userData.skills.first?.skillName)")
+    }
+
+    private func onNavToHomeScreen() {
+        Task {
+            await updateAndPersistUser()
+        }
+    }
+
+    @MainActor
+    private func updateAndPersistUser() async {
+        screenState = .loading
+        
+        do {
+            print("User data in the view for the track  is \(userData.selectedTrack?.id)")
+            let user = userData
+            let updatedUser = try await updateUser(user)
+            try await persistUser(updatedUser)
+            
+            completeOnboarding()
+        } catch{
+            
+            onCatchError(error: error)
+        }
+    }
+
+    private func updateUser(_ user: OnBoardingUser) async throws -> User {
+        print("The user cv is already here \(user.cv)")
+        let updatedUser = try await updateProfileUseCase.execute(user)
+        print("✅ Profile updated successfully for user ID: \(updatedUser.id)")
+       
+        return updatedUser
+    }
+
+    private func persistUser(_ user: User) async throws {
+        let isSaved = try await saveUserUseCase.save(user)
+
+        if isSaved {
+            print("✅ User saved to CoreData")
+        }
+    }
+
+    @MainActor
+    private func completeOnboarding() {
+        screenState = .idel
+        navToHomeScreen = true
+        appState.markOnboardingSeen()
+    }
+    
+    
+    func backByStep(){
+        switch currentView{
+        case.ChooseTrackView:
+            currentView = .ChooseTrackView
+        case.UploadCvView:
+            currentView = .ChooseTrackView
+        case.ProfileView:
+            currentView = .UploadCvView
+        }
+    }
+    func skipAll(){
+        onNavToProvileView()
+    }
+    
+    //MARK: For Marking the dots with the correct color
+    func isScreenIncludedToDrawAColor(index: Int) -> Bool{
+        return index <= currentView.rawValue
+    }
+}
+
+
+extension OnBordingViewModel: Hashable {
+    nonisolated static func == (lhs: OnBordingViewModel, rhs: OnBordingViewModel) -> Bool {
+        lhs === rhs
+    }
+    
+    nonisolated func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
+    }
+}

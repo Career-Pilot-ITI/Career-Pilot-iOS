@@ -1,0 +1,74 @@
+//
+//  AppRoute.swift
+//  Career-Pilot-iOS
+//
+//  Created by Moaz on 15/07/2026.
+//
+
+import Foundation
+import SwiftUI
+
+
+enum AuthRoute: Hashable {
+    case phoneEntryScreen
+    case sendingOTPScreen(phoneNumber: String)
+    case otpScreen(phoneNumber: String)
+    case successOTPScreen
+    
+    // MARK : Onboarding
+    case onboardingScreen(vm : OnBordingViewModel)
+   
+}
+
+enum HomeRoute: Hashable {
+    
+//    case sessionDetail(metrics: [RadarMetric], suggestions: [CoachingSuggestion])
+    
+    case interviewPrep(trackName: String, trackId: Int, interviewType: InterviewType, jobId: Int? = nil, jobTitle: String? = nil)
+    case practiceInterview(trackName: String, trackId: Int, interviewType: InterviewType)
+    case sessionFeedback(feedback: InterviewFeedback, sessionId: Int)
+    
+    case pathLearn(trackId: String, trackName: String)
+    case quiz(trackId: String, trackTitle: String, subtopicId: String, subtopicTitle: String)
+    case sessionDetail(sessionId: Int)
+    case subscribtion
+    case InterviewsView
+    case atsJobMatch
+    case atsjobDescription
+    case coverLetter
+    case atsJobmatchScore
+    case cvOptimizeProgress
+    case cvOptimizeResults
+    case subscriptionView
+    case checkout(item: CheckoutDisplayInfo)
+}
+
+enum CheckoutDisplayInfo : Hashable {
+    case subscription(plan: String, monthlyPrice: String, billingCycle: String, total: String, checkoutItem: CheckoutItem)
+    case coinPack(name: String, pricePerPack: String, coinsIncluded: String, total: String, checkoutItem: CheckoutItem)
+    
+    var checkoutItem: CheckoutItem {
+        switch self {
+        case .subscription(_, _, _, _, let item): return item
+        case .coinPack(_, _, _, _, let item): return item
+        }
+    }
+}
+
+enum SettingsRoute : Hashable {    
+    case checkout(item: CheckoutDisplayInfo)
+    case subscribtion
+    case coin
+    case profileSettings
+    case userSubscribtion
+    case subscriptionPlans( vm : SubscriptionViewModel)
+}
+
+enum ReportsRoute: Hashable {
+//    case sessionDetail(metrics: [RadarMetric], suggestions: [CoachingSuggestion])
+//    case sessionHistory(sessionCount: Int, sessionAvgScore: Double, sessions: [Session])
+//    case questionBreakdown(questions: [QuestionReview])
+    case sessionDetail(sessionId: Int)
+    case questionBreakdown(sessionId: Int)
+}
+
