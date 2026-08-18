@@ -131,11 +131,11 @@ class ATSViewModel: ObservableObject {
         do {
             let entity = try await generateCoverLetterUseCase.execute(workspaceId)
             // Build a contact from the cached user profile if available
-            let profile = try? await userRepo.getCurrentUser()?.profile
+            let user = try? await userRepo.getCurrentUser()
             let contact = SignatureContact(
-                name: profile?.displayName ?? "",
-                email: profile?.email ?? "",
-                phone: ""
+                name: user?.profile.displayName ?? "",
+                email: user?.profile.email ?? "",
+                phone: user?.phoneNumber ?? ""
             )
             if entity.content.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 coverLetterData = .fallback(
@@ -238,6 +238,19 @@ class ATSViewModel: ObservableObject {
         } catch {
             presentError("Couldn't prepare your practice session. Please try again.")
             return nil
+        }
+    }
+
+    func atsTrackId() async -> Int {
+        do {
+            let user = try await userRepo.getCurrentUser()
+            let trackId = user?.profile.trackId ?? 0
+            if trackId == 0 {
+                toastManager.show("No career track selected. Using default track.", type: .info)
+            }
+            return trackId
+        } catch {
+            return 0
         }
     }
 

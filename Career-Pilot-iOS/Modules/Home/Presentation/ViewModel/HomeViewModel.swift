@@ -39,8 +39,19 @@ final class HomeViewModel: ObservableObject {
     private let getAllSessionUseCase: LoadSessionsUseCase
     private var cancellables = Set<AnyCancellable>()
     
+    //ATS
+    @Published var showSubscriptionRequiredAlert = false
+    var coordinator: AppCoordinator<HomeRoute>?
+    
+    var subscriptionRequiredMessage: String {
+        "Video interview sessions require an active subscription. Upgrade to continue, or switch back to audio mode."
+    }
+    private let permissionManager: SubscriptionAccessManager
+
+    
     // MARK: - Initialization
     init(
+        permissionManager: SubscriptionAccessManager,
         userSession: UserSession,
         getAllTracksUseCase: GetAllTrackesUseCase,
         getAllSessionUseCase: LoadSessionsUseCase
@@ -48,11 +59,36 @@ final class HomeViewModel: ObservableObject {
         self.userSession = userSession
         self.getAllTracksUseCase = getAllTracksUseCase
         self.getAllSessionUseCase = getAllSessionUseCase
+        self.permissionManager = permissionManager
         
         bindUserSession()
+        
     }
     
+    func onAtsClick(){
+        if permissionManager.canAccess(.ats){
+            showSubscriptionRequiredAlert = false
+            coordinator?.push(.atsJobMatch)
 
+        }else{
+            showSubscriptionRequiredAlert = true
+        }
+    }
+    
+    //OnApper
+    func onAppear( coordinator: AppCoordinator<HomeRoute>) {
+        self.coordinator = coordinator
+    }
+    
+    //ATS Permistion
+    func subscriptionAlertCancelTapped() {
+        showSubscriptionRequiredAlert = false
+    }
+
+    func subscriptionAlertHomeTapped() {
+        showSubscriptionRequiredAlert = false
+        coordinator?.push(.subscriptionView)
+    }
     
     // MARK: - Home
     func loadHome() async {

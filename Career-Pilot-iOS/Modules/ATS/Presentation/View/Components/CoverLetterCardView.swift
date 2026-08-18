@@ -25,7 +25,6 @@ struct CoverLetterCardView: View {
             HStack {
                 Label("Cover Letter", systemImage: "doc.text")
                     .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(.secondary)
 
                 Spacer()
 
@@ -66,9 +65,15 @@ struct CoverLetterCardView: View {
                     .foregroundColor(.primary.opacity(0.85))
 
                 HStack(spacing: 8) {
-                    ContactChip(text: data.signature.name, kind: .name)
-                    ContactChip(text: data.signature.email, kind: .email)
-                    ContactChip(text: data.signature.phone, kind: .phone)
+                    if !data.signature.name.isEmpty {
+                        ContactChip(text: data.signature.name, kind: .name)
+                    }
+                    if !data.signature.email.isEmpty {
+                        ContactChip(text: data.signature.email, kind: .email)
+                    }
+                    if !data.signature.phone.isEmpty {
+                        ContactChip(text: data.signature.phone, kind: .phone)
+                    }
                 }
             }
         }

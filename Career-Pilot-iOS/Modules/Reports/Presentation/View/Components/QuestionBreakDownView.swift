@@ -11,12 +11,12 @@ import SwiftUI
 import SwiftUI
 
 struct QuestionBreakDownView: View {
-    @EnvironmentObject var coordinator: AppCoordinator<ReportsRoute>
     let sessionId: Int
+    var onTap: (() -> Void)?
 
     var body: some View {
         Button {
-            coordinator.push(.questionBreakdown(sessionId: sessionId))
+            onTap?()
         } label: {
             HStack {
                 Image(systemName: "doc.text")

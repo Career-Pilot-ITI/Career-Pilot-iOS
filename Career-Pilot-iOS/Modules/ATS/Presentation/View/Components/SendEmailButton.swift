@@ -14,9 +14,9 @@ struct SendEmailButton: View {
             Label("Send Email", systemImage: "envelope.fill")
                 .font(.system(size: 16, weight: .semibold))
                 .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
                 .padding(.vertical, 15)
         }
+        .frame(maxWidth: .infinity)
         .background(Color.primary)
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
