@@ -241,6 +241,19 @@ class ATSViewModel: ObservableObject {
         }
     }
 
+    func atsTrackId() async -> Int {
+        do {
+            let user = try await userRepo.getCurrentUser()
+            let trackId = user?.profile.trackId ?? 0
+            if trackId == 0 {
+                toastManager.show("No career track selected. Using default track.", type: .info)
+            }
+            return trackId
+        } catch {
+            return 0
+        }
+    }
+
     private func presentError(_ message: String) {
         errorMessage = message
         toastManager.show(message, type: .error)

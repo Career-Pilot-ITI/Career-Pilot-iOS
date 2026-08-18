@@ -33,6 +33,7 @@ extension DIContainer{
         // homeViewModel
         container.register(HomeViewModel.self){ r in
             HomeViewModel(
+                permissionManager:  DIContainer.shared.container.resolve((any SubscriptionAccessManaging).self)! as! SubscriptionAccessManager,
                 userSession: r.resolve(UserSession.self)!,
                 getAllTracksUseCase: r.resolve(GetAllTrackesUseCase.self)!,
                 getAllSessionUseCase: r.resolve(LoadSessionsUseCase.self)!
