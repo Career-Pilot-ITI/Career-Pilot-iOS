@@ -47,19 +47,22 @@ struct JobLinkShareTipView: View {
         }
     }
 
-    @ViewBuilder
     private var animatedText: some View {
         let visible = String(fullText.prefix(visibleCount))
-        let segments = buildSegments(from: visible)
+        let text = buildAttributedText(from: visible)
+        return text
+            .foregroundStyle(Color.primaryTeal)
+            .font(Font.size12Medium)
+    }
 
+    private func buildAttributedText(from text: String) -> Text {
+        let segments = buildSegments(from: text)
         var result = Text("")
         for segment in segments {
             let t = Text(segment.text)
             result = result + (segment.isBold ? t.fontWeight(.bold) : t)
         }
-        result
-            .foregroundStyle(Color.primaryTeal)
-            .font(Font.size12Medium)
+        return result
     }
 
     private struct Segment {
