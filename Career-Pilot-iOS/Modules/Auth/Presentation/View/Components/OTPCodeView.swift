@@ -34,10 +34,11 @@ struct OTPCodeView: View {
                         filterAndClamp(newValue)
                     }
 
-                HStack(spacing: 10) {
+                HStack(spacing: 0) {
                     ForEach(0..<length, id: \.self) { index in
                         OTPBoxView(character: character(at: index),
                                    isActive: index == code.count && isFocused)
+                            .padding(.horizontal, 5)
                     }
                 }
                 .contentShape(Rectangle())
