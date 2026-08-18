@@ -71,7 +71,7 @@ struct CvOptimizeProgressView: View {
                     default: return false
                     }
                 },
-                set: { _ in }
+                set: { (_: Bool) in }
             ),
             onCancel: {
                 viewModel.cancelPolling()

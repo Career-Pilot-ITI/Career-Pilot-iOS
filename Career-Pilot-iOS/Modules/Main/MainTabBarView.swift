@@ -31,11 +31,13 @@ struct MainTabBarView: View {
                             viewModel: DIContainer.shared.container.resolve(SessionDetailViewModel.self, argument: sessionId)!
                         )
                         
-                    case let .interviewPrep(trackName, trackId, interviewType):
+                    case let .interviewPrep(trackName, trackId, interviewType, jobId, jobTitle):
                         InterviewPrepContainerView(
                             trackName: trackName,
                             trackId: trackId,
-                            interviewType: interviewType
+                            interviewType: interviewType,
+                            jobId: jobId,
+                            jobTitle: jobTitle
                         )
                         
                     case let .practiceInterview(_, trackId, interviewType):
