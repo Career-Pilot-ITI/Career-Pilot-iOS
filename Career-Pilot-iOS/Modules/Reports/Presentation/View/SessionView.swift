@@ -10,9 +10,11 @@ import SwiftUI
 struct SessionView: View {
     @StateObject private var viewModel: SessionDetailViewModel
     let sessionId: Int
+    var onBreakdownTap: (() -> Void)? = nil
 
-    init(sessionId: Int, viewModel: SessionDetailViewModel) {
+    init(sessionId: Int, viewModel: SessionDetailViewModel, onBreakdownTap: (() -> Void)? = nil) {
         self.sessionId = sessionId
+        self.onBreakdownTap = onBreakdownTap
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
@@ -26,7 +28,11 @@ struct SessionView: View {
                 Text(message).foregroundStyle(.red)
             case .loaded:
                 if let feedback = viewModel.feedback {
-                    SessionFeedBackView(feedback: feedback.toInterviewFeedback(), sessionId: sessionId)
+                    SessionFeedBackView(
+                        feedback: feedback.toInterviewFeedback(),
+                        sessionId: sessionId,
+                        onBreakdownTap: onBreakdownTap
+                    )
                 }
             }
         }
@@ -62,6 +68,7 @@ struct SessionFeedBackView: View {
     var feedback: InterviewFeedback
     var sessionId: Int
     var onBack: (() -> Void)? = nil
+    var onBreakdownTap: (() -> Void)? = nil
 
     @Environment(\.dismiss) private var dismiss
 
@@ -75,7 +82,7 @@ struct SessionFeedBackView: View {
                         percentileText: "Top 28% of users this week"
                     )
                     PerformanceBreakdownView(metrics: feedback.toRadarMetrics())
-                    QuestionBreakDownView(sessionId: sessionId)
+                    QuestionBreakDownView(sessionId: sessionId, onTap: onBreakdownTap)
                     VStack(alignment: .leading, spacing: Spacing.s12) {
                         HStack {
                             Text("Coaching Suggestions")
