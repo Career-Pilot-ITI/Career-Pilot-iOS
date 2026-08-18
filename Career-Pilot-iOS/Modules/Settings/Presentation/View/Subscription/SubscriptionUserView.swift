@@ -14,19 +14,18 @@ struct MySubscriptionView: View {
     
     // MARK: - Dynamic Palette
     private var screenBackground: Color {
-        colorScheme == .dark ? Color.primaryNavy : Color.gray100
-    }
+        Color.background  }
     
     private var cardBackground: Color {
-        colorScheme == .dark ? Color.primaryNavy : Color.white
+        Color.gray400.opacity(0.08)
     }
     
-    private var primaryTextColor: Color {
-        colorScheme == .dark ? Color.white : Color.primaryNavy
-    }
+//    private var primaryTextColor: Color {
+//
+//    }
     
     private var secondaryTextColor: Color {
-        colorScheme == .dark ? Color.gray400 : Color.gray600
+        Color.textSecondary
     }
     
     var body: some View {
@@ -110,7 +109,7 @@ struct MySubscriptionView: View {
                     VStack(alignment: .leading, spacing: 3) {
                         Text("\(viewModel.activeUserPlan.rawValue.capitalized) Plan")
                             .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(primaryTextColor)
+//                            .foregroundColor(primaryTextColor)
                         
                         Text("Current Plan")
                             .font(.size13Medium)
@@ -177,7 +176,7 @@ struct MySubscriptionView: View {
             VStack(alignment: .leading, spacing: 18) {
                 Text("Included in your plan")
                     .font(.size16Bold)
-                    .foregroundColor(primaryTextColor)
+//                    .foregroundColor(primaryTextColor)
                 
                 VStack(alignment: .leading, spacing: 16) {
                     ForEach(viewModel.planFeatures, id: \.self) { feature in
@@ -188,7 +187,7 @@ struct MySubscriptionView: View {
                             
                             Text(feature)
                                 .font(.size14Medium)
-                                .foregroundColor(primaryTextColor)
+//                                .foregroundColor(primaryTextColor)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
                     }
