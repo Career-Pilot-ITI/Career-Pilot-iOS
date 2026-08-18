@@ -25,7 +25,6 @@ struct CoverLetterCardView: View {
             HStack {
                 Label("Cover Letter", systemImage: "doc.text")
                     .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(.secondary)
 
                 Spacer()
 
