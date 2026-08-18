@@ -137,6 +137,7 @@ struct ATSJobMatchView: View {
                 }
                 .presentationDetents([.medium])
             }
+            .operationGuard(isOperationActive: $viewModel.isLoading)
         }
     }
 }

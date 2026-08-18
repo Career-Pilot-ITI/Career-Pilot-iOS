@@ -117,6 +117,7 @@ struct JobMatchView: View {
             guard viewModel.jobMatchData == nil else { return }
             await viewModel.scoreCv()
         }
+        .operationGuard(isOperationActive: $viewModel.isScoringLoading)
     }
 
     @ViewBuilder
