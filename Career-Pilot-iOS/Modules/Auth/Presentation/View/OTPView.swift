@@ -43,7 +43,7 @@ struct OTPView: View {
                     Text(phoneNumber)
                         .font(.size14Regular)
                 }
-                .padding(.bottom, 36)
+                .padding(.bottom, 16)
 
                 ZStack {
                     OTPCodeView(
