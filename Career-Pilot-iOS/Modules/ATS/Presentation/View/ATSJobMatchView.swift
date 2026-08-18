@@ -21,14 +21,17 @@ struct ATSJobMatchView: View {
         }
         let host = components.host?.lowercased() ?? ""
         let path = components.path
-        return (host == "www.linkedin.com" || host == "linkedin.com")
-            && path.hasPrefix("/jobs/view/")
-            && path.replacingOccurrences(of: "/jobs/view/", with: "")
-                .drop(while: { $0 == "/" })
-                .allSatisfy { $0.isNumber }
-            && !path.replacingOccurrences(of: "/jobs/view/", with: "")
-                .drop(while: { $0 == "/" })
-                .isEmpty
+
+        guard host == "www.linkedin.com" || host == "linkedin.com",
+              path.hasPrefix("/jobs/view/") else {
+            return false
+        }
+
+        let jobIDSegment = path
+            .replacingOccurrences(of: "/jobs/view/", with: "")
+            .trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+
+        return !jobIDSegment.isEmpty && jobIDSegment.allSatisfy { $0.isNumber }
     }
 
     private var isCompareEnabled: Bool {
