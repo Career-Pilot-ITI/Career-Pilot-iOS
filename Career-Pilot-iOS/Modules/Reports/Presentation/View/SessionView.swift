@@ -76,8 +76,12 @@ struct SessionFeedBackView: View {
                     PerformanceBreakdownView(metrics: feedback.toRadarMetrics())
                     QuestionBreakDownView(sessionId: sessionId)
                     VStack(alignment: .leading, spacing: Spacing.s12) {
-                        Text("Coaching Suggestions")
-                            .font(Font.size15Bold)
+                        HStack {
+                            Text("Coaching Suggestions")
+                                .font(Font.size15Bold)
+                            
+                            Spacer()
+                        }
                         CoachingSuggestionsListView(suggestions: feedback.toCoachingSuggestions())
                     }
                 }
